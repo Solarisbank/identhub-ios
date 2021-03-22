@@ -1,14 +1,9 @@
-# BankIdentSKD
-Welcome to the **BankIdentSDK** project. It's an SDK made for onboarding the person with their bank details.
+# Solarisbank IdentHub SDK
+iOS SDK for Solarisbank IdentHub.
 
-## Configuration
+It provides an easy way to integrate identification provided by Solarisbank into your iOS app.
 
-### SDK Prerequisites
-
-- [Homebrew](https://brew.sh)
-- [Carthage](https://github.com/Carthage/Carthage) (`brew install carthage`)
-
-### SDK Instalation
+## Installation
 
 1. Create Cartfile in your projects folder:
 
@@ -19,8 +14,7 @@ Welcome to the **BankIdentSDK** project. It's an SDK made for onboarding the per
 2. Include the source of the SDK in the Cartfile with the latest version of the SDK, e.g.:
 
     ```bash
-    # example:
-    github "solarisbank/bankidentsdk" ~> 1.0.0 
+    github "Solarisbank/identhub-ios" ~> 0.1.0 
     ```
 
 3. Run carthage script:
@@ -35,4 +29,22 @@ Welcome to the **BankIdentSDK** project. It's an SDK made for onboarding the per
 
 5. Open your project and build it.
 
-6. Import BankIdentSDK, create an instance of `BankIdentSDKManager` and call `start`.
+## Usage
+First you need to create an identification session via the Solarisbank API. The session will contain a URL that can be passed to the IdentHub SDK to create a new session.
+
+```swift
+import IdentHubSDK
+
+class ViewController: UIViewController {
+    @IBAction func startBankIdentSDK(_ sender: Any) {
+        let identHubSessionURL = … // from the API
+        let identHubSession = try IdentHubSession(rootViewController: self, sessionURL: identHubSessionURL)
+        identHubSession.start(self)
+    }
+}
+```
+
+## Example
+You can open the example app in XCode to try it out.
+
+You can find the example code in `Sample` directory.
