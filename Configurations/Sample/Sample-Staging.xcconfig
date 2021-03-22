@@ -1,0 +1,17 @@
+//
+//  Sample-Staging.xcconfig
+//  IdentHubSDK
+//
+
+#include "Sample-Base.xcconfig"
+
+__PRODUCT_BUNDLE_IDENTIFIER_SUFFIX = .staging
+
+_ENVIRONMENTS = ENV_STAGING
+
+_BUILD_VERSION = 1.0
+_BUILD_NUMBER = 1
+
+_CODESIGN_DEVELOPMENT_TEAM = 0
+_CODESIGN_IDENTITY = iPhone Distribution
+_CODESIGN_PROFILE_SPECIFIER = IdentHub Sample Staging

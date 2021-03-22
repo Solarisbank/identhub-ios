@@ -1,0 +1,13 @@
+//
+//  Sample-Base.xcconfig
+//  IdentHubSDK
+//
+
+#include "../Platforms/iOS.xcconfig"
+#include "../Targets/Application.xcconfig"
+
+_BUNDLE_NAME = IdentHubSample
+_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample$(__PRODUCT_BUNDLE_IDENTIFIER_SUFFIX)
+_BUNDLE_INFOPLIST_PATH = $(PROJECT_DIR)/Sample/Resources/Info.plist
+
+_CODESIGN_STYLE = Manual

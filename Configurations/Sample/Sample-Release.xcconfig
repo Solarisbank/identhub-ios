@@ -1,0 +1,15 @@
+//
+//  Sample-Release.xcconfig
+//  IdentHubSDK
+//
+
+#include "Sample-Base.xcconfig"
+
+_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sdk
+
+_BUILD_VERSION = 1.0
+_BUILD_NUMBER = 1
+
+_CODESIGN_DEVELOPMENT_TEAM = 0
+_CODESIGN_IDENTITY = Apple Distribution
+_CODESIGN_PROFILE_SPECIFIER = IdentHub SDK Release

@@ -1,0 +1,7 @@
+//
+//  Common-Development.xcconfig
+//  IdentHubSDK
+//
+
+#include "Common-Base.xcconfig"
+#include "../Configurations/Debug.xcconfig"

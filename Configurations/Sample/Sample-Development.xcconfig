@@ -1,0 +1,14 @@
+//
+//  Sample-Development.xcconfig
+//  IdentHubSDK
+//
+
+#include "Sample-Base.xcconfig"
+
+__PRODUCT_BUNDLE_IDENTIFIER_SUFFIX = .development
+
+_ENVIRONMENTS = ENV_DEVELOPMENT
+
+_CODESIGN_DEVELOPEMNT_TEAM = 0
+_CODESIGN_IDENTITY = iPhone Developer
+_CODESIGN_PROFILE_SPECIFIER = IdentHub Sample Development

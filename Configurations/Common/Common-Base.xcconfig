@@ -1,0 +1,12 @@
+//
+//  Common-Base.xcconfig
+//  IdentHubSDK
+//
+
+#include "Common.xcconfig"
+
+_BUILD_VERSION = 0.1.0
+_BUILD_NUMBER = 1
+
+_DEPLOYMENT_TARGET_IOS = 12.0
+_COMPILER_SWIFT_VERSION = 5.2.4

@@ -1,0 +1,17 @@
+//
+//  Tests-Base.xcconfig
+//  IdentHubSDK
+//
+
+#include "../Platforms/iOS.xcconfig"
+#include "../Targets/Tests.xcconfig"
+
+_BUNDLE_NAME = IdentHubSDKTests
+_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sdk.tests
+_BUNDLE_INFOPLIST_PATH = $(PROJECT_DIR)/Unit Tests/Resources/Info.plist
+
+TEST_HOST = $(BUILT_PRODUCTS_DIR)/IdentHubSample.app/IdentHubSample
+BUNDLE_LOADER = $(TEST_HOST)
+LD_RUNPATH_SEARCH_PATHS = $(inhertited) @executable_path/Frameworks @loader_path/Frameworks
+COPY_PHASE_STRIP = NO
+STRIP_INSTALLED_PRODUCT = NO
