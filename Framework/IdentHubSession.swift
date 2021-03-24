@@ -14,7 +14,7 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
 
     /// Identificaiton session finished or interrupted with error
     /// - Parameter failureReason: session error object
-    func didFailureSession(_ failureReason: Error)
+    func didFailureSession(_ failureReason: APIError)
 }
 
 /// Ident hub session result
@@ -22,7 +22,7 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
 /// failure - result returns with error in parameter
 public enum IdentificationSessionResult {
     case success(identification: String)
-    case failure(Error)
+    case failure(APIError)
 }
 
 /// Ident hub completion session block definition
@@ -38,6 +38,7 @@ final public class IdentHubSession: IdentSessionTracker {
     private let identRouter: IdentHubSDKRouter
     private weak var sessionDelegate: IdentHubSDKManagerDelegate?
     private var completionSessionBlock: CompletionHandler?
+    private var bankIDSessionCoordinator: BankIDCoordinator?
 
     /// Initiate ident hub session manager
     /// - Parameters:
@@ -54,7 +55,8 @@ final public class IdentHubSession: IdentSessionTracker {
     /// Method starts BandID identification process with updating status by delegate
     /// - Parameter delegate: object conforms process status delegate methods
     public func start(_ delegate: IdentHubSDKManagerDelegate) {
-        self.sessionDelegate = delegate
+        sessionDelegate = delegate
+        bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: identRouter)
 
         startBankID()
     }
@@ -70,10 +72,8 @@ final public class IdentHubSession: IdentSessionTracker {
     // MARK: - Manager Session Tracker methods -
 
     internal func startBankID() {
-        let bankIDCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: identRouter)
 
-        bankIDCoordinator.start(completion: { [weak self] result in
-            guard let `self` = self else { return }
+        bankIDSessionCoordinator?.start(completion: { result in
 
             if let completion = self.completionSessionBlock {
                 completion(result)

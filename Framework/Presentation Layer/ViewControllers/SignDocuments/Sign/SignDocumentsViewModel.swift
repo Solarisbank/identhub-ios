@@ -17,16 +17,19 @@ final internal class SignDocumentsViewModel: NSObject {
 
     private let sessionStorage: StorageSessionInfoProvider
 
+    private var completionHander: CompletionHandler
+
     /// Mobile number used for current authorization.
     lazy var mobileNumber = {
         self.sessionStorage.mobileNumber ?? ""
     }()
 
-    init(flowCoordinator: BankIDCoordinator, delegate: SignDocumentsViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider) {
+    init(flowCoordinator: BankIDCoordinator, delegate: SignDocumentsViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
         self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
+        self.completionHander = completion
         super.init()
         requestNewCode()
     }
@@ -36,6 +39,7 @@ final internal class SignDocumentsViewModel: NSObject {
     }
 
     private func fail() {
+        self.sessionStorage.isSuccessful = false
         DispatchQueue.main.async {
             self.delegate?.verificationFailed()
         }
@@ -48,17 +52,21 @@ final internal class SignDocumentsViewModel: NSObject {
         guard let code = code else { return }
         delegate?.verificationStarted()
         verificationService.verifyDocumentsTAN(token: code) { [weak self] result in
+            guard let `self` = self else { return }
+
             switch result {
             case .success(let response):
                 if response.status == Status.confirmed.rawValue {
                     DispatchQueue.main.async {
-                        self?.delegate?.verificationIsBeingProcessed()
+                        self.delegate?.verificationIsBeingProcessed()
                     }
                 } else {
-                    self?.fail()
+                    self.fail()
+                    self.completionHander(.failure(APIError.authorizationFailed))
                 }
-            case .failure(_):
-                self?.fail()
+            case .failure(let error):
+                self.fail()
+                self.completionHander(.failure(error))
             }
         }
     }
@@ -66,23 +74,28 @@ final internal class SignDocumentsViewModel: NSObject {
     /// Check the status of the identification.
     func checkIdentificationStatus() {
         verificationService.getIdentification { [weak self] result in
+            guard let `self` = self else { return }
+
             switch result {
             case .success(let response):
                 if response.status == Status.successful.rawValue {
                     DispatchQueue.main.async {
-                        self?.delegate?.verificationSucceeded()
+                        self.delegate?.verificationSucceeded()
                     }
                 } else {
-                    self?.fail()
+                    self.fail()
+                    self.completionHander(.failure(APIError.authorizationFailed))
                 }
-            case .failure(_):
-                self?.fail()
+            case .failure(let error):
+                self.fail()
+                self.completionHander(.failure(error))
             }
         }
     }
 
     /// Display finish identification screen.
     func finishIdentification() {
+        self.sessionStorage.isSuccessful = true
         flowCoordinator.perform(action: .finishIdentification)
     }
 }

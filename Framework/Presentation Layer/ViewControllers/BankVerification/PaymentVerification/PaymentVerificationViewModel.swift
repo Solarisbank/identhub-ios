@@ -16,11 +16,14 @@ final internal class PaymentVerificationViewModel: NSObject {
 
     private let sessionStorage: StorageSessionInfoProvider
 
-    init(flowCoordinator: BankIDCoordinator, delegate: PaymentVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider) {
+    private var completionHandler: CompletionHandler
+
+    init(flowCoordinator: BankIDCoordinator, delegate: PaymentVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
         self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
+        self.completionHandler = completion
         super.init()
         assemblyURLRequest()
     }
@@ -30,6 +33,7 @@ final internal class PaymentVerificationViewModel: NSObject {
         guard let path = sessionStorage.identificationPath,
               let url = URL(string: path) else {
             delegate?.verificationFailed()
+            completionHandler(.failure(APIError.requestError))
             return
         }
         let urlRequest = URLRequest(url: url)
@@ -43,18 +47,20 @@ final internal class PaymentVerificationViewModel: NSObject {
     /// Check the status of the identification.
     func checkIdentificationStatus() {
         verificationService.getIdentification { [weak self] result in
+            guard let `self` = self else { return }
+
             switch result {
             case .success(let response):
                 if response.status == Status.authorizationRequired.rawValue {
                     DispatchQueue.main.async {
-                        self?.delegate?.verificationIsBeingProcessed()
+                        self.delegate?.verificationIsBeingProcessed()
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                        self?.delegate?.verificationSucceeded()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.delegate?.verificationSucceeded()
                     }
                 }
-            default:
-                break
+            case .failure(let error):
+                self.completionHandler(.failure(error))
             }
         }
     }

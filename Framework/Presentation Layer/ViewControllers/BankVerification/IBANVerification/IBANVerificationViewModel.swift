@@ -17,11 +17,14 @@ final internal class IBANVerificationViewModel: NSObject {
 
     private let sessionStorage: StorageSessionInfoProvider
 
-    init(flowCoordinator: BankIDCoordinator, delegate: IBANVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider) {
+    private var completionHandler: CompletionHandler
+
+    init(flowCoordinator: BankIDCoordinator, delegate: IBANVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
         self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
+        self.completionHandler = completion
         super.init()
     }
 
@@ -31,7 +34,7 @@ final internal class IBANVerificationViewModel: NSObject {
         let isIBANValid = validateIBAN(iban)
         delegate?.isIBANFormatValid(isIBANValid)
         guard isIBANValid,
-              let iban = iban else { return }
+              let iban = iban else { completionHandler(.failure(APIError.clientError)); return }
         verifyIBAN(iban)
     }
 
@@ -44,15 +47,17 @@ final internal class IBANVerificationViewModel: NSObject {
 
     private func verifyIBAN(_ iban: String) {
         verificationService.verifyIBAN(iban) { [weak self] result in
+            guard let `self` = self else { return }
+
             switch result {
             case .success(let response):
-                self?.sessionStorage.identificationUID = response.id
-                self?.sessionStorage.identificationPath = response.url
+                self.sessionStorage.identificationUID = response.id
+                self.sessionStorage.identificationPath = response.url
                 DispatchQueue.main.async {
-                    self?.flowCoordinator.perform(action: .bankVerification(step: .payment))
+                    self.flowCoordinator.perform(action: .bankVerification(step: .payment))
                 }
-            case .failure(_):
-                break
+            case .failure(let error):
+                self.completionHandler(.failure(error))
             }
         }
     }

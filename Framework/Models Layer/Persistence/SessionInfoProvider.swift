@@ -20,6 +20,9 @@ protocol SessionInfoProvider: AnyObject {
     /// Path to the payment identification provider.
     var identificationPath: String? { get set }
 
+    /// Successful identification status
+    var isSuccessful: Bool? { get set }
+
     /// Clears currently stored data.
     func clear()
 }
@@ -41,6 +44,9 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     /// - SeeAlso: SessionInfoProvider.identificationPath
     var identificationPath: String?
 
+    /// - SeeAlso: SessionInfoProvider.isSuccessful
+    var isSuccessful: Bool?
+
     // MARK: Init
 
     init(sessionToken: String) {
@@ -53,5 +59,6 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
         mobileNumber = nil
         identificationUID = nil
         identificationPath = nil
+        isSuccessful = false
     }
 }

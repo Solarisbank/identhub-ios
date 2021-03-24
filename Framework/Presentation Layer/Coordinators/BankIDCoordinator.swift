@@ -67,6 +67,7 @@ class BankIDCoordinator: Coordinator {
             displayDocumentPreview(data: data)
         case .finishIdentification:
             presentFinishIdentification()
+            notifyHandlers()
         case .pop:
             pop()
         case .quit:
@@ -91,23 +92,21 @@ class BankIDCoordinator: Coordinator {
 
     private func presentPhoneVerification() {
         let phoneVerificationViewController = PhoneVerificationViewController()
-        let phoneVerificationViewModel = PhoneVerificationViewModel(flowCoordinator: self, delegate: phoneVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies
-                                                                    .sessionInfoProvider)
+        let phoneVerificationViewModel = PhoneVerificationViewModel(flowCoordinator: self, delegate: phoneVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
         phoneVerificationViewController.viewModel = phoneVerificationViewModel
         presenter.push(phoneVerificationViewController, animated: true, completion: nil)
     }
 
     private func presentIBANVerification() {
         let ibanVerificationViewController = IBANVerificationViewController()
-        let ibanVerificationViewModel = IBANVerificationViewModel(flowCoordinator: self, delegate: ibanVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies
-                                                                    .sessionInfoProvider)
+        let ibanVerificationViewModel = IBANVerificationViewModel(flowCoordinator: self, delegate: ibanVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
         ibanVerificationViewController.viewModel = ibanVerificationViewModel
         presenter.push(ibanVerificationViewController, animated: true, completion: nil)
     }
 
     private func presentPaymentVerification() {
         let paymentVerificationViewController = PaymentVerificationViewController()
-        let paymentVerificationViewModel = PaymentVerificationViewModel(flowCoordinator: self, delegate: paymentVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider)
+        let paymentVerificationViewModel = PaymentVerificationViewModel(flowCoordinator: self, delegate: paymentVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
         paymentVerificationViewController.viewModel = paymentVerificationViewModel
         presenter.push(paymentVerificationViewController, animated: false, completion: nil)
     }
@@ -121,7 +120,7 @@ class BankIDCoordinator: Coordinator {
 
     private func presentSignDocuments() {
         let signDocumentsViewController = SignDocumentsViewController()
-        let signDocumentsViewModel = SignDocumentsViewModel(flowCoordinator: self, delegate: signDocumentsViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider)
+        let signDocumentsViewModel = SignDocumentsViewModel(flowCoordinator: self, delegate: signDocumentsViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
         signDocumentsViewController.viewModel = signDocumentsViewModel
         presenter.push(signDocumentsViewController, animated: true, completion: nil)
     }
@@ -138,6 +137,12 @@ class BankIDCoordinator: Coordinator {
         presenter.push(finishIdentificationViewController, animated: true, completion: nil)
     }
 
+    private func notifyHandlers() {
+        guard let successStatus = self.appDependencies.sessionInfoProvider.isSuccessful, successStatus == true else { return }
+
+        self.completionHandler?(IdentificationSessionResult.success(identification: self.appDependencies.sessionInfoProvider.identificationUID ?? ""))
+    }
+
     private func pop() {
         presenter.pop(animated: true)
     }
@@ -148,11 +153,7 @@ class BankIDCoordinator: Coordinator {
             self.presenter.dismissModule(animated: false, completion: { [weak self] in
                 guard let `self` = self else { return }
 
-                self.presenter.dismissModule(animated: true, completion: {
-                    guard let completion = self.completionHandler else { return }
-
-                    completion(IdentificationSessionResult.success(identification: ""))
-                })
+                self.presenter.dismissModule(animated: true, completion: nil)
             })
         }
         quitPopUpViewController.modalPresentationStyle = .overFullScreen

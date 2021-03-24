@@ -38,6 +38,7 @@ final internal class PaymentVerificationViewController: SolarisViewController {
         case paymentInitiation
         case processingVerification
         case success
+        case failed
     }
 
     private var state: State = .establishingConnection {
@@ -142,6 +143,8 @@ final internal class PaymentVerificationViewController: SolarisViewController {
         case .success:
             stateView.removeFromSuperview()
             setUpSuccessContainerView()
+        case .failed:
+            print("Failed payment verification")
         }
     }
 
@@ -173,6 +176,6 @@ extension PaymentVerificationViewController: PaymentVerificationViewModelDelegat
     }
 
     func verificationFailed() {
-
+        state = .failed
     }
 }

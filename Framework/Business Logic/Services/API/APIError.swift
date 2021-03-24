@@ -18,7 +18,7 @@ import Foundation
 /// - internalServerError: indicates the internal server error.
 /// - requestError: indicates build request error
 /// - unknownError: indicates that api client encountered an error not listed above.
-enum APIError: Error {
+public enum APIError: Error {
     case malformedResponseJson
     case clientError
     case authorizationFailed

@@ -15,13 +15,16 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
 
     var verificationService: VerificationService
 
+    var completionHandler: CompletionHandler
+
     private let sessionStorage: StorageSessionInfoProvider
 
-    init(flowCoordinator: BankIDCoordinator, delegate: PhoneVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider) {
+    init(flowCoordinator: BankIDCoordinator, delegate: PhoneVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
         self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
+        self.completionHandler = completion
         super.init()
         requestNewCode()
     }
@@ -39,17 +42,21 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
         guard let code = code else { return }
         delegate?.verificationStarted()
         verificationService.verifyMobileNumberTAN(token: code) { [weak self] result in
+            guard let `self` = self else { return }
+
             switch result {
             case .success(let response):
                 if response.verified {
                     DispatchQueue.main.async {
-                        self?.delegate?.verificationSucceeded()
+                        self.delegate?.verificationSucceeded()
                     }
                 } else {
-                    self?.fail()
+                    self.fail()
+                    self.completionHandler(.failure(APIError.authorizationFailed))
                 }
-            case .failure(_):
-                self?.fail()
+            case .failure(let error):
+                self.fail()
+                self.completionHandler(.failure(error))
             }
         }
     }
@@ -58,17 +65,19 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
     /// Sends new sms message with TAN.
     func requestNewCode() {
         verificationService.authorizeMobileNumber { [weak self] result in
+            guard let `self` = self else { return }
+
             switch result {
             case .success(let response):
                 if response.verified {
                     let mobileNumber = response.number
-                    self?.sessionStorage.mobileNumber = mobileNumber
+                    self.sessionStorage.mobileNumber = mobileNumber
                     DispatchQueue.main.async {
-                        self?.delegate?.didGetPhoneNumber(response.number)
+                        self.delegate?.didGetPhoneNumber(response.number)
                     }
                 }
-            default:
-                break
+            case .failure(let error):
+                self.completionHandler(.failure(error))
             }
         }
         delegate?.willGetNewCode()
