@@ -17,16 +17,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikC-rJ-L1P">
-                                <rect key="frame" x="141.5" y="431" width="131" height="44"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vdQ-4l-3bc">
+                                <rect key="frame" x="20" y="431" width="374" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikC-rJ-L1P">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="guP-dc-ShZ"/>
+                                        </constraints>
+                                        <state key="normal" title="Start BankID"/>
+                                        <connections>
+                                            <action selector="startBankIdentSDK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9cm-yr-mzg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RkM-i1-0eI">
+                                        <rect key="frame" x="197" y="0.0" width="177" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="miG-iq-lx4"/>
+                                        </constraints>
+                                        <state key="normal" title="Start Fourthline"/>
+                                        <connections>
+                                            <action selector="startFourthlineIdentSDK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tKF-Qg-Tea"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="guP-dc-ShZ"/>
+                                    <constraint firstAttribute="height" constant="44" id="xQm-Ip-jx7"/>
                                 </constraints>
-                                <state key="normal" title="Start IdentHubSDK"/>
-                                <connections>
-                                    <action selector="startBankIdentSDK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9cm-yr-mzg"/>
-                                </connections>
-                            </button>
+                            </stackView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-QT-J8K">
                                 <rect key="frame" x="20" y="505" width="374" height="157"/>
                                 <subviews>
@@ -59,12 +77,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ikC-rJ-L1P" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="3LV-gd-qGm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vdQ-4l-3bc" secondAttribute="trailing" constant="20" id="4IC-7L-cW2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z7c-QT-J8K" secondAttribute="trailing" constant="20" id="5Tu-Cm-Fhl"/>
+                            <constraint firstItem="vdQ-4l-3bc" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5hO-K9-J1K"/>
+                            <constraint firstItem="z7c-QT-J8K" firstAttribute="top" secondItem="vdQ-4l-3bc" secondAttribute="bottom" constant="30" id="9ZQ-DM-byq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z7c-QT-J8K" secondAttribute="bottom" priority="750" constant="200" id="SdX-tD-9qH"/>
-                            <constraint firstItem="z7c-QT-J8K" firstAttribute="top" secondItem="ikC-rJ-L1P" secondAttribute="bottom" constant="30" id="b0H-1Q-Cq0"/>
-                            <constraint firstItem="ikC-rJ-L1P" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nVm-8q-4TX"/>
                             <constraint firstItem="z7c-QT-J8K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="och-3G-aKL"/>
+                            <constraint firstItem="vdQ-4l-3bc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xnS-9f-xcQ"/>
                         </constraints>
                     </view>
                     <connections>

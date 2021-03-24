@@ -14,18 +14,28 @@ class IdentHubSDKTests: XCTestCase {
     // MARK: - Tests methods -
 
     /// Tested start SDK manager method execution
-    /// Session active if manager executed start command
+    /// Session active if manager executed start bankid type identification process
     func testBankIDActiveSession() throws {
         let sut = try makeManager()
 
-        sut.startBankID()
+        sut.start(.bankID, completion: { _ in })
 
         XCTAssertTrue(sut.bankIDSessionActiveState, "Session wasn't started in ident hub manager")
     }
 
+    /// Tested start SDK manager method execution
+    /// Session active if manager executed start fourthline type identification process
+    func testFourthlineActiveSession() throws {
+        let sut = try makeManager()
+
+        sut.start(.fouthline, completion: { _ in })
+
+        XCTAssertTrue(sut.fourthlineSessionActiveState, "Session wasn't started in ident hub manager")
+    }
+
     /// Tested SDK manager inactive state
     /// Session is not if manager never executed start command
-    func testBankIDInactiveSession() throws {
+    func testInactiveSession() throws {
         let sut = try makeManager()
 
         XCTAssertFalse(sut.bankIDSessionActiveState, "Bank identification session shouldn't start automatically")

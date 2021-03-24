@@ -17,14 +17,6 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
     func didFailureSession(_ failureReason: APIError)
 }
 
-/// Ident hub session result
-/// success - successful result with identification string in parameter
-/// failure - result returns with error in parameter
-public enum IdentificationSessionResult {
-    case success(identification: String)
-    case failure(APIError)
-}
-
 /// Ident hub completion session block definition
 public typealias CompletionHandler = (IdentificationSessionResult) -> Void
 
@@ -53,48 +45,77 @@ final public class IdentHubSession: IdentSessionTracker {
     }
 
     /// Method starts BandID identification process with updating status by delegate
+    /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter delegate: object conforms process status delegate methods
-    public func start(_ delegate: IdentHubSDKManagerDelegate) {
+    public func start(_ type: IdentificationSessionType, delegate: IdentHubSDKManagerDelegate) {
         sessionDelegate = delegate
-        bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: identRouter)
 
-        startBankID()
+        switch type {
+        case .bankID:
+            startBankID()
+        case .fouthline:
+            startFourthlineSession()
+        }
     }
 
     /// Method starts identification process (BankID) with updating status by closure callback
+    /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter completion: closure with result object in parameter, result has two cases: success with id or failure with error
-    public func start(completion: @escaping CompletionHandler) {
+    public func start(_ type: IdentificationSessionType, completion: @escaping CompletionHandler) {
         completionSessionBlock = completion
 
-        startBankID()
+        switch type {
+        case .bankID:
+            startBankID()
+        case .fouthline:
+            startFourthlineSession()
+        }
     }
 
     // MARK: - Manager Session Tracker methods -
 
     internal func startBankID() {
+        let bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: identRouter)
 
-        bankIDSessionCoordinator?.start(completion: { result in
-
-            if let completion = self.completionSessionBlock {
-                completion(result)
-            }
-
-            switch result {
-            case .success(let identificaiton):
-                self.sessionDelegate?.didFinishWithSuccess(identificaiton)
-            case .failure(let error):
-                self.sessionDelegate?.didFailureSession(error)
-            }
+        bankIDSessionCoordinator.start(completion: { result in
+            self.updateSessionResult(result)
         })
 
         bankIDSessionActiveState = true
     }
+
+    internal func startFourthlineSession() {
+        let fourthlineCoordinator = FourthlineIdentCoordinator(presenter: identRouter)
+
+        fourthlineCoordinator.start { result in
+            self.updateSessionResult(result)
+        }
+
+        fourthlineSessionActiveState = true
+    }
+
+    // MARK: - Internal methods methods -
+
+    private func updateSessionResult(_ result: IdentificationSessionResult) {
+        if let completion = self.completionSessionBlock {
+            completion(result)
+        }
+
+        switch result {
+        case .success(let identificaiton):
+            self.sessionDelegate?.didFinishWithSuccess(identificaiton)
+        case .failure(let error):
+            self.sessionDelegate?.didFailureSession(error)
+        }
+    }
 }
 
-protocol IdentSessionTracker: Coordinator {
+protocol IdentSessionTracker {
 
     var bankIDSessionActiveState: Bool { get }
     var fourthlineSessionActiveState: Bool { get }
 
     func startBankID()
+
+    func startFourthlineSession()
 }

@@ -22,12 +22,21 @@ class ViewController: UIViewController {
     // MARK: - Action methods -
 
     @IBAction func startBankIdentSDK(_ sender: Any) {
+        startIdentProcess(.bankID)
+    }
+    @IBAction func startFourthlineIdentSDK(_ sender: Any) {
+        startIdentProcess(.fouthline)
+    }
+
+    // MARK: - Internal methods -
+
+    private func startIdentProcess( _ type: IdentificationSessionType) {
         statusView.isHidden = true
 
         do {
             let identHubManager = try IdentHubSession(rootViewController: self, sessionURL: identHubSessionURL)
 
-            identHubManager.start(self)
+            identHubManager.start(type, delegate: self)
         } catch let err as IdentSessionURLError {
             switch err {
             case .invalidSessionURL:
@@ -41,8 +50,6 @@ class ViewController: UIViewController {
             updateStatus(false, desc: "Registered undefined error")
         }
     }
-
-    // MARK: - Internal methods -
 
     private func updateStatus(_ isSuccess: Bool, desc: String) {
         statusView.isHidden = false
