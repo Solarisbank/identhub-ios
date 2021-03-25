@@ -7,26 +7,51 @@ import UIKit
 
 /// Fourthline identification process flow coordinator class
 /// Used for navigating between screens and update process status
-class FourthlineIdentCoordinator: Coordinator {
+class FourthlineIdentCoordinator: BaseCoordinator {
 
-    // MARK: - Properties -
-    private let presenter: Router
-
-    // MARK: - Init method -
-
-    /// Initiate coordinator object
-    /// - Parameter presenter: root navigaiton router in Fourthline flow
-    internal init(presenter: Router) {
-        self.presenter = presenter
+    /// The list of all available actions.
+    enum Action {
+        case termsAndConditions
+        case onboarding
+        case quit
     }
 
     // MARK: - Coordinator methods -
 
     /// Method starts Fourthline identificaiton process
     /// - Parameter completion: completion handler with success or failure parameter, used for updating users UI
-    func start(completion: @escaping CompletionHandler) {
-        let termsConditionsVC = TermsConditionsViewController()
+    override func start(completion: @escaping CompletionHandler) {
+        perform(action: .termsAndConditions)
+    }
 
-        presenter.push(termsConditionsVC, animated: false, completion: nil)
+    /// Performs a specified Fourthline identifiaction action.
+    /// - Parameter action: type of the execution action
+    func perform(action: FourthlineIdentCoordinator.Action) {
+
+        switch action {
+        case .termsAndConditions:
+            presentPrivacyTermsScreen()
+        case .onboarding:
+            presentOnboardingScreen()
+        case .quit:
+            quit()
+        }
+    }
+
+    // MARK: - Internal methods -
+
+    private func presentPrivacyTermsScreen() {
+        let termsVM = TermsViewModel(flowCoordinator: self)
+        let termsVC = TermsViewController(termsVM)
+
+        presenter.push(termsVC, animated: false, completion: nil)
+    }
+
+    private func presentOnboardingScreen() {
+        let vc = UIViewController()
+
+        vc.view.backgroundColor = .white
+
+        presenter.push(vc, animated: true, completion: nil)
     }
 }

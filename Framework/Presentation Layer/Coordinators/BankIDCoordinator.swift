@@ -5,7 +5,7 @@
 
 import UIKit
 
-class BankIDCoordinator: Coordinator {
+class BankIDCoordinator: BaseCoordinator {
 
     /// The list of all available actions.
     enum Action {
@@ -31,13 +31,14 @@ class BankIDCoordinator: Coordinator {
 
     // MARK: - Properties -
     private let appDependencies: AppDependencies
-    private let presenter: Router
     private var completionHandler: CompletionHandler?
 
     // MARK: - Init methods -
-    internal init(appDependencies: AppDependencies, presenter: Router) {
+    init(appDependencies: AppDependencies, presenter: Router) {
+
         self.appDependencies = appDependencies
-        self.presenter = presenter
+
+        super.init(presenter: presenter)
     }
 
     // MARK: - Public methods -
@@ -76,7 +77,7 @@ class BankIDCoordinator: Coordinator {
     }
 
     // MARK: - Coordinator methods -
-    func start(completion: @escaping CompletionHandler) {
+    override func start(completion: @escaping CompletionHandler) {
         perform(action: .startIdentification)
         completionHandler = completion
     }
@@ -141,22 +142,5 @@ class BankIDCoordinator: Coordinator {
         guard let successStatus = self.appDependencies.sessionInfoProvider.isSuccessful, successStatus == true else { return }
 
         self.completionHandler?(IdentificationSessionResult.success(identification: self.appDependencies.sessionInfoProvider.identificationUID ?? ""))
-    }
-
-    private func pop() {
-        presenter.pop(animated: true)
-    }
-
-    private func quit() {
-        let quitPopUpViewController = QuitPopUpViewController()
-        quitPopUpViewController.quitAction = {
-            self.presenter.dismissModule(animated: false, completion: { [weak self] in
-                guard let `self` = self else { return }
-
-                self.presenter.dismissModule(animated: true, completion: nil)
-            })
-        }
-        quitPopUpViewController.modalPresentationStyle = .overFullScreen
-        presenter.present(quitPopUpViewController, animated: false)
     }
 }

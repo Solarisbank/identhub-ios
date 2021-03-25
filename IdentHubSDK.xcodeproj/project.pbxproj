@@ -103,7 +103,10 @@
 		841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81CC2603748300F4A079 /* BankIDCoordinator.swift */; };
 		842A14AD260A6E65005CD33B /* FourthlineIdentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */; };
 		842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */; };
-		842A14C0260A6E8C005CD33B /* TermsConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14BF260A6E8C005CD33B /* TermsConditionsViewController.swift */; };
+		847D427F260B555D0067ED63 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D427D260B555D0067ED63 /* TermsViewController.swift */; };
+		847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D427E260B555D0067ED63 /* TermsViewController.xib */; };
+		847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D428D260B6C370067ED63 /* TermsViewModel.swift */; };
+		847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D42AA260BD02E0067ED63 /* BaseCoordinator.swift */; };
 		849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B438125F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift */; };
 		849B438A25F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */; };
 		84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */; };
@@ -251,7 +254,10 @@
 		841C81CC2603748300F4A079 /* BankIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinator.swift; sourceTree = "<group>"; };
 		842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthlineIdentCoordinator.swift; sourceTree = "<group>"; };
 		842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentHubConstants.swift; sourceTree = "<group>"; };
-		842A14BF260A6E8C005CD33B /* TermsConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsConditionsViewController.swift; sourceTree = "<group>"; };
+		847D427D260B555D0067ED63 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		847D427E260B555D0067ED63 /* TermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
+		847D428D260B6C370067ED63 /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
+		847D42AA260BD02E0067ED63 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		849B438125F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberAuthorizeRequestTests.swift; sourceTree = "<group>"; };
 		849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberTANRequestTests.swift; sourceTree = "<group>"; };
 		84A7581625F22D7F004D8F88 /* IdentHubSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdentHubSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -588,13 +594,12 @@
 		0CE4A8E325A3688B00114CBD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */,
-				0CC8534225D168A600109FFC /* DocumentPreviewViewController.swift */,
-				0C007F0825D536B7003D42B3 /* QuitPopUpViewController.swift */,
 				0CE4A8E425A368AD00114CBD /* Abstractions */,
 				0C527E5525AC4BB900B6D5DB /* BankVerification */,
+				847D429C260BCBA30067ED63 /* Document */,
 				0CE01B3525C2E78C00FB0E16 /* FinishIdentification */,
 				0CC25BC125A4AB6C00D839AB /* PhoneVerification */,
+				847D42A0260BCBB30067ED63 /* Quit */,
 				0C9E56D925C01E3C00D68B96 /* SignDocuments */,
 				0CE4A8E525A368B400114CBD /* StartIdentification */,
 				842A14BE260A6E8C005CD33B /* Terms&Conditions */,
@@ -740,6 +745,7 @@
 			isa = PBXGroup;
 			children = (
 				841C81C42603743600F4A079 /* Coordinator.swift */,
+				847D42AA260BD02E0067ED63 /* BaseCoordinator.swift */,
 				841C81CC2603748300F4A079 /* BankIDCoordinator.swift */,
 				842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */,
 			);
@@ -749,9 +755,28 @@
 		842A14BE260A6E8C005CD33B /* Terms&Conditions */ = {
 			isa = PBXGroup;
 			children = (
-				842A14BF260A6E8C005CD33B /* TermsConditionsViewController.swift */,
+				847D427D260B555D0067ED63 /* TermsViewController.swift */,
+				847D428D260B6C370067ED63 /* TermsViewModel.swift */,
+				847D427E260B555D0067ED63 /* TermsViewController.xib */,
 			);
 			path = "Terms&Conditions";
+			sourceTree = "<group>";
+		};
+		847D429C260BCBA30067ED63 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */,
+				0CC8534225D168A600109FFC /* DocumentPreviewViewController.swift */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
+		847D42A0260BCBB30067ED63 /* Quit */ = {
+			isa = PBXGroup;
+			children = (
+				0C007F0825D536B7003D42B3 /* QuitPopUpViewController.swift */,
+			);
+			path = Quit;
 			sourceTree = "<group>";
 		};
 		849B438025F3933300CD5D9E /* MobileNumber */ = {
@@ -989,6 +1014,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CD863A125DC5F5000AB3252 /* strip-frameworks.sh in Resources */,
+				847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */,
 				0C527E6F25AC947700B6D5DB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1081,7 +1107,6 @@
 				0C1B431C25ADCBA1004FFF46 /* PaymentVerificationViewModel.swift in Sources */,
 				0C527E6725AC814000B6D5DB /* IBANVerificationViewModel.swift in Sources */,
 				0C9E56E425C01E9E00D68B96 /* ConfirmApplicationViewModel.swift in Sources */,
-				842A14C0260A6E8C005CD33B /* TermsConditionsViewController.swift in Sources */,
 				0C527E7525AC9C6D00B6D5DB /* IBANRequest.swift in Sources */,
 				0CF0AE8025CC153000A560E5 /* Status.swift in Sources */,
 				0C8805A125CAE7CA00DD6E31 /* DocumentsTANRequest.swift in Sources */,
@@ -1089,6 +1114,7 @@
 				0CC25B9425A4689000D839AB /* APIPaths.swift in Sources */,
 				0CC25B8A25A4684F00D839AB /* HTTPMethod.swift in Sources */,
 				0CC25B9925A468B000D839AB /* URLRequestConvertible.swift in Sources */,
+				847D427F260B555D0067ED63 /* TermsViewController.swift in Sources */,
 				0CC25B8525A4682000D839AB /* APIError.swift in Sources */,
 				0CC25B9E25A468D300D839AB /* APIClient.swift in Sources */,
 				0CC9573325A85A8200A3458B /* AppDependencies.swift in Sources */,
@@ -1112,10 +1138,12 @@
 				0C9E56E925C0358500D68B96 /* DocumentTableViewCell.swift in Sources */,
 				842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */,
 				0C527E5825AC4BF000B6D5DB /* IBANVerificationViewController.swift in Sources */,
+				847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */,
 				0C9E56DC25C01E6A00D68B96 /* ConfirmApplicationViewController.swift in Sources */,
 				0CC8534325D168A600109FFC /* DocumentPreviewViewController.swift in Sources */,
 				0CA7747E25C1AE1900E94E77 /* SignDocumentsViewModel.swift in Sources */,
 				0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */,
+				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,
 				0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */,
 				0CCD105C25C9931700251C65 /* MobileNumber.swift in Sources */,
 				0CE01B3125C2C52500FB0E16 /* StateView.swift in Sources */,

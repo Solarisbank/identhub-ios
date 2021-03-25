@@ -105,4 +105,12 @@ enum Localizable {
         static let description = "You have completed the identification process! \nDownload documents and save in secure place, for future reference."
         static let finish = "Finish"
     }
+
+    enum TermsConditions {
+        static let description = "In order to proceed, please carefully read and agree to the Privacy Statement and Terms & Conditions policies"
+        static let privacyText = "Privacy Statement"
+        static let termsText = "Terms & Conditions"
+        static let agreementLinks = "I agree to the \(TermsConditions.privacyText) & \(TermsConditions.termsText)"
+        static let continueBtn = "Continue"
+    }
 }
