@@ -11,9 +11,10 @@ class FourthlineIdentCoordinator: BaseCoordinator {
 
     /// The list of all available actions.
     enum Action {
-        case termsAndConditions
-        case onboarding
-        case quit
+        case termsAndConditions // Privacy statement and Terms-Conditions screen
+        case welcome // Welcome screen with all instructions
+        case selfie // Make a selfie step
+        case quit // Quit from identification process
     }
 
     // MARK: - Coordinator methods -
@@ -31,8 +32,10 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         switch action {
         case .termsAndConditions:
             presentPrivacyTermsScreen()
-        case .onboarding:
-            presentOnboardingScreen()
+        case .welcome:
+            presentWelcomeScreen()
+        case .selfie:
+            presentSefieScreen()
         case .quit:
             quit()
         }
@@ -47,11 +50,17 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         presenter.push(termsVC, animated: false, completion: nil)
     }
 
-    private func presentOnboardingScreen() {
-        let vc = UIViewController()
+    private func presentWelcomeScreen() {
+        let welcomeVM = WelcomeViewModel(flowCoordinator: self)
+        let welcomeVC = WelcomeViewController(welcomeVM)
 
-        vc.view.backgroundColor = .white
+        presenter.push(welcomeVC, animated: true, completion: nil)
+    }
 
-        presenter.push(vc, animated: true, completion: nil)
+    private func presentSefieScreen() {
+        let selfieVM = SelfieViewModel(flowCoordinator: self)
+        let selfieVC = SelfieViewController(selfieVM)
+
+        presenter.push(selfieVC, animated: true, completion: nil)
     }
 }

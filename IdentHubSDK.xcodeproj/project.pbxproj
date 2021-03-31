@@ -91,6 +91,7 @@
 		0CF0AE8625CC256300A560E5 /* IdentificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0AE8525CC256300A560E5 /* IdentificationRequest.swift */; };
 		0CF0AE8B25CC684C00A560E5 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0AE8A25CC684C00A560E5 /* Document.swift */; };
 		840A9FC82604F29000D4637A /* SessionURLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840A9FC72604F29000D4637A /* SessionURLParser.swift */; };
+		84179D93260DF4A2003C0097 /* WelcomeLogoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84179D92260DF4A2003C0097 /* WelcomeLogoAnimator.swift */; };
 		8418E05D25F78B4B0054A042 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418E05C25F78B4B0054A042 /* APIClientTests.swift */; };
 		8418E06525F796870054A042 /* Result+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418E06425F796870054A042 /* Result+Ext.swift */; };
 		8418E06A25F7A1790054A042 /* SessionInfoProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418E06925F7A1790054A042 /* SessionInfoProviderTests.swift */; };
@@ -103,12 +104,22 @@
 		841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81CC2603748300F4A079 /* BankIDCoordinator.swift */; };
 		842A14AD260A6E65005CD33B /* FourthlineIdentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */; };
 		842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */; };
+		845D85F4260CD50D008AAC9A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */; };
+		845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */; };
+		845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8611260D051D008AAC9A /* WelcomeViewModel.swift */; };
+		845D8633260D1DBC008AAC9A /* WelcomeScrollerDDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8632260D1DBC008AAC9A /* WelcomeScrollerDDM.swift */; };
+		845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8638260D1E0A008AAC9A /* WelcomePageCell.swift */; };
+		845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */; };
+		845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8643260D22D4008AAC9A /* WelcomePageContent.swift */; };
 		847D427F260B555D0067ED63 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D427D260B555D0067ED63 /* TermsViewController.swift */; };
 		847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D427E260B555D0067ED63 /* TermsViewController.xib */; };
 		847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D428D260B6C370067ED63 /* TermsViewModel.swift */; };
 		847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D42AA260BD02E0067ED63 /* BaseCoordinator.swift */; };
 		849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B438125F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift */; };
 		849B438A25F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */; };
+		849C9E87260E39BF00D74D35 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C9E85260E39BF00D74D35 /* SelfieViewController.swift */; };
+		849C9E88260E39BF00D74D35 /* SelfieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C9E86260E39BF00D74D35 /* SelfieViewController.xib */; };
+		849C9E8D260E3B1400D74D35 /* SelfieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C9E8C260E3B1400D74D35 /* SelfieViewModel.swift */; };
 		84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */; };
 		84A7581B25F22D7F004D8F88 /* IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD5CC3A2590F58800FF378F /* IdentHubSDK.framework */; };
 		84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7583225F22F84004D8F88 /* AppDependenciesTest.swift */; };
@@ -242,6 +253,7 @@
 		0CF0AE8525CC256300A560E5 /* IdentificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationRequest.swift; sourceTree = "<group>"; };
 		0CF0AE8A25CC684C00A560E5 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		840A9FC72604F29000D4637A /* SessionURLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionURLParser.swift; sourceTree = "<group>"; };
+		84179D92260DF4A2003C0097 /* WelcomeLogoAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLogoAnimator.swift; sourceTree = "<group>"; };
 		8418E05C25F78B4B0054A042 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		8418E06425F796870054A042 /* Result+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Ext.swift"; sourceTree = "<group>"; };
 		8418E06925F7A1790054A042 /* SessionInfoProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInfoProviderTests.swift; sourceTree = "<group>"; };
@@ -254,12 +266,22 @@
 		841C81CC2603748300F4A079 /* BankIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinator.swift; sourceTree = "<group>"; };
 		842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthlineIdentCoordinator.swift; sourceTree = "<group>"; };
 		842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentHubConstants.swift; sourceTree = "<group>"; };
+		845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		845D8611260D051D008AAC9A /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		845D8632260D1DBC008AAC9A /* WelcomeScrollerDDM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScrollerDDM.swift; sourceTree = "<group>"; };
+		845D8638260D1E0A008AAC9A /* WelcomePageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageCell.swift; sourceTree = "<group>"; };
+		845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomePageCell.xib; sourceTree = "<group>"; };
+		845D8643260D22D4008AAC9A /* WelcomePageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageContent.swift; sourceTree = "<group>"; };
 		847D427D260B555D0067ED63 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		847D427E260B555D0067ED63 /* TermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
 		847D428D260B6C370067ED63 /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		847D42AA260BD02E0067ED63 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		849B438125F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberAuthorizeRequestTests.swift; sourceTree = "<group>"; };
 		849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberTANRequestTests.swift; sourceTree = "<group>"; };
+		849C9E85260E39BF00D74D35 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
+		849C9E86260E39BF00D74D35 /* SelfieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieViewController.xib; sourceTree = "<group>"; };
+		849C9E8C260E3B1400D74D35 /* SelfieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewModel.swift; sourceTree = "<group>"; };
 		84A7581625F22D7F004D8F88 /* IdentHubSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdentHubSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubSDKTests.swift; sourceTree = "<group>"; };
 		84A7581A25F22D7F004D8F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -600,9 +622,11 @@
 				0CE01B3525C2E78C00FB0E16 /* FinishIdentification */,
 				0CC25BC125A4AB6C00D839AB /* PhoneVerification */,
 				847D42A0260BCBB30067ED63 /* Quit */,
+				849C9E84260E399600D74D35 /* Selfie */,
 				0C9E56D925C01E3C00D68B96 /* SignDocuments */,
 				0CE4A8E525A368B400114CBD /* StartIdentification */,
 				842A14BE260A6E8C005CD33B /* Terms&Conditions */,
+				845D85E4260CD35E008AAC9A /* Welcome */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -714,6 +738,7 @@
 		841A894F25F0F68A007878C1 /* Models Layer */ = {
 			isa = PBXGroup;
 			children = (
+				845D8642260D22C4008AAC9A /* Welcome */,
 				0C4B67DE259B249A00190C4E /* Localization */,
 				0CC9573725A8656900A3458B /* Persistence */,
 			);
@@ -762,6 +787,36 @@
 			path = "Terms&Conditions";
 			sourceTree = "<group>";
 		};
+		845D85E4260CD35E008AAC9A /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				845D8637260D1DEC008AAC9A /* PageCell */,
+				845D8611260D051D008AAC9A /* WelcomeViewModel.swift */,
+				845D8632260D1DBC008AAC9A /* WelcomeScrollerDDM.swift */,
+				84179D92260DF4A2003C0097 /* WelcomeLogoAnimator.swift */,
+				845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */,
+				845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		845D8637260D1DEC008AAC9A /* PageCell */ = {
+			isa = PBXGroup;
+			children = (
+				845D8638260D1E0A008AAC9A /* WelcomePageCell.swift */,
+				845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */,
+			);
+			path = PageCell;
+			sourceTree = "<group>";
+		};
+		845D8642260D22C4008AAC9A /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				845D8643260D22D4008AAC9A /* WelcomePageContent.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		847D429C260BCBA30067ED63 /* Document */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +841,16 @@
 				849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */,
 			);
 			path = MobileNumber;
+			sourceTree = "<group>";
+		};
+		849C9E84260E399600D74D35 /* Selfie */ = {
+			isa = PBXGroup;
+			children = (
+				849C9E85260E39BF00D74D35 /* SelfieViewController.swift */,
+				849C9E8C260E3B1400D74D35 /* SelfieViewModel.swift */,
+				849C9E86260E39BF00D74D35 /* SelfieViewController.xib */,
+			);
+			path = Selfie;
 			sourceTree = "<group>";
 		};
 		84A7581725F22D7F004D8F88 /* IdentHubSDKTests */ = {
@@ -1014,7 +1079,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CD863A125DC5F5000AB3252 /* strip-frameworks.sh in Resources */,
+				845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */,
+				845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */,
 				847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */,
+				849C9E88260E39BF00D74D35 /* SelfieViewController.xib in Resources */,
 				0C527E6F25AC947700B6D5DB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1072,7 +1140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\nif which swiftlint >/dev/null; then\nswiftlint --config \"$SRCROOT/.swiftlint.yml\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1090,6 +1158,7 @@
 				0C1B430025AD9A56004FFF46 /* String+Regex.swift in Sources */,
 				841A893D25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift in Sources */,
 				0CC8534825D1AAB400109FFC /* ViewModel.swift in Sources */,
+				845D85F4260CD50D008AAC9A /* WelcomeViewController.swift in Sources */,
 				0C7FDF7F25C7F61D004B11F5 /* VerifiableViewModelDelegate.swift in Sources */,
 				0C527E5D25AC5F1500B6D5DB /* VerificationTextField.swift in Sources */,
 				841C81C52603743600F4A079 /* Coordinator.swift in Sources */,
@@ -1124,12 +1193,14 @@
 				0C7FD34325D29AF600A6CC28 /* DownloadDocumentsButton.swift in Sources */,
 				0CE01B3F25C2E7D400FB0E16 /* FinishIdentificationViewModel.swift in Sources */,
 				841C81BF26036C0800F4A079 /* IdentHubSDKRouter.swift in Sources */,
+				845D8633260D1DBC008AAC9A /* WelcomeScrollerDDM.swift in Sources */,
 				0CC25BA425A4690800D839AB /* Request.swift in Sources */,
 				0C1B431425ADB5AE004FFF46 /* PaymentVerificationViewController.swift in Sources */,
 				0CC25BA925A4692900D839AB /* BackendRequest.swift in Sources */,
 				842A14AD260A6E65005CD33B /* FourthlineIdentCoordinator.swift in Sources */,
 				840A9FC82604F29000D4637A /* SessionURLParser.swift in Sources */,
 				0CB143B7259A48640014B643 /* UIView+Layout.swift in Sources */,
+				845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */,
 				0CC25BC325A4ABC900D839AB /* PhoneVerificationViewController.swift in Sources */,
 				0CC9574725A8733400A3458B /* MobileNumberAuthorizeRequest.swift in Sources */,
 				0CC25B8F25A4686700D839AB /* Body.swift in Sources */,
@@ -1137,18 +1208,23 @@
 				0C1B430B25ADB19A004FFF46 /* UIImage+SDK.swift in Sources */,
 				0C9E56E925C0358500D68B96 /* DocumentTableViewCell.swift in Sources */,
 				842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */,
+				845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */,
 				0C527E5825AC4BF000B6D5DB /* IBANVerificationViewController.swift in Sources */,
 				847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */,
 				0C9E56DC25C01E6A00D68B96 /* ConfirmApplicationViewController.swift in Sources */,
 				0CC8534325D168A600109FFC /* DocumentPreviewViewController.swift in Sources */,
 				0CA7747E25C1AE1900E94E77 /* SignDocumentsViewModel.swift in Sources */,
 				0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */,
+				849C9E87260E39BF00D74D35 /* SelfieViewController.swift in Sources */,
+				845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */,
+				849C9E8D260E3B1400D74D35 /* SelfieViewModel.swift in Sources */,
 				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,
 				0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */,
 				0CCD105C25C9931700251C65 /* MobileNumber.swift in Sources */,
 				0CE01B3125C2C52500FB0E16 /* StateView.swift in Sources */,
 				0C007F1725D56977003D42B3 /* ErrorView.swift in Sources */,
 				0CF0AE8B25CC684C00A560E5 /* Document.swift in Sources */,
+				84179D93260DF4A2003C0097 /* WelcomeLogoAnimator.swift in Sources */,
 				0CE4A8E725A368CC00114CBD /* SolarisViewController.swift in Sources */,
 				0C88059C25CAE79E00DD6E31 /* DocumentsAuthorizeRequest.swift in Sources */,
 				0CE4A8EC25A368DF00114CBD /* StartIdentificationViewController.swift in Sources */,

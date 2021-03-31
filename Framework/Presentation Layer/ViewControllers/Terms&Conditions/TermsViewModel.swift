@@ -40,7 +40,7 @@ final internal class TermsViewModel: NSObject {
 
     /// Start Fourthline identification process
     func continueProcess() {
-        flowCoordinator.perform(action: .onboarding)
+        flowCoordinator.perform(action: .welcome)
     }
 
     /// Quit the flow

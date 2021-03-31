@@ -113,4 +113,22 @@ enum Localizable {
         static let agreementLinks = "I agree to the \(TermsConditions.privacyText) & \(TermsConditions.termsText)"
         static let continueBtn = "Continue"
     }
+
+    enum Welcome {
+        static let cameraTitle = "Smile for the camera"
+        static let cameraDesc = "Your selfie will be compared to the one in your ID document. Don’t worry, it’s never going to see the light of day, promise!"
+
+        static let documentTitle = "Scan your ID document"
+        static let documentDesc = """
+        With this we can make sure that you’re really who
+        you say you are and avoid identity theft.
+        """
+
+        static let locationTitle = "Submit your case"
+        static let locationDesc = """
+        Last thing you need to do is enabling your location
+        & submitting your case!
+        How easy it that?
+        """
+    }
 }
