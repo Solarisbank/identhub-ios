@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StartBankIdentViewController" customModule="IdentHubSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="R01-uc-gha" id="StL-5a-Mrr"/>
+                <outlet property="detailLabel" destination="Kcb-Qy-xpi" id="aZt-oj-OzN"/>
+                <outlet property="instructionsLabel" destination="Kcb-Qy-xpi" id="FEk-f6-o0x"/>
+                <outlet property="quitBtn" destination="RMf-L2-r8C" id="6CX-Ke-POG"/>
+                <outlet property="sendBtn" destination="6fr-Zp-PlS" id="0uy-y0-yhI"/>
+                <outlet property="startContainerView" destination="Eva-GD-qIC" id="X8J-aS-mht"/>
+                <outlet property="titleLabel" destination="pzl-bq-ezG" id="KUk-vv-dbN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eva-GD-qIC">
+                    <rect key="frame" x="0.0" y="44" width="414" height="444"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start identification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzl-bq-ezG">
+                            <rect key="frame" x="16" y="40" width="211.5" height="30.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
+                            <color key="textColor" name="black100"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to complete the identification process, you will be asked to: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R01-uc-gha">
+                            <rect key="frame" x="16" y="94.5" width="382" height="33"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" name="black75"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Verify your phone number with TAN. 2. Idetify yourself using a bank account. 3. Read and sign proper consents." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLn-B0-Rn7">
+                            <rect key="frame" x="16" y="143.5" width="382" height="49"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" name="black75"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please follow the verification of your phone number to continue." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcb-Qy-xpi">
+                            <rect key="frame" x="16" y="208.5" width="382" height="33"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" name="black75"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fr-Zp-PlS">
+                            <rect key="frame" x="16" y="281.5" width="382" height="48"/>
+                            <color key="backgroundColor" red="1" green="0.3921568627" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="D2O-ls-FRn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title="Send verification code">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didClickSendButton:" destination="-1" eventType="touchUpInside" id="FxR-4I-Pay"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMf-L2-r8C">
+                            <rect key="frame" x="16" y="345.5" width="382" height="48"/>
+                            <color key="backgroundColor" name="black05"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="5ai-85-PQP"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title="Quit">
+                                <color key="titleColor" name="base100"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didClickQuitButton:" destination="-1" eventType="touchUpInside" id="b6n-XT-w6q"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Kcb-Qy-xpi" firstAttribute="trailing" secondItem="R01-uc-gha" secondAttribute="trailing" id="27Y-73-rRf"/>
+                        <constraint firstAttribute="trailing" secondItem="R01-uc-gha" secondAttribute="trailing" constant="16" id="2gJ-df-vfw"/>
+                        <constraint firstAttribute="trailing" secondItem="6fr-Zp-PlS" secondAttribute="trailing" constant="16" id="4Zg-0k-n12"/>
+                        <constraint firstItem="Kcb-Qy-xpi" firstAttribute="leading" secondItem="R01-uc-gha" secondAttribute="leading" id="5Kq-Rw-7C8"/>
+                        <constraint firstItem="R01-uc-gha" firstAttribute="top" secondItem="pzl-bq-ezG" secondAttribute="bottom" constant="24" id="5NI-Fa-dT7"/>
+                        <constraint firstItem="Kcb-Qy-xpi" firstAttribute="top" secondItem="bLn-B0-Rn7" secondAttribute="bottom" constant="16" id="5xf-Ef-k6Y"/>
+                        <constraint firstItem="pzl-bq-ezG" firstAttribute="top" secondItem="Eva-GD-qIC" secondAttribute="top" constant="40" id="CF5-M3-DKU"/>
+                        <constraint firstItem="R01-uc-gha" firstAttribute="leading" secondItem="Eva-GD-qIC" secondAttribute="leading" constant="16" id="DmQ-g8-HNi"/>
+                        <constraint firstItem="bLn-B0-Rn7" firstAttribute="trailing" secondItem="R01-uc-gha" secondAttribute="trailing" id="ERg-R5-SD3"/>
+                        <constraint firstAttribute="height" constant="444" id="FpF-Zq-a5R"/>
+                        <constraint firstItem="6fr-Zp-PlS" firstAttribute="leading" secondItem="Eva-GD-qIC" secondAttribute="leading" constant="16" id="SxQ-KI-vsa"/>
+                        <constraint firstItem="bLn-B0-Rn7" firstAttribute="leading" secondItem="R01-uc-gha" secondAttribute="leading" id="TEV-Ed-E0Z"/>
+                        <constraint firstItem="bLn-B0-Rn7" firstAttribute="top" secondItem="R01-uc-gha" secondAttribute="bottom" constant="16" id="X56-Bs-Vh7"/>
+                        <constraint firstItem="6fr-Zp-PlS" firstAttribute="top" secondItem="Kcb-Qy-xpi" secondAttribute="bottom" constant="40" id="cxb-fB-Inz"/>
+                        <constraint firstItem="pzl-bq-ezG" firstAttribute="leading" secondItem="Eva-GD-qIC" secondAttribute="leading" constant="16" id="es1-c1-i0Z"/>
+                        <constraint firstAttribute="trailing" secondItem="RMf-L2-r8C" secondAttribute="trailing" constant="16" id="lIo-M7-FVZ"/>
+                        <constraint firstItem="RMf-L2-r8C" firstAttribute="leading" secondItem="Eva-GD-qIC" secondAttribute="leading" constant="16" id="nW5-hN-q5c"/>
+                        <constraint firstItem="RMf-L2-r8C" firstAttribute="top" secondItem="6fr-Zp-PlS" secondAttribute="bottom" constant="16" id="vTw-9Q-9of"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Eva-GD-qIC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9Ui-pH-mFH"/>
+                <constraint firstItem="Eva-GD-qIC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="G3H-Ik-aoA"/>
+                <constraint firstItem="Eva-GD-qIC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Mi3-pY-Z4K"/>
+            </constraints>
+            <point key="canvasLocation" x="24.637681159420293" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="base100">
+            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black05">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black100">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black75">
+            <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

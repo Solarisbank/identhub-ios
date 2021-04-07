@@ -60,7 +60,6 @@
 		0CC25BA425A4690800D839AB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC25BA325A4690800D839AB /* Request.swift */; };
 		0CC25BA925A4692900D839AB /* BackendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC25BA825A4692900D839AB /* BackendRequest.swift */; };
 		0CC25BBD25A4AB2100D839AB /* CodeEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC25BBC25A4AB2100D839AB /* CodeEntryView.swift */; };
-		0CC25BC325A4ABC900D839AB /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC25BC225A4ABC900D839AB /* PhoneVerificationViewController.swift */; };
 		0CC25BC825A4ABD700D839AB /* PhoneVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC25BC725A4ABD700D839AB /* PhoneVerificationViewModel.swift */; };
 		0CC8533E25D14AD400109FFC /* DocumentDownloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8533D25D14AD400109FFC /* DocumentDownloadRequest.swift */; };
 		0CC8534325D168A600109FFC /* DocumentPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8534225D168A600109FFC /* DocumentPreviewViewController.swift */; };
@@ -84,7 +83,6 @@
 		0CE01B3F25C2E7D400FB0E16 /* FinishIdentificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE01B3E25C2E7D400FB0E16 /* FinishIdentificationViewModel.swift */; };
 		0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8DE25A3666500114CBD /* ActionRoundedButton.swift */; };
 		0CE4A8E725A368CC00114CBD /* SolarisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8E625A368CC00114CBD /* SolarisViewController.swift */; };
-		0CE4A8EC25A368DF00114CBD /* StartIdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8EB25A368DF00114CBD /* StartIdentificationViewController.swift */; };
 		0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8F025A368E700114CBD /* StartIdentificationViewModel.swift */; };
 		0CE4A8F625A3703600114CBD /* String+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8F525A3703600114CBD /* String+Attributes.swift */; };
 		0CF0AE8025CC153000A560E5 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0AE7F25CC153000A560E5 /* Status.swift */; };
@@ -111,6 +109,8 @@
 		845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8638260D1E0A008AAC9A /* WelcomePageCell.swift */; };
 		845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */; };
 		845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8643260D22D4008AAC9A /* WelcomePageContent.swift */; };
+		8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */; };
+		846432402617626B003C9A7B /* StartBankIdentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */; };
 		847D427F260B555D0067ED63 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D427D260B555D0067ED63 /* TermsViewController.swift */; };
 		847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D427E260B555D0067ED63 /* TermsViewController.xib */; };
 		847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D428D260B6C370067ED63 /* TermsViewModel.swift */; };
@@ -120,6 +120,7 @@
 		849C9E87260E39BF00D74D35 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C9E85260E39BF00D74D35 /* SelfieViewController.swift */; };
 		849C9E88260E39BF00D74D35 /* SelfieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C9E86260E39BF00D74D35 /* SelfieViewController.xib */; };
 		849C9E8D260E3B1400D74D35 /* SelfieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C9E8C260E3B1400D74D35 /* SelfieViewModel.swift */; };
+		84A1D48E2617833400E2B2D5 /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1D48D2617833400E2B2D5 /* PhoneVerificationViewController.swift */; };
 		84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */; };
 		84A7581B25F22D7F004D8F88 /* IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD5CC3A2590F58800FF378F /* IdentHubSDK.framework */; };
 		84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7583225F22F84004D8F88 /* AppDependenciesTest.swift */; };
@@ -211,7 +212,6 @@
 		0CC25BA325A4690800D839AB /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		0CC25BA825A4692900D839AB /* BackendRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendRequest.swift; sourceTree = "<group>"; };
 		0CC25BBC25A4AB2100D839AB /* CodeEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeEntryView.swift; sourceTree = "<group>"; };
-		0CC25BC225A4ABC900D839AB /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		0CC25BC725A4ABD700D839AB /* PhoneVerificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewModel.swift; sourceTree = "<group>"; };
 		0CC8533D25D14AD400109FFC /* DocumentDownloadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDownloadRequest.swift; sourceTree = "<group>"; };
 		0CC8534225D168A600109FFC /* DocumentPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPreviewViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +246,6 @@
 		0CE01B3E25C2E7D400FB0E16 /* FinishIdentificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishIdentificationViewModel.swift; sourceTree = "<group>"; };
 		0CE4A8DE25A3666500114CBD /* ActionRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionRoundedButton.swift; sourceTree = "<group>"; };
 		0CE4A8E625A368CC00114CBD /* SolarisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolarisViewController.swift; sourceTree = "<group>"; };
-		0CE4A8EB25A368DF00114CBD /* StartIdentificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartIdentificationViewController.swift; sourceTree = "<group>"; };
 		0CE4A8F025A368E700114CBD /* StartIdentificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartIdentificationViewModel.swift; sourceTree = "<group>"; };
 		0CE4A8F525A3703600114CBD /* String+Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Attributes.swift"; sourceTree = "<group>"; };
 		0CF0AE7F25CC153000A560E5 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -273,6 +272,8 @@
 		845D8638260D1E0A008AAC9A /* WelcomePageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageCell.swift; sourceTree = "<group>"; };
 		845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomePageCell.xib; sourceTree = "<group>"; };
 		845D8643260D22D4008AAC9A /* WelcomePageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageContent.swift; sourceTree = "<group>"; };
+		8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBankIdentViewController.swift; sourceTree = "<group>"; };
+		8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartBankIdentViewController.xib; sourceTree = "<group>"; };
 		847D427D260B555D0067ED63 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		847D427E260B555D0067ED63 /* TermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
 		847D428D260B6C370067ED63 /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +283,7 @@
 		849C9E85260E39BF00D74D35 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
 		849C9E86260E39BF00D74D35 /* SelfieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieViewController.xib; sourceTree = "<group>"; };
 		849C9E8C260E3B1400D74D35 /* SelfieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewModel.swift; sourceTree = "<group>"; };
+		84A1D48D2617833400E2B2D5 /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		84A7581625F22D7F004D8F88 /* IdentHubSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdentHubSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubSDKTests.swift; sourceTree = "<group>"; };
 		84A7581A25F22D7F004D8F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -485,7 +487,7 @@
 		0CC25BC125A4AB6C00D839AB /* PhoneVerification */ = {
 			isa = PBXGroup;
 			children = (
-				0CC25BC225A4ABC900D839AB /* PhoneVerificationViewController.swift */,
+				84A1D48D2617833400E2B2D5 /* PhoneVerificationViewController.swift */,
 				0CC25BC725A4ABD700D839AB /* PhoneVerificationViewModel.swift */,
 			);
 			path = PhoneVerification;
@@ -645,8 +647,9 @@
 		0CE4A8E525A368B400114CBD /* StartIdentification */ = {
 			isa = PBXGroup;
 			children = (
-				0CE4A8EB25A368DF00114CBD /* StartIdentificationViewController.swift */,
 				0CE4A8F025A368E700114CBD /* StartIdentificationViewModel.swift */,
+				8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */,
+				8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */,
 			);
 			path = StartIdentification;
 			sourceTree = "<group>";
@@ -1078,6 +1081,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846432402617626B003C9A7B /* StartBankIdentViewController.xib in Resources */,
 				0CD863A125DC5F5000AB3252 /* strip-frameworks.sh in Resources */,
 				845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */,
 				845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */,
@@ -1201,7 +1205,6 @@
 				840A9FC82604F29000D4637A /* SessionURLParser.swift in Sources */,
 				0CB143B7259A48640014B643 /* UIView+Layout.swift in Sources */,
 				845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */,
-				0CC25BC325A4ABC900D839AB /* PhoneVerificationViewController.swift in Sources */,
 				0CC9574725A8733400A3458B /* MobileNumberAuthorizeRequest.swift in Sources */,
 				0CC25B8F25A4686700D839AB /* Body.swift in Sources */,
 				0CE4A8F625A3703600114CBD /* String+Attributes.swift in Sources */,
@@ -1215,9 +1218,11 @@
 				0CC8534325D168A600109FFC /* DocumentPreviewViewController.swift in Sources */,
 				0CA7747E25C1AE1900E94E77 /* SignDocumentsViewModel.swift in Sources */,
 				0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */,
+				8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */,
 				849C9E87260E39BF00D74D35 /* SelfieViewController.swift in Sources */,
 				845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */,
 				849C9E8D260E3B1400D74D35 /* SelfieViewModel.swift in Sources */,
+				84A1D48E2617833400E2B2D5 /* PhoneVerificationViewController.swift in Sources */,
 				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,
 				0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */,
 				0CCD105C25C9931700251C65 /* MobileNumber.swift in Sources */,
@@ -1227,7 +1232,6 @@
 				84179D93260DF4A2003C0097 /* WelcomeLogoAnimator.swift in Sources */,
 				0CE4A8E725A368CC00114CBD /* SolarisViewController.swift in Sources */,
 				0C88059C25CAE79E00DD6E31 /* DocumentsAuthorizeRequest.swift in Sources */,
-				0CE4A8EC25A368DF00114CBD /* StartIdentificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

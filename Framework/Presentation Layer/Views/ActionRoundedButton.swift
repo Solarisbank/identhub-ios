@@ -22,6 +22,7 @@ class ActionRoundedButton: UIButton {
         case orange
         case dimmed
         case inactive
+        case verifying
     }
 
     /// Current button appearance.
@@ -37,9 +38,13 @@ class ActionRoundedButton: UIButton {
                 colors = (UIColor.sdkColor(.black05), .black)
             case .inactive:
                 isEnabled = false
+                colors = (UIColor.sdkColor(.black25), .white)
+            case .verifying:
+                isEnabled = false
                 setTitle(Localizable.Common.verifying, for: .disabled)
                 colors = (UIColor.sdkColor(.black25), .white)
             }
+
             backgroundColor = colors.background
             setTitleColor(colors.text, for: .normal)
         }

@@ -66,7 +66,7 @@ final internal class SignDocumentsViewController: SolarisViewController {
     }()
 
     private lazy var codeEntryView: CodeEntryView = {
-        let codeEntryView = CodeEntryView()
+        let codeEntryView = CodeEntryView(delegate: self)
         return codeEntryView
     }()
 
@@ -94,7 +94,7 @@ final internal class SignDocumentsViewController: SolarisViewController {
     private lazy var submitAndSignCodeButton: ActionRoundedButton = {
         let button = ActionRoundedButton()
         button.setTitle(Localizable.SignDocuments.Sign.submitAndSign, for: .normal)
-        button.currentAppearance = .orange
+        button.currentAppearance = .inactive
         return button
     }()
 
@@ -251,4 +251,14 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
     }
 
     func verificationFailed() { }
+}
+
+// MARK: - Code entry view delegate methods -
+
+extension SignDocumentsViewController: CodeEntryViewDelegate {
+
+    func didUpdateCode(_ digits: Int) {
+        submitAndSignCodeButton.isEnabled = ( digits == 6 )
+        submitAndSignCodeButton.currentAppearance = ( digits == 6 ) ? .orange : .inactive
+    }
 }

@@ -84,9 +84,8 @@ class BankIDCoordinator: BaseCoordinator {
 
     // MARK: - Internal methods -
     private func presentStartIdentification() {
-        let startIdentificationViewController = StartIdentificationViewController()
         let startIdentificationViewModel = StartIdentificationViewModel(flowCoordinator: self)
-        startIdentificationViewController.viewModel = startIdentificationViewModel
+        let startIdentificationViewController = StartBankIdentViewController(startIdentificationViewModel)
 
         presenter.push(startIdentificationViewController, animated: false, completion: nil)
     }

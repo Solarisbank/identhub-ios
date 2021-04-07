@@ -142,6 +142,7 @@ final internal class DocumentTableViewCell: UITableViewCell {
 
         previewDocumentButton.addTarget(self, action: #selector(previewButtonClicked), for: .touchUpInside)
         downloadDocumentButton.addTarget(self, action: #selector(downloadButtonClicked), for: .touchUpInside)
+        downloadDocumentButton.addTarget(self, action: #selector(highlightDownloadButton), for: .touchDown)
     }
 
     @objc private func previewButtonClicked() {
@@ -150,6 +151,11 @@ final internal class DocumentTableViewCell: UITableViewCell {
 
     @objc private func downloadButtonClicked() {
         downloadAction?()
+        downloadDocumentButton.backgroundColor = UIColor.sdkColor(.base05)
+    }
+
+    @objc private func highlightDownloadButton() {
+        downloadDocumentButton.backgroundColor = UIColor.sdkColor(.primaryAccent)
     }
 
     /// Set up document cell.

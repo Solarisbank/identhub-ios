@@ -139,6 +139,8 @@ final internal class ConfirmApplicationViewController: SolarisViewController {
 
     @objc private func signDocuments() {
         viewModel.signDocuments()
+
+        actionButton.isEnabled = false
     }
 }
 

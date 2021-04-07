@@ -88,8 +88,10 @@ internal class SuccessView: UIView {
         actionButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
     }
 
-    @objc private func pressed() {
+    @objc private func pressed(_ sender: UIButton) {
         action?()
+
+        sender.isEnabled = false
     }
 
     // MARK: Setters

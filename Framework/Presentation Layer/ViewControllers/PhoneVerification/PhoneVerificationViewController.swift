@@ -54,7 +54,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
     }()
 
     private lazy var codeEntryView: CodeEntryView = {
-        let codeEntryView = CodeEntryView()
+        let codeEntryView = CodeEntryView(delegate: self)
         return codeEntryView
     }()
 
@@ -62,6 +62,8 @@ final internal class PhoneVerificationViewController: SolarisViewController {
         let button = ActionRoundedButton()
         button.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
         button.currentAppearance = .orange
+        button.isEnabled = false
+        button.currentAppearance = .inactive
         return button
     }()
 
@@ -147,8 +149,10 @@ final internal class PhoneVerificationViewController: SolarisViewController {
         submitCodeButton.addTarget(self, action: #selector(submitCode), for: .touchUpInside)
     }
 
-    @objc private func submitCode() {
-        viewModel.submitCode(codeEntryView.code)
+    @objc private func submitCode(_ sender: UIButton) {
+        if let code = codeEntryView.code, code.count == 6 {
+            viewModel.submitCode(codeEntryView.code)
+        }
     }
 
     @objc private func requestNewCode() {
@@ -190,7 +194,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
                 self.submitCodeButton.addTarget(self, action: #selector(self.submitCode), for: .touchUpInside)
             case .disabled:
                 self.codeEntryView.state = .disabled
-                self.submitCodeButton.currentAppearance = .inactive
+                self.submitCodeButton.currentAppearance = .verifying
             case .error:
                 self.codeEntryView.state = .error
                 self.submitCodeButton.currentAppearance = .orange
@@ -226,5 +230,15 @@ extension PhoneVerificationViewController: PhoneVerificationViewModelDelegate {
 
     func willGetNewCode() {
         state = .normal
+    }
+}
+
+// MARK: - Code entry view delegate methods -
+
+extension PhoneVerificationViewController: CodeEntryViewDelegate {
+
+    func didUpdateCode(_ digits: Int) {
+        submitCodeButton.isEnabled = ( digits == 6 )
+        submitCodeButton.currentAppearance = ( digits == 6 ) ? .orange : .inactive
     }
 }

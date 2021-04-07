@@ -40,6 +40,12 @@ private class SingleDigitTextField: UITextField {
     }
 }
 
+/// Code entry view delegate
+protocol CodeEntryViewDelegate: AnyObject {
+
+    func didUpdateCode(_ digits: Int)
+}
+
 /// UIView representing the 6-digit code entry field.
 internal class CodeEntryView: UIView {
 
@@ -57,7 +63,12 @@ internal class CodeEntryView: UIView {
         }
     }
 
-    private(set) var code: String?
+    private(set) var code: String? {
+        didSet {
+            self.delegate?.didUpdateCode(code?.count ?? 0)
+        }
+    }
+    private(set) weak var delegate: CodeEntryViewDelegate?
 
     private enum Constants {
         enum Size {
@@ -92,8 +103,9 @@ internal class CodeEntryView: UIView {
         return label
     }()
 
-    override init(frame: CGRect) {
+    init(delegate: CodeEntryViewDelegate) {
         super.init(frame: .zero)
+        self.delegate = delegate
         setUpUI()
     }
 

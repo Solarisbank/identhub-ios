@@ -50,9 +50,15 @@ final internal class DownloadDocumentsButton: UIButton {
         imageEdgeInsets = UIEdgeInsets(top: Constants.normalInset, left: Constants.bigInset, bottom: Constants.normalInset, right: Constants.normalInset)
 
         addTarget(self, action: #selector(downloadAllDocuments), for: .touchUpInside)
+        addTarget(self, action: #selector(highlightButton), for: .touchDown)
     }
 
     @objc private func downloadAllDocuments() {
         downloadAllDocumentsAction?()
+        backgroundColor = UIColor.sdkColor(.base05)
+    }
+
+    @objc private func highlightButton() {
+        backgroundColor = UIColor.sdkColor(.primaryAccent)
     }
 }

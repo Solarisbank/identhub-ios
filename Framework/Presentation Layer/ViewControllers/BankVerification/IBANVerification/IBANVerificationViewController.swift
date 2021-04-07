@@ -160,5 +160,6 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
     func isIBANFormatValid(_ valid: Bool) {
         errorLabel.isHidden = valid
         ibanVerificationTextField.currentState = valid ? .verified : .error
+        initiatePaymentVerificationButton.currentAppearance = valid ? .verifying : .orange
     }
 }

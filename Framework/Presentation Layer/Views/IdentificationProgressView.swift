@@ -141,7 +141,7 @@ internal class IdentificationProgressView: UIView {
         }
     }
 
-    private func setCurrentStep(_ currentStep: CurrentStep) {
+    func setCurrentStep(_ currentStep: CurrentStep) {
         let details = step(currentStep)
         currentStepLabel.text = details.currentStep
 

@@ -17,7 +17,7 @@ final internal class StartIdentificationViewModel: NSObject {
     // MARK: Methods
 
     /// Go to send code screen.
-    func sendCode() {
+    func startIdentification() {
         flowCoordinator.perform(action: .phoneVerification)
     }
 
