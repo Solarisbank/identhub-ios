@@ -6,9 +6,12 @@
 import UIKit
 import IdentHubSDK
 
+let placeholderText = "Please enter session URL"
+
 class ViewController: UIViewController {
 
     // MARK: - Properties -
+    @IBOutlet var sessionURLTV: UITextView!
     @IBOutlet var statusView: UIStackView!
     @IBOutlet var statusState: UILabel!
     @IBOutlet var statusDesc: UILabel!
@@ -17,6 +20,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         statusView.isHidden = true
+
+        setupUI()
     }
 
     // MARK: - Action methods -
@@ -30,11 +35,20 @@ class ViewController: UIViewController {
 
     // MARK: - Internal methods -
 
+    private func setupUI() {
+        sessionURLTV.layer.borderColor = UIColor.gray.cgColor
+        sessionURLTV.layer.borderWidth = 1
+        sessionURLTV.layer.cornerRadius = 5
+
+        sessionURLTV.text = placeholderText
+        sessionURLTV.textColor = .lightGray
+    }
+
     private func startIdentProcess( _ type: IdentificationSessionType) {
         statusView.isHidden = true
 
         do {
-            let identHubManager = try IdentHubSession(rootViewController: self, sessionURL: identHubSessionURL)
+            let identHubManager = try IdentHubSession(rootViewController: self, sessionURL: sessionURLTV.text)
 
             identHubManager.start(type, delegate: self)
         } catch let err as IdentSessionURLError {
@@ -55,14 +69,14 @@ class ViewController: UIViewController {
         statusView.isHidden = false
 
         if isSuccess {
-            statusState.textColor = .green
+            statusState.textColor = UIColor(named: "success")
             statusState.text = "Successful"
-            statusDesc.textColor = .green
+            statusDesc.textColor = UIColor(named: "success")
             statusDesc.text = "User ID: \(desc)"
         } else {
-            statusState.textColor = .red
+            statusState.textColor = UIColor(named: "error")
             statusState.text = "Failed"
-            statusDesc.textColor = .red
+            statusDesc.textColor = UIColor(named: "error")
             statusDesc.text = desc
         }
     }
@@ -103,6 +117,18 @@ extension ViewController: IdentHubSDKManagerDelegate {
             failureReasonDesc = "indicates that api client encountered an error not listed above."
         }
 
-        updateStatus(false, desc: failureReasonDesc)
+        DispatchQueue.main.async {
+            self.updateStatus(false, desc: failureReasonDesc)
+        }
+    }
+}
+
+extension ViewController: UITextViewDelegate {
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholderText {
+            textView.text = ""
+            textView.textColor = .darkGray
+        }
     }
 }

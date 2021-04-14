@@ -13,7 +13,9 @@ class BankIDCoordinator: BaseCoordinator {
         case phoneVerification
         case bankVerification(step: Action.BankVerification)
         case signDocuments(step: Action.SignDocuments)
-        case documentPreview(data: Data)
+        case documentPreview(url: URL)
+        case documentExport(url: URL)
+        case allDocumentsExport(documents: [URL])
         case finishIdentification
         case pop
         case quit
@@ -32,6 +34,7 @@ class BankIDCoordinator: BaseCoordinator {
     // MARK: - Properties -
     private let appDependencies: AppDependencies
     private var completionHandler: CompletionHandler?
+    private var documentExporter: DocumentExporter = DocumentExporterService()
 
     // MARK: - Init methods -
     init(appDependencies: AppDependencies, presenter: Router) {
@@ -64,8 +67,12 @@ class BankIDCoordinator: BaseCoordinator {
             case .sign:
                 presentSignDocuments()
             }
-        case .documentPreview(let data):
-            displayDocumentPreview(data: data)
+        case .documentPreview(let url):
+            displayDocumentPreview(url: url)
+        case .documentExport(let url):
+            exportDocument(url: url)
+        case .allDocumentsExport(let documents):
+            exportAllDocuments(documents: documents)
         case .finishIdentification:
             presentFinishIdentification()
             notifyHandlers()
@@ -125,9 +132,22 @@ class BankIDCoordinator: BaseCoordinator {
         presenter.push(signDocumentsViewController, animated: true, completion: nil)
     }
 
-    private func displayDocumentPreview(data: Data) {
-        let documentPreviewViewController = DocumentPreviewViewController(documentData: data)
-        presenter.present(documentPreviewViewController, animated: true)
+    private func displayDocumentPreview(url: URL) {
+        if let presentController = presenter.navigationController.topViewController {
+            documentExporter.previewDocument(from: presentController, documentURL: url)
+        }
+    }
+
+    private func exportDocument(url: URL) {
+        if let presentController = presenter.navigationController.topViewController {
+            documentExporter.presentExporter(from: presentController, in: CGRect.zero, documentURL: url)
+        }
+    }
+
+    private func exportAllDocuments(documents: [URL]) {
+        if let presentController = presenter.navigationController.topViewController {
+            documentExporter.presentAllDocumentsExporter(from: presentController, documents: documents)
+        }
     }
 
     private func presentFinishIdentification() {

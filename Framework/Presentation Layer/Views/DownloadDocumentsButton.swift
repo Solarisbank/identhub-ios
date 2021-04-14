@@ -20,6 +20,9 @@ final internal class DownloadDocumentsButton: UIButton {
     /// Action to download all documents.
     var downloadAllDocumentsAction: (() -> Void)?
 
+    /// Loading documents indicator
+    private var activityIndicator = UIActivityIndicatorView(style: .gray)
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setUpUI()
@@ -28,6 +31,16 @@ final internal class DownloadDocumentsButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Public methods -
+
+    func stopAnimation() {
+        activityIndicator.stopAnimating()
+
+        self.isEnabled = true
+    }
+
+    // MARK: - Internal methods -
 
     private func setUpUI() {
         backgroundColor = UIColor.sdkColor(.base05)
@@ -49,11 +62,17 @@ final internal class DownloadDocumentsButton: UIButton {
         semanticContentAttribute = .forceRightToLeft
         imageEdgeInsets = UIEdgeInsets(top: Constants.normalInset, left: Constants.bigInset, bottom: Constants.normalInset, right: Constants.normalInset)
 
+        activityIndicator.center = CGPoint(x: Constants.width / 2, y: Constants.height / 2)
+        addSubview(activityIndicator)
+
         addTarget(self, action: #selector(downloadAllDocuments), for: .touchUpInside)
         addTarget(self, action: #selector(highlightButton), for: .touchDown)
     }
 
     @objc private func downloadAllDocuments() {
+        activityIndicator.startAnimating()
+        self.isEnabled = false
+
         downloadAllDocumentsAction?()
         backgroundColor = UIColor.sdkColor(.base05)
     }

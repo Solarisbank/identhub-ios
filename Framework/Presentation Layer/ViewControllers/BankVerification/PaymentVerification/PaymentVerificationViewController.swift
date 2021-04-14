@@ -29,7 +29,7 @@ final internal class PaymentVerificationViewController: SolarisViewController {
 
         enum Size {
             static let cornerRadius: CGFloat = 8
-            static let paymentViewHeight: CGFloat = 391
+            static let paymentViewHeight: CGFloat = 500
         }
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -22,17 +22,25 @@
                                 <rect key="frame" x="20" y="431" width="374" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikC-rJ-L1P">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.3921568627" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="guP-dc-ShZ"/>
                                         </constraints>
-                                        <state key="normal" title="Start BankID"/>
+                                        <state key="normal" title="Start BankID">
+                                            <color key="titleColor" red="0.97254901959999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="startBankIdentSDK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9cm-yr-mzg"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RkM-i1-0eI">
-                                        <rect key="frame" x="197" y="0.0" width="177" height="44"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RkM-i1-0eI">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="miG-iq-lx4"/>
                                         </constraints>
@@ -74,20 +82,46 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eKw-gT-FCD">
+                                <rect key="frame" x="20" y="286" width="374" height="105"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="DXk-bJ-gcn"/>
+                                </constraints>
+                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" smartDashesType="no" smartInsertDeleteType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UZc-pr-T9q"/>
+                                </connections>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LF4-ZO-LD4">
+                                <rect key="frame" x="20" y="257" width="92.5" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vdQ-4l-3bc" secondAttribute="trailing" constant="20" id="4IC-7L-cW2"/>
+                            <constraint firstItem="eKw-gT-FCD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="5Sp-m2-Ydo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z7c-QT-J8K" secondAttribute="trailing" constant="20" id="5Tu-Cm-Fhl"/>
                             <constraint firstItem="vdQ-4l-3bc" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5hO-K9-J1K"/>
                             <constraint firstItem="z7c-QT-J8K" firstAttribute="top" secondItem="vdQ-4l-3bc" secondAttribute="bottom" constant="30" id="9ZQ-DM-byq"/>
+                            <constraint firstItem="LF4-ZO-LD4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BeS-Fu-7Ek"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKw-gT-FCD" secondAttribute="trailing" constant="20" id="DZD-xu-877"/>
+                            <constraint firstItem="vdQ-4l-3bc" firstAttribute="top" secondItem="eKw-gT-FCD" secondAttribute="bottom" constant="40" id="HuE-nk-F1Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z7c-QT-J8K" secondAttribute="bottom" priority="750" constant="200" id="SdX-tD-9qH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LF4-ZO-LD4" secondAttribute="trailing" symbolic="YES" id="Tvn-83-ddI"/>
                             <constraint firstItem="z7c-QT-J8K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="och-3G-aKL"/>
+                            <constraint firstItem="eKw-gT-FCD" firstAttribute="top" secondItem="LF4-ZO-LD4" secondAttribute="bottom" constant="10" id="ona-Da-sUR"/>
                             <constraint firstItem="vdQ-4l-3bc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xnS-9f-xcQ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="sessionURLTV" destination="eKw-gT-FCD" id="Y0o-5r-b8A"/>
                         <outlet property="statusDesc" destination="WaB-N4-TmI" id="T5b-8t-RmC"/>
                         <outlet property="statusState" destination="Eup-go-ZER" id="ci4-wg-EpY"/>
                         <outlet property="statusView" destination="z7c-QT-J8K" id="gfc-Mv-Q4f"/>
@@ -100,7 +134,7 @@
     </scenes>
     <resources>
         <namedColor name="dark_gray">
-            <color red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.25099998712539673" green="0.25099998712539673" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="error">
             <color red="0.88627450980392153" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

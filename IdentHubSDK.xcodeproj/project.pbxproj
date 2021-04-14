@@ -102,6 +102,7 @@
 		841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81CC2603748300F4A079 /* BankIDCoordinator.swift */; };
 		842A14AD260A6E65005CD33B /* FourthlineIdentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */; };
 		842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */; };
+		84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */; };
 		845D85F4260CD50D008AAC9A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */; };
 		845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */; };
 		845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8611260D051D008AAC9A /* WelcomeViewModel.swift */; };
@@ -131,7 +132,6 @@
 		84B2A8BD25F3E3D200EBA899 /* IdentificationRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */; };
 		84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */; };
 		84B2A8CE25F3EA6000EBA899 /* BeckendRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */; };
-		84C9F75A25FF8B1000239279 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C9F75925FF8B1000239279 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,6 +265,7 @@
 		841C81CC2603748300F4A079 /* BankIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinator.swift; sourceTree = "<group>"; };
 		842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthlineIdentCoordinator.swift; sourceTree = "<group>"; };
 		842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentHubConstants.swift; sourceTree = "<group>"; };
+		84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExporter.swift; sourceTree = "<group>"; };
 		845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		845D8611260D051D008AAC9A /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -295,7 +296,6 @@
 		84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationRequestTests.swift; sourceTree = "<group>"; };
 		84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeckendRequestTests.swift; sourceTree = "<group>"; };
-		84C9F75925FF8B1000239279 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +328,7 @@
 		0C12CAA525A783870032B520 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84489DDE2625BBE800B23B02 /* DocumentExporter */,
 				840A9FC62604F20400D4637A /* URLParser */,
 				841A894525F0F612007878C1 /* API */,
 				0C12CAA625A7838C0032B520 /* Verification */,
@@ -552,7 +553,6 @@
 			children = (
 				0CD5CC4C2590F61200FF378F /* AppDelegate.swift */,
 				0CD5CC502590F61200FF378F /* ViewController.swift */,
-				84C9F75925FF8B1000239279 /* Constants.swift */,
 				841A895825F0F6E3007878C1 /* Resources */,
 			);
 			path = Sample;
@@ -788,6 +788,14 @@
 				847D427E260B555D0067ED63 /* TermsViewController.xib */,
 			);
 			path = "Terms&Conditions";
+			sourceTree = "<group>";
+		};
+		84489DDE2625BBE800B23B02 /* DocumentExporter */ = {
+			isa = PBXGroup;
+			children = (
+				84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */,
+			);
+			path = DocumentExporter;
 			sourceTree = "<group>";
 		};
 		845D85E4260CD35E008AAC9A /* Welcome */ = {
@@ -1210,6 +1218,7 @@
 				0CE4A8F625A3703600114CBD /* String+Attributes.swift in Sources */,
 				0C1B430B25ADB19A004FFF46 /* UIImage+SDK.swift in Sources */,
 				0C9E56E925C0358500D68B96 /* DocumentTableViewCell.swift in Sources */,
+				84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */,
 				842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */,
 				845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */,
 				0C527E5825AC4BF000B6D5DB /* IBANVerificationViewController.swift in Sources */,
@@ -1241,7 +1250,6 @@
 			files = (
 				0CD5CC512590F61200FF378F /* ViewController.swift in Sources */,
 				0CD5CC4D2590F61200FF378F /* AppDelegate.swift in Sources */,
-				84C9F75A25FF8B1000239279 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1328,7 +1336,9 @@
 			baseConfigurationReference = 0CD5CC942590FE6500FF378F /* Framework-Base.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1344,7 +1354,9 @@
 			baseConfigurationReference = 0CD5CC942590FE6500FF378F /* Framework-Base.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1359,6 +1371,10 @@
 			baseConfigurationReference = 0CD5CC902590FE2300FF378F /* Sample-Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 27A5X8DE8E;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1414,7 +1430,9 @@
 			baseConfigurationReference = 0CD5CC942590FE6500FF378F /* Framework-Base.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

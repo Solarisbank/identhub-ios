@@ -35,10 +35,10 @@ final internal class DocumentTableViewCell: UITableViewCell {
     }
 
     /// The method that will fire when the preview button is clicked.
-    var previewAction: (() -> Void)?
+    var previewAction: ((_ cell: DocumentTableViewCell) -> Void)?
 
     /// The method that will fire when the download button is clicked.
-    var downloadAction: (() -> Void)?
+    var downloadAction: ((_ cell: DocumentTableViewCell) -> Void)?
 
     private lazy var documentImageView: UIImageView = {
         let imageView = UIImageView()
@@ -61,6 +61,10 @@ final internal class DocumentTableViewCell: UITableViewCell {
         return label
     }()
 
+    private lazy var previewActivityView: UIActivityIndicatorView = {
+        UIActivityIndicatorView(style: .gray)
+    }()
+
     private lazy var previewDocumentButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.sdkColor(.base05)
@@ -69,7 +73,13 @@ final internal class DocumentTableViewCell: UITableViewCell {
         layer.masksToBounds = true
         let image = UIImage.sdkImage(.seeDocument, type: DocumentTableViewCell.self)
         button.setImage(image, for: .normal)
+        previewActivityView.center = CGPoint(x: Constants.Size.width / 2, y: Constants.Size.height / 2)
+        button.addSubview(previewActivityView)
         return button
+    }()
+
+    private lazy var downloadActivityView: UIActivityIndicatorView = {
+        UIActivityIndicatorView(style: .gray)
     }()
 
     private lazy var downloadDocumentButton: UIButton = {
@@ -80,6 +90,8 @@ final internal class DocumentTableViewCell: UITableViewCell {
         layer.masksToBounds = true
         let image = UIImage.sdkImage(.downloadDocument, type: DocumentTableViewCell.self)
         button.setImage(image, for: .normal)
+        downloadActivityView.center = CGPoint(x: Constants.Size.width / 2, y: Constants.Size.height / 2)
+        button.addSubview(downloadActivityView)
         return button
     }()
 
@@ -146,12 +158,18 @@ final internal class DocumentTableViewCell: UITableViewCell {
     }
 
     @objc private func previewButtonClicked() {
-        previewAction?()
+        previewAction?(self)
+
+        previewActivityView.startAnimating()
+        previewDocumentButton.isEnabled = false
     }
 
     @objc private func downloadButtonClicked() {
-        downloadAction?()
+        downloadAction?(self)
         downloadDocumentButton.backgroundColor = UIColor.sdkColor(.base05)
+
+        downloadActivityView.startAnimating()
+        downloadDocumentButton.isEnabled = false
     }
 
     @objc private func highlightDownloadButton() {
@@ -174,5 +192,13 @@ final internal class DocumentTableViewCell: UITableViewCell {
             documentImageView.image = UIImage.sdkImage(.documentNotSigned, type: DocumentTableViewCell.self)?.withRenderingMode(.alwaysTemplate)
             documentImageView.tintColor = .sdkColor(.base25)
         }
+    }
+
+    func stopActivityAnimation() {
+        previewDocumentButton.isEnabled = true
+        downloadDocumentButton.isEnabled = true
+
+        previewActivityView.stopAnimating()
+        downloadActivityView.stopAnimating()
     }
 }

@@ -72,6 +72,8 @@ final internal class FinishIdentificationViewController: SolarisViewController {
         return button
     }()
 
+    private var documentCell: DocumentTableViewCell?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -142,6 +144,14 @@ extension FinishIdentificationViewController: DocumentReceivable {
         ]
         }
     }
+
+    func didFinishLoadingDocument() {
+        documentCell?.stopActivityAnimation()
+    }
+
+    func didFinishLoadingAllDocuments() {
+        downloadAllDocumentsButton.stopAnimation()
+    }
 }
 
 // MARK: UITableViewDataSource methods
@@ -158,8 +168,14 @@ extension FinishIdentificationViewController: UITableViewDataSource {
         }
         let document = viewModel.documents[indexPath.row]
         cell.setCell(document: document, isDocumentSigned: true)
-        cell.previewAction = { self.viewModel.previewDownloadedDocument(withId: document.id) }
-        cell.downloadAction = { self.viewModel.downloadAndSaveDocument(withId: document.id) }
+        cell.previewAction = {[weak self] cell in
+            self?.documentCell = cell
+            self?.viewModel.previewDownloadedDocument(withId: document.id)
+        }
+        cell.downloadAction = {[weak self] cell in
+            self?.documentCell = cell
+            self?.viewModel.exportDocument(withId: document.id)
+        }
         return cell
     }
 }

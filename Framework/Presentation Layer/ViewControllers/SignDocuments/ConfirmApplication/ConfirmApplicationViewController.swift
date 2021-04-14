@@ -77,6 +77,9 @@ final internal class ConfirmApplicationViewController: SolarisViewController {
         return button
     }()
 
+    private let documentExporter: DocumentExporter = DocumentExporterService()
+    private var documentCell: DocumentTableViewCell?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -157,6 +160,14 @@ extension ConfirmApplicationViewController: DocumentReceivable {
         ]
         }
     }
+
+    func didFinishLoadingDocument() {
+        documentCell?.stopActivityAnimation()
+    }
+
+    func didFinishLoadingAllDocuments() {
+        downloadAllDocumentsButton.stopAnimation()
+    }
 }
 
 // MARK: UITableViewDataSource methods
@@ -173,8 +184,18 @@ extension ConfirmApplicationViewController: UITableViewDataSource {
         }
         let document = viewModel.documents[indexPath.row]
         cell.setCell(document: document, isDocumentSigned: false)
-        cell.previewAction = { self.viewModel.previewDownloadedDocument(withId: document.id) }
-        cell.downloadAction = { self.viewModel.downloadAndSaveDocument(withId: document.id) }
+        cell.previewAction = {[weak self] cell in
+
+            self?.documentCell = cell
+            self?.viewModel.previewDownloadedDocument(withId: document.id)
+        }
+
+        cell.downloadAction = {[weak self] cell in
+
+            self?.documentCell = cell
+            self?.viewModel.exportDocument(withId: document.id)
+        }
+
         return cell
     }
 }
