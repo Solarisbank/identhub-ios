@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 /// Fourthline identification process flow coordinator class
 /// Used for navigating between screens and update process status
@@ -14,6 +15,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case termsAndConditions // Privacy statement and Terms-Conditions screen
         case welcome // Welcome screen with all instructions
         case selfie // Make a selfie step
+        case documents // Run document scanner step
         case quit // Quit from identification process
     }
 
@@ -36,12 +38,19 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentWelcomeScreen()
         case .selfie:
             presentSefieScreen()
+        case .documents:
+            presentDocumentScanner()
         case .quit:
             quit()
         }
     }
+}
 
-    // MARK: - Internal methods -
+// MARK: - Private methods -
+
+extension FourthlineIdentCoordinator {
+
+    // MARK: - Navigation methods -
 
     private func presentPrivacyTermsScreen() {
         let termsVM = TermsViewModel(flowCoordinator: self)
@@ -58,9 +67,63 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     }
 
     private func presentSefieScreen() {
-        let selfieVM = SelfieViewModel(flowCoordinator: self)
-        let selfieVC = SelfieViewController(selfieVM)
+        requestPermissions { isPassed in
+            guard isPassed else { return }
 
-        presenter.push(selfieVC, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                let selfieVM = SelfieViewModel(flowCoordinator: self)
+                let selfieVC = SelfieViewController()
+
+                selfieVC.setViewModel(selfieVM)
+
+                self.presenter.push(selfieVC, animated: true, completion: nil)
+            }
+        }
+    }
+
+    private func presentDocumentScanner() {
+        let documentScannerVM = DocumentScannerViewModel(flowCoordinator: self)
+        let documentScannerVC = DocumentScannerViewController(documentScannerVM)
+
+        presenter.push(documentScannerVC, animated: true, completion: nil)
+    }
+
+    // MARK: - Permission methods -
+    func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
+
+        AVCaptureDevice.requestAccess(for: .video) { granted in
+            guard granted else {
+                DispatchQueue.main.async {
+                    self.showCameraPermissionAlert()
+                }
+                print(Localizable.Camera.errorMessage)
+                completionHandler(false)
+                return
+            }
+
+            DispatchQueue.main.async {
+                LocationManager.shared.requestLocationAuthorization {
+                    completionHandler(true)
+                }
+            }
+        }
+    }
+
+    func showCameraPermissionAlert() {
+
+        let alert = UIAlertController(title: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage, preferredStyle: .alert)
+
+        let tryAgainAction = UIAlertAction(title: Localizable.Common.settings, style: .default, handler: { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString),
+               UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        })
+
+        let cancelAction = UIAlertAction(title: Localizable.Common.cancel, style: .cancel)
+        alert.addAction(tryAgainAction)
+        alert.addAction(cancelAction)
+
+        presenter.present(alert, animated: true)
     }
 }

@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -81,7 +80,7 @@
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="I agree to the Privacy Statement &amp; Terms &amp; Conditions" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CUE-ZN-WUa">
                             <rect key="frame" x="60" y="193" width="220" height="45"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="SqE-mJ-FkT"/>
                                 <constraint firstAttribute="width" constant="220" id="uCP-qX-0lm"/>
@@ -132,7 +131,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="black05"/>
                     <constraints>
                         <constraint firstItem="CUE-ZN-WUa" firstAttribute="centerY" secondItem="b8i-zH-l8y" secondAttribute="centerY" id="4sM-lZ-P7L"/>
                         <constraint firstAttribute="trailing" secondItem="VgM-G7-9LZ" secondAttribute="trailing" constant="16" id="Dg7-np-u4I"/>
@@ -154,7 +153,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="black05"/>
             <constraints>
                 <constraint firstItem="kya-v9-OY4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="FU0-0E-hJN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kya-v9-OY4" secondAttribute="trailing" id="W3n-lr-cnP"/>
@@ -167,14 +166,14 @@
         <image name="checked" width="24" height="24"/>
         <image name="unchecked" width="24" height="24"/>
         <image name="warning" width="24" height="24"/>
+        <namedColor name="black05">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="black50">
             <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black75">
             <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

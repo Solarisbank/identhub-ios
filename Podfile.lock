@@ -1,0 +1,41 @@
+PODS:
+  - FourthlineSDK (2.2.6):
+    - FourthlineSDK/Core (= 2.2.6)
+    - FourthlineSDK/KYC (= 2.2.6)
+    - FourthlineSDK/NFC (= 2.2.6)
+    - FourthlineSDK/SDK (= 2.2.6)
+    - FourthlineSDK/Vision (= 2.2.6)
+  - FourthlineSDK/Core (2.2.6)
+  - FourthlineSDK/KYC (2.2.6):
+    - FourthlineSDK/Core
+  - FourthlineSDK/NFC (2.2.6):
+    - FourthlineSDK/Core
+  - FourthlineSDK/SDK (2.2.6):
+    - FourthlineSDK/KYC
+    - FourthlineSDK/NFC
+    - FourthlineSDK/Vision
+  - FourthlineSDK/Vision (2.2.6):
+    - FourthlineSDK/Core
+  - SwiftyTesseract (2.2.3)
+  - ZIPFoundation (0.9.11)
+
+DEPENDENCIES:
+  - FourthlineSDK (= 2.2.6)
+  - SwiftyTesseract (= 2.2.3)
+  - ZIPFoundation (= 0.9.11)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs:
+    - SwiftyTesseract
+    - ZIPFoundation
+  https://github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git:
+    - FourthlineSDK
+
+SPEC CHECKSUMS:
+  FourthlineSDK: dfdfc80735d4fb04feeaefd5110b3f17b123d7a5
+  SwiftyTesseract: d92b644e0e12d143bc272bfe1edb73ae07f2b2e8
+  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
+
+PODFILE CHECKSUM: 5e96eecb17794eefebb7a4d43df255e768f9ffb8
+
+COCOAPODS: 1.10.1

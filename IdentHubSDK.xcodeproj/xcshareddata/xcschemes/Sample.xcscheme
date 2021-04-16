@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0CD5CC632590F63F00FF378F"
+               BlueprintIdentifier = "84A7581525F22D7F004D8F88"
                BuildableName = "IdentHubSDKTests.xctest"
                BlueprintName = "IdentHubSDKTests"
                ReferencedContainer = "container:IdentHubSDK.xcodeproj">

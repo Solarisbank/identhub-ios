@@ -20,6 +20,10 @@
 	<string>$(PRODUCT_BUNDLE_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera is needed to capture selfie and document pictures &amp; videos</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location will be used while scanning documents</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

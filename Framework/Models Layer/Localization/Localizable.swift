@@ -19,6 +19,10 @@ enum Localizable {
         static let poweredBySolarisBank = "Powered by Solarisbank"
         static let verifying = "Veryfing..."
         static let downloadAllDocuments = "Download all documents"
+        static let dismiss = "Dismiss"
+        static let tryAgain = "Try again"
+        static let cancel = "Cancel"
+        static let settings = "Settings"
     }
 
     enum Quiting {
@@ -130,5 +134,54 @@ enum Localizable {
         & submitting your case!
         How easy it that?
         """
+    }
+
+    enum Selfie {
+        static let selfieTitle = "Take a selfie"
+        static let scanning = "scanning..."
+        static let detected = "face detected"
+        static let success = "Scan Successful"
+        static let retake = "Retake"
+        static let confirm = "Confirm"
+        static let confirmSelfie = "Confirm Selfie"
+
+        enum Warnings {
+            static let faceNotInFrame = "Fit face in frame"
+            static let faceNotDetected = "Face not detected"
+            static let faceTooClose = "Move the phone farther"
+            static let faceTooFar = "Move the phone closer"
+            static let faceYawTooBig = "Face the camera directly"
+            static let multipleFacesDetected = "Multiple faces detected"
+            static let deviceNotSteady = "Device not steady"
+            static let noFace = "Looking for a face"
+        }
+
+        enum Errors {
+            static let failed = "selfie failed"
+            static let timeout = "Photo timed out"
+            static let faceDisappeared = "Face disappeared"
+            static let cameraPermissionNotGranted = "Camera permission required"
+            static let manualSelfieNotAllowed = "Manual selfie is not allowed"
+            static let recordingFailed = "Something went wrong"
+            static let scannerInterrupted = "Scanner was interrupted"
+            static let unknown = "Something went wrong"
+            static let alertTitle = "Selfie scan failed"
+            static let alertMessage = "It was not possible to take your selfie.\n\nThis process is mandatory for your onboarding process."
+        }
+
+        enum Liveness {
+            static let title = "Liveness check"
+            static let checking = "liveness check..."
+            static let confirm = "liveness confirm"
+            static let failed = "liveness check failed"
+            static let turnHeadLeft = "Turn your head left"
+            static let turnHeadRight = "Turn your head right"
+        }
+    }
+
+    enum Camera {
+        static let permissionErrorAlertTitle = "Camera permission denied"
+        static let permissionErrorAlertMessage = "Scanner can't be started without camera permission, please allow it"
+        static let errorMessage = "🥲ERROR: In order to use vision scanners you need to grant camera permission."
     }
 }

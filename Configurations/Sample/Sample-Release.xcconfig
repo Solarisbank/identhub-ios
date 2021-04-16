@@ -4,6 +4,7 @@
 //
 
 #include "Sample-Base.xcconfig"
+#include "../../Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"
 
 _BUNDLE_IDENTIFIER = de.solarisbank.identhub.sdk
 

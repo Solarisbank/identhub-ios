@@ -1,0 +1,91 @@
+//
+//  SelfieScanner+Extensions.swift
+//  IdentHubSDK
+//
+
+import FourthlineVision
+
+extension SelfieScannerWarning {
+
+    var priority: Int {
+        switch self {
+        case .deviceNotSteady:
+            return 0
+        case .faceYawTooBig:
+            return 1
+        case .faceTooFar:
+            return 2
+        case .faceTooClose:
+            return 3
+        case .faceNotInFrame:
+            return 4
+        case .faceNotDetected:
+            return 5
+        case .multipleFacesDetected:
+            return 6
+        @unknown default:
+            fatalError("Missing SelfieScannerWarning.priority for \(self)")
+        }
+    }
+
+    var text: String {
+        switch self {
+        case .faceNotInFrame:
+            return Localizable.Selfie.Warnings.faceNotInFrame
+        case .faceNotDetected:
+            return Localizable.Selfie.Warnings.faceNotDetected
+        case .faceTooClose:
+            return Localizable.Selfie.Warnings.faceTooClose
+        case .faceTooFar:
+            return Localizable.Selfie.Warnings.faceTooFar
+        case .faceYawTooBig:
+            return Localizable.Selfie.Warnings.faceYawTooBig
+        case .multipleFacesDetected:
+            return Localizable.Selfie.Warnings.multipleFacesDetected
+        case .deviceNotSteady:
+            return Localizable.Selfie.Warnings.deviceNotSteady
+        @unknown default:
+            fatalError("Missing SelfieScannerWarning.text for \(self)")
+        }
+    }
+}
+
+extension SelfieScannerStep {
+
+    var text: String {
+        switch self {
+        case .turnHeadLeft:
+            return Localizable.Selfie.Liveness.turnHeadLeft
+        case .turnHeadRight:
+            return Localizable.Selfie.Liveness.turnHeadRight
+        default:
+            return ""
+        }
+    }
+}
+
+extension SelfieScannerError {
+
+    var text: String {
+        switch self {
+        case .timeout:
+            return Localizable.Selfie.Errors.timeout
+        case .faceDisappeared:
+            return Localizable.Selfie.Errors.faceDisappeared
+        case .cameraPermissionNotGranted:
+            return Localizable.Selfie.Errors.cameraPermissionNotGranted
+        case .manualSelfieNotAllowed:
+            return Localizable.Selfie.Errors.manualSelfieNotAllowed
+        case .recordingFailed:
+            return Localizable.Selfie.Errors.recordingFailed
+        case .scannerInterrupted:
+            return Localizable.Selfie.Errors.scannerInterrupted
+        case .resetScannerNotAllowed:
+            return ""
+        case .unknown:
+            return Localizable.Selfie.Errors.unknown
+        @unknown default:
+            fatalError("Missing SelfieScannerError.text for \(self)")
+        }
+    }
+}

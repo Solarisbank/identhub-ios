@@ -5,6 +5,9 @@
 
 #include "../Platforms/iOS.xcconfig"
 #include "../Targets/Tests.xcconfig"
+#include "../../Pods/Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.debug.xcconfig"
+#include "../../Pods/Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.staging.xcconfig"
+#include "../../Pods/Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"
 
 _BUNDLE_NAME = IdentHubSDKTests
 _BUNDLE_IDENTIFIER = de.solarisbank.identhub.sdk.tests

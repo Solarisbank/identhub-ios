@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -107,7 +106,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="black05"/>
                     <constraints>
                         <constraint firstItem="8yX-5H-Z2N" firstAttribute="leading" secondItem="ghC-QP-45v" secondAttribute="leading" id="0Yd-sA-FfP"/>
                         <constraint firstAttribute="bottom" secondItem="20Q-FK-ke5" secondAttribute="bottom" constant="20" id="8e0-TS-0WR"/>
@@ -126,7 +125,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="black05"/>
             <constraints>
                 <constraint firstItem="ghC-QP-45v" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="24k-HL-Dvj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ghC-QP-45v" secondAttribute="bottom" constant="40" id="XBC-pF-cXA"/>
@@ -138,14 +137,14 @@
     </objects>
     <resources>
         <image name="circle_background" width="228" height="228"/>
+        <namedColor name="black05">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="black75">
             <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
