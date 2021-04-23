@@ -12,7 +12,7 @@ final internal class ConfirmApplicationViewModel: NSObject, DocumentDownloadable
     var flowCoordinator: BankIDCoordinator
 
     /// - SeeAlso: DocumentDownloadable.documents
-    var documents: [Document] = []
+    var documents: [ContractDocument] = []
 
     /// - SeeAlso: DocumentDownloadable.documentDelegate
     weak var documentDelegate: DocumentReceivable?

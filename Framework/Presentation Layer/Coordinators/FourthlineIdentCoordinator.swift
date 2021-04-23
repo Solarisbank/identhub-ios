@@ -5,6 +5,12 @@
 
 import UIKit
 import AVFoundation
+import FourthlineCore
+
+/// Enumeration with all Fourthline flow steps
+enum FourthlineSteps: Int {
+    case selfie = 0, document, confirm, location, upload, result
+}
 
 /// Fourthline identification process flow coordinator class
 /// Used for navigating between screens and update process status
@@ -15,7 +21,10 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case termsAndConditions // Privacy statement and Terms-Conditions screen
         case welcome // Welcome screen with all instructions
         case selfie // Make a selfie step
-        case documents // Run document scanner step
+        case documentPicker // Present document picker step
+        case documentScanner(type: DocumentType) // Present document scanner for document with type: passport, idCard, etc.
+        case documentInfo
+        case location
         case quit // Quit from identification process
     }
 
@@ -38,8 +47,14 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentWelcomeScreen()
         case .selfie:
             presentSefieScreen()
-        case .documents:
-            presentDocumentScanner()
+        case .documentPicker:
+            presentDocumentPicker()
+        case let .documentScanner(type):
+            presentDocumentScanner(type)
+        case .documentInfo:
+            presentDocumentInfoConfirmation()
+        case .location:
+            presentLocationTracker()
         case .quit:
             quit()
         }
@@ -81,11 +96,34 @@ extension FourthlineIdentCoordinator {
         }
     }
 
-    private func presentDocumentScanner() {
-        let documentScannerVM = DocumentScannerViewModel(flowCoordinator: self)
-        let documentScannerVC = DocumentScannerViewController(documentScannerVM)
+    private func presentDocumentPicker() {
+        let documentPickerVM = DocumentPickerViewModel(flowCoordinator: self)
+        let documentPickerVC = DocumentPickerViewController(documentPickerVM)
 
-        presenter.push(documentScannerVC, animated: true, completion: nil)
+        presenter.push(documentPickerVC, animated: true, completion: nil)
+    }
+
+    private func presentDocumentScanner(_ documentType: DocumentType) {
+        let documentScannerVM = DocumentScannerViewModel(documentType, flowCoordinator: self)
+        let documentScannerVC = DocumentScannerViewController(viewModel: documentScannerVM)
+
+        documentScannerVC.modalPresentationStyle = .fullScreen
+
+        presenter.present(documentScannerVC, animated: true)
+    }
+
+    private func presentDocumentInfoConfirmation() {
+        let documentInfoVM = DocumentInfoViewModel(self)
+        let documentInfoVC = DocumentInfoViewController(documentInfoVM)
+
+        presenter.push(documentInfoVC, animated: true, completion: nil)
+    }
+
+    private func presentLocationTracker() {
+        let locationVM = LocationViewModel(self)
+        let locationVC = LocationViewController(locationVM)
+
+        presenter.push(locationVC, animated: true, completion: nil)
     }
 
     // MARK: - Permission methods -

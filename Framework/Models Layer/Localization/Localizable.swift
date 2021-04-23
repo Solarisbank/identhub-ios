@@ -16,6 +16,8 @@ enum Localizable {
     enum Common {
         static let next = "Next"
         static let quit = "Quit"
+        static let continueBtn = "Continue"
+        static let back = "Back"
         static let poweredBySolarisBank = "Powered by Solarisbank"
         static let verifying = "Veryfing..."
         static let downloadAllDocuments = "Download all documents"
@@ -23,6 +25,7 @@ enum Localizable {
         static let tryAgain = "Try again"
         static let cancel = "Cancel"
         static let settings = "Settings"
+        static let defaultErr = "Something went wrong"
     }
 
     enum Quiting {
@@ -182,6 +185,44 @@ enum Localizable {
     enum Camera {
         static let permissionErrorAlertTitle = "Camera permission denied"
         static let permissionErrorAlertMessage = "Scanner can't be started without camera permission, please allow it"
-        static let errorMessage = "🥲ERROR: In order to use vision scanners you need to grant camera permission."
+        static let errorMessage = "ERROR: In order to use vision scanners you need to grant camera permission."
+        static let premissionNotGranted = "Camera permission required"
+    }
+
+    enum DocumentScanner {
+
+        static let title = "Your ID-document"
+        static let description = "choose your document type"
+        static let passport = "Passport"
+        static let idCard = "ID Card"
+        static let successScan = "scan successful"
+        static let scanning = "scanning..."
+        static let scanFailed = "scan failed"
+
+        enum DocFileSide {
+
+            static let front = "front"
+            static let back = "back"
+            static let insideLeft = "inside left"
+            static let insideRight = "inside right"
+        }
+
+        enum Warning {
+            static let deviceNotSteady = "Device not steady"
+            static let tooDark = "Too dark"
+        }
+
+        enum Error {
+            static let scannerInterrupted = "Scanner was interrupted"
+            static let timeout = "Scan timed out"
+        }
+
+        enum Information {
+            static let title = "Document information"
+            static let docNumber = "document number"
+            static let birth = "date of birth"
+            static let expire = "document expiry date"
+            static let warning = "Please confirm if your data derived properly from the document scan"
+        }
     }
 }

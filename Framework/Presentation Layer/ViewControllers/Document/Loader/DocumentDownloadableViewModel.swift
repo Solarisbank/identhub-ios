@@ -11,7 +11,7 @@ protocol DocumentDownloadableViewModel: ViewModel {
     var documentDelegate: DocumentReceivable? { get set }
 
     /// The list of documents.
-    var documents: [Document] { get set }
+    var documents: [ContractDocument] { get set }
 
     /// Check if the documents are available.
     func checkDocumentsAvailability()
@@ -19,7 +19,7 @@ protocol DocumentDownloadableViewModel: ViewModel {
     /// Save the docuemnts.
     ///
     /// - Parameter docments: documents to be saved.
-    func saveDocuments(_ documents: [Document])
+    func saveDocuments(_ documents: [ContractDocument])
 
     /// Download the document  with the given id and view it.
     ///
@@ -53,7 +53,7 @@ extension DocumentDownloadableViewModel {
     }
 
     /// - SeeAlso: DocumentDownloadable.saveDocuments()
-    func saveDocuments(_ documents: [Document]) {
+    func saveDocuments(_ documents: [ContractDocument]) {
         for document in documents {
             self.documents.append(document)
         }

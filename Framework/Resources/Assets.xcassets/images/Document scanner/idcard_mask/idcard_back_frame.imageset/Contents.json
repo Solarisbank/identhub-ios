@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "idcard_back_frame.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

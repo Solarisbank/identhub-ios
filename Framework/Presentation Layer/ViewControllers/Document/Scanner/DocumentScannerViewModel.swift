@@ -3,24 +3,49 @@
 //  IdentHubSDK
 //
 
-import Foundation
+import UIKit
+import FourthlineCore
+import FourthlineVision
 
-/// Document scanner view model
-/// Class used for saving scanned data
-final class DocumentScannerViewModel {
+final class DocumentScannerViewModel: NSObject {
 
-    // MARK: - Properties -
+    // MARK: - Attributes -
+    var documentType: DocumentType
     private var flowCoordinator: FourthlineIdentCoordinator
 
-    /// Init method with flow coordinator
-    /// - Parameter flowCoordinator: identification process flow coordinator
-    init(flowCoordinator: FourthlineIdentCoordinator) {
+    // MARK: - Init methods -
+    init(_ documentType: DocumentType, flowCoordinator: FourthlineIdentCoordinator) {
+        self.documentType = documentType
         self.flowCoordinator = flowCoordinator
+
+        super.init()
+
+        cleanData()
     }
 
     // MARK: - Public methods -
 
-    func dismissScanner() {
-        flowCoordinator.perform(action: .quit)
+    /// Method returns scanned document type
+    /// - Returns: enum value of the type
+    func scannedType() -> DocumentType {
+        documentType
+    }
+
+    /// Update document scan result in KYC container
+    /// - Parameter result: scanned result
+    func updateResult(_ result: DocumentScannerResult) {
+        KYCContainer.shared.update(with: result, for: documentType)
+        flowCoordinator.perform(action: .documentInfo)
+    }
+
+    /// Save document result to the KYC container
+    /// - Parameter stepResult: final document result
+    func saveResult(_ stepResult: DocumentScannerStepResult) {
+        KYCContainer.shared.update(with: stepResult)
+    }
+
+    /// Method cleared documents data in KYC container
+    func cleanData() {
+        KYCContainer.shared.removeDocumentData()
     }
 }

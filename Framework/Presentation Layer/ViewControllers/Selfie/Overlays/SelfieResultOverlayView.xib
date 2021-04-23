@@ -37,7 +37,7 @@
                         <constraint firstAttribute="height" constant="70" id="lau-9w-jnh"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DfX-ar-x7s">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DfX-ar-x7s">
                     <rect key="frame" x="0.0" y="114" width="414" height="782"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title_shadow_view" translatesAutoresizingMaskIntoConstraints="NO" id="sHD-GW-1eG">

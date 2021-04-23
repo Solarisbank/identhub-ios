@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "idcard_logo_icon.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

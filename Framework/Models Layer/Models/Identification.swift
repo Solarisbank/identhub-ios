@@ -50,7 +50,7 @@ struct Identification: Decodable {
     let address: String?
 
     /// Documents associated with the identification.
-    let documents: [Document]?
+    let documents: [ContractDocument]?
 
     enum CodingKeys: String, CodingKey {
         case id

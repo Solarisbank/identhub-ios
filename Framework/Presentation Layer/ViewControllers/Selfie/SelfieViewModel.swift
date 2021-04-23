@@ -51,6 +51,6 @@ final internal class SelfieViewModel {
     }
 
     func didTriggerConfirmStep() {
-        self.flowCoordinator.perform(action: .documents)
+        self.flowCoordinator.perform(action: .documentPicker)
     }
 }

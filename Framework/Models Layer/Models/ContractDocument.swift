@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct Document: Decodable {
+struct ContractDocument: Decodable {
 
     /// Id of the document.
     let id: String
