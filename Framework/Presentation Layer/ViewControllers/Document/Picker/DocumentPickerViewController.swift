@@ -5,10 +5,9 @@
 
 import UIKit
 
-class DocumentPickerViewController: SolarisViewController {
+class DocumentPickerViewController: UIViewController {
 
     // MARK: - Init methods -
-    @IBOutlet var scannerContainer: UIView!
     @IBOutlet var stepsProgressView: StepsProgressView!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var descriptionLbl: UILabel!
@@ -53,11 +52,6 @@ class DocumentPickerViewController: SolarisViewController {
 
     // MARK: - Internal methods -
     private func configureUI() {
-        containerView.addSubview(scannerContainer)
-
-        containerView.addConstraints {
-            [ $0.equalTo(scannerContainer, .bottom, .bottom) ]
-        }
 
         stepsProgressView.datasource = viewModel
 
@@ -66,9 +60,10 @@ class DocumentPickerViewController: SolarisViewController {
         continueBtn.titleLabel?.text = Localizable.Common.continueBtn
         continueBtn.alpha = 0.5
         quitBtn.titleLabel?.text = Localizable.Common.quit
-        tableShadowHeightConstraint.constant = viewModel.obtainTableHeight()
 
         viewModel.configureDocumentsTable(for: documentTypesTable)
+
+        tableShadowHeightConstraint.constant = viewModel.obtainTableHeight()
 
         viewModel.updateButtons = {[unowned self] in
             self.continueBtn.alpha = 1

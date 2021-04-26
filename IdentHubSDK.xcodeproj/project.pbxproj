@@ -1197,7 +1197,6 @@
 				0CCD106325C9933A00251C65 /* Identification.swift */,
 				0CF0AE7F25CC153000A560E5 /* Status.swift */,
 				0CF0AE8A25CC684C00A560E5 /* ContractDocument.swift */,
-				840DEA5426284CBC0033A2D8 /* KYCContainer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

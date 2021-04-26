@@ -7,10 +7,9 @@ import UIKit
 
 /// Class for managing welcome screen UI components
 /// Class based on SolarisViewController, because used company copyrights view
-class WelcomeViewController: SolarisViewController {
+class WelcomeViewController: UIViewController {
 
     // MARK: - Properties -
-    @IBOutlet var welcomeContainer: UIView!
     @IBOutlet var pageController: UIPageControl!
     @IBOutlet var pageScroller: UICollectionView!
     @IBOutlet var logoImage: UIImageView!
@@ -44,12 +43,6 @@ class WelcomeViewController: SolarisViewController {
 
     // MARK: - Internal methods -
     private func configureUI() {
-
-        containerView.addSubview(welcomeContainer)
-
-        containerView.addConstraints {
-            [ $0.equalTo(welcomeContainer, .bottom, .bottom) ]
-        }
 
         pageController.subviews.forEach {
             $0.transform = CGAffineTransform(scaleX: 2, y: 2)

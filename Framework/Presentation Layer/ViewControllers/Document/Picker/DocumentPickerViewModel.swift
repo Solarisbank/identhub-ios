@@ -27,7 +27,6 @@ final class DocumentPickerViewModel: BaseFourthlineViewModel {
     // MARK: - Public methods -
 
     func configureDocumentsTable(for table: UITableView) {
-
         documentsContent = buildDocumentsContent()
         documentTypeDDM = DocumentTypesDDM(documentsContent, output: self)
 
