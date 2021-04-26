@@ -46,7 +46,7 @@ class DocumentPickerViewController: UIViewController {
     }
 
     @IBAction func didClickQuit(_ sender: UIButton) {
-      
+
         viewModel.didTriggerQuit()
     }
 
