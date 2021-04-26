@@ -9,24 +9,18 @@ import FourthlineCore
 /// Identifier of the document type table cells
 let documentInfoCellID = "documentInfoCellID"
 
-final class DocumentInfoViewModel {
+final class DocumentInfoViewModel: BaseFourthlineViewModel {
 
     // MARK: - Private attributes -
-    private var coordinator: FourthlineIdentCoordinator
-    private var infoContent: [DocumentItemInfo]
+    private var infoContent: [DocumentItemInfo] = []
     private var tableDDM: DocumentInfoDDM?
 
     var didUpdatedContent: ((Bool) -> Void)?
 
-    // MARK: - Init methods -
-    init (_ coordinator: FourthlineIdentCoordinator) {
-        self.coordinator = coordinator
-        self.infoContent = DocumentInfoViewModel.buildContent()
-    }
-
     // MARK: - Public methods -
 
     func configure(of table: UITableView) {
+        infoContent = buildContent()
         tableDDM = DocumentInfoDDM(infoContent, output: self)
 
         let cellNib = UINib(nibName: "DocumentItemInfoCell", bundle: Bundle(for: DocumentItemInfoCell.self))
@@ -49,9 +43,6 @@ final class DocumentInfoViewModel {
 }
 
 extension DocumentInfoViewModel: StepsProgressViewDataSource {
-    func stepsCount() -> Int {
-        4
-    }
 
     func currentStep() -> Int {
         FourthlineSteps.confirm.rawValue
@@ -70,7 +61,7 @@ extension DocumentInfoViewModel: DocumentInfoDDMDelegate {
 // MARK: - Internal methods -
 extension DocumentInfoViewModel {
 
-    static func buildContent() -> [DocumentItemInfo] {
+    func buildContent() -> [DocumentItemInfo] {
         typealias InfoText = Localizable.DocumentScanner.Information
 
         let document = KYCContainer.shared.kycInfo.document

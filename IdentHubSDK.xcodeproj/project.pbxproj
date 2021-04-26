@@ -145,6 +145,10 @@
 		845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8643260D22D4008AAC9A /* WelcomePageContent.swift */; };
 		8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */; };
 		846432402617626B003C9A7B /* StartBankIdentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */; };
+		847242DD2631D3E500CC8DE6 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847242DB2631D3E500CC8DE6 /* UploadViewController.swift */; };
+		847242DE2631D3E500CC8DE6 /* UploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847242DC2631D3E500CC8DE6 /* UploadViewController.xib */; };
+		847242E62631D47500CC8DE6 /* UploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847242E52631D47500CC8DE6 /* UploadViewModel.swift */; };
+		847242EC2631D55700CC8DE6 /* BaseFourthlineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847242EB2631D55700CC8DE6 /* BaseFourthlineViewModel.swift */; };
 		847D427F260B555D0067ED63 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D427D260B555D0067ED63 /* TermsViewController.swift */; };
 		847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D427E260B555D0067ED63 /* TermsViewController.xib */; };
 		847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D428D260B6C370067ED63 /* TermsViewModel.swift */; };
@@ -164,6 +168,7 @@
 		84B2A8BD25F3E3D200EBA899 /* IdentificationRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */; };
 		84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */; };
 		84B2A8CE25F3EA6000EBA899 /* BeckendRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */; };
+		84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */; };
 		84E0CF0E262EF6B100DE0C09 /* DocumentScanner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0CF0D262EF6B100DE0C09 /* DocumentScanner+Extensions.swift */; };
 		84E0CF13262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0CF12262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift */; };
 		84ECED1126304DFB00ACD1B5 /* DocumentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECED0F26304DFB00ACD1B5 /* DocumentInfoViewController.swift */; };
@@ -356,6 +361,10 @@
 		845D8643260D22D4008AAC9A /* WelcomePageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageContent.swift; sourceTree = "<group>"; };
 		8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBankIdentViewController.swift; sourceTree = "<group>"; };
 		8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartBankIdentViewController.xib; sourceTree = "<group>"; };
+		847242DB2631D3E500CC8DE6 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		847242DC2631D3E500CC8DE6 /* UploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadViewController.xib; sourceTree = "<group>"; };
+		847242E52631D47500CC8DE6 /* UploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewModel.swift; sourceTree = "<group>"; };
+		847242EB2631D55700CC8DE6 /* BaseFourthlineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFourthlineViewModel.swift; sourceTree = "<group>"; };
 		847D427D260B555D0067ED63 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		847D427E260B555D0067ED63 /* TermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
 		847D428D260B6C370067ED63 /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
@@ -376,6 +385,7 @@
 		84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationRequestTests.swift; sourceTree = "<group>"; };
 		84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeckendRequestTests.swift; sourceTree = "<group>"; };
+		84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		84E0CF0D262EF6B100DE0C09 /* DocumentScanner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentScanner+Extensions.swift"; sourceTree = "<group>"; };
 		84E0CF12262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetsDataSource.swift; sourceTree = "<group>"; };
 		84ECED0F26304DFB00ACD1B5 /* DocumentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoViewController.swift; sourceTree = "<group>"; };
@@ -563,6 +573,7 @@
 				84ECED1B26305C5C00ACD1B5 /* Date+Extensions.swift */,
 				84ECED3226307BED00ACD1B5 /* Bundle+Extensions.swift */,
 				841956752631AB28003A55BD /* Array+Extension.swift */,
+				84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -601,6 +612,7 @@
 		0CC9573725A8656900A3458B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				840DEA5426284CBC0033A2D8 /* KYCContainer.swift */,
 				0CC9573825A8657D00A3458B /* SessionInfoProvider.swift */,
 			);
 			path = Persistence;
@@ -713,6 +725,8 @@
 		0CE4A8E325A3688B00114CBD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				847242EA2631D54A00CC8DE6 /* Common */,
+				847242DA2631D3D400CC8DE6 /* Upload */,
 				0CE4A8E425A368AD00114CBD /* Abstractions */,
 				0C527E5525AC4BB900B6D5DB /* BankVerification */,
 				847D429C260BCBA30067ED63 /* Document */,
@@ -1013,6 +1027,24 @@
 				845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */,
 			);
 			path = PageCell;
+			sourceTree = "<group>";
+		};
+		847242DA2631D3D400CC8DE6 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				847242E52631D47500CC8DE6 /* UploadViewModel.swift */,
+				847242DB2631D3E500CC8DE6 /* UploadViewController.swift */,
+				847242DC2631D3E500CC8DE6 /* UploadViewController.xib */,
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		847242EA2631D54A00CC8DE6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				847242EB2631D55700CC8DE6 /* BaseFourthlineViewModel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		847D429C260BCBA30067ED63 /* Document */ = {
@@ -1362,6 +1394,7 @@
 				840DEA612628529B0033A2D8 /* DocumentPickerViewController.xib in Resources */,
 				84281695261F02E000A7BE37 /* InfoStatusView.xib in Resources */,
 				840DEA472628351F0033A2D8 /* SelfieResultOverlayView.xib in Resources */,
+				847242DE2631D3E500CC8DE6 /* UploadViewController.xib in Resources */,
 				0C527E6F25AC947700B6D5DB /* Assets.xcassets in Resources */,
 				8423EFF2262B2A120092F003 /* DocumentScannerResultView.xib in Resources */,
 				84ECED1226304DFB00ACD1B5 /* DocumentInfoViewController.xib in Resources */,
@@ -1575,6 +1608,7 @@
 				0CCD106425C9933A00251C65 /* Identification.swift in Sources */,
 				0CC25BBD25A4AB2100D839AB /* CodeEntryView.swift in Sources */,
 				0C12CAA825A783AF0032B520 /* VerificationService.swift in Sources */,
+				84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */,
 				8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */,
 				0C12CAAE25A784220032B520 /* MobileNumberTANRequest.swift in Sources */,
 				0C4B67DA259B228400190C4E /* IdentificationProgressView.swift in Sources */,
@@ -1604,6 +1638,7 @@
 				0C007F0425D52A4E003D42B3 /* PopUpWindowViewController.swift in Sources */,
 				841F376A26298FF500D56361 /* DocumentTypeCell.swift in Sources */,
 				841C81B226036B5600F4A079 /* Router.swift in Sources */,
+				847242DD2631D3E500CC8DE6 /* UploadViewController.swift in Sources */,
 				840DEA422628350F0033A2D8 /* SelfieResultOverlayView.swift in Sources */,
 				0C7FD34325D29AF600A6CC28 /* DownloadDocumentsButton.swift in Sources */,
 				84E0CF0E262EF6B100DE0C09 /* DocumentScanner+Extensions.swift in Sources */,
@@ -1625,10 +1660,12 @@
 				0CC9574725A8733400A3458B /* MobileNumberAuthorizeRequest.swift in Sources */,
 				841956832631B222003A55BD /* LocationViewModel.swift in Sources */,
 				8440C565262F55E0001B8E39 /* DocumentScannerAssetSizing.swift in Sources */,
+				847242EC2631D55700CC8DE6 /* BaseFourthlineViewModel.swift in Sources */,
 				0CC25B8F25A4686700D839AB /* Body.swift in Sources */,
 				0CE4A8F625A3703600114CBD /* String+Attributes.swift in Sources */,
 				840DEA7726288F420033A2D8 /* StepsProgressView.swift in Sources */,
 				0C1B430B25ADB19A004FFF46 /* UIImage+SDK.swift in Sources */,
+				847242E62631D47500CC8DE6 /* UploadViewModel.swift in Sources */,
 				0C9E56E925C0358500D68B96 /* DocumentTableViewCell.swift in Sources */,
 				84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */,
 				842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */,

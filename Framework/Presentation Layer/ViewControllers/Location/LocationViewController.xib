@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationViewController" customModule="IdentHubSDK" customModuleProvider="target">
             <connections>
                 <outlet property="continueBtn" destination="kiq-4P-RkI" id="Jjh-lh-UBC"/>
+                <outlet property="descriptionLbl" destination="zPf-pg-sv7" id="Gwq-yA-nCx"/>
                 <outlet property="quitBtn" destination="Dl1-er-26w" id="YVa-mG-9Fz"/>
                 <outlet property="stepsProgressView" destination="cuV-E2-H6n" id="PEz-OY-gf7"/>
                 <outlet property="titleLbl" destination="los-4i-yxc" id="Tlr-YV-SBM"/>
@@ -65,21 +66,42 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didClickContinue:" destination="-1" eventType="touchUpInside" id="BQV-lc-Z08"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen in progress..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xty-ec-cbo">
-                    <rect key="frame" x="122.5" y="437.5" width="169" height="21"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" name="black75"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_background" translatesAutoresizingMaskIntoConstraints="NO" id="SSX-Dx-2ws">
+                    <rect key="frame" x="72" y="246" width="270" height="270"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="270" id="sbE-a1-WZz"/>
+                        <constraint firstAttribute="width" constant="270" id="tWa-Y4-ZSO"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin_map" translatesAutoresizingMaskIntoConstraints="NO" id="deQ-XD-0My">
+                    <rect key="frame" x="146" y="320" width="122" height="122"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="122" id="E3o-AR-2ax"/>
+                        <constraint firstAttribute="height" constant="122" id="eKh-H4-ZdQ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need your device location to continue." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPf-pg-sv7">
+                    <rect key="frame" x="20" y="177" width="271" height="18"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" name="black50"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="cxS-uE-mPH"/>
             <color key="backgroundColor" name="black0"/>
             <constraints>
+                <constraint firstItem="SSX-Dx-2ws" firstAttribute="centerX" secondItem="fTf-LC-6At" secondAttribute="centerX" id="1sS-km-e61"/>
                 <constraint firstItem="cuV-E2-H6n" firstAttribute="top" secondItem="cxS-uE-mPH" secondAttribute="top" constant="20" id="3Gk-nI-8em"/>
                 <constraint firstItem="Dl1-er-26w" firstAttribute="leading" secondItem="cxS-uE-mPH" secondAttribute="leading" constant="20" id="3eP-sD-HOx"/>
                 <constraint firstItem="cxS-uE-mPH" firstAttribute="bottom" secondItem="Dl1-er-26w" secondAttribute="bottom" constant="20" id="8bN-8f-DOq"/>
+                <constraint firstItem="zPf-pg-sv7" firstAttribute="leading" secondItem="cxS-uE-mPH" secondAttribute="leading" constant="20" id="9eS-zf-htR"/>
                 <constraint firstItem="cxS-uE-mPH" firstAttribute="trailing" secondItem="Dl1-er-26w" secondAttribute="trailing" constant="20" id="EjX-oq-cO2"/>
+                <constraint firstItem="deQ-XD-0My" firstAttribute="centerX" secondItem="SSX-Dx-2ws" secondAttribute="centerX" id="GGn-Un-f0D"/>
+                <constraint firstItem="SSX-Dx-2ws" firstAttribute="centerY" secondItem="fTf-LC-6At" secondAttribute="centerY" multiplier="0.85" id="LaN-88-CvY"/>
                 <constraint firstItem="kiq-4P-RkI" firstAttribute="leading" secondItem="Dl1-er-26w" secondAttribute="leading" id="Na7-72-8FF"/>
                 <constraint firstItem="Dl1-er-26w" firstAttribute="top" secondItem="kiq-4P-RkI" secondAttribute="bottom" constant="5" id="PIR-zt-A4T"/>
                 <constraint firstItem="los-4i-yxc" firstAttribute="top" secondItem="cuV-E2-H6n" secondAttribute="bottom" constant="40" id="Pru-Tx-htL"/>
@@ -87,15 +109,20 @@
                 <constraint firstItem="cuV-E2-H6n" firstAttribute="leading" secondItem="cxS-uE-mPH" secondAttribute="leading" constant="20" id="dqA-Bd-r4m"/>
                 <constraint firstItem="kiq-4P-RkI" firstAttribute="trailing" secondItem="Dl1-er-26w" secondAttribute="trailing" id="eZI-Ic-w86"/>
                 <constraint firstItem="cxS-uE-mPH" firstAttribute="trailing" secondItem="cuV-E2-H6n" secondAttribute="trailing" constant="20" id="gB1-UN-IYk"/>
-                <constraint firstItem="Xty-ec-cbo" firstAttribute="centerY" secondItem="fTf-LC-6At" secondAttribute="centerY" id="xfs-z6-4f8"/>
-                <constraint firstItem="Xty-ec-cbo" firstAttribute="centerX" secondItem="fTf-LC-6At" secondAttribute="centerX" id="xva-tA-AZJ"/>
+                <constraint firstItem="zPf-pg-sv7" firstAttribute="top" secondItem="los-4i-yxc" secondAttribute="bottom" constant="40" id="iGI-zW-261"/>
+                <constraint firstItem="deQ-XD-0My" firstAttribute="centerY" secondItem="SSX-Dx-2ws" secondAttribute="centerY" id="vPf-CQ-HbK"/>
             </constraints>
             <point key="canvasLocation" x="306" y="78"/>
         </view>
     </objects>
     <resources>
+        <image name="circle_background" width="228" height="228"/>
+        <image name="pin_map" width="103" height="99"/>
         <namedColor name="black0">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black50">
+            <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black75">
             <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

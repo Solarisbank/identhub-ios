@@ -4,28 +4,44 @@
 //
 
 import Foundation
+import MapKit
 
-final class LocationViewModel {
+final class LocationViewModel: BaseFourthlineViewModel {
 
-    // MARK: - Private attributes -
-    private var coordinator: FourthlineIdentCoordinator
-
-    // MARK: - Init methods -
-    init (_ coordinator: FourthlineIdentCoordinator) {
-        self.coordinator = coordinator
-    }
+    // MARK: - Public attributes -
+    var onUpdateLocation: ((Bool) -> Void)?
+    var onDisplayError: ((Error?) -> Void)?
 
     // MARK: - Public methods -
 
-    func didTriggerQuit() {
-        coordinator.perform(action: .quit)
+    func startLocationHandler() {
+        onUpdateLocation?(false)
+
+        LocationManager.shared.requestLocationAuthorization {
+            LocationManager.shared.requestDeviceLocation { [weak self] location, error in
+                guard let location = location else {
+
+                    if let errorHandler = self?.onDisplayError {
+                        errorHandler(error)
+                    }
+                    return
+                }
+
+                KYCContainer.shared.update(location: location)
+
+                DispatchQueue.main.async {
+                    self?.onUpdateLocation?(true)
+                }
+            }
+        }
+    }
+
+    func didTriggerContinue() {
+        coordinator.perform(action: .upload)
     }
 }
 
 extension LocationViewModel: StepsProgressViewDataSource {
-    func stepsCount() -> Int {
-        4
-    }
 
     func currentStep() -> Int {
         FourthlineSteps.location.rawValue

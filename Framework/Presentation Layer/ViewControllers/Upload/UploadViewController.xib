@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UploadViewController" customModule="IdentHubSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLbl" destination="poI-Ui-QUt" id="NDX-lm-iZQ"/>
+                <outlet property="stepProgressView" destination="om9-VO-Stg" id="Q38-ZS-3y9"/>
+                <outlet property="titleLbl" destination="wUL-Vg-1nr" id="Gx5-V3-Tzw"/>
+                <outlet property="view" destination="Xw9-2A-5z5" id="U0u-v2-F0U"/>
+            </connections>
+        </placeholder>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Xw9-2A-5z5">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="om9-VO-Stg" customClass="StepsProgressView" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="20" y="64" width="374" height="4"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="vPB-sm-FAX"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data upload" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUL-Vg-1nr">
+                    <rect key="frame" x="20" y="108" width="135.5" height="29"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                    <color key="textColor" name="black75"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODa-Ju-IjH">
+                    <rect key="frame" x="20" y="792" width="374" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="AEO-DK-nYp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal" title="Quit">
+                        <color key="titleColor" red="0.058823529409999999" green="0.098039215690000001" blue="0.14901960780000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="didClickQuit:" destination="-1" eventType="touchUpInside" id="0ZV-Hl-9Iy"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your data is being uploaded…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poI-Ui-QUt">
+                    <rect key="frame" x="20" y="177" width="195.5" height="18"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" name="black50"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screen in progress..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSF-QY-BAY">
+                    <rect key="frame" x="122.5" y="437.5" width="169" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" name="black75"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Wgf-rW-RKP"/>
+            <color key="backgroundColor" name="black0"/>
+            <constraints>
+                <constraint firstItem="Wgf-rW-RKP" firstAttribute="trailing" secondItem="ODa-Ju-IjH" secondAttribute="trailing" constant="20" id="14f-Av-27j"/>
+                <constraint firstItem="ODa-Ju-IjH" firstAttribute="leading" secondItem="Wgf-rW-RKP" secondAttribute="leading" constant="20" id="J3F-kl-ltk"/>
+                <constraint firstItem="om9-VO-Stg" firstAttribute="top" secondItem="Wgf-rW-RKP" secondAttribute="top" constant="20" id="Mr4-an-o1m"/>
+                <constraint firstItem="vSF-QY-BAY" firstAttribute="centerX" secondItem="Xw9-2A-5z5" secondAttribute="centerX" id="OnP-2Y-Vzc"/>
+                <constraint firstItem="Wgf-rW-RKP" firstAttribute="trailing" secondItem="om9-VO-Stg" secondAttribute="trailing" constant="20" id="W15-tb-onb"/>
+                <constraint firstItem="poI-Ui-QUt" firstAttribute="leading" secondItem="Wgf-rW-RKP" secondAttribute="leading" constant="20" id="Yrg-fb-eew"/>
+                <constraint firstItem="vSF-QY-BAY" firstAttribute="centerY" secondItem="Xw9-2A-5z5" secondAttribute="centerY" id="Z89-nK-T3Q"/>
+                <constraint firstItem="Wgf-rW-RKP" firstAttribute="bottom" secondItem="ODa-Ju-IjH" secondAttribute="bottom" constant="20" id="b22-Sv-uSy"/>
+                <constraint firstItem="poI-Ui-QUt" firstAttribute="top" secondItem="wUL-Vg-1nr" secondAttribute="bottom" constant="40" id="ctF-pt-scf"/>
+                <constraint firstItem="wUL-Vg-1nr" firstAttribute="leading" secondItem="Wgf-rW-RKP" secondAttribute="leading" constant="20" id="rqU-af-hlD"/>
+                <constraint firstItem="om9-VO-Stg" firstAttribute="leading" secondItem="Wgf-rW-RKP" secondAttribute="leading" constant="20" id="sCS-1r-ynk"/>
+                <constraint firstItem="wUL-Vg-1nr" firstAttribute="top" secondItem="om9-VO-Stg" secondAttribute="bottom" constant="40" id="v1r-Mh-jLN"/>
+            </constraints>
+            <point key="canvasLocation" x="306" y="78"/>
+        </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+    </objects>
+    <resources>
+        <namedColor name="black0">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black50">
+            <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black75">
+            <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

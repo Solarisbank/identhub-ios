@@ -11,11 +11,10 @@ let documentTypeCellID = "documentTypeCellID"
 
 /// Document scanner view model
 /// Class used for saving scanned data
-final class DocumentPickerViewModel: NSObject {
+final class DocumentPickerViewModel: BaseFourthlineViewModel {
 
     // MARK: - Properties -
-    private var flowCoordinator: FourthlineIdentCoordinator
-    private var documentsContent: [ScanDocumentType]
+    private var documentsContent: [ScanDocumentType] = []
     private var documentTypeDDM: DocumentTypesDDM?
     private var selectedDocument: DocumentType? {
         didSet {
@@ -25,17 +24,11 @@ final class DocumentPickerViewModel: NSObject {
 
     var updateButtons: (() -> Void)?
 
-    /// Init method with flow coordinator
-    /// - Parameter flowCoordinator: identification process flow coordinator
-    init(flowCoordinator: FourthlineIdentCoordinator) {
-        self.flowCoordinator = flowCoordinator
-        self.documentsContent = DocumentPickerViewModel.buildDocumentsContent()
-    }
-
     // MARK: - Public methods -
 
     func configureDocumentsTable(for table: UITableView) {
 
+        documentsContent = buildDocumentsContent()
         documentTypeDDM = DocumentTypesDDM(documentsContent, output: self)
 
         let cellNib = UINib(nibName: "DocumentTypeCell", bundle: Bundle(for: DocumentPickerViewModel.self))
@@ -53,19 +46,14 @@ final class DocumentPickerViewModel: NSObject {
     func startDocumentScanner() {
         guard let type = selectedDocument else { return }
 
-        flowCoordinator.perform(action: .documentScanner(type: type))
-    }
-
-    func dismissScanner() {
-        flowCoordinator.perform(action: .quit)
+        coordinator.perform(action: .documentScanner(type: type))
     }
 }
 
 // MARK: - Internal methods -
 extension DocumentPickerViewModel {
 
-    static func buildDocumentsContent () -> [ScanDocumentType] {
-
+    func buildDocumentsContent () -> [ScanDocumentType] {
         let passportDocument = ScanDocumentType(name: Localizable.DocumentScanner.passport, logo: UIImage(named: "passport_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .passport)
         let idCard = ScanDocumentType(name: Localizable.DocumentScanner.idCard, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .idCard)
 
@@ -74,10 +62,6 @@ extension DocumentPickerViewModel {
 }
 
 extension DocumentPickerViewModel: StepsProgressViewDataSource {
-
-    func stepsCount() -> Int {
-        4
-    }
 
     func currentStep() -> Int {
         FourthlineSteps.document.rawValue

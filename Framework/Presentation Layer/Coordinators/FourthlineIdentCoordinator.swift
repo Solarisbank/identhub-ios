@@ -23,8 +23,9 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case selfie // Make a selfie step
         case documentPicker // Present document picker step
         case documentScanner(type: DocumentType) // Present document scanner for document with type: passport, idCard, etc.
-        case documentInfo
-        case location
+        case documentInfo // Verify and confirm scanned document detail
+        case location // Fetch device location coordinates
+        case upload // Upload collected data to the server
         case quit // Quit from identification process
     }
 
@@ -55,6 +56,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentDocumentInfoConfirmation()
         case .location:
             presentLocationTracker()
+        case .upload:
+            presentDataUploader()
         case .quit:
             quit()
         }
@@ -97,7 +100,7 @@ extension FourthlineIdentCoordinator {
     }
 
     private func presentDocumentPicker() {
-        let documentPickerVM = DocumentPickerViewModel(flowCoordinator: self)
+        let documentPickerVM = DocumentPickerViewModel(self)
         let documentPickerVC = DocumentPickerViewController(documentPickerVM)
 
         presenter.push(documentPickerVC, animated: true, completion: nil)
@@ -124,6 +127,13 @@ extension FourthlineIdentCoordinator {
         let locationVC = LocationViewController(locationVM)
 
         presenter.push(locationVC, animated: true, completion: nil)
+    }
+
+    private func presentDataUploader() {
+        let uploadVM = UploadViewModel(self)
+        let uploadVC = UploadViewController(uploadVM)
+
+        presenter.push(uploadVC, animated: true, completion: nil)
     }
 
     // MARK: - Permission methods -

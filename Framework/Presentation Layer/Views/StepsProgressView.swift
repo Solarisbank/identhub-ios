@@ -6,6 +6,7 @@
 import UIKit
 
 let viewsPadding = 5
+let stepsAmount = 4
 
 /// Identificaiton progress step views
 /// Used for informing user how many steps was passed
@@ -115,6 +116,10 @@ protocol StepsProgressViewDataSource {
 
 extension StepsProgressViewDataSource {
 
+    func stepsCount() -> Int {
+        return stepsAmount
+    }
+  
     func stepViewPadding() -> Int {
         return viewsPadding
     }

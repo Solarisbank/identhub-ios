@@ -228,7 +228,7 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
     }
 
     private func displayScannerError() {
-        let alert = UIAlertController(title: "Document scan failed", message: "It was not possible to scan your document.\n\nThis process is mandatory for your onboarding process.", preferredStyle: .alert)
+        let alert = UIAlertController(title: Localizable.DocumentScanner.Error.alertTitle, message: Localizable.DocumentScanner.Error.alertMessage, preferredStyle: .alert)
 
         let tryAgainAction = UIAlertAction(title: "Try again", style: .default, handler: { [self] _ in
             documentScanner.resetScanner()

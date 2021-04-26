@@ -47,8 +47,8 @@ class DocumentPickerViewController: SolarisViewController {
     }
 
     @IBAction func didClickQuit(_ sender: UIButton) {
-
-        viewModel.dismissScanner()
+      
+        viewModel.didTriggerQuit()
     }
 
     // MARK: - Internal methods -

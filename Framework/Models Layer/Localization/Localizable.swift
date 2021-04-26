@@ -215,6 +215,8 @@ enum Localizable {
         enum Error {
             static let scannerInterrupted = "Scanner was interrupted"
             static let timeout = "Scan timed out"
+            static let alertTitle = "Document scan failed"
+            static let alertMessage = "It was not possible to scan your document.\n\nThis process is mandatory for your onboarding process."
         }
 
         enum Information {
@@ -223,6 +225,16 @@ enum Localizable {
             static let birth = "date of birth"
             static let expire = "document expiry date"
             static let warning = "Please confirm if your data derived properly from the document scan"
+        }
+    }
+
+    enum Location {
+        static let title = "Device location"
+        static let description = "We need your device location to continue."
+
+        enum Error {
+            static let title = "Device location failed"
+            static let message = "It was not possible to obtain your device location.\n\nThis process is mandatory for your onboarding process.\nPlease check location settings."
         }
     }
 }
