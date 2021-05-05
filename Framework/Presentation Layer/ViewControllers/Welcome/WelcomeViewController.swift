@@ -14,6 +14,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet var pageScroller: UICollectionView!
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var logoFrame: UIImageView!
+    @IBOutlet var startBtn: UIButton!
 
     private var viewModel: WelcomeViewModel
     private lazy var logoAnimator: WelcomeLogoAnimator = {
@@ -42,6 +43,7 @@ class WelcomeViewController: UIViewController {
     }
 
     // MARK: - Internal methods -
+
     private func configureUI() {
 
         pageController.subviews.forEach {
@@ -54,8 +56,8 @@ class WelcomeViewController: UIViewController {
     }
 
     // MARK: - Actions methods -
+
     @IBAction func didClickStartBtn(_ sender: UIButton) {
         viewModel.didTriggerStart()
     }
-
 }

@@ -6,7 +6,7 @@
 import UIKit
 import FourthlineCore
 
-/// Identifier of the document type table cells
+/// Identifier of the document info item table cells
 let documentInfoCellID = "documentInfoCellID"
 
 final class DocumentInfoViewModel: BaseFourthlineViewModel {

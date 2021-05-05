@@ -119,7 +119,7 @@ extension StepsProgressViewDataSource {
     func stepsCount() -> Int {
         return stepsAmount
     }
-  
+
     func stepViewPadding() -> Int {
         return viewsPadding
     }

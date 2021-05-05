@@ -18,7 +18,6 @@ class FourthlineIdentCoordinator: BaseCoordinator {
 
     /// The list of all available actions.
     enum Action {
-        case termsAndConditions // Privacy statement and Terms-Conditions screen
         case welcome // Welcome screen with all instructions
         case selfie // Make a selfie step
         case documentPicker // Present document picker step
@@ -26,15 +25,28 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case documentInfo // Verify and confirm scanned document detail
         case location // Fetch device location coordinates
         case upload // Upload collected data to the server
+        case confirmation // Confirm or fail user identification request
         case quit // Quit from identification process
+    }
+
+    // MARK: - Properties -
+    private let appDependencies: AppDependencies
+
+    // MARK: - Init methods -
+
+    init(appDependencies: AppDependencies, presenter: Router) {
+
+        self.appDependencies = appDependencies
+
+        super.init(presenter: presenter)
     }
 
     // MARK: - Coordinator methods -
 
     /// Method starts Fourthline identificaiton process
     /// - Parameter completion: completion handler with success or failure parameter, used for updating users UI
-    override func start(completion: @escaping CompletionHandler) {
-        perform(action: .termsAndConditions)
+    override func start(_ completion: @escaping CompletionHandler) {
+        perform(action: .welcome)
     }
 
     /// Performs a specified Fourthline identifiaction action.
@@ -42,8 +54,6 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     func perform(action: FourthlineIdentCoordinator.Action) {
 
         switch action {
-        case .termsAndConditions:
-            presentPrivacyTermsScreen()
         case .welcome:
             presentWelcomeScreen()
         case .selfie:
@@ -58,6 +68,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentLocationTracker()
         case .upload:
             presentDataUploader()
+        case .confirmation:
+            print("Present confirmation screen")
         case .quit:
             quit()
         }
@@ -66,16 +78,9 @@ class FourthlineIdentCoordinator: BaseCoordinator {
 
 // MARK: - Private methods -
 
-extension FourthlineIdentCoordinator {
+private extension FourthlineIdentCoordinator {
 
     // MARK: - Navigation methods -
-
-    private func presentPrivacyTermsScreen() {
-        let termsVM = TermsViewModel(flowCoordinator: self)
-        let termsVC = TermsViewController(termsVM)
-
-        presenter.push(termsVC, animated: false, completion: nil)
-    }
 
     private func presentWelcomeScreen() {
         let welcomeVM = WelcomeViewModel(flowCoordinator: self)
@@ -88,7 +93,9 @@ extension FourthlineIdentCoordinator {
         requestPermissions { isPassed in
             guard isPassed else { return }
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let `self` = self else { return }
+
                 let selfieVM = SelfieViewModel(flowCoordinator: self)
                 let selfieVC = SelfieViewController()
 
@@ -130,8 +137,8 @@ extension FourthlineIdentCoordinator {
     }
 
     private func presentDataUploader() {
-        let uploadVM = UploadViewModel(self)
-        let uploadVC = UploadViewController(uploadVM)
+        let uploadVM = RequestsViewModel(appDependencies.verificationService, storage: appDependencies.sessionInfoProvider, type: .uploadData, fourthlineCoordinator: self)
+        let uploadVC = RequestsViewController(uploadVM)
 
         presenter.push(uploadVC, animated: true, completion: nil)
     }
@@ -139,12 +146,11 @@ extension FourthlineIdentCoordinator {
     // MARK: - Permission methods -
     func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
 
-        AVCaptureDevice.requestAccess(for: .video) { granted in
+        AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
             guard granted else {
                 DispatchQueue.main.async {
-                    self.showCameraPermissionAlert()
+                    self?.showCameraPermissionAlert()
                 }
-                print(Localizable.Camera.errorMessage)
                 completionHandler(false)
                 return
             }

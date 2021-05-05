@@ -27,10 +27,7 @@ class ViewController: UIViewController {
     // MARK: - Action methods -
 
     @IBAction func startBankIdentSDK(_ sender: Any) {
-        startIdentProcess(.bankID)
-    }
-    @IBAction func startFourthlineIdentSDK(_ sender: Any) {
-        startIdentProcess(.fouthline)
+        startIdentProcess()
     }
 
     // MARK: - Internal methods -
@@ -42,15 +39,18 @@ class ViewController: UIViewController {
 
         sessionURLTV.text = placeholderText
         sessionURLTV.textColor = .lightGray
+
+        // TODO: - Delete for PR -
+        sessionURLTV.text = "https://person-onboarding.solaris-staging.de/9AXlUH0ptsZoFef2n8LKiptBCYwsSwMIk7o52W0MJoX9eylEgJUya6H1JmHumyNSxk1BtWwEvZb95saX-kUp8MmI84Dfm-ER_x-xD_QwlaByNLdUFjo0S6b_FsBnVdzi"
     }
 
-    private func startIdentProcess( _ type: IdentificationSessionType) {
+    private func startIdentProcess() {
         statusView.isHidden = true
 
         do {
             let identHubManager = try IdentHubSession(rootViewController: self, sessionURL: sessionURLTV.text)
 
-            identHubManager.start(type, delegate: self)
+            identHubManager.start(self)
         } catch let err as IdentSessionURLError {
             switch err {
             case .invalidSessionURL:

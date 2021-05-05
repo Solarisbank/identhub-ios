@@ -60,7 +60,6 @@ opt_in_rules:
   - weak_delegate
 
   # Medium importance rules
-  - array_init
   - closing_brace
   - closure_end_indentation
   - closure_parameter_position
@@ -189,5 +188,6 @@ disabled_rules:
   - quick_discouraged_call
   - quick_discouraged_focused_test
   - quick_discouraged_pending_test
+  - array_init
 
 # Remember that you can customize this configuration file as much as you want.

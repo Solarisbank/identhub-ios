@@ -19,7 +19,7 @@ internal class BaseCoordinator: Coordinator {
     }
 
     // MARK: - Public methods -
-    func start(completion: @escaping CompletionHandler) {}
+    func start(_ completion: @escaping CompletionHandler) {}
 
     // MARK: - Internal methods -
     internal func pop() {

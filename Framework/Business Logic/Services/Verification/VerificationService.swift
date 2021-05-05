@@ -22,6 +22,26 @@ final class VerificationService {
 
     // MARK: Public methods
 
+    /// Method defined what the identification method should execute
+    /// - Parameter completionHandler: Response with enabled identification methods
+    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, APIError>) -> Void) {
+
+        do {
+            let request = try IdentificationMethodRequest(sessionToken: sessionInfoProvider.sessionToken)
+
+            apiClient.execute(request: request, answerType: IdentificationMethod.self) { result in
+                completionHandler(result)
+            }
+        } catch RequestError.emptySessionID {
+            completionHandler(.failure(APIError.requestError))
+            print("Fail with init mobile number authorization request. Session token is empty")
+        } catch {
+            completionHandler(.failure(APIError.requestError))
+            print("Unexpected init mobile number auth request: \(error)")
+        }
+
+    }
+
     /// Authorize mobile number and send sms with a TAN.
     ///
     /// - Parameter completionHandler: Response back if the verification was successful.
@@ -164,6 +184,28 @@ final class VerificationService {
         }
     }
 
+    /// Get Fourthline indentification data.
+    ///
+    /// - Parameter completionHandler: Response back if the fourthline detail.
+    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void) {
+        do {
+            let request = try FourthlineIdentificationRequest(sessionToken: sessionInfoProvider.sessionToken)
+
+            apiClient.execute(request: request, answerType: FourthlineIdentification.self) { result in
+                completionHandler(result)
+            }
+        } catch RequestError.emptySessionToken {
+            completionHandler(.failure(APIError.requestError))
+            print("Init of the Fourthline identification request fails, session token is empty")
+        } catch RequestError.emptyIUID {
+            completionHandler(.failure(APIError.requestError))
+            print("Init of the Fourthline identification request fails, the id of the current identification is empty")
+        } catch {
+            completionHandler(.failure(APIError.requestError))
+            print("Unexpected init Fourthline identification request: \(error)")
+        }
+    }
+
     /// Get document.
     ///
     /// - Parameters:
@@ -185,6 +227,49 @@ final class VerificationService {
         } catch {
             completionHandler(.failure(APIError.requestError))
             print("Unexpected init mobile number auth request: \(error)")
+        }
+    }
+
+    /// Method uploaded zip file with person kyc data
+    /// - Parameters:
+    ///   - fileURL: url of the file location
+    ///   - completionHandler: Response back with uploaded document status
+    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, APIError>) -> Void) {
+
+        do {
+            let request = try UploadKYCRequest(sessionToken: sessionInfoProvider.sessionToken, sessionID: sessionInfoProvider.identificationUID ?? "", fileURL: fileURL)
+
+            apiClient.execute(request: request, answerType: UploadFourthlineZip.self) { result in
+                completionHandler(result)
+            }
+        } catch RequestError.emptySessionToken {
+            completionHandler(.failure(APIError.requestError))
+            print("Upload zip file request fails, the token of the current session is empty")
+        } catch RequestError.emptySessionID {
+            completionHandler(.failure(APIError.requestError))
+            print("Upload zip file request fails, the ID of the current session is empty")
+        } catch {
+            completionHandler(.failure(APIError.requestError))
+            print("Unexpected upload fourthline zip request: \(error)")
+        }
+    }
+
+    func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void) {
+        do {
+            let request = try PersonDataRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
+
+            apiClient.execute(request: request, answerType: PersonData.self) { result in
+                completion(result)
+            }
+        } catch RequestError.emptySessionToken {
+            completion(.failure(APIError.requestError))
+            print("Fetch person data request fails, the token of the current session is empty")
+        } catch RequestError.emptySessionID {
+            completion(.failure(APIError.requestError))
+            print("Fetch person data request fails, the ID of the person is empty")
+        } catch {
+            completion(.failure(APIError.requestError))
+            print("Unexpected fetch person data request: \(error)")
         }
     }
 }

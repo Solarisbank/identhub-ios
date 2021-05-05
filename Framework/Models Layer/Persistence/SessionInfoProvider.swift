@@ -5,6 +5,10 @@
 
 import Foundation
 
+enum IdentificationType {
+    case bank, fourthline, idnow
+}
+
 /// Describes entity capable of providing information about the session.
 protocol SessionInfoProvider: AnyObject {
 
@@ -22,6 +26,9 @@ protocol SessionInfoProvider: AnyObject {
 
     /// Successful identification status
     var isSuccessful: Bool? { get set }
+
+    /// Type of the initiated identification
+    var identificationType: IdentificationType? { get set }
 
     /// Clears currently stored data.
     func clear()
@@ -46,6 +53,9 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
 
     /// - SeeAlso: SessionInfoProvider.isSuccessful
     var isSuccessful: Bool?
+
+    /// - SeeAlso: SessionInfoProvider.identificationType
+    var identificationType: IdentificationType?
 
     // MARK: Init
 

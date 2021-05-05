@@ -78,6 +78,7 @@ final class DefaultAPIClient: APIClient {
         switch response.statusCode {
         case 200:
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMdd)
             if let decodedData = try? decoder.decode(DataType.self, from: data) {
                 return .success(decodedData)
             } else {

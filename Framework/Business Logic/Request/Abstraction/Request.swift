@@ -43,6 +43,8 @@ extension Request {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
                 ]
+            case .data:
+                return [:]
             }
         }
     }

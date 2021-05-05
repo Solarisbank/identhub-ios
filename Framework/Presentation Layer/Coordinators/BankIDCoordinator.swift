@@ -84,7 +84,7 @@ class BankIDCoordinator: BaseCoordinator {
     }
 
     // MARK: - Coordinator methods -
-    override func start(completion: @escaping CompletionHandler) {
+    override func start(_ completion: @escaping CompletionHandler) {
         perform(action: .startIdentification)
         completionHandler = completion
     }

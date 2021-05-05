@@ -113,6 +113,14 @@ enum Localizable {
         static let finish = "Finish"
     }
 
+    enum Initial {
+        static let title = "Initiate"
+        static let description = ""
+        static let define = "Define identification method..."
+        static let register = "Register identification method..."
+        static let prefetch = "Prefetch data..."
+    }
+
     enum TermsConditions {
         static let description = "In order to proceed, please carefully read and agree to the Privacy Statement and Terms & Conditions policies"
         static let privacyText = "Privacy Statement"
@@ -236,5 +244,39 @@ enum Localizable {
             static let title = "Device location failed"
             static let message = "It was not possible to obtain your device location.\n\nThis process is mandatory for your onboarding process.\nPlease check location settings."
         }
+    }
+
+    enum Upload {
+        static let title = "Data upload"
+        static let description = "Your data is being uploaded..."
+        static let uploading = "Uploading..."
+        static let preparation = "Prepare upload data..."
+    }
+
+    enum Zipper {
+
+        enum Error {
+            static let kycIsNotValid = "KYC object is not valid, because of:"
+            static let zipFoundationNotImported = "ZIPFoundation framework in not imported into project"
+            static let zipExceedMaximumSize = "ZIP file exceeding the maximum file size, please check the API documentation"
+            static let cannotCreateZip = "Cannot create the Zip"
+            static let notEnoughSpace = "Not enough space"
+            static let unknown = "Unexpected error occurred"
+            static let alertTitle = "ZIP creation failed"
+        }
+    }
+
+    enum APIErrorDesc {
+        static let malformedResponseJson = "Indicates that string received in the response couldn't been parsed."
+        static let clientError = "Infidicates the error on the client's side."
+        static let authorizationFailed = "Indicates that authorization failed."
+        static let unauthorizedAction = "Action has not been authorized."
+        static let expectationMismatch = "Data mismatch."
+        static let incorrectIdentificationStatus = "The identification status was not allowed to proceed with the action."
+        static let unprocessableEntity = "Data invalid or expired."
+        static let internalServerError = "Indicates the internal server error."
+        static let requestError = "Indicates build request error."
+        static let unknownError = "Indicates that api client encountered an error not listed above."
+        static let resourceNotFound = "Resource has not been found."
     }
 }

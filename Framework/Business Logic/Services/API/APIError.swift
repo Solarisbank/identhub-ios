@@ -31,3 +31,33 @@ public enum APIError: Error {
     case requestError
     case unknownError
 }
+
+extension APIError {
+
+    func text() -> String {
+        switch self {
+        case .malformedResponseJson:
+            return Localizable.APIErrorDesc.malformedResponseJson
+        case .clientError:
+            return Localizable.APIErrorDesc.clientError
+        case.authorizationFailed:
+            return Localizable.APIErrorDesc.authorizationFailed
+        case .unauthorizedAction:
+            return Localizable.APIErrorDesc.unauthorizedAction
+        case .expectationMismatch:
+            return Localizable.APIErrorDesc.expectationMismatch
+        case .incorrectIdentificationStatus:
+            return Localizable.APIErrorDesc.incorrectIdentificationStatus
+        case .unprocessableEntity:
+            return Localizable.APIErrorDesc.unprocessableEntity
+        case .internalServerError:
+            return Localizable.APIErrorDesc.internalServerError
+        case .requestError:
+            return Localizable.APIErrorDesc.requestError
+        case .unknownError:
+            return Localizable.APIErrorDesc.unknownError
+        case .resourceNotFound:
+            return Localizable.APIErrorDesc.resourceNotFound
+        }
+    }
+}

@@ -17,12 +17,12 @@ protocol TermsViewModelDelegate: AnyObject {
 final internal class TermsViewModel: NSObject {
 
     // MARK: - Properties -
-    private let flowCoordinator: FourthlineIdentCoordinator
+    private let coordinator: IdentificationCoordinator
     weak var delegate: TermsViewModelDelegate?
 
     // MARK: - Init -
-    init(flowCoordinator: FourthlineIdentCoordinator) {
-        self.flowCoordinator = flowCoordinator
+    init(coordinator: IdentificationCoordinator) {
+        self.coordinator = coordinator
     }
 
     // MARK: - Public methods -
@@ -40,12 +40,12 @@ final internal class TermsViewModel: NSObject {
 
     /// Start Fourthline identification process
     func continueProcess() {
-        flowCoordinator.perform(action: .welcome)
+        coordinator.perform(action: .identification)
     }
 
     /// Quit the flow
     func quit() {
-        flowCoordinator.perform(action: .quit)
+        coordinator.perform(action: .quit)
     }
 
     // MARK: - Internal methods -

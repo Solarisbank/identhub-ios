@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "completion_checkmark.pdf",
       "idiom" : "universal"
     }
   ],

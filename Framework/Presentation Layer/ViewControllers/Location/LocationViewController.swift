@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import FourthlineKYC
 
 class LocationViewController: UIViewController {
 

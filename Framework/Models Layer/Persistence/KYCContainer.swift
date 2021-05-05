@@ -22,7 +22,12 @@ final class KYCContainer {
         kycInfo.selfie?.image = data.image.full
         kycInfo.selfie?.location = data.metadata.location
         kycInfo.selfie?.timestamp = data.metadata.timestamp
-        kycInfo.selfie?.videoUrl = data.videoUrl
+
+        if let url = data.videoUrl {
+            kycInfo.selfie?.videoUrl = url
+        } else {
+            kycInfo.selfie?.videoUrl = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("selfieVideo.mp4")
+        }
     }
 
     // MARK: - Filling with Document Result Data
@@ -32,16 +37,22 @@ final class KYCContainer {
             kycInfo.document = Document()
         }
 
-        kycInfo.document?.videoUrl = data.videoUrl
         kycInfo.document?.type = documentType
 
         mrzInfo = data.mrzInfo
         if let mrzInfo = data.mrzInfo as? MRTDMRZInfo {
             update(with: mrzInfo)
         }
+
+        if let url = data.videoUrl {
+            kycInfo.selfie?.videoUrl = url
+        } else {
+            kycInfo.document?.videoUrl = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("documentVideo.mp4")
+        }
     }
 
     // MARK: - Filling with Document Step Result Data
+
     func update(with data: DocumentScannerStepResult) {
         if kycInfo.document == nil {
             kycInfo.document = Document()
@@ -75,12 +86,31 @@ final class KYCContainer {
     func update(location: CLLocation) {
         kycInfo.metadata?.location = location
     }
+
+    func update(person data: PersonData) {
+        kycInfo.provider.name = "Fourthline"
+        kycInfo.provider.clientNumber = data.personUID
+
+        kycInfo.person.firstName = data.firstName
+        kycInfo.person.lastName = data.lastName
+        kycInfo.person.nationalityCode = data.nationality
+        kycInfo.person.birthDate = data.birthDate
+
+        if data.gender == "male" {
+            kycInfo.person.gender = .male
+        } else if data.gender == "female" {
+            kycInfo.person.gender = .female
+        } else {
+            kycInfo.person.gender = .undefined
+        }
+    }
 }
 
 // MARK: - Private Zone
+
 private extension KYCContainer {
 
-    func update(with mrzInfo: MRTDMRZInfo) {
+    private func update(with mrzInfo: MRTDMRZInfo) {
         kycInfo.document?.expirationDate = mrzInfo.expirationDate
         kycInfo.document?.number = mrzInfo.documentNumber
 

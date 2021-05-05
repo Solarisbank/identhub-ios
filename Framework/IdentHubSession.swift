@@ -21,10 +21,7 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
 public typealias CompletionHandler = (IdentificationSessionResult) -> Void
 
 /// Responsible for creating and managing identification process provided by `Solarisbank` into your iOS app
-final public class IdentHubSession: IdentSessionTracker {
-
-    private(set) var bankIDSessionActiveState: Bool = false
-    private(set) var fourthlineSessionActiveState: Bool = false
+final public class IdentHubSession {
 
     private let appDependencies: AppDependencies
     private let identRouter: IdentHubSDKRouter
@@ -47,54 +44,30 @@ final public class IdentHubSession: IdentSessionTracker {
     /// Method starts BandID identification process with updating status by delegate
     /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter delegate: object conforms process status delegate methods
-    public func start(_ type: IdentificationSessionType, delegate: IdentHubSDKManagerDelegate) {
+    public func start(_ delegate: IdentHubSDKManagerDelegate) {
         sessionDelegate = delegate
 
-        switch type {
-        case .bankID:
-            startBankID()
-        case .fouthline:
-            startFourthlineSession()
-        }
+        startIdentification()
     }
 
     /// Method starts identification process (BankID) with updating status by closure callback
     /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter completion: closure with result object in parameter, result has two cases: success with id or failure with error
-    public func start(_ type: IdentificationSessionType, completion: @escaping CompletionHandler) {
+    public func start(_ completion: @escaping CompletionHandler) {
         completionSessionBlock = completion
 
-        switch type {
-        case .bankID:
-            startBankID()
-        case .fouthline:
-            startFourthlineSession()
-        }
-    }
-
-    // MARK: - Manager Session Tracker methods -
-
-    internal func startBankID() {
-        let bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: identRouter)
-
-        bankIDSessionCoordinator.start(completion: { result in
-            self.updateSessionResult(result)
-        })
-
-        bankIDSessionActiveState = true
-    }
-
-    internal func startFourthlineSession() {
-        let fourthlineCoordinator = FourthlineIdentCoordinator(presenter: identRouter)
-
-        fourthlineCoordinator.start { result in
-            self.updateSessionResult(result)
-        }
-
-        fourthlineSessionActiveState = true
+        startIdentification()
     }
 
     // MARK: - Internal methods methods -
+
+    private func startIdentification() {
+        let identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
+
+        identCoordinator.start { [unowned self] result in
+            self.updateSessionResult(result)
+        }
+    }
 
     private func updateSessionResult(_ result: IdentificationSessionResult) {
         if let completion = self.completionSessionBlock {
@@ -108,14 +81,4 @@ final public class IdentHubSession: IdentSessionTracker {
             self.sessionDelegate?.didFailureSession(error)
         }
     }
-}
-
-protocol IdentSessionTracker {
-
-    var bankIDSessionActiveState: Bool { get }
-    var fourthlineSessionActiveState: Bool { get }
-
-    func startBankID()
-
-    func startFourthlineSession()
 }

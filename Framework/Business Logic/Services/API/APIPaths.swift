@@ -12,7 +12,7 @@ enum APIPaths {
 
     /// Base path for backend API.
     #if ENV_DEBUG
-    static let backendBasePath = "https://person-onboarding-api.solaris-testing.de"
+    static let backendBasePath = "https://person-onboarding-api.solaris-sandbox.de"
     #else
     static let backendBasePath = ""
     #endif

@@ -5,5 +5,5 @@
 
 /// Base coordinator pattern protocol
 protocol Coordinator {
-    func start(completion: @escaping CompletionHandler)
+    func start(_ completion: @escaping CompletionHandler)
 }
