@@ -22,6 +22,10 @@ enum UploadSteps: Int {
     case zipFile = 0, uploadZip
 }
 
+enum VerificationSteps: Int {
+    case verification = 0
+}
+
 final class RequestsViewModel: NSObject {
 
     // MARK: - Public attributes -
@@ -40,6 +44,14 @@ final class RequestsViewModel: NSObject {
     private var identCoordinator: IdentificationCoordinator?
 
     // MARK: - Init methods -
+
+    /// Initial setup request screen view model
+    /// - Parameters:
+    ///   - service: send request service
+    ///   - storage: identification storage
+    ///   - type: type of the request
+    ///   - identCoordinator: identification coordinator
+    ///   - fourthlineCoordinator: fourthline identification session flow
     init(_ service: VerificationService, storage: StorageSessionInfoProvider, type: RequestsType, identCoordinator: IdentificationCoordinator? = nil, fourthlineCoordinator: FourthlineIdentCoordinator? = nil) {
 
         self.verificationService = service
@@ -55,6 +67,9 @@ final class RequestsViewModel: NSObject {
     }
 
     // MARK: - Public methods -
+
+    /// Configuration table view method
+    /// - Parameter table: table view for configuration
     func configure(of table: UITableView) {
         requestsSteps = builder.buildContent()
         ddm = RequestsProgressDDM()
@@ -66,6 +81,32 @@ final class RequestsViewModel: NSObject {
         table.dataSource = ddm
 
         startProcess()
+    }
+
+    /// Method defines and returns request screen title text
+    /// - Returns: title text
+    func obtainScreenTitle() -> String {
+        switch self.requestsType {
+        case .initateFlow:
+            return Localizable.Initial.title
+        case .uploadData:
+            return Localizable.Upload.title
+        case .confirmation:
+            return Localizable.Verification.title
+        }
+    }
+
+    /// Method defines and returns request screen description text
+    /// - Returns: description text
+    func obtainScreenDescription() -> String {
+        switch self.requestsType {
+        case .initateFlow:
+            return Localizable.Initial.description
+        case .uploadData:
+            return Localizable.Upload.description
+        case .confirmation:
+            return Localizable.Verification.description
+        }
     }
 }
 
@@ -81,7 +122,7 @@ private extension RequestsViewModel {
         case .uploadData:
             startUploadProcess()
         case .confirmation:
-            print("Start confirmation flow")
+            startVerificationProcess()
         }
     }
 
@@ -171,7 +212,8 @@ private extension RequestsViewModel {
             case .success(let response):
                 self.completeStep(number: InitStep.fetchPersonData.rawValue)
                 KYCContainer.shared.update(person: response)
-                DispatchQueue.main.async {
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self.identCoordinator?.perform(action: .termsAndConditions)
                 }
             case .failure(let error):
@@ -212,12 +254,13 @@ private extension RequestsViewModel {
         verificationService.uploadKYCZip(fileURL: fileURL) { [unowned self] result in
 
             switch result {
-            case .success(let response):
-                print(response)
+            case .success(_):
                 self.deleteFile(at: fileURL)
-                self.fourthlineCoordinator?.perform(action: .confirmation)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.fourthlineCoordinator?.perform(action: .confirmation)
+                }
             case .failure(let error):
-                onDisplayError?(error)
+                self.onDisplayError?(error)
             }
 
             self.completeStep(number: UploadSteps.uploadZip.rawValue)
@@ -233,6 +276,39 @@ private extension RequestsViewModel {
     }
 }
 
+// MARK: - Verification methods -
+
+private extension RequestsViewModel {
+
+    private func startVerificationProcess() {
+        startStep(number: VerificationSteps.verification.rawValue)
+
+        verificationService.obtainFourthlineIdentificationStatus { [unowned self] result in
+
+            switch result {
+            case .success(let response):
+                if response.identificationStatus == .pending {
+                    self.retryVerification()
+                } else {
+                    self.fourthlineCoordinator?.perform(action: .result(result: response))
+                }
+            case .failure(let error):
+                self.onDisplayError?(error)
+            }
+
+            self.completeStep(number: VerificationSteps.verification.rawValue)
+        }
+    }
+
+    private func retryVerification() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            guard let `self` = self else { return }
+
+            self.startVerificationProcess()
+        }
+    }
+}
+
 extension RequestsViewModel: StepsProgressViewDataSource {
 
     func currentStep() -> Int {
@@ -240,7 +316,7 @@ extension RequestsViewModel: StepsProgressViewDataSource {
         case .initateFlow:
             return FourthlineSteps.selfie.rawValue
         case .uploadData:
-            return FourthlineSteps.location.rawValue
+            return FourthlineSteps.upload.rawValue
         case .confirmation:
             return FourthlineSteps.result.rawValue
         }

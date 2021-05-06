@@ -71,6 +71,9 @@ extension RequestsViewController {
                 }
             }
         }
+
+        self.titleLbl.text = viewModel.obtainScreenTitle()
+        self.descriptionLbl.text = viewModel.obtainScreenDescription()
     }
 
     private func zipFailed(with error: ZipperError) {

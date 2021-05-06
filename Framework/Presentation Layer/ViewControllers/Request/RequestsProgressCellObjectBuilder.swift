@@ -25,7 +25,7 @@ final class RequestsProgressCellObjectBuilder {
         case .uploadData:
             return buildUploadData()
         case .confirmation:
-            return []
+            return buildConfirmData()
         }
     }
 }
@@ -46,5 +46,11 @@ extension RequestsProgressCellObjectBuilder {
         let prepareData = ProgressCellObject(title: Localizable.Upload.preparation, visibleSeparator: true)
         let uploadData = ProgressCellObject(title: Localizable.Upload.uploading, visibleSeparator: false)
         return [prepareData, uploadData]
+    }
+
+    private func buildConfirmData() -> [ProgressCellObject] {
+        let verification = ProgressCellObject(title: Localizable.Verification.processTitle, visibleSeparator: true)
+
+        return [verification]
     }
 }

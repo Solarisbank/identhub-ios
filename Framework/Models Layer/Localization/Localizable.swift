@@ -266,6 +266,12 @@ enum Localizable {
         }
     }
 
+    enum Verification {
+        static let title = "Verification"
+        static let description = "Please wait for verification…"
+        static let processTitle = "Data verification…"
+    }
+
     enum APIErrorDesc {
         static let malformedResponseJson = "Indicates that string received in the response couldn't been parsed."
         static let clientError = "Infidicates the error on the client's side."

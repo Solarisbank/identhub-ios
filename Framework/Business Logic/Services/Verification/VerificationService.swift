@@ -254,11 +254,35 @@ final class VerificationService {
         }
     }
 
+    /// Method fetched identified person data from the server
+    /// - Parameter completion: Response back with required person data
     func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void) {
         do {
             let request = try PersonDataRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
 
             apiClient.execute(request: request, answerType: PersonData.self) { result in
+                completion(result)
+            }
+        } catch RequestError.emptySessionToken {
+            completion(.failure(APIError.requestError))
+            print("Fetch person data request fails, the token of the current session is empty")
+        } catch RequestError.emptySessionID {
+            completion(.failure(APIError.requestError))
+            print("Fetch person data request fails, the ID of the person is empty")
+        } catch {
+            completion(.failure(APIError.requestError))
+            print("Unexpected fetch person data request: \(error)")
+        }
+    }
+
+    /// Method obtained status of the current Fourthline identification session status
+    /// - Parameter completion: Response back with fourthline session status
+    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void) {
+
+        do {
+            let request = try FourthlineIdentificationStatusRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
+
+            apiClient.execute(request: request, answerType: FourthlineIdentificationStatus.self) { result in
                 completion(result)
             }
         } catch RequestError.emptySessionToken {

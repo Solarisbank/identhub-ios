@@ -188,6 +188,8 @@
 		84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */; };
 		84B2A8CE25F3EA6000EBA899 /* BeckendRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */; };
 		84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */; };
+		84DEB64326419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */; };
+		84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */; };
 		84E0CF0E262EF6B100DE0C09 /* DocumentScanner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0CF0D262EF6B100DE0C09 /* DocumentScanner+Extensions.swift */; };
 		84E0CF13262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0CF12262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift */; };
 		84ECED1126304DFB00ACD1B5 /* DocumentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECED0F26304DFB00ACD1B5 /* DocumentInfoViewController.swift */; };
@@ -425,6 +427,8 @@
 		84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeckendRequestTests.swift; sourceTree = "<group>"; };
 		84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatusRequest.swift; sourceTree = "<group>"; };
+		84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatus.swift; sourceTree = "<group>"; };
 		84E0CF0D262EF6B100DE0C09 /* DocumentScanner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentScanner+Extensions.swift"; sourceTree = "<group>"; };
 		84E0CF12262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetsDataSource.swift; sourceTree = "<group>"; };
 		84ECED0F26304DFB00ACD1B5 /* DocumentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoViewController.swift; sourceTree = "<group>"; };
@@ -638,9 +642,11 @@
 				841A894125F0F5EC007878C1 /* Abstraction */,
 				8468C0B82636DE5A00513A0F /* Fourthline */,
 				0C88059A25CAE78600DD6E31 /* Documents */,
+				8468C0B82636DE5A00513A0F /* Fourthline */,
 				0C527E7325AC9C5B00B6D5DB /* IBAN */,
 				0CF0AE8425CC255100A560E5 /* Identification */,
 				0C8805A525CAEA7700DD6E31 /* MobileNumber */,
+				841384BD263C586900C39D69 /* Person */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1109,6 +1115,7 @@
 			children = (
 				84A01268263875A800672C1B /* FourthlineIdentificationRequest.swift */,
 				84A0126C26388E7C00672C1B /* UploadKYCRequest.swift */,
+				84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */,
 			);
 			path = Fourthline;
 			sourceTree = "<group>";
@@ -1293,6 +1300,7 @@
 				842DA66926373E740020E598 /* IdentificationMethod.swift */,
 				0CF0AE7F25CC153000A560E5 /* Status.swift */,
 				84A0126A2638770000672C1B /* FourthlineIdentification.swift */,
+				84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */,
 				0CF0AE8A25CC684C00A560E5 /* ContractDocument.swift */,
 				841CD0A6263978C300890626 /* UploadFourthlineZip.swift */,
 				841384C0263C594A00C39D69 /* PersonData.swift */,
@@ -1718,8 +1726,10 @@
 				8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */,
 				8409768F2633473800C4DC5B /* CircleProgressView.swift in Sources */,
 				0C12CAAE25A784220032B520 /* MobileNumberTANRequest.swift in Sources */,
+				84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */,
 				0C4B67DA259B228400190C4E /* IdentificationProgressView.swift in Sources */,
 				0C1B431C25ADCBA1004FFF46 /* PaymentVerificationViewModel.swift in Sources */,
+				84DEB64326419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift in Sources */,
 				0C527E6725AC814000B6D5DB /* IBANVerificationViewModel.swift in Sources */,
 				0C9E56E425C01E9E00D68B96 /* ConfirmApplicationViewModel.swift in Sources */,
 				0C527E7525AC9C6D00B6D5DB /* IBANRequest.swift in Sources */,

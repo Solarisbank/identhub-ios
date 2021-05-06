@@ -44,6 +44,6 @@ final class LocationViewModel: BaseFourthlineViewModel {
 extension LocationViewModel: StepsProgressViewDataSource {
 
     func currentStep() -> Int {
-        FourthlineSteps.location.rawValue
+        FourthlineSteps.upload.rawValue
     }
 }

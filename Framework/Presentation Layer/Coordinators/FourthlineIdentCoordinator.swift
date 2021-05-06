@@ -9,7 +9,7 @@ import FourthlineCore
 
 /// Enumeration with all Fourthline flow steps
 enum FourthlineSteps: Int {
-    case selfie = 0, document, confirm, location, upload, result
+    case selfie = 0, document, confirm, upload, result
 }
 
 /// Fourthline identification process flow coordinator class
@@ -26,11 +26,13 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case location // Fetch device location coordinates
         case upload // Upload collected data to the server
         case confirmation // Confirm or fail user identification request
+        case result(result: FourthlineIdentificationStatus) // Result screen with result status
         case quit // Quit from identification process
     }
 
     // MARK: - Properties -
     private let appDependencies: AppDependencies
+    private var identificationStep: Action = .welcome
 
     // MARK: - Init methods -
 
@@ -69,7 +71,9 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case .upload:
             presentDataUploader()
         case .confirmation:
-            print("Present confirmation screen")
+            presentDataVerification()
+        case let .result(result):
+            print("Identification result: \(result.identificationStatus)")
         case .quit:
             quit()
         }
@@ -102,6 +106,7 @@ private extension FourthlineIdentCoordinator {
                 selfieVC.setViewModel(selfieVM)
 
                 self.presenter.push(selfieVC, animated: true, completion: nil)
+                self.identificationStep = .selfie
             }
         }
     }
@@ -111,6 +116,7 @@ private extension FourthlineIdentCoordinator {
         let documentPickerVC = DocumentPickerViewController(documentPickerVM)
 
         presenter.push(documentPickerVC, animated: true, completion: nil)
+        identificationStep = .documentPicker
     }
 
     private func presentDocumentScanner(_ documentType: DocumentType) {
@@ -120,6 +126,7 @@ private extension FourthlineIdentCoordinator {
         documentScannerVC.modalPresentationStyle = .fullScreen
 
         presenter.present(documentScannerVC, animated: true)
+        identificationStep = .documentScanner(type: documentType)
     }
 
     private func presentDocumentInfoConfirmation() {
@@ -127,6 +134,7 @@ private extension FourthlineIdentCoordinator {
         let documentInfoVC = DocumentInfoViewController(documentInfoVM)
 
         presenter.push(documentInfoVC, animated: true, completion: nil)
+        identificationStep = .documentInfo
     }
 
     private func presentLocationTracker() {
@@ -134,6 +142,7 @@ private extension FourthlineIdentCoordinator {
         let locationVC = LocationViewController(locationVM)
 
         presenter.push(locationVC, animated: true, completion: nil)
+        identificationStep = .location
     }
 
     private func presentDataUploader() {
@@ -141,6 +150,15 @@ private extension FourthlineIdentCoordinator {
         let uploadVC = RequestsViewController(uploadVM)
 
         presenter.push(uploadVC, animated: true, completion: nil)
+        identificationStep = .upload
+    }
+
+    private func presentDataVerification() {
+        let verificationVM = RequestsViewModel(appDependencies.verificationService, storage: appDependencies.sessionInfoProvider, type: .confirmation, fourthlineCoordinator: self)
+        let verificationVC = RequestsViewController(verificationVM)
+
+        presenter.push(verificationVC, animated: true, completion: nil)
+        identificationStep = .confirmation
     }
 
     // MARK: - Permission methods -
