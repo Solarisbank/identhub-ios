@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultViewController" customModule="IdentHubSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLbl" destination="392-da-1zL" id="hKA-xW-u2w"/>
+                <outlet property="quitBtn" destination="gI6-Wy-FXs" id="rKb-uU-5pj"/>
+                <outlet property="resultImage" destination="zUY-ic-fbK" id="lMb-Ip-4bm"/>
+                <outlet property="stepsProgressView" destination="2Az-yX-p2g" id="e2M-XE-5Zk"/>
+                <outlet property="titleLbl" destination="aff-W8-H4U" id="rQV-Dt-5cx"/>
+                <outlet property="view" destination="ULT-lF-AxU" id="Mlf-Ts-xno"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ULT-lF-AxU">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Az-yX-p2g" customClass="StepsProgressView" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="20" y="64" width="374" height="4"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="j4c-hZ-vXa"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aff-W8-H4U">
+                    <rect key="frame" x="20" y="108" width="164.5" height="29"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                    <color key="textColor" name="black75"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your data was confirmed." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="392-da-1zL">
+                    <rect key="frame" x="20" y="177" width="165" height="18"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" name="black50"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_success" translatesAutoresizingMaskIntoConstraints="NO" id="zUY-ic-fbK">
+                    <rect key="frame" x="83" y="235" width="248" height="248.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="zUY-ic-fbK" secondAttribute="height" multiplier="1:1" id="tMG-y4-Rqb"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI6-Wy-FXs">
+                    <rect key="frame" x="20" y="782" width="374" height="50"/>
+                    <color key="backgroundColor" red="0.94509803920000002" green="0.50980392159999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="wnN-Tl-EwK"/>
+                    </constraints>
+                    <state key="normal" title="Quit">
+                        <color key="titleColor" name="black0"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didClickQuit:" destination="-1" eventType="touchUpInside" id="2D4-Qh-l7A"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Rgn-nO-bZ3"/>
+            <color key="backgroundColor" name="black0"/>
+            <constraints>
+                <constraint firstItem="aff-W8-H4U" firstAttribute="top" secondItem="2Az-yX-p2g" secondAttribute="bottom" constant="40" id="37L-Cb-nFw"/>
+                <constraint firstItem="gI6-Wy-FXs" firstAttribute="leading" secondItem="Rgn-nO-bZ3" secondAttribute="leading" constant="20" id="5kx-vB-FUQ"/>
+                <constraint firstItem="392-da-1zL" firstAttribute="top" secondItem="aff-W8-H4U" secondAttribute="bottom" constant="40" id="7IA-Vx-GPj"/>
+                <constraint firstItem="Rgn-nO-bZ3" firstAttribute="trailing" secondItem="2Az-yX-p2g" secondAttribute="trailing" constant="20" id="7aG-Cb-cbm"/>
+                <constraint firstItem="Rgn-nO-bZ3" firstAttribute="bottom" secondItem="gI6-Wy-FXs" secondAttribute="bottom" constant="30" id="Clc-OI-C2c"/>
+                <constraint firstItem="zUY-ic-fbK" firstAttribute="width" secondItem="ULT-lF-AxU" secondAttribute="width" multiplier="0.6" id="Kku-F5-qks"/>
+                <constraint firstItem="zUY-ic-fbK" firstAttribute="top" secondItem="392-da-1zL" secondAttribute="bottom" constant="40" id="Kui-Ln-pob"/>
+                <constraint firstItem="392-da-1zL" firstAttribute="leading" secondItem="Rgn-nO-bZ3" secondAttribute="leading" constant="20" id="O4s-Ny-QF0"/>
+                <constraint firstItem="2Az-yX-p2g" firstAttribute="leading" secondItem="Rgn-nO-bZ3" secondAttribute="leading" constant="20" id="OfJ-ZK-deU"/>
+                <constraint firstItem="zUY-ic-fbK" firstAttribute="centerX" secondItem="ULT-lF-AxU" secondAttribute="centerX" id="T6d-sE-aFv"/>
+                <constraint firstItem="2Az-yX-p2g" firstAttribute="top" secondItem="Rgn-nO-bZ3" secondAttribute="top" constant="20" id="crO-PW-y73"/>
+                <constraint firstItem="aff-W8-H4U" firstAttribute="leading" secondItem="Rgn-nO-bZ3" secondAttribute="leading" constant="20" id="nhW-wx-RvY"/>
+                <constraint firstItem="Rgn-nO-bZ3" firstAttribute="trailing" secondItem="gI6-Wy-FXs" secondAttribute="trailing" constant="20" id="tG7-GZ-iOq"/>
+            </constraints>
+            <point key="canvasLocation" x="946" y="104"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="result_success" width="288" height="288"/>
+        <namedColor name="black0">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black50">
+            <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black75">
+            <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

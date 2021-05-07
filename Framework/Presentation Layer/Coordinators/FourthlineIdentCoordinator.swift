@@ -73,7 +73,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case .confirmation:
             presentDataVerification()
         case let .result(result):
-            print("Identification result: \(result.identificationStatus)")
+            presentResult(result)
         case .quit:
             quit()
         }
@@ -159,6 +159,16 @@ private extension FourthlineIdentCoordinator {
 
         presenter.push(verificationVC, animated: true, completion: nil)
         identificationStep = .confirmation
+    }
+
+    private func presentResult(_ result: FourthlineIdentificationStatus) {
+        let resultVM = ResultViewModel(self)
+        resultVM.result = result
+
+        let resultVC = ResultViewController(resultVM)
+
+        presenter.push(resultVC, animated: true, completion: nil)
+        identificationStep = .result(result: result)
     }
 
     // MARK: - Permission methods -

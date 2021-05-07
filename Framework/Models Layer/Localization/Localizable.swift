@@ -285,4 +285,11 @@ enum Localizable {
         static let unknownError = "Indicates that api client encountered an error not listed above."
         static let resourceNotFound = "Resource has not been found."
     }
+    
+    enum Result {
+        static let successTitle = "Congratulation"
+        static let successDescription = "Your data was confirmed."
+        static let failedTitle = "Please try again…"
+        static let failedDescription = "Identification process fails."
+    }
 }

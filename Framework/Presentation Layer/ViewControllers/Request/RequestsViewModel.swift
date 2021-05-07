@@ -290,7 +290,7 @@ private extension RequestsViewModel {
                 if response.identificationStatus == .pending {
                     self.retryVerification()
                 } else {
-                    self.fourthlineCoordinator?.perform(action: .result(result: response))
+                    self.showResult(response)
                 }
             case .failure(let error):
                 self.onDisplayError?(error)
@@ -305,6 +305,14 @@ private extension RequestsViewModel {
             guard let `self` = self else { return }
 
             self.startVerificationProcess()
+        }
+    }
+
+    private func showResult(_ result: FourthlineIdentificationStatus) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let `self` = self else { return }
+
+            self.fourthlineCoordinator?.perform(action: .result(result: result))
         }
     }
 }

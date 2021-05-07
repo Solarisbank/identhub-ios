@@ -64,11 +64,16 @@ extension StepsProgressView {
         guard let datasource = datasource else { return }
 
         let highlightIndex = datasource.currentStep()
+        let currentColor = datasource.currentStepHightlightColor()
 
         for i in 0..<highlightIndex {
             let view = stepViews[i]
 
-            view.backgroundColor = highlightColor
+            if i == highlightIndex - 1 {
+                view.backgroundColor = currentColor
+            } else {
+                view.backgroundColor = highlightColor
+            }
         }
     }
 
@@ -112,6 +117,9 @@ protocol StepsProgressViewDataSource {
 
     /// Method returns color of the not highlighted views
     func regularColor() -> UIColor
+
+    /// Method returns color of the current step
+    func currentStepHightlightColor() -> UIColor
 }
 
 extension StepsProgressViewDataSource {
@@ -130,5 +138,9 @@ extension StepsProgressViewDataSource {
 
     func regularColor() -> UIColor {
         return UIColor.sdkColor(.base10)
+    }
+
+    func currentStepHightlightColor() -> UIColor {
+        return highlightColor()
     }
 }
