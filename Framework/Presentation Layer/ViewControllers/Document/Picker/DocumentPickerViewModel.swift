@@ -63,7 +63,7 @@ extension DocumentPickerViewModel {
 extension DocumentPickerViewModel: StepsProgressViewDataSource {
 
     func currentStep() -> Int {
-        FourthlineSteps.document.rawValue
+        FourthlineProgressStep.document.rawValue
     }
 }
 

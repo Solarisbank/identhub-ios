@@ -8,17 +8,27 @@ import UIKit
 class IdentificationCoordinator: BaseCoordinator {
 
     /// The list of all available actions.
-    enum Action {
-        case initialization // Screen with init requests to the server for obtaining init data
-        case termsAndConditions // Privacy statement and Terms-Conditions screen
-        case identification // Start identification process
-        case quit // Quit from identification process
+    enum Action: Int {
+        case initialization = 1 // Screen with init requests to the server for obtaining init data
+        case termsAndConditions = 2 // Privacy statement and Terms-Conditions screen
+        case identification = 3 // Start identification process
+        case quit = 4 // Quit from identification process
     }
 
     // MARK: - Properties -
     private let appDependencies: AppDependencies
     private var completionHandler: CompletionHandler?
     private var documentExporter: DocumentExporter = DocumentExporterService()
+    private var executedStep: Action? {
+        didSet {
+            SessionStorage.updateValue(executedStep?.rawValue ?? Action.initialization.rawValue, for: StoredKeys.initialStep.rawValue)
+        }
+    }
+    private var identificationMethod: IdentificationSessionType? {
+        didSet {
+            SessionStorage.updateValue(identificationMethod?.rawValue ?? IdentificationSessionType.unspecified.rawValue, for: StoredKeys.identMethod.rawValue)
+        }
+    }
 
     // MARK: - Init methods -
     init(appDependencies: AppDependencies, presenter: Router) {
@@ -33,7 +43,11 @@ class IdentificationCoordinator: BaseCoordinator {
     override func start(_ completion: @escaping CompletionHandler) {
         completionHandler = completion
 
-        perform(action: .initialization)
+        if let step = SessionStorage.obtainValue(for: StoredKeys.initialStep.rawValue) as? Int {
+            executedStep = Action(rawValue: step)
+        }
+
+        perform(action: executedStep ?? .initialization)
     }
 
     func perform(action: IdentificationCoordinator.Action) {
@@ -60,6 +74,7 @@ private extension IdentificationCoordinator {
         let requestVC = RequestsViewController(requestVM)
 
         presenter.push(requestVC, animated: true, completion: nil)
+        executedStep = .initialization
     }
 
     private func presentPrivacyTermsScreen() {
@@ -67,31 +82,48 @@ private extension IdentificationCoordinator {
         let termsVC = TermsViewController(termsVM)
 
         presenter.push(termsVC, animated: false, completion: nil)
+        executedStep = .termsAndConditions
     }
 
     private func startIdentProcess() {
+        if let method = appDependencies.sessionInfoProvider.identificationType {
+            identificationMethod = method
+        } else if let method = SessionStorage.obtainValue(for: StoredKeys.identMethod.rawValue) as? Int {
+            identificationMethod = IdentificationSessionType(rawValue: method)
+        }
 
-        switch appDependencies.sessionInfoProvider.identificationType {
-        case .bank:
+        initiateMethod()
+    }
+
+    private func initiateMethod() {
+
+        switch identificationMethod {
+        case .bankID:
             startBankID()
         case .fourthline:
             startFourthline()
         case .idnow:
             print("ID Now identification process start")
-        default:
-            print("Identification type not defined.")
+        case .unspecified:
+            print("Identificaiton flow is not specified")
+        case .none:
+            print("Identificaiton flow is not specified")
         }
+
+        executedStep = .identification
     }
 
     private func startBankID() {
         let bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: presenter)
 
         bankIDSessionCoordinator.start(completionHandler!)
+        identificationMethod = .bankID
     }
 
     private func startFourthline() {
         let fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
 
         fourthlineCoordinator.start(completionHandler!)
+        identificationMethod = .fourthline
     }
 }

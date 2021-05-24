@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct FourthlineIdentificationStatus: Decodable {
+struct FourthlineIdentificationStatus: Codable {
 
     /// Fourthline session identifier
     let identification: String
@@ -44,6 +44,34 @@ struct FourthlineIdentificationStatus: Decodable {
         case providerStatusCode = "provider_status_code"
         case nextStep = "next_step"
         case documents
+    }
+}
+
+extension FourthlineIdentificationStatus {
+
+    init(from decoder: Decoder) throws {
+        let data = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.identification = try data.decode(String.self, forKey: .identification)
+        self.url = try data.decode(String.self, forKey: .url)
+        self.identificationStatus = try data.decode(IdentificationStatus.self, forKey: .identificationStatus)
+        self.identificationMethod = try data.decode(IdentificationMethodType.self, forKey: .identificationMethod)
+        self.authExpireDate = try data.decode(String.self, forKey: .authExpireDate)
+        self.confirmExpireDate = try data.decode(String.self, forKey: .confirmExpireDate)
+        self.providerStatusCode = try data.decode(String.self, forKey: .providerStatusCode)
+        self.nextStep = try data.decode(String.self, forKey: .nextStep)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(identification, forKey: .identification)
+        try container.encode(url, forKey: .url)
+        try container.encode(identificationStatus.self.rawValue, forKey: .identificationStatus)
+        try container.encode(identificationMethod.self.rawValue, forKey: .identificationMethod)
+        try container.encode(authExpireDate, forKey: .authExpireDate)
+        try container.encode(confirmExpireDate, forKey: .confirmExpireDate)
+        try container.encode(providerStatusCode, forKey: .providerStatusCode)
+        try container.encode(nextStep, forKey: .nextStep)
     }
 }
 

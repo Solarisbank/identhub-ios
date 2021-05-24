@@ -7,40 +7,22 @@ import UIKit
 import AVFoundation
 import FourthlineCore
 
-/// Enumeration with all Fourthline flow steps
-enum FourthlineSteps: Int {
-    case selfie = 0, document, confirm, upload, result
-}
-
 /// Fourthline identification process flow coordinator class
 /// Used for navigating between screens and update process status
 class FourthlineIdentCoordinator: BaseCoordinator {
 
-    /// The list of all available actions.
-    enum Action {
-        case welcome // Welcome screen with all instructions
-        case selfie // Make a selfie step
-        case documentPicker // Present document picker step
-        case documentScanner(type: DocumentType) // Present document scanner for document with type: passport, idCard, etc.
-        case documentInfo // Verify and confirm scanned document detail
-        case location // Fetch device location coordinates
-        case upload // Upload collected data to the server
-        case confirmation // Confirm or fail user identification request
-        case result(result: FourthlineIdentificationStatus) // Result screen with result status
-        case quit // Quit from identification process
-    }
-
     // MARK: - Properties -
     private let appDependencies: AppDependencies
-    private var identificationStep: Action = .welcome
+    private var identificationStep: FourthlineStep = .welcome
 
     // MARK: - Init methods -
 
     init(appDependencies: AppDependencies, presenter: Router) {
-
         self.appDependencies = appDependencies
 
         super.init(presenter: presenter)
+
+        self.restoreStep()
     }
 
     // MARK: - Coordinator methods -
@@ -48,12 +30,12 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     /// Method starts Fourthline identificaiton process
     /// - Parameter completion: completion handler with success or failure parameter, used for updating users UI
     override func start(_ completion: @escaping CompletionHandler) {
-        perform(action: .welcome)
+        perform(action: identificationStep)
     }
 
     /// Performs a specified Fourthline identifiaction action.
     /// - Parameter action: type of the execution action
-    func perform(action: FourthlineIdentCoordinator.Action) {
+    func perform(action: FourthlineStep) {
 
         switch action {
         case .welcome:
@@ -91,6 +73,7 @@ private extension FourthlineIdentCoordinator {
         let welcomeVC = WelcomeViewController(welcomeVM)
 
         presenter.push(welcomeVC, animated: true, completion: nil)
+        updateFourthlineStep(step: .welcome)
     }
 
     private func presentSefieScreen() {
@@ -106,7 +89,7 @@ private extension FourthlineIdentCoordinator {
                 selfieVC.setViewModel(selfieVM)
 
                 self.presenter.push(selfieVC, animated: true, completion: nil)
-                self.identificationStep = .selfie
+                self.updateFourthlineStep(step: .selfie)
             }
         }
     }
@@ -116,7 +99,7 @@ private extension FourthlineIdentCoordinator {
         let documentPickerVC = DocumentPickerViewController(documentPickerVM)
 
         presenter.push(documentPickerVC, animated: true, completion: nil)
-        identificationStep = .documentPicker
+        updateFourthlineStep(step: .documentPicker)
     }
 
     private func presentDocumentScanner(_ documentType: DocumentType) {
@@ -126,7 +109,7 @@ private extension FourthlineIdentCoordinator {
         documentScannerVC.modalPresentationStyle = .fullScreen
 
         presenter.present(documentScannerVC, animated: true)
-        identificationStep = .documentScanner(type: documentType)
+        updateFourthlineStep(step: .documentScanner(type: documentType))
     }
 
     private func presentDocumentInfoConfirmation() {
@@ -134,7 +117,7 @@ private extension FourthlineIdentCoordinator {
         let documentInfoVC = DocumentInfoViewController(documentInfoVM)
 
         presenter.push(documentInfoVC, animated: true, completion: nil)
-        identificationStep = .documentInfo
+        updateFourthlineStep(step: .documentInfo)
     }
 
     private func presentLocationTracker() {
@@ -142,7 +125,7 @@ private extension FourthlineIdentCoordinator {
         let locationVC = LocationViewController(locationVM)
 
         presenter.push(locationVC, animated: true, completion: nil)
-        identificationStep = .location
+        updateFourthlineStep(step: .location)
     }
 
     private func presentDataUploader() {
@@ -150,7 +133,7 @@ private extension FourthlineIdentCoordinator {
         let uploadVC = RequestsViewController(uploadVM)
 
         presenter.push(uploadVC, animated: true, completion: nil)
-        identificationStep = .upload
+        updateFourthlineStep(step: .upload)
     }
 
     private func presentDataVerification() {
@@ -158,7 +141,7 @@ private extension FourthlineIdentCoordinator {
         let verificationVC = RequestsViewController(verificationVM)
 
         presenter.push(verificationVC, animated: true, completion: nil)
-        identificationStep = .confirmation
+        updateFourthlineStep(step: .confirmation)
     }
 
     private func presentResult(_ result: FourthlineIdentificationStatus) {
@@ -168,11 +151,29 @@ private extension FourthlineIdentCoordinator {
         let resultVC = ResultViewController(resultVM)
 
         presenter.push(resultVC, animated: true, completion: nil)
-        identificationStep = .result(result: result)
+        updateFourthlineStep(step: .result(result: result))
+    }
+}
+
+// MARK: - Permission methods -
+private extension FourthlineIdentCoordinator {
+
+    private func restoreStep() {
+        guard let restoreData = SessionStorage.obtainValue(for: StoredKeys.fourthlineStep.rawValue) as? Data else { return }
+
+        if let step = try? JSONDecoder().decode(FourthlineStep.self, from: restoreData) {
+            identificationStep = step
+            KYCContainer.shared.restoreData()
+        }
     }
 
-    // MARK: - Permission methods -
-    func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
+    private func updateFourthlineStep(step: FourthlineStep) {
+        if let stepData = try? JSONEncoder().encode(step) {
+            SessionStorage.updateValue(stepData, for: StoredKeys.fourthlineStep.rawValue)
+        }
+    }
+  
+    private func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
 
         AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
             guard granted else {
@@ -191,7 +192,7 @@ private extension FourthlineIdentCoordinator {
         }
     }
 
-    func showCameraPermissionAlert() {
+    private func showCameraPermissionAlert() {
 
         let alert = UIAlertController(title: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage, preferredStyle: .alert)
 

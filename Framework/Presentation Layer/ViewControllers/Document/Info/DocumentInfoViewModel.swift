@@ -45,7 +45,7 @@ final class DocumentInfoViewModel: BaseFourthlineViewModel {
 extension DocumentInfoViewModel: StepsProgressViewDataSource {
 
     func currentStep() -> Int {
-        FourthlineSteps.confirm.rawValue
+        FourthlineProgressStep.confirm.rawValue
     }
 }
 

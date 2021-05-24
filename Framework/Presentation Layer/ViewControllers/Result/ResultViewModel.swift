@@ -58,7 +58,7 @@ final class ResultViewModel: BaseFourthlineViewModel {
 extension ResultViewModel: StepsProgressViewDataSource {
 
     func currentStep() -> Int {
-        FourthlineSteps.result.rawValue
+        FourthlineProgressStep.result.rawValue
     }
 
     func currentStepHightlightColor() -> UIColor {

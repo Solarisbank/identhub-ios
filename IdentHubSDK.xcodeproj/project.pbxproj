@@ -124,6 +124,7 @@
 		8419567E2631B214003A55BD /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8419567C2631B214003A55BD /* LocationViewController.xib */; };
 		841956832631B222003A55BD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841956822631B222003A55BD /* LocationViewModel.swift */; };
 		841A893D25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */; };
+		841B3C8C264A9AA000FCF5DF /* SessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B3C8B264A9AA000FCF5DF /* SessionStorage.swift */; };
 		841C81B226036B5600F4A079 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81B126036B5600F4A079 /* Router.swift */; };
 		841C81BA26036B8B00F4A079 /* Showable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81B926036B8B00F4A079 /* Showable.swift */; };
 		841C81BF26036C0800F4A079 /* IdentHubSDKRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81BE26036C0800F4A079 /* IdentHubSDKRouter.swift */; };
@@ -131,6 +132,7 @@
 		841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81CC2603748300F4A079 /* BankIDCoordinator.swift */; };
 		841CD0A7263978C300890626 /* UploadFourthlineZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CD0A6263978C300890626 /* UploadFourthlineZip.swift */; };
 		841CD0A926397F7B00890626 /* RequestsProgressCellObjectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CD0A826397F7B00890626 /* RequestsProgressCellObjectBuilder.swift */; };
+		841E9BBD264EC8D00025FE15 /* FourthlineSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9BBC264EC8D00025FE15 /* FourthlineSteps.swift */; };
 		841F375D26298CC100D56361 /* DocumentTypesDDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F375C26298CC100D56361 /* DocumentTypesDDM.swift */; };
 		841F376326298E1400D56361 /* ScanDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F376226298E1400D56361 /* ScanDocumentType.swift */; };
 		841F376A26298FF500D56361 /* DocumentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F376826298FF500D56361 /* DocumentTypeCell.swift */; };
@@ -365,6 +367,7 @@
 		8419567C2631B214003A55BD /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		841956822631B222003A55BD /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentDownloadableViewModel.swift; sourceTree = "<group>"; };
+		841B3C8B264A9AA000FCF5DF /* SessionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStorage.swift; sourceTree = "<group>"; };
 		841C81B126036B5600F4A079 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		841C81B926036B8B00F4A079 /* Showable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Showable.swift; sourceTree = "<group>"; };
 		841C81BE26036C0800F4A079 /* IdentHubSDKRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubSDKRouter.swift; sourceTree = "<group>"; };
@@ -372,6 +375,7 @@
 		841C81CC2603748300F4A079 /* BankIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinator.swift; sourceTree = "<group>"; };
 		841CD0A6263978C300890626 /* UploadFourthlineZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFourthlineZip.swift; sourceTree = "<group>"; };
 		841CD0A826397F7B00890626 /* RequestsProgressCellObjectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProgressCellObjectBuilder.swift; sourceTree = "<group>"; };
+		841E9BBC264EC8D00025FE15 /* FourthlineSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineSteps.swift; sourceTree = "<group>"; };
 		841F375C26298CC100D56361 /* DocumentTypesDDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypesDDM.swift; sourceTree = "<group>"; };
 		841F376226298E1400D56361 /* ScanDocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocumentType.swift; sourceTree = "<group>"; };
 		841F376826298FF500D56361 /* DocumentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypeCell.swift; sourceTree = "<group>"; };
@@ -667,6 +671,7 @@
 		0CC9573725A8656900A3458B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				841B3C8B264A9AA000FCF5DF /* SessionStorage.swift */,
 				840DEA5426284CBC0033A2D8 /* KYCContainer.swift */,
 				0CC9573825A8657D00A3458B /* SessionInfoProvider.swift */,
 			);
@@ -1320,6 +1325,7 @@
 				841CD0A6263978C300890626 /* UploadFourthlineZip.swift */,
 				841384C0263C594A00C39D69 /* PersonData.swift */,
 				841384C2263C599700C39D69 /* SupportedDocument.swift */,
+				841E9BBC264EC8D00025FE15 /* FourthlineSteps.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1739,6 +1745,7 @@
 				0CC25BBD25A4AB2100D839AB /* CodeEntryView.swift in Sources */,
 				0C12CAA825A783AF0032B520 /* VerificationService.swift in Sources */,
 				84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */,
+				841B3C8C264A9AA000FCF5DF /* SessionStorage.swift in Sources */,
 				8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */,
 				8409768F2633473800C4DC5B /* CircleProgressView.swift in Sources */,
 				0C12CAAE25A784220032B520 /* MobileNumberTANRequest.swift in Sources */,
@@ -1749,6 +1756,7 @@
 				0C527E6725AC814000B6D5DB /* IBANVerificationViewModel.swift in Sources */,
 				0C9E56E425C01E9E00D68B96 /* ConfirmApplicationViewModel.swift in Sources */,
 				0C527E7525AC9C6D00B6D5DB /* IBANRequest.swift in Sources */,
+				841E9BBD264EC8D00025FE15 /* FourthlineSteps.swift in Sources */,
 				0CF0AE8025CC153000A560E5 /* Status.swift in Sources */,
 				84A0126726384BED00672C1B /* KYCZipService.swift in Sources */,
 				84A0126D26388E7C00672C1B /* UploadKYCRequest.swift in Sources */,

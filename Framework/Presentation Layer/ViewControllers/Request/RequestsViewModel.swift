@@ -172,7 +172,7 @@ private extension RequestsViewModel {
     }
 
     private func initiateBankIDIdentification() {
-        sessionStorage.identificationType = .bank
+        sessionStorage.identificationType = .bankID
         DispatchQueue.main.async { [weak self] in
             self?.identCoordinator?.perform(action: .termsAndConditions)
         }
@@ -322,11 +322,11 @@ extension RequestsViewModel: StepsProgressViewDataSource {
     func currentStep() -> Int {
         switch self.requestsType {
         case .initateFlow:
-            return FourthlineSteps.selfie.rawValue
+            return FourthlineProgressStep.selfie.rawValue
         case .uploadData:
-            return FourthlineSteps.upload.rawValue
+            return FourthlineProgressStep.upload.rawValue
         case .confirmation:
-            return FourthlineSteps.result.rawValue
+            return FourthlineProgressStep.result.rawValue
         }
     }
 }
