@@ -91,6 +91,7 @@
 		1E02CA8B7D3407CC59F3C4A6 /* Pods_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0AC3C787B7CF0443C57F58 /* Pods_Sample.framework */; };
 		52263F27D7440F76A46DBC40 /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62969E2E2D3D24EC6FE5157F /* Pods_IdentHubSDKTests.framework */; };
 		5A6A5E3CBE75B7415C167489 /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 147D957C40B48D8089C9F408 /* Pods_IdentHubSDK.framework */; };
+		84056F4B2655458F0072A10F /* BankIDStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84056F4A2655458F0072A10F /* BankIDStep.swift */; };
 		8409766F2632F0F600C4DC5B /* RequestsProgressDDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409766E2632F0F600C4DC5B /* RequestsProgressDDM.swift */; };
 		840976792632F2CD00C4DC5B /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840976772632F2CD00C4DC5B /* ProgressCell.swift */; };
 		8409767A2632F2CD00C4DC5B /* ProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840976782632F2CD00C4DC5B /* ProgressCell.xib */; };
@@ -132,7 +133,7 @@
 		841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81CC2603748300F4A079 /* BankIDCoordinator.swift */; };
 		841CD0A7263978C300890626 /* UploadFourthlineZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CD0A6263978C300890626 /* UploadFourthlineZip.swift */; };
 		841CD0A926397F7B00890626 /* RequestsProgressCellObjectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CD0A826397F7B00890626 /* RequestsProgressCellObjectBuilder.swift */; };
-		841E9BBD264EC8D00025FE15 /* FourthlineSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9BBC264EC8D00025FE15 /* FourthlineSteps.swift */; };
+		841E9BBD264EC8D00025FE15 /* FourthlineStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E9BBC264EC8D00025FE15 /* FourthlineStep.swift */; };
 		841F375D26298CC100D56361 /* DocumentTypesDDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F375C26298CC100D56361 /* DocumentTypesDDM.swift */; };
 		841F376326298E1400D56361 /* ScanDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F376226298E1400D56361 /* ScanDocumentType.swift */; };
 		841F376A26298FF500D56361 /* DocumentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F376826298FF500D56361 /* DocumentTypeCell.swift */; };
@@ -334,6 +335,7 @@
 		4D2609A4C757B9DA6D417DC6 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		62969E2E2D3D24EC6FE5157F /* Pods_IdentHubSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		795561216B53B2CE6248F8D6 /* Pods-IdentHubSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		84056F4A2655458F0072A10F /* BankIDStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDStep.swift; sourceTree = "<group>"; };
 		8409766E2632F0F600C4DC5B /* RequestsProgressDDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProgressDDM.swift; sourceTree = "<group>"; };
 		840976772632F2CD00C4DC5B /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
 		840976782632F2CD00C4DC5B /* ProgressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressCell.xib; sourceTree = "<group>"; };
@@ -375,7 +377,7 @@
 		841C81CC2603748300F4A079 /* BankIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinator.swift; sourceTree = "<group>"; };
 		841CD0A6263978C300890626 /* UploadFourthlineZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFourthlineZip.swift; sourceTree = "<group>"; };
 		841CD0A826397F7B00890626 /* RequestsProgressCellObjectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProgressCellObjectBuilder.swift; sourceTree = "<group>"; };
-		841E9BBC264EC8D00025FE15 /* FourthlineSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineSteps.swift; sourceTree = "<group>"; };
+		841E9BBC264EC8D00025FE15 /* FourthlineStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineStep.swift; sourceTree = "<group>"; };
 		841F375C26298CC100D56361 /* DocumentTypesDDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypesDDM.swift; sourceTree = "<group>"; };
 		841F376226298E1400D56361 /* ScanDocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocumentType.swift; sourceTree = "<group>"; };
 		841F376826298FF500D56361 /* DocumentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypeCell.swift; sourceTree = "<group>"; };
@@ -1325,7 +1327,8 @@
 				841CD0A6263978C300890626 /* UploadFourthlineZip.swift */,
 				841384C0263C594A00C39D69 /* PersonData.swift */,
 				841384C2263C599700C39D69 /* SupportedDocument.swift */,
-				841E9BBC264EC8D00025FE15 /* FourthlineSteps.swift */,
+				841E9BBC264EC8D00025FE15 /* FourthlineStep.swift */,
+				84056F4A2655458F0072A10F /* BankIDStep.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1719,6 +1722,7 @@
 				84ECED2E2630769C00ACD1B5 /* DocumentItemInfo.swift in Sources */,
 				841384BF263C587B00C39D69 /* PersonDataRequest.swift in Sources */,
 				84E0CF13262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift in Sources */,
+				84056F4B2655458F0072A10F /* BankIDStep.swift in Sources */,
 				8409766F2632F0F600C4DC5B /* RequestsProgressDDM.swift in Sources */,
 				8419567D2631B214003A55BD /* LocationViewController.swift in Sources */,
 				0CA7747625C1ADD600E94E77 /* SignDocumentsViewController.swift in Sources */,
@@ -1756,7 +1760,7 @@
 				0C527E6725AC814000B6D5DB /* IBANVerificationViewModel.swift in Sources */,
 				0C9E56E425C01E9E00D68B96 /* ConfirmApplicationViewModel.swift in Sources */,
 				0C527E7525AC9C6D00B6D5DB /* IBANRequest.swift in Sources */,
-				841E9BBD264EC8D00025FE15 /* FourthlineSteps.swift in Sources */,
+				841E9BBD264EC8D00025FE15 /* FourthlineStep.swift in Sources */,
 				0CF0AE8025CC153000A560E5 /* Status.swift in Sources */,
 				84A0126726384BED00672C1B /* KYCZipService.swift in Sources */,
 				84A0126D26388E7C00672C1B /* UploadKYCRequest.swift in Sources */,
