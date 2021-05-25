@@ -172,6 +172,25 @@ private extension FourthlineIdentCoordinator {
             SessionStorage.updateValue(stepData, for: StoredKeys.fourthlineStep.rawValue)
         }
     }
+}
+
+// MARK: - Permission methods -
+private extension FourthlineIdentCoordinator {
+
+    private func restoreStep() {
+        guard let restoreData = SessionStorage.obtainValue(for: StoredKeys.fourthlineStep.rawValue) as? Data else { return }
+
+        if let step = try? JSONDecoder().decode(FourthlineStep.self, from: restoreData) {
+            identificationStep = step
+            KYCContainer.shared.restoreData()
+        }
+    }
+
+    private func updateFourthlineStep(step: FourthlineStep) {
+        if let stepData = try? JSONEncoder().encode(step) {
+            SessionStorage.updateValue(stepData, for: StoredKeys.fourthlineStep.rawValue)
+        }
+    }
   
     private func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
 

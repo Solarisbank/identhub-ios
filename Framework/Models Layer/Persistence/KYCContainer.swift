@@ -9,6 +9,10 @@ import FourthlineVision
 import FourthlineCore
 import CoreLocation
 
+/// URL of the stored selfie full image location
+/// Used for restoring identification session
+let selfieFullImagePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("selfieFullImage.png")
+
 final class KYCContainer {
     static let shared = KYCContainer()
     private init() {}
@@ -28,6 +32,8 @@ final class KYCContainer {
         } else {
             kycInfo.selfie?.videoUrl = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("selfieVideo.mp4")
         }
+
+        storeSelfie(result: data)
     }
 
     // MARK: - Filling with Document Result Data
@@ -104,6 +110,11 @@ final class KYCContainer {
             kycInfo.person.gender = .undefined
         }
     }
+
+    func restoreData() {
+
+        restoreSelfieData()
+    }
 }
 
 // MARK: - Private Zone
@@ -119,5 +130,49 @@ private extension KYCContainer {
         kycInfo.person.gender = mrzInfo.gender
         kycInfo.person.nationalityCode = mrzInfo.nationality
         kycInfo.person.birthDate = mrzInfo.birthDate
+    }
+
+    private func storeSelfie(result: SelfieScannerResult) {
+
+        do {
+            let data = result.image.full.pngData()
+            try data?.write(to: selfieFullImagePath)
+
+            SessionStorage.updateValue(result.metadata.timestamp, for: StoredKeys.SelfieData.timestamp.rawValue)
+
+            if let location = result.metadata.location,
+               let locationData = try? NSKeyedArchiver.archivedData(withRootObject: location, requiringSecureCoding: false) {
+                SessionStorage.updateValue(locationData, for: StoredKeys.SelfieData.location.rawValue)
+            }
+
+            if let videoURL = result.videoUrl?.relativePath {
+                SessionStorage.updateValue(videoURL, for: StoredKeys.SelfieData.videoURL.rawValue)
+            }
+
+            SessionStorage.updateValue(true, for: StoredKeys.selfieData.rawValue)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func restoreSelfieData() {
+
+        if let selfieData = SessionStorage.obtainValue(for: StoredKeys.selfieData.rawValue) as? Bool, selfieData {
+            let selfieStoredResult = SelfieAttachment()
+
+            selfieStoredResult.image = UIImage(contentsOfFile: selfieFullImagePath.relativePath)
+            selfieStoredResult.timestamp = SessionStorage.obtainValue(for: StoredKeys.SelfieData.timestamp.rawValue) as? Date
+            selfieStoredResult.videoUrl = URL(fileURLWithPath: SessionStorage.obtainValue(for: StoredKeys.SelfieData.videoURL.rawValue) as! String)
+
+            if let locationData = SessionStorage.obtainValue(for: StoredKeys.SelfieData.location.rawValue) as? Data {
+                do {
+                    selfieStoredResult.location = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(locationData) as? CLLocation
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+
+            kycInfo.selfie = selfieStoredResult
+        }
     }
 }
