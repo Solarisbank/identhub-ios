@@ -94,7 +94,7 @@ final class KYCContainer {
     }
 
     func update(person data: PersonData) {
-        kycInfo.provider.name = "Fourthline"
+        kycInfo.provider.name = "SolarisBankCanB"
         kycInfo.provider.clientNumber = data.personUID
 
         kycInfo.person.firstName = data.firstName
@@ -109,6 +109,15 @@ final class KYCContainer {
         } else {
             kycInfo.person.gender = .undefined
         }
+
+        storePersonalData(data: data)
+    }
+
+    /// Run previous session KYC data restoration
+    func restoreData() {
+
+        restorePersonData()
+        restoreSelfieData()
     }
 
     func restoreData() {
@@ -131,6 +140,81 @@ private extension KYCContainer {
         kycInfo.person.nationalityCode = mrzInfo.nationality
         kycInfo.person.birthDate = mrzInfo.birthDate
     }
+
+    private func storeSelfie(result: SelfieScannerResult) {
+
+        do {
+            let data = result.image.full.pngData()
+            try data?.write(to: selfieFullImagePath)
+
+            SessionStorage.updateValue(result.metadata.timestamp, for: StoredKeys.SelfieData.timestamp.rawValue)
+
+            if let location = result.metadata.location,
+               let locationData = try? NSKeyedArchiver.archivedData(withRootObject: location, requiringSecureCoding: false) {
+                SessionStorage.updateValue(locationData, for: StoredKeys.SelfieData.location.rawValue)
+            }
+
+            if let videoURL = result.videoUrl?.relativePath {
+                SessionStorage.updateValue(videoURL, for: StoredKeys.SelfieData.videoURL.rawValue)
+            }
+
+            SessionStorage.updateValue(true, for: StoredKeys.selfieData.rawValue)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func restoreSelfieData() {
+
+        if let selfieData = SessionStorage.obtainValue(for: StoredKeys.selfieData.rawValue) as? Bool, selfieData {
+            let selfieStoredResult = SelfieAttachment()
+
+            selfieStoredResult.image = UIImage(contentsOfFile: selfieFullImagePath.relativePath)
+            selfieStoredResult.timestamp = SessionStorage.obtainValue(for: StoredKeys.SelfieData.timestamp.rawValue) as? Date
+            selfieStoredResult.videoUrl = URL(fileURLWithPath: SessionStorage.obtainValue(for: StoredKeys.SelfieData.videoURL.rawValue) as! String)
+
+            if let locationData = SessionStorage.obtainValue(for: StoredKeys.SelfieData.location.rawValue) as? Data {
+                do {
+                    selfieStoredResult.location = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(locationData) as? CLLocation
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+
+            kycInfo.selfie = selfieStoredResult
+        }
+    }
+}
+
+// MARK: - Personal data store/load -
+
+private extension KYCContainer {
+
+    private func storePersonalData(data: PersonData) {
+
+        do {
+            let personData = try JSONEncoder().encode(data)
+            SessionStorage.updateValue(personData, for: StoredKeys.personData.rawValue)
+        } catch {
+            print("Error with encoding personal data: \(error.localizedDescription)")
+        }
+    }
+
+    private func restorePersonData() {
+        guard let personData = SessionStorage.obtainValue(for: StoredKeys.personData.rawValue) as? Data else { return }
+
+        do {
+            let personData = try JSONDecoder().decode(PersonData.self, from: personData)
+            update(person: personData)
+        } catch {
+            print("Error with decoding personal data: \(error.localizedDescription)")
+        }
+    }
+}
+
+// MARK: - Selfie data store/load -
+
+private extension KYCContainer {
 
     private func storeSelfie(result: SelfieScannerResult) {
 

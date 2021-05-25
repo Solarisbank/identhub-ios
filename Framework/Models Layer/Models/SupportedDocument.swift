@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct SupportedDocument: Decodable {
+struct SupportedDocument: Codable {
 
     /// Supported document type: passport, idcard, etc.
     let type: String

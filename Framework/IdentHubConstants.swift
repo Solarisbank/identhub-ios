@@ -55,9 +55,12 @@ enum StoredKeys: String {
 
     /// BankID identification session process step value key
     case bankIDStep = "BankIDIdentificationStepKey"
-  
+
     /// Fourthline identification process step value key
     case fourthlineStep = "FourthlineIdentificationStepKey"
+
+    /// Personal data value key
+    case personData = "IndentificationPersonDataKey"
 
     /// Fourthline selfie step result data
     case selfieData = "FourthlineSelfieDataKey"

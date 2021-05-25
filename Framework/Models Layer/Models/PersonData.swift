@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct PersonData: Decodable {
+struct PersonData: Codable {
 
     /// Identification person first name
     let firstName: String
