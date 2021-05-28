@@ -65,6 +65,12 @@ enum StoredKeys: String {
     /// Fourthline selfie step result data
     case selfieData = "FourthlineSelfieDataKey"
 
+    /// Fourthline scanned document data key
+    case documentData = "FourthlineDocumentDataKey"
+
+    /// Fourthline provider data key
+    case providerData = "FourthlineProviderDataKey"
+
     enum SelfieData: String {
 
         case fullImage = "FullImagePathKey"

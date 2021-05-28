@@ -150,6 +150,7 @@
 		842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */; };
 		842DA66526373D650020E598 /* IdentificationMethodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DA66426373D650020E598 /* IdentificationMethodRequest.swift */; };
 		842DA66A26373E740020E598 /* IdentificationMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DA66926373E740020E598 /* IdentificationMethod.swift */; };
+		8432D275265D71A6002CCAA4 /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432D274265D71A6002CCAA4 /* DocumentData.swift */; };
 		8440C565262F55E0001B8E39 /* DocumentScannerAssetSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440C564262F55E0001B8E39 /* DocumentScannerAssetSizing.swift */; };
 		8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */; };
 		84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */; };
@@ -167,6 +168,7 @@
 		847242DE2631D3E500CC8DE6 /* RequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847242DC2631D3E500CC8DE6 /* RequestsViewController.xib */; };
 		847242E62631D47500CC8DE6 /* RequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847242E52631D47500CC8DE6 /* RequestsViewModel.swift */; };
 		847242EC2631D55700CC8DE6 /* BaseFourthlineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847242EB2631D55700CC8DE6 /* BaseFourthlineViewModel.swift */; };
+		8474B8FE265EB7050051485E /* DocumentAttachmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474B8FD265EB7050051485E /* DocumentAttachmentData.swift */; };
 		847D427F260B555D0067ED63 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D427D260B555D0067ED63 /* TermsViewController.swift */; };
 		847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D427E260B555D0067ED63 /* TermsViewController.xib */; };
 		847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D428D260B6C370067ED63 /* TermsViewModel.swift */; };
@@ -394,6 +396,7 @@
 		842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentHubConstants.swift; sourceTree = "<group>"; };
 		842DA66426373D650020E598 /* IdentificationMethodRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationMethodRequest.swift; sourceTree = "<group>"; };
 		842DA66926373E740020E598 /* IdentificationMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationMethod.swift; sourceTree = "<group>"; };
+		8432D274265D71A6002CCAA4 /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
 		8440C564262F55E0001B8E39 /* DocumentScannerAssetSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetSizing.swift; sourceTree = "<group>"; };
 		8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetBuilder.swift; sourceTree = "<group>"; };
 		84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExporter.swift; sourceTree = "<group>"; };
@@ -411,6 +414,7 @@
 		847242DC2631D3E500CC8DE6 /* RequestsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestsViewController.xib; sourceTree = "<group>"; };
 		847242E52631D47500CC8DE6 /* RequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewModel.swift; sourceTree = "<group>"; };
 		847242EB2631D55700CC8DE6 /* BaseFourthlineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFourthlineViewModel.swift; sourceTree = "<group>"; };
+		8474B8FD265EB7050051485E /* DocumentAttachmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentAttachmentData.swift; sourceTree = "<group>"; };
 		847D427D260B555D0067ED63 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		847D427E260B555D0067ED63 /* TermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
 		847D428D260B6C370067ED63 /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
@@ -1329,6 +1333,8 @@
 				841384C2263C599700C39D69 /* SupportedDocument.swift */,
 				841E9BBC264EC8D00025FE15 /* FourthlineStep.swift */,
 				84056F4A2655458F0072A10F /* BankIDStep.swift */,
+				8432D274265D71A6002CCAA4 /* DocumentData.swift */,
+				8474B8FD265EB7050051485E /* DocumentAttachmentData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1821,6 +1827,7 @@
 				0CC25B8F25A4686700D839AB /* Body.swift in Sources */,
 				0CE4A8F625A3703600114CBD /* String+Attributes.swift in Sources */,
 				840DEA7726288F420033A2D8 /* StepsProgressView.swift in Sources */,
+				8474B8FE265EB7050051485E /* DocumentAttachmentData.swift in Sources */,
 				0C1B430B25ADB19A004FFF46 /* UIImage+SDK.swift in Sources */,
 				847242E62631D47500CC8DE6 /* RequestsViewModel.swift in Sources */,
 				0C9E56E925C0358500D68B96 /* DocumentTableViewCell.swift in Sources */,
@@ -1830,6 +1837,7 @@
 				84ECED282630688700ACD1B5 /* DocumentItemInfoCell.swift in Sources */,
 				0C527E5825AC4BF000B6D5DB /* IBANVerificationViewController.swift in Sources */,
 				84ECED1C26305C5C00ACD1B5 /* Date+Extensions.swift in Sources */,
+				8432D275265D71A6002CCAA4 /* DocumentData.swift in Sources */,
 				847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */,
 				0C9E56DC25C01E6A00D68B96 /* ConfirmApplicationViewController.swift in Sources */,
 				840DEA6F26285B4C0033A2D8 /* LocationManager.swift in Sources */,

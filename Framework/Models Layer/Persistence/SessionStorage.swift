@@ -40,8 +40,17 @@ enum SessionStorage {
                 UserDefaults.standard.removeObject(forKey: key)
             }
 
+            UserDefaults.standard.removeObject(forKey: kStoredValueKeys)
+
             UserDefaults.standard.synchronize()
         }
+    }
+
+    /// Method removed object for key
+    /// - Parameter key: stored object key
+    static func deleteObject(for key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+        UserDefaults.standard.synchronize()
     }
 }
 

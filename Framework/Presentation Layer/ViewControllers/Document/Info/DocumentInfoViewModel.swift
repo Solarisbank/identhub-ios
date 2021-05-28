@@ -90,5 +90,7 @@ extension DocumentInfoViewModel {
                 KYCContainer.shared.update(of: info.content.dateFromString())
             }
         }
+
+        KYCContainer.shared.updateDocumentData()
     }
 }

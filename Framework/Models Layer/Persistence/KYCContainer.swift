@@ -51,10 +51,10 @@ final class KYCContainer {
         }
 
         if let url = data.videoUrl {
-            kycInfo.selfie?.videoUrl = url
-        } else {
-            kycInfo.document?.videoUrl = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("documentVideo.mp4")
+            kycInfo.document?.videoUrl = url
         }
+
+        storeDocumentData()
     }
 
     // MARK: - Filling with Document Step Result Data
@@ -71,10 +71,13 @@ final class KYCContainer {
         attachment.timestamp = data.metadata.timestamp
         attachment.location = data.metadata.location
         kycInfo.document?.images.append(attachment)
+
+        saveDocumentImage(attachment: attachment)
     }
 
     func removeDocumentData() {
         kycInfo.document = nil
+        SessionStorage.deleteObject(for: StoredKeys.documentData.rawValue)
     }
 
     func update(with documentNumber: String) {
@@ -91,6 +94,11 @@ final class KYCContainer {
 
     func update(location: CLLocation) {
         kycInfo.metadata?.location = location
+    }
+
+    /// Func runs storing document with updated data process again
+    func updateDocumentData() {
+        storeDocumentData()
     }
 
     func update(person data: PersonData) {
@@ -118,11 +126,7 @@ final class KYCContainer {
 
         restorePersonData()
         restoreSelfieData()
-    }
-
-    func restoreData() {
-
-        restoreSelfieData()
+        restoreDocumentData()
     }
 }
 
@@ -257,6 +261,159 @@ private extension KYCContainer {
             }
 
             kycInfo.selfie = selfieStoredResult
+        }
+    }
+}
+
+// MARK: - Personal data store/load -
+
+private extension KYCContainer {
+
+    private func storePersonalData(data: PersonData) {
+
+        do {
+            let personData = try JSONEncoder().encode(data)
+            SessionStorage.updateValue(personData, for: StoredKeys.personData.rawValue)
+        } catch {
+            print("Error with encoding personal data: \(error.localizedDescription)")
+        }
+    }
+
+    private func restorePersonData() {
+        guard let personData = SessionStorage.obtainValue(for: StoredKeys.personData.rawValue) as? Data else { return }
+
+        do {
+            let personData = try JSONDecoder().decode(PersonData.self, from: personData)
+            update(person: personData)
+        } catch {
+            print("Error with decoding personal data: \(error.localizedDescription)")
+        }
+    }
+}
+
+// MARK: - Selfie data store/load -
+
+private extension KYCContainer {
+
+    private func storeSelfie(result: SelfieScannerResult) {
+
+        do {
+            let data = result.image.full.pngData()
+            try data?.write(to: selfieFullImagePath)
+
+            SessionStorage.updateValue(result.metadata.timestamp, for: StoredKeys.SelfieData.timestamp.rawValue)
+
+            if let location = result.metadata.location,
+               let locationData = try? NSKeyedArchiver.archivedData(withRootObject: location, requiringSecureCoding: false) {
+                SessionStorage.updateValue(locationData, for: StoredKeys.SelfieData.location.rawValue)
+            }
+
+            if let videoURL = result.videoUrl?.relativePath {
+                SessionStorage.updateValue(videoURL, for: StoredKeys.SelfieData.videoURL.rawValue)
+            }
+
+            SessionStorage.updateValue(true, for: StoredKeys.selfieData.rawValue)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func restoreSelfieData() {
+
+        if let selfieData = SessionStorage.obtainValue(for: StoredKeys.selfieData.rawValue) as? Bool, selfieData {
+            let selfieStoredResult = SelfieAttachment()
+
+            selfieStoredResult.image = UIImage(contentsOfFile: selfieFullImagePath.relativePath)
+            selfieStoredResult.timestamp = SessionStorage.obtainValue(for: StoredKeys.SelfieData.timestamp.rawValue) as? Date
+            selfieStoredResult.videoUrl = URL(fileURLWithPath: SessionStorage.obtainValue(for: StoredKeys.SelfieData.videoURL.rawValue) as! String)
+
+            if let locationData = SessionStorage.obtainValue(for: StoredKeys.SelfieData.location.rawValue) as? Data {
+                do {
+                    selfieStoredResult.location = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(locationData) as? CLLocation
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+
+            kycInfo.selfie = selfieStoredResult
+        }
+    }
+}
+
+// MARK: - Documents data store/load -
+
+private extension KYCContainer {
+
+
+    /// Method stored scanned document attachment image to the disk for session storage
+    /// - Parameter attachment: scanned document attachment
+    private func saveDocumentImage(attachment: DocumentAttachment) {
+
+        let documentImageName = "documentScan_\(attachment.fileSide.rawValue)_\(attachment.isAngled ? "tilted" : "straight")"
+        let documentImagePath = NSTemporaryDirectory() + documentImageName
+        let documentImageURL = URL(fileURLWithPath: documentImagePath)
+
+        if let data = attachment.image?.pngData() {
+
+            do {
+                try data.write(to: documentImageURL)
+            } catch {
+                print("Error with saving document image data: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    /// Method stored document data to the session storage
+    private func storeDocumentData() {
+        guard let document = kycInfo.document else { return }
+
+        let documentData = DocumentData(document: document)
+
+        SessionStorage.updateValue(documentData.encode(), for: StoredKeys.documentData.rawValue)
+    }
+
+    /// Method restored scanned document from previous session
+    private func restoreDocumentData() {
+        guard let storedData = SessionStorage.obtainValue(for: StoredKeys.documentData.rawValue) as? Data else { return }
+
+        do {
+            if let documentData = try DocumentData(data: storedData) {
+
+                update(documentData: documentData)
+            }
+        } catch {
+            print("Error with unarchiving kyc document data: \(error.localizedDescription)")
+        }
+    }
+
+    /// Method filled kyc info document object with restored document data
+    /// - Parameter documentData: resotred document data object
+    private func update(documentData: DocumentData) {
+
+        if kycInfo.document == nil {
+            kycInfo.document = Document()
+        }
+
+        kycInfo.document?.type = documentData.type
+        kycInfo.document?.videoUrl = documentData.videoURL
+        kycInfo.document?.number = documentData.number
+        kycInfo.document?.expirationDate = documentData.expirationDate
+        kycInfo.document?.issueDate = documentData.issueDate
+
+        for attachmentData in documentData.images {
+
+            let attachment = DocumentAttachment()
+            attachment.fileSide = attachmentData.fileSide
+            attachment.isAngled = attachmentData.isAngled
+            attachment.timestamp = attachmentData.timeStamp
+            attachment.location = attachmentData.location
+
+            let imagePath = NSTemporaryDirectory() + attachmentData.imageName
+            if let image = UIImage(contentsOfFile: imagePath) {
+                attachment.image = image
+            }
+
+            kycInfo.document?.images.append(attachment)
         }
     }
 }
