@@ -4,20 +4,21 @@
 //
 
 import Foundation
+import FourthlineCore
 
 struct PersonData: Codable {
 
     /// Identification person first name
-    let firstName: String
+    var firstName: String
 
     /// Identification person last name
-    let lastName: String
+    var lastName: String
 
     /// Identification person nationality abbreviation: US, DE, etc.
-    let nationality: String
+    var nationality: String
 
     /// String value of the identification person birth day: yyyy-mm-dd
-    let birthDate: Date
+    var birthDate: Date
 
     /// Identification value of the person
     let personUID: String
@@ -38,3 +39,19 @@ struct PersonData: Codable {
         case supportedDocuments = "supported_documents"
     }
 }
+
+// MARK: - Updating methods -
+
+extension PersonData {
+
+    /// Method update person data with info obtained from scanned document
+    /// - Parameter mrzInfo: scanned document info
+    mutating func update(with mrzInfo: MRTDMRZInfo) {
+
+        firstName = mrzInfo.firstNames.joined(separator: " ")
+        lastName = mrzInfo.lastNames.joined(separator: " ")
+        birthDate = mrzInfo.birthDate
+        nationality = mrzInfo.nationality
+    }
+}
+

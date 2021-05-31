@@ -230,7 +230,7 @@ enum Localizable {
         enum Information {
             static let title = "Document information"
             static let docNumber = "document number"
-            static let birth = "date of birth"
+            static let issue = "date of issue"
             static let expire = "document expiry date"
             static let warning = "Please confirm if your data derived properly from the document scan"
         }

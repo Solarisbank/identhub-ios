@@ -67,7 +67,7 @@ extension DocumentInfoViewModel {
         let document = KYCContainer.shared.kycInfo.document
 
         let docNumber = DocumentItemInfo(title: InfoText.docNumber, content: document?.number ?? "", type: .number)
-        let issueDate = DocumentItemInfo(title: InfoText.birth, content: "", type: .issueDate)
+        let issueDate = DocumentItemInfo(title: InfoText.issue, content: document?.issueDate?.defaultDateString() ?? "", type: .issueDate)
         let expireDate = DocumentItemInfo(title: InfoText.expire, content: document?.expirationDate?.defaultDateString() ?? "", type: .expireDate)
 
         return [docNumber, issueDate, expireDate]

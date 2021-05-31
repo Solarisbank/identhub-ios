@@ -71,6 +71,10 @@ enum StoredKeys: String {
     /// Fourthline provider data key
     case providerData = "FourthlineProviderDataKey"
 
+    /// Fourthline kyc zip file url
+    case kycZipData = "KYCZipDataURLKey"
+
+    /// Selfie data store keys enumeration
     enum SelfieData: String {
 
         case fullImage = "FullImagePathKey"
