@@ -43,9 +43,11 @@ extension RequestsProgressCellObjectBuilder {
     }
 
     private func buildUploadData() -> [ProgressCellObject] {
-        let prepareData = ProgressCellObject(title: Localizable.Upload.preparation, visibleSeparator: true)
+        let locationData = ProgressCellObject(title: Localizable.Upload.location, visibleSeparator: true)
+        let prepareData = ProgressCellObject(title: Localizable.Upload.preparation, visibleSeparator: false)
         let uploadData = ProgressCellObject(title: Localizable.Upload.uploading, visibleSeparator: false)
-        return [prepareData, uploadData]
+
+        return [locationData, prepareData, uploadData]
     }
 
     private func buildConfirmData() -> [ProgressCellObject] {

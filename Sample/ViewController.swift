@@ -39,9 +39,6 @@ class ViewController: UIViewController {
 
         sessionURLTV.text = placeholderText
         sessionURLTV.textColor = .lightGray
-
-        // TODO: - Delete for PR -
-        sessionURLTV.text = "https://person-onboarding.solaris-staging.de/9AXlUH0ptsZoFef2n8LKiptBCYwsSwMIk7o52W0MJoX9eylEgJUya6H1JmHumyNSxk1BtWwEvZb95saX-kUp8MmI84Dfm-ER_x-xD_QwlaByNLdUFjo0S6b_FsBnVdzi"
     }
 
     private func startIdentProcess() {
@@ -63,6 +60,10 @@ class ViewController: UIViewController {
         } catch {
             updateStatus(false, desc: "Registered undefined error")
         }
+    }
+
+    @IBAction func didClickResetData(_ sender: UIButton) {
+        IdentHubSession.clearSessionData()
     }
 
     private func updateStatus(_ isSuccess: Bool, desc: String) {
@@ -115,6 +116,10 @@ extension ViewController: IdentHubSDKManagerDelegate {
             failureReasonDesc = "indicates build request error."
         case .unknownError:
             failureReasonDesc = "indicates that api client encountered an error not listed above."
+        case .locationAccessError:
+            failureReasonDesc = "indicates that location premission is denied"
+        case .locationError:
+            failureReasonDesc = "indicates that fetching device location returns error"
         }
 
         DispatchQueue.main.async {

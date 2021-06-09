@@ -59,13 +59,21 @@ final public class IdentHubSession {
         startIdentification()
     }
 
-    // MARK: - Internal methods methods -
+    /// Static method removed all saved data from previous sessoin
+    public static func clearSessionData() {
+        SessionStorage.clearData()
+    }
+}
+
+// MARK: - Internal methods methods -
+
+private extension IdentHubSession {
 
     private func startIdentification() {
         let identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
 
-        identCoordinator.start { [unowned self] result in
-            self.updateSessionResult(result)
+        identCoordinator.start { [weak self] result in
+            self?.updateSessionResult(result)
         }
     }
 

@@ -19,7 +19,7 @@ enum InitStep: Int {
 }
 
 enum UploadSteps: Int {
-    case zipFile = 0, uploadZip
+    case location = 0, zipFile, uploadZip
 }
 
 enum VerificationSteps: Int {
@@ -107,6 +107,10 @@ final class RequestsViewModel: NSObject {
         case .confirmation:
             return Localizable.Verification.description
         }
+    }
+
+    func didTriggerQuit() {
+        fourthlineCoordinator?.perform(action: .quit)
     }
 }
 
@@ -228,7 +232,30 @@ private extension RequestsViewModel {
 private extension RequestsViewModel {
 
     private func startUploadProcess() {
-        zipUserData()
+        fetchLocationData()
+    }
+
+    private func fetchLocationData() {
+        startStep(number: UploadSteps.location.rawValue)
+
+        LocationManager.shared.requestLocationAuthorization {
+            LocationManager.shared.requestDeviceLocation { [weak self] location, error in
+                guard let location = location else {
+
+                    if let errorHandler = self?.onDisplayError {
+                        errorHandler(APIError.locationError)
+                    }
+                    return
+                }
+
+                KYCContainer.shared.update(location: location)
+
+                DispatchQueue.main.async {
+                    self?.completeStep(number: UploadSteps.location.rawValue)
+                    self?.zipUserData()
+                }
+            }
+        }
     }
 
     private func zipUserData() {

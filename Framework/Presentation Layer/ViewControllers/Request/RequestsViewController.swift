@@ -45,7 +45,7 @@ class RequestsViewController: UIViewController {
 
 // MARK: - Inernal methods -
 
-extension RequestsViewController {
+private extension RequestsViewController {
 
     private func configureUI() {
 
@@ -68,6 +68,8 @@ extension RequestsViewController {
             DispatchQueue.main.async {
                 if let zipError = error as? ZipperError {
                     self.zipFailed(with: zipError)
+                } else if let err = error as? APIError, err == .locationError || err == .locationAccessError {
+                    self.displayLocationTrackerError(error: err)
                 }
             }
         }
@@ -79,7 +81,29 @@ extension RequestsViewController {
     private func zipFailed(with error: ZipperError) {
         let message = KYCZipService.text(for: error)
         let alert = UIAlertController(title: Localizable.Zipper.Error.alertTitle, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+
+        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+            self?.viewModel.didTriggerQuit()
+        })
+
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true)
+    }
+
+    private func displayLocationTrackerError(error: APIError) {
+        let alert = UIAlertController(title: Localizable.Location.Error.title, message: error.text(), preferredStyle: .alert)
+
+        let tryAgainAction = UIAlertAction(title: "Settings", style: .default, handler: {_ in
+            UIApplication.openAppSettings()
+        })
+
+        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+            self?.viewModel.didTriggerQuit()
+        })
+
+        alert.addAction(tryAgainAction)
+        alert.addAction(cancelAction)
 
         present(alert, animated: true)
     }

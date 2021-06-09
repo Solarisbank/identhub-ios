@@ -13,9 +13,7 @@ enum KYCZipService {
         if let zipPath = SessionStorage.obtainValue(for: StoredKeys.kycZipData.rawValue) as? String {
             let zipURL = URL(fileURLWithPath: zipPath)
             completion(zipURL, nil)
-        }
-        else
-        {
+        } else {
             DispatchQueue.global(qos: .userInitiated).async {
                 do {
                     let zipper = Zipper()

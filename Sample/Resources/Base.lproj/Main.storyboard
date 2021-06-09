@@ -18,15 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vdQ-4l-3bc">
-                                <rect key="frame" x="20" y="431" width="374" height="44"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vdQ-4l-3bc">
+                                <rect key="frame" x="20" y="403" width="374" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikC-rJ-L1P">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
                                         <color key="backgroundColor" red="1" green="0.3921568627" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="guP-dc-ShZ"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Start Identification">
                                             <color key="titleColor" red="0.97254901959999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,13 +37,29 @@
                                             <action selector="startBankIdentSDK:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9cm-yr-mzg"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lV7-Og-gBg">
+                                        <rect key="frame" x="0.0" y="55" width="374" height="45"/>
+                                        <color key="backgroundColor" name="base50"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Reset Data">
+                                            <color key="titleColor" red="0.97254901959999995" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didClickResetData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cl6-Uz-szG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="xQm-Ip-jx7"/>
+                                    <constraint firstAttribute="height" constant="100" id="xQm-Ip-jx7"/>
                                 </constraints>
                             </stackView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-QT-J8K">
-                                <rect key="frame" x="20" y="505" width="374" height="157"/>
+                                <rect key="frame" x="20" y="533" width="374" height="129"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SFx-PO-biR">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -66,7 +79,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaB-N4-TmI">
-                                        <rect key="frame" x="0.0" y="65" width="374" height="92"/>
+                                        <rect key="frame" x="0.0" y="65" width="374" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -74,7 +87,7 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eKw-gT-FCD">
-                                <rect key="frame" x="20" y="286" width="374" height="105"/>
+                                <rect key="frame" x="20" y="258" width="374" height="105"/>
                                 <color key="backgroundColor" name="black05"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="105" id="DXk-bJ-gcn"/>
@@ -87,7 +100,7 @@
                                 </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LF4-ZO-LD4">
-                                <rect key="frame" x="20" y="257" width="92.5" height="19"/>
+                                <rect key="frame" x="20" y="229" width="92.5" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -124,6 +137,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="base50">
+            <color red="0.49411764705882355" green="0.52941176470588236" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="black05">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

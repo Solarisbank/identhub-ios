@@ -38,6 +38,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         guard status == .notDetermined else {
             guard status != .authorizedWhenInUse &&
                     status != .authorizedAlways else {
+                if let completion = completionLocationHandler {
+                    completion(nil, APIError.locationAccessError)
+                }
+
                 completionHandler()
                 return
             }

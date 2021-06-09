@@ -66,36 +66,4 @@ extension LocationViewController {
         titleLbl.text = Localizable.Location.title
         descriptionLbl.text = Localizable.Location.description
     }
-
-    private func handleActivities() {
-
-        viewModel.onUpdateLocation = { [unowned self] enable in
-
-            self.continueBtn.isEnabled = enable
-            self.continueBtn.alpha = enable ? 1.0 : 0.5
-        }
-
-        viewModel.onDisplayError = { [unowned self] error in
-            self.displayLocationTrackerError()
-        }
-
-        viewModel.startLocationHandler()
-    }
-
-    private func displayLocationTrackerError() {
-        let alert = UIAlertController(title: Localizable.Location.Error.title, message: Localizable.Location.Error.message, preferredStyle: .alert)
-
-        let tryAgainAction = UIAlertAction(title: "Settings", style: .default, handler: {_ in
-            UIApplication.openAppSettings()
-        })
-
-        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
-            self?.viewModel.didTriggerQuit()
-        })
-
-        alert.addAction(tryAgainAction)
-        alert.addAction(cancelAction)
-
-        present(alert, animated: true)
-    }
 }

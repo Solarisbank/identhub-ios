@@ -251,6 +251,7 @@ enum Localizable {
         static let description = "Your data is being uploaded..."
         static let uploading = "Uploading..."
         static let preparation = "Prepare upload data..."
+        static let location = "Fetch location data..."
     }
 
     enum Zipper {
@@ -284,6 +285,8 @@ enum Localizable {
         static let requestError = "Indicates build request error."
         static let unknownError = "Indicates that api client encountered an error not listed above."
         static let resourceNotFound = "Resource has not been found."
+        static let locationAccessError = "Location permission denied."
+        static let locationError = "Device can't define location data."
     }
 
     enum Result {

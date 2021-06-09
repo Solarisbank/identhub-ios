@@ -17,6 +17,7 @@ import Foundation
 /// - unprocessableEntity: data invalid or expired.
 /// - internalServerError: indicates the internal server error.
 /// - requestError: indicates build request error
+/// - locationError: indicates issue with fetching device location data
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
@@ -29,6 +30,8 @@ public enum APIError: Error {
     case unprocessableEntity
     case internalServerError
     case requestError
+    case locationAccessError
+    case locationError
     case unknownError
 }
 
@@ -58,6 +61,10 @@ extension APIError {
             return Localizable.APIErrorDesc.unknownError
         case .resourceNotFound:
             return Localizable.APIErrorDesc.resourceNotFound
+        case .locationAccessError:
+            return Localizable.APIErrorDesc.locationAccessError
+        case .locationError:
+            return Localizable.APIErrorDesc.locationError
         }
     }
 }
