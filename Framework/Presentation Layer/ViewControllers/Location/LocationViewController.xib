@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -51,7 +51,7 @@
                         <action selector="didClickQuit:" destination="-1" eventType="touchUpInside" id="nhx-LI-wUT"/>
                     </connections>
                 </button>
-                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiq-4P-RkI">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiq-4P-RkI">
                     <rect key="frame" x="20" y="737" width="374" height="50"/>
                     <color key="backgroundColor" red="1" green="0.3921568627" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -71,21 +71,19 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_background" translatesAutoresizingMaskIntoConstraints="NO" id="SSX-Dx-2ws">
-                    <rect key="frame" x="72" y="246" width="270" height="270"/>
+                    <rect key="frame" x="72.333333333333343" y="246.33333333333337" width="269.33333333333326" height="269"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="270" id="sbE-a1-WZz"/>
-                        <constraint firstAttribute="width" constant="270" id="tWa-Y4-ZSO"/>
+                        <constraint firstAttribute="width" secondItem="SSX-Dx-2ws" secondAttribute="height" multiplier="1:1" id="eHE-GU-L3j"/>
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin_map" translatesAutoresizingMaskIntoConstraints="NO" id="deQ-XD-0My">
-                    <rect key="frame" x="146" y="320" width="122" height="122"/>
+                    <rect key="frame" x="146.33333333333334" y="320.33333333333331" width="121.33333333333334" height="121"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="122" id="E3o-AR-2ax"/>
-                        <constraint firstAttribute="height" constant="122" id="eKh-H4-ZdQ"/>
+                        <constraint firstAttribute="width" secondItem="deQ-XD-0My" secondAttribute="height" multiplier="1:1" id="hTq-Zp-j67"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need your device location to continue." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPf-pg-sv7">
-                    <rect key="frame" x="20" y="177" width="271" height="18"/>
+                    <rect key="frame" x="20" y="172.33333333333334" width="271" height="18"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" name="black50"/>
                     <nil key="highlightedColor"/>
@@ -101,16 +99,18 @@
                 <constraint firstItem="zPf-pg-sv7" firstAttribute="leading" secondItem="cxS-uE-mPH" secondAttribute="leading" constant="20" id="9eS-zf-htR"/>
                 <constraint firstItem="cxS-uE-mPH" firstAttribute="trailing" secondItem="Dl1-er-26w" secondAttribute="trailing" constant="20" id="EjX-oq-cO2"/>
                 <constraint firstItem="deQ-XD-0My" firstAttribute="centerX" secondItem="SSX-Dx-2ws" secondAttribute="centerX" id="GGn-Un-f0D"/>
+                <constraint firstItem="deQ-XD-0My" firstAttribute="centerY" secondItem="SSX-Dx-2ws" secondAttribute="centerY" id="KdU-1G-Qk1"/>
                 <constraint firstItem="SSX-Dx-2ws" firstAttribute="centerY" secondItem="fTf-LC-6At" secondAttribute="centerY" multiplier="0.85" id="LaN-88-CvY"/>
                 <constraint firstItem="kiq-4P-RkI" firstAttribute="leading" secondItem="Dl1-er-26w" secondAttribute="leading" id="Na7-72-8FF"/>
                 <constraint firstItem="Dl1-er-26w" firstAttribute="top" secondItem="kiq-4P-RkI" secondAttribute="bottom" constant="5" id="PIR-zt-A4T"/>
                 <constraint firstItem="los-4i-yxc" firstAttribute="top" secondItem="cuV-E2-H6n" secondAttribute="bottom" constant="40" id="Pru-Tx-htL"/>
                 <constraint firstItem="los-4i-yxc" firstAttribute="leading" secondItem="cxS-uE-mPH" secondAttribute="leading" constant="20" id="Ptb-9M-z5T"/>
+                <constraint firstItem="deQ-XD-0My" firstAttribute="width" secondItem="SSX-Dx-2ws" secondAttribute="width" multiplier="0.45" id="aVB-W5-HlS"/>
+                <constraint firstItem="zPf-pg-sv7" firstAttribute="centerY" secondItem="cxS-uE-mPH" secondAttribute="centerY" multiplier="0.4" id="dMy-Ld-O67"/>
                 <constraint firstItem="cuV-E2-H6n" firstAttribute="leading" secondItem="cxS-uE-mPH" secondAttribute="leading" constant="20" id="dqA-Bd-r4m"/>
                 <constraint firstItem="kiq-4P-RkI" firstAttribute="trailing" secondItem="Dl1-er-26w" secondAttribute="trailing" id="eZI-Ic-w86"/>
                 <constraint firstItem="cxS-uE-mPH" firstAttribute="trailing" secondItem="cuV-E2-H6n" secondAttribute="trailing" constant="20" id="gB1-UN-IYk"/>
-                <constraint firstItem="zPf-pg-sv7" firstAttribute="top" secondItem="los-4i-yxc" secondAttribute="bottom" constant="40" id="iGI-zW-261"/>
-                <constraint firstItem="deQ-XD-0My" firstAttribute="centerY" secondItem="SSX-Dx-2ws" secondAttribute="centerY" id="vPf-CQ-HbK"/>
+                <constraint firstItem="SSX-Dx-2ws" firstAttribute="width" secondItem="fTf-LC-6At" secondAttribute="width" multiplier="0.65" id="zws-0n-HZ1"/>
             </constraints>
             <point key="canvasLocation" x="306" y="78"/>
         </view>

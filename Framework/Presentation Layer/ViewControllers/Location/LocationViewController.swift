@@ -35,7 +35,6 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        handleActivities()
         configureUI()
     }
 
