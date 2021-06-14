@@ -77,6 +77,10 @@ extension DocumentInfoViewController {
         viewModel.didUpdatedContent = { [unowned self] enable in
             self.updateContinueBtnEnableState(enable: enable)
         }
+
+        viewModel.reloadTable = { [weak self] in
+            self?.docInfoTable.reloadData()
+        }
     }
 
     private func updateContinueBtnEnableState(enable: Bool) {

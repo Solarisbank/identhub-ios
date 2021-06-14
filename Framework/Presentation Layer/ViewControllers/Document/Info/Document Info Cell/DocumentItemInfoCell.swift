@@ -79,11 +79,11 @@ extension DocumentItemInfoCell {
 
             datePicker.datePickerMode = .date
 
-            if let date = data.content.dateFromString() {
+            if let date = data.prefilledDate {
                 datePicker.date = date
-                contentTF.text = date.defaultDateString()
             }
 
+            contentTF.text = data.content
             contentTF.inputView = datePicker
             contentTF.inputAccessoryView = createToolbar()
         }
@@ -106,6 +106,7 @@ extension DocumentItemInfoCell {
 
     @objc func donePressed() {
         contentTF.text = datePicker.date.defaultDateString()
+        cellContent?.prefilledDate = datePicker.date
         contentDidChanged(contentTF.text)
         self.endEditing(true)
     }

@@ -192,6 +192,7 @@
 		84B2A8BD25F3E3D200EBA899 /* IdentificationRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */; };
 		84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */; };
 		84B2A8CE25F3EA6000EBA899 /* BeckendRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */; };
+		84D15A89266FBA30002DC7EE /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D15A88266FBA30002DC7EE /* Date+Compare.swift */; };
 		84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */; };
 		84DEB64326419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */; };
 		84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */; };
@@ -439,6 +440,7 @@
 		84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationRequestTests.swift; sourceTree = "<group>"; };
 		84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeckendRequestTests.swift; sourceTree = "<group>"; };
+		84D15A88266FBA30002DC7EE /* Date+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
 		84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatusRequest.swift; sourceTree = "<group>"; };
 		84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatus.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 		0CB143A8259A47DE0014B643 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				84D15A88266FBA30002DC7EE /* Date+Compare.swift */,
 				0CB143A9259A47FC0014B643 /* UIColor+SDK.swift */,
 				84115891261F3068007B54DF /* ViewExtensions.swift */,
 				0C1B430A25ADB19A004FFF46 /* UIImage+SDK.swift */,
@@ -1757,6 +1760,7 @@
 				84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */,
 				841B3C8C264A9AA000FCF5DF /* SessionStorage.swift in Sources */,
 				8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */,
+				84D15A89266FBA30002DC7EE /* Date+Compare.swift in Sources */,
 				8409768F2633473800C4DC5B /* CircleProgressView.swift in Sources */,
 				0C12CAAE25A784220032B520 /* MobileNumberTANRequest.swift in Sources */,
 				84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */,

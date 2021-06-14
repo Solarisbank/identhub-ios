@@ -26,6 +26,10 @@ final class DocumentInfoDDM: NSObject {
 
         super.init()
     }
+
+    func updateContent(_ content: [DocumentItemInfo]) {
+        self.content = content
+    }
 }
 
 extension DocumentInfoDDM: UITableViewDataSource {

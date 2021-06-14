@@ -19,4 +19,7 @@ struct DocumentItemInfo {
 
     /// Type of the document info item
     var type: DocumentInfoType
+
+    /// Prefilled date value
+    var prefilledDate: Date?
 }
