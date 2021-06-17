@@ -79,9 +79,12 @@ final class DefaultAPIClient: APIClient {
         case 200:
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMdd)
-            if let decodedData = try? decoder.decode(DataType.self, from: data) {
+
+            do {
+                let decodedData = try decoder.decode(DataType.self, from: data)
                 return .success(decodedData)
-            } else {
+            } catch let error {
+                print("Error with encoding data: \(error.localizedDescription)")
                 return .failure(.malformedResponseJson)
             }
         case 400:

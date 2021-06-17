@@ -58,7 +58,7 @@ struct DocumentData {
         }
 
         guard let number = unarchiver.decodeObject(forKey: CodingKeys.number.rawValue) as? String else { return nil }
-        guard let videoPath = unarchiver.decodeObject(forKey: CodingKeys.videoURL.rawValue) as? String else { return nil }
+        guard let videoName = unarchiver.decodeObject(forKey: CodingKeys.videoURL.rawValue) as? String else { return nil }
         guard let attachmentsData = unarchiver.decodeObject(forKey: CodingKeys.attachments.rawValue) as? Data else { return nil }
         guard let attachments = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(attachmentsData) as? [Data] else { return nil }
 
@@ -66,7 +66,7 @@ struct DocumentData {
         self.issueDate = unarchiver.decodeObject(of: NSDate.self, forKey: CodingKeys.issueDate.rawValue) as Date?
         self.expirationDate = unarchiver.decodeObject(of: NSDate.self, forKey: CodingKeys.expirationDate.rawValue) as Date?
         self.number = number
-        self.videoURL = URL(string: videoPath) ?? URL(string: "")!
+        self.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent(videoName)
         self.images = try attachments.compactMap { return try DocumentAttachmentData(data: $0) }
     }
 
@@ -81,7 +81,7 @@ struct DocumentData {
         archiver.encode(number, forKey: CodingKeys.number.rawValue)
         archiver.encode(issueDate, forKey: CodingKeys.issueDate.rawValue)
         archiver.encode(expirationDate, forKey: CodingKeys.expirationDate.rawValue)
-        archiver.encode(videoURL.relativePath, forKey: CodingKeys.videoURL.rawValue)
+        archiver.encode(videoURL.lastPathComponent, forKey: CodingKeys.videoURL.rawValue)
 
         let attachmentsEncodedData = images.map { $0.encode() }
 

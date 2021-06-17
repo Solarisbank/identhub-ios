@@ -173,6 +173,7 @@
 		847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D427E260B555D0067ED63 /* TermsViewController.xib */; };
 		847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D428D260B6C370067ED63 /* TermsViewModel.swift */; };
 		847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D42AA260BD02E0067ED63 /* BaseCoordinator.swift */; };
+		8499BFEE2678E46100794B64 /* PersonAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499BFED2678E46100794B64 /* PersonAddress.swift */; };
 		849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B438125F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift */; };
 		849B438A25F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */; };
 		849C9E87260E39BF00D74D35 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C9E85260E39BF00D74D35 /* SelfieViewController.swift */; };
@@ -420,6 +421,7 @@
 		847D427E260B555D0067ED63 /* TermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
 		847D428D260B6C370067ED63 /* TermsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewModel.swift; sourceTree = "<group>"; };
 		847D42AA260BD02E0067ED63 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		8499BFED2678E46100794B64 /* PersonAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAddress.swift; sourceTree = "<group>"; };
 		849B438125F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberAuthorizeRequestTests.swift; sourceTree = "<group>"; };
 		849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberTANRequestTests.swift; sourceTree = "<group>"; };
 		849C9E85260E39BF00D74D35 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
@@ -1334,6 +1336,7 @@
 				841CD0A6263978C300890626 /* UploadFourthlineZip.swift */,
 				841384C0263C594A00C39D69 /* PersonData.swift */,
 				841384C2263C599700C39D69 /* SupportedDocument.swift */,
+				8499BFED2678E46100794B64 /* PersonAddress.swift */,
 				841E9BBC264EC8D00025FE15 /* FourthlineStep.swift */,
 				84056F4A2655458F0072A10F /* BankIDStep.swift */,
 				8432D274265D71A6002CCAA4 /* DocumentData.swift */,
@@ -1849,6 +1852,7 @@
 				841F376326298E1400D56361 /* ScanDocumentType.swift in Sources */,
 				0CA7747E25C1AE1900E94E77 /* SignDocumentsViewModel.swift in Sources */,
 				0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */,
+				8499BFEE2678E46100794B64 /* PersonAddress.swift in Sources */,
 				8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */,
 				849C9E87260E39BF00D74D35 /* SelfieViewController.swift in Sources */,
 				845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */,

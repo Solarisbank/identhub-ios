@@ -20,11 +20,23 @@ struct PersonData: Codable {
     /// String value of the identification person birth day: yyyy-mm-dd
     var birthDate: Date
 
+    /// String value of the identificatioin person bith place
+    let birthPlace: String
+
     /// Identification value of the person
     let personUID: String
 
     /// String value of the person gender
     let gender: String
+
+    /// String value of the user email
+    let email: String
+
+    /// String value of the mobile number
+    let mobileNumber: String
+
+    /// Address object of the living/register person's place
+    let address: PersonAddress
 
     /// Array of the supported documents for person nationality
     let supportedDocuments: [SupportedDocument]
@@ -34,8 +46,12 @@ struct PersonData: Codable {
         case lastName = "last_name"
         case nationality
         case birthDate = "birth_date"
+        case birthPlace = "place_of_birth"
         case personUID = "person_uid"
         case gender
+        case email
+        case mobileNumber = "mobile_number"
+        case address
         case supportedDocuments = "supported_documents"
     }
 }

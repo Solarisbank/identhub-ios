@@ -11,7 +11,7 @@ import CoreLocation
 
 /// URL of the stored selfie full image location
 /// Used for restoring identification session
-let selfieFullImagePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("selfieFullImage.png")
+let selfieFullImagePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("selfieFullImage.jpeg")
 
 final class KYCContainer {
     static let shared = KYCContainer()
@@ -37,7 +37,7 @@ final class KYCContainer {
     }
 
     // MARK: - Filling with Document Result Data
-    // Please note that type, number, issueDate and expirationDate should be set separately as part of user input if auto-scanning couldn't be done.
+
     func update(with data: DocumentScannerResult, for documentType: DocumentType) {
         if kycInfo.document == nil {
             kycInfo.document = Document()
@@ -46,6 +46,7 @@ final class KYCContainer {
         kycInfo.document?.type = documentType
 
         mrzInfo = data.mrzInfo
+        // Please note that type, number, issueDate and expirationDate should be set separately as part of user input if MRZ data is nil. It means document scanner didn't recognized proper data from document.
         if let mrzInfo = data.mrzInfo as? MRTDMRZInfo {
             update(with: mrzInfo)
             updatePersonData(with: mrzInfo)
@@ -98,6 +99,10 @@ final class KYCContainer {
     }
 
     func update(location: CLLocation) {
+        if kycInfo.metadata == nil {
+            kycInfo.metadata = DeviceMetadata()
+        }
+
         kycInfo.metadata?.location = location
     }
 
@@ -125,6 +130,7 @@ final class KYCContainer {
             kycInfo.person.gender = .undefined
         }
 
+        setContacts(data: data)
         storePersonalData(data: data)
     }
 
@@ -156,6 +162,16 @@ private extension KYCContainer {
 // MARK: - Personal data store/load -
 
 private extension KYCContainer {
+
+    private func setContacts(data: PersonData) {
+
+        if kycInfo.contacts == nil {
+            kycInfo.contacts = Contacts()
+        }
+
+        kycInfo.contacts?.mobile = data.mobileNumber
+        kycInfo.contacts?.email = data.email
+    }
 
     private func storePersonalData(data: PersonData) {
 
@@ -203,7 +219,7 @@ private extension KYCContainer {
     private func storeSelfie(result: SelfieScannerResult) {
 
         do {
-            let data = result.image.full.pngData()
+            let data = result.image.full.jpegData(compressionQuality: 1.0)
             try data?.write(to: selfieFullImagePath)
 
             SessionStorage.updateValue(result.metadata.timestamp, for: StoredKeys.SelfieData.timestamp.rawValue)
@@ -214,8 +230,8 @@ private extension KYCContainer {
                 SessionStorage.updateValue(locationData, for: StoredKeys.SelfieData.location.rawValue)
             }
 
-            if let videoURL = result.videoUrl?.relativePath {
-                SessionStorage.updateValue(videoURL, for: StoredKeys.SelfieData.videoURL.rawValue)
+            if let videoName = result.videoUrl?.lastPathComponent {
+                SessionStorage.updateValue(videoName, for: StoredKeys.SelfieData.videoURL.rawValue)
             }
 
             SessionStorage.updateValue(true, for: StoredKeys.selfieData.rawValue)
@@ -229,14 +245,16 @@ private extension KYCContainer {
         if let selfieData = SessionStorage.obtainValue(for: StoredKeys.selfieData.rawValue) as? Bool, selfieData {
             let selfieStoredResult = SelfieAttachment()
 
+            let videoName = SessionStorage.obtainValue(for: StoredKeys.SelfieData.videoURL.rawValue) as! String
+
             selfieStoredResult.image = UIImage(contentsOfFile: selfieFullImagePath.relativePath)
             selfieStoredResult.timestamp = SessionStorage.obtainValue(for: StoredKeys.SelfieData.timestamp.rawValue) as? Date
-            selfieStoredResult.videoUrl = URL(fileURLWithPath: SessionStorage.obtainValue(for: StoredKeys.SelfieData.videoURL.rawValue) as! String)
+            selfieStoredResult.videoUrl = FileManager.default.temporaryDirectory.appendingPathComponent(videoName)
 
             if let locationData = SessionStorage.obtainValue(for: StoredKeys.SelfieData.location.rawValue) as? Data {
                 do {
                     selfieStoredResult.location = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(locationData) as? CLLocation
-                    kycInfo.metadata?.location = selfieStoredResult.location
+                    self.update(location: selfieStoredResult.location!)
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -255,11 +273,11 @@ private extension KYCContainer {
     /// - Parameter attachment: scanned document attachment
     private func saveDocumentImage(attachment: DocumentAttachment) {
 
-        let documentImageName = "documentScan_\(attachment.fileSide.rawValue)_\(attachment.isAngled ? "tilted" : "straight")"
+        let documentImageName = "documentScan_\(attachment.fileSide.rawValue)_\(attachment.isAngled ? "tilted" : "straight").jpeg"
         let documentImagePath = NSTemporaryDirectory() + documentImageName
         let documentImageURL = URL(fileURLWithPath: documentImagePath)
 
-        if let data = attachment.image?.pngData() {
+        if let data = attachment.image?.jpegData(compressionQuality: 1.0) {
 
             do {
                 try data.write(to: documentImageURL)

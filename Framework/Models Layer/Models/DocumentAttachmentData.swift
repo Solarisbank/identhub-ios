@@ -36,7 +36,7 @@ struct DocumentAttachmentData {
         self.isAngled = attachment.isAngled
         self.timeStamp = attachment.timestamp ?? Date()
         self.location = attachment.location ?? CLLocation()
-        self.imageName = "documentScan_\(fileSide.rawValue)_\(isAngled ? "tilted" : "straight")"
+        self.imageName = "documentScan_\(fileSide.rawValue)_\(isAngled ? "tilted" : "straight").jpeg"
     }
 
     /// Init document attachment data from stored Data object

@@ -24,7 +24,7 @@ enum KYCZipService {
                     DispatchQueue.main.async {
                         completion(kycZipUrl, nil)
                     }
-                } catch {
+                } catch let error {
                     DispatchQueue.main.async {
                         completion(nil, error)
                     }

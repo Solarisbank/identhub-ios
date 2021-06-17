@@ -13,7 +13,7 @@ pod 'FourthlineSDK', '2.2.6'
 pod 'SwiftyTesseract', '2.2.3'
 
 # Comment the next line if you're not going to create ZIP file
-pod 'ZIPFoundation', '0.9.11'
+pod 'ZIPFoundation'
 
 target 'IdentHubSDK' do
 end

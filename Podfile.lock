@@ -17,12 +17,12 @@ PODS:
   - FourthlineSDK/Vision (2.2.6):
     - FourthlineSDK/Core
   - SwiftyTesseract (2.2.3)
-  - ZIPFoundation (0.9.11)
+  - ZIPFoundation (0.9.12)
 
 DEPENDENCIES:
   - FourthlineSDK (= 2.2.6)
   - SwiftyTesseract (= 2.2.3)
-  - ZIPFoundation (= 0.9.11)
+  - ZIPFoundation
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs:
@@ -34,8 +34,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   FourthlineSDK: dfdfc80735d4fb04feeaefd5110b3f17b123d7a5
   SwiftyTesseract: d92b644e0e12d143bc272bfe1edb73ae07f2b2e8
-  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
+  ZIPFoundation: e27423c004a5a1410c15933407747374e7c6cb6e
 
-PODFILE CHECKSUM: 5e96eecb17794eefebb7a4d43df255e768f9ffb8
+PODFILE CHECKSUM: c441800a276ed2a798ba6b70bb67a892f6a242c1
 
 COCOAPODS: 1.10.1

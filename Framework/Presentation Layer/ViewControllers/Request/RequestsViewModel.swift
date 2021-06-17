@@ -217,7 +217,7 @@ private extension RequestsViewModel {
                 self.completeStep(number: InitStep.fetchPersonData.rawValue)
                 KYCContainer.shared.update(person: response)
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.identCoordinator?.perform(action: .termsAndConditions)
                 }
             case .failure(let error):

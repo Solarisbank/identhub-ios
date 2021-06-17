@@ -34,16 +34,8 @@ enum SessionStorage {
 
     /// Method removes all session data
     static func clearData() {
-        if let storedKeys = UserDefaults.standard.value(forKey: kStoredValueKeys) as? [String] {
-
-            for key in storedKeys {
-                UserDefaults.standard.removeObject(forKey: key)
-            }
-
-            UserDefaults.standard.removeObject(forKey: kStoredValueKeys)
-
-            UserDefaults.standard.synchronize()
-        }
+        SessionStorage.removeDataFromDefaults()
+        SessionStorage.removeTemporaryFiles()
     }
 
     /// Method removed object for key
@@ -62,6 +54,33 @@ private extension SessionStorage {
             UserDefaults.standard.setValue(storedKeys, forKey: kStoredValueKeys)
         } else {
             UserDefaults.standard.setValue([key], forKey: kStoredValueKeys)
+        }
+    }
+
+    static func removeDataFromDefaults() {
+        if let storedKeys = UserDefaults.standard.value(forKey: kStoredValueKeys) as? [String] {
+
+            for key in storedKeys {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+
+            UserDefaults.standard.removeObject(forKey: kStoredValueKeys)
+
+            UserDefaults.standard.synchronize()
+        }
+    }
+
+    static func removeTemporaryFiles() {
+        do {
+            let contents = try FileManager.default.contentsOfDirectory(atPath: NSTemporaryDirectory())
+
+            for item in contents {
+                let filePath = NSTemporaryDirectory() + item
+
+                try FileManager.default.removeItem(atPath: filePath)
+            }
+        } catch let error {
+            print("Error with fetching data from Temporary folder: \(error.localizedDescription)")
         }
     }
 }
