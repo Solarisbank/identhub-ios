@@ -54,9 +54,18 @@ final internal class IBANVerificationViewModel: NSObject {
                 self.sessionStorage.identificationUID = response.id
                 self.sessionStorage.identificationPath = response.url
                 DispatchQueue.main.async {
-                    self.flowCoordinator.perform(action: .bankVerification(step: .payment))
+                    if let step = response.nextStep {
+                        self.flowCoordinator.perform(action: .nextStep(step: IdentificationStep(rawValue: step) ?? .unspecified))
+                    } else {
+                        self.flowCoordinator.perform(action: .bankVerification(step: .payment))
+                    }
                 }
             case .failure(let error):
+                if error == .clientError {
+                    DispatchQueue.main.async {
+                        self.flowCoordinator.perform(action: .nextStep(step: .mobileNumber))
+                    }
+                }
                 self.completionHandler(.failure(error))
             }
         }

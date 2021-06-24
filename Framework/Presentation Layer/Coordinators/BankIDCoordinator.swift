@@ -55,6 +55,8 @@ class BankIDCoordinator: BaseCoordinator {
         case .finishIdentification:
             presentFinishIdentification()
             notifyHandlers()
+        case .nextStep(let step):
+            perfomIdentStep(step: step)
         case .pop:
             pop()
         case .quit:
@@ -74,7 +76,13 @@ class BankIDCoordinator: BaseCoordinator {
 private extension BankIDCoordinator {
 
     private func restoreStep() {
-        guard let restoreData = SessionStorage.obtainValue(for: StoredKeys.bankIDStep.rawValue) as? Data else { return }
+        guard let restoreData = SessionStorage.obtainValue(for: StoredKeys.bankIDStep.rawValue) as? Data else {
+
+            if let identStep = appDependencies.sessionInfoProvider.identificationStep {
+                identificationStep = .nextStep(step: identStep)
+            }
+            return
+        }
 
         do {
             let step = try JSONDecoder().decode(BankIDStep.self, from: restoreData)
@@ -97,6 +105,26 @@ private extension BankIDCoordinator {
 // MARK: - Navigation methods -
 
 private extension BankIDCoordinator {
+
+    private func perfomIdentStep(step: IdentificationStep) {
+
+        switch step {
+        case .mobileNumber:
+            presentPhoneVerification()
+        case .bankIBAN,
+             .bankIDIBAN:
+            presentIBANVerification()
+        case .bankIDFourthline:
+            presentFourthlineFlow()
+        case .bankQES,
+             .bankIDQUES:
+            presentSignDocuments()
+        case .fourthline:
+            presentFourthlineFlow()
+        case .unspecified:
+            print("Step is not supported or not specified yet")
+        }
+    }
 
     private func presentStartIdentification() {
         let startIdentificationViewModel = StartIdentificationViewModel(flowCoordinator: self)
@@ -176,5 +204,19 @@ private extension BankIDCoordinator {
         guard let successStatus = self.appDependencies.sessionInfoProvider.isSuccessful, successStatus == true else { return }
 
         self.completionHandler?(IdentificationSessionResult.success(identification: self.appDependencies.sessionInfoProvider.identificationUID ?? ""))
+    }
+
+    private func presentFourthlineFlow() {
+        let fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
+
+        fourthlineCoordinator.start { result in
+
+            switch result {
+            case .success( _ ):
+                self.presentSignDocuments()
+            case .failure( _ ):
+                self.completionHandler?(result)
+            }
+        }
     }
 }

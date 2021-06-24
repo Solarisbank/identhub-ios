@@ -5,20 +5,22 @@
 
 import Foundation
 
-struct IdentificationMethod: Decodable {
+struct IdentificationMethod {
 
-    /// ID Now identification type is enabled
-    let idnowIdentification: Bool
+    /// Identification first step type. String value will be converted to the enum
+    let firstStep: IdentificationStep
 
-    /// Fourthline identification type is enabled
-    let fourthlineIdentification: Bool
-
-    /// BankID identificaiton is enabled
-    let bankIdentificaiton: Bool
-
+    /// Server value coding keys
     enum CodingKeys: String, CodingKey {
-        case idnowIdentification = "idnow"
-        case fourthlineIdentification = "fourthline"
-        case bankIdentificaiton = "bank"
+        case firstStep = "first_step"
+    }
+}
+
+extension IdentificationMethod: Decodable {
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        firstStep = try container.decode(IdentificationStep.self, forKey: .firstStep)
     }
 }

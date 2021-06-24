@@ -49,6 +49,9 @@ struct Identification: Decodable {
     /// The address.
     let address: String?
 
+    /// Next step.
+    let nextStep: String?
+
     /// Documents associated with the identification.
     let documents: [ContractDocument]?
 
@@ -67,6 +70,7 @@ struct Identification: Decodable {
         case confirmationExpireAt = "confirmation_expires_at"
         case estimatedWaitingTime = "estimated_waiting_time"
         case address
+        case nextStep = "next_step"
         case documents
     }
 }

@@ -107,4 +107,17 @@ final class DefaultAPIClient: APIClient {
             return .failure(.unknownError)
         }
     }
+
+    private func obtainErrorData(data: Data) -> ServerError? {
+
+        let decoder = JSONDecoder()
+
+        do {
+            let decodedData = try decoder.decode(ServerError.self, from: data)
+            return decodedData
+        } catch let error {
+            print("Error with encoding error data: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }

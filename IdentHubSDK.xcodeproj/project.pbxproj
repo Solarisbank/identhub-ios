@@ -124,6 +124,7 @@
 		8419567D2631B214003A55BD /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419567B2631B214003A55BD /* LocationViewController.swift */; };
 		8419567E2631B214003A55BD /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8419567C2631B214003A55BD /* LocationViewController.xib */; };
 		841956832631B222003A55BD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841956822631B222003A55BD /* LocationViewModel.swift */; };
+		841A7957267CA049000E5318 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A7956267CA049000E5318 /* ServerError.swift */; };
 		841A893D25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */; };
 		841B3C8C264A9AA000FCF5DF /* SessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B3C8B264A9AA000FCF5DF /* SessionStorage.swift */; };
 		841C81B226036B5600F4A079 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81B126036B5600F4A079 /* Router.swift */; };
@@ -372,6 +373,7 @@
 		8419567B2631B214003A55BD /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		8419567C2631B214003A55BD /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		841956822631B222003A55BD /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		841A7956267CA049000E5318 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentDownloadableViewModel.swift; sourceTree = "<group>"; };
 		841B3C8B264A9AA000FCF5DF /* SessionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStorage.swift; sourceTree = "<group>"; };
 		841C81B126036B5600F4A079 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -1341,6 +1343,7 @@
 				84056F4A2655458F0072A10F /* BankIDStep.swift */,
 				8432D274265D71A6002CCAA4 /* DocumentData.swift */,
 				8474B8FD265EB7050051485E /* DocumentAttachmentData.swift */,
+				841A7956267CA049000E5318 /* ServerError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1811,6 +1814,7 @@
 				84ECED1726304E1000ACD1B5 /* DocumentInfoViewModel.swift in Sources */,
 				0CE01B3F25C2E7D400FB0E16 /* FinishIdentificationViewModel.swift in Sources */,
 				8423EFDA262AED3A0092F003 /* DocumentScannerViewModel.swift in Sources */,
+				841A7957267CA049000E5318 /* ServerError.swift in Sources */,
 				84ECED212630685300ACD1B5 /* DocumentInfoDDM.swift in Sources */,
 				841C81BF26036C0800F4A079 /* IdentHubSDKRouter.swift in Sources */,
 				8468C0AB2636C5D700513A0F /* ProgressCellObject.swift in Sources */,

@@ -16,22 +16,6 @@ public enum IdentificationSessionResult {
     case failure(APIError)
 }
 
-/// Various identification session types
-public enum IdentificationSessionType: Int {
-
-    /// BankID identification session type
-    case bankID = 1
-
-    /// Fourthline service identificaiton session type
-    case fourthline = 2
-
-    /// Full identification flow
-    case idnow = 3
-
-    /// Not specified method
-    case unspecified = 0
-}
-
 /// UserDefaults stored keys
 enum StoredKeys: String {
 
@@ -90,4 +74,16 @@ enum StoredKeys: String {
 /// Enumeration with all Fourthline flow steps
 enum FourthlineProgressStep: Int {
     case selfie = 0, document, confirm, upload, result
+}
+
+/// Identification steps
+enum IdentificationStep: String, Codable {
+    case mobileNumber = "mobile_number"
+    case bankIBAN = "bank/iban"
+    case bankIDIBAN = "bank_id/iban"
+    case bankIDFourthline = "bank_id/fourthline"
+    case bankQES = "bank/qes"
+    case bankIDQUES = "bank_id/qes"
+    case fourthline = "fourthline/simplified"
+    case unspecified = "unspecified"
 }

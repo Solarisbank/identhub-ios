@@ -15,6 +15,7 @@ enum BankIDStep: Codable {
     case documentExport(url: URL) // Export signed documents
     case allDocumentsExport(documents: [URL]) // Export all documents
     case finishIdentification // Finish bank identification
+    case nextStep(step: IdentificationStep) // Method called next step of the identification process
     case pop // return back to the previous bank id step
     case quit // Quit from identificaton process
 
@@ -27,6 +28,7 @@ enum BankIDStep: Codable {
         case documentExport
         case allDocumentsExport
         case finish
+        case next
         case pop
         case quit
     }
@@ -45,6 +47,9 @@ enum BankIDStep: Codable {
             return
         } else if let sign = try? value.decode(Int.self, forKey: .signDocument) {
             self = .signDocuments(step: SignDocuments(rawValue: sign) ?? SignDocuments.confirmApplication)
+            return
+        } else if let step = try? value.decode(IdentificationStep.self, forKey: .next) {
+            self = .nextStep(step: IdentificationStep(rawValue: step.rawValue) ?? .unspecified)
             return
         } else {
             self = .finishIdentification
@@ -66,6 +71,8 @@ enum BankIDStep: Codable {
             try container.encode(step.rawValue, forKey: .signDocument)
         case .finishIdentification:
             try container.encode(true, forKey: .finish)
+        case .nextStep(let step):
+            try container.encode(step.rawValue, forKey: .next)
         default:
             try container.encode(true, forKey: .finish)
         }

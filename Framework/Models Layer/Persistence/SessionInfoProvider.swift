@@ -23,8 +23,8 @@ protocol SessionInfoProvider: AnyObject {
     /// Successful identification status
     var isSuccessful: Bool? { get set }
 
-    /// Type of the initiated identification
-    var identificationType: IdentificationSessionType? { get set }
+    /// Identification step type
+    var identificationStep: IdentificationStep? { get set }
 
     /// Clears currently stored data.
     func clear()
@@ -67,7 +67,7 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     var isSuccessful: Bool?
 
     /// - SeeAlso: SessionInfoProvider.identificationType
-    var identificationType: IdentificationSessionType?
+    var identificationStep: IdentificationStep?
 
     // MARK: Init
 

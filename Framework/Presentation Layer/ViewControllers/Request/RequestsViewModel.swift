@@ -164,10 +164,17 @@ private extension RequestsViewModel {
             switch result {
             case .success(let response):
                 self.completeStep(number: InitStep.defineMethod.rawValue)
-                if response.fourthlineIdentification {
+                self.sessionStorage.identificationStep = response.firstStep
+
+                switch response.firstStep {
+                case .fourthline,
+                     .bankIDFourthline:
                     self.initiatedFourthlineIdentification()
-                } else if response.bankIdentificaiton {
-                    self.initiateBankIDIdentification()
+                case .mobileNumber,
+                     .bankIBAN:
+                    self.initiateBankIdentification()
+                default:
+                    print("Unsupported step on start ")
                 }
             case .failure(let error):
                 self.onDisplayError?(error)
@@ -175,15 +182,13 @@ private extension RequestsViewModel {
         }
     }
 
-    private func initiateBankIDIdentification() {
-        sessionStorage.identificationType = .bankID
+    private func initiateBankIdentification() {
         DispatchQueue.main.async { [weak self] in
             self?.identCoordinator?.perform(action: .termsAndConditions)
         }
     }
 
     private func initiatedFourthlineIdentification() {
-        sessionStorage.identificationType = .fourthline
         registerFourthlineMethod()
     }
 

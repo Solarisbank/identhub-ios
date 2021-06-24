@@ -10,7 +10,7 @@ final class IdentificationMethodRequest: BackendRequest {
     // MARK: - Public attributes -
 
     var path: String {
-        "/\(sessionToken)/identification_methods"
+        "/\(sessionToken)/"
     }
 
     var method: HTTPMethod {

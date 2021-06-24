@@ -24,9 +24,9 @@ class IdentificationCoordinator: BaseCoordinator {
             SessionStorage.updateValue(executedStep?.rawValue ?? Action.initialization.rawValue, for: StoredKeys.initialStep.rawValue)
         }
     }
-    private var identificationMethod: IdentificationSessionType? {
+    private var identificationMethod: IdentificationStep? {
         didSet {
-            SessionStorage.updateValue(identificationMethod?.rawValue ?? IdentificationSessionType.unspecified.rawValue, for: StoredKeys.identMethod.rawValue)
+            SessionStorage.updateValue(identificationMethod?.rawValue ?? IdentificationStep.unspecified.rawValue, for: StoredKeys.identMethod.rawValue)
         }
     }
 
@@ -86,10 +86,10 @@ private extension IdentificationCoordinator {
     }
 
     private func startIdentProcess() {
-        if let method = appDependencies.sessionInfoProvider.identificationType {
+        if let method = appDependencies.sessionInfoProvider.identificationStep {
             identificationMethod = method
-        } else if let method = SessionStorage.obtainValue(for: StoredKeys.identMethod.rawValue) as? Int {
-            identificationMethod = IdentificationSessionType(rawValue: method)
+        } else if let method = SessionStorage.obtainValue(for: StoredKeys.identMethod.rawValue) as? String {
+            identificationMethod = IdentificationStep(rawValue: method)
         }
 
         initiateMethod()
@@ -98,15 +98,15 @@ private extension IdentificationCoordinator {
     private func initiateMethod() {
 
         switch identificationMethod {
-        case .bankID:
+        case .mobileNumber,
+             .bankIBAN,
+             .bankIDIBAN:
             startBankID()
         case .fourthline:
             startFourthline()
-        case .idnow:
-            print("ID Now identification process start")
         case .unspecified:
             print("Identificaiton flow is not specified")
-        case .none:
+        default:
             print("Identificaiton flow is not specified")
         }
 
@@ -117,13 +117,11 @@ private extension IdentificationCoordinator {
         let bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: presenter)
 
         bankIDSessionCoordinator.start(completionHandler!)
-        identificationMethod = .bankID
     }
 
     private func startFourthline() {
         let fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
 
         fourthlineCoordinator.start(completionHandler!)
-        identificationMethod = .fourthline
     }
 }

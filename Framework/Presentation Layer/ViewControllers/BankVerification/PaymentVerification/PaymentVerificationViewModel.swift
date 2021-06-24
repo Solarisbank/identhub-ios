@@ -18,6 +18,8 @@ final internal class PaymentVerificationViewModel: NSObject {
 
     private var completionHandler: CompletionHandler
 
+    private var nextStep: IdentificationStep = .unspecified
+
     init(flowCoordinator: BankIDCoordinator, delegate: PaymentVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
         self.delegate = delegate
@@ -52,6 +54,11 @@ final internal class PaymentVerificationViewModel: NSObject {
             switch result {
             case .success(let response):
                 if response.status == Status.authorizationRequired.rawValue {
+
+                    if let step = response.nextStep, let nextStep = IdentificationStep(rawValue: step) {
+                        self.nextStep = nextStep
+                    }
+
                     DispatchQueue.main.async {
                         self.delegate?.verificationIsBeingProcessed()
                     }
@@ -67,7 +74,11 @@ final internal class PaymentVerificationViewModel: NSObject {
 
     /// Begin sign documents.
     func beginSignDocuments() {
-        flowCoordinator.perform(action: .signDocuments(step: .confirmApplication))
+        if nextStep != .unspecified {
+            flowCoordinator.perform(action: .nextStep(step: nextStep))
+        } else {
+            flowCoordinator.perform(action: .signDocuments(step: .confirmApplication))
+        }
     }
 }
 
