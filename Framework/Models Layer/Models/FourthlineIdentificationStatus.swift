@@ -14,10 +14,13 @@ struct FourthlineIdentificationStatus: Codable {
     let url: String?
 
     /// Fourthline session status
-    let identificationStatus: IdentificationStatus
+    let identificationStatus: Status
 
     /// Identification method type: bank, idnow, fourthline
     let identificationMethod: IdentificationMethodType
+
+    /// Terms and conditions signed at
+    let termsSignedDate: String?
 
     /// Identification authorization expire date
     let authExpireDate: String?
@@ -39,6 +42,7 @@ struct FourthlineIdentificationStatus: Codable {
         case url
         case identificationStatus = "status"
         case identificationMethod = "method"
+        case termsSignedDate = "terms_and_conditions_signed_at"
         case authExpireDate = "authorization_expires_at"
         case confirmExpireDate = "confirmation_expires_at"
         case providerStatusCode = "provider_status_code"
@@ -54,8 +58,9 @@ extension FourthlineIdentificationStatus {
 
         self.identification = try data.decode(String.self, forKey: .identification)
         self.url = try data.decode(String.self, forKey: .url)
-        self.identificationStatus = try data.decode(IdentificationStatus.self, forKey: .identificationStatus)
+        self.identificationStatus = try data.decode(Status.self, forKey: .identificationStatus)
         self.identificationMethod = try data.decode(IdentificationMethodType.self, forKey: .identificationMethod)
+        self.termsSignedDate = try data.decode(String.self, forKey: .termsSignedDate)
         self.authExpireDate = try data.decode(String.self, forKey: .authExpireDate)
         self.confirmExpireDate = try data.decode(String.self, forKey: .confirmExpireDate)
         self.providerStatusCode = try data.decode(String.self, forKey: .providerStatusCode)
@@ -68,17 +73,12 @@ extension FourthlineIdentificationStatus {
         try container.encode(url, forKey: .url)
         try container.encode(identificationStatus.self.rawValue, forKey: .identificationStatus)
         try container.encode(identificationMethod.self.rawValue, forKey: .identificationMethod)
+        try container.encode(termsSignedDate, forKey: .termsSignedDate)
         try container.encode(authExpireDate, forKey: .authExpireDate)
         try container.encode(confirmExpireDate, forKey: .confirmExpireDate)
         try container.encode(providerStatusCode, forKey: .providerStatusCode)
         try container.encode(nextStep, forKey: .nextStep)
     }
-}
-
-enum IdentificationStatus: String, Decodable {
-    case success = "success"
-    case failed = "failed"
-    case pending = "pending"
 }
 
 enum IdentificationMethodType: String, Decodable {

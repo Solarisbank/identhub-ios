@@ -165,12 +165,8 @@ private extension KYCContainer {
 
     private func setContacts(data: PersonData) {
 
-        if kycInfo.contacts == nil {
-            kycInfo.contacts = Contacts()
-        }
-
-        kycInfo.contacts?.mobile = data.mobileNumber
-        kycInfo.contacts?.email = data.email
+        kycInfo.contacts.mobile = data.mobileNumber
+        kycInfo.contacts.email = data.email
     }
 
     private func storePersonalData(data: PersonData) {

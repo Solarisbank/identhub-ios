@@ -16,7 +16,7 @@ final class ResultViewModel: BaseFourthlineViewModel {
     /// - Returns: screen title string
     func obtainResultTitle() -> String {
         switch self.result?.identificationStatus {
-        case .success:
+        case .successful:
             return Localizable.Result.successTitle
         case .failed:
             return Localizable.Result.failedTitle
@@ -29,7 +29,7 @@ final class ResultViewModel: BaseFourthlineViewModel {
     /// - Returns: screen description string
     func obtainResultDescription() -> String {
         switch self.result?.identificationStatus {
-        case .success:
+        case .successful:
             return Localizable.Result.successDescription
         case .failed:
             return Localizable.Result.successDescription
@@ -43,7 +43,7 @@ final class ResultViewModel: BaseFourthlineViewModel {
     func obtainResultImage() -> UIImage? {
 
         switch self.result?.identificationStatus {
-        case .success:
+        case .successful:
             return UIImage(named: "result_success", in: Bundle.current, compatibleWith: nil)
         case .failed:
             return UIImage(named: "result_failed", in: Bundle.current, compatibleWith: nil)

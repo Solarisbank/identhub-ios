@@ -80,6 +80,8 @@ extension SelfieScannerError {
             return Localizable.Selfie.Errors.recordingFailed
         case .scannerInterrupted:
             return Localizable.Selfie.Errors.scannerInterrupted
+        case .multipleFacesDetected:
+            return Localizable.Selfie.Errors.multipleFaces
         case .resetScannerNotAllowed:
             return ""
         case .unknown:

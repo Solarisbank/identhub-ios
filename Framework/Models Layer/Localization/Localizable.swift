@@ -178,6 +178,7 @@ enum Localizable {
             static let unknown = "Something went wrong"
             static let alertTitle = "Selfie scan failed"
             static let alertMessage = "It was not possible to take your selfie.\n\nThis process is mandatory for your onboarding process."
+            static let multipleFaces = "Camera detects multiple faces. Please make sure you're scan single person face."
         }
 
         enum Liveness {

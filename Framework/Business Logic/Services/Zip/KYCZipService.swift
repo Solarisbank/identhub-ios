@@ -91,9 +91,9 @@ extension KYCZipService {
             errorMessage.append("\n Document: \(errors.map { $0 })")
         }
 
-        if result.contains(.invalidContacts),
-           let contacts = KYCContainer.shared.kycInfo.contacts {
+        if result.contains(.invalidContacts) {
 
+            let contacts = KYCContainer.shared.kycInfo.contacts
             let errors = Set<Contacts.ContactsValidationError>(contacts.validate())
             errorMessage.append("\n Contacts: \(errors.map { $0 })")
         }

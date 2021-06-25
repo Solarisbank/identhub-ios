@@ -28,6 +28,9 @@ struct ContractDocument: Decodable {
     /// When the document was created.
     let createdAt: String
 
+    /// When the document was deleted.
+    let deletedAt: String
+
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -36,5 +39,6 @@ struct ContractDocument: Decodable {
         case size
         case customerAccessible = "customer_accessible"
         case createdAt = "created_at"
+        case deletedAt = "deleted_at"
     }
 }

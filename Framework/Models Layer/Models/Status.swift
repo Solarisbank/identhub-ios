@@ -12,7 +12,7 @@ import Foundation
 /// confirmationRequired: result of hitting documents authorization.
 /// confirmed: result of hitting documents confirm.
 /// successful: result of async process that happens in background.
-internal enum Status: String {
+internal enum Status: String, Decodable {
     case created = "created"
     case pending = "pending"
     case authorizationRequired = "authorization_required"

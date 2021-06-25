@@ -1,26 +1,21 @@
 PODS:
-  - FourthlineSDK (2.2.6):
-    - FourthlineSDK/Core (= 2.2.6)
-    - FourthlineSDK/KYC (= 2.2.6)
-    - FourthlineSDK/NFC (= 2.2.6)
-    - FourthlineSDK/SDK (= 2.2.6)
-    - FourthlineSDK/Vision (= 2.2.6)
-  - FourthlineSDK/Core (2.2.6)
-  - FourthlineSDK/KYC (2.2.6):
+  - FourthlineSDK (2.2.8):
+    - FourthlineSDK/Core (= 2.2.8)
+    - FourthlineSDK/KYC (= 2.2.8)
+    - FourthlineSDK/NFC (= 2.2.8)
+    - FourthlineSDK/Vision (= 2.2.8)
+  - FourthlineSDK/Core (2.2.8)
+  - FourthlineSDK/KYC (2.2.8):
     - FourthlineSDK/Core
-  - FourthlineSDK/NFC (2.2.6):
+  - FourthlineSDK/NFC (2.2.8):
     - FourthlineSDK/Core
-  - FourthlineSDK/SDK (2.2.6):
-    - FourthlineSDK/KYC
-    - FourthlineSDK/NFC
-    - FourthlineSDK/Vision
-  - FourthlineSDK/Vision (2.2.6):
+  - FourthlineSDK/Vision (2.2.8):
     - FourthlineSDK/Core
   - SwiftyTesseract (2.2.3)
   - ZIPFoundation (0.9.12)
 
 DEPENDENCIES:
-  - FourthlineSDK (= 2.2.6)
+  - FourthlineSDK (= 2.2.8)
   - SwiftyTesseract (= 2.2.3)
   - ZIPFoundation
 
@@ -32,10 +27,10 @@ SPEC REPOS:
     - FourthlineSDK
 
 SPEC CHECKSUMS:
-  FourthlineSDK: dfdfc80735d4fb04feeaefd5110b3f17b123d7a5
+  FourthlineSDK: aea5366fdc893e068332e51ff6c96a1fbef45628
   SwiftyTesseract: d92b644e0e12d143bc272bfe1edb73ae07f2b2e8
   ZIPFoundation: e27423c004a5a1410c15933407747374e7c6cb6e
 
-PODFILE CHECKSUM: c441800a276ed2a798ba6b70bb67a892f6a242c1
+PODFILE CHECKSUM: bd8bcfee20a65cbc66257e46bf1a12f12d9d5beb
 
 COCOAPODS: 1.10.1
