@@ -114,21 +114,12 @@ final class KYCContainer {
     /// Method filled identificated person data loaded from server
     /// - Parameter data: person detail
     func update(person data: PersonData) {
-        kycInfo.provider.name = "SolarisBankCanB"
+        // TODO: - Use value from server -
+        kycInfo.provider.name = ""
         kycInfo.provider.clientNumber = data.personUID
 
-        kycInfo.person.firstName = data.firstName
-        kycInfo.person.lastName = data.lastName
-        kycInfo.person.nationalityCode = data.nationality
-        kycInfo.person.birthDate = data.birthDate
-
-        if data.gender == "male" {
-            kycInfo.person.gender = .male
-        } else if data.gender == "female" {
-            kycInfo.person.gender = .female
-        } else {
-            kycInfo.person.gender = .undefined
-        }
+        fillPersonData(data)
+        fillPersonAddressData(data)
 
         setContacts(data: data)
         storePersonalData(data: data)
@@ -156,6 +147,34 @@ private extension KYCContainer {
         kycInfo.person.gender = mrzInfo.gender
         kycInfo.person.nationalityCode = mrzInfo.nationality
         kycInfo.person.birthDate = mrzInfo.birthDate
+    }
+
+    private func fillPersonData(_ data: PersonData) {
+
+        kycInfo.person.firstName = data.firstName
+        kycInfo.person.lastName = data.lastName
+        kycInfo.person.nationalityCode = data.nationality
+        kycInfo.person.birthDate = data.birthDate
+
+        switch data.gender {
+        case .male:
+            kycInfo.person.gender = .male
+        case .female:
+            kycInfo.person.gender = .female
+        }
+    }
+
+    private func fillPersonAddressData(_ data: PersonData) {
+
+        if kycInfo.address == nil {
+            kycInfo.address = Address()
+        }
+
+        kycInfo.address?.city = data.address.city
+        kycInfo.address?.countryCode = data.address.country
+        kycInfo.address?.street = data.address.street
+        kycInfo.address?.streetNumber = Int(data.address.streetNumber)
+        kycInfo.address?.postalCode = data.address.postalCode
     }
 }
 

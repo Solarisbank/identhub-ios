@@ -7,13 +7,13 @@ import Foundation
 
 struct FourthlineIdentificationStatus: Codable {
 
-    /// Fourthline session identifier
+    /// Id of the identification
     let identification: String
 
-    /// Fourthline session url
+    /// Url for identification confirmation
     let url: String?
 
-    /// Fourthline session status
+    /// Status of identification
     let identificationStatus: Status
 
     /// Identification method type: bank, idnow, fourthline
@@ -28,11 +28,14 @@ struct FourthlineIdentificationStatus: Codable {
     /// Identification confirmation expire date
     let confirmExpireDate: String?
 
-    /// Identification provider status code
+    /// status code returned by fourthline identification process
     let providerStatusCode: String?
 
-    /// Next step in identification process
+    /// next step to continue the identification process
     let nextStep: String?
+
+    /// Reference tocken
+    let referenceToken: String?
 
     /// Identification documents
     var documents: [ContractDocument]? = []
@@ -47,6 +50,7 @@ struct FourthlineIdentificationStatus: Codable {
         case confirmExpireDate = "confirmation_expires_at"
         case providerStatusCode = "provider_status_code"
         case nextStep = "next_step"
+        case referenceToken = "current_reference_token"
         case documents
     }
 }
@@ -57,20 +61,20 @@ extension FourthlineIdentificationStatus {
         let data = try decoder.container(keyedBy: CodingKeys.self)
 
         self.identification = try data.decode(String.self, forKey: .identification)
-        self.url = try data.decode(String.self, forKey: .url)
+        self.url = try data.decodeIfPresent(String.self, forKey: .url)
         self.identificationStatus = try data.decode(Status.self, forKey: .identificationStatus)
         self.identificationMethod = try data.decode(IdentificationMethodType.self, forKey: .identificationMethod)
-        self.termsSignedDate = try data.decode(String.self, forKey: .termsSignedDate)
-        self.authExpireDate = try data.decode(String.self, forKey: .authExpireDate)
-        self.confirmExpireDate = try data.decode(String.self, forKey: .confirmExpireDate)
-        self.providerStatusCode = try data.decode(String.self, forKey: .providerStatusCode)
-        self.nextStep = try data.decode(String.self, forKey: .nextStep)
+        self.termsSignedDate = try data.decodeIfPresent(String.self, forKey: .termsSignedDate)
+        self.authExpireDate = try data.decodeIfPresent(String.self, forKey: .authExpireDate)
+        self.confirmExpireDate = try data.decodeIfPresent(String.self, forKey: .confirmExpireDate)
+        self.providerStatusCode = try data.decodeIfPresent(String.self, forKey: .providerStatusCode)
+        self.nextStep = try data.decodeIfPresent(String.self, forKey: .nextStep)
+        self.referenceToken = try data.decodeIfPresent(String.self, forKey: .referenceToken)
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(identification, forKey: .identification)
-        try container.encode(url, forKey: .url)
         try container.encode(identificationStatus.self.rawValue, forKey: .identificationStatus)
         try container.encode(identificationMethod.self.rawValue, forKey: .identificationMethod)
         try container.encode(termsSignedDate, forKey: .termsSignedDate)

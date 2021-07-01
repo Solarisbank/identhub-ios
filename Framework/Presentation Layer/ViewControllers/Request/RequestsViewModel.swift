@@ -319,7 +319,7 @@ private extension RequestsViewModel {
 
             switch result {
             case .success(let response):
-                if response.identificationStatus == .pending {
+                if response.identificationStatus == .processed || response.identificationStatus == .pending {
                     self.retryVerification()
                 } else {
                     self.showResult(response)

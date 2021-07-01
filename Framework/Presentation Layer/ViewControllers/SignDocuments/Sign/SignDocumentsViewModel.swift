@@ -78,7 +78,7 @@ final internal class SignDocumentsViewModel: NSObject {
 
             switch result {
             case .success(let response):
-                if response.status == Status.successful.rawValue {
+                if response.status == Status.success.rawValue {
                     DispatchQueue.main.async {
                         self.delegate?.verificationSucceeded()
                     }

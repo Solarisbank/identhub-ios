@@ -21,13 +21,13 @@ struct PersonData: Codable {
     var birthDate: Date
 
     /// String value of the identificatioin person bith place
-    let birthPlace: String
+    let birthPlace: String?
 
     /// Identification value of the person
     let personUID: String
 
     /// String value of the person gender
-    let gender: String
+    let gender: Gender
 
     /// String value of the user email
     let email: String
@@ -69,4 +69,9 @@ extension PersonData {
         birthDate = mrzInfo.birthDate
         nationality = mrzInfo.nationality
     }
+}
+
+enum Gender: String, Codable {
+    case male = "male"
+    case female = "female"
 }
