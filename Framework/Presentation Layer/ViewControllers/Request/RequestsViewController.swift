@@ -68,14 +68,25 @@ private extension RequestsViewController {
             DispatchQueue.main.async {
                 if let zipError = error as? ZipperError {
                     self.zipFailed(with: zipError)
-                } else if let err = error as? APIError, err == .locationError || err == .locationAccessError {
-                    self.displayLocationTrackerError(error: err)
+                } else if let err = error as? APIError {
+                    self.displayError(err)
                 }
             }
         }
 
         self.titleLbl.text = viewModel.obtainScreenTitle()
         self.descriptionLbl.text = viewModel.obtainScreenDescription()
+    }
+
+    private func displayError(_ error: APIError) {
+
+        switch error {
+        case .locationError,
+             .locationAccessError:
+            self.locationFailed(with: error)
+        default:
+            self.requestFailed(with: error)
+        }
     }
 
     private func zipFailed(with error: ZipperError) {
@@ -91,18 +102,31 @@ private extension RequestsViewController {
         present(alert, animated: true)
     }
 
-    private func displayLocationTrackerError(error: APIError) {
+    private func locationFailed(with error: APIError) {
+        presentError(with: error, action: "Settings") {
+            UIApplication.openAppSettings()
+        }
+    }
+
+    private func requestFailed(with error: APIError) {
+        presentError(with: error, action: "Retry") { [weak self] in
+            self?.viewModel.restartRequests()
+        }
+    }
+
+    private func presentError(with error: APIError, action: String, callback: @escaping () -> ()) {
+
         let alert = UIAlertController(title: Localizable.Location.Error.title, message: error.text(), preferredStyle: .alert)
 
-        let tryAgainAction = UIAlertAction(title: "Settings", style: .default, handler: {_ in
-            UIApplication.openAppSettings()
+        let reactionAction = UIAlertAction(title: action, style: .default, handler: {_ in
+            callback()
         })
 
         let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
             self?.viewModel.didTriggerQuit()
         })
 
-        alert.addAction(tryAgainAction)
+        alert.addAction(reactionAction)
         alert.addAction(cancelAction)
 
         present(alert, animated: true)

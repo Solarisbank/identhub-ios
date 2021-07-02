@@ -40,6 +40,8 @@ final class RequestsViewModel: NSObject {
     private let builder: RequestsProgressCellObjectBuilder
     private var requestsSteps: [ProgressCellObject] = []
     private var initStep: InitStep = .defineMethod
+    private var uploadStep: UploadSteps = .location
+    private var uploadFileURL: URL = URL(fileURLWithPath: "")
     private var fourthlineCoordinator: FourthlineIdentCoordinator?
     private var identCoordinator: IdentificationCoordinator?
 
@@ -112,6 +114,10 @@ final class RequestsViewModel: NSObject {
     func didTriggerQuit() {
         fourthlineCoordinator?.perform(action: .quit)
     }
+
+    func restartRequests() {
+        restartProcess()
+    }
 }
 
 // MARK: - Internal methods -
@@ -125,6 +131,32 @@ private extension RequestsViewModel {
             startInitialProcess()
         case .uploadData:
             startUploadProcess()
+        case .confirmation:
+            startVerificationProcess()
+        }
+    }
+
+    private func restartProcess() {
+
+        switch requestsType {
+        case .initateFlow:
+            switch initStep {
+            case .defineMethod:
+                defineIdentificationMethod()
+            case .registerMethod:
+                registerFourthlineMethod()
+            case .fetchPersonData:
+                fetchPersonalData()
+            }
+        case .uploadData:
+                switch uploadStep {
+                case .location:
+                    fetchLocationData()
+                case .zipFile:
+                    zipUserData()
+                case .uploadZip:
+                    uploadZip(uploadFileURL)
+                }
         case .confirmation:
             startVerificationProcess()
         }
@@ -244,6 +276,7 @@ private extension RequestsViewModel {
 
     private func fetchLocationData() {
         startStep(number: UploadSteps.location.rawValue)
+        uploadStep = .location
 
         LocationManager.shared.requestLocationAuthorization {
             LocationManager.shared.requestDeviceLocation { [weak self] location, error in
@@ -267,6 +300,7 @@ private extension RequestsViewModel {
 
     private func zipUserData() {
         startStep(number: UploadSteps.zipFile.rawValue)
+        uploadStep = .zipFile
 
         KYCZipService.createKYCZip { [unowned self] zipURL, err in
             guard let url = zipURL else {
@@ -284,6 +318,8 @@ private extension RequestsViewModel {
 
     private func uploadZip(_ fileURL: URL) {
         startStep(number: UploadSteps.uploadZip.rawValue)
+        uploadStep = .uploadZip
+        uploadFileURL = fileURL
 
         verificationService.uploadKYCZip(fileURL: fileURL) { [unowned self] result in
 
