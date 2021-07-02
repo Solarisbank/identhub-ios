@@ -95,7 +95,7 @@ private extension FourthlineIdentCoordinator {
     }
 
     private func presentDocumentPicker() {
-        let documentPickerVM = DocumentPickerViewModel(self)
+        let documentPickerVM = DocumentPickerViewModel(self, infoProvider: appDependencies.sessionInfoProvider)
         let documentPickerVC = DocumentPickerViewController(documentPickerVM)
 
         presenter.push(documentPickerVC, animated: true, completion: nil)
@@ -164,7 +164,7 @@ private extension FourthlineIdentCoordinator {
 
         if let step = try? JSONDecoder().decode(FourthlineStep.self, from: restoreData) {
             identificationStep = step
-            KYCContainer.shared.restoreData()
+            KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
         }
     }
 

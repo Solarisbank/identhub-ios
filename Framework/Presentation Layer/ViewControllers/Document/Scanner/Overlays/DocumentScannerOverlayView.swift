@@ -10,6 +10,10 @@ import FourthlineVision
 final class DocumentScannerOverlayView: UIView {
 
     // MARK: - Outlet attributes -
+    @IBOutlet var rightMaskView: UIView!
+    @IBOutlet var bottomMaskView: UIView!
+    @IBOutlet var leftMaskView: UIView!
+    @IBOutlet var topMaskView: UIView!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var manualControlView: UIView!
     @IBOutlet var statusComponentView: UIView!
@@ -73,6 +77,15 @@ final class DocumentScannerOverlayView: UIView {
     func set(mask: UIImage?, with configuration: DocumentScannerAssetConfiguration) {
         documentFrameView.image = mask
         changeMask(configuration: configuration)
+    }
+
+    /// Method updates mask view background color. It's neccessary because mask image contains different backgrounds
+    /// - Parameter maskColor: color of the background view
+    func set(maskColor: UIColor) {
+        topMaskView.backgroundColor = maskColor
+        bottomMaskView.backgroundColor = maskColor
+        leftMaskView.backgroundColor = maskColor
+        rightMaskView.backgroundColor = maskColor
     }
 }
 

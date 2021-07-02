@@ -16,6 +16,7 @@ final class DocumentPickerViewModel: BaseFourthlineViewModel {
     // MARK: - Properties -
     private var documentsContent: [ScanDocumentType] = []
     private var documentTypeDDM: DocumentTypesDDM?
+    private var infoProvider: SessionInfoProvider
     private var selectedDocument: DocumentType? {
         didSet {
             updateButtons?()
@@ -23,6 +24,14 @@ final class DocumentPickerViewModel: BaseFourthlineViewModel {
     }
 
     var updateButtons: (() -> Void)?
+
+    // MARK: - Init methods -
+
+    init(_ coordinator: FourthlineIdentCoordinator, infoProvider: SessionInfoProvider) {
+
+        self.infoProvider = infoProvider
+        super.init(coordinator)
+    }
 
     // MARK: - Public methods -
 
@@ -53,10 +62,36 @@ final class DocumentPickerViewModel: BaseFourthlineViewModel {
 extension DocumentPickerViewModel {
 
     func buildDocumentsContent () -> [ScanDocumentType] {
-        let passportDocument = ScanDocumentType(name: Localizable.DocumentScanner.passport, logo: UIImage(named: "passport_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .passport)
-        let idCard = ScanDocumentType(name: Localizable.DocumentScanner.idCard, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .idCard)
+        var content: [ScanDocumentType] = []
 
-        return [passportDocument, idCard]
+        infoProvider.documentsList?.forEach({ supportedDocument in
+
+            switch supportedDocument.type {
+            case .passport:
+                let passportDocument = ScanDocumentType(name: Localizable.DocumentScanner.passport, logo: UIImage(named: "passport_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .passport)
+                content.append(passportDocument)
+            case .idCard:
+                let idCard = ScanDocumentType(name: Localizable.DocumentScanner.idCard, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .idCard)
+                content.append(idCard)
+            case .driversLicense:
+                let driveLicense = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .driversLicense)
+                content.append(driveLicense)
+            case .residencePermit:
+                let residencePermit = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "permit_document_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .residencePermit)
+                content.append(residencePermit)
+            case .paperId:
+                let paperID = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "passport_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .paperId)
+                content.append(paperID)
+            case .frenchIdCard:
+                let frenchIDCard = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .frenchIdCard)
+                content.append(frenchIDCard)
+            case .dutchDriversLicense:
+                let dutchDriversLicense = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .dutchDriversLicense)
+                content.append(dutchDriversLicense)
+            }
+        })
+
+        return content
     }
 }
 

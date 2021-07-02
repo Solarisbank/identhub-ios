@@ -41,4 +41,57 @@ enum DocumentScannerAssetBuilder {
 
         return DocumentScannerAssetConfiguration(sizing: sizing, tiltedSizing: sizing, layout: layout)
     }
+
+    static func driversLicense() -> DocumentScannerAssetConfiguration {
+        let sizing = DocumentScannerAssetSizing(aspectRatio: 0.608, detectionAreaOriginRatio: .zero, detectionAreaSizeRatio: CGSize(width: 1.0, height: 1.0))
+
+        let layout = DocumentScannerAssetLayout(screenWidthRatio: 0.95, screenCenterYMultiplier: 0.85)
+        return DocumentScannerAssetConfiguration(sizing: sizing, tiltedSizing: sizing, layout: layout)
+    }
+
+    static func frenchIdCard() -> DocumentScannerAssetConfiguration {
+        let sizing = DocumentScannerAssetSizing(aspectRatio: 0.7092, detectionAreaOriginRatio: CGPoint(x: 0.025, y: 0), detectionAreaSizeRatio: CGSize(width: 0.95, height: 1.0))
+
+        let layout = DocumentScannerAssetLayout(screenWidthRatio: 0.95, screenCenterYMultiplier: 0.85)
+        return DocumentScannerAssetConfiguration(sizing: sizing, tiltedSizing: sizing, layout: layout)
+    }
+
+    static func paperId(forSide fileSide: FileSide) -> DocumentScannerAssetConfiguration {
+        if fileSide == .insideLeft {
+            return paperIdLeft()
+        } else if fileSide == .insideRight {
+            return paperIdRight()
+        } else {
+            return paperIdBack()
+        }
+    }
+}
+
+// MARK: - Private PaperID
+private extension DocumentScannerAssetBuilder {
+
+    static func paperIdBack() -> DocumentScannerAssetConfiguration {
+        let sizing = DocumentScannerAssetSizing(aspectRatio: 1.232, detectionAreaOriginRatio: CGPoint(x: 0.0773, y: 0.0368), detectionAreaSizeRatio: CGSize(width: 0.8426, height: 0.9242))
+
+        let layout = DocumentScannerAssetLayout(screenWidthRatio: 0.955, screenCenterYMultiplier: 0.85)
+        return DocumentScannerAssetConfiguration(sizing: sizing, tiltedSizing: sizing, layout: layout)
+    }
+
+    static func paperIdLeft() -> DocumentScannerAssetConfiguration {
+        let sizing = DocumentScannerAssetSizing(aspectRatio: 1.232, detectionAreaOriginRatio: CGPoint(x: 0, y: 0.0714), detectionAreaSizeRatio: CGSize(width: 0.84, height: 0.921))
+
+        let tilted = DocumentScannerAssetSizing(aspectRatio: 1.232, detectionAreaOriginRatio: CGPoint(x: 0, y: 0.04), detectionAreaSizeRatio: CGSize(width: 0.7853, height: 0.9188))
+
+        let layout = DocumentScannerAssetLayout(screenWidthRatio: 0.955, screenCenterYMultiplier: 0.85)
+        return DocumentScannerAssetConfiguration(sizing: sizing, tiltedSizing: tilted, layout: layout)
+    }
+
+    static func paperIdRight() -> DocumentScannerAssetConfiguration {
+        let sizing = DocumentScannerAssetSizing(aspectRatio: 1.232, detectionAreaOriginRatio: CGPoint(x: 0.1613, y: 0.0714), detectionAreaSizeRatio: CGSize(width: 0.84, height: 0.921))
+
+        let tilted = DocumentScannerAssetSizing(aspectRatio: 1.232, detectionAreaOriginRatio: CGPoint(x: 0.2146, y: 0.04), detectionAreaSizeRatio: CGSize(width: 0.7853, height: 0.9188))
+
+        let layout = DocumentScannerAssetLayout(screenWidthRatio: 0.955, screenCenterYMultiplier: 0.85)
+        return DocumentScannerAssetConfiguration(sizing: sizing, tiltedSizing: tilted, layout: layout)
+    }
 }

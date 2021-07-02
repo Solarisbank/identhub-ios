@@ -10,6 +10,10 @@ import FourthlineVision
 final class DocumentScannerResultView: UIView {
 
     // MARK: - Private attributes -
+    @IBOutlet var topMaskView: UIView!
+    @IBOutlet var leftMaskView: UIView!
+    @IBOutlet var bottomMaskView: UIView!
+    @IBOutlet var rightMaskView: UIView!
     @IBOutlet var documentFrame: UIImageView!
     @IBOutlet var documentResult: UIImageView!
     @IBOutlet var titleLbl: UILabel!
@@ -39,6 +43,13 @@ final class DocumentScannerResultView: UIView {
         documentFrame.image = mask
         documentResult.image = stepResult.image.full
         changeMask(configuration: configuration)
+    }
+
+    func set(_ maskColor: UIColor) {
+        topMaskView.backgroundColor = maskColor
+        bottomMaskView.backgroundColor = maskColor
+        leftMaskView.backgroundColor = maskColor
+        rightMaskView.backgroundColor = maskColor
     }
 
     // MARK: - Action methods -

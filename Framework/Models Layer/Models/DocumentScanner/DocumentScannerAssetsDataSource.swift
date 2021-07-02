@@ -31,8 +31,21 @@ private extension DocumentScannerAssetsDataSource {
         case .passport:
             return "passport_"
 
-        case .idCard:
+        case .idCard,
+             .residencePermit:
             return "idcard_"
+
+        case .driversLicense:
+            return "driver_license_"
+
+        case .dutchDriversLicense:
+            return "dutch_driver_license_"
+
+        case .paperId:
+            return "paperid_"
+
+        case .frenchIdCard:
+            return "frenchid_"
 
         default:
             fatalError("Document type is not supported.")
@@ -46,6 +59,12 @@ private extension DocumentScannerAssetsDataSource {
 
         case .back:
             return "back_"
+
+        case .insideLeft:
+            return "left_"
+
+        case .insideRight:
+            return "right_"
 
         default:
             fatalError("Side is not supported")

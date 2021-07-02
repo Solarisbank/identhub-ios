@@ -198,8 +198,10 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
         let info = DocumentScannerInfo(step: currentStep, config: config, state: .default)
         let mask = asset(for: info)
         let config = assetConfiguration(for: info)
+        let color = backgroundColorConfiguration(for: info)
 
         resultView.set(stepResult, mask: mask, with: config, for: currentStep)
+        resultView.set(color)
         documentScanner.setOverlayView(resultView, animationType: .bothFade)
     }
 
@@ -246,7 +248,9 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
         let info = DocumentScannerInfo(step: currentStep, config: config, state: state)
         let mask = asset(for: info)
         let config = assetConfiguration(for: info)
+        let color = backgroundColorConfiguration(for: info)
 
         documentOverlay.set(mask: mask, with: config)
+        documentOverlay.set(maskColor: color)
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -157,14 +157,18 @@
                 <constraint firstItem="D2P-UV-OeM" firstAttribute="trailing" secondItem="G1u-Lz-8jC" secondAttribute="trailing" constant="20" id="xpn-BF-PcQ"/>
             </constraints>
             <connections>
+                <outlet property="bottomMaskView" destination="O2b-QJ-wjg" id="Mez-b2-xxo"/>
                 <outlet property="confirmBtnTitle" destination="iJZ-nz-2xU" id="rIX-KT-CLP"/>
                 <outlet property="documentFrame" destination="O2P-zK-fEm" id="lHN-Uh-fDG"/>
                 <outlet property="documentResult" destination="1eg-Wx-oUM" id="Dhq-Hg-Fl5"/>
+                <outlet property="leftMaskView" destination="Dg4-uk-aQp" id="Pnj-9W-XNg"/>
                 <outlet property="maskAspectRatioConstraint" destination="nZ3-kM-0HJ" id="9m0-di-ylg"/>
                 <outlet property="maskCenterYConstraint" destination="CCC-GJ-LfD" id="LiO-Nv-2ii"/>
                 <outlet property="maskWidthRatioConstraint" destination="iY1-Zc-hH7" id="wfT-Ji-lbk"/>
                 <outlet property="retakeBtnTitle" destination="SBO-LA-PCo" id="EyL-rd-hoI"/>
+                <outlet property="rightMaskView" destination="Z04-Jx-StE" id="NkQ-3Y-CP5"/>
                 <outlet property="titleLbl" destination="WYL-Da-dem" id="H77-2y-0dn"/>
+                <outlet property="topMaskView" destination="h0N-6a-wYB" id="R9q-g0-Vdf"/>
             </connections>
             <point key="canvasLocation" x="859" y="100"/>
         </view>

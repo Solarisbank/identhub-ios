@@ -26,6 +26,9 @@ protocol SessionInfoProvider: AnyObject {
     /// Identification step type
     var identificationStep: IdentificationStep? { get set }
 
+    /// Documents list
+    var documentsList: [SupportedDocument]? { get set }
+
     /// Clears currently stored data.
     func clear()
 }
@@ -68,6 +71,9 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
 
     /// - SeeAlso: SessionInfoProvider.identificationType
     var identificationStep: IdentificationStep?
+
+    /// - SeeAlso: SessionInfoProvider.documentsList
+    var documentsList: [SupportedDocument]?
 
     // MARK: Init
 

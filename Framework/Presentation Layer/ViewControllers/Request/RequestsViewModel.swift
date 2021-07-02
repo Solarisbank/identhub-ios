@@ -220,6 +220,8 @@ private extension RequestsViewModel {
             switch result {
             case .success(let response):
                 self.completeStep(number: InitStep.fetchPersonData.rawValue)
+                self.sessionStorage.documentsList = response.supportedDocuments
+
                 KYCContainer.shared.update(person: response)
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

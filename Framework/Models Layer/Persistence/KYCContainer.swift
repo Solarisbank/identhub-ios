@@ -19,6 +19,7 @@ final class KYCContainer {
 
     let kycInfo: KYCInfo = KYCInfo()
     private var mrzInfo: MRZInfo?
+    private var infoProvider: SessionInfoProvider?
 
     // MARK: - Filling with Selfie Result Data
     func update(with data: SelfieScannerResult) {
@@ -126,7 +127,9 @@ final class KYCContainer {
     }
 
     /// Run previous session KYC data restoration
-    func restoreData() {
+    func restoreData(_ infoProvider: SessionInfoProvider) {
+
+        self.infoProvider = infoProvider
 
         restorePersonData()
         restoreSelfieData()
@@ -201,6 +204,7 @@ private extension KYCContainer {
     private func restorePersonData() {
         guard let personData = obtainStoredPresonData() else { return }
 
+        infoProvider?.documentsList = personData.supportedDocuments
         update(person: personData)
     }
 
