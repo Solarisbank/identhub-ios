@@ -41,6 +41,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
 
     private lazy var mainContainerView: UIView = {
         let view = UIView()
+        view.backgroundColor = .sdkColor(.base05)
         return view
     }()
 
@@ -55,6 +56,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
 
     private lazy var codeEntryView: CodeEntryView = {
         let codeEntryView = CodeEntryView(delegate: self)
+        codeEntryView.backgroundColor = .sdkColor(.base05)
         return codeEntryView
     }()
 

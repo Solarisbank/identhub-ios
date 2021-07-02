@@ -14,7 +14,7 @@ internal class SolarisViewController: UIViewController {
 
     internal lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .sdkColor(.black0)
         return view
     }()
 

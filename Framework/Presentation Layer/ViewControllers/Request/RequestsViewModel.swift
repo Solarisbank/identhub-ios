@@ -112,7 +112,15 @@ final class RequestsViewModel: NSObject {
     }
 
     func didTriggerQuit() {
-        fourthlineCoordinator?.perform(action: .quit)
+        if let coordinator = fourthlineCoordinator {
+            coordinator.perform(action: .quit)
+        } else {
+            identCoordinator?.perform(action: .quit)
+        }
+    }
+
+    func restartRequests() {
+        restartProcess()
     }
 
     func restartRequests() {
@@ -198,25 +206,10 @@ private extension RequestsViewModel {
                 self.completeStep(number: InitStep.defineMethod.rawValue)
                 self.sessionStorage.identificationStep = response.firstStep
 
-                switch response.firstStep {
-                case .fourthline,
-                     .bankIDFourthline:
-                    self.initiatedFourthlineIdentification()
-                case .mobileNumber,
-                     .bankIBAN:
-                    self.initiateBankIdentification()
-                default:
-                    print("Unsupported step on start ")
-                }
+                self.registerFourthlineMethod()
             case .failure(let error):
                 self.onDisplayError?(error)
             }
-        }
-    }
-
-    private func initiateBankIdentification() {
-        DispatchQueue.main.async { [weak self] in
-            self?.identCoordinator?.perform(action: .termsAndConditions)
         }
     }
 

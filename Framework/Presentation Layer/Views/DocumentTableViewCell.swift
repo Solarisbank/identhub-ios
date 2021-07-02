@@ -105,6 +105,8 @@ final internal class DocumentTableViewCell: UITableViewCell {
     }
 
     private func setUpUI() {
+        contentView.backgroundColor = .sdkColor(.black0)
+
         contentView.addSubviews([
             downloadDocumentButton,
             previewDocumentButton,

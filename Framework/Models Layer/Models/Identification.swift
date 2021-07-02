@@ -17,7 +17,7 @@ struct Identification: Decodable {
     let url: String
 
     /// Status of identification.
-    let status: String
+    let status: Status
 
     /// Date and time of identification completion.
     let completedAt: String?
@@ -52,6 +52,15 @@ struct Identification: Decodable {
     /// Next step.
     let nextStep: String?
 
+    /// Provider status code
+    let providerStatusCode: String?
+
+    /// Request failure reason
+    let failureReason: String?
+
+    /// Current reference token
+    let referenceToken: String?
+
     /// Documents associated with the identification.
     let documents: [ContractDocument]?
 
@@ -71,6 +80,9 @@ struct Identification: Decodable {
         case estimatedWaitingTime = "estimated_waiting_time"
         case address
         case nextStep = "next_step"
+        case providerStatusCode = "provider_status_code"
+        case failureReason = "failure_reason"
+        case referenceToken = "current_reference_token"
         case documents
     }
 }

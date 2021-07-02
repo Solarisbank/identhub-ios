@@ -29,7 +29,7 @@ struct ContractDocument: Decodable {
     let createdAt: String
 
     /// When the document was deleted.
-    let deletedAt: String
+    let deletedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id

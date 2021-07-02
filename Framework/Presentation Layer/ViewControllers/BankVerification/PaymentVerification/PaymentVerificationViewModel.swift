@@ -53,8 +53,9 @@ final internal class PaymentVerificationViewModel: NSObject {
 
             switch result {
             case .success(let response):
-                if response.status == Status.authorizationRequired.rawValue {
 
+                switch response.status {
+                case .authorizationRequired:
                     if let step = response.nextStep, let nextStep = IdentificationStep(rawValue: step) {
                         self.nextStep = nextStep
                     }
@@ -65,6 +66,8 @@ final internal class PaymentVerificationViewModel: NSObject {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.delegate?.verificationSucceeded()
                     }
+                default:
+                    print("Status not processed in SDK: \(response.status.rawValue)")
                 }
             case .failure(let error):
                 self.completionHandler(.failure(error))

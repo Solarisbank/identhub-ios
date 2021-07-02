@@ -48,11 +48,13 @@ final internal class SignDocumentsViewController: SolarisViewController {
 
     private lazy var currentStepView: IdentificationProgressView = {
         let view = IdentificationProgressView(currentStep: .documents)
+        view.backgroundColor = .sdkColor(.black0)
         return view
     }()
 
     private lazy var mainContainerView: UIView = {
         let view = UIView()
+        view.backgroundColor = .sdkColor(.black0)
         return view
     }()
 

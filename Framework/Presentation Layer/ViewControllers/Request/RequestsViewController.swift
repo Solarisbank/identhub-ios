@@ -103,20 +103,20 @@ private extension RequestsViewController {
     }
 
     private func locationFailed(with error: APIError) {
-        presentError(with: error, action: "Settings") {
+        presentError(with: error, title: Localizable.Location.Error.title, action: "Settings") {
             UIApplication.openAppSettings()
         }
     }
 
     private func requestFailed(with error: APIError) {
-        presentError(with: error, action: "Retry") { [weak self] in
+        presentError(with: error, title: "Request error", action: "Retry") { [weak self] in
             self?.viewModel.restartRequests()
         }
     }
 
-    private func presentError(with error: APIError, action: String, callback: @escaping () -> Void) {
+    private func presentError(with error: APIError, title: String, action: String, callback: @escaping () -> Void) {
 
-        let alert = UIAlertController(title: Localizable.Location.Error.title, message: error.text(), preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: error.text(), preferredStyle: .alert)
 
         let reactionAction = UIAlertAction(title: action, style: .default, handler: {_ in
             callback()

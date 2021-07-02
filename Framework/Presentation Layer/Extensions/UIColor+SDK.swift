@@ -20,6 +20,7 @@ internal extension UIColor {
         case black25
         case black10
         case black05
+        case black0
         case primaryAccent
         case primaryAccentLighten
         case secondaryAccent
@@ -55,6 +56,8 @@ internal extension UIColor {
             return #colorLiteral(red: 0.9019607843, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
         case .black05:
             return #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+        case .black0:
+            return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         case .primaryAccent:
             return #colorLiteral(red: 1, green: 0.3921568627, blue: 0.1960784314, alpha: 1)
         case .primaryAccentLighten:

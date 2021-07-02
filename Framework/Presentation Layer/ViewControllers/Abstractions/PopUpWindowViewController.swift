@@ -24,7 +24,7 @@ internal class PopUpWindowViewController: UIViewController {
 
     private lazy var popUpWindowView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .sdkColor(.black0)
         let layer = view.layer
         layer.cornerRadius = Constants.cornerRadius
         return view

@@ -59,6 +59,7 @@ final internal class IBANVerificationViewController: SolarisViewController {
     private lazy var ibanVerificationTextField: VerificationTextField = {
         let textField = VerificationTextField()
         textField.placeholder = Localizable.BankVerification.IBANVerification.IBANplaceholder
+        textField.textColor = .sdkColor(.base75)
         return textField
     }()
 
@@ -161,5 +162,34 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
         errorLabel.isHidden = valid
         ibanVerificationTextField.currentState = valid ? .verified : .error
         initiatePaymentVerificationButton.currentAppearance = valid ? .verifying : .orange
+    }
+
+    func verificationIBANFailed(_ error: APIError) {
+        isIBANFormatValid(false)
+        errorLabel.text = error.text()
+        showVerificationError(error)
+    }
+}
+
+// MARK: - Internal methods -
+
+private extension IBANVerificationViewController {
+
+    private func showVerificationError(_ error: APIError) {
+
+        let alert = UIAlertController(title: "IBAN verification failed", message: error.text(), preferredStyle: .alert)
+
+        let reactionAction = UIAlertAction(title: "Try again", style: .default, handler: { [weak self] _ in
+            self?.ibanVerificationTextField.text = ""
+        })
+
+        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+            self?.viewModel.didTriggerQuit()
+        })
+
+        alert.addAction(reactionAction)
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true)
     }
 }

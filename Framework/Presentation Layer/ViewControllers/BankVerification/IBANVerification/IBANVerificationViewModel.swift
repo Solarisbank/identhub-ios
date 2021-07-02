@@ -38,6 +38,10 @@ final internal class IBANVerificationViewModel: NSObject {
         verifyIBAN(iban)
     }
 
+    func didTriggerQuit() {
+        flowCoordinator.perform(action: .quit)
+    }
+
     // MARK: Private properties
 
     private func validateIBAN(_ iban: String?) -> Bool {
@@ -67,6 +71,9 @@ final internal class IBANVerificationViewModel: NSObject {
                     }
                 }
                 self.completionHandler(.failure(error))
+                DispatchQueue.main.async {
+                    self.delegate?.verificationIBANFailed(error)
+                }
             }
         }
     }
@@ -76,4 +83,8 @@ protocol IBANVerificationViewModelDelegate: AnyObject {
 
     /// Called after IBAN was entered to confirm if its format matches the standards.
     func isIBANFormatValid(_ valid: Bool)
+
+    /// Called if IBAN verification failed
+    /// - Parameter error: failed reason
+    func verificationIBANFailed(_ error: APIError)
 }

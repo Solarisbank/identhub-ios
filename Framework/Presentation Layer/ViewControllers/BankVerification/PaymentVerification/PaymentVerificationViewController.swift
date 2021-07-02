@@ -49,6 +49,7 @@ final internal class PaymentVerificationViewController: SolarisViewController {
 
     private lazy var currentStepView: IdentificationProgressView = {
         let view = IdentificationProgressView(currentStep: .bankVerification)
+        view.backgroundColor = .sdkColor(.base05)
         return view
     }()
 

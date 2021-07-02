@@ -29,6 +29,7 @@ final internal class ConfirmApplicationViewController: SolarisViewController {
 
     private lazy var currentStepView: IdentificationProgressView = {
         let view = IdentificationProgressView(currentStep: .documents)
+        view.backgroundColor = .sdkColor(.black0)
         return view
     }()
 
@@ -57,6 +58,7 @@ final internal class ConfirmApplicationViewController: SolarisViewController {
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         tableView.isScrollEnabled = false
+        tableView.backgroundColor = .sdkColor(.black0)
         tableView.dataSource = self
         tableView.register(DocumentTableViewCell.self, forCellReuseIdentifier: DocumentTableViewCell.ReuseIdentifier)
         return tableView
