@@ -74,7 +74,6 @@ final internal class SignDocumentsViewController: SolarisViewController {
 
     private lazy var transactionInfoView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.sdkColor(.base05)
         view.layer.cornerRadius = Constants.Size.cornerRadius
         return view
     }()
@@ -82,6 +81,7 @@ final internal class SignDocumentsViewController: SolarisViewController {
     private lazy var transactionInfoLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .sdkColor(.black75)
         label.font = label.font.withSize(Constants.FontSize.small)
         label.text = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)"
         return label

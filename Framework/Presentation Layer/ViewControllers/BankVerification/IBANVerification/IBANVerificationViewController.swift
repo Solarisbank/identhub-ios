@@ -57,7 +57,9 @@ final internal class IBANVerificationViewController: SolarisViewController {
     }()
 
     private lazy var ibanVerificationTextField: VerificationTextField = {
+        let placeholder = Localizable.BankVerification.IBANVerification.IBANplaceholder
         let textField = VerificationTextField()
+        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.sdkColor(.base25)])
         textField.placeholder = Localizable.BankVerification.IBANVerification.IBANplaceholder
         textField.textColor = .sdkColor(.base75)
         return textField

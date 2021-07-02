@@ -69,10 +69,11 @@ final internal class IBANVerificationViewModel: NSObject {
                     DispatchQueue.main.async {
                         self.flowCoordinator.perform(action: .nextStep(step: .mobileNumber))
                     }
-                }
-                self.completionHandler(.failure(error))
-                DispatchQueue.main.async {
-                    self.delegate?.verificationIBANFailed(error)
+                } else {
+                    self.completionHandler(.failure(error))
+                    DispatchQueue.main.async {
+                        self.delegate?.verificationIBANFailed(error)
+                    }
                 }
             }
         }

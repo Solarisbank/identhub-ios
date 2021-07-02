@@ -5,6 +5,10 @@
 
 import UIKit
 
+protocol SingleDigitTextFieldDelegate: AnyObject {
+    func textFieldDidDelete()
+}
+
 /// UITextFieldView which allows for a single digit input.
 private class SingleDigitTextField: UITextField {
 
@@ -14,6 +18,8 @@ private class SingleDigitTextField: UITextField {
         static let cornerRadius: CGFloat = 4
         static let borderWidth: CGFloat = 1
     }
+
+    weak var customDelegate: SingleDigitTextFieldDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -26,6 +32,7 @@ private class SingleDigitTextField: UITextField {
 
     private func setUpUI() {
         backgroundColor = .white
+        textColor = .sdkColor(.base75)
         layer.cornerRadius = Constants.cornerRadius
         layer.borderWidth = Constants.borderWidth
         layer.borderColor = UIColor.sdkColor(.base10).cgColor
@@ -37,6 +44,11 @@ private class SingleDigitTextField: UITextField {
             $0.equalConstant(.width, Constants.width)
         ]
         }
+    }
+
+    override func deleteBackward() {
+        super.deleteBackward()
+        customDelegate?.textFieldDidDelete()
     }
 }
 
@@ -69,6 +81,8 @@ internal class CodeEntryView: UIView {
         }
     }
     private(set) weak var delegate: CodeEntryViewDelegate?
+
+    private var currentIndex = 0
 
     private enum Constants {
         enum Size {
@@ -151,6 +165,7 @@ internal class CodeEntryView: UIView {
         for _ in 0..<6 {
             let textField = SingleDigitTextField()
             textField.delegate = self
+            textField.customDelegate = self
             entryFieldsStackView.addArrangedSubview(textField)
         }
     }
@@ -217,14 +232,30 @@ extension CodeEntryView: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         textField.text = string
-        if let currentTextFieldIndex = entryFieldsStackView.arrangedSubviews.firstIndex(of: textField) {
-            if currentTextFieldIndex == entryFieldsStackView.arrangedSubviews.count - 1 {
-                entryFieldsStackView.arrangedSubviews[currentTextFieldIndex].resignFirstResponder()
+        if let currentTextFieldIndex = entryFieldsStackView.arrangedSubviews.firstIndex(of: textField), string.isEmpty == false {
+            currentIndex = currentTextFieldIndex
+            if currentIndex == entryFieldsStackView.arrangedSubviews.count - 1 {
+                entryFieldsStackView.arrangedSubviews[currentIndex].resignFirstResponder()
             } else {
-                entryFieldsStackView.arrangedSubviews[currentTextFieldIndex + 1].becomeFirstResponder()
+                entryFieldsStackView.arrangedSubviews[currentIndex + 1].becomeFirstResponder()
             }
             code = getCode()
         }
         return true
+    }
+}
+
+extension CodeEntryView: SingleDigitTextFieldDelegate {
+
+    func textFieldDidDelete() {
+
+        if let textField = entryFieldsStackView.arrangedSubviews[currentIndex] as? SingleDigitTextField {
+            textField.text = ""
+            textField.becomeFirstResponder()
+
+            if currentIndex > 0 {
+                currentIndex -= 1
+            }
+        }
     }
 }
