@@ -114,7 +114,7 @@ private extension RequestsViewController {
         }
     }
 
-    private func presentError(with error: APIError, action: String, callback: @escaping () -> ()) {
+    private func presentError(with error: APIError, action: String, callback: @escaping () -> Void) {
 
         let alert = UIAlertController(title: Localizable.Location.Error.title, message: error.text(), preferredStyle: .alert)
 
