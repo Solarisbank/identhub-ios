@@ -122,10 +122,6 @@ final class RequestsViewModel: NSObject {
     func restartRequests() {
         restartProcess()
     }
-
-    func restartRequests() {
-        restartProcess()
-    }
 }
 
 // MARK: - Internal methods -
@@ -205,6 +201,8 @@ private extension RequestsViewModel {
             case .success(let response):
                 self.completeStep(number: InitStep.defineMethod.rawValue)
                 self.sessionStorage.identificationStep = response.firstStep
+                self.sessionStorage.fallbackIdentificationStep = response.fallbackStep
+                self.sessionStorage.retries = response.retries
 
                 self.registerFourthlineMethod()
             case .failure(let error):

@@ -37,6 +37,12 @@ enum StoredKeys: String {
     /// Session identification path value key
     case identPath = "IdentificationSessionPathKey"
 
+    /// Fallback session identification path value key
+    case fallbackIdentStep = "FallbackIdentificationSessionStepKey"
+
+    /// Retries IBAN registration amount
+    case retriesCount = "IdentRetriesCountKey"
+
     /// BankID identification session process step value key
     case bankIDStep = "BankIDIdentificationStepKey"
 

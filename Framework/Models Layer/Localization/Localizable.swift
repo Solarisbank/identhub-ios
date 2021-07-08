@@ -71,6 +71,10 @@ enum Localizable {
             static let IBANplaceholder = "e.g. DE21 1234  3456 4567 5678 6789"
             static let wrongIBANFormat = "IBAN format is not valid!"
             static let initiatePaymentVerification = "Initiate Payment Verification"
+            static let failureAlertTitle = "IBAN verification failed"
+            static let notValidIBAN = "Unfortunately the IBAN you entered is invalid or not supported."
+            static let retryOption = "Re-try with different IBAN"
+            static let fallbackOption = "Identify with alternative method"
         }
 
         enum PaymentVerification {

@@ -166,10 +166,17 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
         initiatePaymentVerificationButton.currentAppearance = valid ? .verifying : .orange
     }
 
-    func verificationIBANFailed(_ error: APIError) {
+    func verificationIBANFailed(_ error: APIError, allowRetry: Bool) {
+
+        switch error {
+        case .clientError:
+            errorLabel.text = Localizable.BankVerification.IBANVerification.notValidIBAN
+        default:
+            errorLabel.text = error.text()
+        }
+
         isIBANFormatValid(false)
-        errorLabel.text = error.text()
-        showVerificationError(error)
+        showVerificationError(errorLabel.text, allowRetry: allowRetry)
     }
 }
 
@@ -177,19 +184,30 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
 
 private extension IBANVerificationViewController {
 
-    private func showVerificationError(_ error: APIError) {
+    private func showVerificationError(_ message: String?, allowRetry: Bool) {
 
-        let alert = UIAlertController(title: "IBAN verification failed", message: error.text(), preferredStyle: .alert)
+        let alert = UIAlertController(title: Localizable.BankVerification.IBANVerification.failureAlertTitle, message: message, preferredStyle: .alert)
 
-        let reactionAction = UIAlertAction(title: "Try again", style: .default, handler: { [weak self] _ in
-            self?.ibanVerificationTextField.text = ""
-        })
+        if allowRetry {
+            let reactionAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.retryOption, style: .default, handler: { [weak self] _ in
+                self?.ibanVerificationTextField.text = ""
+            })
 
-        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+            alert.addAction(reactionAction)
+        }
+
+        if viewModel.isExistFallbackOption() {
+            let fallbackAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.fallbackOption, style: .default, handler: { [weak self] _ in
+                self?.viewModel.performFallbackIdent()
+            })
+
+            alert.addAction(fallbackAction)
+        }
+
+        let cancelAction = UIAlertAction(title: Localizable.Common.dismiss, style: .cancel, handler: { [weak self] _ in
             self?.viewModel.didTriggerQuit()
         })
 
-        alert.addAction(reactionAction)
         alert.addAction(cancelAction)
 
         present(alert, animated: true)

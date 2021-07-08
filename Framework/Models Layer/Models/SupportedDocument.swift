@@ -40,7 +40,7 @@ extension SupportedDocument {
 enum SupportedDocumentType: String, Decodable {
 
     case passport = "Passport"
-    case idCard = "ID Card"
+    case idCard = "National ID Card"
     case driversLicense = "Driving License"
     case residencePermit = "Residence Permit"
     case paperId = "Paper ID"

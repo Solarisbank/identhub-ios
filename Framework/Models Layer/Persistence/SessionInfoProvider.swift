@@ -26,6 +26,12 @@ protocol SessionInfoProvider: AnyObject {
     /// Identification step type
     var identificationStep: IdentificationStep? { get set }
 
+    /// Fallback identification step type
+    var fallbackIdentificationStep: IdentificationStep? { get set }
+
+    /// IBAN retries count
+    var retries: Int { get set }
+
     /// Documents list
     var documentsList: [SupportedDocument]? { get set }
 
@@ -33,17 +39,16 @@ protocol SessionInfoProvider: AnyObject {
     func clear()
 }
 
+/// Count of default retries. Used if from server comes null value
+let defaultRetries = 5
+
 /// Session info provider.
 final class StorageSessionInfoProvider: SessionInfoProvider {
 
     // MARK: Properties
 
     /// - SeeAlso: SessionInfoProvider.sessionToken
-    var sessionToken: String {
-        didSet {
-            SessionStorage.updateValue(sessionToken, for: StoredKeys.token.rawValue)
-        }
-    }
+    var sessionToken: String
 
     /// - SeeAlso: SessionInfoProvider.mobileNumber
     var mobileNumber: String? {
@@ -63,6 +68,20 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     var identificationPath: String? {
         didSet {
             SessionStorage.updateValue(identificationPath!, for: StoredKeys.identPath.rawValue)
+        }
+    }
+
+    /// - SeeAlso: SessionInfoProvider.fallbackIdentificationStep
+    var fallbackIdentificationStep: IdentificationStep? {
+        didSet {
+            SessionStorage.updateValue(fallbackIdentificationStep!.rawValue, for: StoredKeys.fallbackIdentStep.rawValue)
+        }
+    }
+
+    /// - SeeAlso: SessionInfoProvider.fallbackIdentificationStep
+    var retries: Int = defaultRetries {
+        didSet {
+            SessionStorage.updateValue(retries, for: StoredKeys.retriesCount.rawValue)
         }
     }
 
@@ -105,6 +124,10 @@ private extension StorageSessionInfoProvider {
                 SessionStorage.clearData()
                 return
             }
+        } else {
+            SessionStorage.clearData()
+            SessionStorage.updateValue(sessionToken, for: StoredKeys.token.rawValue)
+            return
         }
 
         if let number = SessionStorage.obtainValue(for: StoredKeys.mobileNumber.rawValue) as? String {
@@ -117,6 +140,14 @@ private extension StorageSessionInfoProvider {
 
         if let path = SessionStorage.obtainValue(for: StoredKeys.identPath.rawValue) as? String {
             identificationPath = path
+        }
+
+        if let fallbackStep = SessionStorage.obtainValue(for: StoredKeys.fallbackIdentStep.rawValue) as? String {
+            fallbackIdentificationStep = IdentificationStep(rawValue: fallbackStep)
+        }
+
+        if let retriesCount = SessionStorage.obtainValue(for: StoredKeys.retriesCount.rawValue) as? Int {
+            retries = retriesCount
         }
     }
 }

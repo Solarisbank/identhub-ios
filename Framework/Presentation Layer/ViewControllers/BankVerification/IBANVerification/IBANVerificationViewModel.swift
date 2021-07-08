@@ -17,6 +17,8 @@ final internal class IBANVerificationViewModel: NSObject {
 
     private let sessionStorage: StorageSessionInfoProvider
 
+    private var retriesCount: Int = 0
+
     private var completionHandler: CompletionHandler
 
     init(flowCoordinator: BankIDCoordinator, delegate: IBANVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
@@ -30,6 +32,8 @@ final internal class IBANVerificationViewModel: NSObject {
 
     // MARK: Methods
 
+    /// Method starts user's IBAN value validation
+    /// - Parameter iban: string of IBAN
     func initiatePaymentVerification(withIBAN iban: String?) {
         let isIBANValid = validateIBAN(iban)
         delegate?.isIBANFormatValid(isIBANValid)
@@ -38,11 +42,29 @@ final internal class IBANVerificationViewModel: NSObject {
         verifyIBAN(iban)
     }
 
+    /// Perform alternate flow of user validation
+    func performFallbackIdent() {
+
+        if let fallback = sessionStorage.fallbackIdentificationStep {
+            flowCoordinator.perform(action: .nextStep(step: fallback))
+        }
+    }
+
+    /// Present identification session quit popup
     func didTriggerQuit() {
         flowCoordinator.perform(action: .quit)
     }
 
-    // MARK: Private properties
+    /// Method defines if exist fallback identificaiton option for user
+    /// - Returns: bool value of step existance
+    func isExistFallbackOption() -> Bool {
+        return ( sessionStorage.fallbackIdentificationStep != nil )
+    }
+}
+
+// MARK: - Private methods -
+
+private extension IBANVerificationViewModel {
 
     private func validateIBAN(_ iban: String?) -> Bool {
         guard let iban = iban else { return false }
@@ -58,24 +80,31 @@ final internal class IBANVerificationViewModel: NSObject {
                 self.sessionStorage.identificationUID = response.id
                 self.sessionStorage.identificationPath = response.url
                 DispatchQueue.main.async {
-                    if let step = response.nextStep {
-                        self.flowCoordinator.perform(action: .nextStep(step: IdentificationStep(rawValue: step) ?? .unspecified))
+                    if let step = response.nextStep, let nextStep = IdentificationStep(rawValue: step) {
+                        self.flowCoordinator.perform(action: .nextStep(step: nextStep))
                     } else {
                         self.flowCoordinator.perform(action: .bankVerification(step: .payment))
                     }
                 }
             case .failure(let error):
-                if error == .clientError {
-                    DispatchQueue.main.async {
-                        self.flowCoordinator.perform(action: .nextStep(step: .mobileNumber))
-                    }
-                } else {
-                    self.completionHandler(.failure(error))
-                    DispatchQueue.main.async {
-                        self.delegate?.verificationIBANFailed(error)
-                    }
-                }
+                self.processedFailure(with: error)
             }
+        }
+    }
+
+    private func processedFailure(with error: APIError) {
+
+        switch error {
+        case .clientError:
+            retriesCount += 1
+        default:
+            completionHandler(.failure(error))
+        }
+
+        let allowRetry = ( retriesCount < sessionStorage.retries )
+
+        DispatchQueue.main.async {
+            self.delegate?.verificationIBANFailed(error, allowRetry: allowRetry)
         }
     }
 }
@@ -87,5 +116,6 @@ protocol IBANVerificationViewModelDelegate: AnyObject {
 
     /// Called if IBAN verification failed
     /// - Parameter error: failed reason
-    func verificationIBANFailed(_ error: APIError)
+    /// - Parameter allowRetry: inform if user can try another IBAN or has to start with alternate identification method
+    func verificationIBANFailed(_ error: APIError, allowRetry: Bool)
 }
