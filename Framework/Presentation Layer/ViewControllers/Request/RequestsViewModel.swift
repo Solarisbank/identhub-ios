@@ -262,12 +262,19 @@ private extension RequestsViewModel {
 private extension RequestsViewModel {
 
     private func startUploadProcess() {
-        fetchLocationData()
+        if let step = SessionStorage.obtainValue(for: StoredKeys.uploadStep.rawValue) as? Int, let uploadStep = UploadSteps(rawValue: step) {
+            self.uploadStep = uploadStep
+
+            restartProcess()
+        } else {
+            fetchLocationData()
+        }
     }
 
     private func fetchLocationData() {
         startStep(number: UploadSteps.location.rawValue)
         uploadStep = .location
+        SessionStorage.updateValue(uploadStep.rawValue, for: StoredKeys.uploadStep.rawValue)
 
         LocationManager.shared.requestLocationAuthorization {
             LocationManager.shared.requestDeviceLocation { [weak self] location, error in
@@ -292,6 +299,7 @@ private extension RequestsViewModel {
     private func zipUserData() {
         startStep(number: UploadSteps.zipFile.rawValue)
         uploadStep = .zipFile
+        SessionStorage.updateValue(uploadStep.rawValue, for: StoredKeys.uploadStep.rawValue)
 
         KYCZipService.createKYCZip { [unowned self] zipURL, err in
             guard let url = zipURL else {
@@ -370,6 +378,8 @@ private extension RequestsViewModel {
     }
 
     private func showResult(_ result: FourthlineIdentificationStatus) {
+        SessionStorage.clearData()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let `self` = self else { return }
 

@@ -74,7 +74,9 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     /// - SeeAlso: SessionInfoProvider.fallbackIdentificationStep
     var fallbackIdentificationStep: IdentificationStep? {
         didSet {
-            SessionStorage.updateValue(fallbackIdentificationStep!.rawValue, for: StoredKeys.fallbackIdentStep.rawValue)
+            if let step = fallbackIdentificationStep {
+                SessionStorage.updateValue(step.rawValue, for: StoredKeys.fallbackIdentStep.rawValue)
+            }
         }
     }
 

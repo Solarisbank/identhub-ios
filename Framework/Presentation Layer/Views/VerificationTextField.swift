@@ -57,9 +57,11 @@ internal class VerificationTextField: UITextField {
     }
 
     private func setUpUI() {
+        delegate = self
         backgroundColor = .white
         layer.cornerRadius = Constants.cornerRadius
         layer.borderWidth = Constants.borderWidth
+        returnKeyType = .done
 
         addConstraints { [
             $0.equalConstant(.height, Constants.height)
@@ -78,5 +80,16 @@ internal class VerificationTextField: UITextField {
             borderColor = UIColor.sdkColor(.error).cgColor
         }
         layer.borderColor = borderColor
+    }
+}
+
+// MARK: - Delegate methods -
+
+extension VerificationTextField: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        textField.resignFirstResponder()
+        return true
     }
 }

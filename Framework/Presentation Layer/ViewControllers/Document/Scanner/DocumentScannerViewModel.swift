@@ -48,4 +48,10 @@ final class DocumentScannerViewModel: NSObject {
     func cleanData() {
         KYCContainer.shared.removeDocumentData()
     }
+
+    func closeScanner() {
+        if flowCoordinator.isLastController() {
+            flowCoordinator.perform(action: .documentPicker)
+        }
+    }
 }

@@ -211,7 +211,7 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
 
     private func scheduleAutodetectTimer() {
         stopAutodetectTimer()
-        autodetectTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false, block: { [weak self] timer in
+        autodetectTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { [weak self] timer in
             self?.stopProcessingWarnings()
             self?.documentOverlay.displayManualScan(true)
             self?.stopAutodetectTimer()
@@ -226,6 +226,8 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
     private func dismissScanner() {
         documentScanner.delegate = nil
         stopAutodetectTimer()
+        viewModel.closeScanner()
+
         dismiss(animated: true)
     }
 

@@ -93,13 +93,13 @@ extension DocumentItemInfoCell {
 
     private func createToolbar() -> UIToolbar {
 
-        let toolBar = UIToolbar()
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
 
         toolBar.sizeToFit()
 
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
 
-        toolBar.setItems([doneBtn], animated: true)
+        toolBar.setItems([doneBtn], animated: false)
 
         return toolBar
     }

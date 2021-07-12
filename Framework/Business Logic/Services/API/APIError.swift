@@ -21,12 +21,12 @@ import Foundation
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
-    case clientError
+    case clientError(error: ServerError?)
     case authorizationFailed
     case unauthorizedAction
     case resourceNotFound
     case expectationMismatch
-    case incorrectIdentificationStatus
+    case incorrectIdentificationStatus(error: ServerError?)
     case unprocessableEntity
     case internalServerError
     case requestError
@@ -35,13 +35,22 @@ public enum APIError: Error {
     case unknownError
 }
 
+/// Server error codes
+/// - mobileNotVerified: person mobile number doesn't not verified
+/// - unknown: error code is absent or not specified
+enum ErrorCodes: String, Codable {
+
+    case mobileNotVerified = "mobile_number_not_verified"
+    case unknown = ""
+}
+
 extension APIError {
 
     func text() -> String {
         switch self {
         case .malformedResponseJson:
             return Localizable.APIErrorDesc.malformedResponseJson
-        case .clientError:
+        case .clientError(_):
             return Localizable.APIErrorDesc.clientError
         case.authorizationFailed:
             return Localizable.APIErrorDesc.authorizationFailed
@@ -49,7 +58,7 @@ extension APIError {
             return Localizable.APIErrorDesc.unauthorizedAction
         case .expectationMismatch:
             return Localizable.APIErrorDesc.expectationMismatch
-        case .incorrectIdentificationStatus:
+        case .incorrectIdentificationStatus(_):
             return Localizable.APIErrorDesc.incorrectIdentificationStatus
         case .unprocessableEntity:
             return Localizable.APIErrorDesc.unprocessableEntity

@@ -165,6 +165,7 @@ internal class CodeEntryView: UIView {
         for _ in 0..<6 {
             let textField = SingleDigitTextField()
             textField.delegate = self
+            textField.returnKeyType = .done
             textField.customDelegate = self
             entryFieldsStackView.addArrangedSubview(textField)
         }
@@ -241,6 +242,11 @@ extension CodeEntryView: UITextFieldDelegate {
             }
             code = getCode()
         }
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }

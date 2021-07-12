@@ -75,9 +75,10 @@ final class DefaultAPIClient: APIClient {
     // MARK: Private methods
 
     private func mapResponse<DataType: Decodable>(response: HTTPURLResponse, data: Data) -> Result<DataType, APIError> {
+        let decoder = JSONDecoder()
+
         switch response.statusCode {
         case 200:
-            let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMdd)
 
             do {
@@ -88,7 +89,8 @@ final class DefaultAPIClient: APIClient {
                 return .failure(.malformedResponseJson)
             }
         case 400:
-            return .failure(.clientError)
+            let error = obtainErrorData(data: data)
+            return .failure(.clientError(error: error))
         case 401:
             return .failure(.authorizationFailed)
         case 403:
@@ -98,7 +100,8 @@ final class DefaultAPIClient: APIClient {
         case 409:
             return .failure(.expectationMismatch)
         case 412:
-            return .failure(.incorrectIdentificationStatus)
+            let error = obtainErrorData(data: data)
+            return .failure(.incorrectIdentificationStatus(error: error))
         case 422:
             return .failure(.unprocessableEntity)
         case 500:
@@ -113,8 +116,8 @@ final class DefaultAPIClient: APIClient {
         let decoder = JSONDecoder()
 
         do {
-            let decodedData = try decoder.decode(ServerError.self, from: data)
-            return decodedData
+            let decodedData = try decoder.decode(ErrorsDescription.self, from: data)
+            return decodedData.errors?.first
         } catch let error {
             print("Error with encoding error data: \(error.localizedDescription)")
             return nil

@@ -38,7 +38,7 @@ final internal class IBANVerificationViewModel: NSObject {
         let isIBANValid = validateIBAN(iban)
         delegate?.isIBANFormatValid(isIBANValid)
         guard isIBANValid,
-              let iban = iban else { completionHandler(.failure(APIError.clientError)); return }
+              let iban = iban else { completionHandler(.failure(APIError.requestError)); return }
         verifyIBAN(iban)
     }
 
@@ -95,7 +95,17 @@ private extension IBANVerificationViewModel {
     private func processedFailure(with error: APIError) {
 
         switch error {
-        case .clientError:
+        case .clientError(let error):
+            if error?.code == .mobileNotVerified {
+
+               DispatchQueue.main.async {
+                   self.flowCoordinator.perform(action: .phoneVerification)
+               }
+               return
+            }
+            retriesCount += 1
+        case .incorrectIdentificationStatus(let error):
+            print("IBAN verification error: \(String(describing: error?.detail))")
             retriesCount += 1
         default:
             completionHandler(.failure(error))

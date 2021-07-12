@@ -64,6 +64,9 @@ enum StoredKeys: String {
     /// Fourthline kyc zip file url
     case kycZipData = "KYCZipDataURLKey"
 
+    /// Upload process step
+    case uploadStep = "UploadProcessKey"
+
     /// Selfie data store keys enumeration
     enum SelfieData: String {
 

@@ -60,6 +60,12 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             quit()
         }
     }
+
+    /// Method defined if in navigation stack is exist controller. Used for cases, when user dismissed SDK controller and wants return to the previous step
+    /// - Returns: bool value of emptinest of navigation controllers stack
+    func isLastController() -> Bool {
+        return presenter.navigationController.viewControllers.isEmpty
+    }
 }
 
 // MARK: - Private methods -

@@ -11,13 +11,13 @@ public struct ServerError {
     let id: String?
 
     /// Error object server code
-    let code: String?
+    let code: ErrorCodes?
 
     /// Error title, can be used for user alert
     let title: String?
 
     /// Error details
-    let details: String?
+    let detail: String?
 
     /// Next step of the identification for resolving error
     let nextStep: IdentificationStep?
@@ -26,7 +26,7 @@ public struct ServerError {
         case id
         case code
         case title
-        case details
+        case detail
         case nextStep = "next_step"
     }
 }
@@ -37,9 +37,9 @@ extension ServerError: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         id = try container.decode(String.self, forKey: .id)
-        code = try container.decode(String.self, forKey: .code)
+        code = try container.decode(ErrorCodes.self, forKey: .code)
         title = try container.decode(String.self, forKey: .title)
-        details = try container.decode(String.self, forKey: .details)
-        nextStep = try container.decode(IdentificationStep.self, forKey: .nextStep)
+        detail = try container.decode(String.self, forKey: .detail)
+        nextStep = try container.decodeIfPresent(IdentificationStep.self, forKey: .nextStep)
     }
 }
