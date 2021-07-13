@@ -52,7 +52,8 @@ final internal class IBANVerificationViewModel: NSObject {
 
     /// Present identification session quit popup
     func didTriggerQuit() {
-        flowCoordinator.perform(action: .quit)
+        completionHandler(.failure(.ibanVerfificationFailed))
+        flowCoordinator.perform(action: .close)
     }
 
     /// Method defines if exist fallback identificaiton option for user

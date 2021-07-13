@@ -18,6 +18,7 @@ enum BankIDStep: Codable {
     case nextStep(step: IdentificationStep) // Method called next step of the identification process
     case pop // return back to the previous bank id step
     case quit // Quit from identificaton process
+    case close // Close identification screen
 
     enum CodingKeys: CodingKey {
         case start
@@ -31,6 +32,7 @@ enum BankIDStep: Codable {
         case next
         case pop
         case quit
+        case close
     }
 
     init(from decoder: Decoder) throws {

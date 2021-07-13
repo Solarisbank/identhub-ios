@@ -53,7 +53,7 @@ final public class IdentHubSession {
     /// Method starts identification process (BankID) with updating status by closure callback
     /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter completion: closure with result object in parameter, result has two cases: success with id or failure with error
-    public func start(_ completion: @escaping CompletionHandler) {
+    public func start(_ completion: CompletionHandler?) {
         completionSessionBlock = completion
 
         startIdentification()
@@ -72,8 +72,8 @@ private extension IdentHubSession {
     private func startIdentification() {
         let identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
 
-        identCoordinator.start { [weak self] result in
-            self?.updateSessionResult(result)
+        identCoordinator.start { result in
+            self.updateSessionResult(result)
         }
     }
 

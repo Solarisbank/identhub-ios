@@ -29,13 +29,17 @@ internal class BaseCoordinator: Coordinator {
     internal func quit() {
         let quitPopUpViewController = QuitPopUpViewController()
         quitPopUpViewController.quitAction = {
-            self.presenter.dismissModule(animated: false, completion: { [weak self] in
-                guard let `self` = self else { return }
-
-                self.presenter.dismissModule(animated: true, completion: nil)
-            })
+            self.close()
         }
         quitPopUpViewController.modalPresentationStyle = .overFullScreen
         presenter.present(quitPopUpViewController, animated: false)
+    }
+
+    internal func close() {
+        presenter.dismissModule(animated: false, completion: { [weak self] in
+            guard let `self` = self else { return }
+
+            self.presenter.dismissModule(animated: true, completion: nil)
+        })
     }
 }

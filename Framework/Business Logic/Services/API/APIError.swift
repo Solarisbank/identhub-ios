@@ -18,6 +18,7 @@ import Foundation
 /// - internalServerError: indicates the internal server error.
 /// - requestError: indicates build request error
 /// - locationError: indicates issue with fetching device location data
+/// - ibanVerfificationFailed: failed IBAN verification
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
@@ -32,6 +33,7 @@ public enum APIError: Error {
     case requestError
     case locationAccessError
     case locationError
+    case ibanVerfificationFailed
     case unknownError
 }
 
@@ -41,10 +43,10 @@ public enum APIError: Error {
 enum ErrorCodes: String, Codable {
 
     case mobileNotVerified = "mobile_number_not_verified"
-    case unknown = ""
+    case unknown
 }
 
-extension APIError {
+public extension APIError {
 
     func text() -> String {
         switch self {
@@ -74,6 +76,8 @@ extension APIError {
             return Localizable.APIErrorDesc.locationAccessError
         case .locationError:
             return Localizable.APIErrorDesc.locationError
+        case .ibanVerfificationFailed:
+            return Localizable.APIErrorDesc.ibanVerificationError
         }
     }
 }

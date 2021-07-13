@@ -61,6 +61,8 @@ class BankIDCoordinator: BaseCoordinator {
             pop()
         case .quit:
             quit()
+        case .close:
+            close()
         }
     }
 

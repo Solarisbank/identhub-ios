@@ -189,9 +189,7 @@ private extension IBANVerificationViewController {
         let alert = UIAlertController(title: Localizable.BankVerification.IBANVerification.failureAlertTitle, message: message, preferredStyle: .alert)
 
         if allowRetry {
-            let reactionAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.retryOption, style: .default, handler: { [weak self] _ in
-                self?.ibanVerificationTextField.text = ""
-            })
+            let reactionAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.retryOption, style: .default, handler: { _ in })
 
             alert.addAction(reactionAction)
         }

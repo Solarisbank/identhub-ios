@@ -292,6 +292,7 @@ enum Localizable {
         static let resourceNotFound = "Resource has not been found."
         static let locationAccessError = "Location permission denied."
         static let locationError = "Device can't define location data."
+        static let ibanVerificationError = "IBAN verification failed"
     }
 
     enum Result {
