@@ -14,7 +14,7 @@ It provides an easy way to integrate identification provided by Solarisbank into
 2. Include the source of the SDK in the Cartfile with the latest version of the SDK, e.g.:
 
     ```bash
-    github "Solarisbank/identhub-ios" ~> 0.1.0 
+    github "Solarisbank/identhub-ios" ~> 0.1.0
     ```
 
 3. Run carthage script:
@@ -40,6 +40,23 @@ class ViewController: UIViewController {
         let identHubSessionURL = … // from the API
         let identHubSession = try IdentHubSession(rootViewController: self, sessionURL: identHubSessionURL)
         identHubSession.start(self)
+    }
+}
+
+extension ViewController: IdentHubSDKManagerDelegate {
+
+    func didFinishWithSuccess(_ identification: String) {
+        DispatchQueue.main.async {
+            // - display success message on screen with identification -
+        }
+    }
+
+    func didFailureSession(_ failureReason: APIError) {
+
+        DispatchQueue.main.async {
+            // - display failure message -
+            // - fetch reason description, call text method: failureReason.text()
+        }
     }
 }
 ```
