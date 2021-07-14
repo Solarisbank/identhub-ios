@@ -25,11 +25,11 @@ final internal class PaymentVerificationViewController: SolarisViewController {
             static let sidesExtended: CGFloat = 32
             static let sidesNormal: CGFloat = 16
             static let size: CGFloat = 72
+            static let contentOffset: CGFloat = 240
         }
 
         enum Size {
             static let cornerRadius: CGFloat = 8
-            static let paymentViewHeight: CGFloat = 500
         }
     }
 
@@ -112,7 +112,7 @@ final internal class PaymentVerificationViewController: SolarisViewController {
             $0.equal(.leading, constant: Constants.ConstraintsOffset.sidesNormal),
             $0.equal(.trailing, constant: -Constants.ConstraintsOffset.sidesNormal),
             $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended),
-            $0.equalConstant(.height, Constants.Size.paymentViewHeight)
+            $0.equalConstant(.height, self.view.frame.height - Constants.ConstraintsOffset.contentOffset)
         ]
         }
     }

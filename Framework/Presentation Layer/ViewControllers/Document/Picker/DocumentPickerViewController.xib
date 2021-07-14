@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,7 +65,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="245" id="3qR-zh-Jl0"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="245" id="3qR-zh-Jl0"/>
                         <constraint firstItem="6CM-dP-Mrn" firstAttribute="top" secondItem="yop-nk-0Ea" secondAttribute="top" constant="15" id="6zw-5p-kVc"/>
                         <constraint firstAttribute="trailing" secondItem="aOX-JZ-A16" secondAttribute="trailing" id="9zn-1P-4V7"/>
                         <constraint firstItem="aOX-JZ-A16" firstAttribute="top" secondItem="yop-nk-0Ea" secondAttribute="top" id="L7e-hn-dqe"/>
@@ -76,20 +76,6 @@
                         <constraint firstAttribute="trailing" secondItem="6CM-dP-Mrn" secondAttribute="trailing" constant="15" id="u3w-ro-kJT"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7l-BA-fua">
-                    <rect key="frame" x="20" y="602" width="335" height="50"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="AWY-mu-Lof"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                    <state key="normal" title="Quit">
-                        <color key="titleColor" red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="didClickQuit:" destination="-1" eventType="touchUpInside" id="2Nm-OP-ca7"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv9-Aq-K8k">
                     <rect key="frame" x="20" y="547" width="335" height="50"/>
                     <color key="backgroundColor" red="1" green="0.3921568627" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
@@ -106,6 +92,20 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didClickContinue:" destination="-1" eventType="touchUpInside" id="Wo3-SP-goy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7l-BA-fua">
+                    <rect key="frame" x="20" y="602" width="335" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="AWY-mu-Lof"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                    <state key="normal" title="Quit">
+                        <color key="titleColor" red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="didClickQuit:" destination="-1" eventType="touchUpInside" id="2Nm-OP-ca7"/>
                     </connections>
                 </button>
             </subviews>
@@ -125,6 +125,7 @@
                 <constraint firstItem="yop-nk-0Ea" firstAttribute="top" secondItem="Gsi-44-nvd" secondAttribute="bottom" id="Ztz-KY-DaO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Y7l-BA-fua" secondAttribute="trailing" constant="20" id="anF-7r-Np4"/>
                 <constraint firstItem="Y7l-BA-fua" firstAttribute="top" secondItem="Wv9-Aq-K8k" secondAttribute="bottom" constant="5" id="hTZ-6Z-0ZO"/>
+                <constraint firstItem="Wv9-Aq-K8k" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yop-nk-0Ea" secondAttribute="bottom" priority="900" id="k7s-xy-Bqm"/>
                 <constraint firstItem="Gsi-44-nvd" firstAttribute="leading" secondItem="jal-k9-VyU" secondAttribute="leading" id="mCf-0m-H4W"/>
                 <constraint firstItem="jal-k9-VyU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="mLB-p8-SmT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wv9-Aq-K8k" secondAttribute="trailing" constant="20" id="owE-Vf-hqS"/>

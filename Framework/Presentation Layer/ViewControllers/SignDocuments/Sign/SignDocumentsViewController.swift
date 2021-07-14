@@ -201,11 +201,14 @@ final internal class SignDocumentsViewController: SolarisViewController {
         ]
         }
 
-        submitAndSignCodeButton.addTarget(self, action: #selector(submitCodeAndSign), for: .touchUpInside)
     }
 
     @objc private func submitCodeAndSign() {
         viewModel.submitCodeAndSign(codeEntryView.code)
+    }
+
+    @objc private func requestNewCode() {
+        viewModel.requestNewCode()
     }
 
     private func updateUI() {
@@ -214,7 +217,11 @@ final internal class SignDocumentsViewController: SolarisViewController {
             case .normal:
                 self.codeEntryView.state = .normal
                 self.codeEntryView.clearCodeEntries()
+                self.submitAndSignCodeButton.currentAppearance = .inactive
+                self.submitAndSignCodeButton.isEnabled = false
                 self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.submitAndSign, for: .normal)
+                self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
+                self.submitAndSignCodeButton.addTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
             case .veryfing:
                 self.codeEntryView.state = .disabled
                 self.submitAndSignCodeButton.currentAppearance = .inactive
@@ -226,6 +233,9 @@ final internal class SignDocumentsViewController: SolarisViewController {
             case .error:
                 self.codeEntryView.state = .error
                 self.submitAndSignCodeButton.currentAppearance = .orange
+                self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
+                self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
+                self.submitAndSignCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
             }
         }
     }
@@ -238,6 +248,11 @@ final internal class SignDocumentsViewController: SolarisViewController {
 // MARK: SignDocumentsViewModelDelegate methods
 
 extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
+
+    func didSubmitNewCodeRequest() {
+        state = .normal
+    }
+
     func verificationStarted() {
         state = .veryfing
     }
@@ -252,7 +267,9 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
         state = .success
     }
 
-    func verificationFailed() { }
+    func verificationFailed() {
+        state = .error
+    }
 }
 
 // MARK: - Code entry view delegate methods -

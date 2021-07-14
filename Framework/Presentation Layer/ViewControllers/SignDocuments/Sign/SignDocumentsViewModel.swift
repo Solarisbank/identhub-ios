@@ -34,10 +34,6 @@ final internal class SignDocumentsViewModel: NSObject {
         requestNewCode()
     }
 
-    private func requestNewCode() {
-        verificationService.authorizeDocuments { _ in }
-    }
-
     private func fail() {
         self.sessionStorage.isSuccessful = false
         DispatchQueue.main.async {
@@ -68,6 +64,13 @@ final internal class SignDocumentsViewModel: NSObject {
                 self.fail()
                 self.completionHander(.failure(error))
             }
+        }
+    }
+
+    func requestNewCode() {
+        verificationService.authorizeDocuments { [weak self] _ in
+
+            self?.delegate?.didSubmitNewCodeRequest()
         }
     }
 
@@ -104,4 +107,7 @@ protocol SignDocumentsViewModelDelegate: VerifiableViewModelDelegate {
 
     /// Called when the verification is being processed.
     func verificationIsBeingProcessed()
+
+    /// Did publish request for new TAN
+    func didSubmitNewCodeRequest()
 }

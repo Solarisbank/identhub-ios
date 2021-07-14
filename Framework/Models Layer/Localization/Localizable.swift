@@ -106,6 +106,7 @@ enum Localizable {
             static let transactionInfoPartOne = "Your transaction ID is "
             static let transactionInfoPartTwo = "\nMake sure it is the same in SMS you just received."
             static let submitAndSign = "Submit and sign"
+            static let requestCode = "Request new code"
             static let applicationIsBeingProcessed = "Your application is being processed..."
             static let downloadDocuments = "You will be able to download all of the signed documents soon."
         }
@@ -292,7 +293,8 @@ enum Localizable {
         static let resourceNotFound = "Resource has not been found."
         static let locationAccessError = "Location permission denied."
         static let locationError = "Device can't define location data."
-        static let ibanVerificationError = "IBAN verification failed"
+        static let ibanVerificationError = "IBAN verification failed."
+        static let paymentFailure = "Payment verification failed."
     }
 
     enum Result {

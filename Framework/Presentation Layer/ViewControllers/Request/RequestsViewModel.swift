@@ -204,6 +204,10 @@ private extension RequestsViewModel {
                 self.sessionStorage.fallbackIdentificationStep = response.fallbackStep
                 self.sessionStorage.retries = response.retries
 
+                if let provider = response.fourthlineProvider {
+                    KYCContainer.shared.update(provider: provider)
+                }
+
                 self.registerFourthlineMethod()
             case .failure(let error):
                 self.onDisplayError?(error)

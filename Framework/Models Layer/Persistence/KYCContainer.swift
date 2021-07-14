@@ -21,6 +21,11 @@ final class KYCContainer {
     private var mrzInfo: MRZInfo?
     private var infoProvider: SessionInfoProvider?
 
+    // MARK: - Filling with provider value -
+    func update(provider: String) {
+        kycInfo.provider.name = provider
+    }
+
     // MARK: - Filling with Selfie Result Data
     func update(with data: SelfieScannerResult) {
         kycInfo.selfie = SelfieAttachment()
@@ -115,8 +120,6 @@ final class KYCContainer {
     /// Method filled identificated person data loaded from server
     /// - Parameter data: person detail
     func update(person data: PersonData) {
-        // TODO: - Use value from server -
-        kycInfo.provider.name = ""
         kycInfo.provider.clientNumber = data.personUID
 
         fillPersonData(data)

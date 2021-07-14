@@ -68,7 +68,8 @@ final internal class PaymentVerificationViewModel: NSObject {
                     }
                 case .failed:
                     DispatchQueue.main.async {
-                        self.flowCoordinator.perform(action: .bankVerification(step: .iban))
+                        self.completionHandler(.failure(.paymentFailed))
+                        self.flowCoordinator.perform(action: .close)
                     }
                 default:
                     print("Status not processed in SDK: \(response.status.rawValue)")

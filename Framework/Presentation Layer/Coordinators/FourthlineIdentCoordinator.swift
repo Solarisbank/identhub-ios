@@ -30,7 +30,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     /// Method starts Fourthline identificaiton process
     /// - Parameter completion: completion handler with success or failure parameter, used for updating users UI
     override func start(_ completion: @escaping CompletionHandler) {
-        perform(action: identificationStep)
+        perform(action: .documentPicker)
     }
 
     /// Performs a specified Fourthline identifiaction action.

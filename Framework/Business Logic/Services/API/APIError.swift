@@ -19,6 +19,7 @@ import Foundation
 /// - requestError: indicates build request error
 /// - locationError: indicates issue with fetching device location data
 /// - ibanVerfificationFailed: failed IBAN verification
+/// - paymentFailed: failed payment initiation
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
@@ -34,6 +35,7 @@ public enum APIError: Error {
     case locationAccessError
     case locationError
     case ibanVerfificationFailed
+    case paymentFailed
     case unknownError
 }
 
@@ -78,6 +80,8 @@ public extension APIError {
             return Localizable.APIErrorDesc.locationError
         case .ibanVerfificationFailed:
             return Localizable.APIErrorDesc.ibanVerificationError
+        case .paymentFailed:
+            return Localizable.APIErrorDesc.paymentFailure
         }
     }
 }
