@@ -11,11 +11,8 @@ enum APIPaths {
     // MARK: Backend
 
     /// Base path for backend API.
-    #if ENV_DEBUG
-    static let backendBasePath = "https://person-onboarding-api.solaris-sandbox.de"
-    #else
-    static let backendBasePath = ""
-    #endif
+    static var backendBasePath = ""
+
     /// Environment path for backend API.
     static let backendApiPath = "/person_onboarding"
 }

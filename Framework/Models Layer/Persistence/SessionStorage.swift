@@ -12,7 +12,7 @@ let kStoredValueKeys = "StoredValueKeys"
 
 /// User defaults storage adapter
 /// Class used for saving/updating value in UserDefaults and also clear all stored data
-enum SessionStorage {
+public enum SessionStorage {
 
     /// Method stored value to the UserDefaults by key. T - type of the stored value.
     /// Also method stored value key for the future clean up
