@@ -27,7 +27,7 @@ IdentHub SDK requires minimum iOS version 12.
 
 | SDK Version | Cocoa Xcode Compatible<br>.xcframework/.framework | Carthage Xcode Compatible<br>.framework | Minimum iOS support |
 |:------------:|:----------------------------------------------------:|:----------------:|:--------:|
-| 0.1.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
+| 0.3.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 
 
 ## Intergration
@@ -49,9 +49,9 @@ use_frameworks!
 platform :ios, '12.0'
 target 'YourTargetName' do
 
-    pod 'SolarisbankIdentHub', $version # will add all available module
+    pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git" #use private repository
     pod 'FourthlineSDK', $version # will add all available module
-    pod 'SwitfyTesseract', '2.2.3' # to enable OCR in DocumentScanner
+    pod 'SwiftyTesseract', '2.2.3' # to enable OCR in DocumentScanner
     pod 'ZIPFoundation', '0.9.11' # to create ZIP from KYCInfo
     
 end

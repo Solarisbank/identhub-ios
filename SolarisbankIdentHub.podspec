@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.name         = "SolarisbankIdentHub"
-  spec.version      = "0.1.0"
+  spec.version      = "0.3.0"
   spec.summary      = "iOS SDK for Solarisbank IdentHub."
 
   spec.description  = <<-DESC
@@ -52,6 +52,8 @@ Pod::Spec.new do |spec|
   spec.resources     = "Framework/**/*.{png,xib,storyboard,xcassets}", 'fixup_project_structure'
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+
+  spec.dependency 'FourthlineSDK', '~> 2.2.8'
 
   spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
