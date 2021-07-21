@@ -47,13 +47,25 @@ source 'https://github.com/CocoaPods/Specs.git' # to add other public pods
 $version = 'version.to.integrate'
 use_frameworks!
 platform :ios, '12.0'
+
 target 'YourTargetName' do
 
-    pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git" #use private repository
-    pod 'FourthlineSDK', $version # will add all available module
-    pod 'SwiftyTesseract', '2.2.3' # to enable OCR in DocumentScanner
-    pod 'ZIPFoundation', '0.9.11' # to create ZIP from KYCInfo
-    
+      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git" #use private repository
+
+      pod 'FourthlineSDK', $version # will add all available module
+
+      # Comment the next line if you're not using document scanner with MRZ detection
+      pod 'SwiftyTesseract', '2.2.3'
+
+      # Comment the next line if you're not going to create ZIP file
+      pod 'ZIPFoundation', '0.9.11' # to create ZIP from KYCInfo
+end
+
+post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
+    config.build_settings['ENABLE_BITCODE'] = 'YES'
+  end
 end
 ```
 
@@ -96,7 +108,7 @@ First you need to create an identification session via the Solarisbank API. The 
 
 <details>
   <summary>Swift</summary>
-  
+
 ```swift
 import SolarisbankIdentHub
 
@@ -156,7 +168,7 @@ module libleptonica {
     export *
 }
 ```
-### SwiftyTesseract upload to AppStore error 
+### SwiftyTesseract upload to AppStore error
 If you get "Missing modules 'libtesseract', 'libleptonica'" while uploading app to AppStore, make sure that *module.private.modulemap* file is not missing at *SwiftyTeseeract.framework/Modules/* folder. You can find content of file in previous section.
 
 ### Bitcode compilation error
