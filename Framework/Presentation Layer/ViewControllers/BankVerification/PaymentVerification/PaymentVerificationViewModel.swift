@@ -46,7 +46,7 @@ final internal class PaymentVerificationViewModel: NSObject {
 
     // MARK: Methods
 
-    /// Check the status of the identification.
+    /// Check the payment status of the identification.
     func checkIdentificationStatus() {
         verificationService.getIdentification { [weak self] result in
             guard let `self` = self else { return }

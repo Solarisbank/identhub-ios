@@ -94,7 +94,15 @@ final class VerificationService {
     func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
 
         do {
-            let request = try IBANRequest(sessionToken: sessionInfoProvider.sessionToken, iban: iban)
+            var request: Request
+
+            switch sessionInfoProvider.identificationStep {
+            case .bankIDIBAN:
+                request = try BankIDIBANRequest(sessionToken: sessionInfoProvider.sessionToken, iban: iban)
+            default:
+                request = try IBANRequest(sessionToken: sessionInfoProvider.sessionToken, iban: iban)
+            }
+
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
