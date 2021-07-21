@@ -12,12 +12,15 @@ final internal class SignDocumentsViewController: SolarisViewController {
 
     private var timer: Timer?
 
+    private var codeTimer: Timer?
+
     private enum State {
         case normal
         case veryfing
         case processing
         case success
         case error
+        case expire
     }
 
     private var state: State = .normal {
@@ -100,6 +103,14 @@ final internal class SignDocumentsViewController: SolarisViewController {
         return button
     }()
 
+    private lazy var quitButton: ActionRoundedButton = {
+        let button = ActionRoundedButton()
+        button.setTitle(Localizable.Common.quit, for: .normal)
+        button.currentAppearance = .dimmed
+        button.addTarget(self, action: #selector(quit), for: .touchUpInside)
+        return button
+    }()
+
     private lazy var stateView: StateView = {
         let stateView = StateView(hasDescriptionLabel: true)
         stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: SignDocumentsViewController.self))
@@ -149,7 +160,8 @@ final internal class SignDocumentsViewController: SolarisViewController {
             enterCodeHintLabel,
             transactionInfoView,
             codeEntryView,
-            submitAndSignCodeButton
+            submitAndSignCodeButton,
+            quitButton
         ])
 
         enterCodeHintLabel.addConstraints { [
@@ -197,10 +209,18 @@ final internal class SignDocumentsViewController: SolarisViewController {
             $0.equalTo(transactionInfoView, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
             $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
             $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended)
+            $0.equalTo(quitButton, .bottom, .top, constant: -Constants.ConstraintsOffset.small)
         ]
         }
 
+        quitButton.addConstraints { [
+            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
+            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal),
+            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.small)
+        ]
+        }
+
+        codeTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(expireCode), userInfo: nil, repeats: false)
     }
 
     @objc private func submitCodeAndSign() {
@@ -209,6 +229,14 @@ final internal class SignDocumentsViewController: SolarisViewController {
 
     @objc private func requestNewCode() {
         viewModel.requestNewCode()
+    }
+
+    @objc private func quit() {
+        viewModel.quit()
+    }
+
+    @objc private func expireCode() {
+        state = .expire
     }
 
     private func updateUI() {
@@ -236,6 +264,12 @@ final internal class SignDocumentsViewController: SolarisViewController {
                 self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
                 self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
                 self.submitAndSignCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
+            case .expire:
+                self.submitAndSignCodeButton.currentAppearance = .orange
+                self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
+                self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
+                self.submitAndSignCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
+                self.codeTimer?.invalidate()
             }
         }
     }

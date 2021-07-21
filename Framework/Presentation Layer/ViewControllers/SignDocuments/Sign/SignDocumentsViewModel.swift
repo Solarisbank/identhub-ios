@@ -74,6 +74,10 @@ final internal class SignDocumentsViewModel: NSObject {
         }
     }
 
+    func quit() {
+        flowCoordinator.quit()
+    }
+
     /// Check the status of the identification.
     func checkIdentificationStatus() {
         verificationService.getIdentification { [weak self] result in
