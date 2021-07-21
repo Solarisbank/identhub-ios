@@ -50,7 +50,7 @@ platform :ios, '12.0'
 
 target 'YourTargetName' do
 
-      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git" #use private repository
+      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.4.0' #use private repository
 
       pod 'FourthlineSDK', $version # will add all available module
 
