@@ -89,6 +89,7 @@ private extension BankIDCoordinator {
         do {
             let step = try JSONDecoder().decode(BankIDStep.self, from: restoreData)
             identificationStep = step
+            KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
         } catch {
             print("Stored bank id step data decoding failed: \(error.localizedDescription).\nIdentification process would be started from beginning")
         }

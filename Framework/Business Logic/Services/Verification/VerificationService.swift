@@ -39,7 +39,25 @@ final class VerificationService {
             completionHandler(.failure(APIError.requestError))
             print("Unexpected init mobile number auth request: \(error)")
         }
+    }
 
+    /// Method obtains identification process info details
+    /// - Parameter completionHandler: Response with identification details
+    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, APIError>) -> Void) {
+
+        do {
+            let request = try IdentificationInfoRequest(sessionToken: sessionInfoProvider.sessionToken)
+
+            apiClient.execute(request: request, answerType: IdentificationInfo.self) { result in
+                completionHandler(result)
+            }
+        } catch RequestError.emptySessionID {
+            completionHandler(.failure(APIError.requestError))
+            print("Fail with init mobile number authorization request. Session token is empty")
+        } catch {
+            completionHandler(.failure(APIError.requestError))
+            print("Unexpected init mobile number auth request: \(error)")
+        }
     }
 
     /// Authorize mobile number and send sms with a TAN.

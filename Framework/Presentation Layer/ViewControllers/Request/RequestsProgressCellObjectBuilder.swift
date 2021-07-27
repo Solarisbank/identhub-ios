@@ -36,10 +36,11 @@ extension RequestsProgressCellObjectBuilder {
 
     private func buildInitData() -> [ProgressCellObject] {
         let defineIdent = ProgressCellObject(title: Localizable.Initial.define, visibleSeparator: true)
+        let obtainInfo = ProgressCellObject(title: Localizable.Initial.info, visibleSeparator: false)
         let registerMethod = ProgressCellObject(title: Localizable.Initial.register, visibleSeparator: false)
         let fetchData = ProgressCellObject(title: Localizable.Initial.prefetch, visibleSeparator: false)
 
-        return [defineIdent, registerMethod, fetchData]
+        return [defineIdent, obtainInfo, registerMethod, fetchData]
     }
 
     private func buildUploadData() -> [ProgressCellObject] {

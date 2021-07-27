@@ -43,6 +43,9 @@ enum StoredKeys: String {
     /// Retries IBAN registration amount
     case retriesCount = "IdentRetriesCountKey"
 
+    /// Accepted state of the "Terms and Conditions" agreement
+    case acceptedTC = "TermsAndConditionsAcceptedKey"
+
     /// BankID identification session process step value key
     case bankIDStep = "BankIDIdentificationStepKey"
 

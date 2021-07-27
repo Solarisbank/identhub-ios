@@ -15,7 +15,7 @@ enum RequestsType {
 }
 
 enum InitStep: Int {
-    case defineMethod = 0, registerMethod, fetchPersonData
+    case defineMethod = 0, obtainInfo, registerMethod, fetchPersonData
 }
 
 enum UploadSteps: Int {
@@ -147,6 +147,8 @@ private extension RequestsViewModel {
             switch initStep {
             case .defineMethod:
                 defineIdentificationMethod()
+            case .obtainInfo:
+                obtainIdentificationInfo()
             case .registerMethod:
                 registerFourthlineMethod()
             case .fetchPersonData:
@@ -208,15 +210,34 @@ private extension RequestsViewModel {
                     KYCContainer.shared.update(provider: provider)
                 }
 
-                self.registerFourthlineMethod()
+                self.obtainIdentificationInfo()
             case .failure(let error):
                 self.onDisplayError?(error)
             }
         }
     }
 
-    private func initiatedFourthlineIdentification() {
-        registerFourthlineMethod()
+    private func obtainIdentificationInfo() {
+        startStep(number: InitStep.obtainInfo.rawValue)
+        initStep = .obtainInfo
+
+        verificationService.obtainIdentificationInfo { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case .success(let response):
+                self.completeStep(number: InitStep.obtainInfo.rawValue)
+                self.sessionStorage.acceptedTC = response.acceptedTC
+
+                if let provider = response.fourthlineProvider {
+                    KYCContainer.shared.update(provider: provider)
+                }
+
+                self.registerFourthlineMethod()
+            case .failure(let error):
+                self.onDisplayError?(error)
+            }
+        }
     }
 
     private func registerFourthlineMethod() {
@@ -252,7 +273,11 @@ private extension RequestsViewModel {
                 KYCContainer.shared.update(person: response)
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.identCoordinator?.perform(action: .termsAndConditions)
+                    if self.sessionStorage.acceptedTC {
+                        self.identCoordinator?.perform(action: .identification)
+                    } else {
+                        self.identCoordinator?.perform(action: .termsAndConditions)
+                    }
                 }
             case .failure(let error):
                 self.onDisplayError?(error)

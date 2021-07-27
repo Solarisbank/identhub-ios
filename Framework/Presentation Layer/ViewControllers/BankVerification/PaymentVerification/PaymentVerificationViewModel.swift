@@ -55,7 +55,8 @@ final internal class PaymentVerificationViewModel: NSObject {
             case .success(let response):
 
                 switch response.status {
-                case .authorizationRequired:
+                case .authorizationRequired,
+                     .identificationRequired:
                     if let step = response.nextStep, let nextStep = IdentificationStep(rawValue: step) {
                         self.nextStep = nextStep
                     }

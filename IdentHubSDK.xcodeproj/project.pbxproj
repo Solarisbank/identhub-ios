@@ -91,6 +91,9 @@
 		1E02CA8B7D3407CC59F3C4A6 /* Pods_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0AC3C787B7CF0443C57F58 /* Pods_Sample.framework */; };
 		52263F27D7440F76A46DBC40 /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62969E2E2D3D24EC6FE5157F /* Pods_IdentHubSDKTests.framework */; };
 		5A6A5E3CBE75B7415C167489 /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 147D957C40B48D8089C9F408 /* Pods_IdentHubSDK.framework */; };
+		84040BD426AF07CD00C68D25 /* IdentificationInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */; };
+		84040BD726AF089D00C68D25 /* IdentificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD626AF089D00C68D25 /* IdentificationInfo.swift */; };
+		84040BD926AF101D00C68D25 /* UITableView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD826AF101D00C68D25 /* UITableView+Scroll.swift */; };
 		84056F4B2655458F0072A10F /* BankIDStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84056F4A2655458F0072A10F /* BankIDStep.swift */; };
 		8409766F2632F0F600C4DC5B /* RequestsProgressDDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409766E2632F0F600C4DC5B /* RequestsProgressDDM.swift */; };
 		840976792632F2CD00C4DC5B /* ProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840976772632F2CD00C4DC5B /* ProgressCell.swift */; };
@@ -342,6 +345,9 @@
 		4D2609A4C757B9DA6D417DC6 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		62969E2E2D3D24EC6FE5157F /* Pods_IdentHubSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		795561216B53B2CE6248F8D6 /* Pods-IdentHubSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationInfoRequest.swift; sourceTree = "<group>"; };
+		84040BD626AF089D00C68D25 /* IdentificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationInfo.swift; sourceTree = "<group>"; };
+		84040BD826AF101D00C68D25 /* UITableView+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Scroll.swift"; sourceTree = "<group>"; };
 		84056F4A2655458F0072A10F /* BankIDStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDStep.swift; sourceTree = "<group>"; };
 		8409766E2632F0F600C4DC5B /* RequestsProgressDDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsProgressDDM.swift; sourceTree = "<group>"; };
 		840976772632F2CD00C4DC5B /* ProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCell.swift; sourceTree = "<group>"; };
@@ -642,6 +648,7 @@
 				0C1B430A25ADB19A004FFF46 /* UIImage+SDK.swift */,
 				0CB143B1259A483A0014B643 /* UIView+Autolayout.swift */,
 				0CB143B6259A48640014B643 /* UIView+Layout.swift */,
+				84040BD826AF101D00C68D25 /* UITableView+Scroll.swift */,
 				0CE4A8F525A3703600114CBD /* String+Attributes.swift */,
 				0C1B42FF25AD9A56004FFF46 /* String+Regex.swift */,
 				84ECED1B26305C5C00ACD1B5 /* Date+Extensions.swift */,
@@ -848,6 +855,7 @@
 			children = (
 				0CF0AE8525CC256300A560E5 /* IdentificationRequest.swift */,
 				842DA66426373D650020E598 /* IdentificationMethodRequest.swift */,
+				84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */,
 			);
 			path = Identification;
 			sourceTree = "<group>";
@@ -860,6 +868,16 @@
 				AC0AC3C787B7CF0443C57F58 /* Pods_Sample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84040BD526AF088A00C68D25 /* Identificaiton */ = {
+			isa = PBXGroup;
+			children = (
+				0CCD106325C9933A00251C65 /* Identification.swift */,
+				84040BD626AF089D00C68D25 /* IdentificationInfo.swift */,
+				842DA66926373E740020E598 /* IdentificationMethod.swift */,
+			);
+			path = Identificaiton;
 			sourceTree = "<group>";
 		};
 		840976762632F2B200C4DC5B /* ProgressCell */ = {
@@ -1334,8 +1352,7 @@
 				84E0CF0C262EF69200DE0C09 /* DocumentScanner */,
 				845D8643260D22D4008AAC9A /* WelcomePageContent.swift */,
 				0CCD105B25C9931700251C65 /* MobileNumber.swift */,
-				0CCD106325C9933A00251C65 /* Identification.swift */,
-				842DA66926373E740020E598 /* IdentificationMethod.swift */,
+				84040BD526AF088A00C68D25 /* Identificaiton */,
 				0CF0AE7F25CC153000A560E5 /* Status.swift */,
 				84A0126A2638770000672C1B /* FourthlineIdentification.swift */,
 				84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */,
@@ -1760,6 +1777,7 @@
 				0CC9573925A8657D00A3458B /* SessionInfoProvider.swift in Sources */,
 				0CC25BC825A4ABD700D839AB /* PhoneVerificationViewModel.swift in Sources */,
 				0C4B67E0259B24AB00190C4E /* Localizable.swift in Sources */,
+				84040BD426AF07CD00C68D25 /* IdentificationInfoRequest.swift in Sources */,
 				8409769E2633502800C4DC5B /* RotatingCircularProgressBar.swift in Sources */,
 				0C007F0925D536B7003D42B3 /* QuitPopUpViewController.swift in Sources */,
 				0CB143B2259A483A0014B643 /* UIView+Autolayout.swift in Sources */,
@@ -1834,6 +1852,7 @@
 				0CC25BA925A4692900D839AB /* BackendRequest.swift in Sources */,
 				842A14AD260A6E65005CD33B /* FourthlineIdentCoordinator.swift in Sources */,
 				840A9FC82604F29000D4637A /* SessionURLParser.swift in Sources */,
+				84040BD926AF101D00C68D25 /* UITableView+Scroll.swift in Sources */,
 				0CB143B7259A48640014B643 /* UIView+Layout.swift in Sources */,
 				845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */,
 				0CC9574725A8733400A3458B /* MobileNumberAuthorizeRequest.swift in Sources */,
@@ -1872,6 +1891,7 @@
 				84A1D48E2617833400E2B2D5 /* PhoneVerificationViewController.swift in Sources */,
 				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,
 				0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */,
+				84040BD726AF089D00C68D25 /* IdentificationInfo.swift in Sources */,
 				842DA66526373D650020E598 /* IdentificationMethodRequest.swift in Sources */,
 				0CCD105C25C9931700251C65 /* MobileNumber.swift in Sources */,
 				0CE01B3125C2C52500FB0E16 /* StateView.swift in Sources */,

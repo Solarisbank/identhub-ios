@@ -122,6 +122,7 @@ enum Localizable {
         static let title = "Initiate"
         static let description = ""
         static let define = "Define identification method..."
+        static let info = "Obtain identification details..."
         static let register = "Register identification method..."
         static let prefetch = "Prefetch data..."
     }

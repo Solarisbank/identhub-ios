@@ -24,6 +24,8 @@ final class KYCContainer {
     // MARK: - Filling with provider value -
     func update(provider: String) {
         kycInfo.provider.name = provider
+
+        storeProvider(provider: provider)
     }
 
     // MARK: - Filling with Selfie Result Data
@@ -134,6 +136,7 @@ final class KYCContainer {
 
         self.infoProvider = infoProvider
 
+        restoreProvider()
         restorePersonData()
         restoreSelfieData()
         restoreDocumentData()
@@ -231,6 +234,21 @@ private extension KYCContainer {
         }
 
         return nil
+    }
+}
+
+// MARK: - Provider data store/load -
+
+private extension KYCContainer {
+
+    private func storeProvider(provider: String) {
+        SessionStorage.updateValue(provider, for: StoredKeys.providerData.rawValue)
+    }
+
+    private func restoreProvider() {
+        guard let provider = SessionStorage.obtainValue(for: StoredKeys.providerData.rawValue) as? String else { return }
+
+        kycInfo.provider.name = provider
     }
 }
 

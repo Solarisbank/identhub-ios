@@ -32,6 +32,9 @@ protocol SessionInfoProvider: AnyObject {
     /// IBAN retries count
     var retries: Int { get set }
 
+    /// Accepted state of the "Terms and Conditions" agreement
+    var acceptedTC: Bool { get set }
+
     /// Documents list
     var documentsList: [SupportedDocument]? { get set }
 
@@ -84,6 +87,13 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     var retries: Int = defaultRetries {
         didSet {
             SessionStorage.updateValue(retries, for: StoredKeys.retriesCount.rawValue)
+        }
+    }
+
+    /// - SeeAlso: SessionInfoProvider.acceptedTC
+    var acceptedTC: Bool = false {
+        didSet {
+            SessionStorage.updateValue(acceptedTC, for: StoredKeys.acceptedTC.rawValue)
         }
     }
 
@@ -150,6 +160,10 @@ private extension StorageSessionInfoProvider {
 
         if let retriesCount = SessionStorage.obtainValue(for: StoredKeys.retriesCount.rawValue) as? Int {
             retries = retriesCount
+        }
+
+        if let accepted = SessionStorage.obtainValue(for: StoredKeys.acceptedTC.rawValue) as? Bool {
+            acceptedTC = accepted
         }
     }
 }

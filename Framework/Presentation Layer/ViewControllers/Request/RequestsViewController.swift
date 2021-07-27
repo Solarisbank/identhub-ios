@@ -59,6 +59,7 @@ private extension RequestsViewController {
 
             DispatchQueue.main.async {
                 self.progressTableView.reloadData()
+                self.progressTableView.scrollToBottom()
             }
         }
 
