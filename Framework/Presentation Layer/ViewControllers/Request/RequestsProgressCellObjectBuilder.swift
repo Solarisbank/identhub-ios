@@ -22,6 +22,8 @@ final class RequestsProgressCellObjectBuilder {
         switch self.requestsType {
         case .initateFlow:
             return buildInitData()
+        case .fetchData:
+            return buildFetchData()
         case .uploadData:
             return buildUploadData()
         case .confirmation:
@@ -38,17 +40,25 @@ extension RequestsProgressCellObjectBuilder {
         let defineIdent = ProgressCellObject(title: Localizable.Initial.define, visibleSeparator: true)
         let obtainInfo = ProgressCellObject(title: Localizable.Initial.info, visibleSeparator: false)
         let registerMethod = ProgressCellObject(title: Localizable.Initial.register, visibleSeparator: false)
-        let fetchData = ProgressCellObject(title: Localizable.Initial.prefetch, visibleSeparator: false)
+        let fetchPersonData = ProgressCellObject(title: Localizable.Initial.prefetch, visibleSeparator: false)
+        let locationData = ProgressCellObject(title: Localizable.FetchData.location, visibleSeparator: false)
 
-        return [defineIdent, obtainInfo, registerMethod, fetchData]
+        return [defineIdent, obtainInfo, registerMethod, fetchPersonData, locationData]
+    }
+
+    private func buildFetchData() -> [ProgressCellObject] {
+
+        let fetchData = ProgressCellObject(title: Localizable.FetchData.person, visibleSeparator: true)
+        let locationData = ProgressCellObject(title: Localizable.FetchData.location, visibleSeparator: false)
+
+        return [fetchData, locationData]
     }
 
     private func buildUploadData() -> [ProgressCellObject] {
-        let locationData = ProgressCellObject(title: Localizable.Upload.location, visibleSeparator: true)
-        let prepareData = ProgressCellObject(title: Localizable.Upload.preparation, visibleSeparator: false)
+        let prepareData = ProgressCellObject(title: Localizable.Upload.preparation, visibleSeparator: true)
         let uploadData = ProgressCellObject(title: Localizable.Upload.uploading, visibleSeparator: false)
 
-        return [locationData, prepareData, uploadData]
+        return [prepareData, uploadData]
     }
 
     private func buildConfirmData() -> [ProgressCellObject] {

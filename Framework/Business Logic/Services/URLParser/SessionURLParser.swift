@@ -27,7 +27,11 @@ final class SessionURLParser {
         guard let token = sessionURL.pathComponents.last, token.count > 30 else { throw IdentSessionURLError.invalidSessionToken }
 
         if let scheme = sessionURL.scheme, let host = sessionURL.host {
-            let apiHost = host.replacingOccurrences(of: "person-onboarding", with: "person-onboarding-api")
+            var apiHost = host
+
+            if host.contains("-api") == false {
+                apiHost = host.replacingOccurrences(of: "person-onboarding.", with: "person-onboarding-api.")
+            }
             APIPaths.backendBasePath = scheme + "://" + apiHost
         }
 

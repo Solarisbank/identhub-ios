@@ -152,6 +152,7 @@ final internal class IBANVerificationViewController: SolarisViewController {
     }
 
     @objc private func initiatePaymentVerification() {
+        ibanVerificationTextField.resignFirstResponder()
         viewModel.initiatePaymentVerification(withIBAN: ibanVerificationTextField.text)
     }
 }

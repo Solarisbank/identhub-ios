@@ -14,8 +14,7 @@ class DocumentPickerViewController: UIViewController {
     @IBOutlet var quitBtn: UIButton!
     @IBOutlet var continueBtn: UIButton!
     @IBOutlet var documentTypesTable: UITableView!
-    @IBOutlet var tableShadowHeightConstraint: NSLayoutConstraint!
-
+    @IBOutlet var tableViewConstraint: NSLayoutConstraint!
     private var viewModel: DocumentPickerViewModel
 
     /// Initialized with view model object
@@ -63,7 +62,7 @@ class DocumentPickerViewController: UIViewController {
 
         viewModel.configureDocumentsTable(for: documentTypesTable)
 
-        tableShadowHeightConstraint.constant = viewModel.obtainTableHeight()
+        tableViewConstraint.constant = viewModel.obtainTableHeight()
 
         viewModel.updateButtons = {[unowned self] in
             self.continueBtn.alpha = 1

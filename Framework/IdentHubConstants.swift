@@ -67,6 +67,9 @@ enum StoredKeys: String {
     /// Fourthline kyc zip file url
     case kycZipData = "KYCZipDataURLKey"
 
+    /// Prepare users data
+    case fetchDataStep = "FetchPersonDataProcessKey"
+
     /// Upload process step
     case uploadStep = "UploadProcessKey"
 

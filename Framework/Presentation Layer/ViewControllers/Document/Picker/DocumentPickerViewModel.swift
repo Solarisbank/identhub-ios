@@ -48,7 +48,7 @@ final class DocumentPickerViewModel: BaseFourthlineViewModel {
     }
 
     func obtainTableHeight() -> CGFloat {
-        CGFloat(documentsContent.count * 110 + 25)
+        CGFloat(documentsContent.count * 110)
     }
 
     func startDocumentScanner() {

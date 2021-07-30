@@ -10,6 +10,7 @@ import FourthlineCore
 enum FourthlineStep: Codable {
     case welcome // Welcome screen with all instructions
     case selfie // Make a selfie step
+    case fetchData // Fetch person data from server and device
     case documentPicker // Present document picker step
     case documentScanner(type: DocumentType) // Present document scanner for document with type: passport, idCard, etc.
     case documentInfo // Verify and confirm scanned document detail
@@ -23,6 +24,7 @@ enum FourthlineStep: Codable {
 
         case welcome
         case selfie
+        case fetchData
         case documentPicker
         case documentScannerType
         case documentInfo
@@ -41,6 +43,9 @@ enum FourthlineStep: Codable {
             return
         } else if let _ = try? values.decode(Bool.self, forKey: .selfie) {
             self = .selfie
+            return
+        } else if let _ = try? values.decode(Bool.self, forKey: .fetchData) {
+            self = .fetchData
             return
         } else if let _ = try? values.decode(Bool.self, forKey: .documentPicker) {
             self = .documentPicker
@@ -80,6 +85,8 @@ enum FourthlineStep: Codable {
             try container.encode(true, forKey: .welcome)
         case .selfie:
             try container.encode(true, forKey: .selfie)
+        case .fetchData:
+            try container.encode(true, forKey: .fetchData)
         case .documentPicker:
             try container.encode(true, forKey: .documentPicker)
         case .documentScanner(let type):

@@ -10,16 +10,21 @@ let progressCellID = "UploadProgressCellID"
 
 enum RequestsType {
     case initateFlow
+    case fetchData
     case uploadData
     case confirmation
 }
 
 enum InitStep: Int {
-    case defineMethod = 0, obtainInfo, registerMethod, fetchPersonData
+    case defineMethod = 0, obtainInfo, registerMethod, fetchPersonData, fetchLocation
+}
+
+enum DataFetchStep: Int {
+    case fetchPersonData = 0, location
 }
 
 enum UploadSteps: Int {
-    case location = 0, zipFile, uploadZip
+    case prepareData = 0, uploadData
 }
 
 enum VerificationSteps: Int {
@@ -40,7 +45,8 @@ final class RequestsViewModel: NSObject {
     private let builder: RequestsProgressCellObjectBuilder
     private var requestsSteps: [ProgressCellObject] = []
     private var initStep: InitStep = .defineMethod
-    private var uploadStep: UploadSteps = .location
+    private var prepareData: DataFetchStep = .fetchPersonData
+    private var uploadStep: UploadSteps = .prepareData
     private var uploadFileURL: URL = URL(fileURLWithPath: "")
     private var fourthlineCoordinator: FourthlineIdentCoordinator?
     private var identCoordinator: IdentificationCoordinator?
@@ -91,6 +97,8 @@ final class RequestsViewModel: NSObject {
         switch self.requestsType {
         case .initateFlow:
             return Localizable.Initial.title
+        case .fetchData:
+            return Localizable.FetchData.title
         case .uploadData:
             return Localizable.Upload.title
         case .confirmation:
@@ -104,6 +112,8 @@ final class RequestsViewModel: NSObject {
         switch self.requestsType {
         case .initateFlow:
             return Localizable.Initial.description
+        case .fetchData:
+            return Localizable.FetchData.description
         case .uploadData:
             return Localizable.Upload.description
         case .confirmation:
@@ -133,6 +143,8 @@ private extension RequestsViewModel {
         switch requestsType {
         case .initateFlow:
             startInitialProcess()
+        case .fetchData:
+            startFetchDataProcess()
         case .uploadData:
             startUploadProcess()
         case .confirmation:
@@ -153,14 +165,21 @@ private extension RequestsViewModel {
                 registerFourthlineMethod()
             case .fetchPersonData:
                 fetchPersonalData()
+            case .fetchLocation:
+                fetchLocationData()
+            }
+        case .fetchData:
+            switch prepareData {
+            case .fetchPersonData:
+                fetchPersonalData()
+            case .location:
+                fetchLocationData()
             }
         case .uploadData:
                 switch uploadStep {
-                case .location:
-                    fetchLocationData()
-                case .zipFile:
+                case .prepareData:
                     zipUserData()
-                case .uploadZip:
+                case .uploadData:
                     uploadZip(uploadFileURL)
                 }
         case .confirmation:
@@ -233,7 +252,11 @@ private extension RequestsViewModel {
                     KYCContainer.shared.update(provider: provider)
                 }
 
-                self.registerFourthlineMethod()
+                if self.sessionStorage.identificationStep == .fourthline {
+                    self.registerFourthlineMethod()
+                } else {
+                    self.finishInitialization()
+                }
             case .failure(let error):
                 self.onDisplayError?(error)
             }
@@ -258,29 +281,88 @@ private extension RequestsViewModel {
         }
     }
 
+    private func finishInitialization() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if self.sessionStorage.acceptedTC {
+                self.identCoordinator?.perform(action: .identification)
+            } else {
+                self.identCoordinator?.perform(action: .termsAndConditions)
+            }
+        }
+    }
+}
+
+// MARK: - Fetch data methods -
+
+private extension RequestsViewModel {
+
+    private func startFetchDataProcess() {
+        fetchPersonalData()
+    }
+
     private func fetchPersonalData() {
-        startStep(number: InitStep.fetchPersonData.rawValue)
-        initStep = .fetchPersonData
+        if sessionStorage.identificationStep == .fourthline {
+            startStep(number: InitStep.fetchPersonData.rawValue)
+            initStep = .fetchPersonData
+        } else {
+            startStep(number: DataFetchStep.fetchPersonData.rawValue)
+            prepareData = .fetchPersonData
+        }
 
         verificationService.fetchPersonData { [weak self] result in
             guard let `self` = self else { return }
 
             switch result {
             case .success(let response):
-                self.completeStep(number: InitStep.fetchPersonData.rawValue)
                 self.sessionStorage.documentsList = response.supportedDocuments
 
                 KYCContainer.shared.update(person: response)
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    if self.sessionStorage.acceptedTC {
-                        self.identCoordinator?.perform(action: .identification)
-                    } else {
-                        self.identCoordinator?.perform(action: .termsAndConditions)
-                    }
+                if self.sessionStorage.identificationStep == .fourthline {
+                    self.completeStep(number: InitStep.fetchPersonData.rawValue)
+                } else {
+                    self.completeStep(number: DataFetchStep.fetchPersonData.rawValue)
+                }
+                DispatchQueue.main.async {
+                    self.fetchLocationData()
                 }
             case .failure(let error):
                 self.onDisplayError?(error)
+            }
+        }
+    }
+
+    private func fetchLocationData() {
+        if sessionStorage.identificationStep == .fourthline {
+            startStep(number: InitStep.fetchLocation.rawValue)
+            initStep = .fetchLocation
+        } else {
+            startStep(number: DataFetchStep.location.rawValue)
+            prepareData = .location
+            SessionStorage.updateValue(prepareData.rawValue, for: StoredKeys.fetchDataStep.rawValue)
+        }
+
+        LocationManager.shared.requestLocationAuthorization {
+            LocationManager.shared.requestDeviceLocation { [weak self] location, error in
+                guard let location = location else {
+
+                    if let errorHandler = self?.onDisplayError {
+                        errorHandler(APIError.locationError)
+                    }
+                    return
+                }
+
+                KYCContainer.shared.update(location: location)
+
+                DispatchQueue.main.async {
+                    if self?.sessionStorage.identificationStep == .fourthline {
+                        self?.completeStep(number: InitStep.fetchLocation.rawValue)
+                        self?.finishInitialization()
+                    } else {
+                        self?.completeStep(number: DataFetchStep.location.rawValue)
+                        self?.fourthlineCoordinator?.perform(action: .documentPicker)
+                    }
+                }
             }
         }
     }
@@ -296,38 +378,13 @@ private extension RequestsViewModel {
 
             restartProcess()
         } else {
-            fetchLocationData()
-        }
-    }
-
-    private func fetchLocationData() {
-        startStep(number: UploadSteps.location.rawValue)
-        uploadStep = .location
-        SessionStorage.updateValue(uploadStep.rawValue, for: StoredKeys.uploadStep.rawValue)
-
-        LocationManager.shared.requestLocationAuthorization {
-            LocationManager.shared.requestDeviceLocation { [weak self] location, error in
-                guard let location = location else {
-
-                    if let errorHandler = self?.onDisplayError {
-                        errorHandler(APIError.locationError)
-                    }
-                    return
-                }
-
-                KYCContainer.shared.update(location: location)
-
-                DispatchQueue.main.async {
-                    self?.completeStep(number: UploadSteps.location.rawValue)
-                    self?.zipUserData()
-                }
-            }
+            zipUserData()
         }
     }
 
     private func zipUserData() {
-        startStep(number: UploadSteps.zipFile.rawValue)
-        uploadStep = .zipFile
+        startStep(number: UploadSteps.prepareData.rawValue)
+        uploadStep = .prepareData
         SessionStorage.updateValue(uploadStep.rawValue, for: StoredKeys.uploadStep.rawValue)
 
         KYCZipService.createKYCZip { [unowned self] zipURL, err in
@@ -339,14 +396,14 @@ private extension RequestsViewModel {
                 return
             }
 
-            self.completeStep(number: UploadSteps.zipFile.rawValue)
+            self.completeStep(number: UploadSteps.prepareData.rawValue)
             self.uploadZip(url)
         }
     }
 
     private func uploadZip(_ fileURL: URL) {
-        startStep(number: UploadSteps.uploadZip.rawValue)
-        uploadStep = .uploadZip
+        startStep(number: UploadSteps.uploadData.rawValue)
+        uploadStep = .uploadData
         uploadFileURL = fileURL
 
         verificationService.uploadKYCZip(fileURL: fileURL) { [unowned self] result in
@@ -361,7 +418,7 @@ private extension RequestsViewModel {
                 self.onDisplayError?(error)
             }
 
-            self.completeStep(number: UploadSteps.uploadZip.rawValue)
+            self.completeStep(number: UploadSteps.uploadData.rawValue)
         }
     }
 
@@ -423,6 +480,8 @@ extension RequestsViewModel: StepsProgressViewDataSource {
         switch self.requestsType {
         case .initateFlow:
             return FourthlineProgressStep.selfie.rawValue
+        case .fetchData:
+            return FourthlineProgressStep.document.rawValue
         case .uploadData:
             return FourthlineProgressStep.upload.rawValue
         case .confirmation:

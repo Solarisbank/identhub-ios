@@ -42,6 +42,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentWelcomeScreen()
         case .selfie:
             presentSefieScreen()
+        case .fetchData:
+            presentDataLoader()
         case .documentPicker:
             presentDocumentPicker()
         case let .documentScanner(type):
@@ -87,9 +89,9 @@ private extension FourthlineIdentCoordinator {
             guard isPassed else { return }
 
             DispatchQueue.main.async { [weak self] in
-                guard let `self` = self else { return }
+                guard let `self` = self, let identMethod = self.appDependencies.sessionInfoProvider.identificationStep else { return }
 
-                let selfieVM = SelfieViewModel(flowCoordinator: self)
+                let selfieVM = SelfieViewModel(flowCoordinator: self, identMethod: identMethod)
                 let selfieVC = SelfieViewController()
 
                 selfieVC.setViewModel(selfieVM)
@@ -98,6 +100,14 @@ private extension FourthlineIdentCoordinator {
                 self.updateFourthlineStep(step: .selfie)
             }
         }
+    }
+
+    private func presentDataLoader() {
+        let fetchDataVM = RequestsViewModel(appDependencies.verificationService, storage: appDependencies.sessionInfoProvider, type: .fetchData, fourthlineCoordinator: self)
+        let fetchDataVC = RequestsViewController(fetchDataVM)
+
+        presenter.push(fetchDataVC, animated: true, completion: nil)
+        updateFourthlineStep(step: .fetchData)
     }
 
     private func presentDocumentPicker() {

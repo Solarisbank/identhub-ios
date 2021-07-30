@@ -127,6 +127,13 @@ enum Localizable {
         static let prefetch = "Prefetch data..."
     }
 
+    enum FetchData {
+        static let title = "Fetch data"
+        static let description = ""
+        static let person = "Fetch person data..."
+        static let location = "Fetch location data..."
+    }
+
     enum TermsConditions {
         static let description = "In order to proceed, please carefully read and agree to the Privacy Statement and Terms & Conditions policies"
         static let privacyText = "Privacy Statement"
@@ -258,7 +265,6 @@ enum Localizable {
         static let description = "Your data is being uploaded..."
         static let uploading = "Uploading..."
         static let preparation = "Prepare upload data..."
-        static let location = "Fetch location data..."
     }
 
     enum Zipper {
