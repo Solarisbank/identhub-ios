@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     }
 
     private func startIdentProcess() {
+        self.view.endEditing(true)
         statusView.isHidden = true
 
         do {
