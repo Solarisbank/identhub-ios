@@ -30,6 +30,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 0.3.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 0.4.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 0.5.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
+| 0.6.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 
 
 ## Intergration
@@ -52,7 +53,7 @@ platform :ios, '12.0'
 
 target 'YourTargetName' do
 
-      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.5.0' #use private repository
+      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.6.0' #use private repository
 
       pod 'FourthlineSDK', '2.2.8' # identification service
       pod 'SwiftyTesseract', '2.2.3' # document scanner with MRZ detection
@@ -128,7 +129,7 @@ extension ViewController: IdentHubSDKManagerDelegate {
         }
     }
 
-    func didFailureSession(_ failureReason: Error) {
+    func didFailureSession(_ failureReason: APIError) {
 
         DispatchQueue.main.async {
             // - display failure message -
