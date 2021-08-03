@@ -83,6 +83,15 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
         }
     }
 
+    /// - SeeAlso: SessionInfoProvider.identificationType
+    var identificationStep: IdentificationStep? {
+        didSet {
+            if let step = identificationStep {
+                SessionStorage.updateValue(step.rawValue, for: StoredKeys.identStep.rawValue)
+            }
+        }
+    }
+
     /// - SeeAlso: SessionInfoProvider.fallbackIdentificationStep
     var retries: Int = defaultRetries {
         didSet {
@@ -99,9 +108,6 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
 
     /// - SeeAlso: SessionInfoProvider.isSuccessful
     var isSuccessful: Bool?
-
-    /// - SeeAlso: SessionInfoProvider.identificationType
-    var identificationStep: IdentificationStep?
 
     /// - SeeAlso: SessionInfoProvider.documentsList
     var documentsList: [SupportedDocument]?
@@ -152,6 +158,10 @@ private extension StorageSessionInfoProvider {
 
         if let path = SessionStorage.obtainValue(for: StoredKeys.identPath.rawValue) as? String {
             identificationPath = path
+        }
+
+        if let identStep = SessionStorage.obtainValue(for: StoredKeys.identStep.rawValue) as? String {
+            identificationStep = IdentificationStep(rawValue: identStep)
         }
 
         if let fallbackStep = SessionStorage.obtainValue(for: StoredKeys.fallbackIdentStep.rawValue) as? String {

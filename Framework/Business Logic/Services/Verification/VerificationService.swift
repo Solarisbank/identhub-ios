@@ -301,6 +301,24 @@ final class VerificationService {
         }
     }
 
+    /// Method fetched IP address used by device published request
+    /// - Parameter completion: Resopnse back with device ip-address data
+    func fetchIPAddress(completion: @escaping (Result<IPAddress, APIError>) -> Void) {
+
+        do {
+            let request = try IPAddressRequest(sessionToken: sessionInfoProvider.sessionToken)
+            apiClient.execute(request: request, answerType: IPAddress.self) { result in
+                completion(result)
+            }
+        } catch RequestError.emptySessionToken {
+            completion(.failure(APIError.requestError))
+            print("Fetch person data request fails, the token of the current session is empty")
+        } catch {
+            completion(.failure(APIError.requestError))
+            print("Unexpected fetch person data request: \(error)")
+        }
+    }
+
     /// Method obtained status of the current Fourthline identification session status
     /// - Parameter completion: Response back with fourthline session status
     func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void) {

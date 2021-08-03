@@ -41,7 +41,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case .welcome:
             presentWelcomeScreen()
         case .selfie:
-            presentSefieScreen()
+            presentSelfieScreen()
         case .fetchData:
             presentDataLoader()
         case .documentPicker:
@@ -84,7 +84,7 @@ private extension FourthlineIdentCoordinator {
         updateFourthlineStep(step: .welcome)
     }
 
-    private func presentSefieScreen() {
+    private func presentSelfieScreen() {
         requestPermissions { isPassed in
             guard isPassed else { return }
 

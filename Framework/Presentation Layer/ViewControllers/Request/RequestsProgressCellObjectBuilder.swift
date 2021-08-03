@@ -42,16 +42,18 @@ extension RequestsProgressCellObjectBuilder {
         let registerMethod = ProgressCellObject(title: Localizable.Initial.register, visibleSeparator: false)
         let fetchPersonData = ProgressCellObject(title: Localizable.Initial.prefetch, visibleSeparator: false)
         let locationData = ProgressCellObject(title: Localizable.FetchData.location, visibleSeparator: false)
+        let ipAddressData = ProgressCellObject(title: Localizable.FetchData.ipAddress, visibleSeparator: false)
 
-        return [defineIdent, obtainInfo, registerMethod, fetchPersonData, locationData]
+        return [defineIdent, obtainInfo, registerMethod, fetchPersonData, locationData, ipAddressData]
     }
 
     private func buildFetchData() -> [ProgressCellObject] {
 
         let fetchData = ProgressCellObject(title: Localizable.FetchData.person, visibleSeparator: true)
         let locationData = ProgressCellObject(title: Localizable.FetchData.location, visibleSeparator: false)
+        let ipAddressData = ProgressCellObject(title: Localizable.FetchData.ipAddress, visibleSeparator: false)
 
-        return [fetchData, locationData]
+        return [fetchData, locationData, ipAddressData]
     }
 
     private func buildUploadData() -> [ProgressCellObject] {

@@ -16,11 +16,11 @@ enum RequestsType {
 }
 
 enum InitStep: Int {
-    case defineMethod = 0, obtainInfo, registerMethod, fetchPersonData, fetchLocation
+    case defineMethod = 0, obtainInfo, registerMethod, fetchPersonData, fetchLocation, fetchIPAddress
 }
 
 enum DataFetchStep: Int {
-    case fetchPersonData = 0, location
+    case fetchPersonData = 0, location, fetchIPAddress
 }
 
 enum UploadSteps: Int {
@@ -167,6 +167,8 @@ private extension RequestsViewModel {
                 fetchPersonalData()
             case .fetchLocation:
                 fetchLocationData()
+            case .fetchIPAddress:
+                fetchIPAddress()
             }
         case .fetchData:
             switch prepareData {
@@ -174,6 +176,8 @@ private extension RequestsViewModel {
                 fetchPersonalData()
             case .location:
                 fetchLocationData()
+            case .fetchIPAddress:
+                fetchIPAddress()
             }
         case .uploadData:
                 switch uploadStep {
@@ -184,6 +188,17 @@ private extension RequestsViewModel {
                 }
         case .confirmation:
             startVerificationProcess()
+        }
+    }
+
+    private func startNextStep(initStep: InitStep, dataStep: DataFetchStep) {
+        if sessionStorage.identificationStep == .fourthline {
+            startStep(number: initStep.rawValue)
+            self.initStep = initStep
+        } else {
+            startStep(number: dataStep.rawValue)
+            prepareData = dataStep
+            SessionStorage.updateValue(dataStep.rawValue, for: StoredKeys.fetchDataStep.rawValue)
         }
     }
 
@@ -301,13 +316,7 @@ private extension RequestsViewModel {
     }
 
     private func fetchPersonalData() {
-        if sessionStorage.identificationStep == .fourthline {
-            startStep(number: InitStep.fetchPersonData.rawValue)
-            initStep = .fetchPersonData
-        } else {
-            startStep(number: DataFetchStep.fetchPersonData.rawValue)
-            prepareData = .fetchPersonData
-        }
+        startNextStep(initStep: .fetchPersonData, dataStep: .fetchPersonData)
 
         verificationService.fetchPersonData { [weak self] result in
             guard let `self` = self else { return }
@@ -333,14 +342,7 @@ private extension RequestsViewModel {
     }
 
     private func fetchLocationData() {
-        if sessionStorage.identificationStep == .fourthline {
-            startStep(number: InitStep.fetchLocation.rawValue)
-            initStep = .fetchLocation
-        } else {
-            startStep(number: DataFetchStep.location.rawValue)
-            prepareData = .location
-            SessionStorage.updateValue(prepareData.rawValue, for: StoredKeys.fetchDataStep.rawValue)
-        }
+        startNextStep(initStep: .fetchLocation, dataStep: .location)
 
         LocationManager.shared.requestLocationAuthorization {
             LocationManager.shared.requestDeviceLocation { [weak self] location, error in
@@ -357,12 +359,37 @@ private extension RequestsViewModel {
                 DispatchQueue.main.async {
                     if self?.sessionStorage.identificationStep == .fourthline {
                         self?.completeStep(number: InitStep.fetchLocation.rawValue)
-                        self?.finishInitialization()
+                        self?.fetchIPAddress()
                     } else {
                         self?.completeStep(number: DataFetchStep.location.rawValue)
                         self?.fourthlineCoordinator?.perform(action: .documentPicker)
                     }
                 }
+            }
+        }
+    }
+
+    private func fetchIPAddress() {
+        startNextStep(initStep: .fetchIPAddress, dataStep: .fetchIPAddress)
+
+        verificationService.fetchIPAddress { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case .success(let response):
+                KYCContainer.shared.update(ipAddress: response.ip)
+
+                DispatchQueue.main.async {
+                    if self.sessionStorage.identificationStep == .fourthline {
+                        self.completeStep(number: InitStep.fetchIPAddress.rawValue)
+                        self.finishInitialization()
+                    } else {
+                        self.completeStep(number: DataFetchStep.fetchIPAddress.rawValue)
+                        self.fourthlineCoordinator?.perform(action: .documentPicker)
+                    }
+                }
+            case .failure(let error):
+                self.onDisplayError?(error)
             }
         }
     }

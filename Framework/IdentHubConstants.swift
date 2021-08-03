@@ -38,6 +38,9 @@ enum StoredKeys: String {
     case identPath = "IdentificationSessionPathKey"
 
     /// Fallback session identification path value key
+    case identStep = "IdentificationSessionStepKey"
+
+    /// Fallback session identification path value key
     case fallbackIdentStep = "FallbackIdentificationSessionStepKey"
 
     /// Retries IBAN registration amount
@@ -63,6 +66,9 @@ enum StoredKeys: String {
 
     /// Fourthline provider data key
     case providerData = "FourthlineProviderDataKey"
+
+    /// Device IP-address data key
+    case ipAddressData = "IPAddressDataKey"
 
     /// Fourthline kyc zip file url
     case kycZipData = "KYCZipDataURLKey"

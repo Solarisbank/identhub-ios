@@ -198,6 +198,8 @@
 		84B2A8BD25F3E3D200EBA899 /* IdentificationRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */; };
 		84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */; };
 		84B2A8CE25F3EA6000EBA899 /* BeckendRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */; };
+		84C8E56C26B83E64002150D6 /* IPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8E56B26B83E64002150D6 /* IPAddressRequest.swift */; };
+		84C8E56E26B840ED002150D6 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8E56D26B840ED002150D6 /* IPAddress.swift */; };
 		84D15A89266FBA30002DC7EE /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D15A88266FBA30002DC7EE /* Date+Compare.swift */; };
 		84D4B4A5269627D60056E97B /* ErrorsDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B4A4269627D60056E97B /* ErrorsDescription.swift */; };
 		84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */; };
@@ -453,6 +455,8 @@
 		84B2A8BC25F3E3D200EBA899 /* IdentificationRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationRequestTests.swift; sourceTree = "<group>"; };
 		84B2A8C525F3E7BF00EBA899 /* RequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTests.swift; sourceTree = "<group>"; };
 		84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeckendRequestTests.swift; sourceTree = "<group>"; };
+		84C8E56B26B83E64002150D6 /* IPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressRequest.swift; sourceTree = "<group>"; };
+		84C8E56D26B840ED002150D6 /* IPAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		84D15A88266FBA30002DC7EE /* Date+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
 		84D4B4A4269627D60056E97B /* ErrorsDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsDescription.swift; sourceTree = "<group>"; };
 		84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -960,6 +964,7 @@
 			isa = PBXGroup;
 			children = (
 				841384BE263C587B00C39D69 /* PersonDataRequest.swift */,
+				84C8E56B26B83E64002150D6 /* IPAddressRequest.swift */,
 			);
 			path = Person;
 			sourceTree = "<group>";
@@ -1359,6 +1364,7 @@
 				0CF0AE8A25CC684C00A560E5 /* ContractDocument.swift */,
 				841CD0A6263978C300890626 /* UploadFourthlineZip.swift */,
 				841384C0263C594A00C39D69 /* PersonData.swift */,
+				84C8E56D26B840ED002150D6 /* IPAddress.swift */,
 				841384C2263C599700C39D69 /* SupportedDocument.swift */,
 				8499BFED2678E46100794B64 /* PersonAddress.swift */,
 				841E9BBC264EC8D00025FE15 /* FourthlineStep.swift */,
@@ -1802,6 +1808,7 @@
 				0C527E7525AC9C6D00B6D5DB /* BankIDIBANRequest.swift in Sources */,
 				841E9BBD264EC8D00025FE15 /* FourthlineStep.swift in Sources */,
 				0CF0AE8025CC153000A560E5 /* Status.swift in Sources */,
+				84C8E56C26B83E64002150D6 /* IPAddressRequest.swift in Sources */,
 				84A0126726384BED00672C1B /* KYCZipService.swift in Sources */,
 				84A0126D26388E7C00672C1B /* UploadKYCRequest.swift in Sources */,
 				0C8805A125CAE7CA00DD6E31 /* DocumentsTANRequest.swift in Sources */,
@@ -1832,6 +1839,7 @@
 				841C81B226036B5600F4A079 /* Router.swift in Sources */,
 				847242DD2631D3E500CC8DE6 /* RequestsViewController.swift in Sources */,
 				840DEA422628350F0033A2D8 /* SelfieResultOverlayView.swift in Sources */,
+				84C8E56E26B840ED002150D6 /* IPAddress.swift in Sources */,
 				0C7FD34325D29AF600A6CC28 /* DownloadDocumentsButton.swift in Sources */,
 				84E0CF0E262EF6B100DE0C09 /* DocumentScanner+Extensions.swift in Sources */,
 				8451D0EB26A8612D00C3C613 /* IBANRequest.swift in Sources */,

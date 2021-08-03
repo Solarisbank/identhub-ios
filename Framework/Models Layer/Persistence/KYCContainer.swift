@@ -114,6 +114,16 @@ final class KYCContainer {
         kycInfo.metadata?.location = location
     }
 
+    func update(ipAddress: String) {
+        if kycInfo.metadata == nil {
+            kycInfo.metadata = DeviceMetadata()
+        }
+
+        kycInfo.metadata?.ipAddress = ipAddress
+
+        storeIPAddress(ipAddress: ipAddress)
+    }
+
     /// Func runs storing document with updated data process again
     func updateDocumentData() {
         storeDocumentData()
@@ -137,6 +147,7 @@ final class KYCContainer {
         self.infoProvider = infoProvider
 
         restoreProvider()
+        restoreIPAddress()
         restorePersonData()
         restoreSelfieData()
         restoreDocumentData()
@@ -249,6 +260,21 @@ private extension KYCContainer {
         guard let provider = SessionStorage.obtainValue(for: StoredKeys.providerData.rawValue) as? String else { return }
 
         kycInfo.provider.name = provider
+    }
+}
+
+// MARK: - IPAddress data store/load -
+
+private extension KYCContainer {
+
+    private func storeIPAddress(ipAddress: String) {
+        SessionStorage.updateValue(ipAddress, for: StoredKeys.ipAddressData.rawValue)
+    }
+
+    private func restoreIPAddress() {
+        guard let ipAddress = SessionStorage.obtainValue(for: StoredKeys.ipAddressData.rawValue) as? String else { return }
+
+        update(ipAddress: ipAddress)
     }
 }
 

@@ -132,6 +132,7 @@ enum Localizable {
         static let description = ""
         static let person = "Fetch person data..."
         static let location = "Fetch location data..."
+        static let ipAddress = "Fetch IP-address data..."
     }
 
     enum TermsConditions {
