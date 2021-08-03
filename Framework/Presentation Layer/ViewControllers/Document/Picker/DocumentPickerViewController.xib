@@ -16,7 +16,6 @@
                 <outlet property="documentTypesTable" destination="6CM-dP-Mrn" id="EAw-zi-2VQ"/>
                 <outlet property="quitBtn" destination="Y7l-BA-fua" id="6EV-2n-l4G"/>
                 <outlet property="stepsProgressView" destination="ubJ-lX-vXf" id="1f6-hq-9Y0"/>
-                <outlet property="tableShadowHeightConstraint" destination="3qR-zh-Jl0" id="ZYO-lw-A4F"/>
                 <outlet property="titleLbl" destination="jal-k9-VyU" id="n6p-fN-Leg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
