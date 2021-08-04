@@ -356,15 +356,13 @@ private extension RequestsViewModel {
 
                 KYCContainer.shared.update(location: location)
 
-                DispatchQueue.main.async {
-                    if self?.sessionStorage.identificationStep == .fourthline {
-                        self?.completeStep(number: InitStep.fetchLocation.rawValue)
-                        self?.fetchIPAddress()
-                    } else {
-                        self?.completeStep(number: DataFetchStep.location.rawValue)
-                        self?.fourthlineCoordinator?.perform(action: .documentPicker)
-                    }
+                if self?.sessionStorage.identificationStep == .fourthline {
+                    self?.completeStep(number: InitStep.fetchLocation.rawValue)
+                } else {
+                    self?.completeStep(number: DataFetchStep.location.rawValue)
                 }
+
+                self?.fetchIPAddress()
             }
         }
     }

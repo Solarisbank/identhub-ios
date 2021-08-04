@@ -31,6 +31,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 0.4.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 0.5.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 0.6.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
+| 0.6.1 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 
 
 ## Intergration
@@ -53,7 +54,7 @@ platform :ios, '12.0'
 
 target 'YourTargetName' do
 
-      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.6.0' #use private repository
+      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.6.1' #use private repository
 
       pod 'FourthlineSDK', '2.2.8' # identification service
       pod 'SwiftyTesseract', '2.2.3' # document scanner with MRZ detection
@@ -104,6 +105,8 @@ end
 ## Example Usage
 
 First you need to create an identification session via the Solarisbank API. The session will contain a URL that can be passed to the IdentHub SDK to create a new session.
+
+Add `Privacy - Camera Usage Description` and `Privacy - Location When In Use Usage Description` entries to Info.plist file, make sure that user granted access to Camera and Location services.
 
 <details>
   <summary>Swift</summary>
