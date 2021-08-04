@@ -58,11 +58,6 @@ final public class IdentHubSession {
 
         startIdentification()
     }
-
-    /// Static method removed all saved data from previous sessoin
-    public static func clearSessionData() {
-        SessionStorage.clearData()
-    }
 }
 
 // MARK: - Internal methods methods -

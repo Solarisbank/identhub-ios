@@ -25,8 +25,6 @@ class SessionInfoProviderTests: XCTestCase {
 
         XCTAssertEqual(sut.mobileNumber, testMobileNumber, "Mobile number in storage session provider mismatch with assigned value")
 
-        sut.clear()
-
         XCTAssertTrue(sut.sessionToken.isEmpty, "Storage session provider data wasn't cleared properly")
         XCTAssertNil(sut.mobileNumber, "Mobile number value in storage session provider wasn't cleared")
     }

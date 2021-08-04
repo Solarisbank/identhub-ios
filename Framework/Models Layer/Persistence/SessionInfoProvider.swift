@@ -37,9 +37,6 @@ protocol SessionInfoProvider: AnyObject {
 
     /// Documents list
     var documentsList: [SupportedDocument]? { get set }
-
-    /// Clears currently stored data.
-    func clear()
 }
 
 /// Count of default retries. Used if from server comes null value
@@ -117,17 +114,6 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     init(sessionToken: String) {
         self.sessionToken = sessionToken
         self.restoreValues()
-    }
-
-    /// - SeeAlso: SessionInfoProvider.clear()
-    func clear() {
-        sessionToken = ""
-        mobileNumber = nil
-        identificationUID = nil
-        identificationPath = nil
-        isSuccessful = false
-
-        SessionStorage.clearData()
     }
 }
 
