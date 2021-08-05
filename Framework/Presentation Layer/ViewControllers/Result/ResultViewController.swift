@@ -45,7 +45,7 @@ final class ResultViewController: UIViewController {
     // MARK: - Action methods -
 
     @IBAction func didClickQuit(_ sender: UIButton) {
-        viewModel.didTriggerQuit()
+        viewModel.didTriggerClose()
     }
 }
 

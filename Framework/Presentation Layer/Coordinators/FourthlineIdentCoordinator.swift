@@ -14,6 +14,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     // MARK: - Properties -
     private let appDependencies: AppDependencies
     private var identificationStep: FourthlineStep = .welcome
+    private var completionHandler: CompletionHandler?
 
     // MARK: - Init methods -
 
@@ -30,6 +31,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     /// Method starts Fourthline identificaiton process
     /// - Parameter completion: completion handler with success or failure parameter, used for updating users UI
     override func start(_ completion: @escaping CompletionHandler) {
+        completionHandler = completion
+
         perform(action: identificationStep)
     }
 
@@ -60,6 +63,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentResult(result)
         case .quit:
             quit()
+        case let .complete(result):
+            completeIdent(with: result)
         }
     }
 
@@ -168,6 +173,17 @@ private extension FourthlineIdentCoordinator {
 
         presenter.push(resultVC, animated: true, completion: nil)
         updateFourthlineStep(step: .result(result: result))
+    }
+
+    private func completeIdent(with result: FourthlineIdentificationStatus) {
+
+        close()
+
+        if result.identificationStatus == .success {
+            completionHandler?(.success(identification: result.identification))
+        } else if result.identificationStatus == .failed {
+            completionHandler?(.failure(.authorizationFailed))
+        }
     }
 }
 

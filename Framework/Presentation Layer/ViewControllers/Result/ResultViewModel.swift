@@ -32,7 +32,7 @@ final class ResultViewModel: BaseFourthlineViewModel {
         case .success:
             return Localizable.Result.successDescription
         case .failed:
-            return Localizable.Result.successDescription
+            return Localizable.Result.failedDescription
         default:
             return ""
         }
@@ -49,6 +49,12 @@ final class ResultViewModel: BaseFourthlineViewModel {
             return UIImage(named: "result_failed", in: Bundle.current, compatibleWith: nil)
         default:
             return UIImage()
+        }
+    }
+
+    func didTriggerClose() {
+        if let identResult = result {
+            coordinator.perform(action: .complete(result: identResult))
         }
     }
 }

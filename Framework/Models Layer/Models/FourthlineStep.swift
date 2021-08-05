@@ -19,6 +19,7 @@ enum FourthlineStep: Codable {
     case confirmation // Confirm or fail user identification request
     case result(result: FourthlineIdentificationStatus) // Result screen with result status
     case quit // Quit from identification process
+    case complete(result: FourthlineIdentificationStatus) // Close identification screen with passing ident result
 
     enum CodingKeys: CodingKey {
 
@@ -33,6 +34,7 @@ enum FourthlineStep: Codable {
         case confirmation
         case resultStatus
         case quit
+        case complete
     }
 
     init(from decoder: Decoder) throws {
@@ -101,7 +103,8 @@ enum FourthlineStep: Codable {
             try container.encode(true, forKey: .confirmation)
         case .result(let result):
             try container.encode(result, forKey: .resultStatus)
-        case .quit:
+        case .quit,
+             .complete:
             try container.encode(true, forKey: .quit)
         }
     }

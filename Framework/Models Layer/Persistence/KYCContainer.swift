@@ -165,16 +165,23 @@ private extension KYCContainer {
         kycInfo.person.firstName = mrzInfo.firstNames.joined(separator: " ")
         kycInfo.person.lastName = mrzInfo.lastNames.joined(separator: " ")
         kycInfo.person.gender = mrzInfo.gender
-        kycInfo.person.nationalityCode = mrzInfo.nationality
         kycInfo.person.birthDate = mrzInfo.birthDate
+
+        if CountryCodes.isSupported(country: mrzInfo.nationality) {
+            kycInfo.person.nationalityCode = mrzInfo.nationality
+        }
     }
 
     private func fillPersonData(_ data: PersonData) {
 
         kycInfo.person.firstName = data.firstName
         kycInfo.person.lastName = data.lastName
-        kycInfo.person.nationalityCode = data.nationality
         kycInfo.person.birthDate = data.birthDate
+        kycInfo.person.birthPlace = data.birthPlace
+
+        if CountryCodes.isSupported(country: data.nationality) {
+            kycInfo.person.nationalityCode = data.nationality
+        }
 
         switch data.gender {
         case .male:

@@ -5,6 +5,7 @@
 
 import Foundation
 import FourthlineCore
+import FourthlineKYC
 
 struct PersonData: Codable {
 
@@ -67,7 +68,9 @@ extension PersonData {
         firstName = mrzInfo.firstNames.joined(separator: " ")
         lastName = mrzInfo.lastNames.joined(separator: " ")
         birthDate = mrzInfo.birthDate
-        nationality = mrzInfo.nationality
+        if CountryCodes.isSupported(country: mrzInfo.nationality) {
+            nationality = mrzInfo.nationality
+        }
     }
 }
 

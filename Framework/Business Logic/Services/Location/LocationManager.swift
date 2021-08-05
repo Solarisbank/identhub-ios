@@ -35,22 +35,18 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Internal methods -
 
     private func checkLocationStatus(status: CLAuthorizationStatus) {
-        guard status == .notDetermined else {
-            guard status != .authorizedWhenInUse &&
-                    status != .authorizedAlways else {
-                if let completion = completionLocationHandler {
-                    completion(nil, APIError.locationAccessError)
-                }
 
-                completionHandler()
-                return
+        switch status {
+        case .authorizedAlways,
+             .authorizedWhenInUse:
+            completionHandler()
+        default:
+            if let completion = completionLocationHandler {
+                completion(nil, APIError.locationAccessError)
             }
 
             print("WARNING: Location permission might be mandatory for certain clients, please check with your team, especially when we do the zipping.")
             print("INFO: We are using the cached location while the user is checking Selfie, Document, NFC scanner or while zipping.")
-
-            completionHandler()
-            return
         }
     }
 
