@@ -37,6 +37,9 @@ struct FourthlineIdentificationStatus: Codable {
     /// Reference tocken
     let referenceToken: String?
 
+    /// Reference value
+    let reference: String
+
     /// Identification documents
     var documents: [ContractDocument]? = []
 
@@ -51,6 +54,7 @@ struct FourthlineIdentificationStatus: Codable {
         case providerStatusCode = "provider_status_code"
         case nextStep = "next_step"
         case referenceToken = "current_reference_token"
+        case reference
         case documents
     }
 }
@@ -70,6 +74,7 @@ extension FourthlineIdentificationStatus {
         self.providerStatusCode = try data.decodeIfPresent(String.self, forKey: .providerStatusCode)
         self.nextStep = try data.decodeIfPresent(String.self, forKey: .nextStep)
         self.referenceToken = try data.decodeIfPresent(String.self, forKey: .referenceToken)
+        self.reference = try data.decode(String.self, forKey: .reference)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -82,11 +87,14 @@ extension FourthlineIdentificationStatus {
         try container.encode(confirmExpireDate, forKey: .confirmExpireDate)
         try container.encode(providerStatusCode, forKey: .providerStatusCode)
         try container.encode(nextStep, forKey: .nextStep)
+        try container.encode(reference, forKey: .reference)
     }
 }
 
 enum IdentificationMethodType: String, Decodable {
     case idnow = "idnow"
     case bank = "bank"
+    case bankID = "bank_id"
     case fourthline = "fourthline"
+    case unknown
 }

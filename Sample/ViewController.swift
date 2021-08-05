@@ -62,10 +62,6 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func didClickResetData(_ sender: UIButton) {
-        IdentHubSession.clearSessionData()
-    }
-
     private func updateStatus(_ isSuccess: Bool, desc: String) {
         sessionURLTV.resignFirstResponder()
         statusView.isHidden = false
