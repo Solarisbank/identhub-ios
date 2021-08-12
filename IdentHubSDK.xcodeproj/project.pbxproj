@@ -2016,6 +2016,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 0.7.1;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -2037,6 +2038,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 0.7.1;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -2130,6 +2132,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 0.7.1;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Staging;

@@ -60,6 +60,11 @@ extension Request {
     var isPercentEncoded: Bool {
         false
     }
+
+    var userAgent: String {
+        let appVersion = Bundle.current.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        return "IdentHub iOS (\(appVersion))"
+    }
 }
 
 // MARK: Conformance to URLRequestConvertible protocol.
@@ -94,6 +99,8 @@ extension URLRequestConvertible where Self: Request {
         headers?.forEach {
             urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
         }
+
+        urlRequest.addValue(userAgent, forHTTPHeaderField: "User-Agent")
 
         urlRequest.httpMethod = method.rawValue
         return urlRequest
