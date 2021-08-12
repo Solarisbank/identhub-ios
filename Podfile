@@ -7,7 +7,7 @@ platform :ios, '12.0'
 # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
-pod 'FourthlineSDK', '2.2.8'
+pod 'FourthlineSDK', '2.3.1'
 
 # Comment the next line if you're not using document scanner with MRZ detection
 pod 'SwiftyTesseract', '2.2.3'

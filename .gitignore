@@ -45,3 +45,4 @@ fastlane/test_output
 .env
 
 docs/
+*.lock
