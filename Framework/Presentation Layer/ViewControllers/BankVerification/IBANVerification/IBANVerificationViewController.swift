@@ -6,79 +6,35 @@
 import UIKit
 
 /// UIViewController which displays screen to verify IBAN.
-final internal class IBANVerificationViewController: SolarisViewController {
+final internal class IBANVerificationViewController: UIViewController {
 
-    var viewModel: IBANVerificationViewModel!
+    // MARK: - IBOutlets -
 
-    enum Constants {
-        enum FontSize {
-            static let medium: CGFloat = 14
-            static let small: CGFloat = 12
-            static let tiny: CGFloat = 11
-        }
+    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var personalAccountHintLabel: UILabel!
+    @IBOutlet var joinedAccountsHintLabel: UILabel!
+    @IBOutlet var ibanLabel: UILabel!
+    @IBOutlet var ibanVerificationTextField: VerificationTextField!
+    @IBOutlet var initiatePaymentVerificationButton: ActionRoundedButton!
+    @IBOutlet var errorLabel: UILabel!
 
-        enum ConstraintsOffset {
-            static let extended: CGFloat = 40
-            static let heightNormal: CGFloat = 24
-            static let normal: CGFloat = 16
-            static let small: CGFloat = 8
-        }
+    // MARK: - Properties -
+
+    private var viewModel: IBANVerificationViewModel!
+
+    /// Initialized with view model object
+    /// - Parameter viewModel: view model object
+    init(_ viewModel: IBANVerificationViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: "IBANVerificationViewController", bundle: Bundle(for: IBANVerificationViewController.self))
     }
 
-    private lazy var currentStepView: IdentificationProgressView = {
-        let view = IdentificationProgressView(currentStep: .bankVerification)
-        return view
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    private lazy var personalAccountHintLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = label.font.withSize(Constants.FontSize.medium)
-        label.text = Localizable.BankVerification.IBANVerification.personalAccountDisclaimer
-        label.textColor = .sdkColor(.base75)
-        return label
-    }()
-
-    private lazy var joinedAccountsHintLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = label.font.withSize(Constants.FontSize.medium)
-        label.text = Localizable.BankVerification.IBANVerification.joinedAccountsDisclaimer
-        label.textColor = .sdkColor(.base75)
-        return label
-    }()
-
-    private lazy var ibanLabel: UILabel = {
-        let label = UILabel()
-        label.font = label.font.withSize(Constants.FontSize.small)
-        label.text = Localizable.BankVerification.IBANVerification.IBAN
-        label.textColor = .sdkColor(.base75)
-        return label
-    }()
-
-    private lazy var ibanVerificationTextField: VerificationTextField = {
-        let placeholder = Localizable.BankVerification.IBANVerification.IBANplaceholder
-        let textField = VerificationTextField()
-        textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.sdkColor(.base25)])
-        textField.placeholder = Localizable.BankVerification.IBANVerification.IBANplaceholder
-        textField.textColor = .sdkColor(.base75)
-        return textField
-    }()
-
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel()
-        label.font = label.font.withSize(Constants.FontSize.tiny)
-        label.text = Localizable.BankVerification.IBANVerification.wrongIBANFormat
-        label.textColor = .sdkColor(.error)
-        return label
-    }()
-
-    private lazy var initiatePaymentVerificationButton: ActionRoundedButton = {
-        let button = ActionRoundedButton()
-        button.setTitle(Localizable.BankVerification.IBANVerification.initiatePaymentVerification, for: .normal)
-        button.currentAppearance = .orange
-        return button
-    }()
+    // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,72 +42,25 @@ final internal class IBANVerificationViewController: SolarisViewController {
     }
 
     private func setUpUI() {
-        containerView.addSubviews([
-            currentStepView,
-            personalAccountHintLabel,
-            joinedAccountsHintLabel,
-            ibanLabel,
-            ibanVerificationTextField,
-            errorLabel,
-            initiatePaymentVerificationButton
-        ])
 
-        errorLabel.isHidden = true
+        currentStepView.setCurrentStep(.bankVerification)
 
-        currentStepView.addConstraints { [
-            $0.equal(.top),
-            $0.equal(.leading),
-            $0.equal(.trailing)
-        ]
-        }
+        personalAccountHintLabel.text = Localizable.BankVerification.IBANVerification.personalAccountDisclaimer
+        joinedAccountsHintLabel.text = Localizable.BankVerification.IBANVerification.joinedAccountsDisclaimer
+        ibanLabel.text = Localizable.BankVerification.IBANVerification.IBAN
+        errorLabel.text = Localizable.BankVerification.IBANVerification.wrongIBANFormat
 
-        personalAccountHintLabel.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
+        let placeholderText = Localizable.BankVerification.IBANVerification.IBANplaceholder
+        ibanVerificationTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.sdkColor(.base25)])
+        ibanVerificationTextField.placeholder = placeholderText
 
-        joinedAccountsHintLabel.addConstraints { [
-            $0.equalTo(personalAccountHintLabel, .top, .bottom, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
+        initiatePaymentVerificationButton.currentAppearance = .orange
+        initiatePaymentVerificationButton.setTitle(Localizable.BankVerification.IBANVerification.initiatePaymentVerification, for: .normal)
 
-        ibanLabel.addConstraints { [
-            $0.equalTo(joinedAccountsHintLabel, .top, .bottom, constant: Constants.ConstraintsOffset.heightNormal),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
-
-        ibanVerificationTextField.addConstraints { [
-            $0.equalTo(ibanLabel, .top, .bottom, constant: Constants.ConstraintsOffset.small),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
-
-        errorLabel.addConstraints { [
-            $0.equalTo(ibanVerificationTextField, .top, .bottom, constant: Constants.ConstraintsOffset.small),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
-
-        initiatePaymentVerificationButton.addConstraints { [
-            $0.equalTo(errorLabel, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended)
-        ]
-        }
-
-        initiatePaymentVerificationButton.addTarget(self, action: #selector(initiatePaymentVerification), for: .touchUpInside)
+        ibanVerificationTextField.currentState = .normal
     }
 
-    @objc private func initiatePaymentVerification() {
+    @IBAction func initiatePaymentVerification(_: ActionRoundedButton) {
         ibanVerificationTextField.resignFirstResponder()
         viewModel.initiatePaymentVerification(withIBAN: ibanVerificationTextField.text)
     }

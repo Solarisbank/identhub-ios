@@ -146,9 +146,11 @@ private extension BankIDCoordinator {
     }
 
     private func presentIBANVerification() {
-        let ibanVerificationViewController = IBANVerificationViewController()
-        let ibanVerificationViewModel = IBANVerificationViewModel(flowCoordinator: self, delegate: ibanVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
-        ibanVerificationViewController.viewModel = ibanVerificationViewModel
+        let ibanVerificationViewModel = IBANVerificationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
+        let ibanVerificationViewController = IBANVerificationViewController(ibanVerificationViewModel)
+
+        ibanVerificationViewModel.delegate = ibanVerificationViewController
+        
         presenter.push(ibanVerificationViewController, animated: true, completion: nil)
         updateBankIDStep(step: .bankVerification(step: .iban))
     }

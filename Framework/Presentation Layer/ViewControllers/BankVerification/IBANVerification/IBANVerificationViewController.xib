@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IBANVerificationViewController" customModule="IdentHubSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="currentStepView" destination="dOz-sO-0FQ" id="TTS-8n-L1e"/>
+                <outlet property="errorLabel" destination="5fK-E0-FsY" id="3LG-EI-zjb"/>
+                <outlet property="ibanLabel" destination="Rzx-eX-KS9" id="Fqi-JX-Mux"/>
+                <outlet property="ibanVerificationTextField" destination="f7D-A5-fST" id="T01-Eb-kGa"/>
+                <outlet property="initiatePaymentVerificationButton" destination="Tkl-xL-HRh" id="Gkz-4W-yIH"/>
+                <outlet property="joinedAccountsHintLabel" destination="ciO-DA-t6T" id="ywi-tO-7ns"/>
+                <outlet property="personalAccountHintLabel" destination="eJR-gH-pem" id="P5b-cK-yOM"/>
+                <outlet property="view" destination="iN0-l3-epB" id="IB7-GQ-85O"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOz-sO-0FQ" customClass="IdentificationProgressView" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="89"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="89" id="x0Q-DO-Ymj"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJR-gH-pem">
+                    <rect key="frame" x="16" y="173" width="382" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" name="base75"/>
+                    <color key="highlightedColor" name="base75"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciO-DA-t6T">
+                    <rect key="frame" x="16" y="210" width="382" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" name="base75"/>
+                    <color key="highlightedColor" name="base75"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IBAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzx-eX-KS9">
+                    <rect key="frame" x="16" y="251" width="382" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" name="base75"/>
+                    <color key="highlightedColor" name="base75"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f7D-A5-fST" customClass="VerificationTextField" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="16" y="275.5" width="382" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="vbJ-3P-Ms6"/>
+                    </constraints>
+                    <color key="textColor" name="base75"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-E0-FsY">
+                    <rect key="frame" x="16" y="328.5" width="382" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" name="error"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkl-xL-HRh" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="16" y="772" width="382" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.3921568627" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="YuG-ll-B3r"/>
+                    </constraints>
+                    <state key="normal" title="Initiate IBAN Verification">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="initiatePaymentVerification:" destination="-1" eventType="touchUpInside" id="61Y-0c-cGS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" name="black0"/>
+            <constraints>
+                <constraint firstItem="ciO-DA-t6T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="2nI-bz-cvI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eJR-gH-pem" secondAttribute="trailing" constant="16" id="2vQ-E5-sTv"/>
+                <constraint firstItem="5fK-E0-FsY" firstAttribute="top" secondItem="f7D-A5-fST" secondAttribute="bottom" constant="5" id="C0c-KI-BPz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Tkl-xL-HRh" secondAttribute="bottom" constant="40" id="H6X-Vo-RRS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f7D-A5-fST" secondAttribute="trailing" constant="16" id="Ir2-7w-wtQ"/>
+                <constraint firstItem="dOz-sO-0FQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KA3-mA-nSP"/>
+                <constraint firstItem="Tkl-xL-HRh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="UM2-ZB-JK9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5fK-E0-FsY" secondAttribute="trailing" constant="16" id="aiU-Uf-g3q"/>
+                <constraint firstItem="eJR-gH-pem" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="akc-hl-IRU"/>
+                <constraint firstItem="f7D-A5-fST" firstAttribute="top" secondItem="Rzx-eX-KS9" secondAttribute="bottom" constant="10" id="d0M-g9-GkW"/>
+                <constraint firstItem="f7D-A5-fST" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="eh5-wW-XlE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Tkl-xL-HRh" secondAttribute="trailing" constant="16" id="gDf-np-e5d"/>
+                <constraint firstItem="dOz-sO-0FQ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gw5-x8-31b"/>
+                <constraint firstItem="eJR-gH-pem" firstAttribute="top" secondItem="dOz-sO-0FQ" secondAttribute="bottom" constant="40" id="ix6-Ur-v8w"/>
+                <constraint firstItem="ciO-DA-t6T" firstAttribute="top" secondItem="eJR-gH-pem" secondAttribute="bottom" constant="20" id="j6s-yR-vOZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ciO-DA-t6T" secondAttribute="trailing" constant="16" id="jgo-74-E4z"/>
+                <constraint firstItem="Rzx-eX-KS9" firstAttribute="top" secondItem="ciO-DA-t6T" secondAttribute="bottom" constant="24" id="ne1-NH-JJf"/>
+                <constraint firstItem="dOz-sO-0FQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="qfb-Hq-NG0"/>
+                <constraint firstItem="5fK-E0-FsY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="saS-aV-IAB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Rzx-eX-KS9" secondAttribute="trailing" constant="16" id="tPP-YP-qJG"/>
+                <constraint firstItem="Rzx-eX-KS9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="vpx-j5-rOQ"/>
+            </constraints>
+            <point key="canvasLocation" x="128.98550724637681" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="base75">
+            <color red="0.25490196078431371" green="0.30196078431372547" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black0">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="error">
+            <color red="0.88627450980392153" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

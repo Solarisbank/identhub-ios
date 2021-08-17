@@ -165,6 +165,7 @@
 		845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8638260D1E0A008AAC9A /* WelcomePageCell.swift */; };
 		845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */; };
 		845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8643260D22D4008AAC9A /* WelcomePageContent.swift */; };
+		845DEC4A26C669A100F38177 /* IBANVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DEC4926C669A100F38177 /* IBANVerificationViewController.xib */; };
 		8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */; };
 		846432402617626B003C9A7B /* StartBankIdentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */; };
 		8468C0AB2636C5D700513A0F /* ProgressCellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468C0AA2636C5D700513A0F /* ProgressCellObject.swift */; };
@@ -419,6 +420,7 @@
 		845D8638260D1E0A008AAC9A /* WelcomePageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageCell.swift; sourceTree = "<group>"; };
 		845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomePageCell.xib; sourceTree = "<group>"; };
 		845D8643260D22D4008AAC9A /* WelcomePageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageContent.swift; sourceTree = "<group>"; };
+		845DEC4926C669A100F38177 /* IBANVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IBANVerificationViewController.xib; sourceTree = "<group>"; };
 		8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBankIdentViewController.swift; sourceTree = "<group>"; };
 		8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartBankIdentViewController.xib; sourceTree = "<group>"; };
 		8468C0AA2636C5D700513A0F /* ProgressCellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellObject.swift; sourceTree = "<group>"; };
@@ -582,8 +584,9 @@
 		0C527E5625AC4BCD00B6D5DB /* IBANVerification */ = {
 			isa = PBXGroup;
 			children = (
-				0C527E5725AC4BF000B6D5DB /* IBANVerificationViewController.swift */,
 				0C527E6625AC814000B6D5DB /* IBANVerificationViewModel.swift */,
+				0C527E5725AC4BF000B6D5DB /* IBANVerificationViewController.swift */,
+				845DEC4926C669A100F38177 /* IBANVerificationViewController.xib */,
 			);
 			path = IBANVerification;
 			sourceTree = "<group>";
@@ -1568,6 +1571,7 @@
 				840976972633474300C4DC5B /* CircleProgressView.xib in Resources */,
 				8409767A2632F2CD00C4DC5B /* ProgressCell.xib in Resources */,
 				84ECED292630688700ACD1B5 /* DocumentItemInfoCell.xib in Resources */,
+				845DEC4A26C669A100F38177 /* IBANVerificationViewController.xib in Resources */,
 				847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */,
 				840DEA612628529B0033A2D8 /* DocumentPickerViewController.xib in Resources */,
 				84281695261F02E000A7BE37 /* InfoStatusView.xib in Resources */,

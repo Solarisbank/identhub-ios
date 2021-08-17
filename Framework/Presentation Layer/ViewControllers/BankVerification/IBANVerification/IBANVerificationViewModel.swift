@@ -21,9 +21,8 @@ final internal class IBANVerificationViewModel: NSObject {
 
     private var completionHandler: CompletionHandler
 
-    init(flowCoordinator: BankIDCoordinator, delegate: IBANVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
+    init(flowCoordinator: BankIDCoordinator, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
-        self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
         self.completionHandler = completion
