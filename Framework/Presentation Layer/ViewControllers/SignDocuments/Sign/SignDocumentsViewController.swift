@@ -112,7 +112,8 @@ final internal class SignDocumentsViewController: SolarisViewController {
     }()
 
     private lazy var stateView: StateView = {
-        let stateView = StateView(hasDescriptionLabel: true)
+        let stateView = StateView()
+        stateView.hasDescriptionLabel = true
         stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: SignDocumentsViewController.self))
         stateView.setStateTitle(Localizable.SignDocuments.Sign.applicationIsBeingProcessed)
         stateView.setStateDescription(Localizable.SignDocuments.Sign.downloadDocuments)

@@ -150,15 +150,17 @@ private extension BankIDCoordinator {
         let ibanVerificationViewController = IBANVerificationViewController(ibanVerificationViewModel)
 
         ibanVerificationViewModel.delegate = ibanVerificationViewController
-        
+
         presenter.push(ibanVerificationViewController, animated: true, completion: nil)
         updateBankIDStep(step: .bankVerification(step: .iban))
     }
 
     private func presentPaymentVerification() {
-        let paymentVerificationViewController = PaymentVerificationViewController()
-        let paymentVerificationViewModel = PaymentVerificationViewModel(flowCoordinator: self, delegate: paymentVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
-        paymentVerificationViewController.viewModel = paymentVerificationViewModel
+        let paymentVerificationViewModel = PaymentVerificationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
+        let paymentVerificationViewController = PaymentVerificationViewController(paymentVerificationViewModel)
+
+        paymentVerificationViewModel.delegate = paymentVerificationViewController
+
         presenter.push(paymentVerificationViewController, animated: false, completion: nil)
         updateBankIDStep(step: .bankVerification(step: .payment))
     }

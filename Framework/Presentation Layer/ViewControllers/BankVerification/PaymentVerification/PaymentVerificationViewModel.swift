@@ -20,17 +20,20 @@ final internal class PaymentVerificationViewModel: NSObject {
 
     private var nextStep: IdentificationStep = .unspecified
 
-    init(flowCoordinator: BankIDCoordinator, delegate: PaymentVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
+    private var timer: Timer?
+
+    init(flowCoordinator: BankIDCoordinator, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
-        self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
         self.completionHandler = completion
         super.init()
-        assemblyURLRequest()
     }
 
-    private func assemblyURLRequest() {
+    // MARK: Methods
+
+    /// Assembly payment verification process
+    func assemblyURLRequest() {
         delegate?.verificationStarted()
         guard let path = sessionStorage.identificationPath,
               let url = URL(string: path) else {
@@ -40,14 +43,27 @@ final internal class PaymentVerificationViewModel: NSObject {
         }
         let urlRequest = URLRequest(url: url)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            self?.delegate?.verificationRecivedURLRequest(urlRequest)
+            guard let `self` = self else { return }
+            self.delegate?.verificationRecivedURLRequest(urlRequest)
         }
+
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(checkIdentificationStatus), userInfo: nil, repeats: true)
     }
 
-    // MARK: Methods
+    /// Begin sign documents.
+    func beginSignDocuments() {
+        if nextStep != .unspecified {
+            flowCoordinator.perform(action: .nextStep(step: nextStep))
+        } else {
+            flowCoordinator.perform(action: .signDocuments(step: .confirmApplication))
+        }
+    }
+}
+
+private extension PaymentVerificationViewModel {
 
     /// Check the payment status of the identification.
-    func checkIdentificationStatus() {
+    @objc private func checkIdentificationStatus() {
         verificationService.getIdentification { [weak self] result in
             guard let `self` = self else { return }
 
@@ -62,6 +78,7 @@ final internal class PaymentVerificationViewModel: NSObject {
                     }
 
                     DispatchQueue.main.async {
+                        self.timer?.invalidate()
                         self.delegate?.verificationIsBeingProcessed()
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -78,15 +95,6 @@ final internal class PaymentVerificationViewModel: NSObject {
             case .failure(let error):
                 self.completionHandler(.failure(error))
             }
-        }
-    }
-
-    /// Begin sign documents.
-    func beginSignDocuments() {
-        if nextStep != .unspecified {
-            flowCoordinator.perform(action: .nextStep(step: nextStep))
-        } else {
-            flowCoordinator.perform(action: .signDocuments(step: .confirmApplication))
         }
     }
 }

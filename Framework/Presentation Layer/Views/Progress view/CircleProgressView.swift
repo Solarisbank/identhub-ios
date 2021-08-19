@@ -5,7 +5,7 @@
 
 import UIKit
 
-class CircleProgressView: UIView {
+class CircleProgressView: NibView {
 
     // MARK: - Outlets -
     @IBOutlet var contentView: UIView!
@@ -18,33 +18,16 @@ class CircleProgressView: UIView {
         }
     }
 
-    // MARK: - Init methods -
+    // MARK: - Override methods -
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
-        setup()
-    }
-
-    // MARK: - Lifecycle methods -
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
-    }
-
-    // MARK: - Internal methods -
-
-    private func setup() {
-        Bundle(for: Self.self).loadNibNamed("CircleProgressView", owner: self, options: nil)
+    override func initUI() {
+        super.initUI()
 
         addSubview(contentView)
         contentView.frame = bounds
     }
 
+    override func setupUI() {
+        backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
+    }
 }

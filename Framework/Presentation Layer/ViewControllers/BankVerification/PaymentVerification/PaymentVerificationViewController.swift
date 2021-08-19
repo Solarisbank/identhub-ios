@@ -7,31 +7,18 @@ import UIKit
 import WebKit
 
 /// UIViewController which displays screen to verify payment.
-final internal class PaymentVerificationViewController: SolarisViewController {
+final internal class PaymentVerificationViewController: UIViewController {
+
+    // MARK: - IBOutlets -
+
+    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var stateView: StateView!
+    @IBOutlet var paymentWebView: WKWebView!
+    @IBOutlet var successContainerView: SuccessView!
+
+    // MARK: - Properties -
 
     var viewModel: PaymentVerificationViewModel!
-
-    private var timer: Timer?
-
-    enum Constants {
-        enum FontSize {
-            static let big: CGFloat = 20
-        }
-
-        enum ConstraintsOffset {
-            static let massive: CGFloat = 64
-            static let extended: CGFloat = 40
-            static let normal: CGFloat = 24
-            static let sidesExtended: CGFloat = 32
-            static let sidesNormal: CGFloat = 16
-            static let size: CGFloat = 72
-            static let contentOffset: CGFloat = 240
-        }
-
-        enum Size {
-            static let cornerRadius: CGFloat = 8
-        }
-    }
 
     private enum State {
         case establishingConnection
@@ -47,35 +34,19 @@ final internal class PaymentVerificationViewController: SolarisViewController {
         }
     }
 
-    private lazy var currentStepView: IdentificationProgressView = {
-        let view = IdentificationProgressView(currentStep: .bankVerification)
-        view.backgroundColor = .sdkColor(.base05)
-        return view
-    }()
+    /// Initialized with view model object
+    /// - Parameter viewModel: view model object
+    init(_ viewModel: PaymentVerificationViewModel) {
+        self.viewModel = viewModel
 
-    private lazy var stateView: StateView = {
-        let stateView = StateView(hasDescriptionLabel: false)
-        return stateView
-    }()
+        super.init(nibName: "PaymentVerificationViewController", bundle: Bundle(for: PaymentVerificationViewController.self))
+    }
 
-    private lazy var paymentWebView: WKWebView = {
-        let webView = WKWebView()
-        let layer = webView.layer
-        layer.cornerRadius = Constants.Size.cornerRadius
-        layer.masksToBounds = true
-        return webView
-    }()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
-    private lazy var successContainerView: SuccessView = {
-        let view = SuccessView()
-        view.setTitle(Localizable.BankVerification.PaymentVerification.Success.title)
-        view.setDescription(Localizable.BankVerification.PaymentVerification.Success.description)
-        view.setActionButtonTitle(Localizable.BankVerification.PaymentVerification.Success.action)
-        view.setAction { [weak self] in
-            self?.viewModel.beginSignDocuments()
-        }
-        return view
-    }()
+    // MARK: - Life cycle methods -
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,48 +54,20 @@ final internal class PaymentVerificationViewController: SolarisViewController {
     }
 
     private func setUpUI() {
-        containerView.addSubviews([
-            currentStepView,
-            stateView
-        ])
 
-        currentStepView.addConstraints {
-            [
-                $0.equal(.top),
-                $0.equal(.leading),
-                $0.equal(.trailing)
-            ]
-        }
+        currentStepView.setCurrentStep( .bankVerification)
+        setupSuccessView()
 
-        stateView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom),
-            $0.equal(.leading),
-            $0.equal(.trailing),
-            $0.equal(.bottom)
-        ]
-        }
+        viewModel.assemblyURLRequest()
     }
 
-    private func setUpPaymentWebView() {
-        containerView.addSubview(paymentWebView)
-        paymentWebView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.sidesNormal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.sidesNormal),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended),
-            $0.equalConstant(.height, self.view.frame.height - Constants.ConstraintsOffset.contentOffset)
-        ]
-        }
-    }
+    private func setupSuccessView() {
 
-    private func setUpSuccessContainerView() {
-        containerView.addSubview(successContainerView)
-        successContainerView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom),
-            $0.equal(.leading),
-            $0.equal(.trailing),
-            $0.equal(.bottom)
-        ]
+        successContainerView.setTitle(Localizable.BankVerification.PaymentVerification.Success.title)
+        successContainerView.setDescription(Localizable.BankVerification.PaymentVerification.Success.description)
+        successContainerView.setActionButtonTitle(Localizable.BankVerification.PaymentVerification.Success.action)
+        successContainerView.setAction { [weak self] in
+            self?.viewModel.beginSignDocuments()
         }
     }
 
@@ -135,22 +78,18 @@ final internal class PaymentVerificationViewController: SolarisViewController {
             stateView.setStateTitle(Localizable.BankVerification.PaymentVerification.establishingSecureConnection)
         case .paymentInitiation:
             stateView.isHidden = true
-            setUpPaymentWebView()
+            paymentWebView.isHidden = false
         case .processingVerification:
-            paymentWebView.removeFromSuperview()
+            paymentWebView.isHidden = true
             stateView.isHidden = false
             stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: PaymentVerificationViewController.self))
             stateView.setStateTitle(Localizable.BankVerification.PaymentVerification.processingVerification)
         case .success:
-            stateView.removeFromSuperview()
-            setUpSuccessContainerView()
+            successContainerView.isHidden = false
+            stateView.isHidden = true
         case .failed:
             print("Failed payment verification")
         }
-    }
-
-    @objc private func checkStatus() {
-        viewModel.checkIdentificationStatus()
     }
 }
 
@@ -163,12 +102,10 @@ extension PaymentVerificationViewController: PaymentVerificationViewModelDelegat
 
     func verificationRecivedURLRequest(_ urlRequest: URLRequest) {
         paymentWebView.load(urlRequest)
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(checkStatus), userInfo: nil, repeats: true)
         state = .paymentInitiation
     }
 
     func verificationIsBeingProcessed() {
-        timer?.invalidate()
         state = .processingVerification
     }
 

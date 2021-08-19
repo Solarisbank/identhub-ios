@@ -166,6 +166,7 @@
 		845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */; };
 		845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8643260D22D4008AAC9A /* WelcomePageContent.swift */; };
 		845DEC4A26C669A100F38177 /* IBANVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DEC4926C669A100F38177 /* IBANVerificationViewController.xib */; };
+		845DEC4C26C697AC00F38177 /* PaymentVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DEC4B26C697AC00F38177 /* PaymentVerificationViewController.xib */; };
 		8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */; };
 		846432402617626B003C9A7B /* StartBankIdentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */; };
 		8468C0AB2636C5D700513A0F /* ProgressCellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468C0AA2636C5D700513A0F /* ProgressCellObject.swift */; };
@@ -210,6 +211,9 @@
 		84DEB64C2641C7E600E0C5BA /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64B2641C7E600E0C5BA /* ResultViewModel.swift */; };
 		84E0CF0E262EF6B100DE0C09 /* DocumentScanner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0CF0D262EF6B100DE0C09 /* DocumentScanner+Extensions.swift */; };
 		84E0CF13262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0CF12262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift */; };
+		84EAFCA126CBE5740008F0E3 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EAFCA026CBE5740008F0E3 /* NibView.swift */; };
+		84EAFCA526CC18E90008F0E3 /* SuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EAFCA426CC18E90008F0E3 /* SuccessView.xib */; };
+		84EAFCA826CC1E200008F0E3 /* StateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EAFCA726CC1E200008F0E3 /* StateView.xib */; };
 		84ECED1126304DFB00ACD1B5 /* DocumentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECED0F26304DFB00ACD1B5 /* DocumentInfoViewController.swift */; };
 		84ECED1226304DFB00ACD1B5 /* DocumentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ECED1026304DFB00ACD1B5 /* DocumentInfoViewController.xib */; };
 		84ECED1726304E1000ACD1B5 /* DocumentInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECED1626304E1000ACD1B5 /* DocumentInfoViewModel.swift */; };
@@ -421,6 +425,7 @@
 		845D8639260D1E0A008AAC9A /* WelcomePageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomePageCell.xib; sourceTree = "<group>"; };
 		845D8643260D22D4008AAC9A /* WelcomePageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageContent.swift; sourceTree = "<group>"; };
 		845DEC4926C669A100F38177 /* IBANVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IBANVerificationViewController.xib; sourceTree = "<group>"; };
+		845DEC4B26C697AC00F38177 /* PaymentVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentVerificationViewController.xib; sourceTree = "<group>"; };
 		8464323D2617626B003C9A7B /* StartBankIdentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBankIdentViewController.swift; sourceTree = "<group>"; };
 		8464323E2617626B003C9A7B /* StartBankIdentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartBankIdentViewController.xib; sourceTree = "<group>"; };
 		8468C0AA2636C5D700513A0F /* ProgressCellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCellObject.swift; sourceTree = "<group>"; };
@@ -466,6 +471,9 @@
 		84DEB64B2641C7E600E0C5BA /* ResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
 		84E0CF0D262EF6B100DE0C09 /* DocumentScanner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentScanner+Extensions.swift"; sourceTree = "<group>"; };
 		84E0CF12262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetsDataSource.swift; sourceTree = "<group>"; };
+		84EAFCA026CBE5740008F0E3 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		84EAFCA426CC18E90008F0E3 /* SuccessView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessView.xib; sourceTree = "<group>"; };
+		84EAFCA726CC1E200008F0E3 /* StateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StateView.xib; sourceTree = "<group>"; };
 		84ECED0F26304DFB00ACD1B5 /* DocumentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoViewController.swift; sourceTree = "<group>"; };
 		84ECED1026304DFB00ACD1B5 /* DocumentInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentInfoViewController.xib; sourceTree = "<group>"; };
 		84ECED1626304E1000ACD1B5 /* DocumentInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoViewModel.swift; sourceTree = "<group>"; };
@@ -539,8 +547,9 @@
 		0C1B431225ADB58E004FFF46 /* PaymentVerification */ = {
 			isa = PBXGroup;
 			children = (
-				0C1B431325ADB5AE004FFF46 /* PaymentVerificationViewController.swift */,
 				0C1B431B25ADCBA1004FFF46 /* PaymentVerificationViewModel.swift */,
+				0C1B431325ADB5AE004FFF46 /* PaymentVerificationViewController.swift */,
+				845DEC4B26C697AC00F38177 /* PaymentVerificationViewController.xib */,
 			);
 			path = PaymentVerification;
 			sourceTree = "<group>";
@@ -550,16 +559,17 @@
 			children = (
 				8409768D2633471600C4DC5B /* Progress view */,
 				8431062D261F01BB00E24E8A /* Info status */,
+				84CD84D126CBC7BB00FD9D23 /* Success View */,
+				84EAFCA626CC1DE00008F0E3 /* StateView */,
 				0C4B67D9259B228400190C4E /* IdentificationProgressView.swift */,
 				0CE4A8DE25A3666500114CBD /* ActionRoundedButton.swift */,
 				0CC25BBC25A4AB2100D839AB /* CodeEntryView.swift */,
-				0C12CA9125A71AF50032B520 /* SuccessView.swift */,
 				0C527E5C25AC5F1500B6D5DB /* VerificationTextField.swift */,
 				0C9E56E825C0358500D68B96 /* DocumentTableViewCell.swift */,
-				0CE01B3025C2C52500FB0E16 /* StateView.swift */,
 				0C7FD34225D29AF600A6CC28 /* DownloadDocumentsButton.swift */,
 				0C007F1625D56977003D42B3 /* ErrorView.swift */,
 				840DEA7626288F420033A2D8 /* StepsProgressView.swift */,
+				84EAFCA026CBE5740008F0E3 /* NibView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1344,6 +1354,15 @@
 			path = Abstraction;
 			sourceTree = "<group>";
 		};
+		84CD84D126CBC7BB00FD9D23 /* Success View */ = {
+			isa = PBXGroup;
+			children = (
+				0C12CA9125A71AF50032B520 /* SuccessView.swift */,
+				84EAFCA426CC18E90008F0E3 /* SuccessView.xib */,
+			);
+			path = "Success View";
+			sourceTree = "<group>";
+		};
 		84DEB6462641C75500E0C5BA /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -1390,6 +1409,15 @@
 				8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */,
 			);
 			path = DocumentScanner;
+			sourceTree = "<group>";
+		};
+		84EAFCA626CC1DE00008F0E3 /* StateView */ = {
+			isa = PBXGroup;
+			children = (
+				0CE01B3025C2C52500FB0E16 /* StateView.swift */,
+				84EAFCA726CC1E200008F0E3 /* StateView.xib */,
+			);
+			path = StateView;
 			sourceTree = "<group>";
 		};
 		84ECED0E26304C8E00ACD1B5 /* Info */ = {
@@ -1565,6 +1593,7 @@
 				84DEB64A2641C7AF00E0C5BA /* ResultViewController.xib in Resources */,
 				8419567E2631B214003A55BD /* LocationViewController.xib in Resources */,
 				845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */,
+				845DEC4C26C697AC00F38177 /* PaymentVerificationViewController.xib in Resources */,
 				841158A6261F384B007B54DF /* SelfieOverlayView.xib in Resources */,
 				841F376B26298FF500D56361 /* DocumentTypeCell.xib in Resources */,
 				845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */,
@@ -1576,7 +1605,9 @@
 				840DEA612628529B0033A2D8 /* DocumentPickerViewController.xib in Resources */,
 				84281695261F02E000A7BE37 /* InfoStatusView.xib in Resources */,
 				840DEA472628351F0033A2D8 /* SelfieResultOverlayView.xib in Resources */,
+				84EAFCA826CC1E200008F0E3 /* StateView.xib in Resources */,
 				847242DE2631D3E500CC8DE6 /* RequestsViewController.xib in Resources */,
+				84EAFCA526CC18E90008F0E3 /* SuccessView.xib in Resources */,
 				0C527E6F25AC947700B6D5DB /* Assets.xcassets in Resources */,
 				8423EFF2262B2A120092F003 /* DocumentScannerResultView.xib in Resources */,
 				84ECED1226304DFB00ACD1B5 /* DocumentInfoViewController.xib in Resources */,
@@ -1794,6 +1825,7 @@
 				840DEA5526284CBC0033A2D8 /* KYCContainer.swift in Sources */,
 				0CE01B3725C2E7C700FB0E16 /* FinishIdentificationViewController.swift in Sources */,
 				84ECED1126304DFB00ACD1B5 /* DocumentInfoViewController.swift in Sources */,
+				84EAFCA126CBE5740008F0E3 /* NibView.swift in Sources */,
 				0CCD106425C9933A00251C65 /* Identification.swift in Sources */,
 				0CC25BBD25A4AB2100D839AB /* CodeEntryView.swift in Sources */,
 				0C12CAA825A783AF0032B520 /* VerificationService.swift in Sources */,
