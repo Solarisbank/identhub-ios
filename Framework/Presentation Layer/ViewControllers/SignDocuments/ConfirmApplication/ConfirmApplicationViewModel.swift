@@ -17,9 +17,8 @@ final internal class ConfirmApplicationViewModel: NSObject, DocumentDownloadable
     /// - SeeAlso: DocumentDownloadable.documentDelegate
     weak var documentDelegate: DocumentReceivable?
 
-    init(flowCoordinator: BankIDCoordinator, delegate: DocumentReceivable, verificationService: VerificationService) {
+    init(flowCoordinator: BankIDCoordinator, verificationService: VerificationService) {
         self.flowCoordinator = flowCoordinator
-        self.documentDelegate = delegate
         self.verificationService = verificationService
         super.init()
         checkDocumentsAvailability()

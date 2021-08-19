@@ -29,7 +29,8 @@ final internal class DownloadDocumentsButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setUpUI()
     }
 
     // MARK: - Public methods -
@@ -59,6 +60,7 @@ final internal class DownloadDocumentsButton: UIButton {
 
         let image = UIImage.sdkImage(.downloadDocument, type: DownloadDocumentsButton.self)
         setImage(image, for: .normal)
+        tintColor = UIColor.sdkColor(.black75)
         semanticContentAttribute = .forceRightToLeft
         imageEdgeInsets = UIEdgeInsets(top: Constants.normalInset, left: Constants.bigInset, bottom: Constants.normalInset, right: Constants.normalInset)
 

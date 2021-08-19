@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmApplicationViewController" customModule="IdentHubSDK" customModuleProvider="target">
+            <connections>
+                <outlet property="actionButton" destination="Zij-Pi-7tY" id="qZv-Ro-HvR"/>
+                <outlet property="currentStepView" destination="d7x-l6-qBT" id="I4h-Kf-7rv"/>
+                <outlet property="descriptionLabel" destination="2fJ-zb-iYc" id="FIJ-PC-R42"/>
+                <outlet property="documentsTableView" destination="XOw-Ws-ALc" id="VVg-aV-t6B"/>
+                <outlet property="downloadAllDocumentsButton" destination="pB0-Tv-rac" id="T22-AL-ngP"/>
+                <outlet property="tableHeightConstraint" destination="23X-Af-nLW" id="jng-Ck-sMo"/>
+                <outlet property="titleLabel" destination="s3l-dJ-hb4" id="ROD-dg-BcX"/>
+                <outlet property="view" destination="qFZ-Nb-YhP" id="fgY-3a-bTe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="qFZ-Nb-YhP">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7x-l6-qBT" customClass="IdentificationProgressView" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="414" height="89"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="89" id="vvu-mf-ub3"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3l-dJ-hb4">
+                    <rect key="frame" x="16" y="173" width="382" height="26"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                    <color key="textColor" name="base100"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fJ-zb-iYc">
+                    <rect key="frame" x="16" y="223" width="382" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" name="base75"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zij-Pi-7tY" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="16" y="774" width="382" height="48"/>
+                    <color key="backgroundColor" name="primary_lighten"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="tez-U5-8ep"/>
+                    </constraints>
+                    <state key="normal" title="Send code to sign">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="signDocuments" destination="-1" eventType="touchUpInside" id="HrI-A2-NDd"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="54" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XOw-Ws-ALc">
+                    <rect key="frame" x="16" y="272" width="382" height="108"/>
+                    <color key="backgroundColor" name="black0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="108" id="23X-Af-nLW"/>
+                    </constraints>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="E5U-W5-aqA"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pB0-Tv-rac" customClass="DownloadDocumentsButton" customModule="IdentHubSDK" customModuleProvider="target">
+                    <rect key="frame" x="206" y="390" width="192" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="192" id="lHu-gh-681"/>
+                        <constraint firstAttribute="height" constant="36" id="oWF-h4-opr"/>
+                    </constraints>
+                    <color key="tintColor" name="base100"/>
+                    <state key="normal" title="Download"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="i2P-ci-Ndf"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="2fJ-zb-iYc" firstAttribute="top" secondItem="s3l-dJ-hb4" secondAttribute="bottom" constant="24" id="1Xm-AX-STc"/>
+                <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="s3l-dJ-hb4" secondAttribute="trailing" constant="16" id="2Tb-jh-6f2"/>
+                <constraint firstItem="d7x-l6-qBT" firstAttribute="top" secondItem="i2P-ci-Ndf" secondAttribute="top" id="6bV-QQ-gPC"/>
+                <constraint firstItem="Zij-Pi-7tY" firstAttribute="leading" secondItem="i2P-ci-Ndf" secondAttribute="leading" constant="16" id="8QD-on-EeI"/>
+                <constraint firstItem="XOw-Ws-ALc" firstAttribute="leading" secondItem="i2P-ci-Ndf" secondAttribute="leading" constant="16" id="CQj-uD-gXf"/>
+                <constraint firstItem="2fJ-zb-iYc" firstAttribute="trailing" secondItem="s3l-dJ-hb4" secondAttribute="trailing" id="GZs-OE-UwS"/>
+                <constraint firstItem="pB0-Tv-rac" firstAttribute="top" secondItem="XOw-Ws-ALc" secondAttribute="bottom" constant="10" id="Ji8-9S-2O1"/>
+                <constraint firstItem="d7x-l6-qBT" firstAttribute="trailing" secondItem="i2P-ci-Ndf" secondAttribute="trailing" id="XQH-hR-DYv"/>
+                <constraint firstItem="s3l-dJ-hb4" firstAttribute="top" secondItem="d7x-l6-qBT" secondAttribute="bottom" constant="40" id="Y3D-NZ-Zc4"/>
+                <constraint firstItem="XOw-Ws-ALc" firstAttribute="top" secondItem="2fJ-zb-iYc" secondAttribute="bottom" constant="32" id="YxD-eL-FxX"/>
+                <constraint firstItem="d7x-l6-qBT" firstAttribute="leading" secondItem="i2P-ci-Ndf" secondAttribute="leading" id="ZL7-GX-VAA"/>
+                <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="XOw-Ws-ALc" secondAttribute="trailing" constant="16" id="n6L-ow-Bcg"/>
+                <constraint firstItem="i2P-ci-Ndf" firstAttribute="bottom" secondItem="Zij-Pi-7tY" secondAttribute="bottom" constant="40" id="nDW-iR-WgN"/>
+                <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="Zij-Pi-7tY" secondAttribute="trailing" constant="16" id="rXf-dc-dgl"/>
+                <constraint firstItem="2fJ-zb-iYc" firstAttribute="leading" secondItem="s3l-dJ-hb4" secondAttribute="leading" id="tZj-xs-7kJ"/>
+                <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="pB0-Tv-rac" secondAttribute="trailing" constant="16" id="x0L-3j-sKV"/>
+                <constraint firstItem="s3l-dJ-hb4" firstAttribute="leading" secondItem="i2P-ci-Ndf" secondAttribute="leading" constant="16" id="zWB-qg-02n"/>
+            </constraints>
+            <point key="canvasLocation" x="-330" y="-528"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="base100">
+            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="base75">
+            <color red="0.25490196078431371" green="0.30196078431372547" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black0">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary_lighten">
+            <color red="1" green="0.51372549019607838" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

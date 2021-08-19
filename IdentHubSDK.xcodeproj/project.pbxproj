@@ -109,6 +109,7 @@
 		840DEA69262852EC0033A2D8 /* DocumentPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DEA68262852EC0033A2D8 /* DocumentPickerViewModel.swift */; };
 		840DEA6F26285B4C0033A2D8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DEA6E26285B4C0033A2D8 /* LocationManager.swift */; };
 		840DEA7726288F420033A2D8 /* StepsProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DEA7626288F420033A2D8 /* StepsProgressView.swift */; };
+		840F402726CD266D000A4612 /* ConfirmApplicationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840F402626CD266D000A4612 /* ConfirmApplicationViewController.xib */; };
 		84115892261F3068007B54DF /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84115891261F3068007B54DF /* ViewExtensions.swift */; };
 		8411589E261F3840007B54DF /* SelfieOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411589D261F3840007B54DF /* SelfieOverlayView.swift */; };
 		841158A6261F384B007B54DF /* SelfieOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841158A5261F384B007B54DF /* SelfieOverlayView.xib */; };
@@ -368,6 +369,7 @@
 		840DEA68262852EC0033A2D8 /* DocumentPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerViewModel.swift; sourceTree = "<group>"; };
 		840DEA6E26285B4C0033A2D8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		840DEA7626288F420033A2D8 /* StepsProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProgressView.swift; sourceTree = "<group>"; };
+		840F402626CD266D000A4612 /* ConfirmApplicationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmApplicationViewController.xib; sourceTree = "<group>"; };
 		84115891261F3068007B54DF /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		8411589D261F3840007B54DF /* SelfieOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieOverlayView.swift; sourceTree = "<group>"; };
 		841158A5261F384B007B54DF /* SelfieOverlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieOverlayView.xib; sourceTree = "<group>"; };
@@ -641,8 +643,9 @@
 		0C9E56DA25C01E4D00D68B96 /* ConfirmApplication */ = {
 			isa = PBXGroup;
 			children = (
-				0C9E56DB25C01E6A00D68B96 /* ConfirmApplicationViewController.swift */,
 				0C9E56E325C01E9E00D68B96 /* ConfirmApplicationViewModel.swift */,
+				0C9E56DB25C01E6A00D68B96 /* ConfirmApplicationViewController.swift */,
+				840F402626CD266D000A4612 /* ConfirmApplicationViewController.xib */,
 			);
 			path = ConfirmApplication;
 			sourceTree = "<group>";
@@ -1604,6 +1607,7 @@
 				847D4280260B555D0067ED63 /* TermsViewController.xib in Resources */,
 				840DEA612628529B0033A2D8 /* DocumentPickerViewController.xib in Resources */,
 				84281695261F02E000A7BE37 /* InfoStatusView.xib in Resources */,
+				840F402726CD266D000A4612 /* ConfirmApplicationViewController.xib in Resources */,
 				840DEA472628351F0033A2D8 /* SelfieResultOverlayView.xib in Resources */,
 				84EAFCA826CC1E200008F0E3 /* StateView.xib in Resources */,
 				847242DE2631D3E500CC8DE6 /* RequestsViewController.xib in Resources */,

@@ -6,81 +6,38 @@
 import UIKit
 
 /// UIViewController which displays screen with the documents to read and sign later.
-final internal class ConfirmApplicationViewController: SolarisViewController {
+final internal class ConfirmApplicationViewController: UIViewController {
+
+    // MARK: - Outlets -
+    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var documentsTableView: UITableView!
+    @IBOutlet var downloadAllDocumentsButton: DownloadDocumentsButton!
+    @IBOutlet var actionButton: ActionRoundedButton!
+    @IBOutlet var tableHeightConstraint: NSLayoutConstraint!
+
+    // MARK: - Properties -
 
     var viewModel: ConfirmApplicationViewModel!
 
-    enum Constants {
-        enum FontSize {
-            static let big: CGFloat = 20
-            static let normal: CGFloat = 14
-        }
-
-        enum ConstraintsOffset {
-            static let extended: CGFloat = 40
-            static let normal: CGFloat = 24
-            static let sides: CGFloat = 16
-        }
-
-        enum Size {
-            static let rowHeight: CGFloat = 54
-        }
-    }
-
-    private lazy var currentStepView: IdentificationProgressView = {
-        let view = IdentificationProgressView(currentStep: .documents)
-        view.backgroundColor = .sdkColor(.black0)
-        return view
-    }()
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.sdkColor(.base100)
-        label.font = label.font.withSize(Constants.FontSize.big)
-        label.text = Localizable.SignDocuments.ConfirmApplication.confirmYourApplication
-        return label
-    }()
-
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = UIColor.sdkColor(.base75)
-        label.font = label.font.withSize(Constants.FontSize.normal)
-        label.text = Localizable.SignDocuments.ConfirmApplication.description
-        return label
-    }()
-
-    private lazy var documentsTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.separatorStyle = .none
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = Constants.Size.rowHeight
-        tableView.allowsSelection = false
-        tableView.showsVerticalScrollIndicator = false
-        tableView.isScrollEnabled = false
-        tableView.backgroundColor = .sdkColor(.black0)
-        tableView.dataSource = self
-        tableView.register(DocumentTableViewCell.self, forCellReuseIdentifier: DocumentTableViewCell.ReuseIdentifier)
-        return tableView
-    }()
-
-    private lazy var downloadAllDocumentsButton: DownloadDocumentsButton = {
-        let button = DownloadDocumentsButton()
-        button.downloadAllDocumentsAction = { self.viewModel.downloadAndSaveAllDocuments() }
-        button.isEnabled = false
-        return button
-    }()
-
-    private lazy var actionButton: ActionRoundedButton = {
-        let button = ActionRoundedButton()
-        button.setTitle(Localizable.SignDocuments.ConfirmApplication.sendCodeToSign, for: .normal)
-        button.currentAppearance = .dimmed
-        button.isEnabled = false
-        return button
-    }()
-
     private let documentExporter: DocumentExporter = DocumentExporterService()
     private var documentCell: DocumentTableViewCell?
+    private let rowHeight: CGFloat = 54
+
+    /// Initialized with view model object
+    /// - Parameter viewModel: view model object
+    init(_ viewModel: ConfirmApplicationViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: String(describing: Self.self), bundle: Bundle(for: Self.self))
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Life cycle methods -
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,61 +45,25 @@ final internal class ConfirmApplicationViewController: SolarisViewController {
     }
 
     private func setUpUI() {
-        containerView.addSubviews([
-            currentStepView,
-            titleLabel,
-            descriptionLabel,
-            documentsTableView,
-            downloadAllDocumentsButton,
-            actionButton
-        ])
 
-        currentStepView.addConstraints { [
-            $0.equal(.top),
-            $0.equal(.leading),
-            $0.equal(.trailing)
-        ]
+        titleLabel.text = Localizable.SignDocuments.ConfirmApplication.confirmYourApplication
+        descriptionLabel.text = Localizable.SignDocuments.ConfirmApplication.description
+
+        currentStepView.setCurrentStep(.documents)
+
+        documentsTableView.register(DocumentTableViewCell.self, forCellReuseIdentifier: DocumentTableViewCell.ReuseIdentifier)
+
+        actionButton.setTitle(Localizable.SignDocuments.ConfirmApplication.sendCodeToSign, for: .normal)
+        actionButton.currentAppearance = .dimmed
+
+        downloadAllDocumentsButton.downloadAllDocumentsAction = {
+            self.viewModel.downloadAndSaveAllDocuments()
         }
-
-        titleLabel.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.sides),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.sides)
-        ]
-        }
-
-        descriptionLabel.addConstraints { [
-            $0.equalTo(titleLabel, .top, .bottom, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.sides),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.sides)
-        ]
-        }
-
-        documentsTableView.addConstraints { [
-            $0.equalTo(descriptionLabel, .top, .bottom, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.leading),
-            $0.equal(.trailing)
-        ]
-        }
-
-        downloadAllDocumentsButton.addConstraints { [
-            $0.equalTo(documentsTableView, .top, .bottom, constant: Constants.ConstraintsOffset.sides),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.sides)
-        ]
-        }
-
-        actionButton.addConstraints { [
-            $0.equalTo(downloadAllDocumentsButton, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.sides),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.sides),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended)
-        ]
-        }
-
-        actionButton.addTarget(self, action: #selector(signDocuments), for: .touchUpInside)
     }
 
-    @objc private func signDocuments() {
+    // MARK: - Action methods -
+
+    @IBAction func signDocuments() {
         viewModel.signDocuments()
 
         actionButton.isEnabled = false
@@ -152,15 +73,13 @@ final internal class ConfirmApplicationViewController: SolarisViewController {
 // MARK: ConfirmApplicationViewModelDelegate methods
 
 extension ConfirmApplicationViewController: DocumentReceivable {
+
     func didFetchDocuments() {
         documentsTableView.reloadData()
         downloadAllDocumentsButton.isEnabled = true
         actionButton.currentAppearance = .orange
         let numberOfCells = CGFloat(viewModel.documents.count)
-        documentsTableView.addConstraints { [
-            $0.equalConstant(.height, Constants.Size.rowHeight * numberOfCells)
-        ]
-        }
+        tableHeightConstraint.constant = numberOfCells * rowHeight
     }
 
     func didFinishLoadingDocument() {

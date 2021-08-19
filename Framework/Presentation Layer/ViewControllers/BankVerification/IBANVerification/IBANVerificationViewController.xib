@@ -58,7 +58,7 @@
                         <constraint firstAttribute="height" constant="48" id="vbJ-3P-Ms6"/>
                     </constraints>
                     <color key="textColor" name="base75"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-E0-FsY">
@@ -69,7 +69,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkl-xL-HRh" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
                     <rect key="frame" x="16" y="774" width="382" height="48"/>
-                    <color key="backgroundColor" red="1" green="0.3921568627" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" name="primary_lighten"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="44L-uW-ZKw"/>
                     </constraints>
@@ -82,7 +82,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="initiatePaymentVerification:" destination="-1" eventType="touchUpInside" id="61Y-0c-cGS"/>
+                        <action selector="initiatePaymentVerification:" destination="-1" eventType="touchUpInside" id="W2C-Vi-l0i"/>
                     </connections>
                 </button>
             </subviews>
@@ -123,6 +123,9 @@
         </namedColor>
         <namedColor name="error">
             <color red="0.88627450980392153" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary_lighten">
+            <color red="1" green="0.51372549019607838" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

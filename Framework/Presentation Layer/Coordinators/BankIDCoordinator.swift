@@ -166,9 +166,9 @@ private extension BankIDCoordinator {
     }
 
     private func presentConfirmApplication() {
-        let confirmApplicationViewController = ConfirmApplicationViewController()
-        let confirmApplicationViewModel = ConfirmApplicationViewModel(flowCoordinator: self, delegate: confirmApplicationViewController, verificationService: appDependencies.verificationService)
-        confirmApplicationViewController.viewModel = confirmApplicationViewModel
+        let confirmApplicationViewModel = ConfirmApplicationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService)
+        let confirmApplicationViewController = ConfirmApplicationViewController(confirmApplicationViewModel)
+        confirmApplicationViewModel.documentDelegate = confirmApplicationViewController
         presenter.push(confirmApplicationViewController, animated: true, completion: nil)
         updateBankIDStep(step: .signDocuments(step: .confirmApplication))
     }
