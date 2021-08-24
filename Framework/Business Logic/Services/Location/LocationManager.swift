@@ -20,10 +20,9 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         if locationManager == nil {
             locationManager = CLLocationManager()
             locationManager?.delegate = self
-            locationManager?.requestWhenInUseAuthorization()
-        } else {
-            checkLocationStatus(status: CLLocationManager.authorizationStatus())
         }
+
+        checkLocationStatus(status: CLLocationManager.authorizationStatus())
     }
 
     func requestDeviceLocation(completionHandler: @escaping((CLLocation?, Error?) -> Void)) {
@@ -40,13 +39,18 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         case .authorizedAlways,
              .authorizedWhenInUse:
             completionHandler()
-        default:
+        case .denied,
+             .restricted:
             if let completion = completionLocationHandler {
                 completion(nil, APIError.locationAccessError)
             }
 
             print("WARNING: Location permission might be mandatory for certain clients, please check with your team, especially when we do the zipping.")
             print("INFO: We are using the cached location while the user is checking Selfie, Document, NFC scanner or while zipping.")
+        case .notDetermined:
+            locationManager?.requestWhenInUseAuthorization()
+        @unknown default:
+            locationManager?.requestWhenInUseAuthorization()
         }
     }
 
