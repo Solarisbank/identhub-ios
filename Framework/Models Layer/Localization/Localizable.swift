@@ -179,6 +179,7 @@ enum Localizable {
             static let multipleFacesDetected = "Multiple faces detected"
             static let deviceNotSteady = "Device not steady"
             static let noFace = "Looking for a face"
+            static let unknown = "Occurs unknown issue"
         }
 
         enum Errors {
@@ -193,6 +194,7 @@ enum Localizable {
             static let alertTitle = "Selfie scan failed"
             static let alertMessage = "It was not possible to take your selfie.\n\nThis process is mandatory for your onboarding process."
             static let multipleFaces = "Camera detects multiple faces. Please make sure you're scan single person face."
+            static let resetScannerNotAllowed = "Session still active. Please continue."
         }
 
         enum Liveness {
@@ -228,11 +230,13 @@ enum Localizable {
             static let back = "back"
             static let insideLeft = "inside left"
             static let insideRight = "inside right"
+            static let undefined = "document side not defined"
         }
 
         enum Warning {
             static let deviceNotSteady = "Device not steady"
             static let tooDark = "Too dark"
+            static let unknown = "Something went wrong"
         }
 
         enum Error {
@@ -240,6 +244,9 @@ enum Localizable {
             static let timeout = "Scan timed out"
             static let alertTitle = "Document scan failed"
             static let alertMessage = "It was not possible to scan your document.\n\nThis process is mandatory for your onboarding process."
+            static let takeSnapshotNotAllowed = "Step take document snapshot is not active anymore."
+            static let moveToNextStepNotAllowed = "Step is not successfully finished."
+            static let resetCurrentStepNotAllowed = "Step still active."
         }
 
         enum Information {

@@ -38,19 +38,24 @@ final class DefaultAPIClient: APIClient {
         answerType: DataType.Type,
         completion: @escaping (Result<DataType, APIError>) -> Void
     ) {
-        let urlRequest = request.asURLRequest()
-        let task = defaultUrlSession.dataTask(with: urlRequest) { [weak self] data, urlResponse, error in
-            if error != nil {
-                completion(.failure(.unknownError))
-            }
+        do {
+            let urlRequest = try request.asURLRequest()
 
-            if let self = self,
-               let response = urlResponse as? HTTPURLResponse,
-               let data = data {
-                completion(self.mapResponse(response: response, data: data))
+            let task = defaultUrlSession.dataTask(with: urlRequest) { [weak self] data, urlResponse, error in
+                if error != nil {
+                    completion(.failure(.unknownError))
+                }
+
+                if let self = self,
+                   let response = urlResponse as? HTTPURLResponse,
+                   let data = data {
+                    completion(self.mapResponse(response: response, data: data))
+                }
             }
+            task.resume()
+        } catch {
+            completion(.failure(.requestError))
         }
-        task.resume()
     }
 
     /// Executes download url request.
@@ -62,14 +67,19 @@ final class DefaultAPIClient: APIClient {
         request: Request,
         completion: @escaping (Result<URL?, APIError>) -> Void
     ) {
-        let urlRequest = request.asURLRequest()
-        let task = defaultUrlSession.downloadTask(with: urlRequest) { location, response, error in
-            if error != nil {
-                completion(.failure(.unknownError))
+        do {
+            let urlRequest = try request.asURLRequest()
+
+            let task = defaultUrlSession.downloadTask(with: urlRequest) { location, response, error in
+                if error != nil {
+                    completion(.failure(.unknownError))
+                }
+                completion(.success(location))
             }
-            completion(.success(location))
+            task.resume()
+        } catch {
+            completion(.failure(.requestError))
         }
-        task.resume()
     }
 
     // MARK: Private methods

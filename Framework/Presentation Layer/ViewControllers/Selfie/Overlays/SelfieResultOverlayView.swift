@@ -18,7 +18,7 @@ class SelfieResultOverlayView: UIView {
     var onConfirm: (() -> Void)?
 
     // MARK: - Public methods -
-    func setupUI() {
+    func configureUI() {
 
         retakeBtnTitle.text = Localizable.Selfie.retake
         confirmBtnTitle.text = Localizable.Selfie.confirm

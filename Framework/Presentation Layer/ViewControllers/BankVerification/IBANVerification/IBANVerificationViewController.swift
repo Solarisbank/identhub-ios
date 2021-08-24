@@ -31,17 +31,17 @@ final internal class IBANVerificationViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
 
         currentStepView.setCurrentStep(.bankVerification)
 

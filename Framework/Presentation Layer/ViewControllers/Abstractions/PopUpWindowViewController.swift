@@ -72,10 +72,10 @@ internal class PopUpWindowViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         view.addSubview(popUpWindowView)
 

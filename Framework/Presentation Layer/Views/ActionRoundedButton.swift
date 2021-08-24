@@ -52,15 +52,15 @@ class ActionRoundedButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setUpUI()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         titleLabel?.font = .systemFont(ofSize: Constants.FontSize.medium, weight: .bold)
         layer.cornerRadius = 4
 

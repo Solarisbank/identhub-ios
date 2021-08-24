@@ -23,15 +23,16 @@ final internal class DocumentPreviewViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        documentData = Data()
+        super.init(coder: coder)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         view.addSubview(webView)
         webView.addConstraints { $0.equalEdges() }
         webView.load(documentData, mimeType: "application/pdf", characterEncodingName: "utf-8", baseURL: URL(fileURLWithPath: ""))

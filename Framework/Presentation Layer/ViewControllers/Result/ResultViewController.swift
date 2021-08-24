@@ -16,7 +16,7 @@ final class ResultViewController: UIViewController {
 
     // MARK: - Private attributes -
 
-    private var viewModel: ResultViewModel
+    private var viewModel: ResultViewModel!
 
     /// Initialized with view model object
     /// - Parameter viewModel: view model object

@@ -6,7 +6,7 @@
 import UIKit
 import SafariServices
 
-class TermsViewController: SolarisViewController {
+class TermsViewController: UIViewController {
 
     // MARK: - Properties -
     @IBOutlet var descLabel: UILabel!
@@ -41,22 +41,12 @@ class TermsViewController: SolarisViewController {
 
     private func configureUI() {
 
-        configureContainerView()
-
         descLabel.text = Localizable.TermsConditions.description
         continueBtn.isEnabled = false
         viewModel.delegate = self
 
         viewModel.setupTermsText(termsText)
         updateContinueBtnDisplay()
-    }
-
-    private func configureContainerView() {
-        containerView.addSubview(termsContainerView)
-
-        containerView.addConstraints {
-            [ $0.equalTo(termsContainerView, .bottom, .bottom) ]
-        }
     }
 
     private func updateContinueBtnDisplay() {

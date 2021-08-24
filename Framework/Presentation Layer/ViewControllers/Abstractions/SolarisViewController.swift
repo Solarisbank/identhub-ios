@@ -33,10 +33,10 @@ internal class SolarisViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         view.addSubviews([
             containerView,
             bottomSolarisView

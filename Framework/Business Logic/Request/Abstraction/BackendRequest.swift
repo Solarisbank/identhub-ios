@@ -30,4 +30,5 @@ public enum RequestError: Error {
     case emptyIUID // identificationUID
     case emptyToken
     case emptyDUID // documentUID
+    case invalidURL
 }

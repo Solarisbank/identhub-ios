@@ -27,7 +27,7 @@ class CircleProgressView: NibView {
         contentView.frame = bounds
     }
 
-    override func setupUI() {
+    override func configureUI() {
         backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
     }
 }

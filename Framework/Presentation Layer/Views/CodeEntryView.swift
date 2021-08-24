@@ -23,14 +23,15 @@ private class SingleDigitTextField: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setUpUI()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         backgroundColor = .white
         textColor = .sdkColor(.base75)
         layer.cornerRadius = Constants.cornerRadius
@@ -120,14 +121,15 @@ internal class CodeEntryView: UIView {
     init(delegate: CodeEntryViewDelegate) {
         super.init(frame: .zero)
         self.delegate = delegate
-        setUpUI()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         addSubviews([
             containerView
         ])

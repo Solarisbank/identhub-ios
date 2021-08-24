@@ -11,7 +11,7 @@ import AudioToolbox
 final class DocumentScannerViewController: UIViewController {
 
     // MARK: - Private attributes
-    private var viewModel: DocumentScannerViewModel
+    private var viewModel: DocumentScannerViewModel!
     private var currentStep: DocumentScannerStep!
     private var autodetectTimer: Timer?
     private var warningsTimer: Timer?
@@ -77,7 +77,7 @@ final class DocumentScannerViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) had not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - Lifecycle methods -
@@ -119,14 +119,8 @@ extension DocumentScannerViewController: DocumentScannerDelegate {
     }
 
     func documentScanner(_ scanner: DocumentScanner, onFail error: DocumentScannerError) {
-        stopProcessingWarnings()
-        stopAutodetectTimer()
-
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-
+        occursScannerFail()
         documentOverlay.state = .failed(error.text)
-        viewModel.cleanData()
-        displayScannerError()
     }
 
     func documentScanner(_ scanner: DocumentScanner, onStepUpdate step: DocumentScannerStep) {
@@ -161,7 +155,21 @@ extension DocumentScannerViewController: DocumentScannerDelegate {
     }
 
     func documentScanner(_ scanner: DocumentScanner, onStepFail error: DocumentScannerStepError) {
-        fatalError("Should not reach document scanner onStepFail")
+        occursScannerFail()
+        var errorDesc = ""
+
+        switch error {
+        case .takeSnapshotNotAllowed:
+            errorDesc = Localizable.DocumentScanner.Error.takeSnapshotNotAllowed
+        case .moveToNextStepNotAllowed:
+            errorDesc = Localizable.DocumentScanner.Error.moveToNextStepNotAllowed
+        case .resetCurrentStepNotAllowed:
+            errorDesc = Localizable.DocumentScanner.Error.resetCurrentStepNotAllowed
+        default:
+            errorDesc = Localizable.DocumentScanner.Warning.unknown
+        }
+
+        documentOverlay.state = .failed(errorDesc)
     }
 
     func documentScanner(_ scanner: DocumentScanner, onStepWarnings warnings: Set<Int>) {
@@ -229,6 +237,16 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
         viewModel.closeScanner()
 
         dismiss(animated: true)
+    }
+
+    private func occursScannerFail() {
+        stopProcessingWarnings()
+        stopAutodetectTimer()
+
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+
+        viewModel.cleanData()
+        displayScannerError()
     }
 
     private func displayScannerError() {

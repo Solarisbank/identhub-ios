@@ -41,7 +41,8 @@ extension DocumentScannerAssetPlacement {
         case .paperId:
             return Builder.paperId(forSide: scannerInfo.step.fileSide)
         default:
-            fatalError("Requested asset configuration for \(scannerInfo.config.type) document type. ")
+            print("Requested asset configuration for \(scannerInfo.config.type) document type. ")
+            return Builder.idCard()
         }
     }
 

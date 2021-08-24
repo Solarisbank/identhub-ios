@@ -13,7 +13,8 @@ extension UIView {
         let nibName = String(describing: Self.self)
         let views = bundle.loadNibNamed(nibName, owner: self, options: nil)
         guard let viewFromNib = views?.first as? Self else {
-            fatalError("Could not load view from \(nibName)")
+            print("Could not load view from \(nibName)")
+            return UIView() as! Self
         }
         return viewFromNib
     }

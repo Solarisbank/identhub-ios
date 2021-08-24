@@ -34,9 +34,11 @@ extension FileSide {
         case .insideRight:
             return Localizable.DocumentScanner.DocFileSide.insideRight
         case .undefined:
-            fatalError("undefined should never happen")
+            print("undefined should never happen")
+            return Localizable.DocumentScanner.DocFileSide.undefined
         @unknown default:
-            fatalError("Missing FileSide.text for \(self)")
+            print("Missing FileSide.text for \(self)")
+            return Localizable.DocumentScanner.DocFileSide.undefined
         }
     }
 }
@@ -50,7 +52,8 @@ extension DocumentScannerStepWarning {
         case .documentTooDark:
             return Localizable.DocumentScanner.Warning.tooDark
         @unknown default:
-            fatalError("Missing DocumentScannerStepWarning.text for \(self)")
+            print("Missing DocumentScannerStepWarning.text for \(self)")
+            return Localizable.DocumentScanner.Warning.unknown
         }
     }
 
@@ -61,7 +64,8 @@ extension DocumentScannerStepWarning {
         case .documentTooDark:
             return 1
         @unknown default:
-            fatalError("Missing Value for DocumentScannerStepWarning.priority case \(self)")
+            print("Missing Value for DocumentScannerStepWarning.priority case \(self)")
+            return -1
         }
     }
 }

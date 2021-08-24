@@ -122,10 +122,10 @@ final internal class SignDocumentsViewController: SolarisViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         containerView.addSubviews([
             currentStepView,
             mainContainerView,

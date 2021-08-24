@@ -21,7 +21,8 @@ private class LineProgressView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setUp()
     }
 
     private func setUp() {
@@ -96,17 +97,17 @@ internal class IdentificationProgressView: UIView {
     init(currentStep: CurrentStep) {
         super.init(frame: .zero)
         backgroundColor = .white
-        setUpUI()
+        configureUI()
         setCurrentStep(currentStep)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         backgroundColor = .white
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         addSubviews([
             titleLabel,
             currentStepLabel,

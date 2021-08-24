@@ -77,14 +77,15 @@ final internal class ErrorView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setUpUI()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         backgroundColor = .white
 
         addSubviews([

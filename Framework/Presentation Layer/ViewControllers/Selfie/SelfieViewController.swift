@@ -29,7 +29,7 @@ class SelfieViewController: UIViewController {
     private lazy var selfieResultsOverlay: SelfieResultOverlayView = {
         let overlay = SelfieResultOverlayView.fromNib()
 
-        overlay.setupUI()
+        overlay.configureUI()
 
         overlay.onConfirm = { [unowned self] in
             guard self.viewModel!.saveResult() else { return }

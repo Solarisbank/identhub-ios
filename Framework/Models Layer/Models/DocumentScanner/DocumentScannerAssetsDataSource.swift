@@ -48,7 +48,8 @@ private extension DocumentScannerAssetsDataSource {
             return "frenchid_"
 
         default:
-            fatalError("Document type is not supported.")
+            print("Document type is not supported.")
+            return "unsupported_"
         }
     }
 
@@ -67,7 +68,8 @@ private extension DocumentScannerAssetsDataSource {
             return "right_"
 
         default:
-            fatalError("Side is not supported")
+            print("Side is not supported")
+            return "unsupported_"
         }
     }
 

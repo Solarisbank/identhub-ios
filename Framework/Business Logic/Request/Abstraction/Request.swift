@@ -70,7 +70,7 @@ extension Request {
 // MARK: Conformance to URLRequestConvertible protocol.
 
 extension URLRequestConvertible where Self: Request {
-    func asURLRequest() -> URLRequest {
+    func asURLRequest() throws -> URLRequest {
         let urlPath = basePath
             .appending(apiPath)
             .appending(path)
@@ -87,7 +87,7 @@ extension URLRequestConvertible where Self: Request {
             }
         }
         guard let url = components?.url else {
-            fatalError("Could not initialize URL for path: \(urlPath)")
+            throw RequestError.invalidURL
         }
         var urlRequest = URLRequest(url: url)
 

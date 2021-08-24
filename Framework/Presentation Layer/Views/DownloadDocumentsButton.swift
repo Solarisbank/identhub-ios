@@ -25,12 +25,12 @@ final internal class DownloadDocumentsButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setUpUI()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setUpUI()
+        configureUI()
     }
 
     // MARK: - Public methods -
@@ -43,7 +43,7 @@ final internal class DownloadDocumentsButton: UIButton {
 
     // MARK: - Internal methods -
 
-    private func setUpUI() {
+    private func configureUI() {
         backgroundColor = UIColor.sdkColor(.base05)
         layer.cornerRadius = Constants.cornerRadius
         layer.masksToBounds = true

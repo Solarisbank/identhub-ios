@@ -16,7 +16,7 @@ class LocationViewController: UIViewController {
     @IBOutlet var continueBtn: UIButton!
 
     // MARK: - Private attributes -
-    private var viewModel: LocationViewModel
+    private var viewModel: LocationViewModel!
 
     /// Initialized with view model object
     /// - Parameter viewModel: view model object

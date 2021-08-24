@@ -41,10 +41,10 @@ final internal class ConfirmApplicationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
 
         titleLabel.text = Localizable.SignDocuments.ConfirmApplication.confirmYourApplication
         descriptionLabel.text = Localizable.SignDocuments.ConfirmApplication.description

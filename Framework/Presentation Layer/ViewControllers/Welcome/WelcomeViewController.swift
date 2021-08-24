@@ -16,7 +16,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet var logoFrame: UIImageView!
     @IBOutlet var startBtn: UIButton!
 
-    private var viewModel: WelcomeViewModel
+    private var viewModel: WelcomeViewModel!
     private lazy var logoAnimator: WelcomeLogoAnimator = {
         return WelcomeLogoAnimator(logoImage, logoFrameImage: logoFrame)
     }()

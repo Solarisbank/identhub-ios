@@ -29,7 +29,7 @@ final internal class StateView: NibView {
         containerView.frame = bounds
     }
 
-    override func setupUI() {
+    override func configureUI() {
 
         stateDescriptionLabel.isHidden = !hasDescriptionLabel
     }

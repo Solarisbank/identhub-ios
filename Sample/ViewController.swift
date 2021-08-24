@@ -21,7 +21,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         statusView.isHidden = true
 
-        setupUI()
+        configureUI()
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        true
     }
 
     // MARK: - Action methods -
@@ -32,7 +36,7 @@ class ViewController: UIViewController {
 
     // MARK: - Internal methods -
 
-    private func setupUI() {
+    private func configureUI() {
         sessionURLTV.layer.borderColor = UIColor.gray.cgColor
         sessionURLTV.layer.borderWidth = 1
         sessionURLTV.layer.cornerRadius = 5

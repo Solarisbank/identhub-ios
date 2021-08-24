@@ -50,7 +50,7 @@ enum KYCZipService {
         case .unknown:
             return Localizable.Zipper.Error.unknown
         @unknown default:
-            fatalError("Unexpected error occurred for new case \(zipperError)")
+            return zipperError.description
         }
     }
 }

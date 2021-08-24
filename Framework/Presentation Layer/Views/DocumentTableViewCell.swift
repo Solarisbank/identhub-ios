@@ -97,14 +97,15 @@ final internal class DocumentTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUpUI()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         contentView.backgroundColor = .sdkColor(.black0)
 
         contentView.addSubviews([

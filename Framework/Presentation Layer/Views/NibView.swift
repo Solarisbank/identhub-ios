@@ -23,7 +23,7 @@ class NibView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        setupUI()
+        configureUI()
     }
 
     // MARK: - Internal methods -
@@ -34,7 +34,7 @@ class NibView: UIView {
         print("Override this method to initiate UI components")
     }
 
-    internal func setupUI() {
+    internal func configureUI() {
         print("Override this method to setup UI components")
     }
 }

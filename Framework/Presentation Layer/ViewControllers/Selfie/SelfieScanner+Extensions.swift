@@ -24,7 +24,8 @@ extension SelfieScannerWarning {
         case .multipleFacesDetected:
             return 6
         @unknown default:
-            fatalError("Missing SelfieScannerWarning.priority for \(self)")
+            print("Missing SelfieScannerWarning.priority for \(self)")
+            return -1
         }
     }
 
@@ -45,7 +46,8 @@ extension SelfieScannerWarning {
         case .deviceNotSteady:
             return Localizable.Selfie.Warnings.deviceNotSteady
         @unknown default:
-            fatalError("Missing SelfieScannerWarning.text for \(self)")
+            print("Missing SelfieScannerWarning.text for \(self)")
+            return Localizable.Selfie.Warnings.unknown
         }
     }
 }
@@ -83,11 +85,12 @@ extension SelfieScannerError {
         case .multipleFacesDetected:
             return Localizable.Selfie.Errors.multipleFaces
         case .resetScannerNotAllowed:
-            return ""
+            return Localizable.Selfie.Errors.resetScannerNotAllowed
         case .unknown:
             return Localizable.Selfie.Errors.unknown
         @unknown default:
-            fatalError("Missing SelfieScannerError.text for \(self)")
+            print("Missing SelfieScannerError.text for \(self)")
+            return Localizable.Selfie.Errors.unknown
         }
     }
 }

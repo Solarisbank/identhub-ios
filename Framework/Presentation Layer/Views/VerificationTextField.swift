@@ -49,15 +49,15 @@ internal class VerificationTextField: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setUpUI()
+        configureUI()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setUpUI()
+        configureUI()
     }
 
-    private func setUpUI() {
+    private func configureUI() {
         delegate = self
         backgroundColor = .white
         layer.cornerRadius = Constants.cornerRadius

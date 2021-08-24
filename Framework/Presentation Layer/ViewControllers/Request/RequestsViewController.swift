@@ -16,7 +16,7 @@ class RequestsViewController: UIViewController {
     @IBOutlet var progressView: CircleProgressView!
 
     // MARK: - Private attributes -
-    private var viewModel: RequestsViewModel
+    private var viewModel: RequestsViewModel!
 
     /// Initialized with view model object
     /// - Parameter viewModel: view model object

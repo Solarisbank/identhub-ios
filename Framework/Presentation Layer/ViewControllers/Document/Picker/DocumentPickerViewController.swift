@@ -15,7 +15,7 @@ class DocumentPickerViewController: UIViewController {
     @IBOutlet var continueBtn: UIButton!
     @IBOutlet var documentTypesTable: UITableView!
     @IBOutlet var tableViewConstraint: NSLayoutConstraint!
-    private var viewModel: DocumentPickerViewModel
+    private var viewModel: DocumentPickerViewModel!
 
     /// Initialized with view model object
     /// - Parameter viewModel: view model object
