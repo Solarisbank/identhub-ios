@@ -7,315 +7,307 @@ import Foundation
 
 enum Localizable {
     enum IdentificationProgressView {
-        static let identificationProgress = "Identification progress"
-        static let phoneVerification = "Phone verification"
-        static let bankVerification = "Bank verification"
-        static let documents = "Sign documents"
+        static let identificationProgress = "progress_view_progress".localized()
+        static let phoneVerification = "progress_view_phone_verification".localized()
+        static let bankVerification = "progress_view_bank_verification".localized()
+        static let documents = "progress_view_sign_documents".localized()
     }
 
     enum Common {
-        static let next = "Next"
-        static let quit = "Quit"
-        static let continueBtn = "Continue"
-        static let back = "Back"
-        static let poweredBySolarisBank = "Powered by Solarisbank"
-        static let verifying = "Veryfing..."
-        static let downloadAllDocuments = "Download all documents"
-        static let dismiss = "Dismiss"
-        static let tryAgain = "Try again"
-        static let cancel = "Cancel"
-        static let settings = "Settings"
-        static let defaultErr = "Something went wrong"
+        static let next = "common_next".localized()
+        static let quit = "common_quit".localized()
+        static let continueBtn = "common_continue_button".localized()
+        static let back = "common_back".localized()
+        static let poweredBySolarisBank = "common_powered_by_solarisbank".localized()
+        static let verifying = "common_verifying".localized()
+        static let downloadAllDocuments = "common_download_all_documents".localized()
+        static let dismiss = "common_dismiss".localized()
+        static let tryAgain = "common_try_again".localized()
+        static let cancel = "common_cancel".localized()
+        static let settings = "common_settings".localized()
+        static let defaultErr = "common_generic_error".localized()
     }
 
     enum Quiting {
-        static let title = "Are you sure you want to quit onboarding process?"
-        static let description = "Your progress will be lost. You will be required to repeat the steps next time."
-        static let stay = "Stay"
+        static let title = "quitting_title".localized()
+        static let description = "quitting_description".localized()
+        static let stay = "quitting_stay_action".localized()
     }
 
     enum StartIdentification {
-        static let startIdentification = "Start identification"
-        static let instructionDisclaimer = "In order to complete the identification process, you will be asked to:"
-        static let instructionSteps = "1. Verify your phone number with TAN. \n2. Identify yourself using your bank account. \n3. Read and sign proper consents, no need to print."
-        static let followVerificationForNumber = "Please follow the verification of your phone number to continue."
-        static let sendVerificationCode = "Send verification code"
+        static let startIdentification = "start_ident_title".localized()
+        static let instructionDisclaimer = "start_ident_disclaimer".localized()
+        static let instructionSteps = "start_ident_steps".localized()
+        static let followVerificationForNumber = "start_ident_follow_verification".localized()
+        static let sendVerificationCode = "start_ident_send_code".localized()
     }
 
     enum PhoneVerification {
-        static let enterCode = "Enter the 6-digit code sent to"
-        static let requestNewCodeTimer = "Request a new code in"
-        static let sendNewCode = "Send new code"
-        static let wrongTan = "Wrong TAN. You need to request a new TAN and try again."
-        static let submitCode = "Submit code"
-        static let requestNewCode = "Request new code"
+        static let enterCode = "phone_verification_enter_code".localized()
+        static let requestNewCodeTimer = "phone_verification_request_code_timer".localized()
+        static let sendNewCode = "phone_verification_send_new_code".localized()
+        static let wrongTan = "phone_verification_wrong_tan".localized()
+        static let submitCode = "phone_verification_submit_code".localized()
+        static let requestNewCode = "phone_verification_request_new_code".localized()
 
         enum Success {
-            static let title = "Phone verification successful"
-            static let description = "Continue to identify yourself with a bank account."
-            static let action = "Begin Bank Identification"
+            static let title = "phone_verification_success_title".localized()
+            static let description = "phone_verification_success_description".localized()
+            static let action = "phone_verification_success_action".localized()
         }
 
         enum Error {
-            static let title = "Phone verification error"
-            static let description = "Provided TAN is not valid."
-            static let action = "Retry TAN verification"
+            static let title = "phone_verification_error_title".localized()
+            static let description = "phone_verification_error_description".localized()
+            static let action = "phone_verification_error_action".localized()
         }
     }
 
     enum BankVerification {
         enum IBANVerification {
-            static let personalAccountDisclaimer = "Please provide the IBAN number of your personal bank account."
-            static let joinedAccountsDisclaimer = "Please note, that joined accounts will not pass the identification requirements."
-            static let IBAN = "IBAN"
-            static let IBANplaceholder = "e.g. DE21 1234  3456 4567 5678 6789"
-            static let wrongIBANFormat = "IBAN format is not valid!"
-            static let initiatePaymentVerification = "Initiate Payment Verification"
-            static let failureAlertTitle = "IBAN verification failed"
-            static let notValidIBAN = "Unfortunately the IBAN you entered is invalid or not supported."
-            static let retryOption = "Re-try with different IBAN"
-            static let fallbackOption = "Identify with alternative method"
+            static let personalAccountDisclaimer = "iban_verification_personal_account_disclaimer".localized()
+            static let joinedAccountsDisclaimer = "iban_verification_joined_accounts_disclaimer".localized()
+            static let IBAN = "iban_verification_iban".localized()
+            static let IBANplaceholder = "iban_verification_iban_input_place_holder".localized()
+            static let wrongIBANFormat = "iban_verification_error_iban_format".localized()
+            static let initiatePaymentVerification = "iban_verification_initiate_payment_verification".localized()
+            static let failureAlertTitle = "iban_verification_failure_alert_title".localized()
+            static let notValidIBAN = "iban_verification_error_invalid_iban".localized()
+            static let retryOption = "iban_verification_failure_alert_retry".localized()
+            static let fallbackOption = "iban_verification_failure_alert_fallback".localized()
         }
 
         enum PaymentVerification {
-            static let establishingSecureConnection = "Establishing secure connection to your bank…"
-            static let processingVerification = "Processing verification…"
+            static let establishingSecureConnection = "payment_verification_establishing_connection".localized()
+            static let processingVerification = "payment_verification_processing".localized()
 
             enum Success {
-                static let title = "Payment verification successful"
-                static let description = "Continue to sign documents to finish your identification process."
-                static let action = "Continue"
+                static let title = "payment_verification_success_title".localized()
+                static let description = "payment_verification_success_description".localized()
+                static let action = "payment_verification_success_action".localized()
             }
 
             enum Error {
-                static let title = "Payment verification error"
-                static let technicalIssueDescription = "Unfortunately a technical error occurred. Please try again."
-                static let action = "Retry IBAN verification"
+                static let title = "payment_verification_error_title".localized()
+                static let technicalIssueDescription = "payment_verification_error_description".localized()
+                static let action = "payment_verification_error_action".localized()
             }
         }
     }
 
     enum SignDocuments {
         enum ConfirmApplication {
-            static let confirmYourApplication = "Confirm your application"
-            static let description = "To finalise the process, please read following documents and sign it with a TAN sent to your mobile phone number."
-            static let sendCodeToSign = "Send code to sign"
+            static let confirmYourApplication = "sign_documents_application_confirm".localized()
+            static let description = "sign_documents_application_description".localized()
+            static let sendCodeToSign = "sign_documents_application_send_code".localized()
         }
 
         enum Sign {
-            static let transactionInfoPartOne = "Your transaction ID is "
-            static let transactionInfoPartTwo = "\nMake sure it is the same in SMS you just received."
-            static let submitAndSign = "Submit and sign"
-            static let requestCode = "Request new code"
-            static let applicationIsBeingProcessed = "Your application is being processed..."
-            static let downloadDocuments = "You will be able to download all of the signed documents soon."
+            static let transactionInfoPartOne = "sign_documents_transaction_info_part_one".localized()
+            static let transactionInfoPartTwo = "sign_documents_transaction_info_part_two".localized()
+            static let submitAndSign = "sign_documents_submit_and_sign".localized()
+            static let requestCode = "sign_documents_request_code".localized()
+            static let applicationIsBeingProcessed = "sign_documents_application_being_processed".localized()
+            static let downloadDocuments = "sign_documents_download_documents".localized()
         }
     }
-
+    
     enum FinishIdentification {
-        static let identificationSuccessful = "Identification successful!"
-        static let description = "You have completed the identification process! \nDownload documents and save in secure place, for future reference."
-        static let finish = "Finish"
+        static let identificationSuccessful = "finish_ident_successful_title".localized()
+        static let description = "finish_ident_successful_description".localized()
+        static let finish = "finish_ident_successful_action".localized()
     }
 
     enum Initial {
-        static let title = "Initiate"
-        static let description = ""
-        static let define = "Define identification method..."
-        static let info = "Obtain identification details..."
-        static let register = "Register identification method..."
-        static let prefetch = "Prefetch data..."
+        static let title = "initial_title".localized()
+        static let description = "initial_description".localized()
+        static let define = "initial_define".localized()
+        static let info = "initial_info".localized()
+        static let register = "initial_register".localized()
+        static let prefetch = "initial_prefetch".localized()
     }
 
     enum FetchData {
-        static let title = "Fetch data"
-        static let description = ""
-        static let person = "Fetch person data..."
-        static let location = "Fetch location data..."
-        static let ipAddress = "Fetch IP-address data..."
+        static let title = "fetch_data_title".localized()
+        static let description = "fetch_data_description".localized()
+        static let person = "fetch_data_person".localized()
+        static let location = "fetch_data_location".localized()
+        static let ipAddress = "fetch_data_ip_address".localized()
     }
 
     enum TermsConditions {
-        static let description = "In order to proceed, please carefully read and agree to the Privacy Statement and Terms & Conditions policies"
-        static let privacyText = "Privacy Statement"
-        static let termsText = "Terms & Conditions"
-        static let agreementLinks = "I agree to the \(TermsConditions.privacyText) & \(TermsConditions.termsText)"
-        static let continueBtn = "Continue"
+        static let description = "terms_description".localized()
+        static let privacyText = "terms_privacy_text".localized()
+        static let termsText = "terms_terms_text".localized()
+        static let agreementLinks = "terms_agreement_links".localized()
+        static let continueBtn = "terms_continue_button".localized()
     }
 
     enum Welcome {
-        static let cameraTitle = "Smile for the camera"
-        static let cameraDesc = "Your selfie will be compared to the one in your ID document. Don’t worry, it’s never going to see the light of day, promise!"
+        static let cameraTitle = "welcome_camera_title".localized()
+        static let cameraDesc = "welcome_camera_description".localized()
 
-        static let documentTitle = "Scan your ID document"
-        static let documentDesc = """
-        With this we can make sure that you’re really who
-        you say you are and avoid identity theft.
-        """
+        static let documentTitle = "welcome_document_title".localized()
+        static let documentDesc = "welcome_document_description".localized()
 
-        static let locationTitle = "Submit your case"
-        static let locationDesc = """
-        Last thing you need to do is enabling your location
-        & submitting your case!
-        How easy it that?
-        """
+        static let locationTitle = "welcome_location_title".localized()
+        static let locationDesc = "welcome_location_description".localized()
     }
 
     enum Selfie {
-        static let selfieTitle = "Take a selfie"
-        static let scanning = "scanning..."
-        static let detected = "face detected"
-        static let success = "Scan Successful"
-        static let retake = "Retake"
-        static let confirm = "Confirm"
-        static let confirmSelfie = "Confirm Selfie"
+        static let selfieTitle = "selfie_title".localized()
+        static let scanning = "selfie_scanning".localized()
+        static let detected = "selfie_detected".localized()
+        static let success = "selfie_success".localized()
+        static let retake = "selfie_retake".localized()
+        static let confirm = "selfie_confirm".localized()
+        static let confirmSelfie = "selfie_confirm_selfie".localized()
 
         enum Warnings {
-            static let faceNotInFrame = "Fit face in frame"
-            static let faceNotDetected = "Face not detected"
-            static let faceTooClose = "Move the phone farther"
-            static let faceTooFar = "Move the phone closer"
-            static let faceYawTooBig = "Face the camera directly"
-            static let multipleFacesDetected = "Multiple faces detected"
-            static let deviceNotSteady = "Device not steady"
-            static let noFace = "Looking for a face"
-            static let unknown = "Occurs unknown issue"
+            static let faceNotInFrame = "selfie_warning_face_not_in_frame".localized()
+            static let faceNotDetected = "selfie_warning_face_not_detected".localized()
+            static let faceTooClose = "selfie_warning_face_too_close".localized()
+            static let faceTooFar = "selfie_warning_face_too_far".localized()
+            static let faceYawTooBig = "selfie_warning_face_camera_directly".localized()
+            static let multipleFacesDetected = "selfie_warning_multiple_faces_detected".localized()
+            static let deviceNotSteady = "selfie_warning_device_not_steady".localized()
+            static let noFace = "selfie_warning_looking_for_face".localized()
+            static let unknown = "selfie_warning_unknown".localized()
         }
 
         enum Errors {
-            static let failed = "selfie failed"
-            static let timeout = "Photo timed out"
-            static let faceDisappeared = "Face disappeared"
-            static let cameraPermissionNotGranted = "Camera permission required"
-            static let manualSelfieNotAllowed = "Manual selfie is not allowed"
-            static let recordingFailed = "Something went wrong"
-            static let scannerInterrupted = "Scanner was interrupted"
-            static let unknown = "Something went wrong"
-            static let alertTitle = "Selfie scan failed"
-            static let alertMessage = "It was not possible to take your selfie.\n\nThis process is mandatory for your onboarding process."
-            static let multipleFaces = "Camera detects multiple faces. Please make sure you're scan single person face."
-            static let resetScannerNotAllowed = "Session still active. Please continue."
+            static let failed = "selfie_error_failed".localized()
+            static let timeout = "selfie_error_timeout".localized()
+            static let faceDisappeared = "selfie_error_face_disappeared".localized()
+            static let cameraPermissionNotGranted = "selfie_error_camer_permission".localized()
+            static let manualSelfieNotAllowed = "selfie_error_manual_selfie_not_allowed".localized()
+            static let recordingFailed = "selfie_error_recording_failed".localized()
+            static let scannerInterrupted = "selfie_error_scanner_interrupted".localized()
+            static let multipleFaces = "selfie_error_multiple_faces".localized()
+            static let resetScannerNotAllowed = "selfie_error_reset_not_allowed".localized()
+            static let unknown = "selfie_error_unknown".localized()
+            static let alertTitle = "selfie_error_alert_title".localized()
+            static let alertMessage = "selfie_error_alert_message".localized()
         }
 
         enum Liveness {
-            static let title = "Liveness check"
-            static let checking = "liveness check..."
-            static let confirm = "liveness confirm"
-            static let failed = "liveness check failed"
-            static let turnHeadLeft = "Turn your head left"
-            static let turnHeadRight = "Turn your head right"
+            static let title = "selfie_liveness_title".localized()
+            static let checking = "selfie_liveness_checking".localized()
+            static let confirm = "selfie_liveness_confirm".localized()
+            static let failed = "selfie_liveness_faild".localized()
+            static let turnHeadLeft = "selfie_liveness_turn_head_left".localized()
+            static let turnHeadRight = "selfie_liveness_turn_head_right".localized()
         }
     }
 
     enum Camera {
-        static let permissionErrorAlertTitle = "Camera permission denied"
-        static let permissionErrorAlertMessage = "Scanner can't be started without camera permission, please allow it"
-        static let errorMessage = "ERROR: In order to use vision scanners you need to grant camera permission."
-        static let premissionNotGranted = "Camera permission required"
+        static let permissionErrorAlertTitle = "camera_permission_error_title".localized()
+        static let permissionErrorAlertMessage = "camera_permission_error_message".localized()
+        static let errorMessage = "camera_error_message".localized()
+        static let premissionNotGranted = "camera_permission_not_granted".localized()
     }
 
     enum DocumentScanner {
 
-        static let title = "Your ID-document"
-        static let description = "choose your document type"
-        static let passport = "Passport"
-        static let idCard = "ID Card"
-        static let successScan = "scan successful"
-        static let scanning = "scanning..."
-        static let scanFailed = "scan failed"
+        static let title = "doc_scanner_title".localized()
+        static let description = "doc_scanner_description".localized()
+        static let passport = "doc_scanner_passport".localized()
+        static let idCard = "doc_scanner_id_card".localized()
+        static let successScan = "doc_scanner_scan_successful".localized()
+        static let scanning = "doc_scanner_scanning".localized()
+        static let scanFailed = "doc_scanner_scan_failed".localized()
 
         enum DocFileSide {
 
-            static let front = "front"
-            static let back = "back"
-            static let insideLeft = "inside left"
-            static let insideRight = "inside right"
-            static let undefined = "document side not defined"
+            static let front = "doc_scanner_side_front".localized()
+            static let back = "doc_scanner_side_back".localized()
+            static let insideLeft = "doc_scanner_side_inside_left".localized()
+            static let insideRight = "doc_scanner_side_inside_right".localized()
+            static let undefined = "doc_scanner_side_undefined".localized()
         }
 
         enum Warning {
-            static let deviceNotSteady = "Device not steady"
-            static let tooDark = "Too dark"
-            static let unknown = "Something went wrong"
+            static let deviceNotSteady = "doc_scanner_warning_device_not_steady".localized()
+            static let tooDark = "doc_scanner_warning_too_dark".localized()
+            static let unknown = "doc_scanner_warning_unkown".localized()
         }
 
         enum Error {
-            static let scannerInterrupted = "Scanner was interrupted"
-            static let timeout = "Scan timed out"
-            static let alertTitle = "Document scan failed"
-            static let alertMessage = "It was not possible to scan your document.\n\nThis process is mandatory for your onboarding process."
-            static let takeSnapshotNotAllowed = "Step take document snapshot is not active anymore."
-            static let moveToNextStepNotAllowed = "Step is not successfully finished."
-            static let resetCurrentStepNotAllowed = "Step still active."
+            static let scannerInterrupted = "doc_scanner_error_interrupted".localized()
+            static let timeout = "doc_scanner_error_timeout".localized()
+            static let alertTitle = "doc_scanner_error_alert_title".localized()
+            static let alertMessage = "doc_scanner_error_alert_message".localized()
+            static let takeSnapshotNotAllowed = "doc_scanner_error_snapshot_not_allowed".localized()
+            static let moveToNextStepNotAllowed = "doc_scanner_error_step_not_finished".localized()
+            static let resetCurrentStepNotAllowed = "doc_scanner_error_reset_not_allowed".localized()
         }
 
         enum Information {
-            static let title = "Document information"
-            static let docNumber = "document number"
-            static let issue = "date of issue"
-            static let expire = "document expiry date"
-            static let warning = "Please confirm if your data derived properly from the document scan"
+            static let title = "doc_scanner_info_title".localized()
+            static let docNumber = "doc_scanner_info_doc_number".localized()
+            static let issue = "doc_scanner_info_issue_date".localized()
+            static let expire = "doc_scanner_info_expire_date".localized()
+            static let warning = "doc_scanner_info_warning".localized()
         }
     }
 
     enum Location {
-        static let title = "Device location"
-        static let description = "We need your device location to continue."
+        static let title = "location_title".localized()
+        static let description = "location_description".localized()
 
         enum Error {
-            static let title = "Device location failed"
-            static let message = "It was not possible to obtain your device location.\n\nThis process is mandatory for your onboarding process.\nPlease check location settings."
+            static let title = "location_error_title".localized()
+            static let message = "location_error_message".localized()
         }
     }
 
     enum Upload {
-        static let title = "Data upload"
-        static let description = "Your data is being uploaded..."
-        static let uploading = "Uploading..."
-        static let preparation = "Prepare upload data..."
+        static let title = "upload_data_title".localized()
+        static let description = "upload_data_description".localized()
+        static let uploading = "upload_data_uploading".localized()
+        static let preparation = "upload_data_preparation".localized()
     }
 
     enum Zipper {
-
         enum Error {
-            static let kycIsNotValid = "KYC object is not valid, because of:"
-            static let zipFoundationNotImported = "ZIPFoundation framework in not imported into project"
-            static let zipExceedMaximumSize = "ZIP file exceeding the maximum file size, please check the API documentation"
-            static let cannotCreateZip = "Cannot create the Zip"
-            static let notEnoughSpace = "Not enough space"
-            static let unknown = "Unexpected error occurred"
-            static let alertTitle = "ZIP creation failed"
+            static let kycIsNotValid = "zipper_error_kyc_invalid".localized()
+            static let zipFoundationNotImported = "zipper_error_zip_foundation_not_imported".localized()
+            static let zipExceedMaximumSize = "zipper_error_zip_exceed_max_size".localized()
+            static let cannotCreateZip = "zipper_error_cannot_create_zip".localized()
+            static let notEnoughSpace = "zipper_error_not_enough_space".localized()
+            static let unknown = "zipper_error_unknown".localized()
+            static let alertTitle = "zipper_error_alert_title".localized()
         }
     }
 
     enum Verification {
-        static let title = "Verification"
-        static let description = "Please wait for verification…"
-        static let processTitle = "Data verification…"
+        static let title = "verification_title".localized()
+        static let description = "verification_description".localized()
+        static let processTitle = "verification_process_title".localized()
     }
 
     enum APIErrorDesc {
-        static let malformedResponseJson = "Indicates that string received in the response couldn't been parsed."
-        static let clientError = "Infidicates the error on the client's side."
-        static let authorizationFailed = "Indicates that authorization failed."
-        static let unauthorizedAction = "Action has not been authorized."
-        static let expectationMismatch = "Data mismatch."
-        static let incorrectIdentificationStatus = "The identification status was not allowed to proceed with the action."
-        static let unprocessableEntity = "Data invalid or expired."
-        static let internalServerError = "Indicates the internal server error."
-        static let requestError = "Indicates build request error."
-        static let unknownError = "Indicates that api client encountered an error not listed above."
-        static let resourceNotFound = "Resource has not been found."
-        static let locationAccessError = "Location permission denied."
-        static let locationError = "Device can't define location data."
-        static let ibanVerificationError = "IBAN verification failed."
-        static let paymentFailure = "Payment verification failed."
+        static let malformedResponseJson = "api_error_malformed_json".localized()
+        static let clientError = "api_error_client_error".localized()
+        static let authorizationFailed = "api_error_authorization_failed".localized()
+        static let unauthorizedAction = "api_error_unauthorized".localized()
+        static let expectationMismatch = "api_error_data_mismatch".localized()
+        static let incorrectIdentificationStatus = "api_error_incorrect_ident_status".localized()
+        static let unprocessableEntity = "api_error_unprocessable_entity".localized()
+        static let internalServerError = "api_error_internal_server_error".localized()
+        static let requestError = "api_error_request_build_error".localized()
+        static let unknownError = "api_error_unknown".localized()
+        static let resourceNotFound = "api_error_resource_not_found".localized()
+        static let locationAccessError = "api_error_location_permission".localized()
+        static let locationError = "api_error_location_error".localized()
+        static let ibanVerificationError = "api_error_iban_verification".localized()
+        static let paymentFailure = "api_error_payment_failure".localized()
     }
 
     enum Result {
-        static let successTitle = "Congratulation"
-        static let successDescription = "Your data was confirmed."
-        static let failedTitle = "Please try again…"
-        static let failedDescription = "Identification process fails."
+        static let successTitle = "result_success_title".localized()
+        static let successDescription = "result_success_description".localized()
+        static let failedTitle = "result_failed_title".localized()
+        static let failedDescription = "result_failed_description".localized()
     }
 }

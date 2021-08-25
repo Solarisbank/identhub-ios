@@ -88,6 +88,8 @@
 		0CF0AE8025CC153000A560E5 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0AE7F25CC153000A560E5 /* Status.swift */; };
 		0CF0AE8625CC256300A560E5 /* IdentificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0AE8525CC256300A560E5 /* IdentificationRequest.swift */; };
 		0CF0AE8B25CC684C00A560E5 /* ContractDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0AE8A25CC684C00A560E5 /* ContractDocument.swift */; };
+		24659B0126D62D7300F56089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24659B0326D62D7300F56089 /* Localizable.strings */; };
+		24659B0526D635E200F56089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24659B0326D62D7300F56089 /* Localizable.strings */; };
 		52847B03AEEEB0DBBD58847C /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A56798BA10659BFAEC4A935 /* Pods_IdentHubSDKTests.framework */; };
 		547BAD1629683B4BAEE729F9 /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8517E805F3C6E6BFE9E56506 /* Pods_IdentHubSDK.framework */; };
 		84040BD426AF07CD00C68D25 /* IdentificationInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */; };
@@ -346,6 +348,7 @@
 		0CF0AE7F25CC153000A560E5 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		0CF0AE8525CC256300A560E5 /* IdentificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationRequest.swift; sourceTree = "<group>"; };
 		0CF0AE8A25CC684C00A560E5 /* ContractDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDocument.swift; sourceTree = "<group>"; };
+		24659B0226D62D7300F56089 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D352E3E448EB60E9B3756F0 /* Pods-IdentHubSDKTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.staging.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.staging.xcconfig"; sourceTree = "<group>"; };
 		4872769C1FDAC7F27B1EBFED /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		79434CC9D9FAE3196029A3D6 /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
@@ -726,6 +729,7 @@
 		0CD5CC302590F58800FF378F = {
 			isa = PBXGroup;
 			children = (
+				24659AFE26D62CEC00F56089 /* Localization */,
 				0CD5CC4B2590F61200FF378F /* Sample */,
 				0CD5CC3C2590F58800FF378F /* Framework */,
 				0CD5CC8A2590FD3300FF378F /* Configurations */,
@@ -878,6 +882,14 @@
 				84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */,
 			);
 			path = Identification;
+			sourceTree = "<group>";
+		};
+		24659AFE26D62CEC00F56089 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				24659B0326D62D7300F56089 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		7FFA157377958B770F882B81 /* Frameworks */ = {
@@ -1599,6 +1611,7 @@
 				845DEC4C26C697AC00F38177 /* PaymentVerificationViewController.xib in Resources */,
 				841158A6261F384B007B54DF /* SelfieOverlayView.xib in Resources */,
 				841F376B26298FF500D56361 /* DocumentTypeCell.xib in Resources */,
+				24659B0126D62D7300F56089 /* Localizable.strings in Resources */,
 				845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */,
 				840976972633474300C4DC5B /* CircleProgressView.xib in Resources */,
 				8409767A2632F2CD00C4DC5B /* ProgressCell.xib in Resources */,
@@ -1623,6 +1636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CD5CC592590F61300FF378F /* LaunchScreen.storyboard in Resources */,
+				24659B0526D635E200F56089 /* Localizable.strings in Resources */,
 				0CD5CC562590F61300FF378F /* Assets.xcassets in Resources */,
 				0CD5CC542590F61200FF378F /* Main.storyboard in Resources */,
 			);
@@ -2019,6 +2033,14 @@
 				0CD5CC582590F61300FF378F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		24659B0326D62D7300F56089 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24659B0226D62D7300F56089 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

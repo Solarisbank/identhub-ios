@@ -50,8 +50,8 @@ final internal class TermsViewModel: NSObject {
 
     // MARK: - Internal methods -
     private func buildTermsAttrText() -> NSAttributedString {
-        let fullText = Localizable.TermsConditions.agreementLinks
-        let termsAttributeString = NSMutableAttributedString(string: Localizable.TermsConditions.agreementLinks)
+        let fullText = String(format: Localizable.TermsConditions.agreementLinks, Localizable.TermsConditions.privacyText, Localizable.TermsConditions.termsText)
+        let termsAttributeString = NSMutableAttributedString(string: fullText)
 
         if let privacyLinkRange = fullText.range(of: Localizable.TermsConditions.privacyText) {
             let attrRange = NSRange(privacyLinkRange, in: fullText)

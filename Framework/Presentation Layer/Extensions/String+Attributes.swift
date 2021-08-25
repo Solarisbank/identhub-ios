@@ -24,4 +24,9 @@ internal extension String {
         fullString.addAttributes(boldFontAttribute, range: boldTextRange)
         return fullString
     }
+    
+    /// Returns the localized string for the key
+    func localized() -> String {
+        return NSLocalizedString(self, comment: "")
+    }
 }
