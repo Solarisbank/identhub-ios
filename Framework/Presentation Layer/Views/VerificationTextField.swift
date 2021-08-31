@@ -59,7 +59,7 @@ internal class VerificationTextField: UITextField {
 
     private func configureUI() {
         delegate = self
-        backgroundColor = .white
+        backgroundColor = .sdkColor(.background)
         layer.cornerRadius = Constants.cornerRadius
         layer.borderWidth = Constants.borderWidth
         returnKeyType = .done

@@ -3,6 +3,16 @@
     {
       "filename" : "retake_btn.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_retake_btn.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

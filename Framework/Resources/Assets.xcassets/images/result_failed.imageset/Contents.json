@@ -3,6 +3,16 @@
     {
       "filename" : "result_failed.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_result_failed.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

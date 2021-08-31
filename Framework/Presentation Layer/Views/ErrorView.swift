@@ -41,7 +41,7 @@ final internal class ErrorView: UIView {
 
     private lazy var detailsContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.sdkColor(.errorTint)
+        view.backgroundColor = .sdkColor(.errorTint)
         view.layer.cornerRadius = Constants.Size.cornerRadius
         return view
     }()
@@ -86,7 +86,7 @@ final internal class ErrorView: UIView {
     }
 
     private func configureUI() {
-        backgroundColor = .white
+        backgroundColor = .sdkColor(.background)
 
         addSubviews([
             titleLabel,

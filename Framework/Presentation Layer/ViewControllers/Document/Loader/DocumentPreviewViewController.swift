@@ -13,7 +13,7 @@ final internal class DocumentPreviewViewController: UIViewController {
 
     private lazy var webView: WKWebView = {
         let webView = WKWebView()
-        webView.backgroundColor = .sdkColor(.base05)
+        webView.backgroundColor = .sdkColor(.background)
         return webView
     }()
 

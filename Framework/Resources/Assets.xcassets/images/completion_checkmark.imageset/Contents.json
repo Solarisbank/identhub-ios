@@ -3,6 +3,16 @@
     {
       "filename" : "completion_checkmark.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_completion_checkmark.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

@@ -111,7 +111,7 @@ enum Localizable {
             static let downloadDocuments = "sign_documents_download_documents".localized()
         }
     }
-    
+
     enum FinishIdentification {
         static let identificationSuccessful = "finish_ident_successful_title".localized()
         static let description = "finish_ident_successful_description".localized()

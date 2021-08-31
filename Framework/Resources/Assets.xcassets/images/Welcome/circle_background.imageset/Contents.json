@@ -3,6 +3,16 @@
     {
       "filename" : "circle_background.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_circle_background.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

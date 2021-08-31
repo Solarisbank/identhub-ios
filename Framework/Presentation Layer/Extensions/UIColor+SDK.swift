@@ -25,6 +25,7 @@ internal extension UIColor {
         case primaryAccent
         case primaryAccentLighten
         case primaryAccentDarken
+        case primaryTint
         case secondaryAccent
         case secondaryAccentLighten
         case secondaryAccentDarken
@@ -36,6 +37,8 @@ internal extension UIColor {
         case errorLighten
         case errorDarken
         case errorTint
+        case neutralWhite
+        case background
     }
 
     /// Choose custom available color.
@@ -73,6 +76,8 @@ internal extension UIColor {
             return assetsColor(by: "primary_lighten") ?? #colorLiteral(red: 1, green: 0.3921568627, blue: 0.1960784314, alpha: 1)
         case .primaryAccentDarken:
             return assetsColor(by: "primary_darken") ?? #colorLiteral(red: 0.798679769, green: 0.3169504106, blue: 0.1685302556, alpha: 1)
+        case .primaryTint:
+            return assetsColor(by: "primary_tint") ?? #colorLiteral(red: 1, green: 0.9607843137, blue: 0.9490196078, alpha: 1)
         case .secondaryAccent:
             return assetsColor(by: "secondary") ?? #colorLiteral(red: 0.1960784314, green: 0.5176470588, blue: 1, alpha: 1)
         case .secondaryAccentLighten:
@@ -95,6 +100,10 @@ internal extension UIColor {
             return assetsColor(by: "error_darken") ?? #colorLiteral(red: 0.02745098039, green: 0.5098039216, blue: 0.3098039216, alpha: 1)
         case .errorTint:
             return assetsColor(by: "error_tint") ?? #colorLiteral(red: 1, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+        case .neutralWhite:
+            return assetsColor(by: "neutral_white") ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        case .background:
+            return assetsColor(by: "background") ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
 

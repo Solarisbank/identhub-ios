@@ -62,7 +62,9 @@ final internal class DocumentTableViewCell: UITableViewCell {
     }()
 
     private lazy var previewActivityView: UIActivityIndicatorView = {
-        UIActivityIndicatorView(style: .gray)
+        let activityView = UIActivityIndicatorView(style: .gray)
+        activityView.tintColor = .sdkColor(.base75)
+        return activityView
     }()
 
     private lazy var previewDocumentButton: UIButton = {
@@ -106,7 +108,7 @@ final internal class DocumentTableViewCell: UITableViewCell {
     }
 
     private func configureUI() {
-        contentView.backgroundColor = .sdkColor(.black0)
+        contentView.backgroundColor = .sdkColor(.background)
 
         contentView.addSubviews([
             downloadDocumentButton,

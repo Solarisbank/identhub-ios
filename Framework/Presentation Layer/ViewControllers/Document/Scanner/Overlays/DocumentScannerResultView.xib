@@ -20,19 +20,19 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0N-6a-wYB" userLabel="topCameraMaskView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="242"/>
-                    <color key="backgroundColor" name="black0"/>
+                    <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dg4-uk-aQp" userLabel="leftCameraMaskView">
                     <rect key="frame" x="0.0" y="242" width="14" height="329.5"/>
-                    <color key="backgroundColor" name="black0"/>
+                    <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2b-QJ-wjg" userLabel="bottomCameraMaskView">
                     <rect key="frame" x="0.0" y="571.5" width="414" height="324.5"/>
-                    <color key="backgroundColor" name="black0"/>
+                    <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z04-Jx-StE" userLabel="rightCameraMaskView">
                     <rect key="frame" x="400" y="242" width="14" height="329.5"/>
-                    <color key="backgroundColor" name="black0"/>
+                    <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan front" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYL-Da-dem">
                     <rect key="frame" x="35" y="84" width="99" height="24"/>
@@ -182,7 +182,7 @@
         <namedColor name="base100">
             <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="black0">
+        <namedColor name="neutral_white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

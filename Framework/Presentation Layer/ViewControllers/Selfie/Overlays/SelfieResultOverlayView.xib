@@ -54,6 +54,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyo-d7-kmm">
                             <rect key="frame" x="0.0" y="0.0" width="155" height="80"/>
+                            <color key="tintColor" name="background"/>
                             <state key="normal" image="retake_btn"/>
                             <connections>
                                 <action selector="didClickRetake:" destination="iN0-l3-epB" eventType="touchUpInside" id="KbL-Z2-zcg"/>
@@ -129,6 +130,9 @@
         <image name="confirm_btn" width="155" height="80"/>
         <image name="retake_btn" width="155" height="80"/>
         <image name="title_shadow_view" width="375" height="100"/>
+        <namedColor name="background">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="base100">
             <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -56,11 +56,11 @@ final internal class DownloadDocumentsButton: UIButton {
 
         titleLabel?.font = .systemFont(ofSize: Constants.fontSize)
         setTitle(Localizable.Common.downloadAllDocuments, for: .normal)
-        setTitleColor(.black, for: .normal)
+        setTitleColor(.sdkColor(.base75), for: .normal)
 
         let image = UIImage.sdkImage(.downloadDocument, type: DownloadDocumentsButton.self)
         setImage(image, for: .normal)
-        tintColor = UIColor.sdkColor(.black75)
+        tintColor = .sdkColor(.base75)
         semanticContentAttribute = .forceRightToLeft
         imageEdgeInsets = UIEdgeInsets(top: Constants.normalInset, left: Constants.bigInset, bottom: Constants.normalInset, right: Constants.normalInset)
 

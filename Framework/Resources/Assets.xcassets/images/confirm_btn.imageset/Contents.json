@@ -3,6 +3,16 @@
     {
       "filename" : "confirm_btn.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_confirm_btn.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

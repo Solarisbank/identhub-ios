@@ -32,7 +32,7 @@ private class SingleDigitTextField: UITextField {
     }
 
     private func configureUI() {
-        backgroundColor = .white
+        backgroundColor = .sdkColor(.background)
         textColor = .sdkColor(.base75)
         layer.cornerRadius = Constants.cornerRadius
         layer.borderWidth = Constants.borderWidth
@@ -203,7 +203,7 @@ internal class CodeEntryView: UIView {
         let textFieldProperties: Properties
         switch state {
         case .normal:
-            textFieldProperties = (.white, UIColor.sdkColor(.base25).cgColor, true, .black)
+            textFieldProperties = (.sdkColor(.background), UIColor.sdkColor(.base25).cgColor, true, .sdkColor(.base100))
         case .error:
             textFieldProperties = (.sdkColor(.black05), UIColor.sdkColor(.error).cgColor, false, .sdkColor(.black25))
         case .disabled:

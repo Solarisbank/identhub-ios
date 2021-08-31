@@ -1,19 +1,18 @@
 {
   "images" : [
     {
-      "filename" : "ic_dowload_16@1x.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "filename" : "document_download.pdf",
+      "idiom" : "universal"
     },
     {
-      "filename" : "ic_dowload_16@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "ic_dowload_16@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_document_download.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

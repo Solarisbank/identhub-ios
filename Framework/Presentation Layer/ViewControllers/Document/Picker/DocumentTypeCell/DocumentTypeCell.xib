@@ -42,7 +42,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="black0"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jpM-P3-zl1" secondAttribute="trailing" constant="15" id="8sR-i4-9OO"/>
                             <constraint firstItem="jpM-P3-zl1" firstAttribute="centerY" secondItem="7tB-oC-Ril" secondAttribute="centerY" id="B3X-CV-Hv0"/>
@@ -81,11 +81,11 @@
         <image name="document_deselect_state" width="30" height="30"/>
         <image name="document_select_state" width="30" height="30"/>
         <image name="passport_logo_icon" width="31" height="41"/>
+        <namedColor name="background">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="base100">
             <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="black0">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

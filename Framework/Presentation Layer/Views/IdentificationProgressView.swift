@@ -96,14 +96,14 @@ internal class IdentificationProgressView: UIView {
     /// Initialize the bar with the current progress.
     init(currentStep: CurrentStep) {
         super.init(frame: .zero)
-        backgroundColor = .white
+        backgroundColor = .sdkColor(.background)
         configureUI()
         setCurrentStep(currentStep)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        backgroundColor = .white
+        backgroundColor = .sdkColor(.background)
         configureUI()
     }
 

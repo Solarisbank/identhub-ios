@@ -14,13 +14,14 @@ internal class SolarisViewController: UIViewController {
 
     internal lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .sdkColor(.black0)
+        view.backgroundColor = .sdkColor(.background)
         return view
     }()
 
     private lazy var bottomSolarisView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.sdkColor(.black05)
+        view.isHidden = true
         return view
     }()
 
@@ -37,6 +38,8 @@ internal class SolarisViewController: UIViewController {
     }
 
     private func configureUI() {
+        view.backgroundColor = .sdkColor(.background)
+
         view.addSubviews([
             containerView,
             bottomSolarisView

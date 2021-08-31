@@ -35,14 +35,14 @@ class ActionRoundedButton: UIButton {
                 colors = (UIColor.sdkColor(.primaryAccent), .white)
             case .dimmed:
                 isEnabled = true
-                colors = (UIColor.sdkColor(.black05), .black)
+                colors = (UIColor.sdkColor(.base05), .sdkColor(.base100))
             case .inactive:
                 isEnabled = false
-                colors = (UIColor.sdkColor(.black25), .white)
+                colors = (UIColor.sdkColor(.base25), .sdkColor(.base100))
             case .verifying:
                 isEnabled = false
                 setTitle(Localizable.Common.verifying, for: .disabled)
-                colors = (UIColor.sdkColor(.black25), .white)
+                colors = (UIColor.sdkColor(.base25), .white)
             }
 
             backgroundColor = colors.background

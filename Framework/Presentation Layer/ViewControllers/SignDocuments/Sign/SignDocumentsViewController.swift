@@ -51,13 +51,13 @@ final internal class SignDocumentsViewController: SolarisViewController {
 
     private lazy var currentStepView: IdentificationProgressView = {
         let view = IdentificationProgressView(currentStep: .documents)
-        view.backgroundColor = .sdkColor(.black0)
+        view.backgroundColor = .sdkColor(.background)
         return view
     }()
 
     private lazy var mainContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .sdkColor(.black0)
+        view.backgroundColor = .sdkColor(.background)
         return view
     }()
 
@@ -66,7 +66,7 @@ final internal class SignDocumentsViewController: SolarisViewController {
         label.numberOfLines = 0
         label.font = label.font.withSize(Constants.FontSize.medium)
         label.textColor = UIColor.sdkColor(.base75)
-        label.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldText(viewModel.mobileNumber, withColorForBoldText: .black)
+        label.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldText(viewModel.mobileNumber, withColorForBoldText: UIColor.sdkColor(.base100))
         return label
     }()
 

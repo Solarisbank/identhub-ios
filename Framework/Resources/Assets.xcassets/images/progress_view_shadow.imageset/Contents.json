@@ -3,6 +3,16 @@
     {
       "filename" : "progress_view_shadow.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_progress_view_shadow.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

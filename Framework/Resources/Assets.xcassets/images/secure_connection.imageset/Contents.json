@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "ic_shield_32@1x.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "ic_shield_32@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "ic_shield_32@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "secure_connection.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

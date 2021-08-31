@@ -3,6 +3,16 @@
     {
       "filename" : "document_select_state.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_select_button.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

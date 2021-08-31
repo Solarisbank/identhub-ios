@@ -29,7 +29,7 @@ final internal class FinishIdentificationViewController: SolarisViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor.sdkColor(.black75)
         label.font = label.font.withSize(Constants.FontSize.big)
         label.text = Localizable.FinishIdentification.identificationSuccessful
         return label
@@ -80,6 +80,9 @@ final internal class FinishIdentificationViewController: SolarisViewController {
     }
 
     private func configureUI() {
+        view.backgroundColor = .sdkColor(.background)
+        containerView.backgroundColor = .sdkColor(.background)
+
         containerView.addSubviews([
             titleLabel,
             descriptionLabel,

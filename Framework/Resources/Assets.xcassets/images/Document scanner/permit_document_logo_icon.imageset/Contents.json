@@ -3,6 +3,16 @@
     {
       "filename" : "permit_document_icon_logo.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "dark_permit_document_icon_logo.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

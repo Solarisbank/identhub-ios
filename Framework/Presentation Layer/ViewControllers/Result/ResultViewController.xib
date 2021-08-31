@@ -51,12 +51,12 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI6-Wy-FXs">
                     <rect key="frame" x="20" y="782" width="374" height="50"/>
-                    <color key="backgroundColor" red="0.94509803920000002" green="0.50980392159999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" name="primary"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="wnN-Tl-EwK"/>
                     </constraints>
                     <state key="normal" title="Quit">
-                        <color key="titleColor" name="black0"/>
+                        <color key="titleColor" name="neutral_white"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -69,7 +69,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Rgn-nO-bZ3"/>
-            <color key="backgroundColor" name="black0"/>
+            <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="aff-W8-H4U" firstAttribute="top" secondItem="2Az-yX-p2g" secondAttribute="bottom" constant="40" id="37L-Cb-nFw"/>
                 <constraint firstItem="gI6-Wy-FXs" firstAttribute="leading" secondItem="Rgn-nO-bZ3" secondAttribute="leading" constant="20" id="5kx-vB-FUQ"/>
@@ -90,14 +90,20 @@
     </objects>
     <resources>
         <image name="result_success" width="288" height="288"/>
-        <namedColor name="black0">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="background">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black50">
             <color red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black75">
             <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="neutral_white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

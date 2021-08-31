@@ -27,6 +27,7 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="processing_verification" translatesAutoresizingMaskIntoConstraints="NO" id="RjG-oc-7WH">
                             <rect key="frame" x="20" y="20" width="32" height="32"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="secondary"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="4yN-y8-Oi6"/>
                                 <constraint firstAttribute="height" constant="32" id="VAP-vs-xTk"/>
@@ -59,7 +60,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" name="black0"/>
+            <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Ay2-I7-fGf" secondAttribute="trailing" constant="16" id="EKQ-06-SYw"/>
                 <constraint firstAttribute="trailing" secondItem="Jz4-xb-yIK" secondAttribute="trailing" constant="16" id="Iig-AR-qQX"/>
@@ -77,14 +78,17 @@
     </objects>
     <resources>
         <image name="processing_verification" width="32" height="32"/>
+        <namedColor name="background">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="base100">
             <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base75">
             <color red="0.25490196078431371" green="0.30196078431372547" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="black0">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="secondary">
+            <color red="0.19607843137254902" green="0.51764705882352946" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondary_tint">
             <color red="0.94901960784313721" green="0.96862745098039216" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
