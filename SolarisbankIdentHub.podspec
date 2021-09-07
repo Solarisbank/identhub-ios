@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.name    = "SolarisbankIdentHub"
-  spec.version = "0.8.0"
+  spec.version = "0.8.1"
   spec.summary = "iOS SDK for Solarisbank IdentHub."
 
   spec.description = <<-DESC
@@ -41,7 +41,7 @@ Pod::Spec.new do |spec|
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.source_files = "Framework/**/*.{h,m,swift}", 'fixup_project_structure'
-  spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets}"
+  spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets}", "Localization/**/*.{lproj,strings}"
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 

@@ -27,6 +27,6 @@ internal extension String {
 
     /// Returns the localized string for the key
     func localized() -> String {
-        return NSLocalizedString(self, comment: "")
+        return Bundle(for: IdentHubSession.self).localizedString(forKey: self, value: self, table: nil)
     }
 }
