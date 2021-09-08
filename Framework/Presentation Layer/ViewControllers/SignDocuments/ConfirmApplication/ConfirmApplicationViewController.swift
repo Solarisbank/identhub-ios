@@ -77,7 +77,7 @@ extension ConfirmApplicationViewController: DocumentReceivable {
     func didFetchDocuments() {
         documentsTableView.reloadData()
         downloadAllDocumentsButton.isEnabled = true
-        actionButton.currentAppearance = .orange
+        actionButton.currentAppearance = .primary
         let numberOfCells = CGFloat(viewModel.documents.count)
         tableHeightConstraint.constant = numberOfCells * rowHeight
     }

@@ -51,7 +51,7 @@
                         <action selector="didClickQuit:" destination="-1" eventType="touchUpInside" id="nhx-LI-wUT"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiq-4P-RkI">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiq-4P-RkI" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
                     <rect key="frame" x="20" y="737" width="374" height="50"/>
                     <color key="backgroundColor" name="primary"/>
                     <constraints>

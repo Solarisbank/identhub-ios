@@ -64,7 +64,7 @@ internal class PopUpWindowViewController: UIViewController {
 
     private lazy var secondaryButton: UIButton = {
         let button = ActionRoundedButton()
-        button.currentAppearance = .orange
+        button.currentAppearance = .primary
         return button
     }()
 

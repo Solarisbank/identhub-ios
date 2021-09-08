@@ -63,7 +63,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
     private lazy var submitCodeButton: ActionRoundedButton = {
         let button = ActionRoundedButton()
         button.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
-        button.currentAppearance = .orange
+        button.currentAppearance = .primary
         button.isEnabled = false
         button.currentAppearance = .inactive
         return button
@@ -199,7 +199,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
                 self.submitCodeButton.currentAppearance = .verifying
             case .error:
                 self.codeEntryView.state = .error
-                self.submitCodeButton.currentAppearance = .orange
+                self.submitCodeButton.currentAppearance = .primary
                 self.submitCodeButton.setTitle(Localizable.PhoneVerification.requestNewCode, for: .normal)
                 self.submitCodeButton.removeTarget(self, action: #selector(self.submitCode), for: .touchUpInside)
                 self.submitCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
@@ -241,6 +241,6 @@ extension PhoneVerificationViewController: CodeEntryViewDelegate {
 
     func didUpdateCode(_ digits: Int) {
         submitCodeButton.isEnabled = ( digits == 6 )
-        submitCodeButton.currentAppearance = ( digits == 6 ) ? .orange : .inactive
+        submitCodeButton.currentAppearance = ( digits == 6 ) ? .primary : .inactive
     }
 }

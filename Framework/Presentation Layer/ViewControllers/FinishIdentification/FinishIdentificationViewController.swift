@@ -140,7 +140,7 @@ extension FinishIdentificationViewController: DocumentReceivable {
     func didFetchDocuments() {
         documentsTableView.reloadData()
         downloadAllDocumentsButton.isEnabled = true
-        actionButton.currentAppearance = .orange
+        actionButton.currentAppearance = .primary
         let numberOfCells = CGFloat(viewModel.documents.count)
         documentsTableView.addConstraints { [
             $0.equalConstant(.height, Constants.Size.rowHeight * numberOfCells)

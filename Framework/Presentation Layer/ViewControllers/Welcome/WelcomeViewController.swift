@@ -14,7 +14,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet var pageScroller: UICollectionView!
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var logoFrame: UIImageView!
-    @IBOutlet var startBtn: UIButton!
+    @IBOutlet var startBtn: ActionRoundedButton!
 
     private var viewModel: WelcomeViewModel!
     private lazy var logoAnimator: WelcomeLogoAnimator = {

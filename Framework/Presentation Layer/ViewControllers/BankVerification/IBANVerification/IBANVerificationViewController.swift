@@ -54,7 +54,6 @@ final internal class IBANVerificationViewController: UIViewController {
         ibanVerificationTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.sdkColor(.base25)])
         ibanVerificationTextField.placeholder = placeholderText
 
-        initiatePaymentVerificationButton.currentAppearance = .orange
         initiatePaymentVerificationButton.setTitle(Localizable.BankVerification.IBANVerification.initiatePaymentVerification, for: .normal)
 
         ibanVerificationTextField.currentState = .normal
@@ -73,7 +72,7 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
     func isIBANFormatValid(_ valid: Bool) {
         errorLabel.isHidden = valid
         ibanVerificationTextField.currentState = valid ? .verified : .error
-        initiatePaymentVerificationButton.currentAppearance = valid ? .verifying : .orange
+        initiatePaymentVerificationButton.currentAppearance = valid ? .verifying : .primary
     }
 
     func verificationIBANFailed(_ error: APIError, allowRetry: Bool) {

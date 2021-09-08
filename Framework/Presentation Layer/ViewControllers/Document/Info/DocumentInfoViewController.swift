@@ -12,7 +12,7 @@ class DocumentInfoViewController: UIViewController {
     @IBOutlet var docInfoTable: UITableView!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var quitBtn: UIButton!
-    @IBOutlet var continueBtn: UIButton!
+    @IBOutlet var continueBtn: ActionRoundedButton!
     @IBOutlet var warningLbl: UILabel!
 
     // MARK: - Private attributes -
@@ -75,19 +75,15 @@ extension DocumentInfoViewController {
     private func handleUIUpdates() {
 
         viewModel.didUpdatedContent = { [unowned self] enable in
-            self.updateContinueBtnEnableState(enable: enable)
+            if enable {
+                self.continueBtn.currentAppearance = .primary
+            } else {
+                self.continueBtn.currentAppearance = .inactive
+            }
         }
 
         viewModel.reloadTable = { [weak self] in
             self?.docInfoTable.reloadData()
-        }
-    }
-
-    private func updateContinueBtnEnableState(enable: Bool) {
-
-        UIView.animate(withDuration: 0.4) { [weak self] in
-            self?.continueBtn.alpha = enable ? 1.0 : 0.5
-            self?.continueBtn.isEnabled = enable
         }
     }
 }

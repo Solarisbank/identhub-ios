@@ -19,34 +19,36 @@ class ActionRoundedButton: UIButton {
     }
 
     enum Appearance {
-        case orange
+        case primary
         case dimmed
         case inactive
         case verifying
     }
 
     /// Current button appearance.
-    var currentAppearance = Appearance.orange {
+    var currentAppearance = Appearance.primary {
         didSet {
-            let colors: (background: UIColor, text: UIColor)
-            switch currentAppearance {
-            case .orange:
-                isEnabled = true
-                colors = (UIColor.sdkColor(.primaryAccent), .white)
-            case .dimmed:
-                isEnabled = true
-                colors = (UIColor.sdkColor(.base05), .sdkColor(.base100))
-            case .inactive:
-                isEnabled = false
-                colors = (UIColor.sdkColor(.base25), .sdkColor(.base100))
-            case .verifying:
-                isEnabled = false
-                setTitle(Localizable.Common.verifying, for: .disabled)
-                colors = (UIColor.sdkColor(.base25), .white)
-            }
-
-            backgroundColor = colors.background
-            setTitleColor(colors.text, for: .normal)
+            updateAppearance()
+        }
+    }
+    
+    // On iOS 12, the colors set in xib files are set after the initialization of view
+    // So we're disabling the setter of `backgroundColor` and replace it with `actualBackgroundColor`
+    override var backgroundColor: UIColor? {
+        get {
+            return actualBackgroundColor
+        }
+        set {
+            updateAppearance()
+        }
+    }
+    
+    var actualBackgroundColor: UIColor? {
+        get {
+            return super.backgroundColor
+        }
+        set {
+            super.backgroundColor = newValue
         }
     }
 
@@ -68,5 +70,28 @@ class ActionRoundedButton: UIButton {
             $0.equalConstant(.height, Constants.ConstraintsSize.height)
         ]
         }
+        updateAppearance()
+    }
+    
+    func updateAppearance() {
+        let colors: (background: UIColor, text: UIColor)
+        switch currentAppearance {
+        case .primary:
+            isEnabled = true
+            colors = (UIColor.sdkColor(.primaryAccent), .white)
+        case .dimmed:
+            isEnabled = true
+            colors = (UIColor.sdkColor(.base05), .sdkColor(.base100))
+        case .inactive:
+            isEnabled = false
+            colors = (UIColor.sdkColor(.base25), .sdkColor(.base100))
+        case .verifying:
+            isEnabled = false
+            setTitle(Localizable.Common.verifying, for: .disabled)
+            colors = (UIColor.sdkColor(.base25), .white)
+        }
+
+        actualBackgroundColor = colors.background
+        setTitleColor(colors.text, for: .normal)
     }
 }

@@ -64,7 +64,7 @@ final internal class ErrorView: UIView {
 
     private lazy var primaryButton: ActionRoundedButton = {
         let button = ActionRoundedButton()
-        button.currentAppearance = .orange
+        button.currentAppearance = .primary
         return button
     }()
 

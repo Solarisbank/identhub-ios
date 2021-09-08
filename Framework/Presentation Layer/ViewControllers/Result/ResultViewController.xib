@@ -49,7 +49,7 @@
                         <constraint firstAttribute="width" secondItem="zUY-ic-fbK" secondAttribute="height" multiplier="1:1" id="tMG-y4-Rqb"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI6-Wy-FXs">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI6-Wy-FXs" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
                     <rect key="frame" x="20" y="782" width="374" height="50"/>
                     <color key="backgroundColor" name="primary"/>
                     <constraints>

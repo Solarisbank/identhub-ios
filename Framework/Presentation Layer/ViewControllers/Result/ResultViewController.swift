@@ -12,7 +12,7 @@ final class ResultViewController: UIViewController {
     @IBOutlet var descriptionLbl: UILabel!
     @IBOutlet var stepsProgressView: StepsProgressView!
     @IBOutlet var resultImage: UIImageView!
-    @IBOutlet var quitBtn: UIButton!
+    @IBOutlet var quitBtn: ActionRoundedButton!
 
     // MARK: - Private attributes -
 

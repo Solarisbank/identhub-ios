@@ -261,12 +261,12 @@ final internal class SignDocumentsViewController: SolarisViewController {
                 self.viewModel.finishIdentification()
             case .error:
                 self.codeEntryView.state = .error
-                self.submitAndSignCodeButton.currentAppearance = .orange
+                self.submitAndSignCodeButton.currentAppearance = .primary
                 self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
                 self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
                 self.submitAndSignCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
             case .expire:
-                self.submitAndSignCodeButton.currentAppearance = .orange
+                self.submitAndSignCodeButton.currentAppearance = .primary
                 self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
                 self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
                 self.submitAndSignCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
@@ -313,6 +313,6 @@ extension SignDocumentsViewController: CodeEntryViewDelegate {
 
     func didUpdateCode(_ digits: Int) {
         submitAndSignCodeButton.isEnabled = ( digits == 6 )
-        submitAndSignCodeButton.currentAppearance = ( digits == 6 ) ? .orange : .inactive
+        submitAndSignCodeButton.currentAppearance = ( digits == 6 ) ? .primary : .inactive
     }
 }

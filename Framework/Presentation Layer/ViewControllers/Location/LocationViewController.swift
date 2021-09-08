@@ -13,7 +13,7 @@ class LocationViewController: UIViewController {
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var descriptionLbl: UILabel!
     @IBOutlet var quitBtn: UIButton!
-    @IBOutlet var continueBtn: UIButton!
+    @IBOutlet var continueBtn: ActionRoundedButton!
 
     // MARK: - Private attributes -
     private var viewModel: LocationViewModel!

@@ -12,7 +12,7 @@ class DocumentPickerViewController: UIViewController {
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var descriptionLbl: UILabel!
     @IBOutlet var quitBtn: UIButton!
-    @IBOutlet var continueBtn: UIButton!
+    @IBOutlet var continueBtn: ActionRoundedButton!
     @IBOutlet var documentTypesTable: UITableView!
     @IBOutlet var tableViewConstraint: NSLayoutConstraint!
     private var viewModel: DocumentPickerViewModel!
@@ -57,7 +57,7 @@ class DocumentPickerViewController: UIViewController {
         titleLbl.text = Localizable.DocumentScanner.title
         descriptionLbl.text = Localizable.DocumentScanner.description
         continueBtn.titleLabel?.text = Localizable.Common.continueBtn
-        continueBtn.alpha = 0.5
+        continueBtn.currentAppearance = .inactive
         quitBtn.titleLabel?.text = Localizable.Common.quit
 
         viewModel.configureDocumentsTable(for: documentTypesTable)
@@ -65,8 +65,7 @@ class DocumentPickerViewController: UIViewController {
         tableViewConstraint.constant = viewModel.obtainTableHeight()
 
         viewModel.updateButtons = {[unowned self] in
-            self.continueBtn.alpha = 1
-            self.continueBtn.isEnabled = true
+            self.continueBtn.currentAppearance = .primary
         }
     }
 }

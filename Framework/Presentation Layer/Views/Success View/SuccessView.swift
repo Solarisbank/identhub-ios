@@ -14,7 +14,7 @@ internal class SuccessView: NibView {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var actionButton: ActionRoundedButton! {
         didSet {
-            actionButton.currentAppearance = .orange
+            actionButton.currentAppearance = .primary
         }
     }
 
