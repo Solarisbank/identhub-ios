@@ -157,6 +157,8 @@
 		842DA66526373D650020E598 /* IdentificationMethodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DA66426373D650020E598 /* IdentificationMethodRequest.swift */; };
 		842DA66A26373E740020E598 /* IdentificationMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DA66926373E740020E598 /* IdentificationMethod.swift */; };
 		8432D275265D71A6002CCAA4 /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432D274265D71A6002CCAA4 /* DocumentData.swift */; };
+		843C85CE26EA1E3300DC16BB /* IdentificationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C85CD26EA1E3300DC16BB /* IdentificationStyle.swift */; };
+		843C85D026EA1E7500DC16BB /* StyleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C85CF26EA1E7500DC16BB /* StyleColors.swift */; };
 		8440C565262F55E0001B8E39 /* DocumentScannerAssetSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440C564262F55E0001B8E39 /* DocumentScannerAssetSizing.swift */; };
 		8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */; };
 		84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */; };
@@ -419,6 +421,8 @@
 		842DA66426373D650020E598 /* IdentificationMethodRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationMethodRequest.swift; sourceTree = "<group>"; };
 		842DA66926373E740020E598 /* IdentificationMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationMethod.swift; sourceTree = "<group>"; };
 		8432D274265D71A6002CCAA4 /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
+		843C85CD26EA1E3300DC16BB /* IdentificationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationStyle.swift; sourceTree = "<group>"; };
+		843C85CF26EA1E7500DC16BB /* StyleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleColors.swift; sourceTree = "<group>"; };
 		8440C564262F55E0001B8E39 /* DocumentScannerAssetSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetSizing.swift; sourceTree = "<group>"; };
 		8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetBuilder.swift; sourceTree = "<group>"; };
 		84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExporter.swift; sourceTree = "<group>"; };
@@ -909,6 +913,8 @@
 				0CCD106325C9933A00251C65 /* Identification.swift */,
 				84040BD626AF089D00C68D25 /* IdentificationInfo.swift */,
 				842DA66926373E740020E598 /* IdentificationMethod.swift */,
+				843C85CD26EA1E3300DC16BB /* IdentificationStyle.swift */,
+				843C85CF26EA1E7500DC16BB /* StyleColors.swift */,
 			);
 			path = Identificaiton;
 			sourceTree = "<group>";
@@ -1820,6 +1826,7 @@
 				0CC8533E25D14AD400109FFC /* DocumentDownloadRequest.swift in Sources */,
 				84ECED2E2630769C00ACD1B5 /* DocumentItemInfo.swift in Sources */,
 				841384BF263C587B00C39D69 /* PersonDataRequest.swift in Sources */,
+				843C85CE26EA1E3300DC16BB /* IdentificationStyle.swift in Sources */,
 				84E0CF13262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift in Sources */,
 				84056F4B2655458F0072A10F /* BankIDStep.swift in Sources */,
 				8409766F2632F0F600C4DC5B /* RequestsProgressDDM.swift in Sources */,
@@ -1895,6 +1902,7 @@
 				841C81B226036B5600F4A079 /* Router.swift in Sources */,
 				847242DD2631D3E500CC8DE6 /* RequestsViewController.swift in Sources */,
 				840DEA422628350F0033A2D8 /* SelfieResultOverlayView.swift in Sources */,
+				843C85D026EA1E7500DC16BB /* StyleColors.swift in Sources */,
 				84C8E56E26B840ED002150D6 /* IPAddress.swift in Sources */,
 				0C7FD34325D29AF600A6CC28 /* DownloadDocumentsButton.swift in Sources */,
 				84E0CF0E262EF6B100DE0C09 /* DocumentScanner+Extensions.swift in Sources */,

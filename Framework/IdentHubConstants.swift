@@ -76,6 +76,9 @@ enum StoredKeys: String {
     /// Prepare users data
     case fetchDataStep = "FetchPersonDataProcessKey"
 
+    /// Identification UI colors
+    case styleColors = "IdentificationUIColorsKey"
+
     /// Upload process step
     case uploadStep = "UploadProcessKey"
 
@@ -89,6 +92,16 @@ enum StoredKeys: String {
         case timestamp = "TimestampKey"
 
         case videoURL = "VideoURLKey"
+    }
+
+    /// Style colors keys enumeration
+    enum StyleColor: String {
+
+        case primary = "PrimaryLightColorKey"
+
+        case primaryDark = "PrimaryDarkColorKey"
+
+        case secondary = "SecondaryLightColorKey"
     }
 }
 

@@ -22,11 +22,15 @@ struct IdentificationInfo: Decodable {
     /// Fourthline provider string value
     let fourthlineProvider: String?
 
+    /// Style used in SDK setup by partner
+    let style: IdentificationStyle?
+
     enum CodingKeys: String, CodingKey {
         case status
         case callbackURL = "callback_url"
         case language
         case acceptedTC = "terms_and_conditions_pre_accepted"
         case fourthlineProvider = "fourthline_provider"
+        case style
     }
 }

@@ -31,7 +31,7 @@ class ActionRoundedButton: UIButton {
             updateAppearance()
         }
     }
-    
+
     // On iOS 12, the colors set in xib files are set after the initialization of view
     // So we're disabling the setter of `backgroundColor` and replace it with `actualBackgroundColor`
     override var backgroundColor: UIColor? {
@@ -42,7 +42,7 @@ class ActionRoundedButton: UIButton {
             updateAppearance()
         }
     }
-    
+
     var actualBackgroundColor: UIColor? {
         get {
             return super.backgroundColor
@@ -72,7 +72,7 @@ class ActionRoundedButton: UIButton {
         }
         updateAppearance()
     }
-    
+
     func updateAppearance() {
         let colors: (background: UIColor, text: UIColor)
         switch currentAppearance {

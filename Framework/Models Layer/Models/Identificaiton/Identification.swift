@@ -52,6 +52,9 @@ struct Identification: Decodable {
     /// Next step.
     let nextStep: String?
 
+    /// Fallback step
+    let fallbackStep: String?
+
     /// Provider status code
     let providerStatusCode: String?
 
@@ -80,6 +83,7 @@ struct Identification: Decodable {
         case estimatedWaitingTime = "estimated_waiting_time"
         case address
         case nextStep = "next_step"
+        case fallbackStep = "fallback_step"
         case providerStatusCode = "provider_status_code"
         case failureReason = "failure_reason"
         case referenceToken = "current_reference_token"

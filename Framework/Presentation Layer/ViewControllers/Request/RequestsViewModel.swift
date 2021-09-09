@@ -262,6 +262,7 @@ private extension RequestsViewModel {
             case .success(let response):
                 self.completeStep(number: InitStep.obtainInfo.rawValue)
                 self.sessionStorage.acceptedTC = response.acceptedTC
+                self.sessionStorage.setStyleColors(response.style?.colors)
 
                 if let provider = response.fourthlineProvider {
                     KYCContainer.shared.update(provider: provider)

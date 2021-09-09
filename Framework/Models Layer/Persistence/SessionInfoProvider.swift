@@ -37,6 +37,10 @@ protocol SessionInfoProvider: AnyObject {
 
     /// Documents list
     var documentsList: [SupportedDocument]? { get set }
+
+    /// Method stored style colors to the user defaults
+    /// - Parameter color: colors model
+    func setStyleColors(_ color: StyleColors?)
 }
 
 /// Count of default retries. Used if from server comes null value
@@ -114,6 +118,22 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     init(sessionToken: String) {
         self.sessionToken = sessionToken
         self.restoreValues()
+    }
+
+    // MARK: - Public methods -
+    func setStyleColors(_ color: StyleColors?) {
+        
+        if let primaryColor = color?.primary {
+            SessionStorage.updateValue(primaryColor, for: StoredKeys.StyleColor.primary.rawValue)
+        }
+
+        if let primaryDarkColor = color?.primaryDark {
+            SessionStorage.updateValue(primaryDarkColor, for: StoredKeys.StyleColor.primaryDark.rawValue)
+        }
+
+        if let secondaryColor = color?.secondary {
+            SessionStorage.updateValue(secondaryColor, for: StoredKeys.StyleColor.secondary.rawValue)
+        }
     }
 }
 

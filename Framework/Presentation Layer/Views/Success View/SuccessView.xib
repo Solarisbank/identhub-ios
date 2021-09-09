@@ -34,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8y-Dp-Tu7" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
-                    <rect key="frame" x="16" y="160" width="382" height="50"/>
+                    <rect key="frame" x="16" y="131" width="382" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="MyY-7E-vjf"/>
@@ -55,8 +55,8 @@
                 <constraint firstItem="i8y-Dp-Tu7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Sv0-8G-D4M"/>
                 <constraint firstItem="Teg-JQ-99S" firstAttribute="top" secondItem="qdb-xs-C9m" secondAttribute="bottom" constant="24" id="T6l-ZT-kib"/>
                 <constraint firstAttribute="trailing" secondItem="Teg-JQ-99S" secondAttribute="trailing" constant="16" id="Wme-sd-swr"/>
+                <constraint firstItem="i8y-Dp-Tu7" firstAttribute="top" secondItem="Teg-JQ-99S" secondAttribute="bottom" constant="24" id="amv-1w-qEA"/>
                 <constraint firstItem="qdb-xs-C9m" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="anM-XY-p2V"/>
-                <constraint firstAttribute="bottom" secondItem="i8y-Dp-Tu7" secondAttribute="bottom" constant="40" id="jVL-aM-tMR"/>
                 <constraint firstAttribute="trailing" secondItem="i8y-Dp-Tu7" secondAttribute="trailing" constant="16" id="oYq-wT-WZS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
