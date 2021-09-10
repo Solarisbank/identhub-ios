@@ -13,7 +13,7 @@ class StartBankIdentViewController: SolarisViewController {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var instructionsLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
-    @IBOutlet var sendBtn: UIButton!
+    @IBOutlet var sendBtn: ActionRoundedButton!
     @IBOutlet var quitBtn: UIButton!
 
     var viewModel: StartIdentificationViewModel!

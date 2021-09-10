@@ -53,7 +53,7 @@
                             <color key="textColor" name="base75"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fr-Zp-PlS">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fr-Zp-PlS" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
                             <rect key="frame" x="16" y="281.5" width="382" height="48"/>
                             <color key="backgroundColor" name="primary"/>
                             <constraints>

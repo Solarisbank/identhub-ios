@@ -11,7 +11,7 @@ class TermsViewController: UIViewController {
     // MARK: - Properties -
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var termsText: UITextView!
-    @IBOutlet var continueBtn: UIButton!
+    @IBOutlet var continueBtn: ActionRoundedButton!
     @IBOutlet var quitBtn: UIButton!
     @IBOutlet var termsContainerView: UIView!
 
@@ -42,29 +42,21 @@ class TermsViewController: UIViewController {
     private func configureUI() {
 
         descLabel.text = Localizable.TermsConditions.description
-        continueBtn.isEnabled = false
+        continueBtn.currentAppearance = .inactive
         viewModel.delegate = self
 
         viewModel.setupTermsText(termsText)
-        updateContinueBtnDisplay()
-    }
-
-    private func updateContinueBtnDisplay() {
-
-        switch continueBtn.isEnabled {
-        case true:
-            continueBtn.backgroundColor = UIColor.sdkColor(.primaryAccent)
-        case false:
-            continueBtn.backgroundColor = UIColor.sdkColor(.black25)
-        }
     }
 
     // MARK: - Action methods -
     @IBAction func didClickCheckmark(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        continueBtn.isEnabled.toggle()
-
-        updateContinueBtnDisplay()
+        if sender.isSelected {
+            sender.isSelected = false
+            continueBtn.currentAppearance = .inactive
+        } else {
+            sender.isSelected = true
+            continueBtn.currentAppearance = .primary
+        }
     }
 
     @IBAction func didClickContinue(_ sender: UIButton) {

@@ -90,7 +90,7 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgM-G7-9LZ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgM-G7-9LZ" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
                             <rect key="frame" x="16" y="274" width="382" height="44"/>
                             <color key="backgroundColor" name="primary"/>
                             <constraints>
@@ -165,7 +165,7 @@
     <resources>
         <image name="checked" width="24" height="24"/>
         <image name="unchecked" width="24" height="24"/>
-        <image name="warning" width="24" height="24"/>
+        <image name="warning" width="16" height="16"/>
         <namedColor name="background">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

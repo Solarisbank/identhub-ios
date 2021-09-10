@@ -6,6 +6,33 @@
 import UIKit
 
 internal extension UIColor {
+    
+    /// Hex color initializer
+    convenience init?(hex: String) {
+        let hexString: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let scanner = Scanner(string: hexString)
+        if (hexString.hasPrefix("#")) {
+            scanner.scanLocation = 1
+        }
+        
+        var color: UInt32 = 0
+        scanner.scanHexInt32(&color)
+        let mask = 0x000000FF
+        let a : Int
+        if hex.count >= 8 {
+            a = Int(color >> 24) & mask
+        } else {
+            a = 255
+        }
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+        let red   = CGFloat(r) / 255.0
+        let green = CGFloat(g) / 255.0
+        let blue  = CGFloat(b) / 255.0
+        let alpha = CGFloat(a) / 255.0
+        self.init(red:red, green:green, blue:blue, alpha:alpha)
+    }
 
     /// List of available colors.
     enum AppColor {
@@ -43,6 +70,10 @@ internal extension UIColor {
 
     /// Choose custom available color.
     static func sdkColor(_ color: AppColor) -> UIColor {
+        if let customizedColor = customizedColor(color) {
+            return customizedColor
+        }
+        
         switch color {
         case .base100:
             return assetsColor(by: "base100") ?? #colorLiteral(red: 0.05882352941, green: 0.09803921569, blue: 0.1490196078, alpha: 1)
@@ -106,8 +137,39 @@ internal extension UIColor {
             return assetsColor(by: "background") ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
-
+    
     static func assetsColor(by name: String) -> UIColor? {
         return UIColor(named: name, in: Bundle.current, compatibleWith: nil)
+    }
+    
+    static func customizedColor(_ color: AppColor) -> UIColor? {
+        let darkMode: Bool
+        
+        if #available(iOS 13.0, *) {
+            darkMode = UITraitCollection.current.userInterfaceStyle == .dark
+        } else {
+            darkMode = false
+        }
+        
+        switch color {
+        case .primaryAccent:
+            if darkMode {
+                return obtainCustomizedColor(color: .primaryDark)
+            } else {
+                return obtainCustomizedColor(color: .primary)
+            }
+        case .secondaryAccent:
+            return obtainCustomizedColor(color: .secondary)
+        default:
+            return nil
+        }
+    }
+    
+    private static func obtainCustomizedColor(color: StoredKeys.StyleColor) -> UIColor? {
+        if let colorHex = SessionStorage.obtainValue(for: color.rawValue) as? String {
+            return UIColor(hex: colorHex)
+        } else {
+            return nil
+        }
     }
 }

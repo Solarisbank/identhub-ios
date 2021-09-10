@@ -36,6 +36,7 @@ final internal class TermsViewModel: NSObject {
             .foregroundColor: UIColor.sdkColor(.primaryAccent),
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
+        textView.textColor = UIColor.sdkColor(.base50)
     }
 
     /// Start Fourthline identification process
