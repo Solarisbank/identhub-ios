@@ -12,6 +12,7 @@ class WelcomeViewController: UIViewController {
     // MARK: - Properties -
     @IBOutlet var pageController: UIPageControl!
     @IBOutlet var pageScroller: UICollectionView!
+    @IBOutlet var logoBackground: UIImageView!
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var logoFrame: UIImageView!
     @IBOutlet var startBtn: ActionRoundedButton!
@@ -42,6 +43,12 @@ class WelcomeViewController: UIViewController {
         configureUI()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        logoBackground.layer.cornerRadius = logoBackground.frame.width / 2
+    }
+
     // MARK: - Internal methods -
 
     private func configureUI() {
@@ -53,6 +60,15 @@ class WelcomeViewController: UIViewController {
         viewModel.configurePageScroller(pageScroller)
         viewModel.setPageController(pageController)
         viewModel.setLogoAnimator(logoAnimator)
+
+        configureCustomUI()
+    }
+
+    private func configureCustomUI() {
+
+        startBtn.currentAppearance = .primary
+        logoBackground.layer.masksToBounds = true
+        logoBackground.backgroundColor = .sdkColor(.primaryAccent)
     }
 
     // MARK: - Actions methods -

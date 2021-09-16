@@ -14,7 +14,7 @@ class ActionRoundedButton: UIButton {
         }
 
         enum ConstraintsSize {
-            static let height: CGFloat = 48
+            static let height: CGFloat = 50
         }
     }
 

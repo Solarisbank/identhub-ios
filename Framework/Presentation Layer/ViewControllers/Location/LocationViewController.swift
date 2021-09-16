@@ -14,6 +14,7 @@ class LocationViewController: UIViewController {
     @IBOutlet var descriptionLbl: UILabel!
     @IBOutlet var quitBtn: UIButton!
     @IBOutlet var continueBtn: ActionRoundedButton!
+    @IBOutlet var circleBackground: UIImageView!
 
     // MARK: - Private attributes -
     private var viewModel: LocationViewModel!
@@ -36,6 +37,12 @@ class LocationViewController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        circleBackground.layer.cornerRadius = circleBackground.frame.width / 2
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -65,5 +72,14 @@ extension LocationViewController {
         quitBtn.titleLabel?.text = Localizable.Common.quit
         titleLbl.text = Localizable.Location.title
         descriptionLbl.text = Localizable.Location.description
+
+        configureCustomUI()
+    }
+
+    private func configureCustomUI() {
+
+        continueBtn.currentAppearance = .primary
+        circleBackground.layer.masksToBounds = true
+        circleBackground.backgroundColor = .sdkColor(.primaryAccent)
     }
 }

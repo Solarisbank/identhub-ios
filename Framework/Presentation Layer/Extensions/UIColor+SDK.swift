@@ -137,20 +137,20 @@ internal extension UIColor {
             return assetsColor(by: "background") ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
-    
+
     static func assetsColor(by name: String) -> UIColor? {
         return UIColor(named: name, in: Bundle.current, compatibleWith: nil)
     }
-    
+
     static func customizedColor(_ color: AppColor) -> UIColor? {
         let darkMode: Bool
-        
+
         if #available(iOS 13.0, *) {
             darkMode = UITraitCollection.current.userInterfaceStyle == .dark
         } else {
             darkMode = false
         }
-        
+
         switch color {
         case .primaryAccent:
             if darkMode {
@@ -164,7 +164,7 @@ internal extension UIColor {
             return nil
         }
     }
-    
+
     private static func obtainCustomizedColor(color: StoredKeys.StyleColor) -> UIColor? {
         if let colorHex = SessionStorage.obtainValue(for: color.rawValue) as? String {
             return UIColor(hex: colorHex)

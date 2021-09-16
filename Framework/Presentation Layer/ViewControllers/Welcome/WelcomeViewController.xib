@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeViewController" customModule="IdentHubSDK" customModuleProvider="target">
             <connections>
+                <outlet property="logoBackground" destination="WJ8-JB-1tJ" id="vgU-Yt-kco"/>
                 <outlet property="logoFrame" destination="f4Z-cv-iE2" id="b1Q-uO-yWs"/>
                 <outlet property="logoImage" destination="iA1-zE-dWo" id="RhG-t7-KCC"/>
                 <outlet property="pageController" destination="3NB-Cr-e2B" id="ZUn-fM-O7N"/>
@@ -30,7 +31,7 @@
                     <color key="textColor" name="black75"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_background" translatesAutoresizingMaskIntoConstraints="NO" id="WJ8-JB-1tJ">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_background_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="WJ8-JB-1tJ">
                     <rect key="frame" x="93" y="222" width="228" height="228"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="WJ8-JB-1tJ" secondAttribute="height" multiplier="1:1" id="ff9-ik-yyF"/>
@@ -126,7 +127,7 @@
         </view>
     </objects>
     <resources>
-        <image name="circle_background" width="228" height="228"/>
+        <image name="circle_background_shadow" width="228" height="228"/>
         <namedColor name="background">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
