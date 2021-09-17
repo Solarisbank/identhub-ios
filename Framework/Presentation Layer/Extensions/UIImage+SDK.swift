@@ -18,6 +18,7 @@ internal extension UIImage {
         case info = "info"
         case downloadDocument = "document_download"
         case warning = "warning"
+        case checkmark = "checkmark"
     }
 
     /// Choose custom available image.

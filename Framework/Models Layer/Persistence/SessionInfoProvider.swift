@@ -122,7 +122,7 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
 
     // MARK: - Public methods -
     func setStyleColors(_ color: StyleColors?) {
-        
+
         if let primaryColor = color?.primary {
             SessionStorage.updateValue(primaryColor, for: StoredKeys.StyleColor.primary.rawValue)
         }

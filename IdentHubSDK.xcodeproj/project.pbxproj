@@ -150,6 +150,7 @@
 		8423EFE8262AF5B50092F003 /* DocumentScannerOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8423EFE7262AF5B50092F003 /* DocumentScannerOverlayView.xib */; };
 		8423EFED262B2A050092F003 /* DocumentScannerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFEC262B2A050092F003 /* DocumentScannerResultView.swift */; };
 		8423EFF2262B2A120092F003 /* DocumentScannerResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8423EFF1262B2A120092F003 /* DocumentScannerResultView.xib */; };
+		84280D2426F3BBB40002D119 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84280D2326F3BBB40002D119 /* Checkbox.swift */; };
 		84281690261F02BD00A7BE37 /* InfoStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428168F261F02BD00A7BE37 /* InfoStatusView.swift */; };
 		84281695261F02E000A7BE37 /* InfoStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84281694261F02E000A7BE37 /* InfoStatusView.xib */; };
 		842A14AD260A6E65005CD33B /* FourthlineIdentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */; };
@@ -414,6 +415,7 @@
 		8423EFE7262AF5B50092F003 /* DocumentScannerOverlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentScannerOverlayView.xib; sourceTree = "<group>"; };
 		8423EFEC262B2A050092F003 /* DocumentScannerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerResultView.swift; sourceTree = "<group>"; };
 		8423EFF1262B2A120092F003 /* DocumentScannerResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentScannerResultView.xib; sourceTree = "<group>"; };
+		84280D2326F3BBB40002D119 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		8428168F261F02BD00A7BE37 /* InfoStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStatusView.swift; sourceTree = "<group>"; };
 		84281694261F02E000A7BE37 /* InfoStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoStatusView.xib; sourceTree = "<group>"; };
 		842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthlineIdentCoordinator.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				84EAFCA626CC1DE00008F0E3 /* StateView */,
 				0C4B67D9259B228400190C4E /* IdentificationProgressView.swift */,
 				0CE4A8DE25A3666500114CBD /* ActionRoundedButton.swift */,
+				84280D2326F3BBB40002D119 /* Checkbox.swift */,
 				0CC25BBC25A4AB2100D839AB /* CodeEntryView.swift */,
 				0C527E5C25AC5F1500B6D5DB /* VerificationTextField.swift */,
 				0C9E56E825C0358500D68B96 /* DocumentTableViewCell.swift */,
@@ -1959,6 +1962,7 @@
 				8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */,
 				849C9E87260E39BF00D74D35 /* SelfieViewController.swift in Sources */,
 				845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */,
+				84280D2426F3BBB40002D119 /* Checkbox.swift in Sources */,
 				849C9E8D260E3B1400D74D35 /* SelfieViewModel.swift in Sources */,
 				84A1D48E2617833400E2B2D5 /* PhoneVerificationViewController.swift in Sources */,
 				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,

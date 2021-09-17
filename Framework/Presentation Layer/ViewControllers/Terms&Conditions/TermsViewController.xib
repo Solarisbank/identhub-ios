@@ -66,20 +66,19 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8i-zH-l8y">
-                            <rect key="frame" x="16" y="190" width="44" height="44"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8i-zH-l8y" customClass="Checkbox" customModule="IdentHubSDK" customModuleProvider="target">
+                            <rect key="frame" x="30" y="190" width="28" height="28"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="44" id="Ttn-4c-Za7"/>
-                                <constraint firstAttribute="height" constant="44" id="pVg-uA-2n3"/>
+                                <constraint firstAttribute="width" constant="28" id="Ttn-4c-Za7"/>
+                                <constraint firstAttribute="height" constant="28" id="pVg-uA-2n3"/>
                             </constraints>
-                            <state key="normal" image="unchecked"/>
                             <state key="selected" image="checked"/>
                             <connections>
                                 <action selector="didClickCheckmark:" destination="-1" eventType="touchUpInside" id="rgu-eo-4HN"/>
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="I agree to the Privacy Statement &amp; Terms &amp; Conditions" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CUE-ZN-WUa">
-                            <rect key="frame" x="60" y="189.5" width="220" height="45"/>
+                            <rect key="frame" x="72" y="181.5" width="220" height="45"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="SqE-mJ-FkT"/>
@@ -91,10 +90,10 @@
                             <dataDetectorType key="dataDetectorTypes" link="YES"/>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VgM-G7-9LZ" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
-                            <rect key="frame" x="16" y="274" width="382" height="44"/>
+                            <rect key="frame" x="16" y="258" width="382" height="50"/>
                             <color key="backgroundColor" name="primary"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="O0D-Yi-jYP"/>
+                                <constraint firstAttribute="height" constant="50" id="O0D-Yi-jYP"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Continue">
@@ -111,10 +110,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2P-vc-b94">
-                            <rect key="frame" x="16" y="338" width="382" height="44"/>
+                            <rect key="frame" x="16" y="328" width="382" height="50"/>
                             <color key="backgroundColor" name="black25"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="WNs-6m-ALu"/>
+                                <constraint firstAttribute="height" constant="50" id="WNs-6m-ALu"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Quit">
@@ -135,19 +134,19 @@
                     <constraints>
                         <constraint firstItem="CUE-ZN-WUa" firstAttribute="centerY" secondItem="b8i-zH-l8y" secondAttribute="centerY" id="4sM-lZ-P7L"/>
                         <constraint firstAttribute="trailing" secondItem="VgM-G7-9LZ" secondAttribute="trailing" constant="16" id="Dg7-np-u4I"/>
-                        <constraint firstItem="CUE-ZN-WUa" firstAttribute="leading" secondItem="b8i-zH-l8y" secondAttribute="trailing" id="G0E-74-1ux"/>
+                        <constraint firstItem="CUE-ZN-WUa" firstAttribute="leading" secondItem="b8i-zH-l8y" secondAttribute="trailing" constant="14" id="G0E-74-1ux"/>
                         <constraint firstAttribute="trailing" secondItem="dQD-7s-tMa" secondAttribute="trailing" constant="16" id="K29-ks-1Mh"/>
                         <constraint firstItem="j2P-vc-b94" firstAttribute="top" secondItem="VgM-G7-9LZ" secondAttribute="bottom" constant="20" id="SEZ-ev-yO8"/>
                         <constraint firstItem="dQD-7s-tMa" firstAttribute="leading" secondItem="lM3-hi-U4y" secondAttribute="leading" id="SVt-G6-gFj"/>
                         <constraint firstItem="b8i-zH-l8y" firstAttribute="top" secondItem="dQD-7s-tMa" secondAttribute="bottom" constant="30" id="TDK-jg-nR4"/>
                         <constraint firstItem="lM3-hi-U4y" firstAttribute="top" secondItem="kya-v9-OY4" secondAttribute="top" constant="40" id="UVH-g2-MLA"/>
                         <constraint firstAttribute="trailing" secondItem="j2P-vc-b94" secondAttribute="trailing" constant="16" id="Vqa-6U-mM1"/>
-                        <constraint firstItem="b8i-zH-l8y" firstAttribute="leading" secondItem="dQD-7s-tMa" secondAttribute="leading" id="gdc-yd-BAI"/>
+                        <constraint firstItem="b8i-zH-l8y" firstAttribute="leading" secondItem="dQD-7s-tMa" secondAttribute="leading" constant="14" id="gdc-yd-BAI"/>
                         <constraint firstItem="VgM-G7-9LZ" firstAttribute="top" secondItem="b8i-zH-l8y" secondAttribute="bottom" constant="40" id="gwH-97-eyg"/>
-                        <constraint firstItem="VgM-G7-9LZ" firstAttribute="leading" secondItem="b8i-zH-l8y" secondAttribute="leading" id="oe6-k8-xjW"/>
                         <constraint firstItem="j2P-vc-b94" firstAttribute="leading" secondItem="kya-v9-OY4" secondAttribute="leading" constant="16" id="q1X-27-g6z"/>
                         <constraint firstItem="lM3-hi-U4y" firstAttribute="leading" secondItem="kya-v9-OY4" secondAttribute="leading" constant="16" id="q9u-B5-8Xb"/>
                         <constraint firstAttribute="height" constant="400" id="qlx-W7-KA8"/>
+                        <constraint firstItem="VgM-G7-9LZ" firstAttribute="leading" secondItem="dQD-7s-tMa" secondAttribute="leading" id="yjx-ig-E5D"/>
                         <constraint firstItem="dQD-7s-tMa" firstAttribute="top" secondItem="lM3-hi-U4y" secondAttribute="bottom" constant="30" id="yke-CK-qZQ"/>
                     </constraints>
                 </view>
@@ -164,7 +163,6 @@
     </objects>
     <resources>
         <image name="checked" width="24" height="24"/>
-        <image name="unchecked" width="24" height="24"/>
         <image name="warning" width="16" height="16"/>
         <namedColor name="background">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

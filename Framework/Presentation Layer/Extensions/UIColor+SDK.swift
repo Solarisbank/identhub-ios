@@ -6,19 +6,19 @@
 import UIKit
 
 internal extension UIColor {
-    
+
     /// Hex color initializer
     convenience init?(hex: String) {
         let hexString: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let scanner = Scanner(string: hexString)
-        if (hexString.hasPrefix("#")) {
+        if hexString.hasPrefix("#") {
             scanner.scanLocation = 1
         }
-        
+
         var color: UInt32 = 0
         scanner.scanHexInt32(&color)
         let mask = 0x000000FF
-        let a : Int
+        let a: Int
         if hex.count >= 8 {
             a = Int(color >> 24) & mask
         } else {
@@ -31,7 +31,7 @@ internal extension UIColor {
         let green = CGFloat(g) / 255.0
         let blue  = CGFloat(b) / 255.0
         let alpha = CGFloat(a) / 255.0
-        self.init(red:red, green:green, blue:blue, alpha:alpha)
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 
     /// List of available colors.
@@ -73,7 +73,7 @@ internal extension UIColor {
         if let customizedColor = customizedColor(color) {
             return customizedColor
         }
-        
+
         switch color {
         case .base100:
             return assetsColor(by: "base100") ?? #colorLiteral(red: 0.05882352941, green: 0.09803921569, blue: 0.1490196078, alpha: 1)
