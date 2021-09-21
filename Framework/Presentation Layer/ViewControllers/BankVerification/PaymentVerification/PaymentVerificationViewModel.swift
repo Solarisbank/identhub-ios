@@ -51,7 +51,7 @@ final internal class PaymentVerificationViewModel: NSObject {
     }
 
     /// Begin sign documents.
-    func beginSignDocuments() {
+    func executeStep() {
         if nextStep != .unspecified {
             flowCoordinator.perform(action: .nextStep(step: nextStep))
         } else {
@@ -69,14 +69,11 @@ private extension PaymentVerificationViewModel {
 
             switch result {
             case .success(let response):
+                self.defineNextStep(response)
 
                 switch response.status {
                 case .authorizationRequired,
                      .identificationRequired:
-                    if let step = response.nextStep, let nextStep = IdentificationStep(rawValue: step) {
-                        self.nextStep = nextStep
-                    }
-
                     DispatchQueue.main.async {
                         self.timer?.invalidate()
                         self.delegate?.verificationIsBeingProcessed()
@@ -85,9 +82,12 @@ private extension PaymentVerificationViewModel {
                         self.delegate?.verificationSucceeded()
                     }
                 case .failed:
-                    DispatchQueue.main.async {
-                        self.completionHandler(.failure(.paymentFailed))
-                        self.flowCoordinator.perform(action: .close)
+                    if self.nextStep != .unspecified {
+                        DispatchQueue.main.async {
+                            self.executeStep()
+                        }
+                    } else {
+                        self.interruptProcess()
                     }
                 default:
                     print("Status not processed in SDK: \(response.status.rawValue)")
@@ -95,6 +95,23 @@ private extension PaymentVerificationViewModel {
             case .failure(let error):
                 self.completionHandler(.failure(error))
             }
+        }
+    }
+
+    private func defineNextStep(_ response: Identification) {
+        if let step = response.nextStep, let nextStep = IdentificationStep(rawValue: step) {
+            self.nextStep = nextStep
+        } else if let step = response.fallbackStep, let fallbackStep = IdentificationStep(rawValue: step) {
+            self.nextStep = fallbackStep
+        } else {
+            self.nextStep = .unspecified
+        }
+    }
+
+    private func interruptProcess() {
+        DispatchQueue.main.async {
+            self.completionHandler(.failure(.paymentFailed))
+            self.flowCoordinator.perform(action: .close)
         }
     }
 }

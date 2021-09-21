@@ -67,7 +67,7 @@ final internal class PaymentVerificationViewController: UIViewController {
         successContainerView.setDescription(Localizable.BankVerification.PaymentVerification.Success.description)
         successContainerView.setActionButtonTitle(Localizable.BankVerification.PaymentVerification.Success.action)
         successContainerView.setAction { [weak self] in
-            self?.viewModel.beginSignDocuments()
+            self?.viewModel.executeStep()
         }
     }
 
