@@ -55,6 +55,7 @@ final internal class IBANVerificationViewController: UIViewController {
         ibanVerificationTextField.placeholder = placeholderText
 
         initiatePaymentVerificationButton.setTitle(Localizable.BankVerification.IBANVerification.initiatePaymentVerification, for: .normal)
+        initiatePaymentVerificationButton.currentAppearance = .primary
 
         ibanVerificationTextField.currentState = .normal
     }

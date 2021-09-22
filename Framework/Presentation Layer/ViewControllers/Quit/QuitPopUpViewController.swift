@@ -13,6 +13,7 @@ final internal class QuitPopUpViewController: PopUpWindowViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setTitle(Localizable.Quiting.title)
         setDescription(Localizable.Quiting.description)
         setPrimaryButtonTitle(Localizable.Common.quit)

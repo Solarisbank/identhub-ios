@@ -97,6 +97,7 @@ internal class CodeEntryView: UIView {
 
     private lazy var containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = .sdkColor(.background)
         return view
     }()
 
@@ -169,6 +170,7 @@ internal class CodeEntryView: UIView {
             textField.delegate = self
             textField.returnKeyType = .done
             textField.customDelegate = self
+            textField.backgroundColor = .sdkColor(.background)
             entryFieldsStackView.addArrangedSubview(textField)
         }
     }
@@ -205,9 +207,9 @@ internal class CodeEntryView: UIView {
         case .normal:
             textFieldProperties = (.sdkColor(.background), UIColor.sdkColor(.base25).cgColor, true, .sdkColor(.base100))
         case .error:
-            textFieldProperties = (.sdkColor(.black05), UIColor.sdkColor(.error).cgColor, false, .sdkColor(.black25))
+            textFieldProperties = (.sdkColor(.base05), UIColor.sdkColor(.error).cgColor, false, .sdkColor(.base25))
         case .disabled:
-            textFieldProperties = (.sdkColor(.black05), UIColor.sdkColor(.base25).cgColor, false, .sdkColor(.black25))
+            textFieldProperties = (.sdkColor(.base05), UIColor.sdkColor(.base25).cgColor, false, .sdkColor(.base25))
         }
         for view in self.entryFieldsStackView.arrangedSubviews {
             view.backgroundColor = textFieldProperties.backgroundColor

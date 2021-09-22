@@ -5,7 +5,7 @@
 
 import UIKit
 
-class StartBankIdentViewController: SolarisViewController {
+class StartBankIdentViewController: UIViewController {
 
     // MARK: - Properties -
     @IBOutlet var startContainerView: UIView!
@@ -40,9 +40,9 @@ class StartBankIdentViewController: SolarisViewController {
 
     private func configureUI() {
 
-        containerView.addSubview(startContainerView)
+        view.addSubview(startContainerView)
 
-        containerView.addConstraints {
+        view.addConstraints {
             [ $0.equalTo(startContainerView, .bottom, .bottom) ]
         }
 
@@ -52,6 +52,8 @@ class StartBankIdentViewController: SolarisViewController {
         detailLabel.text = Localizable.StartIdentification.followVerificationForNumber
         sendBtn.setTitle(Localizable.StartIdentification.sendVerificationCode, for: .normal)
         quitBtn.setTitle(Localizable.Common.quit, for: .normal)
+        
+        sendBtn.currentAppearance = .primary
     }
 
     // MARK: - Actions methods -

@@ -6,7 +6,7 @@
 import UIKit
 
 /// UIViewController which displays screen to verify phone number with TAN.
-final internal class PhoneVerificationViewController: SolarisViewController {
+final internal class PhoneVerificationViewController: UIViewController {
 
     var viewModel: PhoneVerificationViewModel!
 
@@ -101,7 +101,8 @@ final internal class PhoneVerificationViewController: SolarisViewController {
     }
 
     private func configureUI() {
-        containerView.addSubviews([
+
+        view.addSubviews([
             currentStepView,
             mainContainerView
         ])
@@ -141,10 +142,9 @@ final internal class PhoneVerificationViewController: SolarisViewController {
         }
 
         submitCodeButton.addConstraints { [
-            $0.equalTo(codeEntryView, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
             $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
             $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended)
+            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended * 2)
         ]
         }
 
@@ -162,7 +162,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
     }
 
     private func setUpSuccessView() {
-        containerView.addSubview(successContainerView)
+        view.addSubview(successContainerView)
 
         successContainerView.addConstraints { [
             $0.equalTo(currentStepView, .top, .bottom),
@@ -174,7 +174,7 @@ final internal class PhoneVerificationViewController: SolarisViewController {
     }
 
     private func setUpErrorView() {
-        containerView.addSubview(errorView)
+        view.addSubview(errorView)
 
         errorView.addConstraints { [
             $0.equalTo(currentStepView, .top, .bottom),

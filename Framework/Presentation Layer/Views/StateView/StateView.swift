@@ -27,6 +27,8 @@ final internal class StateView: NibView {
 
         addSubview(containerView)
         containerView.frame = bounds
+        stateLabel.textColor = .sdkColor(.base100)
+        stateDescriptionLabel.textColor = .sdkColor(.base75)
     }
 
     override func configureUI() {
@@ -37,6 +39,7 @@ final internal class StateView: NibView {
     /// Set image.
     func setStateImage(_ image: UIImage?) {
         stateImageView.image = image
+        stateImageView.tintColor = .sdkColor(.secondaryAccent)
     }
 
     /// Set state title.

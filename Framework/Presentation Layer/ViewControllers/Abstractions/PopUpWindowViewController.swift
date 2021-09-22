@@ -24,7 +24,7 @@ internal class PopUpWindowViewController: UIViewController {
 
     private lazy var popUpWindowView: UIView = {
         let view = UIView()
-        view.backgroundColor = .sdkColor(.black0)
+        view.backgroundColor = .sdkColor(.background)
         let layer = view.layer
         layer.cornerRadius = Constants.cornerRadius
         return view
@@ -33,6 +33,7 @@ internal class PopUpWindowViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.FontSize.big)
+        label.textColor = .sdkColor(.base100)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
