@@ -13,5 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: echo "Hello world"
+    - name: Install dependencies
+      run: |
+        pod repo add fourthline-specs https://${{ secrets.FOURTHLINE_COCOAPODS_USER }}:${{ secrets.FOURTHLINE_COCOAPODS_TOKEN }}@github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git
+        pod install
+    - name: Build Sample App
+      run: |
+        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme Sample -destination "platform=iOS Simulator,name=iPhone 12" build
