@@ -52,7 +52,7 @@ class StartBankIdentViewController: UIViewController {
         detailLabel.text = Localizable.StartIdentification.followVerificationForNumber
         sendBtn.setTitle(Localizable.StartIdentification.sendVerificationCode, for: .normal)
         quitBtn.setTitle(Localizable.Common.quit, for: .normal)
-        
+
         sendBtn.currentAppearance = .primary
     }
 

@@ -177,12 +177,17 @@ private extension FourthlineIdentCoordinator {
 
     private func completeIdent(with result: FourthlineIdentificationStatus) {
 
-        close()
-
-        if result.identificationStatus == .success {
+        switch result.identificationStatus {
+        case .success:
             completionHandler?(.success(identification: result.identification))
-        } else if result.identificationStatus == .failed {
+            close()
+        case .identificationRequired:
+            completionHandler?(.success(identification: result.identification))
+        case .failed:
             completionHandler?(.failure(.authorizationFailed))
+            close()
+        default:
+            print("\(result.identificationStatus) not processed.")
         }
     }
 }

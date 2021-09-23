@@ -495,7 +495,12 @@ private extension RequestsViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let `self` = self else { return }
 
-            self.fourthlineCoordinator?.perform(action: .result(result: result))
+            switch result.identificationStatus {
+            case .identificationRequired:
+                self.fourthlineCoordinator?.perform(action: .complete(result: result))
+            default:
+                self.fourthlineCoordinator?.perform(action: .result(result: result))
+            }
         }
     }
 }

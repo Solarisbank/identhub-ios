@@ -12,6 +12,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     private var locationManager: CLLocationManager?
     private var completionHandler: (() -> Void)!
     private var completionLocationHandler: ((CLLocation?, Error?) -> Void)!
+    private var authStatus: CLAuthorizationStatus = .notDetermined
 
     // MARK: - Public methods -
 
@@ -34,6 +35,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Internal methods -
 
     private func checkLocationStatus(status: CLAuthorizationStatus) {
+        authStatus = status
 
         switch status {
         case .authorizedAlways,
@@ -57,7 +59,9 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - CLLocationManagerDelegate
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationStatus(status: status)
+        if authStatus != status {
+            checkLocationStatus(status: status)
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

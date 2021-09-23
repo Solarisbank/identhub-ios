@@ -69,6 +69,8 @@ class WelcomeViewController: UIViewController {
         startBtn.currentAppearance = .primary
         logoBackground.layer.masksToBounds = true
         logoBackground.backgroundColor = .sdkColor(.primaryAccent)
+        pageController.pageIndicatorTintColor = .sdkColor(.black25)
+        pageController.currentPageIndicatorTintColor = .sdkColor(.primaryAccent)
     }
 
     // MARK: - Actions methods -
