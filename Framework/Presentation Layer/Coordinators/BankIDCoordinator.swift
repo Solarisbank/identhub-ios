@@ -225,5 +225,11 @@ private extension BankIDCoordinator {
                 self.completionHandler?(result)
             }
         }
+
+        fourthlineCoordinator.nextStepHandler = { [weak self] nextStep in
+            guard let `self` = self else { return }
+
+            self.perfomIdentStep(step: nextStep)
+        }
     }
 }

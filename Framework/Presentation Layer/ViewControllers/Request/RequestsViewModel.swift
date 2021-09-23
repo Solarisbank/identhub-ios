@@ -495,11 +495,14 @@ private extension RequestsViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let `self` = self else { return }
 
-            switch result.identificationStatus {
-            case .identificationRequired:
-                self.fourthlineCoordinator?.perform(action: .complete(result: result))
-            default:
-                self.fourthlineCoordinator?.perform(action: .result(result: result))
+            if let step = result.nextStep, let nextStep = IdentificationStep(rawValue: step) {
+                self.fourthlineCoordinator?.perform(action: .nextStep(step: nextStep))
+            } else {
+                if result.identificationMethod == .bankID {
+                    self.fourthlineCoordinator?.perform(action: .complete(result: result))
+                } else {
+                    self.fourthlineCoordinator?.perform(action: .result(result: result))
+                }
             }
         }
     }

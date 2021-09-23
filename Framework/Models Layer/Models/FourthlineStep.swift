@@ -20,6 +20,7 @@ enum FourthlineStep: Codable {
     case result(result: FourthlineIdentificationStatus) // Result screen with result status
     case quit // Quit from identification process
     case complete(result: FourthlineIdentificationStatus) // Close identification screen with passing ident result
+    case nextStep(step: IdentificationStep) // Method called next step of the identification process
 
     enum CodingKeys: CodingKey {
 
@@ -35,6 +36,7 @@ enum FourthlineStep: Codable {
         case resultStatus
         case quit
         case complete
+        case next
     }
 
     init(from decoder: Decoder) throws {
@@ -73,6 +75,9 @@ enum FourthlineStep: Codable {
         } else if let _ = try? values.decode(Bool.self, forKey: .quit) {
             self = .quit
             return
+        } else if let step = try? values.decode(IdentificationStep.self, forKey: .next) {
+            self = .nextStep(step: IdentificationStep(rawValue: step.rawValue) ?? .unspecified)
+            return
         } else {
             self = .welcome
             print("\(values) encoded with error")
@@ -106,6 +111,8 @@ enum FourthlineStep: Codable {
         case .quit,
              .complete:
             try container.encode(true, forKey: .quit)
+        case .nextStep(let step):
+            try container.encode(step.rawValue, forKey: .next)
         }
     }
 }

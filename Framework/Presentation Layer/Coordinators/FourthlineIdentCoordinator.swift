@@ -15,6 +15,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     private let appDependencies: AppDependencies
     private var identificationStep: FourthlineStep = .welcome
     private var completionHandler: CompletionHandler?
+    internal var nextStepHandler: ((IdentificationStep) -> Void)?
 
     // MARK: - Init methods -
 
@@ -65,6 +66,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             quit()
         case let .complete(result):
             completeIdent(with: result)
+        case .nextStep(let step):
+            nextStepHandler?(step)
         }
     }
 
