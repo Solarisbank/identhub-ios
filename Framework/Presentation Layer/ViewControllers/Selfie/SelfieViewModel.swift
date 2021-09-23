@@ -42,7 +42,6 @@ final internal class SelfieViewModel {
 
         let config = SelfieScannerConfig()
 
-        config.shouldRecordVideo = true
         config.livenessCheckType = .headTurn
 
         return config
