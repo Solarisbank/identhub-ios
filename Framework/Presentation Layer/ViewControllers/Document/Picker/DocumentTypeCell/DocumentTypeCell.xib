@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,6 +22,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tB-oC-Ril">
                         <rect key="frame" x="5" y="0.0" width="305" height="100"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5v-KW-FVe">
+                                <rect key="frame" x="20" y="40" width="20" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="document_deselect_state" highlightedImage="document_select_state" translatesAutoresizingMaskIntoConstraints="NO" id="UUy-TH-OvI">
                                 <rect key="frame" x="15" y="35" width="30" height="30"/>
                                 <constraints>
@@ -47,8 +57,12 @@
                             <constraint firstAttribute="trailing" secondItem="jpM-P3-zl1" secondAttribute="trailing" constant="15" id="8sR-i4-9OO"/>
                             <constraint firstItem="jpM-P3-zl1" firstAttribute="centerY" secondItem="7tB-oC-Ril" secondAttribute="centerY" id="B3X-CV-Hv0"/>
                             <constraint firstItem="uIC-js-vWc" firstAttribute="centerY" secondItem="7tB-oC-Ril" secondAttribute="centerY" id="EF0-Fa-2d4"/>
+                            <constraint firstItem="g5v-KW-FVe" firstAttribute="trailing" secondItem="UUy-TH-OvI" secondAttribute="trailing" constant="-5" id="EPE-Rc-5SR"/>
+                            <constraint firstItem="g5v-KW-FVe" firstAttribute="top" secondItem="UUy-TH-OvI" secondAttribute="top" constant="5" id="KNk-uX-ijv"/>
                             <constraint firstItem="uIC-js-vWc" firstAttribute="leading" secondItem="UUy-TH-OvI" secondAttribute="trailing" constant="20" id="Qlf-6s-bVv"/>
                             <constraint firstItem="UUy-TH-OvI" firstAttribute="leading" secondItem="7tB-oC-Ril" secondAttribute="leading" constant="15" id="ZEb-af-cfb"/>
+                            <constraint firstItem="g5v-KW-FVe" firstAttribute="leading" secondItem="UUy-TH-OvI" secondAttribute="leading" constant="5" id="Zk4-si-BHR"/>
+                            <constraint firstItem="g5v-KW-FVe" firstAttribute="bottom" secondItem="UUy-TH-OvI" secondAttribute="bottom" constant="-5" id="d6v-7u-duN"/>
                             <constraint firstItem="UUy-TH-OvI" firstAttribute="centerY" secondItem="7tB-oC-Ril" secondAttribute="centerY" id="qBc-W0-kHU"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -72,6 +86,7 @@
                 <outlet property="documentLogo" destination="jpM-P3-zl1" id="qa9-qL-TOX"/>
                 <outlet property="documentName" destination="uIC-js-vWc" id="hro-vi-orj"/>
                 <outlet property="selectStateImage" destination="UUy-TH-OvI" id="IOH-vk-dJ0"/>
+                <outlet property="selectedStateView" destination="g5v-KW-FVe" id="3Tn-Zx-dvr"/>
                 <outlet property="viewContainer" destination="7tB-oC-Ril" id="8a6-v5-XRg"/>
             </connections>
             <point key="canvasLocation" x="128.2608695652174" y="103.45982142857143"/>
@@ -87,5 +102,8 @@
         <namedColor name="base100">
             <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

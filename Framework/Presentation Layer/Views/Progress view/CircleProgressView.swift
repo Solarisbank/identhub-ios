@@ -29,5 +29,6 @@ class CircleProgressView: NibView {
 
     override func configureUI() {
         backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
+        animateProgress.color = .sdkColor(.primaryAccent)
     }
 }

@@ -71,9 +71,9 @@ extension ResultViewModel: StepsProgressViewDataSource {
 
         switch self.result?.identificationStatus {
         case .failed:
-            return UIColor.sdkColor(.error)
+            return .sdkColor(.error)
         default:
-            return UIColor.sdkColor(.success)
+            return .sdkColor(.secondaryAccent)
         }
     }
 }

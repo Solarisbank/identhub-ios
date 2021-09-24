@@ -105,13 +105,26 @@
                                 <action selector="didClickTakePicture:" destination="iN0-l3-epB" eventType="touchUpInside" id="UVW-Bf-3xd"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ma-aB-UUe">
+                            <rect key="frame" x="94.5" y="32" width="66" height="66"/>
+                            <color key="backgroundColor" name="primary"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="33"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="255" id="A2t-iG-TNE"/>
                         <constraint firstItem="Kab-Hg-54z" firstAttribute="leading" secondItem="mAL-zK-Z6b" secondAttribute="leading" id="OJv-wI-myB"/>
+                        <constraint firstItem="1ma-aB-UUe" firstAttribute="top" secondItem="9fy-Jy-GZm" secondAttribute="top" constant="32" id="SP0-r0-zlY"/>
                         <constraint firstItem="9fy-Jy-GZm" firstAttribute="top" secondItem="mAL-zK-Z6b" secondAttribute="top" id="UqK-UK-sMG"/>
+                        <constraint firstItem="1ma-aB-UUe" firstAttribute="leading" secondItem="9fy-Jy-GZm" secondAttribute="leading" constant="32" id="aeA-56-BVh"/>
                         <constraint firstAttribute="height" constant="135" id="c1u-FM-Icv"/>
+                        <constraint firstItem="1ma-aB-UUe" firstAttribute="bottom" secondItem="9fy-Jy-GZm" secondAttribute="bottom" constant="-32" id="cy8-RX-ThO"/>
+                        <constraint firstItem="1ma-aB-UUe" firstAttribute="trailing" secondItem="9fy-Jy-GZm" secondAttribute="trailing" constant="-32" id="ogT-a6-uH0"/>
                         <constraint firstItem="9fy-Jy-GZm" firstAttribute="centerX" secondItem="mAL-zK-Z6b" secondAttribute="centerX" id="ouU-jg-fiI"/>
                         <constraint firstAttribute="bottom" secondItem="Kab-Hg-54z" secondAttribute="bottom" id="rZO-PZ-mOx"/>
                         <constraint firstAttribute="trailing" secondItem="Kab-Hg-54z" secondAttribute="trailing" id="tdq-Pt-i3q"/>
@@ -163,6 +176,7 @@
                 <outlet property="rightMaskView" destination="kWR-lR-jVL" id="ceO-2u-pOb"/>
                 <outlet property="statusComponentView" destination="RAt-7D-0IO" id="suc-5t-ut9"/>
                 <outlet property="statusView" destination="Nk4-YK-RXV" id="vHa-Gc-YrD"/>
+                <outlet property="takePictureBtnView" destination="1ma-aB-UUe" id="AnC-18-Ngb"/>
                 <outlet property="titleLbl" destination="iOi-gi-8Uh" id="wRD-KT-Dru"/>
                 <outlet property="topMaskView" destination="b8T-kK-k5g" id="etp-zR-9RR"/>
             </connections>
@@ -176,6 +190,9 @@
         <image name="take_picture_button" width="160" height="160"/>
         <namedColor name="neutral_white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -30,6 +30,8 @@ final class DocumentScannerViewController: UIViewController {
     private lazy var documentOverlay: DocumentScannerOverlayView = {
         let overlayView = DocumentScannerOverlayView.fromNib()
 
+        overlayView.configureUI()
+
         overlayView.onTakePicture = { [unowned self] in
             self.documentScanner.takeSnapshot()
         }

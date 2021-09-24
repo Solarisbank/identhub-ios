@@ -10,6 +10,7 @@ class DocumentTypeCell: UITableViewCell {
     // MARK: - Properties -
     @IBOutlet var viewContainer: UIView!
     @IBOutlet var selectStateImage: UIImageView!
+    @IBOutlet var selectedStateView: UIView!
     @IBOutlet var documentName: UILabel!
     @IBOutlet var documentLogo: UIImageView!
 
@@ -18,6 +19,7 @@ class DocumentTypeCell: UITableViewCell {
     func configureCell(with data: ScanDocumentType) {
         documentName.text = data.name
         documentLogo.image = data.logo
+        selectedStateView.backgroundColor = .sdkColor(.primaryAccent)
 
         contentView.backgroundColor = .clear
         backgroundColor = .clear
@@ -35,6 +37,7 @@ class DocumentTypeCell: UITableViewCell {
             guard let `self` = self else { return }
 
             self.selectStateImage.isHighlighted = selected
+            self.selectedStateView.isHidden = !selected
             self.documentName.alpha = alpha
             self.documentLogo.alpha = alpha
             self.viewContainer.alpha = selected ? 1 : 0.75

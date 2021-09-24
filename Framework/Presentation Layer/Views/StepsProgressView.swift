@@ -133,11 +133,11 @@ extension StepsProgressViewDataSource {
     }
 
     func highlightColor() -> UIColor {
-        return UIColor.sdkColor(.success)
+        return .sdkColor(.secondaryAccent)
     }
 
     func regularColor() -> UIColor {
-        return UIColor.sdkColor(.base10)
+        return .sdkColor(.base10)
     }
 
     func currentStepHightlightColor() -> UIColor {

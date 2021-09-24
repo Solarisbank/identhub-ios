@@ -22,6 +22,7 @@ final class DocumentScannerOverlayView: UIView {
     @IBOutlet var maskAspectRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskWidthRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet var takePictureBtnView: UIView!
 
     var onDismiss: (() -> Void)?
     var onTakePicture: (() -> Void)?
@@ -86,6 +87,11 @@ final class DocumentScannerOverlayView: UIView {
         bottomMaskView.backgroundColor = maskColor
         leftMaskView.backgroundColor = maskColor
         rightMaskView.backgroundColor = maskColor
+    }
+
+    /// Method configure custom colors in UI components
+    func configureUI() {
+        takePictureBtnView.backgroundColor = .sdkColor(.primaryAccent)
     }
 }
 

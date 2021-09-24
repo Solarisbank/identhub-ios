@@ -27,7 +27,7 @@ final class ResultViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     // MARK: - Lifecycle methods -
@@ -58,6 +58,7 @@ private extension ResultViewController {
         titleLbl.text = viewModel.obtainResultTitle()
         descriptionLbl.text = viewModel.obtainResultDescription()
         resultImage.image = viewModel.obtainResultImage()
+        quitBtn.currentAppearance = .primary
 
         stepsProgressView.datasource = viewModel
     }
