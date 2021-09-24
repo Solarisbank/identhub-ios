@@ -65,7 +65,7 @@ final internal class SignDocumentsViewController: SolarisViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = label.font.withSize(Constants.FontSize.medium)
-        label.textColor = UIColor.sdkColor(.base75)
+        label.textColor = .sdkColor(.base75)
         label.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldText(viewModel.mobileNumber, withColorForBoldText: UIColor.sdkColor(.base100))
         return label
     }()

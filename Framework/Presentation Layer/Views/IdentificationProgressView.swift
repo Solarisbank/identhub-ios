@@ -26,7 +26,7 @@ private class LineProgressView: UIView {
     }
 
     private func setUp() {
-        backgroundColor = UIColor.sdkColor(.black10)
+        backgroundColor = .sdkColor(.base10)
         layer.cornerRadius = 2
         addConstraints { [
             $0.equalConstant(.height, 2)
@@ -62,7 +62,7 @@ internal class IdentificationProgressView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(Constants.FontSize.tiny)
-        label.textColor = UIColor.sdkColor(.base50)
+        label.textColor = .sdkColor(.base50)
         label.text = Localizable.IdentificationProgressView.identificationProgress.uppercased()
         return label
     }()
@@ -70,7 +70,7 @@ internal class IdentificationProgressView: UIView {
     private lazy var currentStepLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.FontSize.medium, weight: .bold)
-        label.textColor = UIColor.sdkColor(.base100)
+        label.textColor = .sdkColor(.base100)
         return label
     }()
 
@@ -78,7 +78,7 @@ internal class IdentificationProgressView: UIView {
         let label = UILabel()
         label.textAlignment = .right
         label.font = label.font.withSize(Constants.FontSize.small)
-        label.textColor = UIColor.sdkColor(.base50)
+        label.textColor = .sdkColor(.base50)
         return label
     }()
 
@@ -153,7 +153,7 @@ internal class IdentificationProgressView: UIView {
         }
 
         for index in 0..<details.stepNumber {
-            progressBarStackView.arrangedSubviews[index].backgroundColor = UIColor.sdkColor(.secondaryAccent)
+            progressBarStackView.arrangedSubviews[index].backgroundColor = .sdkColor(.secondaryAccent)
         }
     }
 

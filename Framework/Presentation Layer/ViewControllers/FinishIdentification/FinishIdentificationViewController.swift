@@ -6,7 +6,7 @@
 import UIKit
 
 /// UIViewController which displays finish indetification screen.
-final internal class FinishIdentificationViewController: SolarisViewController {
+final internal class FinishIdentificationViewController: UIViewController {
 
     var viewModel: FinishIdentificationViewModel!
 
@@ -29,7 +29,7 @@ final internal class FinishIdentificationViewController: SolarisViewController {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.sdkColor(.black75)
+        label.textColor = .sdkColor(.base100)
         label.font = label.font.withSize(Constants.FontSize.big)
         label.text = Localizable.FinishIdentification.identificationSuccessful
         return label
@@ -38,7 +38,7 @@ final internal class FinishIdentificationViewController: SolarisViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = UIColor.sdkColor(.base75)
+        label.textColor = .sdkColor(.base75)
         label.font = label.font.withSize(Constants.FontSize.normal)
         label.text = Localizable.FinishIdentification.description
         return label
@@ -81,9 +81,8 @@ final internal class FinishIdentificationViewController: SolarisViewController {
 
     private func configureUI() {
         view.backgroundColor = .sdkColor(.background)
-        containerView.backgroundColor = .sdkColor(.background)
 
-        containerView.addSubviews([
+        view.addSubviews([
             titleLabel,
             descriptionLabel,
             documentsTableView,
@@ -119,14 +118,14 @@ final internal class FinishIdentificationViewController: SolarisViewController {
         }
 
         actionButton.addConstraints { [
-            $0.equalTo(downloadAllDocumentsButton, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
             $0.equal(.leading, constant: Constants.ConstraintsOffset.sides),
             $0.equal(.trailing, constant: -Constants.ConstraintsOffset.sides),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended)
+            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended * 2)
         ]
         }
 
         actionButton.addTarget(self, action: #selector(finish), for: .touchUpInside)
+        actionButton.currentAppearance = .dimmed
     }
 
     @objc private func finish() {
