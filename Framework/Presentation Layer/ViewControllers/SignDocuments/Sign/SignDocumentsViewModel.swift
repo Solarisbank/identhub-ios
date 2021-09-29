@@ -75,7 +75,7 @@ final internal class SignDocumentsViewModel: NSObject {
     }
 
     func quit() {
-        flowCoordinator.quit()
+        flowCoordinator.perform(action: .quit)
     }
 
     /// Check the status of the identification.

@@ -63,7 +63,10 @@ class FourthlineIdentCoordinator: BaseCoordinator {
         case let .result(result):
             presentResult(result)
         case .quit:
-            quit()
+            quit {[weak self] in
+                self?.completionHandler?(.failure(.unauthorizedAction))
+                self?.close()
+            }
         case let .complete(result):
             completeIdent(with: result)
         case .nextStep(let step):

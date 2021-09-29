@@ -35,6 +35,9 @@ protocol SessionInfoProvider: AnyObject {
     /// Accepted state of the "Terms and Conditions" agreement
     var acceptedTC: Bool { get set }
 
+    /// Identified person phone verificatoin status
+    var phoneVerified: Bool { get set }
+
     /// Documents list
     var documentsList: [SupportedDocument]? { get set }
 
@@ -104,6 +107,13 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     var acceptedTC: Bool = false {
         didSet {
             SessionStorage.updateValue(acceptedTC, for: StoredKeys.acceptedTC.rawValue)
+        }
+    }
+
+    /// - SeeAlso: SessionInfoProvider.phoneVerified
+    var phoneVerified: Bool = false {
+        didSet {
+            SessionStorage.updateValue(phoneVerified, for: StoredKeys.phoneVerified.rawValue)
         }
     }
 
@@ -180,6 +190,10 @@ private extension StorageSessionInfoProvider {
 
         if let accepted = SessionStorage.obtainValue(for: StoredKeys.acceptedTC.rawValue) as? Bool {
             acceptedTC = accepted
+        }
+
+        if let verified = SessionStorage.obtainValue(for: StoredKeys.phoneVerified.rawValue) as? Bool {
+            phoneVerified = verified
         }
     }
 }

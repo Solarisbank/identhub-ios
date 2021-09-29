@@ -49,6 +49,9 @@ enum StoredKeys: String {
     /// Accepted state of the "Terms and Conditions" agreement
     case acceptedTC = "TermsAndConditionsAcceptedKey"
 
+    /// Status of the phone verification
+    case phoneVerified = "PhoneVerificationStatusKey"
+
     /// BankID identification session process step value key
     case bankIDStep = "BankIDIdentificationStepKey"
 

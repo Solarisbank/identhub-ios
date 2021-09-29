@@ -63,7 +63,6 @@ final internal class PhoneVerificationViewController: UIViewController {
     private lazy var submitCodeButton: ActionRoundedButton = {
         let button = ActionRoundedButton()
         button.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
-        button.currentAppearance = .primary
         button.isEnabled = false
         button.currentAppearance = .inactive
         return button

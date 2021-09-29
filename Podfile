@@ -28,6 +28,5 @@ post_install do |installer|
   installer.pods_project.build_configurations.each do |config|
     config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
     config.build_settings['ENABLE_BITCODE'] = 'YES'
-    config.build_settings['SWIFT_VERSION'] = '5.4'
   end
 end

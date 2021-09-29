@@ -26,11 +26,9 @@ internal class BaseCoordinator: Coordinator {
         presenter.pop(animated: true)
     }
 
-    internal func quit() {
+    internal func quit(action: @escaping () -> Void) {
         let quitPopUpViewController = QuitPopUpViewController()
-        quitPopUpViewController.quitAction = {
-            self.close()
-        }
+        quitPopUpViewController.quitAction = action
         quitPopUpViewController.modalPresentationStyle = .overFullScreen
         presenter.present(quitPopUpViewController, animated: false)
     }

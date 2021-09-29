@@ -60,7 +60,9 @@ class BankIDCoordinator: BaseCoordinator {
         case .pop:
             pop()
         case .quit:
-            quit()
+            quit {[weak self] in
+                self?.close()
+            }
         case .close:
             close()
         }
@@ -146,6 +148,11 @@ private extension BankIDCoordinator {
     }
 
     private func presentIBANVerification() {
+        guard appDependencies.sessionInfoProvider.phoneVerified else {
+            perform(action: .phoneVerification)
+            return
+        }
+
         let ibanVerificationViewModel = IBANVerificationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
         let ibanVerificationViewController = IBANVerificationViewController(ibanVerificationViewModel)
 

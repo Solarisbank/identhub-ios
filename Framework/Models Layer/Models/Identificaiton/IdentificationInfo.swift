@@ -19,6 +19,10 @@ struct IdentificationInfo: Decodable {
     /// Accepted status of "Terms and Conditions" agreement
     let acceptedTC: Bool
 
+    /// Phone number verification status. Bool value defines true or false status.
+    /// If phone was not verified (false) then verification screen should be the first one
+    let phoneVerificationStatus: Bool?
+
     /// Fourthline provider string value
     let fourthlineProvider: String?
 
@@ -31,6 +35,7 @@ struct IdentificationInfo: Decodable {
         case language
         case acceptedTC = "terms_and_conditions_pre_accepted"
         case fourthlineProvider = "fourthline_provider"
+        case phoneVerificationStatus = "verified_mobile_number"
         case style
     }
 }

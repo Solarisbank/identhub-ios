@@ -46,3 +46,4 @@ fastlane/test_output
 
 docs/
 *.lock
+*.lock

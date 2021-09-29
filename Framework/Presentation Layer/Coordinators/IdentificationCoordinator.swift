@@ -60,7 +60,9 @@ class IdentificationCoordinator: BaseCoordinator {
         case .identification:
             startIdentProcess()
         case .quit:
-            quit()
+            quit {[weak self] in
+                self?.close()
+            }
         }
     }
 }

@@ -47,6 +47,7 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
             switch result {
             case .success(let response):
                 if response.verified {
+                    self.sessionStorage.phoneVerified = true
                     DispatchQueue.main.async {
                         self.delegate?.verificationSucceeded()
                     }
