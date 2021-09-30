@@ -1,0 +1,233 @@
+// ProgressView
+"progress_view_progress" = "Progreso de la identificación";
+"progress_view_phone_verification" = "Verificación telefónica";
+"progress_view_bank_verification" = "Verificación bancaria";
+"progress_view_sign_documents" = "Firma de documentos";
+
+// Common
+"common_next" = "Siguiente";
+"common_quit" = "Salir";
+"common_continue_button" = "Continuar";
+"common_back" = "Atrás";
+"common_powered_by_solarisbank" = "Desarrollado por Solarisbank";
+"common_verifying" = "Verificando...";
+"common_download_all_documents" = "Descargar todos los documentos";
+"common_dismiss" = "Descartar";
+"common_try_again" = "Volver a intentar";
+"common_cancel" = "Cancelar";
+"common_settings" = "Ajustes";
+"common_generic_error" = "Algo salió mal";
+
+// Quitting
+"quitting_title" = "¿Estás seguro de que deseas abandonar el proceso de registro?";
+"quitting_description" = "Tu progreso se perderá. La próxima vez deberás repetir los pasos ya realizados.";
+"quitting_stay_action" = "Permanecer";
+
+// Start Identification
+"start_ident_title" = "Iniciar identificación";
+"start_ident_disclaimer" = "Para completar el proceso de identificación, tendrás que:";
+"start_ident_steps" = "1. Verificar tu número de teléfono con TAN.\n2. Identificarte con tu cuenta bancaria.\n3. Leer y firmar los consentimientos adecuados, no es necesario imprimirlos.";
+"start_ident_follow_verification" = "Sigue la verificación de tu número de teléfono para continuar.";
+"start_ident_send_code" = "Enviar código de verificación";
+
+// Phone Verification
+"phone_verification_enter_code" = "Introducir el código de 6 dígitos enviado a";
+"phone_verification_request_code_timer" = "Solicitar un nuevo código en";
+"phone_verification_send_new_code" = "Enviar nuevo código";
+"phone_verification_wrong_tan" = "TAN incorrecto. Debes solicitar un nuevo TAN e intentarlo de nuevo.";
+"phone_verification_submit_code" = "Enviar código";
+"phone_verification_request_new_code" = "Solicitar un nuevo código";
+"phone_verification_success_title" = "Verificación telefónica realizada correctamente";
+"phone_verification_success_description" = "Continuar identificándote con una cuenta bancaria.";
+"phone_verification_success_action" = "Comenzar la identificación bancaria";
+"phone_verification_error_title" = "Error de verificación telefónica";
+"phone_verification_error_description" = "El TAN proporcionado no es válido.";
+"phone_verification_error_action" = "Vuelve a intentar la verificación del TAN";
+
+// IBAN Verification
+"iban_verification_personal_account_disclaimer" = "Indica el número IBAN de tu cuenta bancaria personal.";
+"iban_verification_joined_accounts_disclaimer" = "Ten en cuenta que las cuentas unidas no pasarán los requisitos de identificación.";
+"iban_verification_iban" = "IBAN";
+"iban_verification_iban_input_place_holder" = "por ejemplo, DE21 1234 3456 4567 5678 6789";
+"iban_verification_error_iban_format" = "El formato IBAN no es válido.";
+"iban_verification_initiate_payment_verification" = "Iniciar la verificación del pago";
+"iban_verification_failure_alert_title" = "Fallo en la verificación del IBAN";
+"iban_verification_error_invalid_iban" = "Lamentablemente, el IBAN que has introducido no es válido o no es compatible.";
+"iban_verification_failure_alert_retry" = "Vuelve a intentarlo con otro IBAN";
+"iban_verification_failure_alert_fallback" = "Identifícate con un método alternativo";
+
+// Payment Verification
+"payment_verification_establishing_connection" = "Estableciendo conexión segura con tu banco...";
+"payment_verification_processing" = "Procesando la verificación...";
+"payment_verification_success_title" = "Verificación del pago realizada con éxito";
+"payment_verification_success_description" = "Continúa firmando los documentos para finalizar tu proceso de identificación.";
+"payment_verification_success_action" = "Continuar";
+"payment_verification_error_title" = "Error de verificación del pago";
+"payment_verification_error_description" = "Lamentablemente se ha producido un error técnico. Vuelve a intentarlo.";
+"payment_verification_error_action" = "Vuelve a intentar la verificación del IBAN";
+
+// Sign Documents
+"sign_documents_application_confirm" = "Confirma tu solicitud";
+"sign_documents_application_description" = "Para finalizar el proceso, lee los siguientes documentos y fírmalos con un TAN enviado a tu número de teléfono móvil.";
+"sign_documents_application_send_code" = "Enviar código para firmar";
+"sign_documents_transaction_info_part_one" = "Tu ID de la operación es ";
+"sign_documents_transaction_info_part_two" = "\nAsegúrate de que es el mismo en el SMS que acabas de recibir.";
+"sign_documents_submit_and_sign" = "Enviar y firmar";
+"sign_documents_request_code" = "Solicitar un nuevo código";
+"sign_documents_application_being_processed" = "Tu solicitud está siendo procesada...";
+"sign_documents_download_documents" = "Pronto podrás descargar todos los documentos firmados.";
+
+// Finish identification
+"finish_ident_successful_title" = "¡Identificación realizada con éxito!";
+"finish_ident_successful_description" = "Has completado el proceso de identificación.\nDescarga los documentos y guárdalos en un lugar seguro, para futuras consultas.";
+"finish_ident_successful_action" = "Terminar";
+
+// Initial
+"initial_title" = "Iniciar";
+"initial_description" = "";
+"initial_define" = "Definir el método de identificación...";
+"initial_info" = "Obtener datos de identificación...";
+"initial_register" = "Registrar método de identificación...";
+"initial_prefetch" = "Prebuscar datos...";
+
+// Fetch data
+"fetch_data_title" = "Buscar datos";
+"fetch_data_description" = "";
+"fetch_data_person" = "Buscar datos de la persona...";
+"fetch_data_location" = "Buscar datos de ubicación...";
+"fetch_data_ip_address" = "Buscar datos de la dirección IP...";
+
+// Terms
+"terms_description" = "Para continuar, lee atentamente y acepta la Declaración de privacidad y los Términos y condiciones";
+"terms_privacy_text" = "Declaración de privacidad";
+"terms_terms_text" = "Términos y condiciones";
+"terms_agreement_links" = "Estoy de acuerdo con la %1$@ y los %2$@";
+"terms_continue_button" = "Continuar";
+
+// Welcome
+"welcome_camera_title" = "Sonríe a la cámara";
+"welcome_camera_description" = "Tu selfie será comparado con el de tu documento de identidad. No te preocupes, nunca saldrá a la luz, ¡prometido!";
+"welcome_document_title" = "Escanea tu documento de identidad";
+"welcome_document_description" = "Con esto podemos asegurarnos de que eres realmente quien dices ser y evitar la suplantación de identidad.";
+"welcome_location_title" = "Enviar tu caso";
+"welcome_location_description" = "Lo último que tienes que hacer es habilitar tu ubicación\ny enviar tu caso.\nQué fácil, ¿verdad?";
+
+// Selfie
+"selfie_title" = "Hazte un selfie";
+"selfie_scanning" = "escaneando...";
+"selfie_detected" = "cara detectada";
+"selfie_success" = "Escaneo realizado con éxito";
+"selfie_retake" = "Volver a hacer la foto";
+"selfie_confirm" = "Confirmar";
+"selfie_confirm_selfie" = "Confirmar Selfie";
+"selfie_warning_face_not_in_frame" = "Encaja la cara en el recuadro";
+"selfie_warning_face_not_detected" = "Cara no detectada";
+"selfie_warning_face_too_close" = "Aleja el teléfono";
+"selfie_warning_face_too_far" = "Acerca el teléfono";
+"selfie_warning_face_camera_directly" = "Mira directamente a la cámara";
+"selfie_warning_multiple_faces_detected" = "Varias caras detectadas";
+"selfie_warning_device_not_steady" = "El dispositivo no está estable";
+"selfie_warning_looking_for_face" = "Buscando una cara";
+"selfie_warning_unknown" = "Se ha producido un problema desconocido";
+"selfie_error_failed" = "Selfie fallido";
+"selfie_error_timeout" = "El tiempo para hacer la foto se ha agotado";
+"selfie_error_face_disappeared" = "La cara ha desaparecido";
+"selfie_error_camer_permission" = "Se requiere permiso de cámara";
+"selfie_error_manual_selfie_not_allowed" = "No se permite el selfie manual";
+"selfie_error_recording_failed" = "Algo salió mal";
+"selfie_error_scanner_interrupted" = "El escáner se ha interrumpido";
+"selfie_error_unknown" = "Algo salió mal";
+"selfie_error_alert_title" = "El escáner de selfie falló";
+"selfie_error_alert_message" = "No fue posible hacer tu selfie.\n\nEste proceso es obligatorio para el proceso de registro.";
+"selfie_error_multiple_faces" = "La cámara detecta múltiples caras. Asegúrate de escanear la cara de una sola persona.";
+"selfie_error_reset_not_allowed" = "La sesión sigue activa. Continúa.";
+"selfie_liveness_title" = "Comprobación de viveza";
+"selfie_liveness_checking" = "Comprobación de viveza...";
+"selfie_liveness_confirm" = "Confirmación de viveza";
+"selfie_liveness_faild" = "Fallo en la comprobación de la viveza";
+"selfie_liveness_turn_head_left" = "Gira la cabeza a la izquierda";
+"selfie_liveness_turn_head_right" = "Gira la cabeza a la derecha";
+
+// Camera
+"camera_permission_error_title" = "Permiso de cámara denegado";
+"camera_permission_error_message" = "El escáner no puede iniciarse sin el permiso de cámara; permítelo";
+"camera_error_message" = "ERROR: Para poder utilizar los escáneres de visión es necesario conceder el permiso de cámara.";
+"camera_permission_not_granted" = "Se requiere permiso de cámara";
+
+// Document Scanner
+"doc_scanner_title" = "Tu documento de identidad";
+"doc_scanner_description" = "Elige el tipo de documento";
+"doc_scanner_passport" = "Pasaporte";
+"doc_scanner_id_card" = "Documento de identidad";
+"doc_scanner_scan_successful" = "Escaneo realizado con éxito";
+"doc_scanner_scanning" = "Escaneando...";
+"doc_scanner_scan_failed" = "Escaneo fallido";
+"doc_scanner_side_front" = "anverso";
+"doc_scanner_side_back" = "reverso";
+"doc_scanner_side_inside_left" = "interior izquierda";
+"doc_scanner_side_inside_right" = "interior derecha";
+"doc_scanner_side_undefined" = "lateral del documento no definido";
+"doc_scanner_warning_device_not_steady" = "El dispositivo no está estable";
+"doc_scanner_warning_too_dark" = "Demasiado oscuro";
+"doc_scanner_warning_unkown" = "Algo salió mal";
+"doc_scanner_error_interrupted" = "El escáner se ha interrumpido";
+"doc_scanner_error_timeout" = "Se ha agotado el tiempo para escanear";
+"doc_scanner_error_alert_title" = "Escáner del documento fallido";
+"doc_scanner_error_alert_message" = "No fue posible realizar escanear tu documento.\n\nEste proceso es obligatorio para el proceso de registro.";
+"doc_scanner_error_snapshot_not_allowed" = "El paso de tomar una instantánea del documento ya no está activo.";
+"doc_scanner_error_step_not_finished" = "El paso no ha finalizado correctamente.";
+"doc_scanner_error_reset_not_allowed" = "El paso sigue activo.";
+"doc_scanner_info_title" = "Información del documento";
+"doc_scanner_info_doc_number" = "número de documento";
+"doc_scanner_info_issue_date" = "fecha de emisión";
+"doc_scanner_info_expire_date" = "fecha de caducidad del documento";
+"doc_scanner_info_warning" = "Confirma si se han obtenido correctamente tus datos al escanear documento";
+
+// Location
+"location_title" = "Ubicación del dispositivo";
+"location_description" = "Necesitamos la ubicación de tu dispositivo para continuar.";
+"location_error_title" = "Error de ubicación del dispositivo";
+"location_error_message" = "Error de ubicación del dispositivo";
+
+// Upload
+"upload_data_title" = "Carga de datos";
+"upload_data_description" = "Tus datos se están cargando...";
+"upload_data_uploading" = "Cargando...";
+"upload_data_preparation" = "Prepara la carga de datos...";
+
+// Zipper
+"zipper_error_kyc_invalid" = "El objeto KYC no es válido, debido a:";
+"zipper_error_zip_foundation_not_imported" = "ZIPFoundation framework no importado en el proyecto";
+"zipper_error_zip_exceed_max_size" = "El archivo ZIP excede el tamaño máximo de archivo, revisa la documentación de la API";
+"zipper_error_cannot_create_zip" = "No se puede crear el zip";
+"zipper_error_not_enough_space" = "No hay espacio suficiente";
+"zipper_error_unknown" = "Se produjo un error inesperado";
+"zipper_error_alert_title" = "Fallo al crear el ZIP";
+
+// Verification
+"verification_title" = "Verificación";
+"verification_description" = "Espera la verificación...";
+"verification_process_title" = "Verificación de datos...";
+
+// API Errors
+"api_error_malformed_json" = "Indica que la cadena recibida en la respuesta no ha podido ser analizada.";
+"api_error_client_error" = "Indica error por parte del cliente.";
+"api_error_authorization_failed" = "Indica que la autorización ha fallado.";
+"api_error_unauthorized" = "La acción no ha sido autorizada.";
+"api_error_data_mismatch" = "Incompatibilidad de datos.";
+"api_error_incorrect_ident_status" = "El estado de identificación no fue autorizado para proceder con la acción.";
+"api_error_unprocessable_entity" = "Datos no válidos o caducados.";
+"api_error_internal_server_error" = "Indica error interno del servidor.";
+"api_error_request_build_error" = "Indica error de solicitud de estructura.";
+"api_error_unknown" = "Indica que el cliente api ha encontrado un error que no está en la lista anterior.";
+"api_error_resource_not_found" = "No se ha encontrado el recurso.";
+"api_error_location_permission" = "Permiso de ubicación denegado.";
+"api_error_location_error" = "El dispositivo no puede definir los datos de ubicación.";
+"api_error_iban_verification" = "Fallo en la verificación del IBAN.";
+"api_error_payment_failure" = "Fallo en la verificación del pago.";
+
+// Result
+"result_success_title" = "Enhorabuena";
+"result_success_description" = "Tus datos se han confirmado.";
+"result_failed_title" = "Vuelve a intentarlo...";
+"result_failed_description" = "El proceso de identificación ha fallado.";

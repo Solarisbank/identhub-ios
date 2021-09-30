@@ -23,7 +23,6 @@
 "quitting_description" = "Your progress will be lost. You will be required to repeat the steps next time.";
 "quitting_stay_action" = "Stay";
 
-
 // Start Identification
 "start_ident_title" = "Start identification";
 "start_ident_disclaimer" = "In order to complete the identification process, you will be asked to:";
@@ -38,11 +37,9 @@
 "phone_verification_wrong_tan" = "Wrong TAN. You need to request a new TAN and try again.";
 "phone_verification_submit_code" = "Submit code";
 "phone_verification_request_new_code" = "Request new code";
-
 "phone_verification_success_title" = "Phone verification successful";
 "phone_verification_success_description" = "Continue to identify yourself with a bank account.";
 "phone_verification_success_action" = "Begin Bank Identification";
-
 "phone_verification_error_title" = "Phone verification error";
 "phone_verification_error_description" = "Provided TAN is not valid.";
 "phone_verification_error_action" = "Retry TAN verification";
@@ -123,7 +120,6 @@
 "selfie_retake" = "Retake";
 "selfie_confirm" = "Confirm";
 "selfie_confirm_selfie" = "Confirm Selfie";
-
 "selfie_warning_face_not_in_frame" = "Fit face in frame";
 "selfie_warning_face_not_detected" = "Face not detected";
 "selfie_warning_face_too_close" = "Move the phone farther";
@@ -133,7 +129,6 @@
 "selfie_warning_device_not_steady" = "Device not steady";
 "selfie_warning_looking_for_face" = "Looking for a face";
 "selfie_warning_unknown" = "Occurs unknown issue";
-
 "selfie_error_failed" = "Selfie failed";
 "selfie_error_timeout" = "Photo timed out";
 "selfie_error_face_disappeared" = "Face disappeared";
@@ -146,7 +141,6 @@
 "selfie_error_alert_message" = "It was not possible to take your selfie.\n\nThis process is mandatory for your onboarding process.";
 "selfie_error_multiple_faces" = "Camera detects multiple faces. Please make sure you're scan single person face.";
 "selfie_error_reset_not_allowed" = "Session still active. Please continue.";
-
 "selfie_liveness_title" = "Liveness check";
 "selfie_liveness_checking" = "liveness check...";
 "selfie_liveness_confirm" = "liveness confirm";
@@ -168,17 +162,14 @@
 "doc_scanner_scan_successful" = "Scan successful";
 "doc_scanner_scanning" = "Scanning...";
 "doc_scanner_scan_failed" = "Scan failed";
-
 "doc_scanner_side_front" = "front";
 "doc_scanner_side_back" = "back";
 "doc_scanner_side_inside_left" = "inside left";
 "doc_scanner_side_inside_right" = "inside right";
 "doc_scanner_side_undefined" = "document side not defined";
-
 "doc_scanner_warning_device_not_steady" = "Device not steady";
 "doc_scanner_warning_too_dark" = "Too dark";
 "doc_scanner_warning_unkown" = "Something went wrong";
-
 "doc_scanner_error_interrupted" = "Scanner was interrupted";
 "doc_scanner_error_timeout" = "Scan timed out";
 "doc_scanner_error_alert_title" = "Document scan failed";
@@ -186,7 +177,6 @@
 "doc_scanner_error_snapshot_not_allowed" = "Step take document snapshot is not active anymore.";
 "doc_scanner_error_step_not_finished" = "Step is not successfully finished.";
 "doc_scanner_error_reset_not_allowed" = "Step still active.";
-
 "doc_scanner_info_title" = "Document information";
 "doc_scanner_info_doc_number" = "document number";
 "doc_scanner_info_issue_date" = "date of issue";
@@ -196,7 +186,6 @@
 // Location
 "location_title" = "Device location";
 "location_description" = "We need your device location to continue.";
-
 "location_error_title" = "Device location failed";
 "location_error_message" = "Device location failed";
 

@@ -23,7 +23,6 @@
 "quitting_description" = "Ihr Fortschritt wird nicht gespeichert. Beim nächsten Versuch werden Sie wieder von vorne beginnen.";
 "quitting_stay_action" = "Bleiben";
 
-
 // Start Identification
 "start_ident_title" = "Identifikation beginnen";
 "start_ident_disclaimer" = "Um den Identifikationsprozess abzuschließen, müssen Sie:";
@@ -38,11 +37,9 @@
 "phone_verification_wrong_tan" = "Falsche TAN. Sie müssen eine neue TAN anfordern und es erneut versuchen.";
 "phone_verification_submit_code" = "Code senden";
 "phone_verification_request_new_code" = "Neuen Code anfordern";
-
 "phone_verification_success_title" = "Telefonnummer erfolgreich verifiziert";
 "phone_verification_success_description" = "Identifizieren Sie sich als nächsters mit einem Bankkonto.";
 "phone_verification_success_action" = "Bankidentifikation beginnen";
-
 "phone_verification_error_title" = "Fehler bei der Verifizierung der Telefonnummer";
 "phone_verification_error_description" = "Angegebene TAN ist nicht gültig.";
 "phone_verification_error_action" = "TAN-Verifizierung wiederholen";
@@ -123,7 +120,6 @@
 "selfie_retake" = "Wiederholen";
 "selfie_confirm" = "Bestätigen";
 "selfie_confirm_selfie" = "Selfie bestätigen";
-
 "selfie_warning_face_not_in_frame" = "Gesicht an den Fotorahmen anpassen";
 "selfie_warning_face_not_detected" = "Gesicht nicht erkannt";
 "selfie_warning_face_too_close" = "Halten Sie das Handy weiter entfernt von Ihrem Gesicht";
@@ -133,7 +129,6 @@
 "selfie_warning_device_not_steady" = "Handy ist nicht in einer stabilen Position";
 "selfie_warning_looking_for_face" = "Gesichtserkennung";
 "selfie_warning_unknown" = "Unbekannter Fehler";
-
 "selfie_error_failed" = "Selfie fehlgeschlagen";
 "selfie_error_timeout" = "Zeitlimit erreicht";
 "selfie_error_face_disappeared" = "Gesicht nicht sichtbar während der Lebendigkeitsprüfung";
@@ -143,11 +138,9 @@
 "selfie_error_scanner_interrupted" = "Scanner unterbrochen";
 "selfie_error_unknown" = "Etwas ist schiefgelaufen";
 "selfie_error_alert_title" = "Selfie-Scan fehlgeschlagen";
-
 "selfie_error_alert_message" = "Selfie-Scan ist gescheitert.\n\nDieser Schritt ist notwendig für Ihre Identifizierung, bitte versuchen Sie es erneut.";
 "selfie_error_multiple_faces" = "Mehr als ein Gesicht erkannt. Bitte stellen Sie sicher, dass nur Ihr Gesicht während des Scanvorgangs sichtbar ist.";
 "selfie_error_reset_not_allowed" = "Session still active. Please continue.";
-
 "selfie_liveness_title" = "Lebendigkeitsprüfung";
 "selfie_liveness_checking" = "Lebendigkeitsprüfung...";
 "selfie_liveness_confirm" = "Lebendigkeit bestätigt";
@@ -169,17 +162,14 @@
 "doc_scanner_scan_successful" = "Scan erfolgreich";
 "doc_scanner_scanning" = "Scannen...";
 "doc_scanner_scan_failed" = "Scan fehlgeschlagen";
-
 "doc_scanner_side_front" = "Vorderseite";
 "doc_scanner_side_back" = "Rückseite";
 "doc_scanner_side_inside_left" = "Innenseite links";
 "doc_scanner_side_inside_right" = "Innenseite rechts";
 "doc_scanner_side_undefined" = "Dokumentenseite nicht definiert";
-
 "doc_scanner_warning_device_not_steady" = "Handy ist nicht in einer stabilen Position";
 "doc_scanner_warning_too_dark" = "Dokument ist zu dunkel";
 "doc_scanner_warning_unkown" = "Etwas ist schiefgelaufen";
-
 "doc_scanner_error_interrupted" = "Scanner unterbrochen";
 "doc_scanner_error_timeout" = "Scanner Zeitlimit erreicht";
 "doc_scanner_error_alert_title" = "Scanaufnahme gescheitert";
@@ -187,7 +177,6 @@
 "doc_scanner_error_snapshot_not_allowed" = "Dokument-Snapshot nicht mehr aktiv.";
 "doc_scanner_error_step_not_finished" = "Prozessschritt ist nicht erfolgreich abgeschlossen.";
 "doc_scanner_error_reset_not_allowed" = "Prozessschritt ist noch aktiv, Zurücksetzen nicht erlaubt.";
-
 "doc_scanner_info_title" = "Dokumentinformation";
 "doc_scanner_info_doc_number" = "Dokumenten- / Ausweisnummer";
 "doc_scanner_info_issue_date" = "Ausstellungsdatum";
@@ -197,7 +186,6 @@
 // Location
 "location_title" = "Gerätestandort";
 "location_description" = "Wir benötigen Ihren Gerätestandort, um fortzufahren.";
-
 "location_error_title" = "Geräteortung fehlgeschlagen";
 "location_error_message" = "Geräteortung fehlgeschlagen";
 

@@ -354,6 +354,9 @@
 		24659B0226D62D7300F56089 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24659B0626D9192700F56089 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D352E3E448EB60E9B3756F0 /* Pods-IdentHubSDKTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.staging.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.staging.xcconfig"; sourceTree = "<group>"; };
+		392D18A727045347001FB64D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		392D18A827047FAC001FB64D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		392D18A927049FA9001FB64D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4872769C1FDAC7F27B1EBFED /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		79434CC9D9FAE3196029A3D6 /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
 		80F315F38B026C37CB55B792 /* Pods-IdentHubSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1594,6 +1597,9 @@
 				en,
 				Base,
 				de,
+				it,
+				fr,
+				es,
 			);
 			mainGroup = 0CD5CC302590F58800FF378F;
 			productRefGroup = 0CD5CC3B2590F58800FF378F /* Products */;
@@ -2054,6 +2060,9 @@
 			children = (
 				24659B0226D62D7300F56089 /* en */,
 				24659B0626D9192700F56089 /* de */,
+				392D18A727045347001FB64D /* it */,
+				392D18A827047FAC001FB64D /* fr */,
+				392D18A927049FA9001FB64D /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
