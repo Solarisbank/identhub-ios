@@ -122,5 +122,6 @@ enum IdentificationStep: String, Codable {
     case bankQES = "bank/qes"
     case bankIDQUES = "bank_id/qes"
     case fourthline = "fourthline/simplified"
+    case abort = "abort"
     case unspecified = "unspecified"
 }

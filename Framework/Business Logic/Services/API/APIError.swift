@@ -23,12 +23,12 @@ import Foundation
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
-    case clientError(error: ServerError?)
+    case clientError(error: ErrorDetail?)
     case authorizationFailed
     case unauthorizedAction
     case resourceNotFound
     case expectationMismatch
-    case incorrectIdentificationStatus(error: ServerError?)
+    case incorrectIdentificationStatus(error: ErrorDetail?)
     case unprocessableEntity
     case internalServerError
     case requestError
@@ -45,6 +45,7 @@ public enum APIError: Error {
 enum ErrorCodes: String, Codable {
 
     case mobileNotVerified = "mobile_number_not_verified"
+    case invalidIBAN = "invalid_iban"
     case unknown
 }
 

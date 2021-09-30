@@ -74,7 +74,7 @@ enum Localizable {
             static let failureAlertTitle = "iban_verification_failure_alert_title".localized()
             static let notValidIBAN = "iban_verification_error_invalid_iban".localized()
             static let retryOption = "iban_verification_failure_alert_retry".localized()
-            static let fallbackOption = "iban_verification_failure_alert_fallback".localized()
+            static let alternateOption = "iban_verification_failure_alert_fallback".localized()
         }
 
         enum PaymentVerification {

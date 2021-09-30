@@ -208,7 +208,7 @@
 		84C8E56C26B83E64002150D6 /* IPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8E56B26B83E64002150D6 /* IPAddressRequest.swift */; };
 		84C8E56E26B840ED002150D6 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8E56D26B840ED002150D6 /* IPAddress.swift */; };
 		84D15A89266FBA30002DC7EE /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D15A88266FBA30002DC7EE /* Date+Compare.swift */; };
-		84D4B4A5269627D60056E97B /* ErrorsDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B4A4269627D60056E97B /* ErrorsDescription.swift */; };
+		84D4B4A5269627D60056E97B /* ErrorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B4A4269627D60056E97B /* ErrorDetail.swift */; };
 		84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */; };
 		84DEB64326419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */; };
 		84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */; };
@@ -477,7 +477,7 @@
 		84C8E56B26B83E64002150D6 /* IPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressRequest.swift; sourceTree = "<group>"; };
 		84C8E56D26B840ED002150D6 /* IPAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		84D15A88266FBA30002DC7EE /* Date+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
-		84D4B4A4269627D60056E97B /* ErrorsDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsDescription.swift; sourceTree = "<group>"; };
+		84D4B4A4269627D60056E97B /* ErrorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDetail.swift; sourceTree = "<group>"; };
 		84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatusRequest.swift; sourceTree = "<group>"; };
 		84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatus.swift; sourceTree = "<group>"; };
@@ -1422,7 +1422,7 @@
 				8432D274265D71A6002CCAA4 /* DocumentData.swift */,
 				8474B8FD265EB7050051485E /* DocumentAttachmentData.swift */,
 				841A7956267CA049000E5318 /* ServerError.swift */,
-				84D4B4A4269627D60056E97B /* ErrorsDescription.swift */,
+				84D4B4A4269627D60056E97B /* ErrorDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1961,7 +1961,7 @@
 				840DEA6F26285B4C0033A2D8 /* LocationManager.swift in Sources */,
 				0CC8534325D168A600109FFC /* DocumentPreviewViewController.swift in Sources */,
 				841F376326298E1400D56361 /* ScanDocumentType.swift in Sources */,
-				84D4B4A5269627D60056E97B /* ErrorsDescription.swift in Sources */,
+				84D4B4A5269627D60056E97B /* ErrorDetail.swift in Sources */,
 				0CA7747E25C1AE1900E94E77 /* SignDocumentsViewModel.swift in Sources */,
 				0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */,
 				8499BFEE2678E46100794B64 /* PersonAddress.swift in Sources */,
@@ -2094,6 +2094,7 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2119,6 +2120,7 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2152,6 +2154,7 @@
 					"$(inherited)",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
@@ -2226,6 +2229,7 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;

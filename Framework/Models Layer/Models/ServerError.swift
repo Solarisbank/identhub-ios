@@ -10,6 +10,9 @@ public struct ServerError {
     /// Error object id
     let id: String?
 
+    /// Error status code
+    let status: Int?
+
     /// Error object server code
     let code: ErrorCodes?
 
@@ -19,15 +22,12 @@ public struct ServerError {
     /// Error details
     let detail: String?
 
-    /// Next step of the identification for resolving error
-    let nextStep: IdentificationStep?
-
     enum CodingKeys: String, CodingKey {
-        case id
-        case code
-        case title
-        case detail
-        case nextStep = "next_step"
+        case id = "id"
+        case status = "status"
+        case code = "code"
+        case title = "title"
+        case detail = "detail"
     }
 }
 
@@ -36,10 +36,10 @@ extension ServerError: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decode(String.self, forKey: .id)
-        code = try container.decode(ErrorCodes.self, forKey: .code)
-        title = try container.decode(String.self, forKey: .title)
-        detail = try container.decode(String.self, forKey: .detail)
-        nextStep = try container.decodeIfPresent(IdentificationStep.self, forKey: .nextStep)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
+        status = try container.decodeIfPresent(Int.self, forKey: .status)
+        code = try container.decodeIfPresent(ErrorCodes.self, forKey: .code)
+        title = try container.decodeIfPresent(String.self, forKey: .title)
+        detail = try container.decodeIfPresent(String.self, forKey: .detail)
     }
 }

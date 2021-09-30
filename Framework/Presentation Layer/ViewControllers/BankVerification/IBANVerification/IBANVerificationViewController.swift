@@ -76,8 +76,8 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
         initiatePaymentVerificationButton.currentAppearance = valid ? .verifying : .primary
     }
 
-    func verificationIBANFailed(_ error: APIError, allowRetry: Bool) {
-
+    func verificationIBANFailed(_ error: APIError) {
+        
         switch error {
         case .clientError:
             errorLabel.text = Localizable.BankVerification.IBANVerification.notValidIBAN
@@ -86,7 +86,7 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
         }
 
         isIBANFormatValid(false)
-        showVerificationError(errorLabel.text, allowRetry: allowRetry)
+        showVerificationError(errorLabel.text)
     }
 }
 
@@ -94,18 +94,16 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
 
 private extension IBANVerificationViewController {
 
-    private func showVerificationError(_ message: String?, allowRetry: Bool) {
+    private func showVerificationError(_ message: String?) {
 
         let alert = UIAlertController(title: Localizable.BankVerification.IBANVerification.failureAlertTitle, message: message, preferredStyle: .alert)
 
-        if allowRetry {
-            let reactionAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.retryOption, style: .default, handler: { _ in })
+        let reactionAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.retryOption, style: .default, handler: { _ in })
 
-            alert.addAction(reactionAction)
-        }
+        alert.addAction(reactionAction)
 
         if viewModel.isExistFallbackOption() {
-            let fallbackAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.fallbackOption, style: .default, handler: { [weak self] _ in
+            let fallbackAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.alternateOption, style: .default, handler: { [weak self] _ in
                 self?.viewModel.performFallbackIdent()
             })
 

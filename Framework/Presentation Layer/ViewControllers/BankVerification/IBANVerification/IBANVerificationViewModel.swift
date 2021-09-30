@@ -51,8 +51,10 @@ final internal class IBANVerificationViewModel: NSObject {
 
     /// Present identification session quit popup
     func didTriggerQuit() {
-        completionHandler(.failure(.ibanVerfificationFailed))
-        flowCoordinator.perform(action: .close)
+        DispatchQueue.main.async {[weak self] in
+            self?.completionHandler(.failure(.ibanVerfificationFailed))
+            self?.flowCoordinator.perform(action: .close)
+        }
     }
 
     /// Method defines if exist fallback identificaiton option for user
@@ -95,26 +97,21 @@ private extension IBANVerificationViewModel {
     private func processedFailure(with error: APIError) {
 
         switch error {
-        case .clientError(let error):
-            if error?.code == .mobileNotVerified {
-
-               DispatchQueue.main.async {
-                   self.flowCoordinator.perform(action: .phoneVerification)
-               }
-               return
-            }
+        case .clientError(_):
             retriesCount += 1
         case .incorrectIdentificationStatus(let error):
-            print("IBAN verification error: \(String(describing: error?.detail))")
+            print("IBAN verification error: \(String(describing: error?.errors?.first?.detail))")
             retriesCount += 1
         default:
             completionHandler(.failure(error))
         }
 
-        let allowRetry = ( retriesCount < sessionStorage.retries )
-
-        DispatchQueue.main.async {
-            self.delegate?.verificationIBANFailed(error, allowRetry: allowRetry)
+        if retriesCount < sessionStorage.retries {
+            DispatchQueue.main.async {
+                self.delegate?.verificationIBANFailed(error)
+            }
+        } else {
+            didTriggerQuit()
         }
     }
 }
@@ -127,5 +124,5 @@ protocol IBANVerificationViewModelDelegate: AnyObject {
     /// Called if IBAN verification failed
     /// - Parameter error: failed reason
     /// - Parameter allowRetry: inform if user can try another IBAN or has to start with alternate identification method
-    func verificationIBANFailed(_ error: APIError, allowRetry: Bool)
+    func verificationIBANFailed(_ error: APIError)
 }

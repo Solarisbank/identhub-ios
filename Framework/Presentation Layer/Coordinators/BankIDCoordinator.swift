@@ -126,6 +126,9 @@ private extension BankIDCoordinator {
             presentSignDocuments()
         case .fourthline:
             presentFourthlineFlow()
+        case .abort:
+            completionHandler?(.failure(.unauthorizedAction))
+            close()
         case .unspecified:
             print("Step is not supported or not specified yet")
         }

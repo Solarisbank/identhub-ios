@@ -121,13 +121,13 @@ final class DefaultAPIClient: APIClient {
         }
     }
 
-    private func obtainErrorData(data: Data) -> ServerError? {
+    private func obtainErrorData(data: Data) -> ErrorDetail? {
 
         let decoder = JSONDecoder()
 
         do {
-            let decodedData = try decoder.decode(ErrorsDescription.self, from: data)
-            return decodedData.errors?.first
+            let decodedData = try decoder.decode(ErrorDetail.self, from: data)
+            return decodedData
         } catch let error {
             print("Error with encoding error data: \(error.localizedDescription)")
             return nil
