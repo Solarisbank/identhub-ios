@@ -55,7 +55,7 @@ platform :ios, '12.0'
 
 target 'YourTargetName' do
 
-      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.10.0' #use private repository
+      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.11.0' #use private repository
 
       pod 'FourthlineSDK', '2.5.0' # identification service
       pod 'SwiftyTesseract', '2.2.3' # document scanner with MRZ detection
