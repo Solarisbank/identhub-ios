@@ -57,7 +57,7 @@ target 'YourTargetName' do
 
       pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.11.0' #use private repository
 
-      pod 'FourthlineSDK', '2.5.0' # identification service
+      pod 'FourthlineSDK', '2.3.1' # identification service
       pod 'SwiftyTesseract', '2.2.3' # document scanner with MRZ detection
       pod 'ZIPFoundation', '0.9.11' # to create ZIP from KYCInfo
 end

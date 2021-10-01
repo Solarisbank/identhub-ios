@@ -86,8 +86,6 @@ extension SelfieScannerError {
             return Localizable.Selfie.Errors.multipleFaces
         case .resetScannerNotAllowed:
             return Localizable.Selfie.Errors.resetScannerNotAllowed
-        case .recordAudioPermissionNotGranted:
-            return ""
         case .unknown:
             return Localizable.Selfie.Errors.unknown
         @unknown default:
