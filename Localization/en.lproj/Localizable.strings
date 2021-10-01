@@ -84,7 +84,6 @@
 
 // Initial
 "initial_title" = "Initiate";
-"initial_description" = "";
 "initial_define" = "Define identification method...";
 "initial_info" = "Obtain identification details...";
 "initial_register" = "Register identification method...";
@@ -92,7 +91,6 @@
 
 // Fetch data
 "fetch_data_title" = "Fetch data";
-"fetch_data_description" = "";
 "fetch_data_person" = "Fetch person data...";
 "fetch_data_location" = "Fetch location data...";
 "fetch_data_ip_address" = "Fetch IP-address data...";
@@ -105,6 +103,8 @@
 "terms_continue_button" = "Continue";
 
 // Welcome
+"welcome_page_title" = "Welcome";
+"welcome_start_button" = "Start";
 "welcome_camera_title" = "Smile for the camera";
 "welcome_camera_description" = "Your selfie will be compared to the one in your ID document. Don’t worry, it’s never going to see the light of day, promise!";
 "welcome_document_title" = "Scan your ID document";

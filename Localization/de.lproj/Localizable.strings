@@ -84,7 +84,6 @@
 
 // Initial
 "initial_title" = "Beginnen";
-"initial_description" = "";
 "initial_define" = "Identifikationsmethode definieren...";
 "initial_info" = "Identifikationsdetails abrufen...";
 "initial_register" = "Identifikationsmethode registrieren...";
@@ -92,7 +91,6 @@
 
 // Fetch data
 "fetch_data_title" = "Daten abrufen";
-"fetch_data_description" = "";
 "fetch_data_person" = "Personendaten abrufen...";
 "fetch_data_location" = "Standortdaten abrufen...";
 "fetch_data_ip_address" = "IP-Addressdaten abrufen...";
@@ -105,6 +103,8 @@
 "terms_continue_button" = "Weiter";
 
 // Welcome
+"welcome_page_title" = "Willkommen";
+"welcome_start_button" = "Starten";
 "welcome_camera_title" = "Bitte schauen Sie direkt in die Kamera";
 "welcome_camera_description" = "Ihr Selfie wird mit dem Foto auf Ihrem Ausweisdokument verglichen. Keine Sorge, es wird nie das Licht der Welt erblicken, versprochen!";
 "welcome_document_title" = "Scannen Sie Ihr Ausweisdokument";

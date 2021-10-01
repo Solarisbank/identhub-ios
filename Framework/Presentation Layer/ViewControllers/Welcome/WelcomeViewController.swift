@@ -10,6 +10,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
 
     // MARK: - Properties -
+    @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet var pageController: UIPageControl!
     @IBOutlet var pageScroller: UICollectionView!
     @IBOutlet var logoBackground: UIImageView!
@@ -61,6 +62,8 @@ class WelcomeViewController: UIViewController {
         viewModel.setPageController(pageController)
         viewModel.setLogoAnimator(logoAnimator)
 
+        welcomeLabel.text = Localizable.Welcome.pageTitle
+        startBtn.setTitle(Localizable.Welcome.startBtn, for: .normal)
         configureCustomUI()
     }
 

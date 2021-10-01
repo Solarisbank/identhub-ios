@@ -84,7 +84,6 @@
 
 // Initial
 "initial_title" = "Démarrer";
-"initial_description" = "";
 "initial_define" = "Définir la méthode d’identification...";
 "initial_info" = "Obtenir les détails de l’identification";
 "initial_register" = "Enregistrer la méthode d’identification...";
@@ -92,7 +91,6 @@
 
 // Fetch data
 "fetch_data_title" = "Récupérer les données";
-"fetch_data_description" = "";
 "fetch_data_person" = "Récupération des données de la personne...";
 "fetch_data_location" = "Récupération des données de localisation...";
 "fetch_data_ip_address" = "Récupération des données de l’adresse IP...";
@@ -105,6 +103,8 @@
 "terms_continue_button" = "Continuer";
 
 // Welcome
+"welcome_page_title" = "Bienvenue";
+"welcome_start_button" = "Commencer";
 "welcome_camera_title" = "Sourire pour la caméra";
 "welcome_camera_description" = "Votre selfie va être comparé avec la photo de votre document d’identité. Ne vous inquiétez pas, il ne verra jamais la lumière du jour, promis !";
 "welcome_document_title" = "Scanner votre document d’identité";

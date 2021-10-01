@@ -84,7 +84,6 @@
 
 // Initial
 "initial_title" = "Iniciar";
-"initial_description" = "";
 "initial_define" = "Definir el método de identificación...";
 "initial_info" = "Obtener datos de identificación...";
 "initial_register" = "Registrar método de identificación...";
@@ -92,7 +91,6 @@
 
 // Fetch data
 "fetch_data_title" = "Buscar datos";
-"fetch_data_description" = "";
 "fetch_data_person" = "Buscar datos de la persona...";
 "fetch_data_location" = "Buscar datos de ubicación...";
 "fetch_data_ip_address" = "Buscar datos de la dirección IP...";
@@ -105,6 +103,8 @@
 "terms_continue_button" = "Continuar";
 
 // Welcome
+"welcome_page_title" = "Bienvenido";
+"welcome_start_button" = "Iniciar";
 "welcome_camera_title" = "Sonríe a la cámara";
 "welcome_camera_description" = "Tu selfie será comparado con el de tu documento de identidad. No te preocupes, nunca saldrá a la luz, ¡prometido!";
 "welcome_document_title" = "Escanea tu documento de identidad";

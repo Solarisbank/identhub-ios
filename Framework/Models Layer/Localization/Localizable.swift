@@ -120,7 +120,7 @@ enum Localizable {
 
     enum Initial {
         static let title = "initial_title".localized()
-        static let description = "initial_description".localized()
+        static let description = ""
         static let define = "initial_define".localized()
         static let info = "initial_info".localized()
         static let register = "initial_register".localized()
@@ -129,7 +129,7 @@ enum Localizable {
 
     enum FetchData {
         static let title = "fetch_data_title".localized()
-        static let description = "fetch_data_description".localized()
+        static let description = ""
         static let person = "fetch_data_person".localized()
         static let location = "fetch_data_location".localized()
         static let ipAddress = "fetch_data_ip_address".localized()
@@ -144,6 +144,9 @@ enum Localizable {
     }
 
     enum Welcome {
+        static let pageTitle = "welcome_page_title".localized()
+        static let startBtn = "welcome_start_button".localized()
+        
         static let cameraTitle = "welcome_camera_title".localized()
         static let cameraDesc = "welcome_camera_description".localized()
 
