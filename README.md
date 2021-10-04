@@ -77,6 +77,9 @@ end
 
 5. Open your project and build it.
 
+#### Dependency to Fourthline SDK
+The Fourthline SDK is not publicly available. Please get in contact with Solarisbank to request access to it.
+
 ### Carthage
 
 1. Create Cartfile in your projects folder:
