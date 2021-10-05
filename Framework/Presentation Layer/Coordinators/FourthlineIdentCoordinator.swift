@@ -64,13 +64,14 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentResult(result)
         case .quit:
             quit {[weak self] in
-                self?.completionHandler?(.failure(.unauthorizedAction))
-                self?.close()
+                self?.interruptIdentProcess()
             }
         case let .complete(result):
             completeIdent(with: result)
         case .nextStep(let step):
             nextStepHandler?(step)
+        case .abort:
+            interruptIdentProcess()
         }
     }
 
@@ -140,11 +141,12 @@ private extension FourthlineIdentCoordinator {
     }
 
     private func presentDocumentInfoConfirmation() {
+        updateFourthlineStep(step: .documentInfo)
+
         let documentInfoVM = DocumentInfoViewModel(self)
         let documentInfoVC = DocumentInfoViewController(documentInfoVM)
 
         presenter.push(documentInfoVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .documentInfo)
     }
 
     private func presentLocationTracker() {
@@ -194,6 +196,13 @@ private extension FourthlineIdentCoordinator {
             close()
         default:
             print("\(result.identificationStatus) not processed.")
+        }
+    }
+    
+    private func interruptIdentProcess() {
+        DispatchQueue.main.async { [weak self] in
+            self?.completionHandler?(.failure(.unauthorizedAction))
+            self?.close()
         }
     }
 }

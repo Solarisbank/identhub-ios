@@ -77,7 +77,7 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
     }
 
     func verificationIBANFailed(_ error: APIError) {
-        
+
         switch error {
         case .clientError:
             errorLabel.text = Localizable.BankVerification.IBANVerification.notValidIBAN

@@ -241,5 +241,7 @@ private extension BankIDCoordinator {
 
             self.perfomIdentStep(step: nextStep)
         }
+
+        updateBankIDStep(step: .nextStep(step: .bankIDFourthline))
     }
 }

@@ -146,7 +146,7 @@ enum Localizable {
     enum Welcome {
         static let pageTitle = "welcome_page_title".localized()
         static let startBtn = "welcome_start_button".localized()
-        
+
         static let cameraTitle = "welcome_camera_title".localized()
         static let cameraDesc = "welcome_camera_description".localized()
 

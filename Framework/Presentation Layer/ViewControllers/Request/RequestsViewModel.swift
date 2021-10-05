@@ -123,7 +123,7 @@ final class RequestsViewModel: NSObject {
 
     func didTriggerQuit() {
         if let coordinator = fourthlineCoordinator {
-            coordinator.perform(action: .quit)
+            coordinator.perform(action: .abort)
         } else {
             identCoordinator?.perform(action: .quit)
         }

@@ -19,16 +19,8 @@ class IdentificationCoordinator: BaseCoordinator {
     private let appDependencies: AppDependencies
     private var completionHandler: CompletionHandler?
     private var documentExporter: DocumentExporter = DocumentExporterService()
-    private var executedStep: Action? {
-        didSet {
-            SessionStorage.updateValue(executedStep?.rawValue ?? Action.initialization.rawValue, for: StoredKeys.initialStep.rawValue)
-        }
-    }
-    private var identificationMethod: IdentificationStep? {
-        didSet {
-            SessionStorage.updateValue(identificationMethod?.rawValue ?? IdentificationStep.unspecified.rawValue, for: StoredKeys.identMethod.rawValue)
-        }
-    }
+    private var executedStep: Action = .initialization
+    private var identificationMethod: IdentificationStep?
 
     // MARK: - Init methods -
     init(appDependencies: AppDependencies, presenter: Router) {
@@ -44,10 +36,10 @@ class IdentificationCoordinator: BaseCoordinator {
         completionHandler = completion
 
         if let step = SessionStorage.obtainValue(for: StoredKeys.initialStep.rawValue) as? Int {
-            executedStep = Action(rawValue: step)
+            executedStep = Action(rawValue: step) ?? .initialization
         }
 
-        perform(action: executedStep ?? .initialization)
+        perform(action: executedStep)
     }
 
     func perform(action: IdentificationCoordinator.Action) {
@@ -77,6 +69,7 @@ private extension IdentificationCoordinator {
 
         presenter.push(requestVC, animated: true, completion: nil)
         executedStep = .initialization
+        updateAction(action: .initialization)
     }
 
     private func presentPrivacyTermsScreen() {
@@ -85,6 +78,7 @@ private extension IdentificationCoordinator {
 
         presenter.push(termsVC, animated: false, completion: nil)
         executedStep = .termsAndConditions
+        updateAction(action: .termsAndConditions)
     }
 
     private func startIdentProcess() {
@@ -113,6 +107,7 @@ private extension IdentificationCoordinator {
         }
 
         executedStep = .identification
+        updateAction(action: .identification)
     }
 
     private func startBankID() {
@@ -125,5 +120,9 @@ private extension IdentificationCoordinator {
         let fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
 
         fourthlineCoordinator.start(completionHandler!)
+    }
+
+    private func updateAction(action: Action) {
+        SessionStorage.updateValue(action.rawValue, for: StoredKeys.initialStep.rawValue)
     }
 }

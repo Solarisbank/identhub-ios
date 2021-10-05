@@ -32,6 +32,7 @@ final class DocumentInfoViewModel: BaseFourthlineViewModel {
         table.dataSource = tableDDM
 
         validateContent()
+        reloadTable?()
     }
 
     func didTriggerBack() {
@@ -81,7 +82,6 @@ extension DocumentInfoViewModel: DocumentInfoDDMDelegate {
         }
 
         tableDDM?.updateContent(infoContent)
-        reloadTable?()
 
         validateContent()
     }
