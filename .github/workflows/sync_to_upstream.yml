@@ -1,0 +1,25 @@
+name: Sync to upstream repository
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  sync:
+
+    if: ${{ github.repository != 'Solarisbank/identhub-ios' }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set upstream repo
+      run: |
+        git remote add upstream https://github.com/Solarisbank/identhub-ios.git
+        git fetch upstream
+    - name: Checkout release version
+      run: |
+        RELEASE_VERSION=${GITHUB_REF#refs/tags/}
+        git checkout $RELEASE_VERSION -b $RELEASE_VERSION
+    - name: Push to upstream
+      run: |
+        git push upstream main
