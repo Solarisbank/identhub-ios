@@ -74,11 +74,9 @@ extension DocumentPickerViewModel {
                 let idCard = ScanDocumentType(name: Localizable.DocumentScanner.idCard, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .idCard)
                 content.append(idCard)
             case .driversLicense:
-                let driveLicense = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .driversLicense)
-                content.append(driveLicense)
+                _ = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .driversLicense)
             case .residencePermit:
-                let residencePermit = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "permit_document_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .residencePermit)
-                content.append(residencePermit)
+                _ = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "permit_document_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .residencePermit)
             case .paperId:
                 let paperID = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "passport_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .paperId)
                 content.append(paperID)
@@ -86,8 +84,7 @@ extension DocumentPickerViewModel {
                 let frenchIDCard = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .frenchIdCard)
                 content.append(frenchIDCard)
             case .dutchDriversLicense:
-                let dutchDriversLicense = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .dutchDriversLicense)
-                content.append(dutchDriversLicense)
+                _ = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .dutchDriversLicense)
             }
         })
 

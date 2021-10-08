@@ -46,16 +46,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="aOX-JZ-A16">
-                    <rect key="frame" x="5" y="151" width="365" height="244"/>
+                    <rect key="frame" x="5" y="151" width="365" height="126"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6CM-dP-Mrn">
-                    <rect key="frame" x="15" y="161" width="345" height="229"/>
+                    <rect key="frame" x="15" y="161" width="345" height="111"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="215" id="FDk-Zk-mhq"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="111" id="FDk-Zk-mhq"/>
                     </constraints>
                     <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,7 +124,7 @@
         </view>
     </objects>
     <resources>
-        <image name="table_shadow" width="349" height="244"/>
+        <image name="table_shadow" width="351" height="126"/>
         <namedColor name="background">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

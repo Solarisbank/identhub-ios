@@ -35,7 +35,7 @@ internal class BaseCoordinator: Coordinator {
 
     internal func close() {
         UserDefaults.standard.synchronize()
-        
+
         presenter.dismissModule(animated: false, completion: { [weak self] in
             guard let `self` = self else { return }
 

@@ -27,5 +27,6 @@ enum Status: String, Decodable {
     case confirmationRequired = "confirmation_required"
     case confirmed = "confirmed"
     case identificationRequired = "identification_data_required"
+    case rejected = "rejected"
     case unknown
 }

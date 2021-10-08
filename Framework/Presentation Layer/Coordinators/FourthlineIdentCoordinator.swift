@@ -198,7 +198,7 @@ private extension FourthlineIdentCoordinator {
             print("\(result.identificationStatus) not processed.")
         }
     }
-    
+
     private func interruptIdentProcess() {
         DispatchQueue.main.async { [weak self] in
             self?.completionHandler?(.failure(.unauthorizedAction))

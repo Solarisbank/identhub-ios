@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "table_shadow.pdf",
+      "filename" : "table_shadow_light.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "table_shadow_dark.pdf",
       "idiom" : "universal"
     }
   ],
