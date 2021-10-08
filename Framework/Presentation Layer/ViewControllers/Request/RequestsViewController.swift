@@ -41,6 +41,12 @@ class RequestsViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         true
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        progressView.configureUI()
+    }
 }
 
 // MARK: - Inernal methods -

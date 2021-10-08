@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,8 +36,8 @@
                     <color key="textColor" name="black75"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your data is being uploaded…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poI-Ui-QUt">
-                    <rect key="frame" x="20" y="177" width="195.5" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your data is being uploaded…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poI-Ui-QUt">
+                    <rect key="frame" x="20" y="177" width="374" height="18"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" name="black50"/>
                     <nil key="highlightedColor"/>
@@ -58,6 +58,7 @@
             <viewLayoutGuide key="safeArea" id="Wgf-rW-RKP"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
+                <constraint firstItem="Wgf-rW-RKP" firstAttribute="trailing" secondItem="poI-Ui-QUt" secondAttribute="trailing" constant="20" id="0Pw-Jo-SbB"/>
                 <constraint firstItem="6aW-Pu-C25" firstAttribute="width" secondItem="Xw9-2A-5z5" secondAttribute="width" multiplier="0.6" id="9zl-Cc-7p6"/>
                 <constraint firstItem="6aW-Pu-C25" firstAttribute="top" secondItem="poI-Ui-QUt" secondAttribute="bottom" constant="40" id="Kzx-yX-Jru"/>
                 <constraint firstItem="om9-VO-Stg" firstAttribute="top" secondItem="Wgf-rW-RKP" secondAttribute="top" constant="20" id="Mr4-an-o1m"/>
