@@ -280,7 +280,11 @@ private extension RequestsViewModel {
                 }
 
                 if self.sessionStorage.identificationStep == .fourthline {
-                    self.registerFourthlineMethod()
+                    if response.status == .rejected {
+                        self.fourthlineCoordinator?.perform(action: .abort)
+                    } else {
+                        self.registerFourthlineMethod()
+                    }
                 } else {
                     self.finishInitialization()
                 }
@@ -481,6 +485,8 @@ private extension RequestsViewModel {
             case .success(let response):
                 if response.identificationStatus == .processed || response.identificationStatus == .pending {
                     self.retryVerification()
+                } else if response.identificationStatus == .rejected || response.identificationStatus == .fraud {
+                    self.fourthlineCoordinator?.perform(action: .abort)
                 } else {
                     self.showResult(response)
                 }
