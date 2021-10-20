@@ -14,9 +14,10 @@
                 <outlet property="currentStepView" destination="dOz-sO-0FQ" id="TTS-8n-L1e"/>
                 <outlet property="errorLabel" destination="5fK-E0-FsY" id="3LG-EI-zjb"/>
                 <outlet property="ibanLabel" destination="Rzx-eX-KS9" id="Fqi-JX-Mux"/>
-                <outlet property="ibanVerificationTextField" destination="f7D-A5-fST" id="T01-Eb-kGa"/>
+                <outlet property="ibanVerificationTextField" destination="f7D-A5-fST" id="0Th-cl-0TX"/>
                 <outlet property="initiatePaymentVerificationButton" destination="Tkl-xL-HRh" id="Gkz-4W-yIH"/>
                 <outlet property="joinedAccountsHintLabel" destination="ciO-DA-t6T" id="ywi-tO-7ns"/>
+                <outlet property="maskTextFieldDelegate" destination="N6l-F5-B49" id="SfK-ft-FOF"/>
                 <outlet property="personalAccountHintLabel" destination="eJR-gH-pem" id="P5b-cK-yOM"/>
                 <outlet property="view" destination="iN0-l3-epB" id="IB7-GQ-85O"/>
             </connections>
@@ -58,7 +59,10 @@
                     </constraints>
                     <color key="textColor" name="base75"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="N6l-F5-B49" id="9Sh-uI-Jq3"/>
+                    </connections>
                 </textField>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-E0-FsY">
                     <rect key="frame" x="16" y="328.5" width="382" height="13.5"/>
@@ -87,6 +91,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="background"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="ciO-DA-t6T" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="2nI-bz-cvI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eJR-gH-pem" secondAttribute="trailing" constant="16" id="2vQ-E5-sTv"/>
@@ -110,8 +115,24 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Rzx-eX-KS9" secondAttribute="trailing" constant="16" id="tPP-YP-qJG"/>
                 <constraint firstItem="Rzx-eX-KS9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="vpx-j5-rOQ"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="whE-Js-QFh" appends="YES" id="0I6-eE-Snb"/>
+            </connections>
             <point key="canvasLocation" x="128.98550724637681" y="103.79464285714285"/>
         </view>
+        <customObject id="N6l-F5-B49" customClass="MaskedTextFieldDelegate" customModule="InputMask">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="primaryMaskFormat" value="[AA] [00] [0000] [0000] [0000] [0000] [00]"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="delegate" destination="-1" id="D6g-fV-ceK"/>
+            </connections>
+        </customObject>
+        <tapGestureRecognizer id="whE-Js-QFh">
+            <connections>
+                <action selector="didEndEdigitn:" destination="-1" id="OW6-0K-qv7"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <namedColor name="background">

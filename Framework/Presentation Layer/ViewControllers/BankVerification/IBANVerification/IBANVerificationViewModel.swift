@@ -62,6 +62,10 @@ final internal class IBANVerificationViewModel: NSObject {
     func isExistFallbackOption() -> Bool {
         return ( sessionStorage.fallbackIdentificationStep != nil )
     }
+
+    func validateEnteredIBAN(withIBAN iban: String?) -> Bool {
+        return validateIBAN(iban)
+    }
 }
 
 // MARK: - Private methods -

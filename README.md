@@ -51,6 +51,7 @@ source 'https://github.com/CocoaPods/Specs.git' # to add other public pods
 
 $version = 'version.to.integrate'
 use_frameworks!
+inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
@@ -60,6 +61,7 @@ target 'YourTargetName' do
       pod 'FourthlineSDK', '2.3.1' # identification service
       pod 'SwiftyTesseract', '2.2.3' # document scanner with MRZ detection
       pod 'ZIPFoundation', '0.9.11' # to create ZIP from KYCInfo
+      pod 'InputMask', '6.1.0' # apply IBAN format
 end
 
 post_install do |installer|

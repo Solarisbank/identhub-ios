@@ -6,6 +6,7 @@ platform :ios, '12.0'
 
 # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
+inhibit_all_warnings!
 
 pod 'FourthlineSDK', '2.3.1'
 
@@ -14,6 +15,9 @@ pod 'SwiftyTesseract', '2.2.3'
 
 # Comment the next line if you're not going to create ZIP file
 pod 'ZIPFoundation'
+
+# Comment the next line if you're not using BANK verification
+pod 'InputMask', '6.1.0'
 
 target 'IdentHubSDK' do
 end

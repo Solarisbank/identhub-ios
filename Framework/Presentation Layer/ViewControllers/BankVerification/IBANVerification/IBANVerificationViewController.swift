@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import InputMask
 
 /// UIViewController which displays screen to verify IBAN.
 final internal class IBANVerificationViewController: UIViewController {
@@ -15,6 +16,7 @@ final internal class IBANVerificationViewController: UIViewController {
     @IBOutlet var joinedAccountsHintLabel: UILabel!
     @IBOutlet var ibanLabel: UILabel!
     @IBOutlet var ibanVerificationTextField: VerificationTextField!
+    @IBOutlet var maskTextFieldDelegate: MaskedTextFieldDelegate!
     @IBOutlet var initiatePaymentVerificationButton: ActionRoundedButton!
     @IBOutlet var errorLabel: UILabel!
 
@@ -58,11 +60,35 @@ final internal class IBANVerificationViewController: UIViewController {
         initiatePaymentVerificationButton.currentAppearance = .primary
 
         ibanVerificationTextField.currentState = .normal
+        ibanVerificationTextField.delegate = maskTextFieldDelegate
     }
 
     @IBAction func initiatePaymentVerification(_: ActionRoundedButton) {
         ibanVerificationTextField.resignFirstResponder()
         viewModel.initiatePaymentVerification(withIBAN: ibanVerificationTextField.text)
+    }
+
+    @IBAction func didEndEdigitn(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+}
+
+extension IBANVerificationViewController: MaskedTextFieldDelegateListener {
+
+    func textField(
+        _ textField: UITextField,
+        didFillMandatoryCharacters complete: Bool,
+        didExtractValue value: String
+    ) {
+        textField.text = textField.text?.uppercased()
+
+        let valid = viewModel.validateEnteredIBAN(withIBAN: value)
+        ibanVerificationTextField.currentState = valid ? .verified : .normal
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
