@@ -38,9 +38,12 @@ class DocumentItemInfoCell: UITableViewCell {
 extension DocumentItemInfoCell: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        cellContent?.content = textField.text ?? ""
+        if let text = textField.text?.trimmingCharacters(in: CharacterSet.whitespaces) {
 
-        didEdited?(cellContent)
+            cellContent?.content = text
+
+            didEdited?(cellContent)
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -52,7 +55,7 @@ extension DocumentItemInfoCell: UITextFieldDelegate {
 
         let text = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
 
-        contentDidChanged(text)
+        contentDidChanged(text?.trimmingCharacters(in: CharacterSet.whitespaces))
 
         return true
     }

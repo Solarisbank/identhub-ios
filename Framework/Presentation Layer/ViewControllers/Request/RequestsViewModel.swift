@@ -129,6 +129,16 @@ final class RequestsViewModel: NSObject {
         }
     }
 
+    /// Method restart Fourthline step depends on error type
+    /// - Parameter errorType: KYC zipping error type
+    func didTriggerRetry(errorType: KYCZipErrorType) {
+        if errorType == .invalidDocument {
+            fourthlineCoordinator?.perform(action: .documentPicker)
+        } else if errorType == .invalidSelfie {
+                fourthlineCoordinator?.perform(action: .selfie)
+            }
+    }
+
     func restartRequests() {
         restartProcess()
     }

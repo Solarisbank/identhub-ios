@@ -6,6 +6,12 @@
 import Foundation
 import FourthlineKYC
 
+enum KYCZipErrorType {
+    case invalidDocument
+    case invalidSelfie
+    case invalidData
+}
+
 enum KYCZipService {
 
     static func createKYCZip(_ completion: @escaping((URL?, Error?) -> Void)) {
@@ -107,5 +113,20 @@ extension KYCZipService {
         }
 
         return errorMessage
+    }
+
+    static func zipErrorType(for zipperError: ZipperError) -> KYCZipErrorType {
+
+        if zipperError == .kycIsNotValid {
+            let result = Set<KYCInfo.KYCInfoValidationError>(KYCContainer.shared.kycInfo.validate())
+
+            if result.contains(.invalidDocument) {
+                return .invalidDocument
+            } else if result.contains(.invalidSelfie) {
+                    return .invalidSelfie
+            }
+        }
+
+        return .invalidData
     }
 }

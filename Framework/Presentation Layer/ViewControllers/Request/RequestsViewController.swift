@@ -100,6 +100,16 @@ private extension RequestsViewController {
         let message = KYCZipService.text(for: error)
         let alert = UIAlertController(title: Localizable.Zipper.Error.alertTitle, message: message, preferredStyle: .alert)
 
+        let errorType = KYCZipService.zipErrorType(for: error)
+
+        if errorType == .invalidDocument || errorType == .invalidSelfie {
+            let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+                self?.viewModel.didTriggerRetry(errorType: errorType)
+            }
+
+            alert.addAction(retryAction)
+        }
+
         let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
             self?.viewModel.didTriggerQuit()
         })
