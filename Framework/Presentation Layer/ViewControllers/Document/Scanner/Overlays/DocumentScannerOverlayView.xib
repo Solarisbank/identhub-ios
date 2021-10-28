@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,19 +16,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8T-kK-k5g" userLabel="topCameraMaskView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="242"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="278.5"/>
                     <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqQ-3Q-rOd" userLabel="leftCameraMaskView">
-                    <rect key="frame" x="0.0" y="242" width="14" height="329.5"/>
+                    <rect key="frame" x="0.0" y="278.5" width="14" height="329.5"/>
                     <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oU1-aN-De4" userLabel="bottomCameraMaskView">
-                    <rect key="frame" x="0.0" y="571.5" width="414" height="324.5"/>
+                    <rect key="frame" x="0.0" y="608" width="414" height="288"/>
                     <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWR-lR-jVL" userLabel="rightCameraMaskView">
-                    <rect key="frame" x="400" y="242" width="14" height="329.5"/>
+                    <rect key="frame" x="400" y="278.5" width="14" height="329.5"/>
                     <color key="backgroundColor" name="neutral_white"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BS-ZC-aHW">
@@ -42,14 +42,14 @@
                         <action selector="didClickDismiss:" destination="iN0-l3-epB" eventType="touchUpInside" id="PY6-6f-2dL"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan front" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-gi-8Uh">
-                    <rect key="frame" x="35" y="84" width="99" height="24"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan front" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOi-gi-8Uh">
+                    <rect key="frame" x="35" y="84" width="344" height="21.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                     <color key="textColor" red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passport_front_frame" translatesAutoresizingMaskIntoConstraints="NO" id="42S-fr-ftO">
-                    <rect key="frame" x="14" y="242" width="386" height="331.5"/>
+                    <rect key="frame" x="14" y="278.5" width="386" height="331"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" secondItem="42S-fr-ftO" secondAttribute="width" multiplier="0.857" id="4dT-AC-dvf"/>
@@ -145,7 +145,7 @@
                 <constraint firstItem="42S-fr-ftO" firstAttribute="leading" secondItem="bqQ-3Q-rOd" secondAttribute="trailing" id="Jw1-0j-wbY"/>
                 <constraint firstItem="iOi-gi-8Uh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="35" id="NrB-7T-mZq"/>
                 <constraint firstItem="kWR-lR-jVL" firstAttribute="top" secondItem="b8T-kK-k5g" secondAttribute="bottom" id="OnM-Uw-PbQ"/>
-                <constraint firstItem="42S-fr-ftO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.9" id="RUv-gf-LLw"/>
+                <constraint firstItem="42S-fr-ftO" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.98" id="RUv-gf-LLw"/>
                 <constraint firstItem="42S-fr-ftO" firstAttribute="top" secondItem="b8T-kK-k5g" secondAttribute="bottom" id="WKs-UU-yHS"/>
                 <constraint firstItem="kWR-lR-jVL" firstAttribute="leading" secondItem="42S-fr-ftO" secondAttribute="trailing" id="WgV-OL-3AF"/>
                 <constraint firstItem="42S-fr-ftO" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" multiplier="0.933333" id="XqX-w8-FTf"/>
@@ -153,6 +153,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7BS-ZC-aHW" secondAttribute="trailing" constant="20" id="aH0-81-359"/>
                 <constraint firstItem="oU1-aN-De4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aKx-8f-Czz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kWR-lR-jVL" secondAttribute="trailing" id="ah4-GB-GFe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iOi-gi-8Uh" secondAttribute="trailing" constant="35" id="c2R-iq-LiQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mAL-zK-Z6b" secondAttribute="bottom" constant="40" id="gkp-og-t8l"/>
                 <constraint firstItem="bqQ-3Q-rOd" firstAttribute="top" secondItem="b8T-kK-k5g" secondAttribute="bottom" id="hs0-hn-lvV"/>
                 <constraint firstItem="b8T-kK-k5g" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="isY-W5-QyQ"/>
@@ -168,6 +169,7 @@
             <connections>
                 <outlet property="bottomMaskView" destination="oU1-aN-De4" id="uhQ-nK-XRl"/>
                 <outlet property="documentFrameView" destination="42S-fr-ftO" id="gBK-sd-rOX"/>
+                <outlet property="instructionsLabel" destination="Kab-Hg-54z" id="fNy-ZP-Xwa"/>
                 <outlet property="leftMaskView" destination="bqQ-3Q-rOd" id="oim-sj-Bal"/>
                 <outlet property="manualControlView" destination="mAL-zK-Z6b" id="CUb-Rb-74z"/>
                 <outlet property="maskAspectRatioConstraint" destination="4dT-AC-dvf" id="USl-HZ-cso"/>
@@ -186,7 +188,7 @@
     <resources>
         <image name="close_btn" width="32" height="32"/>
         <image name="passport_front_frame" width="350" height="300"/>
-        <image name="table_shadow" width="349" height="244"/>
+        <image name="table_shadow" width="351" height="126"/>
         <image name="take_picture_button" width="160" height="160"/>
         <namedColor name="neutral_white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

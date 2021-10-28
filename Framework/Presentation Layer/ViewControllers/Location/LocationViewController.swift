@@ -68,8 +68,8 @@ extension LocationViewController {
 
         stepsProgressView.datasource = viewModel
 
-        continueBtn.titleLabel?.text = Localizable.Common.continueBtn
-        quitBtn.titleLabel?.text = Localizable.Common.quit
+        continueBtn.setTitle(Localizable.Common.continueBtn, for: .normal)
+        quitBtn.setTitle(Localizable.Common.quit, for: .normal)
         titleLbl.text = Localizable.Location.title
         descriptionLbl.text = Localizable.Location.description
 

@@ -56,9 +56,9 @@ class DocumentPickerViewController: UIViewController {
 
         titleLbl.text = Localizable.DocumentScanner.title
         descriptionLbl.text = Localizable.DocumentScanner.description
-        continueBtn.titleLabel?.text = Localizable.Common.continueBtn
+        continueBtn.setTitle(Localizable.Common.continueBtn, for: .normal)
         continueBtn.currentAppearance = .inactive
-        quitBtn.titleLabel?.text = Localizable.Common.quit
+        quitBtn.setTitle(Localizable.Common.quit, for: .normal)
 
         viewModel.configureDocumentsTable(for: documentTypesTable)
 

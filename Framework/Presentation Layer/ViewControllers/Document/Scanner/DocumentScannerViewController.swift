@@ -129,10 +129,10 @@ extension DocumentScannerViewController: DocumentScannerDelegate {
         currentStep = step
 
         stopAutodetectTimer()
-        documentOverlay.titleLbl.text = "Scan \(step.name)"
-
+        documentOverlay.titleLbl.text = step.localizedTitle
+        
         if step.isAutoDetectAvailable {
-            documentOverlay.state = .warning(step.name)
+            documentOverlay.state = .warning(step.localizedName)
             startProcessingWarnings()
             scheduleAutodetectTimer()
         } else {
@@ -147,7 +147,7 @@ extension DocumentScannerViewController: DocumentScannerDelegate {
 
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
 
-        documentOverlay.state = .success("\(currentStep.name) scanned")
+        documentOverlay.state = .success(currentStep.localizedName.capitalized)
         changeMask(for: .success)
 
         // A delay was added to see the above state for 1 second before showing the result screen.
@@ -188,7 +188,7 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
             guard let self = self else { return }
 
             guard !self.cachedWarnings.isEmpty else {
-                self.documentOverlay.state = .warning(self.currentStep.name)
+                self.documentOverlay.state = .warning(self.currentStep.localizedName)
                 return
             }
             let warnings = self.cachedWarnings.compactMap { DocumentScannerStepWarning(rawValue: $0) }
@@ -254,11 +254,11 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
     private func displayScannerError() {
         let alert = UIAlertController(title: Localizable.DocumentScanner.Error.alertTitle, message: Localizable.DocumentScanner.Error.alertMessage, preferredStyle: .alert)
 
-        let tryAgainAction = UIAlertAction(title: "Try again", style: .default, handler: { [self] _ in
+        let tryAgainAction = UIAlertAction(title: Localizable.Common.tryAgain, style: .default, handler: { [self] _ in
             documentScanner.resetScanner()
         })
 
-        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [self] _ in
+        let cancelAction = UIAlertAction(title: Localizable.Common.dismiss, style: .cancel, handler: { [self] _ in
             dismissScanner()
         })
         alert.addAction(tryAgainAction)

@@ -26,6 +26,7 @@ enum Localizable {
         static let cancel = "common_cancel".localized()
         static let settings = "common_settings".localized()
         static let defaultErr = "common_generic_error".localized()
+        static let confirm = "common_confirm".localized()
     }
 
     enum Quiting {
@@ -219,14 +220,28 @@ enum Localizable {
         static let successScan = "doc_scanner_scan_successful".localized()
         static let scanning = "doc_scanner_scanning".localized()
         static let scanFailed = "doc_scanner_scan_failed".localized()
+        static let retake = "doc_scanner_retake".localized()
+        static let confirmResult = "doc_scanner_confirm_result".localized()
+        static let takePictureNotice = "doc_scanner_take_picture_notice".localized()
 
-        enum DocFileSide {
-
-            static let front = "doc_scanner_side_front".localized()
-            static let back = "doc_scanner_side_back".localized()
-            static let insideLeft = "doc_scanner_side_inside_left".localized()
-            static let insideRight = "doc_scanner_side_inside_right".localized()
-            static let undefined = "doc_scanner_side_undefined".localized()
+        enum DocSideName {
+            static let front = "doc_scanner_side_front_name".localized()
+            static let back = "doc_scanner_side_back_name".localized()
+            static let insideLeft = "doc_scanner_side_inside_left_name".localized()
+            static let insideRight = "doc_scanner_side_inside_right_name".localized()
+            static let undefined = "doc_scanner_side_undefined_name".localized()
+        }
+        
+        enum DocSideTitle {
+            static let front = "doc_scanner_side_front_title".localized()
+            static let frontAngled = "doc_scanner_side_front_angled_title".localized()
+            static let back = "doc_scanner_side_back_title".localized()
+            static let backAngled = "doc_scanner_side_back_angled_title".localized()
+            static let insideLeft = "doc_scanner_side_inside_left_title".localized()
+            static let insideLeftAngled = "doc_scanner_side_inside_left_angled_title".localized()
+            static let insideRight = "doc_scanner_side_inside_right_title".localized()
+            static let insideRightAngled = "doc_scanner_side_inside_right_angled_title".localized()
+            static let undefined = "doc_scanner_side_undefined_title".localized()
         }
 
         enum Warning {
@@ -251,6 +266,8 @@ enum Localizable {
             static let issue = "doc_scanner_info_issue_date".localized()
             static let expire = "doc_scanner_info_expire_date".localized()
             static let warning = "doc_scanner_info_warning".localized()
+            static let enterData = "doc_scanner_info_enter_data".localized()
+            static let confirmData = "doc_scanner_info_confirm_data".localized()
         }
     }
 

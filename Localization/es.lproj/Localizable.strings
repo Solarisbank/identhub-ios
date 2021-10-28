@@ -17,6 +17,7 @@
 "common_cancel" = "Cancelar";
 "common_settings" = "Ajustes";
 "common_generic_error" = "Algo salió mal";
+"common_confirm" = "Confirmar";
 
 // Quitting
 "quitting_title" = "¿Estás seguro de que deseas abandonar el proceso de registro?";
@@ -162,11 +163,9 @@
 "doc_scanner_scan_successful" = "Escaneo realizado con éxito";
 "doc_scanner_scanning" = "Escaneando...";
 "doc_scanner_scan_failed" = "Escaneo fallido";
-"doc_scanner_side_front" = "anverso";
-"doc_scanner_side_back" = "reverso";
-"doc_scanner_side_inside_left" = "interior izquierda";
-"doc_scanner_side_inside_right" = "interior derecha";
-"doc_scanner_side_undefined" = "lateral del documento no definido";
+"doc_scanner_retake" = "Intentar de nuevo";
+"doc_scanner_take_picture_notice" = "Por favor, tome una foto de su identificación oficial.";
+"doc_scanner_confirm_result" = "Confirme el resultado";
 "doc_scanner_warning_device_not_steady" = "El dispositivo no está estable";
 "doc_scanner_warning_too_dark" = "Demasiado oscuro";
 "doc_scanner_warning_unkown" = "Algo salió mal";
@@ -182,6 +181,24 @@
 "doc_scanner_info_issue_date" = "fecha de emisión";
 "doc_scanner_info_expire_date" = "fecha de caducidad del documento";
 "doc_scanner_info_warning" = "Confirma si se han obtenido correctamente tus datos al escanear documento";
+"doc_scanner_info_enter_data" = "Favor de introducir";
+"doc_scanner_info_confirm_data" = "Por favor confirme";
+
+// Document Scanner Side Titles
+"doc_scanner_side_front_name" = "anverso";
+"doc_scanner_side_back_name" = "reverso";
+"doc_scanner_side_inside_left_name" = "interior izquierda";
+"doc_scanner_side_inside_right_name" = "interior derecha";
+"doc_scanner_side_undefined_name" = "lateral del documento no definido";
+"doc_scanner_side_front_title" = "Escanee la parte frontal del documento";
+"doc_scanner_side_front_angled_title" = "Escanee de manera angular la parte frontal del documento";
+"doc_scanner_side_back_title" = "Escanee la parte trasera del documento";
+"doc_scanner_side_back_angled_title" = "Escanee de manera angular la parte trasera del documento";
+"doc_scanner_side_inside_left_title" = "Escanee el interior izquierdo del documento";
+"doc_scanner_side_inside_left_angled_title" = "Escanee de manera angular el interior izquierdo del documento";
+"doc_scanner_side_inside_right_title" = "Escanee el interior derecho del documento";
+"doc_scanner_side_inside_right_angled_title" = "Escanee de manera angular el interior derecho del documento";
+"doc_scanner_side_undefined_title" = "Por favor, tome una foto de su identificación oficial.";
 
 // Location
 "location_title" = "Ubicación del dispositivo";

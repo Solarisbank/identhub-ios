@@ -37,7 +37,7 @@ enum DocumentScannerAssetBuilder {
     static func idCard() -> DocumentScannerAssetConfiguration {
         let sizing = DocumentScannerAssetSizing(aspectRatio: 0.668, detectionAreaOriginRatio: CGPoint(x: 0.025, y: 0), detectionAreaSizeRatio: CGSize(width: 0.95, height: 1.0))
 
-        let layout = DocumentScannerAssetLayout(screenWidthRatio: 0.88, screenCenterYMultiplier: 0.75)
+        let layout = DocumentScannerAssetLayout(screenWidthRatio: 0.88, screenCenterYMultiplier: 0.85)
 
         return DocumentScannerAssetConfiguration(sizing: sizing, tiltedSizing: sizing, layout: layout)
     }

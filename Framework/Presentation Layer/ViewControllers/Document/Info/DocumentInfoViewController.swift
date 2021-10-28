@@ -68,8 +68,8 @@ extension DocumentInfoViewController {
 
         titleLbl.text = InfoText.title
         warningLbl.text = InfoText.warning
-        quitBtn.titleLabel?.text = Localizable.Common.back
-        continueBtn.titleLabel?.text = Localizable.Common.continueBtn
+        quitBtn.setTitle(Localizable.Common.back, for: .normal)
+        continueBtn.setTitle(Localizable.Common.continueBtn, for: .normal)
     }
 
     private func handleUIUpdates() {

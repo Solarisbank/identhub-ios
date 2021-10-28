@@ -17,6 +17,7 @@
 "common_cancel" = "Annuler";
 "common_settings" = "Paramètres";
 "common_generic_error" = "Une erreur s’est produite";
+"common_confirm" = "Confirmer";
 
 // Quitting
 "quitting_title" = "Êtes-vous sûr de vouloir quitter le processus d’intégration ?";
@@ -162,11 +163,9 @@
 "doc_scanner_scan_successful" = "Scan réussi";
 "doc_scanner_scanning" = "Scan en cours...";
 "doc_scanner_scan_failed" = "Échec du scan";
-"doc_scanner_side_front" = "recto";
-"doc_scanner_side_back" = "verso";
-"doc_scanner_side_inside_left" = "intérieur gauche";
-"doc_scanner_side_inside_right" = "intérieur droite";
-"doc_scanner_side_undefined" = "côté du document non défini";
+"doc_scanner_retake" = "Nouvel essai";
+"doc_scanner_take_picture_notice" = "Prenez une photo du document, s'il-vous-plaît";
+"doc_scanner_confirm_result" = "Veuillez confirmer le résultat";
 "doc_scanner_warning_device_not_steady" = "Appareil instable";
 "doc_scanner_warning_too_dark" = "Trop sombre";
 "doc_scanner_warning_unkown" = "Une erreur s’est produite";
@@ -182,6 +181,24 @@
 "doc_scanner_info_issue_date" = "date de délivrance";
 "doc_scanner_info_expire_date" = "date d’expiration du document";
 "doc_scanner_info_warning" = "Veuillez confirmer si vos données ont été correctement dérivées du document scanné";
+"doc_scanner_info_enter_data" = "Entrez, s'il-vous-plaît";
+"doc_scanner_info_confirm_data" = "Confirmez, s'il-vous-plaît";
+
+// Document Scanner Side Titles
+"doc_scanner_side_front_name" = "recto";
+"doc_scanner_side_back_name" = "verso";
+"doc_scanner_side_inside_left_name" = "intérieur gauche";
+"doc_scanner_side_inside_right_name" = "intérieur droite";
+"doc_scanner_side_undefined_name" = "côté du document non défini";
+"doc_scanner_side_front_title" = "Veuillez scanner la première page du document";
+"doc_scanner_side_front_angled_title" = "Veuillez scanner la première page du document sous un autre angle";
+"doc_scanner_side_back_title" = "Veuillez scanner la dernière page du document";
+"doc_scanner_side_back_angled_title" = "Veuillez scanner la dernière page du document sous un autre angle";
+"doc_scanner_side_inside_left_title" = "Veuillez scanner l'intérieur gauche du document";
+"doc_scanner_side_inside_left_angled_title" = "Veuillez scanner l'intérieur gauche du document sous un autre angle";
+"doc_scanner_side_inside_right_title" = "Veuillez scanner l'intérieur droit du document";
+"doc_scanner_side_inside_right_angled_title" = "Veuillez scanner l'intérieur droit du document sous un autre angle";
+"doc_scanner_side_undefined_title" = "Prenez une photo du document, s'il-vous-plaît";
 
 // Location
 "location_title" = "Localisation de l’appareil";

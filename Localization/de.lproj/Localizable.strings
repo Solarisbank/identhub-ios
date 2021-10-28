@@ -17,6 +17,7 @@
 "common_cancel" = "Abbrechen";
 "common_settings" = "Einstellungen";
 "common_generic_error" = "Etwas ist schiefgelaufen";
+"common_confirm" = "Bestätigen";
 
 // Quitting +
 "quitting_title" = "Sind Sie sich sicher, dass Sie den Anmeldeprozess verlassen wollen?";
@@ -162,11 +163,9 @@
 "doc_scanner_scan_successful" = "Scan erfolgreich";
 "doc_scanner_scanning" = "Scannen...";
 "doc_scanner_scan_failed" = "Scan fehlgeschlagen";
-"doc_scanner_side_front" = "Vorderseite";
-"doc_scanner_side_back" = "Rückseite";
-"doc_scanner_side_inside_left" = "Innenseite links";
-"doc_scanner_side_inside_right" = "Innenseite rechts";
-"doc_scanner_side_undefined" = "Dokumentenseite nicht definiert";
+"doc_scanner_retake" = "Wiederholen";
+"doc_scanner_take_picture_notice" = "Bitte fotografieren Sie das Dokument";
+"doc_scanner_confirm_result" = "Bestätigen Sie das Ergebnis";
 "doc_scanner_warning_device_not_steady" = "Handy ist nicht in einer stabilen Position";
 "doc_scanner_warning_too_dark" = "Dokument ist zu dunkel";
 "doc_scanner_warning_unkown" = "Etwas ist schiefgelaufen";
@@ -182,6 +181,24 @@
 "doc_scanner_info_issue_date" = "Ausstellungsdatum";
 "doc_scanner_info_expire_date" = "Ablaufdatum / gültig bis";
 "doc_scanner_info_warning" = "Bitte bestätigen Sie die Korrektheit der Daten ihres Dokuments.";
+"doc_scanner_info_enter_data" = "Bitte eingeben";
+"doc_scanner_info_confirm_data" = "Bitte bestätigen";
+
+// Document Scanner Side Titles
+"doc_scanner_side_front_name" = "vorderseite";
+"doc_scanner_side_back_name" = "rückseite";
+"doc_scanner_side_inside_left_name" = "innenseite links";
+"doc_scanner_side_inside_right_name" = "innenseite rechts";
+"doc_scanner_side_undefined_name" = "Dokumentenseite nicht definiert";
+"doc_scanner_side_front_title" = "Bitte scannen Sie die Vorderseite von Ihrem Ausweisdokument";
+"doc_scanner_side_front_angled_title" = "Bitte scannen Sie die Vorderseite von Ihrem Ausweisdokument angewinkelt";
+"doc_scanner_side_back_title" = "Bitte scannen Sie die Hinterseite von Ihrem Ausweisdokument";
+"doc_scanner_side_back_angled_title" = "Bitte scannen Sie die Hinterseite von Ihrem Ausweisdokument angewinkelt";
+"doc_scanner_side_inside_left_title" = "Bitte scannen Sie die linke Innenseite von Ihrem Ausweisdokument";
+"doc_scanner_side_inside_left_angled_title" = "Bitte scannen Sie die linke Innenseite von Ihrem Ausweisdokument angewinkelt";
+"doc_scanner_side_inside_right_title" = "Bitte scannen Sie die rechte Innenseite von Ihrem Ausweisdokument";
+"doc_scanner_side_inside_right_angled_title" = "Bitte scannen Sie die rechte Innenseite von Ihrem Ausweisdokument angewinkelt";
+"doc_scanner_side_undefined_title" = "Bitte fotografieren Sie das Dokument";
 
 // Location
 "location_title" = "Gerätestandort";

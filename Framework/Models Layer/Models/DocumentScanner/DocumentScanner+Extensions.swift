@@ -21,28 +21,6 @@ struct DocumentScannerInfo {
     let state: DocumentScannerState
 }
 
-extension FileSide {
-
-    var text: String {
-        switch self {
-        case .front:
-            return Localizable.DocumentScanner.DocFileSide.front
-        case .back:
-            return Localizable.DocumentScanner.DocFileSide.back
-        case .insideLeft:
-            return Localizable.DocumentScanner.DocFileSide.insideLeft
-        case .insideRight:
-            return Localizable.DocumentScanner.DocFileSide.insideRight
-        case .undefined:
-            print("undefined should never happen")
-            return Localizable.DocumentScanner.DocFileSide.undefined
-        @unknown default:
-            print("Missing FileSide.text for \(self)")
-            return Localizable.DocumentScanner.DocFileSide.undefined
-        }
-    }
-}
-
 extension DocumentScannerStepWarning {
 
     var text: String {
@@ -87,9 +65,56 @@ extension DocumentScannerError {
 }
 
 extension DocumentScannerStep {
-
-    var name: String {
-        let filesideNameAngled = "\(fileSide.text) angled".capitalized
-        return isAngled ? filesideNameAngled : fileSide.text.capitalized
+    
+    var localizedTitle: String {
+        switch fileSide {
+        case .front:
+            if isAngled {
+                return Localizable.DocumentScanner.DocSideTitle.frontAngled
+            } else {
+                return Localizable.DocumentScanner.DocSideTitle.front
+            }
+        case .back:
+            if isAngled {
+                return Localizable.DocumentScanner.DocSideTitle.backAngled
+            } else {
+                return Localizable.DocumentScanner.DocSideTitle.back
+            }
+        case .insideLeft:
+            if isAngled {
+                return Localizable.DocumentScanner.DocSideTitle.insideLeftAngled
+            } else {
+                return Localizable.DocumentScanner.DocSideTitle.insideLeft
+            }
+        case .insideRight:
+            if isAngled {
+                return Localizable.DocumentScanner.DocSideTitle.insideRightAngled
+            } else {
+                return Localizable.DocumentScanner.DocSideTitle.insideRight
+            }
+        case .undefined:
+            return Localizable.DocumentScanner.DocSideTitle.undefined
+        @unknown default:
+            print("Missing FileSide.text for \(self)")
+            return Localizable.DocumentScanner.DocSideTitle.undefined
+        }
+    }
+    
+    var localizedName: String {
+        switch fileSide {
+        case .front:
+            return Localizable.DocumentScanner.DocSideName.front
+        case .back:
+            return Localizable.DocumentScanner.DocSideName.back
+        case .insideLeft:
+            return Localizable.DocumentScanner.DocSideName.insideLeft
+        case .insideRight:
+            return Localizable.DocumentScanner.DocSideName.insideRight
+        case .undefined:
+            return Localizable.DocumentScanner.DocSideName.undefined
+        @unknown default:
+            print("Missing FileSide.text for \(self)")
+            return Localizable.DocumentScanner.DocSideName.undefined
+        }
     }
 }

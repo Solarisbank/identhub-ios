@@ -127,7 +127,7 @@ extension DocumentItemInfoCell {
     }
 
     private func obtainInfoText(_ isEmpty: Bool) -> String {
-        isEmpty ? "please enter" : "please confirm"
+        isEmpty ? Localizable.DocumentScanner.Information.enterData : Localizable.DocumentScanner.Information.confirmData
     }
 
     private func obtainInfoTextColor(_ isEmpty: Bool) -> UIColor {

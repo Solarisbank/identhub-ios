@@ -39,10 +39,12 @@ final class DocumentScannerResultView: UIView {
     func set(_ stepResult: DocumentScannerStepResult, mask: UIImage, with configuration: DocumentScannerAssetConfiguration, for step: DocumentScannerStep) {
         self.stepResult = stepResult
 
-        titleLbl.text = "Confirm \(step.name)"
+        titleLbl.text = Localizable.DocumentScanner.confirmResult
         documentFrame.image = mask
         documentResult.image = stepResult.image.full
         changeMask(configuration: configuration)
+        retakeBtnTitle.text = Localizable.DocumentScanner.retake
+        confirmBtnTitle.text = Localizable.Common.confirm
     }
 
     func set(_ maskColor: UIColor) {

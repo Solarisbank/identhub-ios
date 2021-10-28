@@ -17,6 +17,7 @@
 "common_cancel" = "Cancel";
 "common_settings" = "Settings";
 "common_generic_error" = "Something went wrong";
+"common_confirm" = "Confirm";
 
 // Quitting
 "quitting_title" = "Are you sure you want to quit onboarding process?";
@@ -162,11 +163,9 @@
 "doc_scanner_scan_successful" = "Scan successful";
 "doc_scanner_scanning" = "Scanning...";
 "doc_scanner_scan_failed" = "Scan failed";
-"doc_scanner_side_front" = "front";
-"doc_scanner_side_back" = "back";
-"doc_scanner_side_inside_left" = "inside left";
-"doc_scanner_side_inside_right" = "inside right";
-"doc_scanner_side_undefined" = "document side not defined";
+"doc_scanner_retake" = "Retake";
+"doc_scanner_take_picture_notice" = "Please take a picture of the document";
+"doc_scanner_confirm_result" = "Confirm the result";
 "doc_scanner_warning_device_not_steady" = "Device not steady";
 "doc_scanner_warning_too_dark" = "Too dark";
 "doc_scanner_warning_unkown" = "Something went wrong";
@@ -182,6 +181,24 @@
 "doc_scanner_info_issue_date" = "date of issue";
 "doc_scanner_info_expire_date" = "document expiry date";
 "doc_scanner_info_warning" = "Please confirm if your data derived properly from the document scan";
+"doc_scanner_info_enter_data" = "Please enter";
+"doc_scanner_info_confirm_data" = "Please confirm";
+
+// Document Scanner Side
+"doc_scanner_side_front_name" = "front";
+"doc_scanner_side_back_name" = "back";
+"doc_scanner_side_inside_left_name" = "inside left";
+"doc_scanner_side_inside_right_name" = "inside right";
+"doc_scanner_side_undefined_name" = "Document side not defined";
+"doc_scanner_side_front_title" = "Scan the front of the document";
+"doc_scanner_side_front_angled_title" = "Scan the front of the document at an angle";
+"doc_scanner_side_back_title" = "Scan the back of the document";
+"doc_scanner_side_back_angled_title" = "Scan the back of the document at an angle";
+"doc_scanner_side_inside_left_title" = "Scan the inside left of the document";
+"doc_scanner_side_inside_left_angled_title" = "Scan the inside left of the document at an angle";
+"doc_scanner_side_inside_right_title" = "Scan the inside right of the document";
+"doc_scanner_side_inside_right_angled_title" = "Scan the inside right of the document at an angle";
+"doc_scanner_side_undefined_title" = "Please take a picture of the document";
 
 // Location
 "location_title" = "Device location";
