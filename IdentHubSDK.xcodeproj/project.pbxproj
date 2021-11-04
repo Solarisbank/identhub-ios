@@ -2104,7 +2104,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 0.11.0;
+				MARKETING_VERSION = 0.13.0;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
@@ -2130,7 +2130,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 0.11.0;
+				MARKETING_VERSION = 0.13.0;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
@@ -2239,7 +2239,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 0.11.0;
+				MARKETING_VERSION = 0.13.0;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
