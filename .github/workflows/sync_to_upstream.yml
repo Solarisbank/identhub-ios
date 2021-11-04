@@ -13,10 +13,13 @@ jobs:
     steps:
     - name: Checkout the code
       uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     - name: Push to upstream
       env:
-        upstream_token: ${{ secrets.UPSTREAM_TOKEN }}
+        API_TOKEN_GITHUB: ${{ secrets.UPSTREAM_TOKEN }}
+        USER_NAME_GITHUB: ${{ secrets.UPSTREAM_USER }}
       run: |
         git switch -c main
-        git push https://$upstream_token@github.com/Solarisbank/identhub-ios.git main
-        git push https://$upstream_token@github.com/Solarisbank/identhub-ios.git --tags
+        git push "https://$USER_NAME_GITHUB:$API_TOKEN_GITHUB@github.com/Solarisbank/identhub-ios.git" main
+        git push "https://$USER_NAME_GITHUB:$API_TOKEN_GITHUB@github.com/Solarisbank/identhub-ios.git" --tags
