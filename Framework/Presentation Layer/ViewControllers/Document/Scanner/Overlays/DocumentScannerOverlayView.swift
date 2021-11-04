@@ -23,8 +23,8 @@ final class DocumentScannerOverlayView: UIView {
     @IBOutlet var maskWidthRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskCenterYConstraint: NSLayoutConstraint!
     @IBOutlet var takePictureBtnView: UIView!
-    @IBOutlet weak var instructionsLabel: UILabel!
-    
+    @IBOutlet var instructionsLabel: UILabel!
+
     var onDismiss: (() -> Void)?
     var onTakePicture: (() -> Void)?
 

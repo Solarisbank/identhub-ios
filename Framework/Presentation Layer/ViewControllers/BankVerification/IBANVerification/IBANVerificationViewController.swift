@@ -16,7 +16,7 @@ final internal class IBANVerificationViewController: UIViewController {
     @IBOutlet var joinedAccountsHintLabel: UILabel!
     @IBOutlet var ibanLabel: UILabel!
     @IBOutlet var ibanVerificationTextField: VerificationTextField!
-    @IBOutlet var maskTextFieldDelegate: MaskedTextFieldDelegate!
+    @IBOutlet weak var maskTextFieldDelegate: MaskedTextFieldDelegate!
     @IBOutlet var initiatePaymentVerificationButton: ActionRoundedButton!
     @IBOutlet var errorLabel: UILabel!
 

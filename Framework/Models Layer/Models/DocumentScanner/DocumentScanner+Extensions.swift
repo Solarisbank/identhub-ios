@@ -65,7 +65,7 @@ extension DocumentScannerError {
 }
 
 extension DocumentScannerStep {
-    
+
     var localizedTitle: String {
         switch fileSide {
         case .front:
@@ -99,7 +99,7 @@ extension DocumentScannerStep {
             return Localizable.DocumentScanner.DocSideTitle.undefined
         }
     }
-    
+
     var localizedName: String {
         switch fileSide {
         case .front:

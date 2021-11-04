@@ -130,7 +130,7 @@ extension DocumentScannerViewController: DocumentScannerDelegate {
 
         stopAutodetectTimer()
         documentOverlay.titleLbl.text = step.localizedTitle
-        
+
         if step.isAutoDetectAvailable {
             documentOverlay.state = .warning(step.localizedName)
             startProcessingWarnings()

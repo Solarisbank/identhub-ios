@@ -231,7 +231,7 @@ enum Localizable {
             static let insideRight = "doc_scanner_side_inside_right_name".localized()
             static let undefined = "doc_scanner_side_undefined_name".localized()
         }
-        
+
         enum DocSideTitle {
             static let front = "doc_scanner_side_front_title".localized()
             static let frontAngled = "doc_scanner_side_front_angled_title".localized()

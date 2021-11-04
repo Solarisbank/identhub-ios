@@ -122,9 +122,11 @@ private extension BankIDCoordinator {
         case .bankIDFourthline:
             presentFourthlineFlow()
         case .bankQES,
-             .bankIDQUES:
+             .bankIDQES,
+             .fourthlineQES:
             presentSignDocuments()
-        case .fourthline:
+        case .fourthline,
+            .fourthlineSigning:
             presentFourthlineFlow()
         case .abort:
             completionHandler?(.failure(.unauthorizedAction))

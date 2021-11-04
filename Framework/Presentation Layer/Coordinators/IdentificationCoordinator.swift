@@ -98,7 +98,8 @@ private extension IdentificationCoordinator {
              .bankIBAN,
              .bankIDIBAN:
             startBankID()
-        case .fourthline:
+        case .fourthline,
+             .fourthlineSigning:
             startFourthline()
         case .unspecified:
             print("Identificaiton flow is not specified")
@@ -118,8 +119,14 @@ private extension IdentificationCoordinator {
 
     private func startFourthline() {
         let fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
+        let bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: presenter)
 
         fourthlineCoordinator.start(completionHandler!)
+
+        fourthlineCoordinator.nextStepHandler = { nextStep in
+
+            bankIDSessionCoordinator.perform(action: .nextStep(step: nextStep))
+        }
     }
 
     private func updateAction(action: Action) {

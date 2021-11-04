@@ -10,7 +10,7 @@ excluded:
 # Enabled rules.
 opt_in_rules:
 
-  # Controversial rules. Think twice before enabling or disabling them. 
+  # Controversial rules. Think twice before enabling or disabling them.
   # Check which are enabled by default and add to opt_in or disabled rules!
   # - explicit_acl
   # - explicit_top_level_acl
@@ -133,7 +133,7 @@ disabled_rules:
   - empty_enum_arguments
   - empty_xctest_method
   - explicit_enum_raw_value
-  - explicit_self 
+  - explicit_self
   - explicit_type_interface
   - fallthrough
   - fatal_error_message

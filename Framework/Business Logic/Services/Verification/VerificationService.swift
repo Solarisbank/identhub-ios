@@ -215,7 +215,7 @@ final class VerificationService {
     /// - Parameter completionHandler: Response back if the fourthline detail.
     func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void) {
         do {
-            let request = try FourthlineIdentificationRequest(sessionToken: sessionInfoProvider.sessionToken)
+            let request = try FourthlineIdentificationRequest(sessionToken: sessionInfoProvider.sessionToken, method: sessionInfoProvider.identificationStep ?? .fourthline)
 
             apiClient.execute(request: request, answerType: FourthlineIdentification.self) { result in
                 completionHandler(result)

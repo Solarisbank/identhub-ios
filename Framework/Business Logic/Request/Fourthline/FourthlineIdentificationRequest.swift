@@ -10,7 +10,7 @@ final class FourthlineIdentificationRequest: BackendRequest {
     // MARK: - Public attributes -
 
     var path: String {
-        "/\(sessionToken)/fourthline_identification"
+        "/\(sessionToken)/\(methodName)"
     }
 
     var method: HTTPMethod {
@@ -18,19 +18,20 @@ final class FourthlineIdentificationRequest: BackendRequest {
     }
 
     // MARK: Private properties
-
     private let sessionToken: String
+    private let methodName: String
 
     /// Initializes the request for defining identification method
     /// - Parameters:
     ///     - sessionToken: The token of the current session.
     /// - Throws: An error of type `RequestError.emptySessioToken`
-    init(sessionToken: String) throws {
+    init(sessionToken: String, method: IdentificationStep) throws {
 
         guard sessionToken.isEmpty == false else {
             throw RequestError.emptySessionToken
         }
 
         self.sessionToken = sessionToken
+        self.methodName = method == .fourthlineSigning ? "fourthline_signing" : "fourthline_identification"
     }
 }
