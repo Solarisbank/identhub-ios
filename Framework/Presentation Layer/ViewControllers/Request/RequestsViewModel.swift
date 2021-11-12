@@ -132,11 +132,22 @@ final class RequestsViewModel: NSObject {
     /// Method restart Fourthline step depends on error type
     /// - Parameter errorType: KYC zipping error type
     func didTriggerRetry(errorType: KYCZipErrorType) {
-        if errorType == .invalidDocument {
+        switch errorType {
+        case .invalidDocument:
             fourthlineCoordinator?.perform(action: .documentPicker)
-        } else if errorType == .invalidSelfie {
-                fourthlineCoordinator?.perform(action: .selfie)
-            }
+        case .invalidSelfie:
+            fourthlineCoordinator?.perform(action: .selfie)
+        case .invalidData:
+            fourthlineCoordinator?.perform(action: .welcome)
+        }
+    }
+
+    /// Method should interrupt identification process with failure reason
+    /// - Parameter reason: API error type
+    func abortIdentProcess(_ reason: APIError) {
+        if let coordinator = fourthlineCoordinator {
+            coordinator.perform(action: .close(error: reason))
+        }
     }
 
     func restartRequests() {

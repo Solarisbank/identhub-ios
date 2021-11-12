@@ -91,6 +91,10 @@ private extension RequestsViewController {
         case .locationError,
              .locationAccessError:
             self.locationFailed(with: error)
+        case .identificationDataInvalid(_):
+            identificationFailed(with: error)
+        case .fraudData(let err):
+            viewModel.abortIdentProcess(.fraudData(error: err))
         default:
             self.requestFailed(with: error)
         }
@@ -123,6 +127,23 @@ private extension RequestsViewController {
         presentError(with: error, title: Localizable.Location.Error.title, action: "Settings") {
             UIApplication.openAppSettings()
         }
+    }
+
+    private func identificationFailed(with error: APIError) {
+        let alert = UIAlertController(title: Localizable.Verification.processTitle, message: error.text(), preferredStyle: .alert)
+
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+            self?.viewModel.didTriggerRetry(errorType: .invalidData)
+        }
+
+        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+            self?.viewModel.didTriggerQuit()
+        })
+
+        alert.addAction(retryAction)
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true)
     }
 
     private func requestFailed(with error: APIError) {

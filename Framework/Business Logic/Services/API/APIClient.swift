@@ -116,6 +116,12 @@ final class DefaultAPIClient: APIClient {
             return .failure(.unprocessableEntity)
         case 500:
             return .failure(.internalServerError)
+        case 1001...3999:
+            let error = obtainErrorData(data: data)
+            return .failure(.identificationDataInvalid(error: error))
+        case 4000...5000:
+            let error = obtainErrorData(data: data)
+            return .failure(.fraudData(error: error))
         default:
             return .failure(.unknownError)
         }

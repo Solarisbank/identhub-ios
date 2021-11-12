@@ -20,6 +20,8 @@ import Foundation
 /// - locationError: indicates issue with fetching device location data
 /// - ibanVerfificationFailed: failed IBAN verification
 /// - paymentFailed: failed payment initiation
+/// - identificationDataInvalid: provided user data is not valid and should be creates one more time
+/// - fraudData: provided data defines as fraud
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
@@ -36,6 +38,8 @@ public enum APIError: Error {
     case locationError
     case ibanVerfificationFailed
     case paymentFailed
+    case identificationDataInvalid(error: ErrorDetail?)
+    case fraudData(error: ErrorDetail?)
     case unknownError
 }
 
@@ -83,6 +87,10 @@ public extension APIError {
             return Localizable.APIErrorDesc.ibanVerificationError
         case .paymentFailed:
             return Localizable.APIErrorDesc.paymentFailure
+        case .identificationDataInvalid:
+            return Localizable.APIErrorDesc.unprocessableEntity
+        case .fraudData:
+            return Localizable.APIErrorDesc.unprocessableEntity
         }
     }
 }

@@ -64,14 +64,16 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             presentResult(result)
         case .quit:
             quit {[weak self] in
-                self?.interruptIdentProcess()
+                self?.interruptIdentProcess(with: .unauthorizedAction)
             }
         case let .complete(result):
             completeIdent(with: result)
         case .nextStep(let step):
             nextStepHandler?(step)
         case .abort:
-            interruptIdentProcess()
+            interruptIdentProcess(with: .unauthorizedAction)
+        case .close(let error):
+            interruptIdentProcess(with: error)
         }
     }
 
@@ -199,9 +201,9 @@ private extension FourthlineIdentCoordinator {
         }
     }
 
-    private func interruptIdentProcess() {
+    private func interruptIdentProcess(with error: APIError) {
         DispatchQueue.main.async { [weak self] in
-            self?.completionHandler?(.failure(.unauthorizedAction))
+            self?.completionHandler?(.failure(error))
             self?.close()
         }
     }
