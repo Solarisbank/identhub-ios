@@ -14,6 +14,10 @@ public enum IdentificationSessionResult {
     /// failure - result returns with error in parameter
     /// - error: enum value of the error type, based on it app should update UI
     case failure(APIError)
+
+    /// onConfirm - success result of the Fourthline signing flow with identification value string in parameter
+    /// - identification: identification user session identifier
+    case onConfirm(identification: String)
 }
 
 /// UserDefaults stored keys

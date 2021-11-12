@@ -36,6 +36,7 @@ final class RequestsViewModel: NSObject {
     // MARK: - Public attributes -
     var onTableUpdate: (() -> Void)?
     var onDisplayError: ((Error?) -> Void)?
+    var onRetry: ((FourthlineIdentificationStatus) -> Void)?
 
     // MARK: - Private attributes -
     private var ddm: RequestsProgressDDM?
@@ -150,8 +151,23 @@ final class RequestsViewModel: NSObject {
         }
     }
 
+    /// Method calls latest identification step again
     func restartRequests() {
         restartProcess()
+    }
+
+    /// Method trigger retry logic of the Fourthline or Fourthline signing flow
+    /// - Parameter status: response of the failed ident result
+    func didTriggerRetry(status: FourthlineIdentificationStatus) {
+
+        guard let step = status.nextStep, let nextStep = IdentificationStep(rawValue: step) else {
+            if let fallbackstep = sessionStorage.fallbackIdentificationStep {
+                self.fourthlineCoordinator?.perform(action: .nextStep(step: fallbackstep))
+            }
+            return
+        }
+
+        self.fourthlineCoordinator?.perform(action: .nextStep(step: nextStep))
     }
 }
 
@@ -494,11 +510,34 @@ private extension RequestsViewModel {
 
             switch result {
             case .success(let response):
-                if response.identificationStatus == .processed || response.identificationStatus == .pending {
+                switch response.identificationStatus {
+                case .pending,
+                     .processed:
                     self.retryVerification()
-                } else if response.identificationStatus == .rejected || response.identificationStatus == .fraud {
+                case .rejected,
+                     .fraud:
                     self.fourthlineCoordinator?.perform(action: .abort)
-                } else {
+                case .confirmed:
+                    if response.identificationMethod == .fourthlineSigning {
+                        DispatchQueue.main.async {[weak self] in
+                            self?.fourthlineCoordinator?.perform(action: .complete(result: response))
+                        }
+                    }
+                case .failed:
+                    guard let statusCode = response.providerStatusCode else { return }
+
+                    DispatchQueue.main.async { [weak self] in
+
+                        switch statusCode {
+                        case 1001...3999:
+                                self?.onRetry?(response)
+                        case 4000...5000:
+                            self?.fourthlineCoordinator?.perform(action: .abort)
+                        default:
+                            print("Unknown failed status code!")
+                        }
+                    }
+                default:
                     self.showResult(response)
                 }
             case .failure(let error):

@@ -81,6 +81,16 @@ private extension RequestsViewController {
             }
         }
 
+        viewModel.onRetry = { [weak self] status in
+            guard let `self` = self else { return }
+
+            DispatchQueue.main.async {
+                self.presentAlert(with: Localizable.Verification.title, message: Localizable.APIErrorDesc.unprocessableEntity, action: Localizable.Common.tryAgain, error: .unprocessableEntity) { [weak self] in
+                    self?.viewModel.didTriggerRetry(status: status)
+                }
+            }
+        }
+
         self.titleLbl.text = viewModel.obtainScreenTitle()
         self.descriptionLbl.text = viewModel.obtainScreenDescription()
     }
@@ -107,14 +117,14 @@ private extension RequestsViewController {
         let errorType = KYCZipService.zipErrorType(for: error)
 
         if errorType == .invalidDocument || errorType == .invalidSelfie {
-            let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+            let retryAction = UIAlertAction(title: Localizable.Common.tryAgain, style: .default) { [weak self] _ in
                 self?.viewModel.didTriggerRetry(errorType: errorType)
             }
 
             alert.addAction(retryAction)
         }
 
-        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+        let cancelAction = UIAlertAction(title: Localizable.Common.dismiss, style: .cancel, handler: { [weak self] _ in
             self?.viewModel.didTriggerQuit()
         })
 
@@ -124,7 +134,7 @@ private extension RequestsViewController {
     }
 
     private func locationFailed(with error: APIError) {
-        presentError(with: error, title: Localizable.Location.Error.title, action: "Settings") {
+        presentAlert(with: Localizable.Location.Error.title, message: error.text(), action: Localizable.Common.settings, error: error) {
             UIApplication.openAppSettings()
         }
     }
@@ -132,11 +142,11 @@ private extension RequestsViewController {
     private func identificationFailed(with error: APIError) {
         let alert = UIAlertController(title: Localizable.Verification.processTitle, message: error.text(), preferredStyle: .alert)
 
-        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+        let retryAction = UIAlertAction(title: Localizable.Common.tryAgain, style: .default) { [weak self] _ in
             self?.viewModel.didTriggerRetry(errorType: .invalidData)
         }
 
-        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+        let cancelAction = UIAlertAction(title: Localizable.Common.dismiss, style: .cancel, handler: { [weak self] _ in
             self?.viewModel.didTriggerQuit()
         })
 
@@ -147,12 +157,12 @@ private extension RequestsViewController {
     }
 
     private func requestFailed(with error: APIError) {
-        presentError(with: error, title: "Request error", action: "Retry") { [weak self] in
+        presentAlert(with: Localizable.APIErrorDesc.requestError, message: error.text(), action: Localizable.Common.tryAgain, error: error) { [weak self] in
             self?.viewModel.restartRequests()
         }
     }
 
-    private func presentError(with error: APIError, title: String, action: String, callback: @escaping () -> Void) {
+    private func presentAlert(with title: String, message: String, action: String, error: APIError, callback: @escaping () -> Void) {
 
         let alert = UIAlertController(title: title, message: error.text(), preferredStyle: .alert)
 
@@ -160,8 +170,8 @@ private extension RequestsViewController {
             callback()
         })
 
-        let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
-            self?.viewModel.didTriggerQuit()
+        let cancelAction = UIAlertAction(title: Localizable.Common.dismiss, style: .cancel, handler: { [weak self] _ in
+            self?.viewModel.abortIdentProcess(error)
         })
 
         alert.addAction(reactionAction)

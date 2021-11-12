@@ -235,6 +235,8 @@ private extension BankIDCoordinator {
                 self.presentSignDocuments()
             case .failure( _ ):
                 self.completionHandler?(result)
+            case .onConfirm( _ ):
+                print("Fourthline signing confirmed")
             }
         }
 

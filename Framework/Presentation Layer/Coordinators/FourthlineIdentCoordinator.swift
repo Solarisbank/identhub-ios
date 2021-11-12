@@ -196,6 +196,9 @@ private extension FourthlineIdentCoordinator {
         case .failed:
             completionHandler?(.failure(.authorizationFailed))
             close()
+        case .confirmed:
+            completionHandler?(.onConfirm(identification: result.identification))
+            close()
         default:
             print("\(result.identificationStatus) not processed.")
         }

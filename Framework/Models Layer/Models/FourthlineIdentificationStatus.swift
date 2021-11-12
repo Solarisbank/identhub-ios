@@ -29,7 +29,7 @@ struct FourthlineIdentificationStatus: Codable {
     let confirmExpireDate: String?
 
     /// status code returned by fourthline identification process
-    let providerStatusCode: String?
+    let providerStatusCode: Int?
 
     /// next step to continue the identification process
     let nextStep: String?
@@ -71,7 +71,7 @@ extension FourthlineIdentificationStatus {
         self.termsSignedDate = try data.decodeIfPresent(String.self, forKey: .termsSignedDate)
         self.authExpireDate = try data.decodeIfPresent(String.self, forKey: .authExpireDate)
         self.confirmExpireDate = try data.decodeIfPresent(String.self, forKey: .confirmExpireDate)
-        self.providerStatusCode = try data.decodeIfPresent(String.self, forKey: .providerStatusCode)
+        self.providerStatusCode = try data.decodeIfPresent(Int.self, forKey: .providerStatusCode)
         self.nextStep = try data.decodeIfPresent(String.self, forKey: .nextStep)
         self.referenceToken = try data.decodeIfPresent(String.self, forKey: .referenceToken)
         self.reference = try data.decode(String.self, forKey: .reference)
@@ -96,5 +96,6 @@ enum IdentificationMethodType: String, Decodable {
     case bank = "bank"
     case bankID = "bank_id"
     case fourthline = "fourthline"
+    case fourthlineSigning = "fourthline_signing"
     case unknown
 }
