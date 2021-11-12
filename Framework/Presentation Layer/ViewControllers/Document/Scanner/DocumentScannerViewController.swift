@@ -206,12 +206,10 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
 
     private func displayIntermediate(step stepResult: DocumentScannerStepResult) {
         let info = DocumentScannerInfo(step: currentStep, config: config, state: .default)
-        let mask = asset(for: info)
+        let mask = asset(for: info, border: false)
         let config = assetConfiguration(for: info)
-        let color = backgroundColorConfiguration(for: info)
 
         resultView.set(stepResult, mask: mask, with: config, for: currentStep)
-        resultView.set(color)
         documentScanner.setOverlayView(resultView, animationType: .bothFade)
     }
 
@@ -268,11 +266,10 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
 
     func changeMask(for state: DocumentScannerState) {
         let info = DocumentScannerInfo(step: currentStep, config: config, state: state)
-        let mask = asset(for: info)
+        let mask = asset(for: info, border: false)
+        let status = asset(for: info, border: true)
         let config = assetConfiguration(for: info)
-        let color = backgroundColorConfiguration(for: info)
 
-        documentOverlay.set(mask: mask, with: config)
-        documentOverlay.set(maskColor: color)
+        documentOverlay.set(mask: mask, status: status, with: config)
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,24 +20,24 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0N-6a-wYB" userLabel="topCameraMaskView">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="242"/>
-                    <color key="backgroundColor" name="neutral_white"/>
+                    <color key="backgroundColor" name="background"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dg4-uk-aQp" userLabel="leftCameraMaskView">
                     <rect key="frame" x="0.0" y="242" width="14" height="329.5"/>
-                    <color key="backgroundColor" name="neutral_white"/>
+                    <color key="backgroundColor" name="background"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2b-QJ-wjg" userLabel="bottomCameraMaskView">
                     <rect key="frame" x="0.0" y="571.5" width="414" height="324.5"/>
-                    <color key="backgroundColor" name="neutral_white"/>
+                    <color key="backgroundColor" name="background"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z04-Jx-StE" userLabel="rightCameraMaskView">
                     <rect key="frame" x="400" y="242" width="14" height="329.5"/>
-                    <color key="backgroundColor" name="neutral_white"/>
+                    <color key="backgroundColor" name="background"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan front" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYL-Da-dem">
                     <rect key="frame" x="35" y="84" width="89" height="21.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" name="base100"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1u-Lz-8jC">
@@ -54,6 +54,7 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passport_front_frame" translatesAutoresizingMaskIntoConstraints="NO" id="O2P-zK-fEm">
                     <rect key="frame" x="14" y="242" width="386" height="331.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" name="background"/>
                     <constraints>
                         <constraint firstAttribute="height" secondItem="O2P-zK-fEm" secondAttribute="width" multiplier="0.857" id="nZ3-kM-0HJ"/>
                     </constraints>
@@ -94,6 +95,7 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJZ-nz-2xU">
                                     <rect key="frame" x="150" y="28" width="160" height="24"/>
+                                    <color key="tintColor" name="background"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                     <color key="textColor" name="base100"/>
                                     <nil key="highlightedColor"/>
@@ -179,11 +181,11 @@
         <image name="passport_front_frame" width="350" height="300"/>
         <image name="retake_btn" width="155" height="80"/>
         <image name="table_shadow" width="351" height="126"/>
+        <namedColor name="background">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="base100">
             <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="neutral_white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

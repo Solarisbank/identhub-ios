@@ -19,6 +19,7 @@ final class DocumentScannerOverlayView: UIView {
     @IBOutlet var statusComponentView: UIView!
     @IBOutlet var statusView: InfoStatusView!
     @IBOutlet var documentFrameView: UIImageView!
+    @IBOutlet var documentFrameStatusView: UIImageView!
     @IBOutlet var maskAspectRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskWidthRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskCenterYConstraint: NSLayoutConstraint!
@@ -75,19 +76,12 @@ final class DocumentScannerOverlayView: UIView {
     /// Method udpated document frame image with different states: default, warning, success
     /// - Parameters:
     ///   - mask: image object
+    ///   - status: image for view border
     ///   - configuration: configuration object
-    func set(mask: UIImage?, with configuration: DocumentScannerAssetConfiguration) {
+    func set(mask: UIImage?, status: UIImage?, with configuration: DocumentScannerAssetConfiguration) {
         documentFrameView.image = mask
+        documentFrameStatusView.image = status
         changeMask(configuration: configuration)
-    }
-
-    /// Method updates mask view background color. It's neccessary because mask image contains different backgrounds
-    /// - Parameter maskColor: color of the background view
-    func set(maskColor: UIColor) {
-        topMaskView.backgroundColor = maskColor
-        bottomMaskView.backgroundColor = maskColor
-        leftMaskView.backgroundColor = maskColor
-        rightMaskView.backgroundColor = maskColor
     }
 
     /// Method configure custom colors in UI components

@@ -10,15 +10,16 @@ protocol DocumentScannerAssetsDataSource {
 
     /// Method returns asset for the document scanner item
     /// - Parameter info: info of the document scanner
-    func asset(for info: DocumentScannerInfo) -> UIImage
+    /// - Parameter frame: defines if image used for frame border view
+    func asset(for info: DocumentScannerInfo, border: Bool) -> UIImage
 }
 
 extension DocumentScannerAssetsDataSource {
 
-    func asset(for info: DocumentScannerInfo) -> UIImage {
+    func asset(for info: DocumentScannerInfo, border: Bool) -> UIImage {
         let mask = maskName(for: info)
         let fileside = filesideName(for: info)
-        let suffix = suffixName(for: info)
+        let suffix = suffixName(for: info, border: border)
         let assetName = mask + fileside + suffix + "frame"
         return UIImage(named: assetName, in: Bundle(for: Self.self as! AnyClass), compatibleWith: nil) ?? UIImage()
     }
@@ -73,7 +74,7 @@ private extension DocumentScannerAssetsDataSource {
         }
     }
 
-    private func suffixName(for info: DocumentScannerInfo) -> String {
+    private func suffixName(for info: DocumentScannerInfo, border: Bool) -> String {
         var suffix = ""
         if info.step.isAngled {
             suffix.append("tilted_")
@@ -82,9 +83,13 @@ private extension DocumentScannerAssetsDataSource {
         case .default:
             suffix.append("")
         case .warning:
-            suffix.append("warning_")
+            if border {
+                suffix.append("warning_")
+            }
         case .success:
-            suffix.append("success_")
+            if border {
+                suffix.append("success_")
+            }
         }
         return suffix
     }

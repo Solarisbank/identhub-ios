@@ -47,13 +47,6 @@ final class DocumentScannerResultView: UIView {
         confirmBtnTitle.text = Localizable.Common.confirm
     }
 
-    func set(_ maskColor: UIColor) {
-        topMaskView.backgroundColor = maskColor
-        bottomMaskView.backgroundColor = maskColor
-        leftMaskView.backgroundColor = maskColor
-        rightMaskView.backgroundColor = maskColor
-    }
-
     // MARK: - Action methods -
     @IBAction func didClickDismiss(_ sender: UIButton) {
         onDismiss?()
