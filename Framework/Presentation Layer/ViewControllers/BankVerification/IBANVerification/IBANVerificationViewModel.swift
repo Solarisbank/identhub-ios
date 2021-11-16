@@ -41,6 +41,11 @@ final internal class IBANVerificationViewModel: NSObject {
         verifyIBAN(iban)
     }
 
+    /// Perform alternative step of user validation
+    func performFlowStep(_ step: IdentificationStep) {
+        self.flowCoordinator.perform(action: .nextStep(step: step))
+    }
+
     /// Perform alternate flow of user validation
     func performFallbackIdent() {
 
@@ -63,6 +68,9 @@ final internal class IBANVerificationViewModel: NSObject {
         return ( sessionStorage.fallbackIdentificationStep != nil )
     }
 
+    /// Method validates entered user IBAN value
+    /// - Parameter iban: string of the IBAN value
+    /// - Returns: validation status
     func validateEnteredIBAN(withIBAN iban: String?) -> Bool {
         return validateIBAN(iban)
     }
@@ -101,21 +109,19 @@ private extension IBANVerificationViewModel {
     private func processedFailure(with error: APIError) {
 
         switch error {
-        case .clientError(_):
+        case .clientError(let detail),
+             .incorrectIdentificationStatus(let detail):
             retriesCount += 1
-        case .incorrectIdentificationStatus(let error):
-            print("IBAN verification error: \(String(describing: error?.errors?.first?.detail))")
-            retriesCount += 1
+
+            if retriesCount < sessionStorage.retries, let _ = detail?.nextStep, let _ = detail?.fallbackStep {
+                DispatchQueue.main.async {
+                    self.delegate?.verificationIBANFailed(error)
+                }
+            } else {
+                didTriggerQuit()
+            }
         default:
             completionHandler(.failure(error))
-        }
-
-        if retriesCount < sessionStorage.retries {
-            DispatchQueue.main.async {
-                self.delegate?.verificationIBANFailed(error)
-            }
-        } else {
-            didTriggerQuit()
         }
     }
 }

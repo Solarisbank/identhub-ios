@@ -6,7 +6,7 @@
 import Foundation
 
 /// The list of all available actions.
-enum BankIDStep: Codable {
+enum BankIDStep: Codable, Equatable {
     case startIdentification // Welcome bank id screen
     case phoneVerification // BankID phone verification
     case bankVerification(step: BankVerification) // Bank payment verification
@@ -77,6 +77,21 @@ enum BankIDStep: Codable {
             try container.encode(step.rawValue, forKey: .next)
         default:
             try container.encode(true, forKey: .finish)
+        }
+    }
+
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.bankVerification(step: .iban), .bankVerification(step: .iban)):
+            return true
+        case (.bankVerification(step: .payment), .bankVerification(step: .payment)):
+            return true
+        case (.signDocuments(step: .confirmApplication), .signDocuments(step: .confirmApplication)):
+            return true
+        case (.signDocuments(step: .sign), .signDocuments(step: .sign)):
+            return true
+        default:
+            return false // Return false in rest cases is fine becuase it won't be used in compare logic
         }
     }
 }

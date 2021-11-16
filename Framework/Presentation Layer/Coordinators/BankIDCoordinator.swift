@@ -118,7 +118,9 @@ private extension BankIDCoordinator {
             presentPhoneVerification()
         case .bankIBAN,
              .bankIDIBAN:
-            presentIBANVerification()
+            if identificationStep != .bankVerification(step: .iban) { // If user already on IBAN screen no reason open it once again
+                presentIBANVerification()
+            }
         case .bankIDFourthline:
             presentFourthlineFlow()
         case .bankQES,

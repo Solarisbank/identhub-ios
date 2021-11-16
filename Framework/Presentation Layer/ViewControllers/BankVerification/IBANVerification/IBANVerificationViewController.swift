@@ -16,7 +16,7 @@ final internal class IBANVerificationViewController: UIViewController {
     @IBOutlet var joinedAccountsHintLabel: UILabel!
     @IBOutlet var ibanLabel: UILabel!
     @IBOutlet var ibanVerificationTextField: VerificationTextField!
-    @IBOutlet weak var maskTextFieldDelegate: MaskedTextFieldDelegate!
+    @IBOutlet var maskTextFieldDelegate: MaskedTextFieldDelegate!
     @IBOutlet var initiatePaymentVerificationButton: ActionRoundedButton!
     @IBOutlet var errorLabel: UILabel!
 
@@ -103,16 +103,16 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
     }
 
     func verificationIBANFailed(_ error: APIError) {
-
         switch error {
-        case .clientError:
+        case .clientError(let detail):
             errorLabel.text = Localizable.BankVerification.IBANVerification.notValidIBAN
+            showVerificationError(errorLabel.text, error: detail)
         default:
             errorLabel.text = error.text()
+            showVerificationError(errorLabel.text)
         }
 
         isIBANFormatValid(false)
-        showVerificationError(errorLabel.text)
     }
 }
 
@@ -120,13 +120,17 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
 
 private extension IBANVerificationViewController {
 
-    private func showVerificationError(_ message: String?) {
+    private func showVerificationError(_ message: String?, error: ErrorDetail? = nil) {
 
         let alert = UIAlertController(title: Localizable.BankVerification.IBANVerification.failureAlertTitle, message: message, preferredStyle: .alert)
 
-        let reactionAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.retryOption, style: .default, handler: { _ in })
+        if let errorDetail = error, let nextStep = errorDetail.nextStep {
+            let reactionAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.retryOption, style: .default, handler: { [weak self] _ in
+                self?.viewModel.performFlowStep(nextStep)
+            })
 
-        alert.addAction(reactionAction)
+            alert.addAction(reactionAction)
+        }
 
         if viewModel.isExistFallbackOption() {
             let fallbackAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.alternateOption, style: .default, handler: { [weak self] _ in
