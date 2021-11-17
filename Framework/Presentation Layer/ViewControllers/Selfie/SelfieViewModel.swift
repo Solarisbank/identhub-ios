@@ -53,7 +53,7 @@ final internal class SelfieViewModel {
     }
 
     func didTriggerConfirmStep() {
-        if identificationMethod == .fourthline {
+        if identificationMethod == .fourthline || identificationMethod == .fourthlineSigning {
             flowCoordinator.perform(action: .documentPicker)
         } else {
             flowCoordinator.perform(action: .fetchData)

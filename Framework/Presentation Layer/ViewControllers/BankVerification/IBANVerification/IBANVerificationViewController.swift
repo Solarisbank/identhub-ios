@@ -65,7 +65,8 @@ final internal class IBANVerificationViewController: UIViewController {
 
     @IBAction func initiatePaymentVerification(_: ActionRoundedButton) {
         ibanVerificationTextField.resignFirstResponder()
-        viewModel.initiatePaymentVerification(withIBAN: ibanVerificationTextField.text)
+        let iban = ibanVerificationTextField.text?.replacingOccurrences(of: " ", with: "")
+        viewModel.initiatePaymentVerification(withIBAN: iban)
     }
 
     @IBAction func didEndEdigitn(_ sender: UITapGestureRecognizer) {

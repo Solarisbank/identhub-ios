@@ -160,14 +160,14 @@ final class RequestsViewModel: NSObject {
     /// - Parameter status: response of the failed ident result
     func didTriggerRetry(status: FourthlineIdentificationStatus) {
 
-        guard let step = status.nextStep, let nextStep = IdentificationStep(rawValue: step) else {
+        guard let step = status.nextStep else {
             if let fallbackstep = sessionStorage.fallbackIdentificationStep {
                 self.fourthlineCoordinator?.perform(action: .nextStep(step: fallbackstep))
             }
             return
         }
 
-        self.fourthlineCoordinator?.perform(action: .nextStep(step: nextStep))
+        self.fourthlineCoordinator?.perform(action: .nextStep(step: step))
     }
 }
 
@@ -229,7 +229,7 @@ private extension RequestsViewModel {
     }
 
     private func startNextStep(initStep: InitStep, dataStep: DataFetchStep) {
-        if sessionStorage.identificationStep == .fourthline {
+        if isFourthlineFlow() {
             startStep(number: initStep.rawValue)
             self.initStep = initStep
         } else {
@@ -306,7 +306,7 @@ private extension RequestsViewModel {
                     KYCContainer.shared.update(provider: provider)
                 }
 
-                if self.sessionStorage.identificationStep == .fourthline {
+                if self.isFourthlineFlow() {
                     if response.status == .rejected {
                         self.fourthlineCoordinator?.perform(action: .abort)
                     } else {
@@ -370,7 +370,7 @@ private extension RequestsViewModel {
 
                 KYCContainer.shared.update(person: response)
 
-                if self.sessionStorage.identificationStep == .fourthline {
+                if self.isFourthlineFlow() {
                     self.completeStep(number: InitStep.fetchPersonData.rawValue)
                 } else {
                     self.completeStep(number: DataFetchStep.fetchPersonData.rawValue)
@@ -389,9 +389,10 @@ private extension RequestsViewModel {
 
         LocationManager.shared.requestLocationAuthorization {
             LocationManager.shared.requestDeviceLocation { [weak self] location, error in
+                guard let `self` = self else { return }
                 guard let location = location else {
 
-                    if let errorHandler = self?.onDisplayError {
+                    if let errorHandler = self.onDisplayError {
                         errorHandler(APIError.locationError)
                     }
                     return
@@ -399,13 +400,13 @@ private extension RequestsViewModel {
 
                 KYCContainer.shared.update(location: location)
 
-                if self?.sessionStorage.identificationStep == .fourthline {
-                    self?.completeStep(number: InitStep.fetchLocation.rawValue)
+                if self.isFourthlineFlow() {
+                    self.completeStep(number: InitStep.fetchLocation.rawValue)
                 } else {
-                    self?.completeStep(number: DataFetchStep.location.rawValue)
+                    self.completeStep(number: DataFetchStep.location.rawValue)
                 }
 
-                self?.fetchIPAddress()
+                self.fetchIPAddress()
             }
         }
     }
@@ -421,7 +422,7 @@ private extension RequestsViewModel {
                 KYCContainer.shared.update(ipAddress: response.ip)
 
                 DispatchQueue.main.async {
-                    if self.sessionStorage.identificationStep == .fourthline {
+                    if self.isFourthlineFlow() {
                         self.completeStep(number: InitStep.fetchIPAddress.rawValue)
                         self.finishInitialization()
                     } else {
@@ -433,6 +434,10 @@ private extension RequestsViewModel {
                 self.onDisplayError?(error)
             }
         }
+    }
+
+    private func isFourthlineFlow() -> Bool {
+        return ( sessionStorage.identificationStep == .fourthline || sessionStorage.identificationStep == .fourthlineSigning )
     }
 }
 
@@ -507,6 +512,7 @@ private extension RequestsViewModel {
         startStep(number: VerificationSteps.verification.rawValue)
 
         verificationService.obtainFourthlineIdentificationStatus { [unowned self] result in
+            self.completeStep(number: VerificationSteps.verification.rawValue)
 
             switch result {
             case .success(let response):
@@ -522,9 +528,22 @@ private extension RequestsViewModel {
                         DispatchQueue.main.async {[weak self] in
                             self?.fourthlineCoordinator?.perform(action: .complete(result: response))
                         }
+
+                        SessionStorage.clearData()
                     }
                 case .failed:
-                    guard let statusCode = response.providerStatusCode else { return }
+                    guard let statusCode = response.providerStatusCode else {
+                        DispatchQueue.main.async { [weak self] in
+                            if let fallbackStep = response.fallbackStep {
+                                self?.fourthlineCoordinator?.perform(action: .nextStep(step: fallbackStep))
+                            } else {
+                                self?.fourthlineCoordinator?.perform(action: .abort)
+                            }
+
+                            SessionStorage.clearData()
+                        }
+                        return
+                    }
 
                     DispatchQueue.main.async { [weak self] in
 
@@ -534,8 +553,10 @@ private extension RequestsViewModel {
                         case 4000...5000:
                             self?.fourthlineCoordinator?.perform(action: .abort)
                         default:
-                            print("Unknown failed status code!")
+                            self?.fourthlineCoordinator?.perform(action: .abort)
                         }
+
+                        SessionStorage.clearData()
                     }
                 default:
                     self.showResult(response)
@@ -543,8 +564,6 @@ private extension RequestsViewModel {
             case .failure(let error):
                 self.onDisplayError?(error)
             }
-
-            self.completeStep(number: VerificationSteps.verification.rawValue)
         }
     }
 
@@ -562,7 +581,7 @@ private extension RequestsViewModel {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let `self` = self else { return }
 
-            if let step = result.nextStep, let nextStep = IdentificationStep(rawValue: step) {
+            if let nextStep = result.nextStep {
                 self.fourthlineCoordinator?.perform(action: .nextStep(step: nextStep))
             } else {
                 if result.identificationMethod == .bankID {

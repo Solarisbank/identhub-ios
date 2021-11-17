@@ -19,6 +19,9 @@ struct FourthlineIdentificationStatus: Codable {
     /// Identification method type: bank, idnow, fourthline
     let identificationMethod: IdentificationMethodType
 
+    /// Identification request failure reason
+    let failureReason: FailureReasonType?
+
     /// Terms and conditions signed at
     let termsSignedDate: String?
 
@@ -32,7 +35,10 @@ struct FourthlineIdentificationStatus: Codable {
     let providerStatusCode: Int?
 
     /// next step to continue the identification process
-    let nextStep: String?
+    let nextStep: IdentificationStep?
+
+    /// fallback step for trying different scenario
+    let fallbackStep: IdentificationStep?
 
     /// Reference tocken
     let referenceToken: String?
@@ -48,11 +54,13 @@ struct FourthlineIdentificationStatus: Codable {
         case url
         case identificationStatus = "status"
         case identificationMethod = "method"
+        case failureReason = "failure_reason"
         case termsSignedDate = "terms_and_conditions_signed_at"
         case authExpireDate = "authorization_expires_at"
         case confirmExpireDate = "confirmation_expires_at"
         case providerStatusCode = "provider_status_code"
         case nextStep = "next_step"
+        case fallbackStep = "fallback_step"
         case referenceToken = "current_reference_token"
         case reference
         case documents
@@ -68,11 +76,13 @@ extension FourthlineIdentificationStatus {
         self.url = try data.decodeIfPresent(String.self, forKey: .url)
         self.identificationStatus = try data.decode(Status.self, forKey: .identificationStatus)
         self.identificationMethod = try data.decode(IdentificationMethodType.self, forKey: .identificationMethod)
+        self.failureReason = try data.decodeIfPresent(FailureReasonType.self, forKey: .failureReason)
         self.termsSignedDate = try data.decodeIfPresent(String.self, forKey: .termsSignedDate)
         self.authExpireDate = try data.decodeIfPresent(String.self, forKey: .authExpireDate)
         self.confirmExpireDate = try data.decodeIfPresent(String.self, forKey: .confirmExpireDate)
         self.providerStatusCode = try data.decodeIfPresent(Int.self, forKey: .providerStatusCode)
-        self.nextStep = try data.decodeIfPresent(String.self, forKey: .nextStep)
+        self.nextStep = try data.decodeIfPresent(IdentificationStep.self, forKey: .nextStep)
+        self.fallbackStep = try data.decodeIfPresent(IdentificationStep.self, forKey: .fallbackStep)
         self.referenceToken = try data.decodeIfPresent(String.self, forKey: .referenceToken)
         self.reference = try data.decode(String.self, forKey: .reference)
     }
@@ -82,11 +92,13 @@ extension FourthlineIdentificationStatus {
         try container.encode(identification, forKey: .identification)
         try container.encode(identificationStatus.self.rawValue, forKey: .identificationStatus)
         try container.encode(identificationMethod.self.rawValue, forKey: .identificationMethod)
+        try container.encode(failureReason.self?.rawValue, forKey: .failureReason)
         try container.encode(termsSignedDate, forKey: .termsSignedDate)
         try container.encode(authExpireDate, forKey: .authExpireDate)
         try container.encode(confirmExpireDate, forKey: .confirmExpireDate)
         try container.encode(providerStatusCode, forKey: .providerStatusCode)
         try container.encode(nextStep, forKey: .nextStep)
+        try container.encode(fallbackStep, forKey: .fallbackStep)
         try container.encode(reference, forKey: .reference)
     }
 }
@@ -98,4 +110,11 @@ enum IdentificationMethodType: String, Decodable {
     case fourthline = "fourthline"
     case fourthlineSigning = "fourthline_signing"
     case unknown
+}
+
+enum FailureReasonType: String, Decodable {
+    case invalidData = "invalid_data"
+    case inconsistentData = "inconsistent_data"
+    case clientRejected = "client_rejected"
+    case uknown = ""
 }

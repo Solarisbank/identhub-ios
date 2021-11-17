@@ -9,7 +9,7 @@ class BankIDCoordinator: BaseCoordinator {
 
     // MARK: - Properties -
     private let appDependencies: AppDependencies
-    private var identificationStep: BankIDStep = .startIdentification
+    private var currentIdentStep: BankIDStep = .startIdentification
     private var completionHandler: CompletionHandler?
     private var documentExporter: DocumentExporter = DocumentExporterService()
 
@@ -71,7 +71,7 @@ class BankIDCoordinator: BaseCoordinator {
     // MARK: - Coordinator methods -
     override func start(_ completion: @escaping CompletionHandler) {
         completionHandler = completion
-        perform(action: identificationStep)
+        perform(action: currentIdentStep)
     }
 }
 
@@ -83,14 +83,14 @@ private extension BankIDCoordinator {
         guard let restoreData = SessionStorage.obtainValue(for: StoredKeys.bankIDStep.rawValue) as? Data else {
 
             if let identStep = appDependencies.sessionInfoProvider.identificationStep {
-                identificationStep = .nextStep(step: identStep)
+                currentIdentStep = .nextStep(step: identStep)
             }
             return
         }
 
         do {
             let step = try JSONDecoder().decode(BankIDStep.self, from: restoreData)
-            identificationStep = step
+            currentIdentStep = step
             KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
         } catch {
             print("Stored bank id step data decoding failed: \(error.localizedDescription).\nIdentification process would be started from beginning")
@@ -118,7 +118,7 @@ private extension BankIDCoordinator {
             presentPhoneVerification()
         case .bankIBAN,
              .bankIDIBAN:
-            if identificationStep != .bankVerification(step: .iban) { // If user already on IBAN screen no reason open it once again
+            if currentIdentStep != .bankVerification(step: .iban) { // If user already on IBAN screen no reason open it once again
                 presentIBANVerification()
             }
         case .bankIDFourthline:
