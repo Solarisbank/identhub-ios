@@ -54,7 +54,7 @@ inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
-  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.13.0'
+  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.0.0'
 end
 
 post_install do |installer|
@@ -89,7 +89,7 @@ The Fourthline SDK is not publicly available. Please get in contact with Solaris
 2. Include the source of the SDK in the Cartfile with the latest version of the SDK, e.g.:
 
     ```bash
-    github "Solarisbank/identhub-ios" ~> 0.13.0
+    github "Solarisbank/identhub-ios" ~> 1.0.0
     ```
 
 3. Run carthage script:
@@ -138,6 +138,12 @@ extension ViewController: IdentHubSDKManagerDelegate {
 
         DispatchQueue.main.async {
             // - display failure message -
+        }
+    }
+    
+    func didFinishOnConfirm(_ identification: String) {
+        DispatchQueue.main.async {
+            // - display a message stating the identification is in review -
         }
     }
 }
