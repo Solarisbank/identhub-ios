@@ -21,8 +21,6 @@ extension SelfieScannerWarning {
             return 4
         case .faceNotDetected:
             return 5
-        case .multipleFacesDetected:
-            return 6
         @unknown default:
             print("Missing SelfieScannerWarning.priority for \(self)")
             return -1
@@ -41,8 +39,6 @@ extension SelfieScannerWarning {
             return Localizable.Selfie.Warnings.faceTooFar
         case .faceYawTooBig:
             return Localizable.Selfie.Warnings.faceYawTooBig
-        case .multipleFacesDetected:
-            return Localizable.Selfie.Warnings.multipleFacesDetected
         case .deviceNotSteady:
             return Localizable.Selfie.Warnings.deviceNotSteady
         @unknown default:
@@ -80,6 +76,8 @@ extension SelfieScannerError {
             return Localizable.Selfie.Errors.manualSelfieNotAllowed
         case .recordingFailed:
             return Localizable.Selfie.Errors.recordingFailed
+        case .recordAudioPermissionNotGranted:
+            return Localizable.Selfie.Errors.unknown
         case .scannerInterrupted:
             return Localizable.Selfie.Errors.scannerInterrupted
         case .multipleFacesDetected:

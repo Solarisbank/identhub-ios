@@ -49,25 +49,21 @@ You can add the desired IdentHub SDK modules to your project by using CocoaPods 
 source 'https://github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git' # to add Fourthline private pod
 source 'https://github.com/CocoaPods/Specs.git' # to add other public pods
 
-$version = 'version.to.integrate'
 use_frameworks!
 inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
-
-      pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.13.0' #use private repository
-
-      pod 'FourthlineSDK', '2.3.1' # identification service
-      pod 'SwiftyTesseract', '2.2.3' # document scanner with MRZ detection
-      pod 'ZIPFoundation', '0.9.11' # to create ZIP from KYCInfo
-      pod 'InputMask', '6.1.0' # apply IBAN format
+  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '0.13.0'
 end
 
 post_install do |installer|
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
-    config.build_settings['ENABLE_BITCODE'] = 'YES'
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
+      config.build_settings['ENABLE_BITCODE'] = 'YES'
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
   end
 end
 ```

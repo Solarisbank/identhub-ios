@@ -50,9 +50,9 @@ class APIClientTests: XCTestCase {
         var result: Result<URL?, APIError>?
 
         sut.downloadResult = .success(downloadURL)
-        sut.download(request: request, completion: { result = $0 })
+        sut.download(request: request) { result = $0 }
 
-        XCTAssertEqual(result?.value, downloadURL, "Download request result URL is not equal with expected value")
+        XCTAssertEqual(try result?.get(), downloadURL, "Download request result URL is not equal with expected value")
     }
 
     /// Method tested failed loading result
@@ -64,9 +64,12 @@ class APIClientTests: XCTestCase {
         var result: Result<URL?, APIError>?
 
         sut.downloadResult = .failure(APIError.resourceNotFound)
-        sut.download(request: request, completion: { result = $0 })
+        sut.download(request: request) { result = $0 }
 
-        XCTAssertEqual(result?.error, APIError.resourceNotFound, "Failed download requst result should return error APIError.resourceNotFound")
+        guard case .failure(.resourceNotFound) = result else {
+            XCTFail("Failed download request result should return error APIError.resourceNotFound")
+            return
+        }
     }
 }
 

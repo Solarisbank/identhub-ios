@@ -99,7 +99,7 @@ extension ViewController: IdentHubSDKManagerDelegate {
             self.updateStatus(false, desc: failureReason.text())
         }
     }
-    
+
     func didFinishOnConfirm(_ identification: String) {
         // - display success message on screen with identification -
         DispatchQueue.main.async {

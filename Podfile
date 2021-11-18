@@ -8,13 +8,12 @@ platform :ios, '12.0'
 use_frameworks!
 inhibit_all_warnings!
 
-pod 'FourthlineSDK', '2.3.1'
+pod 'FourthlineSDK', '2.8.0'
 
-# Comment the next line if you're not using document scanner with MRZ detection
-pod 'SwiftyTesseract', '2.2.3'
-
-# Comment the next line if you're not going to create ZIP file
-pod 'ZIPFoundation'
+# Fourthline dependencies
+pod 'ZIPFoundation', '~> 0.9.12'
+pod 'lottie-ios', '~> 3.2.3'
+pod 'Kronos', '~> 4.2.1'
 
 # Comment the next line if you're not using BANK verification
 pod 'InputMask', '6.1.0'
@@ -29,8 +28,11 @@ target 'Sample' do
 end
 
 post_install do |installer|
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
-    config.build_settings['ENABLE_BITCODE'] = 'YES'
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
+      config.build_settings['ENABLE_BITCODE'] = 'YES'
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
   end
 end

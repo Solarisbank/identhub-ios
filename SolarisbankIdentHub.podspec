@@ -45,7 +45,10 @@ Pod::Spec.new do |spec|
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.dependency 'FourthlineSDK', '~> 2.3.1'
+  spec.dependency 'FourthlineSDK', '~> 2.8.0'
+  spec.dependency 'ZIPFoundation', '~> 0.9.12'
+  spec.dependency 'lottie-ios', '~> 3.2.3'
+  spec.dependency 'Kronos', '~> 4.2.1'
   spec.dependency 'InputMask', '~> 6.1.0'
 
   spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
