@@ -519,47 +519,13 @@ private extension RequestsViewModel {
                 switch response.identificationStatus {
                 case .pending,
                      .processed:
-                    self.retryVerification()
-                case .rejected,
-                     .fraud:
-                    self.fourthlineCoordinator?.perform(action: .abort)
-                case .confirmed:
-                    if response.identificationMethod == .fourthlineSigning {
-                        DispatchQueue.main.async {[weak self] in
-                            self?.fourthlineCoordinator?.perform(action: .complete(result: response))
-                        }
-
-                        SessionStorage.clearData()
-                    }
-                case .failed:
-                    guard let statusCode = response.providerStatusCode else {
-                        DispatchQueue.main.async { [weak self] in
-                            if let fallbackStep = response.fallbackStep {
-                                self?.fourthlineCoordinator?.perform(action: .nextStep(step: fallbackStep))
-                            } else {
-                                self?.fourthlineCoordinator?.perform(action: .abort)
-                            }
-
-                            SessionStorage.clearData()
-                        }
-                        return
-                    }
-
-                    DispatchQueue.main.async { [weak self] in
-
-                        switch statusCode {
-                        case 1001...3999:
-                                self?.onRetry?(response)
-                        case 4000...5000:
-                            self?.fourthlineCoordinator?.perform(action: .abort)
-                        default:
-                            self?.fourthlineCoordinator?.perform(action: .abort)
-                        }
-
-                        SessionStorage.clearData()
-                    }
+                    retryVerification()
                 default:
-                    self.showResult(response)
+                    DispatchQueue.main.async {[weak self] in
+                        guard let `self` = self else { return }
+                        
+                        self.manageResponseStatus(response)
+                    }
                 }
             case .failure(let error):
                 self.onDisplayError?(error)
@@ -576,21 +542,54 @@ private extension RequestsViewModel {
     }
 
     private func showResult(_ result: FourthlineIdentificationStatus) {
-        SessionStorage.clearData()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            guard let `self` = self else { return }
-
-            if let nextStep = result.nextStep {
-                self.fourthlineCoordinator?.perform(action: .nextStep(step: nextStep))
+        if let nextStep = result.nextStep {
+            self.fourthlineCoordinator?.perform(action: .nextStep(step: nextStep))
+        } else {
+            if result.identificationMethod == .bankID {
+                self.fourthlineCoordinator?.perform(action: .complete(result: result))
             } else {
-                if result.identificationMethod == .bankID {
-                    self.fourthlineCoordinator?.perform(action: .complete(result: result))
-                } else {
-                    self.fourthlineCoordinator?.perform(action: .result(result: result))
-                }
+                self.fourthlineCoordinator?.perform(action: .result(result: result))
             }
         }
+    }
+    
+    private func manageResponseStatus(_ status: FourthlineIdentificationStatus) {
+        
+        switch status.identificationStatus {
+        case .rejected,
+             .fraud:
+            self.fourthlineCoordinator?.perform(action: .abort)
+        case .authorizationRequired:
+            if status.identificationMethod == .fourthlineSigning {
+                self.fourthlineCoordinator?.perform(action: .nextStep(step: .fourthlineQES))
+            }
+        case .confirmed:
+            if status.identificationMethod == .fourthlineSigning {
+                self.fourthlineCoordinator?.perform(action: .complete(result: status))
+            }
+        case .failed:
+            guard let statusCode = status.providerStatusCode else {
+                if let fallbackStep = status.fallbackStep {
+                    self.fourthlineCoordinator?.perform(action: .nextStep(step: fallbackStep))
+                } else {
+                    self.fourthlineCoordinator?.perform(action: .abort)
+                }
+                return
+            }
+
+            switch statusCode {
+            case 1001...3999:
+                    self.onRetry?(status)
+            case 4000...5000:
+                self.fourthlineCoordinator?.perform(action: .abort)
+            default:
+                self.fourthlineCoordinator?.perform(action: .abort)
+            }
+        default:
+            self.showResult(status)
+        }
+        
+        SessionStorage.clearData()
     }
 }
 

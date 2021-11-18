@@ -85,13 +85,16 @@ final internal class SignDocumentsViewModel: NSObject {
 
             switch result {
             case .success(let response):
-                if response.status == Status.success {
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    switch response.status {
+                    case .success:
                         self.delegate?.verificationSucceeded()
+                    case .confirmed:
+                        self.completionHander(.onConfirm(identification: response.id))
+                    default:
+                        self.fail()
+                        self.completionHander(.failure(APIError.authorizationFailed))
                     }
-                } else {
-                    self.fail()
-                    self.completionHander(.failure(APIError.authorizationFailed))
                 }
             case .failure(let error):
                 self.fail()
