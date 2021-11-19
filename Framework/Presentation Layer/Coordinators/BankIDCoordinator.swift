@@ -73,6 +73,15 @@ class BankIDCoordinator: BaseCoordinator {
         completionHandler = completion
         perform(action: currentIdentStep)
     }
+    
+    /// Method performs Identify step with completion handler
+    /// - Parameters:
+    ///   - step: IdentifcationStep value
+    ///   - completion: completion ident process handler
+    func perform(step: IdentificationStep, _ completion: @escaping CompletionHandler) {
+        completionHandler = completion
+        perfomIdentStep(step: step)
+    }
 }
 
 // MARK: - Save / load ident data -

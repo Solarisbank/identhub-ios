@@ -125,7 +125,7 @@ private extension IdentificationCoordinator {
 
         fourthlineCoordinator.nextStepHandler = { nextStep in
 
-            bankIDSessionCoordinator.perform(action: .nextStep(step: nextStep))
+            bankIDSessionCoordinator.perform(step: nextStep, self.completionHandler!)
         }
     }
 
