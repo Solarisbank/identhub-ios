@@ -90,7 +90,9 @@ final internal class SignDocumentsViewModel: NSObject {
                     case .success:
                         self.delegate?.verificationSucceeded()
                     case .confirmed:
+                        self.delegate?.verificationSucceeded()
                         self.completionHander(.onConfirm(identification: response.id))
+                        self.flowCoordinator.perform(action: .close)
                     default:
                         self.fail()
                         self.completionHander(.failure(APIError.authorizationFailed))
