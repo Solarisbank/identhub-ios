@@ -21,6 +21,13 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
     func didFinishOnConfirm(_ identification: String)
 }
 
+/// Default implementation of IdentHubSDKManagerDelegate protocol for optionality
+public extension IdentHubSDKManagerDelegate {
+
+    func didFinishOnConfirm(_ identification: String) {}
+
+}
+
 /// Ident hub completion session block definition
 public typealias CompletionHandler = (IdentificationSessionResult) -> Void
 
