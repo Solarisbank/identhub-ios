@@ -14,7 +14,7 @@ struct Identification: Decodable {
     let reference: String?
 
     /// Url for identification confirmation.
-    let url: String
+    let url: String?
 
     /// Status of identification.
     let status: Status
