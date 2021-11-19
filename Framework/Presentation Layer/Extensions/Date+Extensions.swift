@@ -38,6 +38,7 @@ extension String {
 
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         return dateFormatter.date(from: self)
     }

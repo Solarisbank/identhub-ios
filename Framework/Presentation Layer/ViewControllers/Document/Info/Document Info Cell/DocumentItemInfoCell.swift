@@ -81,6 +81,7 @@ extension DocumentItemInfoCell {
             }
 
             datePicker.datePickerMode = .date
+            datePicker.timeZone = TimeZone(secondsFromGMT: 0)
 
             if let date = data.prefilledDate {
                 datePicker.date = date
