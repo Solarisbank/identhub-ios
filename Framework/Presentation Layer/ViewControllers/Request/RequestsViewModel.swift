@@ -523,7 +523,7 @@ private extension RequestsViewModel {
                 default:
                     DispatchQueue.main.async {[weak self] in
                         guard let `self` = self else { return }
-                        
+
                         self.manageResponseStatus(response)
                     }
                 }
@@ -552,9 +552,9 @@ private extension RequestsViewModel {
             }
         }
     }
-    
+
     private func manageResponseStatus(_ status: FourthlineIdentificationStatus) {
-        
+
         switch status.identificationStatus {
         case .rejected,
              .fraud:
@@ -568,7 +568,7 @@ private extension RequestsViewModel {
                 self.fourthlineCoordinator?.perform(action: .complete(result: status))
             }
         case .failed:
-            guard let statusCode = status.providerStatusCode else {
+            guard let statusCode = status.providerStatusCode, let providerCode = Int(statusCode) else {
                 if let fallbackStep = status.fallbackStep {
                     self.fourthlineCoordinator?.perform(action: .nextStep(step: fallbackStep))
                 } else {
@@ -577,7 +577,7 @@ private extension RequestsViewModel {
                 return
             }
 
-            switch statusCode {
+            switch providerCode {
             case 1001...3999:
                     self.onRetry?(status)
             case 4000...5000:
@@ -588,7 +588,7 @@ private extension RequestsViewModel {
         default:
             self.showResult(status)
         }
-        
+
         SessionStorage.clearData()
     }
 }

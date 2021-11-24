@@ -32,7 +32,7 @@ struct FourthlineIdentificationStatus: Codable {
     let confirmExpireDate: String?
 
     /// status code returned by fourthline identification process
-    let providerStatusCode: Int?
+    let providerStatusCode: String?
 
     /// next step to continue the identification process
     let nextStep: IdentificationStep?
@@ -80,7 +80,7 @@ extension FourthlineIdentificationStatus {
         self.termsSignedDate = try data.decodeIfPresent(String.self, forKey: .termsSignedDate)
         self.authExpireDate = try data.decodeIfPresent(String.self, forKey: .authExpireDate)
         self.confirmExpireDate = try data.decodeIfPresent(String.self, forKey: .confirmExpireDate)
-        self.providerStatusCode = try data.decodeIfPresent(Int.self, forKey: .providerStatusCode)
+        self.providerStatusCode = try data.decodeIfPresent(String.self, forKey: .providerStatusCode)
         self.nextStep = try data.decodeIfPresent(IdentificationStep.self, forKey: .nextStep)
         self.fallbackStep = try data.decodeIfPresent(IdentificationStep.self, forKey: .fallbackStep)
         self.referenceToken = try data.decodeIfPresent(String.self, forKey: .referenceToken)

@@ -73,7 +73,7 @@ class BankIDCoordinator: BaseCoordinator {
         completionHandler = completion
         perform(action: currentIdentStep)
     }
-    
+
     /// Method performs Identify step with completion handler
     /// - Parameters:
     ///   - step: IdentifcationStep value

@@ -1,20 +1,20 @@
 PODS:
-  - FourthlineSDK (2.8.0):
-    - FourthlineSDK/Core (= 2.8.0)
-    - FourthlineSDK/KYC (= 2.8.0)
-    - FourthlineSDK/NFC (= 2.8.0)
-    - FourthlineSDK/SDK (= 2.8.0)
-    - FourthlineSDK/Vision (= 2.8.0)
-  - FourthlineSDK/Core (2.8.0)
-  - FourthlineSDK/KYC (2.8.0):
+  - FourthlineSDK (2.8.1):
+    - FourthlineSDK/Core (= 2.8.1)
+    - FourthlineSDK/KYC (= 2.8.1)
+    - FourthlineSDK/NFC (= 2.8.1)
+    - FourthlineSDK/SDK (= 2.8.1)
+    - FourthlineSDK/Vision (= 2.8.1)
+  - FourthlineSDK/Core (2.8.1)
+  - FourthlineSDK/KYC (2.8.1):
     - FourthlineSDK/Core
-  - FourthlineSDK/NFC (2.8.0):
+  - FourthlineSDK/NFC (2.8.1):
     - FourthlineSDK/Core
-  - FourthlineSDK/SDK (2.8.0):
+  - FourthlineSDK/SDK (2.8.1):
     - FourthlineSDK/KYC
     - FourthlineSDK/NFC
     - FourthlineSDK/Vision
-  - FourthlineSDK/Vision (2.8.0):
+  - FourthlineSDK/Vision (2.8.1):
     - FourthlineSDK/Core
   - InputMask (6.1.0)
   - Kronos (4.2.1)
@@ -22,14 +22,14 @@ PODS:
   - ZIPFoundation (0.9.12)
 
 DEPENDENCIES:
-  - FourthlineSDK (= 2.8.0)
+  - FourthlineSDK (= 2.8.1)
   - InputMask (= 6.1.0)
-  - Kronos
-  - lottie-ios
-  - ZIPFoundation
+  - Kronos (~> 4.2.1)
+  - lottie-ios (~> 3.2.3)
+  - ZIPFoundation (~> 0.9.12)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs:
+  https://github.com/CocoaPods/Specs.git:
     - InputMask
     - Kronos
     - lottie-ios
@@ -38,12 +38,12 @@ SPEC REPOS:
     - FourthlineSDK
 
 SPEC CHECKSUMS:
-  FourthlineSDK: 56fb5bc233525f9e13ab8cd89d08e554ad0ee831
+  FourthlineSDK: 3302b4ceb4050e64e5f2168c3bdd7046148183a7
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   Kronos: 0ca73a1c00dc9a49a0bab4a6ed42f282562a7058
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   ZIPFoundation: e27423c004a5a1410c15933407747374e7c6cb6e
 
-PODFILE CHECKSUM: 942dd7bf24461b567069e5d13788a4369823b79c
+PODFILE CHECKSUM: 9343bdf72ad72d23abb60b929890cc9cf0fbc861
 
 COCOAPODS: 1.11.2
