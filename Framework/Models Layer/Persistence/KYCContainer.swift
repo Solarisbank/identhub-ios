@@ -188,6 +188,8 @@ private extension KYCContainer {
             kycInfo.person.gender = .male
         case .female:
             kycInfo.person.gender = .female
+        case .unknown:
+            kycInfo.person.gender = .unknown
         }
     }
 
