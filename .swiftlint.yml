@@ -83,14 +83,12 @@ opt_in_rules:
   - return_arrow_whitespace
   - statement_position
   - syntactic_sugar
-  - trailing_whitespace
   - type_name
   - unneeded_parentheses_in_closure_argument
   - unused_import
   - valid_ibinspectable
   - vertical_parameter_alignment
   - vertical_parameter_alignment_on_call
-  - vertical_whitespace
   - xctfail_message
   - xct_specific_matcher
   - yoda_condition
@@ -189,5 +187,7 @@ disabled_rules:
   - array_init
   - weak_delegate
   - unused_setter_value
+  - vertical_whitespace
+  - trailing_whitespace
 
 # Remember that you can customize this configuration file as much as you want.

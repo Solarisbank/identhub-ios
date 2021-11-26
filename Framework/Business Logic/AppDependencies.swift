@@ -13,7 +13,7 @@ final class AppDependencies {
 
     // MARK: Services
     /// Service providing resources associated with verification.
-    lazy var verificationService = VerificationService(apiClient: apiClient, sessionInfoProvider: sessionInfoProvider)
+    lazy var verificationService = VerificationServiceImplementation(apiClient: apiClient, sessionInfoProvider: sessionInfoProvider)
 
     // MARK: Storage
 

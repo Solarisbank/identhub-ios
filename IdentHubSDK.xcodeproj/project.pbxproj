@@ -162,6 +162,8 @@
 		843C85D026EA1E7500DC16BB /* StyleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843C85CF26EA1E7500DC16BB /* StyleColors.swift */; };
 		8440C565262F55E0001B8E39 /* DocumentScannerAssetSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440C564262F55E0001B8E39 /* DocumentScannerAssetSizing.swift */; };
 		8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */; };
+		84446020274E711600EB7972 /* IdentificationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */; };
+		84446022274E9E4100EB7972 /* RequestViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446021274E9E4000EB7972 /* RequestViewModelTests.swift */; };
 		84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */; };
 		8451D0EB26A8612D00C3C613 /* IBANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451D0EA26A8612D00C3C613 /* IBANRequest.swift */; };
 		845D85F4260CD50D008AAC9A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */; };
@@ -430,6 +432,8 @@
 		843C85CF26EA1E7500DC16BB /* StyleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleColors.swift; sourceTree = "<group>"; };
 		8440C564262F55E0001B8E39 /* DocumentScannerAssetSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetSizing.swift; sourceTree = "<group>"; };
 		8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetBuilder.swift; sourceTree = "<group>"; };
+		8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationCoordinatorTests.swift; sourceTree = "<group>"; };
+		84446021274E9E4000EB7972 /* RequestViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewModelTests.swift; sourceTree = "<group>"; };
 		84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExporter.swift; sourceTree = "<group>"; };
 		8451D0EA26A8612D00C3C613 /* IBANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequest.swift; sourceTree = "<group>"; };
 		845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -1172,6 +1176,39 @@
 			path = "Info status";
 			sourceTree = "<group>";
 		};
+		8444601B274E6E6100EB7972 /* Presentation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				8444601C274E6E6900EB7972 /* Coordinators */,
+				8444601D274E6E7400EB7972 /* ViewControllers */,
+			);
+			path = "Presentation Layer";
+			sourceTree = "<group>";
+		};
+		8444601C274E6E6900EB7972 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		8444601D274E6E7400EB7972 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8444601E274E6E8100EB7972 /* Request */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8444601E274E6E8100EB7972 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				84446021274E9E4000EB7972 /* RequestViewModelTests.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		84489DDE2625BBE800B23B02 /* DocumentExporter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1286,6 +1323,7 @@
 				84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */,
 				84A7582525F22E7C004D8F88 /* Business Logic */,
 				84A7582625F22E86004D8F88 /* Models Layer */,
+				8444601B274E6E6100EB7972 /* Presentation Layer */,
 				84A7582725F22E97004D8F88 /* Resources */,
 			);
 			path = IdentHubSDKTests;
@@ -2000,11 +2038,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84446020274E711600EB7972 /* IdentificationCoordinatorTests.swift in Sources */,
 				84B2A8B425F3DDFE00EBA899 /* DocumentDownloadRequestTests.swift in Sources */,
 				84B2A8CE25F3EA6000EBA899 /* BeckendRequestTests.swift in Sources */,
 				8418E07025F7A6250054A042 /* VerificationServiceTests.swift in Sources */,
 				84B2A8BD25F3E3D200EBA899 /* IdentificationRequestTests.swift in Sources */,
 				8418E05D25F78B4B0054A042 /* APIClientTests.swift in Sources */,
+				84446022274E9E4100EB7972 /* RequestViewModelTests.swift in Sources */,
 				84B2A8A725F3D6DC00EBA899 /* DocumentsAuthorizeRequestTests.swift in Sources */,
 				84B2A8AF25F3DA6B00EBA899 /* DocumentsTANRequestTests.swift in Sources */,
 				8418E06525F796870054A042 /* Result+Ext.swift in Sources */,

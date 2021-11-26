@@ -5,8 +5,84 @@
 
 import Foundation
 
+protocol VerificationService: AnyObject {
+    
+    /// Method defined what the identification method should execute
+    /// - Parameter completionHandler: Response with enabled identification methods
+    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, APIError>) -> Void)
+    
+    /// Method obtains identification process info details
+    /// - Parameter completionHandler: Response with identification details
+    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, APIError>) -> Void)
+    
+    /// Authorize mobile number and send sms with a TAN.
+    /// - Parameter completionHandler: Response back if the verification was successful.
+    func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void)
+    
+    /// Confirm if TAN complies with the mobile number.
+    ///
+    /// - Parameters:
+    ///     - token: Code sent for the given phone number.
+    ///     - completionHandler: Response back if the verification was successful.
+    func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void)
+    
+    /// Verify if IBAN is correct.
+    ///
+    /// - Parameters:
+    ///     - iban: IBAN provided by the user.
+    ///     - completionHandler: Response back if the verification was successful.
+    func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    
+    /// Authorize signing the documents and send sms with a TAN.
+    ///
+    /// - Parameter completionHandler: Response back if the verification was successful.
+    func authorizeDocuments(completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    
+    /// Confirm the TAN while signing the documents.
+    ///
+    /// - Parameters:
+    ///     - token: Code sent for the given phone number.
+    ///     - completionHandler: Response back if the verification was successful.
+    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    
+    /// Get indentification.
+    ///
+    /// - Parameter completionHandler: Response back if the verification was successful.
+    func getIdentification(completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    
+    /// Get Fourthline indentification data.
+    ///
+    /// - Parameter completionHandler: Response back if the fourthline detail.
+    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void)
+    
+    /// Get document.
+    ///
+    /// - Parameters:
+    ///     - documentId: Id of the document resource.
+    ///     - completionHandler: Response back with the document or error.
+    func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, APIError>) -> Void)
+    
+    /// Method uploaded zip file with person kyc data
+    /// - Parameters:
+    ///   - fileURL: url of the file location
+    ///   - completionHandler: Response back with uploaded document status
+    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, APIError>) -> Void)
+    
+    /// Method fetched identified person data from the server
+    /// - Parameter completion: Response back with required person data
+    func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void)
+    
+    /// Method fetched IP address used by device published request
+    /// - Parameter completion: Resopnse back with device ip-address data
+    func fetchIPAddress(completion: @escaping (Result<IPAddress, APIError>) -> Void)
+    
+    /// Method obtained status of the current Fourthline identification session status
+    /// - Parameter completion: Response back with fourthline session status
+    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void)
+}
+
 /// Service providing resources for verification.
-final class VerificationService {
+final class VerificationServiceImplementation: VerificationService {
 
     // MARK: Private properties
 
@@ -20,10 +96,8 @@ final class VerificationService {
         self.sessionInfoProvider = sessionInfoProvider
     }
 
-    // MARK: Public methods
+    // MARK: Protocol methods
 
-    /// Method defined what the identification method should execute
-    /// - Parameter completionHandler: Response with enabled identification methods
     func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, APIError>) -> Void) {
 
         do {
@@ -41,8 +115,6 @@ final class VerificationService {
         }
     }
 
-    /// Method obtains identification process info details
-    /// - Parameter completionHandler: Response with identification details
     func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, APIError>) -> Void) {
 
         do {
@@ -60,9 +132,6 @@ final class VerificationService {
         }
     }
 
-    /// Authorize mobile number and send sms with a TAN.
-    ///
-    /// - Parameter completionHandler: Response back if the verification was successful.
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void) {
 
         do {
@@ -80,11 +149,6 @@ final class VerificationService {
         }
     }
 
-    /// Confirm if TAN complies with the mobile number.
-    ///
-    /// - Parameters:
-    ///     - token: Code sent for the given phone number.
-    ///     - completionHandler: Response back if the verification was successful.
     func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void) {
 
         do {
@@ -104,11 +168,6 @@ final class VerificationService {
         }
     }
 
-    /// Verify if IBAN is correct.
-    ///
-    /// - Parameters:
-    ///     - iban: IBAN provided by the user.
-    ///     - completionHandler: Response back if the verification was successful.
     func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
 
         do {
@@ -136,9 +195,6 @@ final class VerificationService {
         }
     }
 
-    /// Authorize signing the documents and send sms with a TAN.
-    ///
-    /// - Parameter completionHandler: Response back if the verification was successful.
     func authorizeDocuments(completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
@@ -159,11 +215,6 @@ final class VerificationService {
         }
     }
 
-    /// Confirm the TAN while signing the documents.
-    ///
-    /// - Parameters:
-    ///     - token: Code sent for the given phone number.
-    ///     - completionHandler: Response back if the verification was successful.
     func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
@@ -187,9 +238,6 @@ final class VerificationService {
         }
     }
 
-    /// Get indentification.
-    ///
-    /// - Parameter completionHandler: Response back if the verification was successful.
     func getIdentification(completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
@@ -210,9 +258,6 @@ final class VerificationService {
         }
     }
 
-    /// Get Fourthline indentification data.
-    ///
-    /// - Parameter completionHandler: Response back if the fourthline detail.
     func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void) {
         do {
             let request = try FourthlineIdentificationRequest(sessionToken: sessionInfoProvider.sessionToken, method: sessionInfoProvider.identificationStep ?? .fourthline)
@@ -232,11 +277,6 @@ final class VerificationService {
         }
     }
 
-    /// Get document.
-    ///
-    /// - Parameters:
-    ///     - documentId: Id of the document resource.
-    ///     - completionHandler: Response back with the document or error.
     func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, APIError>) -> Void) {
 
         do {
@@ -256,10 +296,6 @@ final class VerificationService {
         }
     }
 
-    /// Method uploaded zip file with person kyc data
-    /// - Parameters:
-    ///   - fileURL: url of the file location
-    ///   - completionHandler: Response back with uploaded document status
     func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, APIError>) -> Void) {
 
         do {
@@ -280,8 +316,6 @@ final class VerificationService {
         }
     }
 
-    /// Method fetched identified person data from the server
-    /// - Parameter completion: Response back with required person data
     func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void) {
         do {
             let request = try PersonDataRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
@@ -301,8 +335,6 @@ final class VerificationService {
         }
     }
 
-    /// Method fetched IP address used by device published request
-    /// - Parameter completion: Resopnse back with device ip-address data
     func fetchIPAddress(completion: @escaping (Result<IPAddress, APIError>) -> Void) {
 
         do {
@@ -319,8 +351,6 @@ final class VerificationService {
         }
     }
 
-    /// Method obtained status of the current Fourthline identification session status
-    /// - Parameter completion: Response back with fourthline session status
     func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void) {
 
         do {
