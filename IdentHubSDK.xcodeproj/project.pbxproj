@@ -164,6 +164,8 @@
 		8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */; };
 		84446020274E711600EB7972 /* IdentificationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */; };
 		84446022274E9E4100EB7972 /* RequestViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446021274E9E4000EB7972 /* RequestViewModelTests.swift */; };
+		844460242755546200EB7972 /* FourthlineIdentCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844460232755546200EB7972 /* FourthlineIdentCoordinatorMock.swift */; };
+		844460262755581200EB7972 /* VerificationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844460252755581200EB7972 /* VerificationServiceMock.swift */; };
 		84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */; };
 		8451D0EB26A8612D00C3C613 /* IBANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451D0EA26A8612D00C3C613 /* IBANRequest.swift */; };
 		845D85F4260CD50D008AAC9A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */; };
@@ -434,6 +436,8 @@
 		8440C569262F560D001B8E39 /* DocumentScannerAssetBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetBuilder.swift; sourceTree = "<group>"; };
 		8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationCoordinatorTests.swift; sourceTree = "<group>"; };
 		84446021274E9E4000EB7972 /* RequestViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewModelTests.swift; sourceTree = "<group>"; };
+		844460232755546200EB7972 /* FourthlineIdentCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentCoordinatorMock.swift; sourceTree = "<group>"; };
+		844460252755581200EB7972 /* VerificationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceMock.swift; sourceTree = "<group>"; };
 		84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExporter.swift; sourceTree = "<group>"; };
 		8451D0EA26A8612D00C3C613 /* IBANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequest.swift; sourceTree = "<group>"; };
 		845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -1026,6 +1030,7 @@
 			isa = PBXGroup;
 			children = (
 				8418E06F25F7A6250054A042 /* VerificationServiceTests.swift */,
+				844460252755581200EB7972 /* VerificationServiceMock.swift */,
 			);
 			path = Verification;
 			sourceTree = "<group>";
@@ -1189,6 +1194,7 @@
 			isa = PBXGroup;
 			children = (
 				8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */,
+				844460232755546200EB7972 /* FourthlineIdentCoordinatorMock.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -2051,6 +2057,8 @@
 				849B438A25F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift in Sources */,
 				84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */,
 				8418E06A25F7A1790054A042 /* SessionInfoProviderTests.swift in Sources */,
+				844460242755546200EB7972 /* FourthlineIdentCoordinatorMock.swift in Sources */,
+				844460262755581200EB7972 /* VerificationServiceMock.swift in Sources */,
 				84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,

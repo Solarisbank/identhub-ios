@@ -47,8 +47,8 @@ class IdentificationCoordinatorTests: XCTestCase {
     // MARK: - Internal methods -
 
     override func setUpWithError() throws {
-        sut = makeSUT()
         resetStorage()
+        sut = makeSUT()
     }
 
     override func tearDownWithError() throws {

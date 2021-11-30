@@ -41,7 +41,29 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     /// - Parameter action: type of the execution action
     func perform(action: FourthlineStep) {
 
-        switch action {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.executeStep(step: action)
+        }
+    }
+
+    /// Method defined if in navigation stack is exist controller. Used for cases, when user dismissed SDK controller and wants return to the previous step
+    /// - Returns: bool value of emptinest of navigation controllers stack
+    func isLastController() -> Bool {
+        return presenter.navigationController.viewControllers.isEmpty
+    }
+}
+
+// MARK: - Private methods -
+
+private extension FourthlineIdentCoordinator {
+
+    // MARK: - Navigation methods -
+    
+    private func executeStep(step: FourthlineStep) {
+        
+        switch step {
         case .welcome:
             presentWelcomeScreen()
         case .selfie:
@@ -76,19 +98,6 @@ class FourthlineIdentCoordinator: BaseCoordinator {
             interruptIdentProcess(with: error)
         }
     }
-
-    /// Method defined if in navigation stack is exist controller. Used for cases, when user dismissed SDK controller and wants return to the previous step
-    /// - Returns: bool value of emptinest of navigation controllers stack
-    func isLastController() -> Bool {
-        return presenter.navigationController.viewControllers.isEmpty
-    }
-}
-
-// MARK: - Private methods -
-
-private extension FourthlineIdentCoordinator {
-
-    // MARK: - Navigation methods -
 
     private func presentWelcomeScreen() {
         let welcomeVM = WelcomeViewModel(flowCoordinator: self)

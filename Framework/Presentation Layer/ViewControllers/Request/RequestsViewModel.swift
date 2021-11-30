@@ -67,6 +67,7 @@ final class RequestsViewModel: NSObject {
         self.sessionStorage = storage
         self.requestsType = type
         self.builder = RequestsProgressCellObjectBuilder(type: type)
+        self.requestsSteps = self.builder.buildContent()
 
         if let coordinator = identCoordinator {
             self.identCoordinator = coordinator
@@ -76,20 +77,12 @@ final class RequestsViewModel: NSObject {
     }
 
     // MARK: - Public methods -
-
-    /// Configuration table view method
-    /// - Parameter table: table view for configuration
-    func configure(of table: UITableView) {
-        requestsSteps = builder.buildContent()
+    
+    /// Method returns table view data source
+    /// - Returns: display data manager
+    func obtainTableDDM() -> RequestsProgressDDM? {
         ddm = RequestsProgressDDM()
-
-        let cellNib = UINib(nibName: "ProgressCell", bundle: Bundle.current)
-
-        table.register(cellNib, forCellReuseIdentifier: progressCellID)
-
-        table.dataSource = ddm
-
-        startProcess()
+        return ddm
     }
 
     /// Method defines and returns request screen title text
@@ -121,7 +114,22 @@ final class RequestsViewModel: NSObject {
             return Localizable.Verification.description
         }
     }
-
+    
+    /// Method triggers chain of request methods based on type
+    func executeCommand() {
+        switch requestsType {
+        case .initateFlow:
+            startInitialProcess()
+        case .fetchData:
+            startFetchDataProcess()
+        case .uploadData:
+            startUploadProcess()
+        case .confirmation:
+            startVerificationProcess()
+        }
+    }
+    
+    /// Method triggers quit from SDK proccess
     func didTriggerQuit() {
         if let coordinator = fourthlineCoordinator {
             coordinator.perform(action: .abort)
@@ -175,22 +183,7 @@ final class RequestsViewModel: NSObject {
 
 private extension RequestsViewModel {
 
-    private func startProcess() {
-
-        switch requestsType {
-        case .initateFlow:
-            startInitialProcess()
-        case .fetchData:
-            startFetchDataProcess()
-        case .uploadData:
-            startUploadProcess()
-        case .confirmation:
-            startVerificationProcess()
-        }
-    }
-
     private func restartProcess() {
-
         switch requestsType {
         case .initateFlow:
             switch initStep {
@@ -478,15 +471,14 @@ private extension RequestsViewModel {
         startStep(number: UploadSteps.uploadData.rawValue)
         uploadStep = .uploadData
         uploadFileURL = fileURL
+        SessionStorage.updateValue(uploadStep.rawValue, for: StoredKeys.uploadStep.rawValue)
 
         verificationService.uploadKYCZip(fileURL: fileURL) { [unowned self] result in
 
             switch result {
             case .success(_):
+                self.fourthlineCoordinator?.perform(action: .confirmation)
                 self.deleteFile(at: fileURL)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.fourthlineCoordinator?.perform(action: .confirmation)
-                }
             case .failure(let error):
                 self.onDisplayError?(error)
             }
@@ -521,11 +513,7 @@ private extension RequestsViewModel {
                      .processed:
                     retryVerification()
                 default:
-                    DispatchQueue.main.async {[weak self] in
-                        guard let `self` = self else { return }
-
-                        self.manageResponseStatus(response)
-                    }
+                    self.manageResponseStatus(response)
                 }
             case .failure(let error):
                 self.onDisplayError?(error)

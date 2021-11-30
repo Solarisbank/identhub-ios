@@ -58,7 +58,12 @@ private extension RequestsViewController {
         stepProgressView.datasource = viewModel
         progressView.defaultProgress = 0.15
 
-        viewModel.configure(of: progressTableView)
+        let cellNib = UINib(nibName: "ProgressCell", bundle: Bundle.current)
+        
+        progressTableView.register(cellNib, forCellReuseIdentifier: progressCellID)
+        progressTableView.dataSource = viewModel.obtainTableDDM()
+        
+        viewModel.executeCommand()
 
         viewModel.onTableUpdate = { [weak self] in
             guard let `self` = self else { return }

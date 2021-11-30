@@ -7,7 +7,7 @@ import Foundation
 import FourthlineCore
 
 /// The list of all available actions.
-enum FourthlineStep: Codable {
+enum FourthlineStep: Codable, Equatable {
     case welcome // Welcome screen with all instructions
     case selfie // Make a selfie step
     case fetchData // Fetch person data from server and device
@@ -119,6 +119,17 @@ enum FourthlineStep: Codable {
             try container.encode(true, forKey: .quit)
         case .nextStep(let step):
             try container.encode(step.rawValue, forKey: .next)
+        }
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.confirmation, .confirmation),
+             (.fetchData, .fetchData),
+             (.abort, .abort):
+            return true
+        default:
+            return false
         }
     }
 }
