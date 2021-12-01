@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -75,13 +75,31 @@
                                         <action selector="didClickRetake:" destination="3aT-dO-i3N" eventType="touchUpInside" id="elg-Lh-169"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9uw-LK-Zp4">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="754-fv-Tfd">
                                     <rect key="frame" x="155" y="0.0" width="155" height="80"/>
-                                    <state key="normal" image="confirm_btn"/>
-                                    <connections>
-                                        <action selector="didClickConfirm:" destination="3aT-dO-i3N" eventType="touchUpInside" id="lbp-pG-LBy"/>
-                                    </connections>
-                                </button>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZf-4l-aak">
+                                            <rect key="frame" x="0.0" y="0.0" width="155" height="80"/>
+                                            <color key="tintColor" name="primary"/>
+                                            <state key="normal" image="confirm_btn"/>
+                                            <connections>
+                                                <action selector="didClickConfirm:" destination="3aT-dO-i3N" eventType="touchUpInside" id="Kll-s6-C1x"/>
+                                            </connections>
+                                        </button>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completion_checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="nUS-47-Cru">
+                                            <rect key="frame" x="118" y="35.5" width="12" height="9"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="nUS-47-Cru" firstAttribute="centerY" secondItem="754-fv-Tfd" secondAttribute="centerY" id="4IJ-rh-DKd"/>
+                                        <constraint firstItem="UZf-4l-aak" firstAttribute="top" secondItem="754-fv-Tfd" secondAttribute="top" id="8k4-hE-Bxd"/>
+                                        <constraint firstAttribute="trailing" secondItem="UZf-4l-aak" secondAttribute="trailing" id="IaS-bg-E4Q"/>
+                                        <constraint firstAttribute="bottom" secondItem="UZf-4l-aak" secondAttribute="bottom" id="PUc-RQ-lct"/>
+                                        <constraint firstItem="UZf-4l-aak" firstAttribute="leading" secondItem="754-fv-Tfd" secondAttribute="leading" id="f64-2N-VC7"/>
+                                        <constraint firstAttribute="trailing" secondItem="nUS-47-Cru" secondAttribute="trailing" constant="25" id="nYc-Rf-bTV"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="CGI-tT-hQG">
@@ -177,6 +195,7 @@
     </objects>
     <resources>
         <image name="close_btn" width="32" height="32"/>
+        <image name="completion_checkmark" width="12" height="9"/>
         <image name="confirm_btn" width="155" height="80"/>
         <image name="passport_front_frame" width="350" height="300"/>
         <image name="retake_btn" width="155" height="80"/>
@@ -185,7 +204,10 @@
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base100">
-            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.059000000357627869" green="0.097999997437000275" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
