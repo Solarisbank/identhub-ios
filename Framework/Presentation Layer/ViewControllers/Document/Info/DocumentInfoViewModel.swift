@@ -82,7 +82,7 @@ extension DocumentInfoViewModel: DocumentInfoDDMDelegate {
         }
 
         tableDDM?.updateContent(infoContent)
-
+        reloadTable?()
         validateContent()
     }
 }

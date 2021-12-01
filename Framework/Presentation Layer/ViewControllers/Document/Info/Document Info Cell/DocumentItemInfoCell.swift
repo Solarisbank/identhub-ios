@@ -90,6 +90,9 @@ extension DocumentItemInfoCell {
             contentTF.text = data.content
             contentTF.inputView = datePicker
             contentTF.inputAccessoryView = createToolbar()
+        } else {
+            contentTF.inputView = nil
+            contentTF.inputAccessoryView = nil
         }
 
         contentTF.delegate = self

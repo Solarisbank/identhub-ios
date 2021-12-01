@@ -34,7 +34,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     override func start(_ completion: @escaping CompletionHandler) {
         completionHandler = completion
 
-        perform(action: identificationStep)
+        executeStep(step: identificationStep)
     }
 
     /// Performs a specified Fourthline identifiaction action.
