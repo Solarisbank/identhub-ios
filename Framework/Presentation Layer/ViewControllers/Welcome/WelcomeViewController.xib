@@ -66,13 +66,13 @@
                         <constraint firstAttribute="trailing" secondItem="iA1-zE-dWo" secondAttribute="trailing" id="qY5-mR-UHf"/>
                     </constraints>
                 </view>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3NB-Cr-e2B">
-                    <rect key="frame" x="146" y="726" width="122" height="26"/>
+                <pageControl opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3NB-Cr-e2B">
+                    <rect key="frame" x="129.5" y="726" width="155.5" height="26"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="122" id="l33-rV-8GY"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="122" id="l33-rV-8GY"/>
                         <constraint firstAttribute="height" constant="26" id="vF3-vv-VU3"/>
                     </constraints>
-                    <color key="pageIndicatorTintColor" name="black25"/>
+                    <color key="pageIndicatorTintColor" name="base25"/>
                     <color key="currentPageIndicatorTintColor" name="primary"/>
                 </pageControl>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8yX-5H-Z2N">
@@ -133,14 +133,14 @@
         <namedColor name="background">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="black25">
-            <color red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="base25">
+            <color red="0.78823529411764703" green="0.81176470588235294" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black75">
             <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.3919999897480011" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

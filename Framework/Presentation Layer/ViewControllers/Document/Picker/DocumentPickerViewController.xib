@@ -46,12 +46,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="aOX-JZ-A16">
-                    <rect key="frame" x="5" y="147" width="365" height="126"/>
+                    <rect key="frame" x="5" y="142" width="365" height="171"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6CM-dP-Mrn">
-                    <rect key="frame" x="15" y="157" width="345" height="111"/>
+                    <rect key="frame" x="15" y="172" width="345" height="111"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -98,8 +98,8 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
-                <constraint firstItem="6CM-dP-Mrn" firstAttribute="top" secondItem="Gsi-44-nvd" secondAttribute="bottom" constant="10" id="487-7e-ycb"/>
-                <constraint firstItem="aOX-JZ-A16" firstAttribute="top" secondItem="6CM-dP-Mrn" secondAttribute="top" constant="-10" id="6FB-UX-8C2"/>
+                <constraint firstItem="6CM-dP-Mrn" firstAttribute="top" secondItem="Gsi-44-nvd" secondAttribute="bottom" constant="25" id="487-7e-ycb"/>
+                <constraint firstItem="aOX-JZ-A16" firstAttribute="top" secondItem="6CM-dP-Mrn" secondAttribute="top" constant="-30" id="6FB-UX-8C2"/>
                 <constraint firstItem="jal-k9-VyU" firstAttribute="top" secondItem="ubJ-lX-vXf" secondAttribute="bottom" constant="40" id="FVD-h5-ik5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Y7l-BA-fua" secondAttribute="bottom" constant="15" id="HOc-Ye-bLR"/>
                 <constraint firstItem="ubJ-lX-vXf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="JhU-hs-GmU"/>
@@ -116,7 +116,7 @@
                 <constraint firstItem="jal-k9-VyU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="mLB-p8-SmT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wv9-Aq-K8k" secondAttribute="trailing" constant="20" id="owE-Vf-hqS"/>
                 <constraint firstItem="aOX-JZ-A16" firstAttribute="leading" secondItem="6CM-dP-Mrn" secondAttribute="leading" constant="-10" id="p8N-Zz-QHz"/>
-                <constraint firstItem="aOX-JZ-A16" firstAttribute="bottom" secondItem="6CM-dP-Mrn" secondAttribute="bottom" constant="5" id="pIX-Yr-X0L"/>
+                <constraint firstItem="aOX-JZ-A16" firstAttribute="bottom" secondItem="6CM-dP-Mrn" secondAttribute="bottom" constant="30" id="pIX-Yr-X0L"/>
                 <constraint firstItem="6CM-dP-Mrn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="wBp-M1-Gtz"/>
                 <constraint firstItem="aOX-JZ-A16" firstAttribute="trailing" secondItem="6CM-dP-Mrn" secondAttribute="trailing" constant="10" id="yde-U7-OGh"/>
             </constraints>
@@ -138,7 +138,7 @@
             <color red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.3919999897480011" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
