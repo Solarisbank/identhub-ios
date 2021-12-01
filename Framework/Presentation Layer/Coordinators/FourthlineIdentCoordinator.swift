@@ -76,8 +76,6 @@ private extension FourthlineIdentCoordinator {
             presentDocumentScanner(type)
         case .documentInfo:
             presentDocumentInfoConfirmation()
-        case .location:
-            presentLocationTracker()
         case .upload:
             presentDataUploader()
         case .confirmation:
@@ -158,14 +156,6 @@ private extension FourthlineIdentCoordinator {
         let documentInfoVC = DocumentInfoViewController(documentInfoVM)
 
         presenter.push(documentInfoVC, animated: true, completion: nil)
-    }
-
-    private func presentLocationTracker() {
-        let locationVM = LocationViewModel(self)
-        let locationVC = LocationViewController(locationVM)
-
-        presenter.push(locationVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .location)
     }
 
     private func presentDataUploader() {

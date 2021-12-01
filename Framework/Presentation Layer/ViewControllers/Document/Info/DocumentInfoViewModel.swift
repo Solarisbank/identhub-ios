@@ -41,7 +41,7 @@ final class DocumentInfoViewModel: BaseFourthlineViewModel {
 
     func didTriggerContinue() {
         updateKYC()
-        coordinator.perform(action: .location)
+        coordinator.perform(action: .upload)
     }
 }
 

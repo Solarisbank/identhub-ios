@@ -126,9 +126,6 @@
 		8418E06A25F7A1790054A042 /* SessionInfoProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418E06925F7A1790054A042 /* SessionInfoProviderTests.swift */; };
 		8418E07025F7A6250054A042 /* VerificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418E06F25F7A6250054A042 /* VerificationServiceTests.swift */; };
 		841956762631AB29003A55BD /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841956752631AB28003A55BD /* Array+Extension.swift */; };
-		8419567D2631B214003A55BD /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8419567B2631B214003A55BD /* LocationViewController.swift */; };
-		8419567E2631B214003A55BD /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8419567C2631B214003A55BD /* LocationViewController.xib */; };
-		841956832631B222003A55BD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841956822631B222003A55BD /* LocationViewModel.swift */; };
 		841A7957267CA049000E5318 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A7956267CA049000E5318 /* ServerError.swift */; };
 		841A893D25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */; };
 		841B3C8C264A9AA000FCF5DF /* SessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B3C8B264A9AA000FCF5DF /* SessionStorage.swift */; };
@@ -398,9 +395,6 @@
 		8418E06925F7A1790054A042 /* SessionInfoProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInfoProviderTests.swift; sourceTree = "<group>"; };
 		8418E06F25F7A6250054A042 /* VerificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceTests.swift; sourceTree = "<group>"; };
 		841956752631AB28003A55BD /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
-		8419567B2631B214003A55BD /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		8419567C2631B214003A55BD /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
-		841956822631B222003A55BD /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		841A7956267CA049000E5318 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		841A893C25F0F5BE007878C1 /* DocumentDownloadableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentDownloadableViewModel.swift; sourceTree = "<group>"; };
 		841B3C8B264A9AA000FCF5DF /* SessionStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStorage.swift; sourceTree = "<group>"; };
@@ -858,7 +852,6 @@
 				847242EA2631D54A00CC8DE6 /* Common */,
 				847D429C260BCBA30067ED63 /* Document */,
 				0CE01B3525C2E78C00FB0E16 /* FinishIdentification */,
-				8419567A2631B1E3003A55BD /* Location */,
 				0CC25BC125A4AB6C00D839AB /* PhoneVerification */,
 				847D42A0260BCBB30067ED63 /* Quit */,
 				847242DA2631D3D400CC8DE6 /* Request */,
@@ -1033,16 +1026,6 @@
 				844460252755581200EB7972 /* VerificationServiceMock.swift */,
 			);
 			path = Verification;
-			sourceTree = "<group>";
-		};
-		8419567A2631B1E3003A55BD /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				841956822631B222003A55BD /* LocationViewModel.swift */,
-				8419567B2631B214003A55BD /* LocationViewController.swift */,
-				8419567C2631B214003A55BD /* LocationViewController.xib */,
-			);
-			path = Location;
 			sourceTree = "<group>";
 		};
 		841A894125F0F5EC007878C1 /* Abstraction */ = {
@@ -1667,7 +1650,6 @@
 				8423EFE8262AF5B50092F003 /* DocumentScannerOverlayView.xib in Resources */,
 				0CD863A125DC5F5000AB3252 /* strip-frameworks.sh in Resources */,
 				84DEB64A2641C7AF00E0C5BA /* ResultViewController.xib in Resources */,
-				8419567E2631B214003A55BD /* LocationViewController.xib in Resources */,
 				845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */,
 				845DEC4C26C697AC00F38177 /* PaymentVerificationViewController.xib in Resources */,
 				841158A6261F384B007B54DF /* SelfieOverlayView.xib in Resources */,
@@ -1883,7 +1865,6 @@
 				84E0CF13262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift in Sources */,
 				84056F4B2655458F0072A10F /* BankIDStep.swift in Sources */,
 				8409766F2632F0F600C4DC5B /* RequestsProgressDDM.swift in Sources */,
-				8419567D2631B214003A55BD /* LocationViewController.swift in Sources */,
 				0CA7747625C1ADD600E94E77 /* SignDocumentsViewController.swift in Sources */,
 				841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */,
 				0CB143AA259A47FC0014B643 /* UIColor+SDK.swift in Sources */,
@@ -1982,7 +1963,6 @@
 				845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */,
 				0CC9574725A8733400A3458B /* MobileNumberAuthorizeRequest.swift in Sources */,
 				841384C5263C7B7800C39D69 /* IdentificationCoordinator.swift in Sources */,
-				841956832631B222003A55BD /* LocationViewModel.swift in Sources */,
 				8440C565262F55E0001B8E39 /* DocumentScannerAssetSizing.swift in Sources */,
 				84F521BC263DACBD00FBCECF /* MutableData+Extension.swift in Sources */,
 				847242EC2631D55700CC8DE6 /* BaseFourthlineViewModel.swift in Sources */,
