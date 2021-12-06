@@ -11,15 +11,13 @@ final internal class SelfieViewModel {
     // MARK: - Properties -
     private var flowCoordinator: FourthlineIdentCoordinator
     private var scannerResult: SelfieScannerResult?
-    private var identificationMethod: IdentificationStep?
 
     // MARK: - Init -
 
     /// Init method with flow coordinator
     /// - Parameter flowCoordinator: identification process flow coordinator
-    init(flowCoordinator: FourthlineIdentCoordinator, identMethod: IdentificationStep) {
+    init(flowCoordinator: FourthlineIdentCoordinator) {
         self.flowCoordinator = flowCoordinator
-        self.identificationMethod = identMethod
     }
 
     // MARK: - Public methods -
@@ -53,10 +51,6 @@ final internal class SelfieViewModel {
     }
 
     func didTriggerConfirmStep() {
-        if identificationMethod == .fourthline || identificationMethod == .fourthlineSigning {
-            flowCoordinator.perform(action: .documentPicker)
-        } else {
-            flowCoordinator.perform(action: .fetchData)
-        }
+        flowCoordinator.perform(action: .upload)
     }
 }

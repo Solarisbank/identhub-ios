@@ -333,12 +333,10 @@ private extension RequestsViewModel {
     }
 
     private func finishInitialization() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if self.sessionStorage.acceptedTC {
-                self.identCoordinator?.perform(action: .identification)
-            } else {
-                self.identCoordinator?.perform(action: .termsAndConditions)
-            }
+        if self.sessionStorage.acceptedTC {
+            self.identCoordinator?.perform(action: .identification)
+        } else {
+            self.identCoordinator?.perform(action: .termsAndConditions)
         }
     }
 }
@@ -414,14 +412,12 @@ private extension RequestsViewModel {
             case .success(let response):
                 KYCContainer.shared.update(ipAddress: response.ip)
 
-                DispatchQueue.main.async {
-                    if self.isFourthlineFlow() {
-                        self.completeStep(number: InitStep.fetchIPAddress.rawValue)
-                        self.finishInitialization()
-                    } else {
-                        self.completeStep(number: DataFetchStep.fetchIPAddress.rawValue)
-                        self.fourthlineCoordinator?.perform(action: .documentPicker)
-                    }
+                if self.isFourthlineFlow() {
+                    self.completeStep(number: InitStep.fetchIPAddress.rawValue)
+                    self.finishInitialization()
+                } else {
+                    self.completeStep(number: DataFetchStep.fetchIPAddress.rawValue)
+                    self.fourthlineCoordinator?.perform(action: .documentPicker)
                 }
             case .failure(let error):
                 self.onDisplayError?(error)

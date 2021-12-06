@@ -22,6 +22,7 @@ final class DocumentScannerViewController: UIViewController {
 
         scanner.delegate = self
         scanner.dataSource = self
+        
         scanner.setOverlayView(documentOverlay, animationType: .bothFade)
 
         return scanner
@@ -97,8 +98,9 @@ final class DocumentScannerViewController: UIViewController {
 extension DocumentScannerViewController: DocumentScannerDataSource, DocumentScannerAssetPlacement {
 
     func documentDetectionArea(in scanner: DocumentScanner, for step: DocumentScannerStep) -> CGRect {
-
-        let info = DocumentScannerInfo(step: currentStep, config: config, state: .warning)
+        guard let step = currentStep else { return .zero }
+        
+        let info = DocumentScannerInfo(step: step, config: config, state: .warning)
         let configuration = assetConfiguration(for: info)
         let sizing = currentStep.isAngled ? configuration.tiltedSizing : configuration.sizing
         let scanningArea = detectionArea(inside: documentOverlay.documentFrameView.frame, from: sizing)

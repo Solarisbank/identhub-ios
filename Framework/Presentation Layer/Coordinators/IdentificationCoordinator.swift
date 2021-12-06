@@ -39,11 +39,23 @@ class IdentificationCoordinator: BaseCoordinator {
             executedStep = Action(rawValue: step) ?? .initialization
         }
 
-        perform(action: executedStep)
+        execute(action: executedStep)
     }
 
     func perform(action: IdentificationCoordinator.Action) {
 
+        DispatchQueue.main.async { [weak self] in
+            self?.execute(action: action)
+        }
+    }
+}
+
+// MARK: - Manager Session Tracker methods -
+
+private extension IdentificationCoordinator {
+    
+    private func execute(action: IdentificationCoordinator.Action) {
+        
         switch action {
         case .initialization:
             presentInitialScreen()
@@ -57,11 +69,6 @@ class IdentificationCoordinator: BaseCoordinator {
             }
         }
     }
-}
-
-// MARK: - Manager Session Tracker methods -
-
-private extension IdentificationCoordinator {
 
     private func presentInitialScreen() {
         let requestVM = RequestsViewModel(appDependencies.verificationService, storage: appDependencies.sessionInfoProvider, type: .initateFlow, identCoordinator: self)

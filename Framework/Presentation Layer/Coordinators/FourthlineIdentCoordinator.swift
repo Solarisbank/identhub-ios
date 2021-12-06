@@ -98,7 +98,9 @@ private extension FourthlineIdentCoordinator {
     }
 
     private func presentWelcomeScreen() {
-        let welcomeVM = WelcomeViewModel(flowCoordinator: self)
+        guard let identMethod = self.appDependencies.sessionInfoProvider.identificationStep else { return }
+        
+        let welcomeVM = WelcomeViewModel(flowCoordinator: self, identMethod: identMethod)
         let welcomeVC = WelcomeViewController(welcomeVM)
 
         presenter.push(welcomeVC, animated: true, completion: nil)
@@ -106,20 +108,16 @@ private extension FourthlineIdentCoordinator {
     }
 
     private func presentSelfieScreen() {
-        requestPermissions { isPassed in
-            guard isPassed else { return }
+        requestPermissions { [weak self] isPassed in
+            guard isPassed, let self = self else { return }
+            
+            let selfieVM = SelfieViewModel(flowCoordinator: self)
+            let selfieVC = SelfieViewController()
 
-            DispatchQueue.main.async { [weak self] in
-                guard let `self` = self, let identMethod = self.appDependencies.sessionInfoProvider.identificationStep else { return }
+            selfieVC.setViewModel(selfieVM)
 
-                let selfieVM = SelfieViewModel(flowCoordinator: self, identMethod: identMethod)
-                let selfieVC = SelfieViewController()
-
-                selfieVC.setViewModel(selfieVM)
-
-                self.presenter.push(selfieVC, animated: true, completion: nil)
-                self.updateFourthlineStep(step: .selfie)
-            }
+            self.presenter.push(selfieVC, animated: true, completion: nil)
+            self.updateFourthlineStep(step: .selfie)
         }
     }
 
@@ -140,13 +138,17 @@ private extension FourthlineIdentCoordinator {
     }
 
     private func presentDocumentScanner(_ documentType: DocumentType) {
-        let documentScannerVM = DocumentScannerViewModel(documentType, flowCoordinator: self)
-        let documentScannerVC = DocumentScannerViewController(viewModel: documentScannerVM)
+        requestPermissions { [weak self] isPassed in
+            guard isPassed, let self = self else { return }
+            
+            let documentScannerVM = DocumentScannerViewModel(documentType, flowCoordinator: self)
+            let documentScannerVC = DocumentScannerViewController(viewModel: documentScannerVM)
 
-        documentScannerVC.modalPresentationStyle = .fullScreen
+            documentScannerVC.modalPresentationStyle = .fullScreen
 
-        presenter.present(documentScannerVC, animated: true)
-        updateFourthlineStep(step: .documentScanner(type: documentType))
+            self.presenter.present(documentScannerVC, animated: true)
+            self.updateFourthlineStep(step: .documentScanner(type: documentType))
+        }
     }
 
     private func presentDocumentInfoConfirmation() {
@@ -241,8 +243,8 @@ private extension FourthlineIdentCoordinator {
             guard granted else {
                 DispatchQueue.main.async {
                     self?.showCameraPermissionAlert()
+                    completionHandler(false)
                 }
-                completionHandler(false)
                 return
             }
 

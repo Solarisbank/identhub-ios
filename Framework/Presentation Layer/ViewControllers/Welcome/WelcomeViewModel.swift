@@ -15,13 +15,15 @@ final internal class WelcomeViewModel {
     private var scrollerContent: [WelcomePageContent]
     private var pageController: UIPageControl?
     private var logoAnimator: WelcomeLogoAnimator?
+    private var identificationMethod: IdentificationStep?
 
     // MARK: - Init -
 
     /// Init method with flow coordinator
     /// - Parameter flowCoordinator: identification process flow coordinator
-    init(flowCoordinator: FourthlineIdentCoordinator) {
+    init(flowCoordinator: FourthlineIdentCoordinator, identMethod: IdentificationStep) {
         self.flowCoordinator = flowCoordinator
+        self.identificationMethod = identMethod
         self.scrollerContent = WelcomeViewModel.configureContent()
     }
 
@@ -62,7 +64,11 @@ final internal class WelcomeViewModel {
     }
 
     func didTriggerStart() {
-        self.flowCoordinator.perform(action: .selfie)
+        if identificationMethod == .fourthline || identificationMethod == .fourthlineSigning {
+            flowCoordinator.perform(action: .documentPicker)
+        } else {
+            flowCoordinator.perform(action: .fetchData)
+        }
     }
 
     // MARK: - Internal methods -
@@ -78,8 +84,8 @@ final internal class WelcomeViewModel {
         let locationPage = WelcomePageContent(title: Localizable.Welcome.locationTitle, description: Localizable.Welcome.locationDesc, pageLogoName: "pin_map", type: .location, pageLogoFrameName: nil)
 
         return [
-            cameraPage,
             documentPage,
+            cameraPage,
             locationPage
         ]
     }

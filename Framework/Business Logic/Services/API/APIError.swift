@@ -50,6 +50,7 @@ enum ErrorCodes: String, Codable {
 
     case mobileNotVerified = "mobile_number_not_verified"
     case invalidIBAN = "invalid_iban"
+    case invalidPerson = "match_for_person_data_not_found"
     case unknown
 }
 
