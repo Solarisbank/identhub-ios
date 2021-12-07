@@ -133,9 +133,10 @@ private extension BankIDCoordinator {
         case .bankIDFourthline:
             presentFourthlineFlow()
         case .bankQES,
-             .bankIDQES,
-             .fourthlineQES:
+             .bankIDQES:
             presentSignDocuments()
+        case .fourthlineQES:
+            presentConfirmApplication()
         case .fourthline,
             .fourthlineSigning:
             presentFourthlineFlow()
@@ -189,7 +190,7 @@ private extension BankIDCoordinator {
     }
 
     private func presentConfirmApplication() {
-        let confirmApplicationViewModel = ConfirmApplicationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService)
+        let confirmApplicationViewModel = ConfirmApplicationViewModel(flowCoordinator: self, appDependencies: appDependencies)
         let confirmApplicationViewController = ConfirmApplicationViewController(confirmApplicationViewModel)
         confirmApplicationViewModel.documentDelegate = confirmApplicationViewController
         presenter.push(confirmApplicationViewController, animated: true, completion: nil)

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +16,7 @@
                 <outlet property="descriptionLabel" destination="2fJ-zb-iYc" id="FIJ-PC-R42"/>
                 <outlet property="documentsTableView" destination="XOw-Ws-ALc" id="VVg-aV-t6B"/>
                 <outlet property="downloadAllDocumentsButton" destination="pB0-Tv-rac" id="T22-AL-ngP"/>
+                <outlet property="progressViewHeight" destination="vvu-mf-ub3" id="ap2-8q-oxI"/>
                 <outlet property="tableHeightConstraint" destination="23X-Af-nLW" id="jng-Ck-sMo"/>
                 <outlet property="titleLabel" destination="s3l-dJ-hb4" id="ROD-dg-BcX"/>
                 <outlet property="view" destination="qFZ-Nb-YhP" id="fgY-3a-bTe"/>
@@ -88,7 +88,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="i2P-ci-Ndf"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="2fJ-zb-iYc" firstAttribute="top" secondItem="s3l-dJ-hb4" secondAttribute="bottom" constant="24" id="1Xm-AX-STc"/>
                 <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="s3l-dJ-hb4" secondAttribute="trailing" constant="16" id="2Tb-jh-6f2"/>
@@ -130,8 +130,5 @@
         <namedColor name="primary_lighten">
             <color red="1" green="0.51372549019607838" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

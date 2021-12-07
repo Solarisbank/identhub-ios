@@ -126,13 +126,20 @@ final internal class SignDocumentsViewController: SolarisViewController {
     }
 
     private func configureUI() {
+        
+        var topView = UIView()
+        
+        if viewModel.isVisibleProgress() {
+            topView = currentStepView
+        }
+        
         containerView.addSubviews([
-            currentStepView,
+            topView,
             mainContainerView,
             stateView
         ])
-
-        currentStepView.addConstraints { [
+        
+        topView.addConstraints { [
             $0.equal(.top),
             $0.equal(.leading),
             $0.equal(.trailing)
@@ -140,7 +147,7 @@ final internal class SignDocumentsViewController: SolarisViewController {
         }
 
         mainContainerView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom),
+            $0.equalTo(topView, .top, .bottom),
             $0.equal(.leading),
             $0.equal(.trailing),
             $0.equal(.bottom)
@@ -148,7 +155,7 @@ final internal class SignDocumentsViewController: SolarisViewController {
         }
 
         stateView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom),
+            $0.equalTo(topView, .top, .bottom),
             $0.equal(.leading),
             $0.equal(.trailing),
             $0.equal(.bottom)

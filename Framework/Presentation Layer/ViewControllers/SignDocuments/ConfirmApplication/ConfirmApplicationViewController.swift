@@ -10,6 +10,7 @@ final internal class ConfirmApplicationViewController: UIViewController {
 
     // MARK: - Outlets -
     @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var progressViewHeight: NSLayoutConstraint!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var documentsTableView: UITableView!
@@ -24,6 +25,7 @@ final internal class ConfirmApplicationViewController: UIViewController {
     private let documentExporter: DocumentExporter = DocumentExporterService()
     private var documentCell: DocumentTableViewCell?
     private let rowHeight: CGFloat = 54
+    private let progressHeight: CGFloat = 89
 
     /// Initialized with view model object
     /// - Parameter viewModel: view model object
@@ -38,6 +40,12 @@ final internal class ConfirmApplicationViewController: UIViewController {
     }
 
     // MARK: - Life cycle methods -
+    
+    override func loadView() {
+        super.loadView()
+        
+        viewModel.loadDocuments()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +57,8 @@ final internal class ConfirmApplicationViewController: UIViewController {
         titleLabel.text = Localizable.SignDocuments.ConfirmApplication.confirmYourApplication
         descriptionLabel.text = Localizable.SignDocuments.ConfirmApplication.description
 
+        progressViewHeight.constant = ( viewModel.isInvisibleProgress() ) ? 0 : progressHeight
+        currentStepView.isHidden = viewModel.isInvisibleProgress()
         currentStepView.setCurrentStep(.documents)
 
         documentsTableView.register(DocumentTableViewCell.self, forCellReuseIdentifier: DocumentTableViewCell.ReuseIdentifier)

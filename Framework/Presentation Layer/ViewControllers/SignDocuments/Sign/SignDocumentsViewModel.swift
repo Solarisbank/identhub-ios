@@ -18,6 +18,8 @@ final internal class SignDocumentsViewModel: NSObject {
     private let sessionStorage: StorageSessionInfoProvider
 
     private var completionHander: CompletionHandler
+    
+    private var identMethod: IdentificationStep?
 
     /// Mobile number used for current authorization.
     lazy var mobileNumber = {
@@ -30,6 +32,7 @@ final internal class SignDocumentsViewModel: NSObject {
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
         self.completionHander = completion
+        self.identMethod = sessionStorage.identificationStep
         super.init()
         requestNewCode()
     }
@@ -109,6 +112,12 @@ final internal class SignDocumentsViewModel: NSObject {
     func finishIdentification() {
         self.sessionStorage.isSuccessful = true
         flowCoordinator.perform(action: .finishIdentification)
+    }
+    
+    /// Method defines if progress view should be visible
+    /// - Returns: bool status of progress visibility
+    func isVisibleProgress() -> Bool {
+        return ( identMethod != .fourthlineSigning )
     }
 }
 

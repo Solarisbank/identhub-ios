@@ -130,7 +130,8 @@ private extension IdentificationCoordinator {
 
         fourthlineCoordinator.start(completionHandler!)
 
-        fourthlineCoordinator.nextStepHandler = { nextStep in
+        fourthlineCoordinator.nextStepHandler = { [weak self] nextStep in
+            guard let self = self else { return }
 
             bankIDSessionCoordinator.perform(step: nextStep, self.completionHandler!)
         }

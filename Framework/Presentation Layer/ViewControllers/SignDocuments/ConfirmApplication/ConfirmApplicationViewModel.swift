@@ -10,6 +10,8 @@ final internal class ConfirmApplicationViewModel: NSObject, DocumentDownloadable
     var verificationService: VerificationService
 
     var flowCoordinator: BankIDCoordinator
+    
+    private var identMethod: IdentificationStep?
 
     /// - SeeAlso: DocumentDownloadable.documents
     var documents: [ContractDocument] = []
@@ -17,17 +19,28 @@ final internal class ConfirmApplicationViewModel: NSObject, DocumentDownloadable
     /// - SeeAlso: DocumentDownloadable.documentDelegate
     weak var documentDelegate: DocumentReceivable?
 
-    init(flowCoordinator: BankIDCoordinator, verificationService: VerificationService) {
+    init(flowCoordinator: BankIDCoordinator, appDependencies: AppDependencies) {
         self.flowCoordinator = flowCoordinator
-        self.verificationService = verificationService
+        self.verificationService = appDependencies.verificationService
+        self.identMethod = appDependencies.sessionInfoProvider.identificationStep
         super.init()
-        checkDocumentsAvailability()
     }
 
     // MARK: Methods
+    
+    /// Method fetched documents list for signing
+    func loadDocuments() {
+        checkDocumentsAvailability()
+    }
 
     /// Move to signing documents.
     func signDocuments() {
         flowCoordinator.perform(action: .signDocuments(step: .sign))
+    }
+    
+    /// Method defines if progress view should be invisible
+    /// - Returns: bool status of progress visibility
+    func isInvisibleProgress() -> Bool {
+        return ( identMethod == .fourthlineSigning )
     }
 }
