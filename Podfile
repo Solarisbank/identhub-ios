@@ -11,7 +11,7 @@ inhibit_all_warnings!
 pod 'FourthlineSDK', '2.8.1'
 
 # Fourthline dependencies
-pod 'ZIPFoundation', '~> 0.9.12'
+pod 'ZIPFoundation', '0.9.11'
 pod 'lottie-ios', '~> 3.2.3'
 pod 'Kronos', '~> 4.2.1'
 

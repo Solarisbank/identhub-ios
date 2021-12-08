@@ -19,14 +19,14 @@ PODS:
   - InputMask (6.1.0)
   - Kronos (4.2.1)
   - lottie-ios (3.2.3)
-  - ZIPFoundation (0.9.12)
+  - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
   - FourthlineSDK (= 2.8.1)
   - InputMask (= 6.1.0)
   - Kronos (~> 4.2.1)
   - lottie-ios (~> 3.2.3)
-  - ZIPFoundation (~> 0.9.12)
+  - ZIPFoundation (= 0.9.11)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -42,8 +42,8 @@ SPEC CHECKSUMS:
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   Kronos: 0ca73a1c00dc9a49a0bab4a6ed42f282562a7058
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
-  ZIPFoundation: e27423c004a5a1410c15933407747374e7c6cb6e
+  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: 9343bdf72ad72d23abb60b929890cc9cf0fbc861
+PODFILE CHECKSUM: ce159f694647d01e3ed302ddcc607d525bc10586
 
 COCOAPODS: 1.11.2
