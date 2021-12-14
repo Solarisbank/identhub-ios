@@ -23,11 +23,11 @@ class RequestViewModelTests: XCTestCase {
 
         sut.executeCommand()
         
-        XCTAssertEqual(storage.identificationUID, "cdc6c40aff4191e89319e803b3ad8584cidt", "Expected Fourthline ID is not match. Register fourthline flow failed")
+        XCTAssertEqual(storage.identificationUID, "test_fourthline_identification_id", "Expected Fourthline ID is not match. Register fourthline flow failed")
         XCTAssertTrue(storage.acceptedTC, "Terms and conditions accepted. Returned value is invalid")
-        XCTAssertEqual(KYCContainer.shared.kycInfo.provider.name, "SolarisBankProvider", "Fourthline provider is not valid")
-        XCTAssertEqual(KYCContainer.shared.kycInfo.person.firstName, "Pierre", "Person data is not loaded")
-        XCTAssertEqual(KYCContainer.shared.kycInfo.provider.clientNumber, "0a54c78df507d62639abd28efe3058bdcper", "Person ID value is not valid")
+        XCTAssertEqual(KYCContainer.shared.kycInfo.provider.name, "TestProvider", "Fourthline provider is not valid")
+        XCTAssertEqual(KYCContainer.shared.kycInfo.person.firstName, "Test_First_Name", "Person data is not loaded")
+        XCTAssertEqual(KYCContainer.shared.kycInfo.provider.clientNumber, "test_person_udid", "Person ID value is not valid")
     }
     
     func testFourthlineKYCUpload() throws {
@@ -35,7 +35,7 @@ class RequestViewModelTests: XCTestCase {
         let sut = makeSUT(with: .uploadData, fourthlineCoord: fourthlineCoord)
         
         // Value needs to be stored to the session storage for fake kyc zip service and prevent start zipping process, becuase during tests execution no scanned data is present
-        SessionStorage.updateValue("kycD69E504F-8782-4FA2-99D1-ABFC40E68D44.zip", for: StoredKeys.kycZipData.rawValue)
+        SessionStorage.updateValue("test_kyc_file_name.zip", for: StoredKeys.kycZipData.rawValue)
         
         sut.executeCommand()
 

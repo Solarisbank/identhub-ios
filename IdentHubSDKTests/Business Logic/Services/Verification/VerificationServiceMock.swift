@@ -17,7 +17,7 @@ class VerificationServiceMock: VerificationService {
             "first_step": "fourthline/simplified",
             "fallback_step": nil,
             "allowed_retries": 5,
-            "fourthline_provider": "SolarisBankProvider",
+            "fourthline_provider": "TestProvider",
             "partner_settings": nil
         ] as [String: Any?]
         
@@ -31,7 +31,7 @@ class VerificationServiceMock: VerificationService {
             "language": nil,
             "terms_and_conditions_pre_accepted": true,
             "style": nil,
-            "fourthline_provider": "SolarisBankProvider",
+            "fourthline_provider": "TestProvider",
             "verified_mobile_number": false
         ] as [String: Any?]
         
@@ -64,8 +64,8 @@ class VerificationServiceMock: VerificationService {
     
     func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void) {
         let responseJSON = [
-            "id": "cdc6c40aff4191e89319e803b3ad8584cidt",
-            "reference": "872508bc-865e-41be-9dc0-a4d75d8fca31",
+            "id": "test_fourthline_identification_id",
+            "reference": "reference1",
             "url": nil,
             "status": "pending",
             "completed_at": nil,
@@ -89,8 +89,8 @@ class VerificationServiceMock: VerificationService {
     
     func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, APIError>) -> Void) {
         let responseJSON = [
-            "id": "63346da5eeb5ac5f8382ed3d6a31a4e8cdoc",
-            "name": "RackMultipart20211125-7-16mreoi.zip",
+            "id": "kycZIPID",
+            "name": "KYC_zip_file_name.zip",
             "content_type": "application/zip",
             "document_type": "OTHER",
             "size": 38404089,
@@ -104,10 +104,10 @@ class VerificationServiceMock: VerificationService {
     
     func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void) {
         let responseJSON = [
-            "first_name": "Pierre",
-            "last_name": "de Maienfeld",
+            "first_name": "Test_First_Name",
+            "last_name": "Test_Last_Name",
             "address": [
-                "street": "Helvetiapl,",
+                "street": "Test_Street,",
                 "street_number": "5",
                 "city": "Bern",
                 "country": "CHE",
@@ -118,7 +118,7 @@ class VerificationServiceMock: VerificationService {
             "nationality": "CHE",
             "birth_date": "1971-08-01",
             "place_of_birth": "Bern",
-            "person_uid": "0a54c78df507d62639abd28efe3058bdcper",
+            "person_uid": "test_person_udid",
             "supported_documents": [
                 [
                     "type": "National ID Card",
@@ -156,7 +156,7 @@ class VerificationServiceMock: VerificationService {
     
     func fetchIPAddress(completion: @escaping (Result<IPAddress, APIError>) -> Void) {
         let responseJSON = [
-            "ip": "10.18.3.173"
+            "ip": "0.0.0.1"
         ] as [String: String]
         
         completion(mapResponse(responseJSON: responseJSON))
@@ -164,7 +164,7 @@ class VerificationServiceMock: VerificationService {
     
     func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void) {
         let responseJSON = [
-            "id": "56bed515e5d3969f7a5e8e1368edb88bcidt",
+            "id": "test_fourthline_identification_udid",
             "url": nil,
             "status": "rejected",
             "failure_reason": nil,
@@ -177,8 +177,8 @@ class VerificationServiceMock: VerificationService {
             "documents":
               [
                 [
-                  "id": "20bc1e2279a3e3d9bddb3ba5aef28b5acdoc",
-                  "name": "56bed515e5d3969f7a5e8e1368edb88bcidt_prepared_for_signing_terms_and_conditions.pdf",
+                  "id": "test_document_id",
+                  "name": "test_signed_document_id.pdf",
                   "content_type": "application/pdf",
                   "document_type": "QES_DOCUMENT",
                   "size": 87049,
@@ -187,7 +187,7 @@ class VerificationServiceMock: VerificationService {
                 ]
               ],
             "current_reference_token": nil,
-            "reference": "c0932f9c-dac9-4f09-aebf-8c4c4584c4df"
+            "reference": "test_reference_id"
         ] as [String: Any?]
         
         completion(mapResponse(responseJSON: responseJSON))
