@@ -1,15 +1,15 @@
 //
-//  FourthlineIdentCoordinatorMock.swift
+//  IdentificationCoordinatorMock.swift
 //  IdentHubSDKTests
 //
 
 import UIKit
 @testable import IdentHubSDK
 
-class FourthlineIdentCoordinatorMock: FourthlineIdentCoordinator {
-    
+class IdentificationCoordinatorMock: IdentificationCoordinator {
+
     /// Tested perform action value
-    var performAction: FourthlineStep = .welcome
+    var performAction: Action?
     
     // MARK: - Init methods -
     init() {
@@ -21,7 +21,8 @@ class FourthlineIdentCoordinatorMock: FourthlineIdentCoordinator {
     
     /// Mocked method for testing performed action in fourthline coordinator
     /// - Parameter action: simulated action
-    override func perform(action: FourthlineStep) {
+    override func perform(action: Action) {
         performAction = action
+        super.perform(action: action)
     }
 }

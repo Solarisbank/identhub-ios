@@ -141,6 +141,7 @@
 		841F376326298E1400D56361 /* ScanDocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F376226298E1400D56361 /* ScanDocumentType.swift */; };
 		841F376A26298FF500D56361 /* DocumentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F376826298FF500D56361 /* DocumentTypeCell.swift */; };
 		841F376B26298FF500D56361 /* DocumentTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841F376926298FF500D56361 /* DocumentTypeCell.xib */; };
+		841F5C6D2762363700D68175 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F5C6C2762363700D68175 /* BaseTestCase.swift */; };
 		8423EFD5262AEC690092F003 /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFD4262AEC690092F003 /* DocumentScannerViewController.swift */; };
 		8423EFDA262AED3A0092F003 /* DocumentScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFD9262AED3A0092F003 /* DocumentScannerViewModel.swift */; };
 		8423EFE0262AF5A00092F003 /* DocumentScannerOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFDF262AF5A00092F003 /* DocumentScannerOverlayView.swift */; };
@@ -199,6 +200,7 @@
 		84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */; };
 		84A7581B25F22D7F004D8F88 /* IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD5CC3A2590F58800FF378F /* IdentHubSDK.framework */; };
 		84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7583225F22F84004D8F88 /* AppDependenciesTest.swift */; };
+		84B1AABB275E73D300632655 /* IdentificationCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1AABA275E73D300632655 /* IdentificationCoordinatorMock.swift */; };
 		84B2A89825F3CCD800EBA899 /* IBANRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A89725F3CCD800EBA899 /* IBANRequestTests.swift */; };
 		84B2A8A725F3D6DC00EBA899 /* DocumentsAuthorizeRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8A625F3D6DC00EBA899 /* DocumentsAuthorizeRequestTests.swift */; };
 		84B2A8AF25F3DA6B00EBA899 /* DocumentsTANRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8AE25F3DA6B00EBA899 /* DocumentsTANRequestTests.swift */; };
@@ -410,6 +412,7 @@
 		841F376226298E1400D56361 /* ScanDocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDocumentType.swift; sourceTree = "<group>"; };
 		841F376826298FF500D56361 /* DocumentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypeCell.swift; sourceTree = "<group>"; };
 		841F376926298FF500D56361 /* DocumentTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentTypeCell.xib; sourceTree = "<group>"; };
+		841F5C6C2762363700D68175 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		8423EFD4262AEC690092F003 /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		8423EFD9262AED3A0092F003 /* DocumentScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewModel.swift; sourceTree = "<group>"; };
 		8423EFDF262AF5A00092F003 /* DocumentScannerOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerOverlayView.swift; sourceTree = "<group>"; };
@@ -469,6 +472,7 @@
 		84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubSDKTests.swift; sourceTree = "<group>"; };
 		84A7581A25F22D7F004D8F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A7583225F22F84004D8F88 /* AppDependenciesTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependenciesTest.swift; sourceTree = "<group>"; };
+		84B1AABA275E73D300632655 /* IdentificationCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationCoordinatorMock.swift; sourceTree = "<group>"; };
 		84B2A89725F3CCD800EBA899 /* IBANRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequestTests.swift; sourceTree = "<group>"; };
 		84B2A8A625F3D6DC00EBA899 /* DocumentsAuthorizeRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsAuthorizeRequestTests.swift; sourceTree = "<group>"; };
 		84B2A8AE25F3DA6B00EBA899 /* DocumentsTANRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsTANRequestTests.swift; sourceTree = "<group>"; };
@@ -1124,6 +1128,14 @@
 			path = DocumentTypeCell;
 			sourceTree = "<group>";
 		};
+		841F5C6B2762360B00D68175 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				841F5C6C2762363700D68175 /* BaseTestCase.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		8423EFD3262AEC470092F003 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1177,6 +1189,7 @@
 			isa = PBXGroup;
 			children = (
 				8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */,
+				84B1AABA275E73D300632655 /* IdentificationCoordinatorMock.swift */,
 				844460232755546200EB7972 /* FourthlineIdentCoordinatorMock.swift */,
 			);
 			path = Coordinators;
@@ -1310,6 +1323,7 @@
 			isa = PBXGroup;
 			children = (
 				84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */,
+				841F5C6B2762360B00D68175 /* Common */,
 				84A7582525F22E7C004D8F88 /* Business Logic */,
 				84A7582625F22E86004D8F88 /* Models Layer */,
 				8444601B274E6E6100EB7972 /* Presentation Layer */,
@@ -2034,10 +2048,12 @@
 				84B2A8A725F3D6DC00EBA899 /* DocumentsAuthorizeRequestTests.swift in Sources */,
 				84B2A8AF25F3DA6B00EBA899 /* DocumentsTANRequestTests.swift in Sources */,
 				8418E06525F796870054A042 /* Result+Ext.swift in Sources */,
+				84B1AABB275E73D300632655 /* IdentificationCoordinatorMock.swift in Sources */,
 				849B438A25F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift in Sources */,
 				84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */,
 				8418E06A25F7A1790054A042 /* SessionInfoProviderTests.swift in Sources */,
 				844460242755546200EB7972 /* FourthlineIdentCoordinatorMock.swift in Sources */,
+				841F5C6D2762363700D68175 /* BaseTestCase.swift in Sources */,
 				844460262755581200EB7972 /* VerificationServiceMock.swift in Sources */,
 				84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
