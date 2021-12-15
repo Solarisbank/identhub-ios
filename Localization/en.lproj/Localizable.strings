@@ -10,7 +10,7 @@
 "common_continue_button" = "Continue";
 "common_back" = "Back";
 "common_powered_by_solarisbank" = "Powered by Solarisbank";
-"common_verifying" = "Veryfing...";
+"common_verifying" = "Verifying...";
 "common_download_all_documents" = "Download all documents";
 "common_dismiss" = "Dismiss";
 "common_try_again" = "Try again";
@@ -50,7 +50,7 @@
 "iban_verification_joined_accounts_disclaimer" = "Please note, that joined accounts will not pass the identification requirements.";
 "iban_verification_iban" = "IBAN";
 "iban_verification_iban_input_place_holder" = "e.g. DE21 1234  3456 4567 5678 6789";
-"iban_verification_error_iban_format" = "IBAN format is not valid!";
+"iban_verification_error_iban_format" = "IBAN format is not valid";
 "iban_verification_initiate_payment_verification" = "Initiate Payment Verification";
 "iban_verification_failure_alert_title" = "IBAN verification failed";
 "iban_verification_error_invalid_iban" = "Unfortunately the IBAN you entered is invalid or not supported.";
@@ -69,7 +69,7 @@
 
 // Sign documents
 "sign_documents_application_confirm" = "Confirm your application";
-"sign_documents_application_description" = "To finalise the process, please read following documents and sign it with a TAN sent to your mobile phone number.";
+"sign_documents_application_description" = "To finalise the process, please read the following documents and sign it with a TAN sent to your mobile phone number.";
 "sign_documents_application_send_code" = "Send code to sign";
 "sign_documents_transaction_info_part_one" = "Your transaction ID is ";
 "sign_documents_transaction_info_part_two" = "\nMake sure it is the same in SMS you just received.";
@@ -80,7 +80,7 @@
 
 // Finish Identification
 "finish_ident_successful_title" = "Identification successful!";
-"finish_ident_successful_description" = "You have completed the identification process! \nDownload documents and save in secure place, for future reference.";
+"finish_ident_successful_description" = "You have completed the identification process! \nDownload documents and save in secure place for future reference.";
 "finish_ident_successful_action" = "Finish";
 
 // Initial
@@ -151,7 +151,7 @@
 
 // Camera
 "camera_permission_error_title" = "Camera permission denied";
-"camera_permission_error_message" = "Scanner can't be started without camera permission, please allow it";
+"camera_permission_error_message" = "Scanner can't be started without camera permission; please allow it";
 "camera_error_message" = "ERROR: In order to use vision scanners you need to grant camera permission.";
 "camera_permission_not_granted" = "Camera permission required";
 
@@ -213,7 +213,7 @@
 "upload_data_preparation" = "Prepare upload data...";
 
 // Zipper
-"zipper_error_kyc_invalid" = "KYC object is not valid, because of:";
+"zipper_error_kyc_invalid" = "KYC object is not valid because of:";
 "zipper_error_zip_foundation_not_imported" = "ZIPFoundation framework in not imported into project";
 "zipper_error_zip_exceed_max_size" = "ZIP file exceeding the maximum file size, please check the API documentation";
 "zipper_error_cannot_create_zip" = "Cannot create the Zip";
@@ -228,7 +228,7 @@
 
 // API Errors
 "api_error_malformed_json" = "Indicates that string received in the response couldn't been parsed.";
-"api_error_client_error" = "Infidicates the error on the client's side.";
+"api_error_client_error" = "Indicates the error on the client's side.";
 "api_error_authorization_failed" = "Indicates that authorization failed.";
 "api_error_unauthorized" = "Action has not been authorized.";
 "api_error_data_mismatch" = "Data mismatch.";

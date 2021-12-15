@@ -7,6 +7,7 @@
   * [CocoaPods](#cocoapods)
   * [Carthage](#carthage)
 - [Example usage](#example-usage)
+- [Identification callbacks](#identification-callbacks)
 - [Sample app](#sample-app)
 - [Troubleshooting](#troubleshooting)
   * [Pod repo add error](#pod-repo-add-error)
@@ -33,6 +34,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 0.6.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 0.7.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 0.7.1 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
+| 1.0.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 
 
 ## Intergration
@@ -135,12 +137,11 @@ extension ViewController: IdentHubSDKManagerDelegate {
     }
 
     func didFailureSession(_ failureReason: APIError) {
-
         DispatchQueue.main.async {
             // - display failure message -
         }
     }
-    
+
     func didFinishOnConfirm(_ identification: String) {
         DispatchQueue.main.async {
             // - display a message stating the identification is in review -
@@ -149,6 +150,129 @@ extension ViewController: IdentHubSDKManagerDelegate {
 }
 ```
 </details>
+
+## Identification callbacks
+
+Callback system implemented by using delegate pattern or closure.
+
+Delegate protocol methods:
+
+<details>
+  <summary>Output Delegate</summary>
+
+```swift
+/// Identification session results delegate
+public protocol IdentHubSDKManagerDelegate: AnyObject {
+
+    /// Session finished with successful result and returns identification string
+    /// - Parameter identification: string value of the user identification
+    func didFinishWithSuccess(_ identification: String)
+
+    /// Identification session finished or interrupted with error
+    /// - Parameter failureReason: session error object
+    func didFailureSession(_ failureReason: APIError)
+
+    /// Session finished with fourthline signing on confirm step and returns identification string
+    /// - Parameter identification: string value of the user identification
+    func didFinishOnConfirm(_ identification: String)
+}
+```
+</details>
+
+```bash
+func didFinishWithSuccess(_ identification: String)
+```
+Method notifies when identification session finished with success and returns identificaiton session identifier in parameter
+
+```bash
+func didFailureSession(_ failureReason: APIError)
+```
+Method notifies when identification session finished or interrupted with error. Error object in parameter.
+Type of errors:
+
+<details>
+  <summary>API Error Description</summary>
+
+```swift
+/// Common api error encountered throughout the app.
+///
+/// - malformedResponseJson:  indicates that string received in the response couldn't been parsed.
+/// - clientError: indicates the error on the client's side.
+/// - authorizationFailed: indicates that authorisation failed.
+/// - unauthorizedAction: action has not been authorised.
+/// - resourceNotFound: resource has not been found.
+/// - expectationMismatch: data mismatch's
+/// - incorrectIdentificationStatus: the identification status was not allowed to proceed with the action.
+/// - unprocessableEntity: data invalid or expired.
+/// - internalServerError: indicates the internal server error.
+/// - requestError: indicates build request error
+/// - locationError: indicates issue with fetching device location data
+/// - ibanVerfificationFailed: failed IBAN verification
+/// - paymentFailed: failed payment initiation
+/// - identificationDataInvalid: provided user data is not valid and should be creates one more time
+/// - fraudData: provided data defines as fraud
+/// - unknownError: indicates that api client encountered an error not listed above.
+public enum APIError: Error {
+    case malformedResponseJson
+    case clientError(error: ErrorDetail?)
+    case authorizationFailed
+    case unauthorizedAction
+    case resourceNotFound
+    case expectationMismatch
+    case incorrectIdentificationStatus(error: ErrorDetail?)
+    case unprocessableEntity
+    case internalServerError
+    case requestError
+    case locationAccessError
+    case locationError
+    case ibanVerfificationFailed
+    case paymentFailed
+    case identificationDataInvalid(error: ErrorDetail?)
+    case fraudData(error: ErrorDetail?)
+    case unknownError
+}
+```
+</details>
+
+```bash
+func didFinishOnConfirm(_ identification: String)
+```
+Method notifies when session finished with fourthline signing on confirm step and returns identification string
+Method is optional and used only for the Fourthline signing session method.
+
+*Callback by using closures.*
+Callback as closure passed as start method parameter
+
+```bash
+/// Method starts identification process (BankID) with updating status by closure callback
+/// - Parameter type: identification process session type: bankid, fourhline
+/// - Parameter completion: closure with result object in parameter, result has two cases: success with id or failure with error
+public func start(_ completion: CompletionHandler?)
+```
+
+CompletionHandler closure has enum input parameter with name: `IdentificationSessionResult`
+
+<details>
+  <summary>IdentificationSessionResult</summary>
+
+```swift
+/// Ident hub session result
+public enum IdentificationSessionResult {
+    /// success - successful result with identification string in parameter
+    /// - identification: identification user session identifier
+    case success(identification: String)
+
+    /// failure - result returns with error in parameter
+    /// - error: enum value of the error type, based on it app should update UI
+    case failure(APIError)
+
+    /// onConfirm - success result of the Fourthline signing flow with identification value string in parameter
+    /// - identification: identification user session identifier
+    case onConfirm(identification: String)
+}
+```
+</details>
+
 
 ## Sample app
 You can open the example app in XCode to try it out.
