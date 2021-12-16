@@ -242,23 +242,26 @@ private extension FourthlineIdentCoordinator {
         AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
             guard granted else {
                 DispatchQueue.main.async {
-                    self?.showCameraPermissionAlert()
+                    self?.showPermissionAlert(with: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage)
                     completionHandler(false)
                 }
                 return
             }
 
             DispatchQueue.main.async {
-                LocationManager.shared.requestLocationAuthorization {
-                    completionHandler(true)
+                LocationManager.shared.requestLocationAuthorization {[weak self] status, error in
+                    if let locationError = error as? APIError {
+                        self?.showPermissionAlert(with: Localizable.Location.Error.title, message: locationError.text())
+                    }
+                    completionHandler(status)
                 }
             }
         }
     }
+    
+    private func showPermissionAlert(with title: String, message: String) {
 
-    private func showCameraPermissionAlert() {
-
-        let alert = UIAlertController(title: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         let tryAgainAction = UIAlertAction(title: Localizable.Common.settings, style: .default, handler: { _ in
             if let url = URL(string: UIApplication.openSettingsURLString),

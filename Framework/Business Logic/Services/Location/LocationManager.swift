@@ -10,14 +10,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
     static let shared = LocationManager()
     private var locationManager: CLLocationManager?
-    private var completionHandler: (() -> Void)!
+    private var requestCompletionHandler: ((Bool, Error?) -> Void)!
     private var completionLocationHandler: ((CLLocation?, Error?) -> Void)!
     private var authStatus: CLAuthorizationStatus = .notDetermined
 
     // MARK: - Public methods -
 
-    func requestLocationAuthorization(completionHandler: @escaping(() -> Void)) {
-        self.completionHandler = completionHandler
+    func requestLocationAuthorization(completionHandler: @escaping((Bool, Error?) -> Void)) {
+        self.requestCompletionHandler = completionHandler
         if locationManager == nil {
             locationManager = CLLocationManager()
             locationManager?.delegate = self
@@ -40,15 +40,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         switch status {
         case .authorizedAlways,
              .authorizedWhenInUse:
-            completionHandler()
+            requestCompletionHandler(true, nil)
         case .denied,
              .restricted:
             if let completion = completionLocationHandler {
                 completion(nil, APIError.locationAccessError)
+            } else if let completion = requestCompletionHandler {
+                completion(false, APIError.locationAccessError)
             }
-
-            print("WARNING: Location permission might be mandatory for certain clients, please check with your team, especially when we do the zipping.")
-            print("INFO: We are using the cached location while the user is checking Selfie, Document, NFC scanner or while zipping.")
         case .notDetermined:
             locationManager?.requestWhenInUseAuthorization()
         @unknown default:
@@ -65,7 +64,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
+        guard let location = locations.first else {
+            completionLocationHandler(nil, APIError.locationAccessError)
+            return
+        }
 
         completionLocationHandler(location, nil)
     }

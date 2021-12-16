@@ -378,7 +378,13 @@ private extension RequestsViewModel {
     private func fetchLocationData() {
         startNextStep(initStep: .fetchLocation, dataStep: .location)
 
-        LocationManager.shared.requestLocationAuthorization {
+        LocationManager.shared.requestLocationAuthorization { [weak self] status, error in
+            guard status else {
+                if let locationErr = error as? APIError, let errorHandler = self?.onDisplayError {
+                    errorHandler(locationErr)
+                }
+                return
+            }
             LocationManager.shared.requestDeviceLocation { [weak self] location, error in
                 guard let `self` = self else { return }
                 guard let location = location else {
