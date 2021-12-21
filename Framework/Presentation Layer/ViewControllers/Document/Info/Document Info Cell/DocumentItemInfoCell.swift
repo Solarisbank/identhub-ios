@@ -29,7 +29,7 @@ class DocumentItemInfoCell: UITableViewCell {
         contentTitle.text = data.title
 
         configureContentField(with: data)
-        configureInformUI(data.content.isEmpty)
+        contentDidChanged(data.content)
     }
 }
 
@@ -118,36 +118,48 @@ extension DocumentItemInfoCell {
         self.endEditing(true)
     }
 
-    private func configureInformUI(_ isEmpty: Bool) {
-        infoLbl.text = obtainInfoText(isEmpty)
-        infoLbl.textColor = obtainInfoTextColor(isEmpty)
-        infoIcon.image = obtainInfoIcon(isEmpty)
+    private func configureInformUI(_ isDataValid: Bool) {
+        infoLbl.text = obtainInfoText(isDataValid)
+        infoLbl.textColor = obtainInfoTextColor(isDataValid)
+        infoIcon.image = obtainInfoIcon(isDataValid)
     }
 
-    private func obtainInfoIcon(_ isEmpty: Bool) -> UIImage? {
-        let iconName = isEmpty ? "document_info_warning_icon" : "document_info_icon"
+    private func obtainInfoIcon(_ isDataValid: Bool) -> UIImage? {
+        let iconName = isDataValid ? "document_info_icon" : "document_info_warning_icon"
 
         return UIImage(named: iconName, in: Bundle.current, compatibleWith: nil)
     }
 
-    private func obtainInfoText(_ isEmpty: Bool) -> String {
-        isEmpty ? Localizable.DocumentScanner.Information.enterData : Localizable.DocumentScanner.Information.confirmData
+    private func obtainInfoText(_ isDataValid: Bool) -> String {
+        isDataValid ? Localizable.DocumentScanner.Information.confirmData : Localizable.DocumentScanner.Information.enterData
     }
 
-    private func obtainInfoTextColor(_ isEmpty: Bool) -> UIColor {
-        isEmpty ? UIColor.sdkColor(.primaryAccentLighten) : UIColor.sdkColor(.secondaryAccentLighten)
+    private func obtainInfoTextColor(_ isDataValid: Bool) -> UIColor {
+        isDataValid ? UIColor.sdkColor(.secondaryAccentLighten) : UIColor.sdkColor(.primaryAccentLighten)
     }
 
     private func contentDidChanged(_ text: String?) {
 
-        if cellContent?.type == .number {
-            configureInformUI(text?.isEmpty ?? true)
-        } else {
-            if let _ = text?.dateFromString() {
-                configureInformUI(false)
-            } else {
-                configureInformUI(true)
+        guard let contentType = cellContent?.type else { return }
+        
+        var isValidData = false
+        
+        switch contentType {
+        case .number:
+            if let docNumber = text {
+                isValidData = !docNumber.isEmpty
+            }
+        case .issueDate,
+             .expireDate:
+            if let date = text?.dateFromString() {
+                if contentType == .expireDate {
+                    isValidData = date.isLaterThanOrEqualTo(Date())
+                } else {
+                    isValidData = true
+                }
             }
         }
+        
+        configureInformUI(isValidData)
     }
 }

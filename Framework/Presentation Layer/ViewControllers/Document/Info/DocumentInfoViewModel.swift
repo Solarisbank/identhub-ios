@@ -60,7 +60,7 @@ extension DocumentInfoViewModel: DocumentInfoDDMDelegate {
         case .number:
             infoContent[DocumentInfoType.number.rawValue] = content
         case .issueDate:
-            if let date = content.content.dateFromString(), date.isEarlierOrEqualTo(Date()) {
+            if let date = content.content.dateFromString() {
                 infoContent[DocumentInfoType.issueDate.rawValue] = content
 
                 if infoContent[DocumentInfoType.expireDate.rawValue].prefilledDate == nil {
@@ -70,7 +70,7 @@ extension DocumentInfoViewModel: DocumentInfoDDMDelegate {
                 infoContent[DocumentInfoType.issueDate.rawValue].content = ""
             }
         case .expireDate:
-            if let date = content.content.dateFromString(), date.isLaterThanOrEqualTo(Date()) {
+            if let date = content.content.dateFromString() {
                 infoContent[DocumentInfoType.expireDate.rawValue] = content
 
                 if infoContent[DocumentInfoType.issueDate.rawValue].prefilledDate == nil {
@@ -126,9 +126,27 @@ private extension DocumentInfoViewModel {
     }
 
     private func validateContent() {
-        let isValidContent = infoContent.filter { $0.content.isEmpty }
+        
+        let isNotValidContent = infoContent.filter {
+            switch $0.type {
+            case .number:
+                return $0.content.isEmpty
+            case .issueDate:
+                if let _ = $0.content.dateFromString() {
+                    return false
+                } else {
+                    return true
+                }
+            case .expireDate:
+                if let date = $0.content.dateFromString() {
+                    return !date.isLaterThanOrEqualTo(Date())
+                } else {
+                    return true
+                }
+            }
+        }
 
-        didUpdatedContent?(isValidContent.isEmpty)
+        didUpdatedContent?(isNotValidContent.isEmpty)
     }
 
     private func updateKYC() {
