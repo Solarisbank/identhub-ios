@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Describes entity capable of providing information about the session.
 protocol SessionInfoProvider: AnyObject {
@@ -128,6 +129,8 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     init(sessionToken: String) {
         self.sessionToken = sessionToken
         self.restoreValues()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(enteringBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
     // MARK: - Public methods -
@@ -195,5 +198,9 @@ private extension StorageSessionInfoProvider {
         if let verified = SessionStorage.obtainValue(for: StoredKeys.phoneVerified.rawValue) as? Bool {
             phoneVerified = verified
         }
+    }
+    
+    @objc private func enteringBackground() {
+        UserDefaults.standard.synchronize()
     }
 }
