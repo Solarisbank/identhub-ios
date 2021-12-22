@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.name    = "SolarisbankIdentHub"
-  spec.version = "1.1.0"
+  spec.version = "1.1.1"
   spec.summary = "iOS SDK for Solarisbank IdentHub."
 
   spec.description = <<-DESC
@@ -45,7 +45,7 @@ Pod::Spec.new do |spec|
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.dependency 'FourthlineSDK', '~> 2.8.0'
+  spec.dependency 'FourthlineSDK', '~> 2.8.1'
   spec.dependency 'ZIPFoundation', '0.9.11'
   spec.dependency 'lottie-ios', '~> 3.2.3'
   spec.dependency 'Kronos', '~> 4.2.1'
