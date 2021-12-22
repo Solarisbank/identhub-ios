@@ -15,6 +15,7 @@ if [[ $(git diff --stat) != '' ]]; then
 fi
 
 git checkout -b $RELEASE_VERSION
-git push "https://github.com/Solarisbank/identhub-android.git" main
+git push "https://github.com/Solarisbank/identhub-ios.git" main
 git checkout main
 git branch -D $RELEASE_VERSION
+git push "https://github.com/Solarisbank/identhub-ios.git" --tags
