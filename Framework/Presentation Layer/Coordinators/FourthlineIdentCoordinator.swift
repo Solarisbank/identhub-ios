@@ -200,6 +200,8 @@ private extension FourthlineIdentCoordinator {
         case .confirmed:
             completionHandler?(.onConfirm(identification: result.identification))
             close()
+        case .authorizationRequired:
+            nextStepHandler?(.bankIDQES)
         default:
             print("\(result.identificationStatus) not processed.")
         }

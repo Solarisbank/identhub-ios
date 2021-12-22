@@ -133,9 +133,8 @@ private extension BankIDCoordinator {
         case .bankIDFourthline:
             presentFourthlineFlow()
         case .bankQES,
-             .bankIDQES:
-            presentSignDocuments()
-        case .fourthlineQES:
+             .bankIDQES,
+             .fourthlineQES:
             presentConfirmApplication()
         case .fourthline,
             .fourthlineSigning:

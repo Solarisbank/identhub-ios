@@ -552,6 +552,10 @@ private extension RequestsViewModel {
         case .authorizationRequired:
             if status.identificationMethod == .fourthlineSigning {
                 self.fourthlineCoordinator?.perform(action: .nextStep(step: .fourthlineQES))
+            } else if status.identificationMethod == .bankID {
+                self.fourthlineCoordinator?.perform(action: .nextStep(step: .bankIDQES))
+            } else {
+                self.showResult(status)
             }
         case .confirmed:
             if status.identificationMethod == .fourthlineSigning {
