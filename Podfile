@@ -12,8 +12,7 @@ pod 'FourthlineSDK', '2.8.1'
 
 # Fourthline dependencies
 pod 'ZIPFoundation', '0.9.11'
-pod 'lottie-ios', '~> 3.2.3'
-pod 'Kronos', '~> 4.2.1'
+pod 'lottie-ios'
 
 # Comment the next line if you're not using BANK verification
 pod 'InputMask', '6.1.0'
@@ -31,8 +30,6 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
-      config.build_settings['ENABLE_BITCODE'] = 'YES'
-      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
     end
   end
 end

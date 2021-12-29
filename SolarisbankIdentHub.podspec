@@ -30,7 +30,7 @@ Pod::Spec.new do |spec|
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.ios.deployment_target = "12.0"
-  spec.swift_version         = "5.3"
+  spec.swift_version         = "5.5"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -47,9 +47,8 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'FourthlineSDK', '~> 2.8.1'
   spec.dependency 'ZIPFoundation', '0.9.11'
-  spec.dependency 'lottie-ios', '~> 3.2.3'
-  spec.dependency 'Kronos', '~> 4.2.1'
   spec.dependency 'InputMask', '~> 6.1.0'
+  spec.dependency 'lottie-ios'
 
   spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
