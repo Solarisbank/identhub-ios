@@ -134,7 +134,7 @@ final class RequestsViewModel: NSObject {
         if let coordinator = fourthlineCoordinator {
             coordinator.perform(action: .abort)
         } else {
-            identCoordinator?.perform(action: .quit)
+            identCoordinator?.perform(action: .abort)
         }
     }
 
@@ -156,6 +156,8 @@ final class RequestsViewModel: NSObject {
     func abortIdentProcess(_ reason: APIError) {
         if let coordinator = fourthlineCoordinator {
             coordinator.perform(action: .close(error: reason))
+        } else {
+            identCoordinator?.perform(action: .abort)
         }
     }
 

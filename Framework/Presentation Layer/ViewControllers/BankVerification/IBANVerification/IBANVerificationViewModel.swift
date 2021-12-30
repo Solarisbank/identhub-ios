@@ -106,9 +106,9 @@ private extension IBANVerificationViewModel {
         }
     }
 
-    private func processedFailure(with error: APIError) {
+    private func processedFailure(with error: ResponseError) {
 
-        switch error {
+        switch error.apiError {
         case .clientError(let detail),
              .incorrectIdentificationStatus(let detail):
             retriesCount += 1
@@ -121,7 +121,7 @@ private extension IBANVerificationViewModel {
                 didTriggerQuit()
             }
         default:
-            completionHandler(.failure(error))
+            completionHandler(.failure(error.apiError))
         }
     }
 }
@@ -133,6 +133,6 @@ protocol IBANVerificationViewModelDelegate: AnyObject {
 
     /// Called if IBAN verification failed
     /// - Parameter error: failed reason
-    /// - Parameter allowRetry: inform if user can try another IBAN or has to start with alternate identification method
-    func verificationIBANFailed(_ error: APIError)
+    /// - Parameter code: string value of the response error code
+    func verificationIBANFailed(_ error: ResponseError)
 }

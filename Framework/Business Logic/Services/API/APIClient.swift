@@ -10,12 +10,12 @@ protocol APIClient: AnyObject {
     func execute<DataType: Decodable>(
         request: Request,
         answerType: DataType.Type,
-        completion: @escaping (Result<DataType, APIError>) -> Void
+        completion: @escaping (Result<DataType, ResponseError>) -> Void
     )
 
     func download(
         request: Request,
-        completion: @escaping (Result<URL?, APIError>) -> Void
+        completion: @escaping (Result<URL?, ResponseError>) -> Void
     )
 }
 
@@ -36,14 +36,14 @@ final class DefaultAPIClient: APIClient {
     func execute<DataType: Decodable>(
         request: Request,
         answerType: DataType.Type,
-        completion: @escaping (Result<DataType, APIError>) -> Void
+        completion: @escaping (Result<DataType, ResponseError>) -> Void
     ) {
         do {
             let urlRequest = try request.asURLRequest()
 
             let task = defaultUrlSession.dataTask(with: urlRequest) { [weak self] data, urlResponse, error in
                 if error != nil {
-                    completion(.failure(.unknownError))
+                    completion(.failure(ResponseError(.unknownError, urlResponse as? HTTPURLResponse)))
                 }
 
                 if let self = self,
@@ -54,7 +54,7 @@ final class DefaultAPIClient: APIClient {
             }
             task.resume()
         } catch {
-            completion(.failure(.requestError))
+            completion(.failure(ResponseError(.unknownError)))
         }
     }
 
@@ -65,26 +65,26 @@ final class DefaultAPIClient: APIClient {
     ///   - completion: the completion handler with the response.
     func download(
         request: Request,
-        completion: @escaping (Result<URL?, APIError>) -> Void
+        completion: @escaping (Result<URL?, ResponseError>) -> Void
     ) {
         do {
             let urlRequest = try request.asURLRequest()
 
             let task = defaultUrlSession.downloadTask(with: urlRequest) { location, response, error in
                 if error != nil {
-                    completion(.failure(.unknownError))
+                    completion(.failure(ResponseError(.unknownError, response as? HTTPURLResponse)))
                 }
                 completion(.success(location))
             }
             task.resume()
         } catch {
-            completion(.failure(.requestError))
+            completion(.failure(ResponseError(.unknownError)))
         }
     }
 
     // MARK: Private methods
 
-    private func mapResponse<DataType: Decodable>(response: HTTPURLResponse, data: Data) -> Result<DataType, APIError> {
+    private func mapResponse<DataType: Decodable>(response: HTTPURLResponse, data: Data) -> Result<DataType, ResponseError> {
         let decoder = JSONDecoder()
 
         switch response.statusCode {
@@ -96,34 +96,46 @@ final class DefaultAPIClient: APIClient {
                 return .success(decodedData)
             } catch let error {
                 print("Error with encoding data: \(error.localizedDescription)")
-                return .failure(.malformedResponseJson)
+                let responseError = ResponseError(.malformedResponseJson, response)
+                return .failure(responseError)
             }
         case 400:
-            let error = obtainErrorData(data: data)
-            return .failure(.clientError(error: error))
+            let errorDetail = obtainErrorData(data: data)
+            let responseError = ResponseError(.clientError(error: errorDetail), response)
+            return .failure(responseError)
         case 401:
-            return .failure(.authorizationFailed)
+            let responseError = ResponseError(.authorizationFailed, response)
+            return .failure(responseError)
         case 403:
-            return .failure(.unauthorizedAction)
+            let responseError = ResponseError(.unauthorizedAction, response)
+            return .failure(responseError)
         case 404:
-            return .failure(.resourceNotFound)
+            let responseError = ResponseError(.resourceNotFound, response)
+            return .failure(responseError)
         case 409:
-            return .failure(.expectationMismatch)
+            let responseError = ResponseError(.expectationMismatch, response)
+            return .failure(responseError)
         case 412:
-            let error = obtainErrorData(data: data)
-            return .failure(.incorrectIdentificationStatus(error: error))
+            let errorDetail = obtainErrorData(data: data)
+            let responseError = ResponseError(.incorrectIdentificationStatus(error: errorDetail), response)
+            return .failure(responseError)
         case 422:
-            return .failure(.unprocessableEntity)
+            let responseError = ResponseError(.unprocessableEntity, response)
+            return .failure(responseError)
         case 500:
-            return .failure(.internalServerError)
+            let responseError = ResponseError(.internalServerError, response)
+            return .failure(responseError)
         case 1001...3999:
-            let error = obtainErrorData(data: data)
-            return .failure(.identificationDataInvalid(error: error))
+            let errorDetail = obtainErrorData(data: data)
+            let responseError = ResponseError(.identificationDataInvalid(error: errorDetail), response)
+            return .failure(responseError)
         case 4000...5000:
-            let error = obtainErrorData(data: data)
-            return .failure(.fraudData(error: error))
+            let errorDetail = obtainErrorData(data: data)
+            let responseError = ResponseError(.fraudData(error: errorDetail), response)
+            return .failure(responseError)
         default:
-            return .failure(.unknownError)
+            let responseError = ResponseError(.unknownError, response)
+            return .failure(responseError)
         }
     }
 

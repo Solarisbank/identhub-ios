@@ -103,15 +103,22 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
         initiatePaymentVerificationButton.currentAppearance = valid ? .verifying : .primary
     }
 
-    func verificationIBANFailed(_ error: APIError) {
-        switch error {
+    func verificationIBANFailed(_ error: ResponseError) {
+        var errorDetail: ErrorDetail?
+        var message = ""
+        
+        switch error.apiError {
         case .clientError(let detail):
-            errorLabel.text = Localizable.BankVerification.IBANVerification.notValidIBAN
-            showVerificationError(errorLabel.text, error: detail)
+            message = Localizable.BankVerification.IBANVerification.notValidIBAN
+            errorDetail = detail
         default:
-            errorLabel.text = error.text()
-            showVerificationError(errorLabel.text)
+            message = error.apiError.text()
         }
+        
+#if ENV_DEBUG
+        message += "\n\(error.detailDescription)"
+#endif
+        showVerificationError(message, error: errorDetail)
 
         isIBANFormatValid(false)
     }
@@ -122,7 +129,6 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
 private extension IBANVerificationViewController {
 
     private func showVerificationError(_ message: String?, error: ErrorDetail? = nil) {
-
         let alert = UIAlertController(title: Localizable.BankVerification.IBANVerification.failureAlertTitle, message: message, preferredStyle: .alert)
 
         if let errorDetail = error, let nextStep = errorDetail.nextStep {
@@ -148,5 +154,7 @@ private extension IBANVerificationViewController {
         alert.addAction(cancelAction)
 
         present(alert, animated: true)
+        
+        errorLabel.text = message
     }
 }

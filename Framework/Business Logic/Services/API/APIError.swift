@@ -43,6 +43,31 @@ public enum APIError: Error {
     case unknownError
 }
 
+/// Server enum
+struct ResponseError: Error {
+    let apiError: APIError
+    let response: HTTPURLResponse?
+    
+    init(_ error: APIError, _ response: HTTPURLResponse? = nil) {
+        self.apiError = error
+        self.response = response
+    }
+    
+    var statusCode: String {
+        guard let code = response?.statusCode else { return "" }
+        return "[\(String(describing: code))]"
+    }
+    
+    var failureReason: String {
+        guard let statusCode = response?.statusCode else { return "" }
+        return HTTPURLResponse.localizedString(forStatusCode: statusCode)
+    }
+    
+    var detailDescription: String {
+        return "Code: \(statusCode)\nReason: \(failureReason)"
+    }
+}
+
 /// Server error codes
 /// - mobileNotVerified: person mobile number doesn't not verified
 /// - unknown: error code is absent or not specified

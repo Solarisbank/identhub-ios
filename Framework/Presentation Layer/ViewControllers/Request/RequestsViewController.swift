@@ -80,7 +80,7 @@ private extension RequestsViewController {
             DispatchQueue.main.async {
                 if let zipError = error as? ZipperError {
                     self.zipFailed(with: zipError)
-                } else if let err = error as? APIError {
+                } else if let err = error as? ResponseError {
                     self.displayError(err)
                 }
             }
@@ -100,12 +100,12 @@ private extension RequestsViewController {
         self.descriptionLbl.text = viewModel.obtainScreenDescription()
     }
 
-    private func displayError(_ error: APIError) {
+    private func displayError(_ error: ResponseError) {
 
-        switch error {
+        switch error.apiError {
         case .locationError,
              .locationAccessError:
-            self.locationFailed(with: error)
+            self.locationFailed(with: error.apiError)
         case .identificationDataInvalid(_):
             identificationFailed(with: error)
         case .fraudData(let err):
@@ -144,8 +144,13 @@ private extension RequestsViewController {
         }
     }
 
-    private func identificationFailed(with error: APIError) {
-        let alert = UIAlertController(title: Localizable.Verification.processTitle, message: error.text(), preferredStyle: .alert)
+    private func identificationFailed(with error: ResponseError) {
+        var message = error.apiError.text()
+#if ENV_DEBUG
+        message += "\n\(error.detailDescription)"
+#endif
+        
+        let alert = UIAlertController(title: Localizable.Verification.processTitle, message: message, preferredStyle: .alert)
 
         let retryAction = UIAlertAction(title: Localizable.Common.tryAgain, style: .default) { [weak self] _ in
             self?.viewModel.didTriggerRetry(errorType: .invalidData)
@@ -161,15 +166,20 @@ private extension RequestsViewController {
         present(alert, animated: true)
     }
 
-    private func requestFailed(with error: APIError) {
-        presentAlert(with: Localizable.APIErrorDesc.requestError, message: error.text(), action: Localizable.Common.tryAgain, error: error) { [weak self] in
+    private func requestFailed(with error: ResponseError) {
+        var message = error.apiError.text()
+#if ENV_DEBUG
+        message += "\n\(error.detailDescription)"
+#endif
+        
+        presentAlert(with: Localizable.APIErrorDesc.requestError, message: message, action: Localizable.Common.tryAgain, error: error.apiError) { [weak self] in
             self?.viewModel.restartRequests()
         }
     }
 
     private func presentAlert(with title: String, message: String, action: String, error: APIError, callback: @escaping () -> Void) {
 
-        let alert = UIAlertController(title: title, message: error.text(), preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         let reactionAction = UIAlertAction(title: action, style: .default, handler: {_ in
             callback()

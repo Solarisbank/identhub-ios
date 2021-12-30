@@ -9,76 +9,76 @@ protocol VerificationService: AnyObject {
     
     /// Method defined what the identification method should execute
     /// - Parameter completionHandler: Response with enabled identification methods
-    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, APIError>) -> Void)
+    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void)
     
     /// Method obtains identification process info details
     /// - Parameter completionHandler: Response with identification details
-    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, APIError>) -> Void)
+    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void)
     
     /// Authorize mobile number and send sms with a TAN.
     /// - Parameter completionHandler: Response back if the verification was successful.
-    func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void)
+    func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void)
     
     /// Confirm if TAN complies with the mobile number.
     ///
     /// - Parameters:
     ///     - token: Code sent for the given phone number.
     ///     - completionHandler: Response back if the verification was successful.
-    func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void)
+    func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void)
     
     /// Verify if IBAN is correct.
     ///
     /// - Parameters:
     ///     - iban: IBAN provided by the user.
     ///     - completionHandler: Response back if the verification was successful.
-    func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void)
     
     /// Authorize signing the documents and send sms with a TAN.
     ///
     /// - Parameter completionHandler: Response back if the verification was successful.
-    func authorizeDocuments(completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    func authorizeDocuments(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void)
     
     /// Confirm the TAN while signing the documents.
     ///
     /// - Parameters:
     ///     - token: Code sent for the given phone number.
     ///     - completionHandler: Response back if the verification was successful.
-    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void)
     
     /// Get indentification.
     ///
     /// - Parameter completionHandler: Response back if the verification was successful.
-    func getIdentification(completionHandler: @escaping (Result<Identification, APIError>) -> Void)
+    func getIdentification(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void)
     
     /// Get Fourthline indentification data.
     ///
     /// - Parameter completionHandler: Response back if the fourthline detail.
-    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void)
+    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, ResponseError>) -> Void)
     
     /// Get document.
     ///
     /// - Parameters:
     ///     - documentId: Id of the document resource.
     ///     - completionHandler: Response back with the document or error.
-    func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, APIError>) -> Void)
+    func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, ResponseError>) -> Void)
     
     /// Method uploaded zip file with person kyc data
     /// - Parameters:
     ///   - fileURL: url of the file location
     ///   - completionHandler: Response back with uploaded document status
-    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, APIError>) -> Void)
+    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, ResponseError>) -> Void)
     
     /// Method fetched identified person data from the server
     /// - Parameter completion: Response back with required person data
-    func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void)
+    func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void)
     
     /// Method fetched IP address used by device published request
     /// - Parameter completion: Resopnse back with device ip-address data
-    func fetchIPAddress(completion: @escaping (Result<IPAddress, APIError>) -> Void)
+    func fetchIPAddress(completion: @escaping (Result<IPAddress, ResponseError>) -> Void)
     
     /// Method obtained status of the current Fourthline identification session status
     /// - Parameter completion: Response back with fourthline session status
-    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void)
+    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, ResponseError>) -> Void)
 }
 
 /// Service providing resources for verification.
@@ -98,7 +98,7 @@ final class VerificationServiceImplementation: VerificationService {
 
     // MARK: Protocol methods
 
-    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, APIError>) -> Void) {
+    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
 
         do {
             let request = try IdentificationMethodRequest(sessionToken: sessionInfoProvider.sessionToken)
@@ -107,15 +107,13 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionID {
-            completionHandler(.failure(APIError.requestError))
-            print("Fail with init mobile number authorization request. Session token is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, APIError>) -> Void) {
+    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void) {
 
         do {
             let request = try IdentificationInfoRequest(sessionToken: sessionInfoProvider.sessionToken)
@@ -124,15 +122,13 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionID {
-            completionHandler(.failure(APIError.requestError))
-            print("Fail with init mobile number authorization request. Session token is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void) {
+    func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
 
         do {
             let request = try MobileNumberAuthorizeRequest(sessionId: sessionInfoProvider.sessionToken)
@@ -141,15 +137,13 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionID {
-            completionHandler(.failure(APIError.requestError))
-            print("Fail with init mobile number authorization request. Session token is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void) {
+    func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
 
         do {
             let request = try MobileNumberTANRequest(sessionId: sessionInfoProvider.sessionToken, token: token)
@@ -157,18 +151,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionID {
-            completionHandler(.failure(APIError.requestError))
-            print("Error with init mobile number TAN request initialization, session id is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Error with init mobile number TAN request initialization, number TOKEN is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
 
         do {
             var request: Request
@@ -184,18 +175,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Error IBAN request init session with empty session token value")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyIBAN {
-            completionHandler(.failure(APIError.requestError))
-            print("Error IBAN request init session with empty iban value")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func authorizeDocuments(completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func authorizeDocuments(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
         do {
@@ -204,18 +192,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Error with init value of the documents authentication request, session token is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyIUID {
-            completionHandler(.failure(APIError.requestError))
-            print("Error with init value of the documents authentication request, the id of the current identification is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
         do {
@@ -224,21 +209,17 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Init documents TAN verifiaction request fails, session token is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyIUID {
-            completionHandler(.failure(APIError.requestError))
-            print("Init documents TAN verifiaction request fails, the id of the current identification is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Init documents TAN verifiaction request fails, token obtained to sign documents is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func getIdentification(completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func getIdentification(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
         do {
@@ -247,18 +228,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Init of the identification request fails, session token is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyIUID {
-            completionHandler(.failure(APIError.requestError))
-            print("Init of the identification request fails, the id of the current identification is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void) {
+    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, ResponseError>) -> Void) {
         do {
             let request = try FourthlineIdentificationRequest(sessionToken: sessionInfoProvider.sessionToken, method: sessionInfoProvider.identificationStep ?? .fourthline)
 
@@ -266,18 +244,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Init of the Fourthline identification request fails, session token is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyIUID {
-            completionHandler(.failure(APIError.requestError))
-            print("Init of the Fourthline identification request fails, the id of the current identification is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init Fourthline identification request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, APIError>) -> Void) {
+    func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, ResponseError>) -> Void) {
 
         do {
             let request = try DocumentDownloadRequest(sessionToken: sessionInfoProvider.sessionToken, documentUID: documentId)
@@ -285,18 +260,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Init document download request fails, the token of the current session is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptyDUID {
-            completionHandler(.failure(APIError.requestError))
-            print("Init document download request fails, the id of the current document is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected init mobile number auth request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, APIError>) -> Void) {
+    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, ResponseError>) -> Void) {
 
         do {
             let request = try UploadKYCRequest(sessionToken: sessionInfoProvider.sessionToken, sessionID: sessionInfoProvider.identificationUID ?? "", fileURL: fileURL)
@@ -305,18 +277,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
-            completionHandler(.failure(APIError.requestError))
-            print("Upload zip file request fails, the token of the current session is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch RequestError.emptySessionID {
-            completionHandler(.failure(APIError.requestError))
-            print("Upload zip file request fails, the ID of the current session is empty")
+            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
-            completionHandler(.failure(APIError.requestError))
-            print("Unexpected upload fourthline zip request: \(error)")
+            completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
-    func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void) {
+    func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void) {
         do {
             let request = try PersonDataRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
 
@@ -324,18 +293,15 @@ final class VerificationServiceImplementation: VerificationService {
                 completion(result)
             }
         } catch RequestError.emptySessionToken {
-            completion(.failure(APIError.requestError))
-            print("Fetch person data request fails, the token of the current session is empty")
+            completion(.failure(ResponseError(.requestError)))
         } catch RequestError.emptySessionID {
-            completion(.failure(APIError.requestError))
-            print("Fetch person data request fails, the ID of the person is empty")
+            completion(.failure(ResponseError(.requestError)))
         } catch {
-            completion(.failure(APIError.requestError))
-            print("Unexpected fetch person data request: \(error)")
+            completion(.failure(ResponseError(.requestError)))
         }
     }
 
-    func fetchIPAddress(completion: @escaping (Result<IPAddress, APIError>) -> Void) {
+    func fetchIPAddress(completion: @escaping (Result<IPAddress, ResponseError>) -> Void) {
 
         do {
             let request = try IPAddressRequest(sessionToken: sessionInfoProvider.sessionToken)
@@ -343,15 +309,13 @@ final class VerificationServiceImplementation: VerificationService {
                 completion(result)
             }
         } catch RequestError.emptySessionToken {
-            completion(.failure(APIError.requestError))
-            print("Fetch person data request fails, the token of the current session is empty")
+            completion(.failure(ResponseError(.requestError)))
         } catch {
-            completion(.failure(APIError.requestError))
-            print("Unexpected fetch person data request: \(error)")
+            completion(.failure(ResponseError(.requestError)))
         }
     }
 
-    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void) {
+    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, ResponseError>) -> Void) {
 
         do {
             let request = try FourthlineIdentificationStatusRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
@@ -360,14 +324,11 @@ final class VerificationServiceImplementation: VerificationService {
                 completion(result)
             }
         } catch RequestError.emptySessionToken {
-            completion(.failure(APIError.requestError))
-            print("Fetch person data request fails, the token of the current session is empty")
+            completion(.failure(ResponseError(.requestError)))
         } catch RequestError.emptySessionID {
-            completion(.failure(APIError.requestError))
-            print("Fetch person data request fails, the ID of the person is empty")
+            completion(.failure(ResponseError(.requestError)))
         } catch {
-            completion(.failure(APIError.requestError))
-            print("Unexpected fetch person data request: \(error)")
+            completion(.failure(ResponseError(.requestError)))
         }
     }
 }

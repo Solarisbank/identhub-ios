@@ -13,6 +13,7 @@ class IdentificationCoordinator: BaseCoordinator {
         case termsAndConditions = 2 // Privacy statement and Terms-Conditions screen
         case identification = 3 // Start identification process
         case quit = 4 // Quit from identification process
+        case abort = 5 // Close identification session with throwing error
     }
 
     // MARK: - Properties -
@@ -67,6 +68,9 @@ private extension IdentificationCoordinator {
             quit {[weak self] in
                 self?.close()
             }
+        case .abort:
+            completionHandler?(.failure(.authorizationFailed))
+            close()
         }
     }
 

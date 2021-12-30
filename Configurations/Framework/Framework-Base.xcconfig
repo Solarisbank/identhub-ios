@@ -13,7 +13,7 @@ _BUNDLE_NAME = IdentHubSDK
 _BUNDLE_IDENTIFIER = de.solarisbank.identhub.sdk.framework
 _BUNDLE_INFOPLIST_PATH = $(PROJECT_DIR)/Framework/Resources/Info.plist
 
-_BUNDLE_TESTABLE = YES
+_BUNDLE_TESTABLE = NO
 
 BITCODE_GENERATION_MODE = bitcode
 
@@ -21,5 +21,5 @@ ONLY_ACTIVE_ARCH = YES
 
 EXCLUDED_ARCHS[sdk=iphonesimulator*] = arm64
 
-_BUILD_VERSION = 1.0.0
+_BUILD_VERSION = 1.1.1
 _BUILD_NUMBER = 1

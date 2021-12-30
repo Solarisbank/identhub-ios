@@ -93,7 +93,7 @@ private extension PaymentVerificationViewModel {
                     print("Status not processed in SDK: \(response.status.rawValue)")
                 }
             case .failure(let error):
-                self.completionHandler(.failure(error))
+                self.completionHandler(.failure(error.apiError))
             }
         }
     }
