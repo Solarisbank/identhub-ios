@@ -1,5 +1,4 @@
 github "Fourthline-com/FourthlineSDK-iOS" "2.8.1"
-github "MobileNativeFoundation/Kronos" "4.2.1"
 github "RedMadRobot/input-mask-ios" "6.1.0"
 github "airbnb/lottie-ios" "3.2.3"
 github "weichsel/ZIPFoundation" "0.9.11"

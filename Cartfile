@@ -1,4 +1,3 @@
-github "MobileNativeFoundation/Kronos" == 4.2.1
 github "RedMadRobot/input-mask-ios" == 6.1.0
 
 # Fourthline SDK and dependencies
