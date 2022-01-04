@@ -12,7 +12,7 @@ class VerificationServiceMock: VerificationService {
     
     // MARK: - Protocol methods -
 
-    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, APIError>) -> Void) {
+    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
         let responseJSON = [
             "first_step": "fourthline/simplified",
             "fallback_step": nil,
@@ -24,7 +24,7 @@ class VerificationServiceMock: VerificationService {
         completionHandler(mapResponse(responseJSON: responseJSON))
     }
     
-    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, APIError>) -> Void) {
+    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void) {
         let responseJSON = [
             "status": "created",
             "callback_url": nil,
@@ -38,31 +38,31 @@ class VerificationServiceMock: VerificationService {
         completionHandler(mapResponse(responseJSON: responseJSON))
     }
     
-    func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void) {
+    func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
-    func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, APIError>) -> Void) {
+    func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
-    func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
-    func authorizeDocuments(completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func authorizeDocuments(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
-    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
-    func getIdentification(completionHandler: @escaping (Result<Identification, APIError>) -> Void) {
+    func getIdentification(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
-    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, APIError>) -> Void) {
+    func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, ResponseError>) -> Void) {
         let responseJSON = [
             "id": "test_fourthline_identification_id",
             "reference": "reference1",
@@ -83,11 +83,11 @@ class VerificationServiceMock: VerificationService {
         completionHandler(mapResponse(responseJSON: responseJSON))
     }
     
-    func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, APIError>) -> Void) {
+    func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
-    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, APIError>) -> Void) {
+    func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, ResponseError>) -> Void) {
         let responseJSON = [
             "id": "kycZIPID",
             "name": "KYC_zip_file_name.zip",
@@ -102,7 +102,7 @@ class VerificationServiceMock: VerificationService {
         completionHandler(mapResponse(responseJSON: responseJSON))
     }
     
-    func fetchPersonData(completion: @escaping (Result<PersonData, APIError>) -> Void) {
+    func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void) {
         let responseJSON = [
             "first_name": "Test_First_Name",
             "last_name": "Test_Last_Name",
@@ -154,7 +154,7 @@ class VerificationServiceMock: VerificationService {
         completion(self.mapResponse(responseJSON: responseJSON))
     }
     
-    func fetchIPAddress(completion: @escaping (Result<IPAddress, APIError>) -> Void) {
+    func fetchIPAddress(completion: @escaping (Result<IPAddress, ResponseError>) -> Void) {
         let responseJSON = [
             "ip": "0.0.0.1"
         ] as [String: String]
@@ -162,7 +162,7 @@ class VerificationServiceMock: VerificationService {
         completion(mapResponse(responseJSON: responseJSON))
     }
     
-    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, APIError>) -> Void) {
+    func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, ResponseError>) -> Void) {
         let responseJSON = [
             "id": "test_fourthline_identification_udid",
             "url": nil,
@@ -195,8 +195,8 @@ class VerificationServiceMock: VerificationService {
     
     // MARK: - Internal methods -
     
-    private func mapResponse<DataType: Decodable>(responseJSON: [String: Any?]) -> Result<DataType, APIError> {
-        guard let data = responseJSON.jsonData else { return .failure(.malformedResponseJson) }
+    private func mapResponse<DataType: Decodable>(responseJSON: [String: Any?]) -> Result<DataType, ResponseError> {
+        guard let data = responseJSON.jsonData else { return .failure(ResponseError(.malformedResponseJson)) }
         
         let decoder = JSONDecoder()
         
@@ -207,7 +207,7 @@ class VerificationServiceMock: VerificationService {
             return .success(decodedData)
         } catch let error {
             print("Error with encoding data: \(error.localizedDescription)")
-            return .failure(.malformedResponseJson)
+            return .failure(ResponseError(.malformedResponseJson))
         }
     }
 }

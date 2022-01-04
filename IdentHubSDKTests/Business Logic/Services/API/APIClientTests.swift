@@ -47,7 +47,7 @@ class APIClientTests: XCTestCase {
         let sut = APIClientMock()
         let request = RequestMOCK()
         let downloadURL = URL(string: "test_url")
-        var result: Result<URL?, APIError>?
+        var result: Result<URL?, ResponseError>?
 
         sut.downloadResult = .success(downloadURL)
         sut.download(request: request) { result = $0 }
@@ -61,12 +61,12 @@ class APIClientTests: XCTestCase {
     func testFailedDownload() {
         let sut = APIClientMock()
         let request = RequestMOCK()
-        var result: Result<URL?, APIError>?
+        var result: Result<URL?, ResponseError>?
 
-        sut.downloadResult = .failure(APIError.resourceNotFound)
+        sut.downloadResult = .failure(ResponseError(.resourceNotFound))
         sut.download(request: request) { result = $0 }
 
-        guard case .failure(.resourceNotFound) = result else {
+        guard case let .failure(responseError) = result, case .resourceNotFound = responseError.apiError else {
             XCTFail("Failed download request result should return error APIError.resourceNotFound")
             return
         }
@@ -80,15 +80,15 @@ class APIClientMock: APIClient {
     var executeCommandCalled = false
     var downloadCommandCalled = false
     var inputRequest: Request?
-    var downloadResult: Result<URL?, APIError>?
+    var downloadResult: Result<URL?, ResponseError>?
 
-    func execute<DataType>(request: Request, answerType: DataType.Type, completion: @escaping (Result<DataType, APIError>) -> Void) where DataType: Decodable {
+    func execute<DataType>(request: Request, answerType: DataType.Type, completion: @escaping (Result<DataType, ResponseError>) -> Void) where DataType: Decodable {
 
         executeCommandCalled = true
         inputRequest = request
     }
 
-    func download(request: Request, completion: @escaping (Result<URL?, APIError>) -> Void) {
+    func download(request: Request, completion: @escaping (Result<URL?, ResponseError>) -> Void) {
 
         downloadCommandCalled = true
         inputRequest = request

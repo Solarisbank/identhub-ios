@@ -65,6 +65,11 @@
                BlueprintName = "IdentHubSDKTests"
                ReferencedContainer = "container:IdentHubSDK.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BaseTestCase">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
