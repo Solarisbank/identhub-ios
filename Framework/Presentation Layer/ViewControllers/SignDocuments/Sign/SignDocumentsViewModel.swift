@@ -61,11 +61,11 @@ final internal class SignDocumentsViewModel: NSObject {
                     }
                 } else {
                     self.fail()
-                    self.completionHander(.failure(.authorizationFailed))
+                    self.completionHander(.failure)
                 }
-            case .failure(let error):
+            case .failure(_):
                 self.fail()
-                self.completionHander(.failure(error.apiError))
+                self.completionHander(.failure)
             }
         }
     }
@@ -98,12 +98,12 @@ final internal class SignDocumentsViewModel: NSObject {
                         self.flowCoordinator.perform(action: .close)
                     default:
                         self.fail()
-                        self.completionHander(.failure(.authorizationFailed))
+                        self.completionHander(.failure)
                     }
                 }
-            case .failure(let error):
+            case .failure(_):
                 self.fail()
-                self.completionHander(.failure(error.apiError))
+                self.completionHander(.failure)
             }
         }
     }

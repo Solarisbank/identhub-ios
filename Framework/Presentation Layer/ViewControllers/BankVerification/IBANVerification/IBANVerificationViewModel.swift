@@ -37,7 +37,7 @@ final internal class IBANVerificationViewModel: NSObject {
         let isIBANValid = validateIBAN(iban)
         delegate?.isIBANFormatValid(isIBANValid)
         guard isIBANValid,
-              let iban = iban else { completionHandler(.failure(APIError.requestError)); return }
+              let iban = iban else { completionHandler(.failure); return }
         verifyIBAN(iban)
     }
 
@@ -57,7 +57,7 @@ final internal class IBANVerificationViewModel: NSObject {
     /// Present identification session quit popup
     func didTriggerQuit() {
         DispatchQueue.main.async {[weak self] in
-            self?.completionHandler(.failure(.ibanVerfificationFailed))
+            self?.completionHandler(.failure)
             self?.flowCoordinator.perform(action: .close)
         }
     }
@@ -127,7 +127,7 @@ private extension IBANVerificationViewModel {
                 didTriggerQuit()
             }
         default:
-            completionHandler(.failure(error.apiError))
+            completionHandler(.failure)
         }
     }
 }

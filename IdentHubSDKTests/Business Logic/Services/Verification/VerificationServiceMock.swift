@@ -7,21 +7,35 @@ import UIKit
 import XCTest
 @testable import IdentHubSDK
 
+enum TestIdentMethod {
+    case fourthlineSimplified
+    case fourthlineSigning
+    case bank
+    case bankID
+}
+
 /// Mock class of Verificaiton service.
 class VerificationServiceMock: VerificationService {
+    
+    // MARK: - Public properties -
+    var testMethod: TestIdentMethod?
     
     // MARK: - Protocol methods -
 
     func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
-        let responseJSON = [
-            "first_step": "fourthline/simplified",
-            "fallback_step": nil,
-            "allowed_retries": 5,
-            "fourthline_provider": "TestProvider",
-            "partner_settings": nil
-        ] as [String: Any?]
-        
-        completionHandler(mapResponse(responseJSON: responseJSON))
+        completionHandler(mapResponse(responseJSON: buildIdentMethodResponse()))
+    }
+    
+    func defineBankIdentMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
+        completionHandler(mapResponse(responseJSON: buildIdentMethodResponse()))
+    }
+    
+    func defineBankIDIdentMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
+        completionHandler(mapResponse(responseJSON: buildIdentMethodResponse()))
+    }
+    
+    func defineFourthlineSigningIdentMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
+        completionHandler(mapResponse(responseJSON: buildIdentMethodResponse()))
     }
     
     func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void) {
@@ -31,7 +45,7 @@ class VerificationServiceMock: VerificationService {
             "language": nil,
             "terms_and_conditions_pre_accepted": true,
             "style": nil,
-            "fourthline_provider": "TestProvider",
+            "fourthline_provider": obtainFourthlineProvider(),
             "verified_mobile_number": false
         ] as [String: Any?]
         
@@ -64,7 +78,7 @@ class VerificationServiceMock: VerificationService {
     
     func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, ResponseError>) -> Void) {
         let responseJSON = [
-            "id": "test_fourthline_identification_id",
+            "id": obtainTestMethodID(),
             "reference": "reference1",
             "url": nil,
             "status": "pending",
@@ -208,6 +222,78 @@ class VerificationServiceMock: VerificationService {
         } catch let error {
             print("Error with encoding data: \(error.localizedDescription)")
             return .failure(ResponseError(.malformedResponseJson))
+        }
+    }
+}
+
+extension VerificationServiceMock {
+
+    func buildIdentMethodResponse() -> [String: Any?] {
+        guard let method = testMethod else { return [:] }
+        
+        switch method {
+        case .fourthlineSimplified:
+            return [
+                "first_step": "fourthline/simplified",
+                "fallback_step": nil,
+                "allowed_retries": 5,
+                "fourthline_provider": obtainFourthlineProvider(),
+                "partner_settings": nil
+            ]
+        case .fourthlineSigning:
+            return [
+                "first_step": "fourthline_signing",
+                "fallback_step": nil,
+                "allowed_retries": 5,
+                "fourthline_provider": obtainFourthlineProvider(),
+                "partner_settings": nil
+            ]
+        case .bank:
+            return [
+                "first_step": "bank/iban",
+                "fallback_step": "fourthline/simplified",
+                "allowed_retries": 5,
+                "fourthline_provider": obtainFourthlineProvider(),
+                "partner_settings": nil
+            ]
+        case .bankID:
+            return [
+                "first_step": "bank_id/iban",
+                "fallback_step": nil,
+                "allowed_retries": 5,
+                "fourthline_provider": "",
+                "partner_settings": nil
+            ]
+        }
+    }
+    
+    func obtainTestMethodID() -> String {
+        guard let method = testMethod else { return "" }
+        
+        switch method {
+        case .fourthlineSimplified:
+            return "test_fourthline_identification_id"
+        case .fourthlineSigning:
+            return "test_fourthline_signing_identification_id"
+        case .bank:
+            return "test_bank_identification_id"
+        case .bankID:
+            return "test_bank_id_identification_id"
+        }
+    }
+    
+    func obtainFourthlineProvider() -> String? {
+        guard let method = testMethod else { return "" }
+        
+        switch method {
+        case .fourthlineSimplified:
+            return "FourthlineSimplifiedProvider"
+        case .fourthlineSigning:
+            return "FourthlineSigningProvider"
+        case .bank:
+            return "BANKProvider"
+        case .bankID:
+            return nil
         }
     }
 }

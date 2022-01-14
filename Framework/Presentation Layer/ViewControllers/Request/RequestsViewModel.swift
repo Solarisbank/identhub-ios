@@ -272,7 +272,7 @@ private extension RequestsViewModel {
                 self.sessionStorage.fallbackIdentificationStep = response.fallbackStep
                 self.sessionStorage.retries = response.retries
 
-                if let provider = response.fourthlineProvider {
+                if let provider = response.fourthlineProvider, provider.isEmpty == false {
                     KYCContainer.shared.update(provider: provider)
                 }
 

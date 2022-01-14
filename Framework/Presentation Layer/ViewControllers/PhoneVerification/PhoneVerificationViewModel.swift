@@ -53,11 +53,11 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
                     }
                 } else {
                     self.fail()
-                    self.completionHandler(.failure(APIError.authorizationFailed))
+                    self.completionHandler(.failure)
                 }
-            case .failure(let error):
+            case .failure(_):
                 self.fail()
-                self.completionHandler(.failure(error.apiError))
+                self.completionHandler(.failure)
             }
         }
     }
@@ -77,8 +77,8 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
                         self.delegate?.didGetPhoneNumber(response.number)
                     }
                 }
-            case .failure(let error):
-                self.completionHandler(.failure(error.apiError))
+            case .failure(_):
+                self.completionHandler(.failure)
             }
         }
         delegate?.willGetNewCode()

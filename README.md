@@ -36,7 +36,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 0.7.1 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 1.0.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
 | 1.1.1 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 1.1.2 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
+| 1.1.2 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
 
 
 ## Intergration
@@ -136,9 +136,9 @@ extension ViewController: IdentHubSDKManagerDelegate {
         }
     }
 
-    func didFailureSession(_ failureReason: APIError) {
+    func didFailureSession() {
         DispatchQueue.main.async {
-            // - display failure message -
+            // - ask your backend (receives the webhooks), if app able to retry or not -
         }
     }
 
@@ -168,9 +168,8 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
     /// - Parameter identification: string value of the user identification
     func didFinishWithSuccess(_ identification: String)
 
-    /// Identification session finished or interrupted with error
-    /// - Parameter failureReason: session error object
-    func didFailureSession(_ failureReason: APIError)
+    /// Identification session failed
+    func didFailureSession()
 
     /// Session finished with fourthline signing on confirm step and returns identification string
     /// - Parameter identification: string value of the user identification
@@ -185,54 +184,11 @@ func didFinishWithSuccess(_ identification: String)
 Method notifies when identification session finished with success and returns identificaiton session identifier in parameter
 
 ```bash
-func didFailureSession(_ failureReason: APIError)
+func didFailureSession()
 ```
-Method notifies when identification session finished or interrupted with error. Error object in parameter.
-Type of errors:
-
-<details>
-  <summary>API Error Description</summary>
-
-```swift
-/// Common api error encountered throughout the app.
-///
-/// - malformedResponseJson:  indicates that string received in the response couldn't been parsed.
-/// - clientError: indicates the error on the client's side.
-/// - authorizationFailed: indicates that authorisation failed.
-/// - unauthorizedAction: action has not been authorised.
-/// - resourceNotFound: resource has not been found.
-/// - expectationMismatch: data mismatch's
-/// - incorrectIdentificationStatus: the identification status was not allowed to proceed with the action.
-/// - unprocessableEntity: data invalid or expired.
-/// - internalServerError: indicates the internal server error.
-/// - requestError: indicates build request error
-/// - locationError: indicates issue with fetching device location data
-/// - ibanVerfificationFailed: failed IBAN verification
-/// - paymentFailed: failed payment initiation
-/// - identificationDataInvalid: provided user data is not valid and should be creates one more time
-/// - fraudData: provided data defines as fraud
-/// - unknownError: indicates that api client encountered an error not listed above.
-public enum APIError: Error {
-    case malformedResponseJson
-    case clientError(error: ErrorDetail?)
-    case authorizationFailed
-    case unauthorizedAction
-    case resourceNotFound
-    case expectationMismatch
-    case incorrectIdentificationStatus(error: ErrorDetail?)
-    case unprocessableEntity
-    case internalServerError
-    case requestError
-    case locationAccessError
-    case locationError
-    case ibanVerfificationFailed
-    case paymentFailed
-    case identificationDataInvalid(error: ErrorDetail?)
-    case fraudData(error: ErrorDetail?)
-    case unknownError
-}
-```
-</details>
+Method notifies when identification session finished or interrupted with error.
+Ask your backend (receives the webhooks), if app able to retry or not.
+App may retry as long as do not get a failed / rejected status on the session.
 
 ```bash
 func didFinishOnConfirm(_ identification: String)
@@ -262,9 +218,8 @@ public enum IdentificationSessionResult {
     /// - identification: identification user session identifier
     case success(identification: String)
 
-    /// failure - result returns with error in parameter
-    /// - error: enum value of the error type, based on it app should update UI
-    case failure(APIError)
+    /// failure - case used if identification process failed
+    case failure
 
     /// onConfirm - success result of the Fourthline signing flow with identification value string in parameter
     /// - identification: identification user session identifier

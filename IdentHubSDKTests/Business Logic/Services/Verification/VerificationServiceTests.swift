@@ -148,6 +148,92 @@ class VerificationServiceTests: XCTestCase {
         XCTAssertEqual(apiClient.inputRequest?.method, .get, "Get document request HTTP method is not correct")
         XCTAssertEqual(apiClient.inputRequest?.path, request, "Get document request path is not correct")
     }
+    
+    /// Method tested fetching Fourthline simplified identification detail information request and modelf
+    /// Method used mocked verification service object.
+    /// Method tests:
+    /// - First step of ident flow
+    /// - Fourthline provider string
+    func testFourthlineMethodDetail() {
+        let sut = makeMockSUT()
+        
+        sut.testMethod = .fourthlineSimplified
+        
+        sut.defineIdentificationMethod { response in
+            switch response {
+            case .success(let method):
+                XCTAssertEqual(method.firstStep, .fourthline, "First step in Fourthline simplified ident process is not correct.")
+                XCTAssertEqual(method.fourthlineProvider, "FourthlineSimplifiedProvider", "Test fourthline provider is not correct")
+            case .failure(let error):
+                XCTFail("Mock response object is not valid for model IdentificationMethod. Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    /// Method tested fetching Fourthline signing identification detail information request and modelf
+    /// Method used mocked verification service object.
+    /// Method tests:
+    /// - First step of ident flow
+    /// - Fourthline provider string
+    func testFourthlineSigningMethodDetail() {
+        let sut = makeMockSUT()
+        
+        sut.testMethod = .fourthlineSigning
+        
+        sut.defineIdentificationMethod { response in
+            switch response {
+            case .success(let method):
+                XCTAssertEqual(method.firstStep, .fourthlineSigning, "First step in Fourthline simplified ident process is not correct.")
+                XCTAssertEqual(method.fourthlineProvider, "FourthlineSigningProvider", "Test fourthline provider is not correct")
+            case .failure(let error):
+                XCTFail("Mock response object is not valid for model IdentificationMethod. Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    /// Method tested fetching Bank identification detail information request and modelf
+    /// Method used mocked verification service object.
+    /// Method tests:
+    /// - First step of ident flow
+    /// - IBAN fail retries count
+    /// - Fallback step for Bank flow
+    func testBankMethodDetail() {
+        let sut = makeMockSUT()
+        
+        sut.testMethod = .bank
+        
+        sut.defineIdentificationMethod { response in
+            switch response {
+            case .success(let method):
+                XCTAssertEqual(method.firstStep, .bankIBAN, "First step in Fourthline simplified ident process is not correct.")
+                XCTAssertEqual(method.retries, 5, "Test IBAN retries count is not correct.")
+                XCTAssertEqual(method.fallbackStep, .fourthline, "Test IBAN fallback flow is not correct.")
+            case .failure(let error):
+                XCTFail("Mock response object is not valid for model IdentificationMethod. Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    /// Method tested fetching BankID identification detail information request and modelf
+    /// Method used mocked verification service object.
+    /// Method tests:
+    /// - First step of ident flow
+    /// - IBAN fail retries count
+    func testBankIDMethodDetail() {
+        let sut = makeMockSUT()
+        
+        sut.testMethod = .bankID
+        
+        sut.defineIdentificationMethod { response in
+            switch response {
+            case .success(let method):
+                XCTAssertEqual(method.firstStep, .bankIDIBAN, "First step in Fourthline simplified ident process is not correct.")
+                XCTAssertEqual(method.retries, 5, "Test IBAN retries count is not correct.")
+            case .failure(let error):
+                XCTFail("Mock response object is not valid for model IdentificationMethod. Error: \(error.localizedDescription)")
+            }
+        }
+    }
 
     // MARK: - Internal methods -
 
@@ -162,6 +248,12 @@ class VerificationServiceTests: XCTestCase {
     /// - Returns: initialized verification service
     func makeSUT() -> VerificationService {
         return VerificationServiceImplementation(apiClient: apiClient, sessionInfoProvider: defaultStorage!)
+    }
+    
+    /// Method built mock verification service with mocked API client.
+    /// - Returns: initialized verification service
+    func makeMockSUT() -> VerificationServiceMock {
+        return VerificationServiceMock()
     }
 
     /// Method reset all tested service properties

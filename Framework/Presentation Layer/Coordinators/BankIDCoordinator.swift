@@ -140,7 +140,7 @@ private extension BankIDCoordinator {
             .fourthlineSigning:
             presentFourthlineFlow()
         case .abort:
-            completionHandler?(.failure(.unauthorizedAction))
+            completionHandler?(.failure)
             close()
         case .unspecified:
             print("Step is not supported or not specified yet")
@@ -244,7 +244,7 @@ private extension BankIDCoordinator {
             switch result {
             case .success( _ ):
                 self.presentSignDocuments()
-            case .failure( _ ):
+            case .failure:
                 self.completionHandler?(result)
             case .onConfirm( _ ):
                 print("Fourthline signing confirmed")

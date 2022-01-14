@@ -195,7 +195,7 @@ private extension FourthlineIdentCoordinator {
         case .identificationRequired:
             completionHandler?(.success(identification: result.identification))
         case .failed:
-            completionHandler?(.failure(.authorizationFailed))
+            completionHandler?(.failure)
             close()
         case .confirmed:
             completionHandler?(.onConfirm(identification: result.identification))
@@ -209,7 +209,7 @@ private extension FourthlineIdentCoordinator {
 
     private func interruptIdentProcess(with error: APIError) {
         DispatchQueue.main.async { [weak self] in
-            self?.completionHandler?(.failure(error))
+            self?.completionHandler?(.failure)
             self?.close()
         }
     }
