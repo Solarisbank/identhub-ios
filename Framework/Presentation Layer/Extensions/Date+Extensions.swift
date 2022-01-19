@@ -15,6 +15,7 @@ extension Date {
         let dateFormatter = DateFormatter()
 
         dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         return dateFormatter.string(from: self)
     }
@@ -26,6 +27,7 @@ extension Date {
 
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         return dateFormatter.string(from: self)
     }
