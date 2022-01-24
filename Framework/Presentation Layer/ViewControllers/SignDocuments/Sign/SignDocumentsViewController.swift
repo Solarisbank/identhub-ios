@@ -15,6 +15,7 @@ final internal class SignDocumentsViewController: UIViewController {
     @IBOutlet var requestCodeTimerLabel: UILabel!
     @IBOutlet var errorCodeLabel: UILabel!
     @IBOutlet var sendNewCodeBtn: UIButton!
+    @IBOutlet var transactionDetailView: UIView!
     @IBOutlet var transactionInfoLabel: UILabel!
     @IBOutlet var submitCodeBtn: ActionRoundedButton!
     @IBOutlet var quitBtn: UIButton!
@@ -182,6 +183,8 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
 
     func didSubmitNewCodeRequest(_ token: String) {
         state = .normal
+
+        transactionDetailView.isHidden = token.isEmpty
         transactionInfoLabel.attributedText = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(token) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)".withBoldText(token, withColorForBoldText: .sdkColor(.black100))
     }
 

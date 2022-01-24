@@ -23,6 +23,7 @@
                 <outlet property="sendNewCodeBtn" destination="au0-Ap-gZx" id="jDx-Ex-LC1"/>
                 <outlet property="stateView" destination="8gg-sS-8xE" id="pqZ-sw-U3Y"/>
                 <outlet property="submitCodeBtn" destination="DP5-sO-Ltc" id="5qL-17-oZ5"/>
+                <outlet property="transactionDetailView" destination="4dp-i3-Lg4" id="6jq-v6-ZhW"/>
                 <outlet property="transactionInfoLabel" destination="OIm-HB-u2b" id="jl9-wG-c9L"/>
                 <outlet property="view" destination="WXj-8X-1Uj" id="Wns-Vc-pK8"/>
             </connections>
@@ -213,13 +214,13 @@
     <resources>
         <image name="info" width="16" height="16"/>
         <namedColor name="background">
-            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base05">
-            <color red="0.96862745098039216" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96899998188018799" green="0.97299998998641968" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base100">
-            <color red="0.059000000357627869" green="0.097999997437000275" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base50">
             <color red="0.49411764705882355" green="0.52941176470588236" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

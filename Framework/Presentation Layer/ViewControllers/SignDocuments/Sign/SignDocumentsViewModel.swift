@@ -75,14 +75,13 @@ final internal class SignDocumentsViewModel: NSObject {
 
             switch response {
             case .success(let identification):
-                if let transactionToken = identification.referenceToken {
-                    DispatchQueue.main.async {
-                        self?.delegate?.didSubmitNewCodeRequest(transactionToken)
-                    }
+                DispatchQueue.main.async {
+                    self?.delegate?.didSubmitNewCodeRequest(identification.referenceToken ?? "")
                 }
-            case .failure(let error):
-                // TODO: - Discuss and implement solution with showing error message to the user -
-                print(error.localizedDescription)
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self?.delegate?.verificationFailed()
+                }
             }
         }
         
