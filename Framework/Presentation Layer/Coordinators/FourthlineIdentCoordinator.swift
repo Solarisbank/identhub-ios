@@ -241,10 +241,10 @@ private extension FourthlineIdentCoordinator {
 
     private func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
 
-        AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+        AVCaptureDevice.requestAccess(for: .video) { granted in
             guard granted else {
                 DispatchQueue.main.async {
-                    self?.showPermissionAlert(with: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage)
+                    self.showPermissionAlert(with: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage)
                     completionHandler(false)
                 }
                 return
@@ -272,7 +272,16 @@ private extension FourthlineIdentCoordinator {
             }
         })
 
-        let cancelAction = UIAlertAction(title: Localizable.Common.cancel, style: .cancel)
+        let cancelAction = UIAlertAction(title: Localizable.Common.cancel, style: .cancel) { _ in
+            switch self.identificationStep {
+            case .documentScanner(_),
+                 .selfie:
+                self.close()
+            default:
+                break
+            }
+            
+        }
         alert.addAction(tryAgainAction)
         alert.addAction(cancelAction)
 
