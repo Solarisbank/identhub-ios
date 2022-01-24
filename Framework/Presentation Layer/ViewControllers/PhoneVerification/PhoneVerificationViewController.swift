@@ -5,214 +5,188 @@
 
 import UIKit
 
-/// UIViewController which displays screen to verify phone number with TAN.
+/// View of phone verificaiton scree
 final internal class PhoneVerificationViewController: UIViewController {
 
+    // MARK: - Outlets -
+    @IBOutlet var mainContainer: UIView!
+    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var infoLabel: UILabel!
+    @IBOutlet var codeEntryView: CodeEntryView!
+    @IBOutlet var countDownTimeLabel: UILabel!
+    @IBOutlet var requestNewCodeBtn: UIButton!
+    @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var submitCodeBtn: ActionRoundedButton!
+    @IBOutlet var quitBtn: ActionRoundedButton!
+    @IBOutlet var quitBtnBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var errorMessageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var successView: SuccessView!
+    
+    // MARK: - Properties -
     var viewModel: PhoneVerificationViewModel!
-
+    
     private enum State {
         case normal
         case disabled
         case error
         case success
+        case requestCode
     }
 
     private var state: State = .normal {
         didSet {
-            updateUI()
+            updateScreenState()
         }
     }
 
-    private enum Constants {
-        enum FontSize {
-            static let medium: CGFloat = 14
-        }
+    /// Initialized with view model object
+    /// - Parameter viewModel: view model object
+    init(_ viewModel: PhoneVerificationViewModel) {
+        self.viewModel = viewModel
 
-        enum ConstraintsOffset {
-            static let extended: CGFloat = 40
-            static let normal: CGFloat = 16
-        }
+        super.init(nibName: String(describing: Self.self), bundle: Bundle(for: Self.self))
+        
+        self.viewModel.delegate = self
     }
 
-    private lazy var currentStepView: IdentificationProgressView = {
-        let view = IdentificationProgressView(currentStep: .phoneVerification)
-        return view
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-    private lazy var mainContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .sdkColor(.background)
-        return view
-    }()
-
-    private lazy var enterCodeHintLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = label.font.withSize(Constants.FontSize.medium)
-        label.text = Localizable.PhoneVerification.enterCode
-        label.textColor = UIColor.sdkColor(.base75)
-        return label
-    }()
-
-    private lazy var codeEntryView: CodeEntryView = {
-        let codeEntryView = CodeEntryView(delegate: self)
-        codeEntryView.backgroundColor = .sdkColor(.base05)
-        return codeEntryView
-    }()
-
-    private lazy var submitCodeButton: ActionRoundedButton = {
-        let button = ActionRoundedButton()
-        button.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
-        button.isEnabled = false
-        button.currentAppearance = .inactive
-        return button
-    }()
-
-    private lazy var successContainerView: SuccessView = {
-        let view = SuccessView()
-        view.setTitle(Localizable.PhoneVerification.Success.title)
-        view.setDescription(Localizable.PhoneVerification.Success.description)
-        view.setActionButtonTitle(Localizable.PhoneVerification.Success.action)
-        view.setAction { [weak self] in
-            self?.viewModel.beginBankIdentification()
-        }
-        return view
-    }()
-
-    private lazy var errorView: ErrorView = {
-        let view = ErrorView()
-        view.setTitle(Localizable.PhoneVerification.Error.title)
-        view.setDescription(Localizable.PhoneVerification.Error.description)
-        view.setPrimaryButtonTitle(Localizable.PhoneVerification.Error.action)
-        view.setPrimaryButtonAction {
-            self.viewModel.requestNewCode()
-            self.state = .normal
-        }
-        view.setQuitButtonAction {
-            self.viewModel.quit()
-        }
-        return view
-    }()
+    // MARK: - Life cycle methods -
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-    }
-
-    private func configureUI() {
-
-        view.addSubviews([
-            currentStepView,
-            mainContainerView
-        ])
-
-        currentStepView.addConstraints { [
-            $0.equal(.top),
-            $0.equal(.leading),
-            $0.equal(.trailing)
-        ]
-        }
-
-        mainContainerView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom),
-            $0.equal(.leading),
-            $0.equal(.trailing),
-            $0.equal(.bottom)
-        ]
-        }
-
-        mainContainerView.addSubviews([
-            enterCodeHintLabel,
-            codeEntryView,
-            submitCodeButton
-        ])
-
-        enterCodeHintLabel.addConstraints { [
-            $0.equal(.top, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
-
-        codeEntryView.addConstraints { [
-            $0.equalTo(enterCodeHintLabel, .top, .bottom, constant: 24),
-            $0.equal(.centerX)
-        ]
-        }
-
-        submitCodeButton.addConstraints { [
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.extended * 2)
-        ]
-        }
-
-        submitCodeButton.addTarget(self, action: #selector(submitCode), for: .touchUpInside)
-    }
-
-    @objc private func submitCode(_ sender: UIButton) {
-        if let code = codeEntryView.code, code.count == 6 {
-            viewModel.submitCode(codeEntryView.code)
-        }
-    }
-
-    @objc private func requestNewCode() {
+        registerForKeyboardNotifications()
         viewModel.requestNewCode()
     }
+    
+    // MARK: - Actions methods -
+    
+    @IBAction func didClickSendNewCode(_ sender: UIButton) {
+        viewModel.requestNewCode()
+    }
+    
+    @IBAction func didClickQuit(_ sender: UIButton) {
+        viewModel.quit()
+    }
+    
+    
+    @IBAction func didClickSubmitCode(_ sender: ActionRoundedButton) {
+        viewModel.submitCode(codeEntryView.code)
+    }
+}
 
-    private func setUpSuccessView() {
-        view.addSubview(successContainerView)
+// MARK: - Internal methods -
 
-        successContainerView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom),
-            $0.equal(.leading),
-            $0.equal(.trailing),
-            $0.equal(.bottom)
-        ]
+extension PhoneVerificationViewController {
+    private func configureUI() {
+        
+        currentStepView.setCurrentStep(.phoneVerification)
+        
+        infoLabel.text = Localizable.PhoneVerification.enterCode
+        countDownTimeLabel.text = Localizable.PhoneVerification.requestNewCodeTimer
+        errorLabel.text = Localizable.PhoneVerification.wrongTan
+        errorLabel.textColor = .sdkColor(.error)
+        
+        requestNewCodeBtn.setTitle(Localizable.PhoneVerification.requestNewCode, for: .normal)
+        requestNewCodeBtn.setTitleColor(.sdkColor(.secondaryAccent), for: .normal)
+        
+        submitCodeBtn.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
+        submitCodeBtn.tintColor = .sdkColor(.primaryAccent)
+        
+        quitBtn.setTitle(Localizable.Common.quit, for: .normal)
+        quitBtn.setTitleColor(.sdkColor(.primaryAccent), for: .normal)
+        
+        codeEntryView.delegate = self
+        
+        successView.setTitle(Localizable.PhoneVerification.Success.title)
+        successView.setDescription(Localizable.PhoneVerification.Success.description)
+        successView.setActionButtonTitle(Localizable.PhoneVerification.Success.action)
+        
+        successView.setAction { [weak self] in
+            self?.viewModel.beginBankIdentification()
+        }
+    }
+    
+    // MARK: - Kyeboard hide/show methods
+
+    func registerForKeyboardNotifications() {
+        // Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWasShown(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            quitBtnBottomConstraint.constant = keyboardSize.height
         }
     }
 
-    private func setUpErrorView() {
-        view.addSubview(errorView)
-
-        errorView.addConstraints { [
-            $0.equalTo(currentStepView, .top, .bottom),
-            $0.equal(.leading),
-            $0.equal(.trailing),
-            $0.equal(.bottom)
-        ]
-        }
+    @objc func keyboardWillBeHidden(_ notification: Notification) {
+        quitBtnBottomConstraint.constant = 30
     }
+    
+    // MARK: - Screen state -
 
-    private func updateUI() {
-        DispatchQueue.main.async {
-            switch self.state {
-            case .normal:
-                self.codeEntryView.state = .normal
-                self.codeEntryView.clearCodeEntries()
-                self.submitCodeButton.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
-                self.submitCodeButton.removeTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
-                self.submitCodeButton.addTarget(self, action: #selector(self.submitCode), for: .touchUpInside)
-            case .disabled:
-                self.codeEntryView.state = .disabled
-                self.submitCodeButton.currentAppearance = .verifying
-            case .error:
-                self.codeEntryView.state = .error
-                self.submitCodeButton.currentAppearance = .primary
-                self.submitCodeButton.setTitle(Localizable.PhoneVerification.requestNewCode, for: .normal)
-                self.submitCodeButton.removeTarget(self, action: #selector(self.submitCode), for: .touchUpInside)
-                self.submitCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
-            case .success:
-                self.mainContainerView.removeFromSuperview()
-                self.setUpSuccessView()
-            }
+    private func updateScreenState() {
+        
+        switch state {
+        case .normal:
+            countDownTimeLabel.isHidden = false
+            requestNewCodeBtn.isHidden = true
+            errorMessageHeightConstraint.constant = 0
+            submitCodeBtn.currentAppearance = .inactive
+            codeEntryView.state = .normal
+            codeEntryView.clearCodeEntries()
+        case .disabled:
+            requestNewCodeBtn.isEnabled = false
+            requestNewCodeBtn.alpha = 0.5
+            submitCodeBtn.currentAppearance = .verifying
+            codeEntryView.state = .disabled
+            countDownTimeLabel.isHidden = true
+        case .success:
+            mainContainer.removeFromSuperview()
+            successView.isHidden = false
+        case .error:
+            codeEntryView.state = .error
+            errorMessageHeightConstraint.constant = 40
+            errorLabel.isHidden = false
+            requestNewCodeBtn.isEnabled = true
+            requestNewCodeBtn.alpha = 1.0
+        case .requestCode:
+            countDownTimeLabel.isHidden = true
+            requestNewCodeBtn.isHidden = false
+            requestNewCodeBtn.alpha = 1.0
         }
     }
 }
 
-// MARK: PhoneVerificationViewModelDelegate methods
+// MARK: - Code entry delegate methods -
+
+extension PhoneVerificationViewController: CodeEntryViewDelegate {
+    
+    func didUpdateCode(_ digits: Int) {
+        let isValidCode = ( digits == 6 )
+        submitCodeBtn.isEnabled = isValidCode
+        submitCodeBtn.currentAppearance = isValidCode ? .primary : .inactive
+    }
+}
+
+// MARK: - View model delegate methods -
 
 extension PhoneVerificationViewController: PhoneVerificationViewModelDelegate {
+    
+    func didGetPhoneNumber(_ phoneNumber: String) {
+        infoLabel.attributedText = "\(Localizable.PhoneVerification.enterCode) \(phoneNumber)".withBoldText(phoneNumber, withColorForBoldText: .sdkColor(.base75))
+    }
+
+    func willGetNewCode() {
+        state = .normal
+    }
+    
     func verificationStarted() {
         state = .disabled
     }
@@ -224,22 +198,12 @@ extension PhoneVerificationViewController: PhoneVerificationViewModelDelegate {
     func verificationFailed() {
         state = .error
     }
-
-    func didGetPhoneNumber(_ phoneNumber: String) {
-        enterCodeHintLabel.attributedText = "\(Localizable.PhoneVerification.enterCode) \(phoneNumber)".withBoldText(phoneNumber, withColorForBoldText: .black)
+    
+    func didUpdateTimerLabel(_ seconds: String) {
+        countDownTimeLabel.attributedText = "\(Localizable.PhoneVerification.requestNewCodeTimer) 00:\(seconds)".withBoldText("00:\(seconds)")
     }
-
-    func willGetNewCode() {
-        state = .normal
-    }
-}
-
-// MARK: - Code entry view delegate methods -
-
-extension PhoneVerificationViewController: CodeEntryViewDelegate {
-
-    func didUpdateCode(_ digits: Int) {
-        submitCodeButton.isEnabled = ( digits == 6 )
-        submitCodeButton.currentAppearance = ( digits == 6 ) ? .primary : .inactive
+    
+    func didEndTimerDelay() {
+        state = .requestCode
     }
 }

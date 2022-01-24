@@ -81,7 +81,8 @@ internal class CodeEntryView: UIView {
             self.delegate?.didUpdateCode(code?.count ?? 0)
         }
     }
-    private(set) weak var delegate: CodeEntryViewDelegate?
+    
+    weak var delegate: CodeEntryViewDelegate?
 
     private var currentIndex = 0
 
@@ -152,7 +153,7 @@ internal class CodeEntryView: UIView {
         }
 
         errorLabel.addConstraints { [
-            $0.equalTo(entryFieldsStackView, .top, .bottom, constant: 8),
+            $0.equalTo(entryFieldsStackView, .top, .bottom, constant: 0),
             $0.equalTo(entryFieldsStackView, .leading, .leading),
             $0.equalTo(entryFieldsStackView, .trailing, .trailing),
             $0.equal(.bottom)

@@ -84,6 +84,7 @@ class ActionRoundedButton: UIButton {
             colors = (UIColor.sdkColor(.base05), .sdkColor(.base100))
         case .inactive:
             isEnabled = false
+            setTitle(self.title(for: .normal), for: .disabled)
             colors = (UIColor.sdkColor(.base25), .sdkColor(.base100))
         case .verifying:
             isEnabled = false

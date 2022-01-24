@@ -5,294 +5,184 @@
 
 import UIKit
 
-/// UIViewController which displays the screen to sign the documents.
-final internal class SignDocumentsViewController: SolarisViewController {
+final internal class SignDocumentsViewController: UIViewController {
 
-    var viewModel: SignDocumentsViewModel!
-
-    private var timer: Timer?
-
-    private var codeTimer: Timer?
-
+    // MARK: - Outlets -
+    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var mainContainer: UIView!
+    @IBOutlet var codeEntryHint: UILabel!
+    @IBOutlet var codeEntryView: CodeEntryView!
+    @IBOutlet var requestCodeTimerLabel: UILabel!
+    @IBOutlet var errorCodeLabel: UILabel!
+    @IBOutlet var sendNewCodeBtn: UIButton!
+    @IBOutlet var transactionInfoLabel: UILabel!
+    @IBOutlet var submitCodeBtn: ActionRoundedButton!
+    @IBOutlet var quitBtn: UIButton!
+    @IBOutlet var quitBtnBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var errorLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var stateView: StateView!
+    
+    // MARK: - Properties -
+    private var viewModel: SignDocumentsViewModel!
+    
     private enum State {
         case normal
         case veryfing
         case processing
         case success
         case error
-        case expire
+        case requestCode
     }
 
     private var state: State = .normal {
         didSet {
-            updateUI()
+            updateScreenState()
         }
     }
 
-    enum Constants {
-        enum FontSize {
-            static let medium: CGFloat = 14
-            static let small: CGFloat = 12
-        }
+    /// Initialized with view model object
+    /// - Parameter viewModel: view model object
+    init(_ viewModel: SignDocumentsViewModel) {
+        self.viewModel = viewModel
 
-        enum ConstraintsOffset {
-            static let extended: CGFloat = 40
-            static let big: CGFloat = 24
-            static let normal: CGFloat = 16
-            static let small: CGFloat = 12
-        }
-
-        enum Size {
-            static let cornerRadius: CGFloat = 4
-            static let height: CGFloat = 14
-            static let width: CGFloat = 14
-        }
+        super.init(nibName: String(describing: Self.self), bundle: Bundle(for: Self.self))
+        
+        self.viewModel.delegate = self
     }
 
-    private lazy var currentStepView: IdentificationProgressView = {
-        let view = IdentificationProgressView(currentStep: .documents)
-        view.backgroundColor = .sdkColor(.background)
-        return view
-    }()
-
-    private lazy var mainContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .sdkColor(.background)
-        return view
-    }()
-
-    private lazy var enterCodeHintLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = label.font.withSize(Constants.FontSize.medium)
-        label.textColor = .sdkColor(.base75)
-        label.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldText(viewModel.mobileNumber, withColorForBoldText: UIColor.sdkColor(.base100))
-        return label
-    }()
-
-    private lazy var codeEntryView: CodeEntryView = {
-        let codeEntryView = CodeEntryView(delegate: self)
-        return codeEntryView
-    }()
-
-    private lazy var transactionInfoView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = Constants.Size.cornerRadius
-        return view
-    }()
-
-    private lazy var transactionInfoLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .sdkColor(.black75)
-        label.font = label.font.withSize(Constants.FontSize.small)
-        label.text = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)"
-        return label
-    }()
-
-    private lazy var transactionInfoImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage.sdkImage(.info, type: SignDocumentsViewController.self)
-        return imageView
-    }()
-
-    private lazy var submitAndSignCodeButton: ActionRoundedButton = {
-        let button = ActionRoundedButton()
-        button.setTitle(Localizable.SignDocuments.Sign.submitAndSign, for: .normal)
-        button.currentAppearance = .inactive
-        return button
-    }()
-
-    private lazy var quitButton: ActionRoundedButton = {
-        let button = ActionRoundedButton()
-        button.setTitle(Localizable.Common.quit, for: .normal)
-        button.currentAppearance = .dimmed
-        button.addTarget(self, action: #selector(quit), for: .touchUpInside)
-        return button
-    }()
-
-    private lazy var stateView: StateView = {
-        let stateView = StateView()
-        stateView.hasDescriptionLabel = true
-        stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: SignDocumentsViewController.self))
-        stateView.setStateTitle(Localizable.SignDocuments.Sign.applicationIsBeingProcessed)
-        stateView.setStateDescription(Localizable.SignDocuments.Sign.downloadDocuments)
-        return stateView
-    }()
-
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         configureUI()
-    }
-
-    private func configureUI() {
-        
-        var topView = UIView()
-        
-        if viewModel.isVisibleProgress() {
-            topView = currentStepView
-        }
-        
-        containerView.addSubviews([
-            topView,
-            mainContainerView,
-            stateView
-        ])
-        
-        topView.addConstraints { [
-            $0.equal(.top),
-            $0.equal(.leading),
-            $0.equal(.trailing)
-        ]
-        }
-
-        mainContainerView.addConstraints { [
-            $0.equalTo(topView, .top, .bottom),
-            $0.equal(.leading),
-            $0.equal(.trailing),
-            $0.equal(.bottom)
-        ]
-        }
-
-        stateView.addConstraints { [
-            $0.equalTo(topView, .top, .bottom),
-            $0.equal(.leading),
-            $0.equal(.trailing),
-            $0.equal(.bottom)
-        ]
-        }
-
-        stateView.isHidden = true
-
-        mainContainerView.addSubviews([
-            enterCodeHintLabel,
-            transactionInfoView,
-            codeEntryView,
-            submitAndSignCodeButton,
-            quitButton
-        ])
-
-        enterCodeHintLabel.addConstraints { [
-            $0.equal(.top, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
-
-        codeEntryView.addConstraints { [
-            $0.equalTo(enterCodeHintLabel, .top, .bottom, constant: Constants.ConstraintsOffset.big),
-            $0.equal(.centerX)
-        ]
-        }
-
-        transactionInfoView.addConstraints { [
-            $0.equalTo(codeEntryView, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal)
-        ]
-        }
-
-        transactionInfoView.addSubviews([
-            transactionInfoImageView,
-            transactionInfoLabel
-        ])
-
-        transactionInfoImageView.addConstraints { [
-            $0.equal(.top, constant: Constants.ConstraintsOffset.small),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.small),
-            $0.equalConstant(.height, Constants.Size.height),
-            $0.equalConstant(.width, Constants.Size.width)
-        ]
-        }
-
-        transactionInfoLabel.addConstraints { [
-            $0.equalTo(transactionInfoImageView, .top, .top),
-            $0.equalTo(transactionInfoImageView, .leading, .trailing, constant: Constants.ConstraintsOffset.small),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.small),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.small)
-        ]
-        }
-
-        submitAndSignCodeButton.addConstraints { [
-            $0.equalTo(transactionInfoView, .top, .bottom, constant: Constants.ConstraintsOffset.extended),
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal),
-            $0.equalTo(quitButton, .bottom, .top, constant: -Constants.ConstraintsOffset.small)
-        ]
-        }
-
-        quitButton.addConstraints { [
-            $0.equal(.leading, constant: Constants.ConstraintsOffset.normal),
-            $0.equal(.trailing, constant: -Constants.ConstraintsOffset.normal),
-            $0.equal(.bottom, constant: -Constants.ConstraintsOffset.small)
-        ]
-        }
-
-        codeTimer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(expireCode), userInfo: nil, repeats: false)
-    }
-
-    @objc private func submitCodeAndSign() {
-        viewModel.submitCodeAndSign(codeEntryView.code)
-    }
-
-    @objc private func requestNewCode() {
+        registerForKeyboardNotifications()
         viewModel.requestNewCode()
     }
 
-    @objc private func quit() {
+    @IBAction func didClickSendNewCode(_ sender: UIButton) {
+        viewModel.requestNewCode()
+        state = .normal
+    }
+    
+    @IBAction func didClickSubmitCode(_ sender: Any) {
+        viewModel.submitCodeAndSign(codeEntryView.code)
+    }
+    
+    @IBAction func didClickQuit(_ sender: Any) {
         viewModel.quit()
-    }
-
-    @objc private func expireCode() {
-        state = .expire
-    }
-
-    private func updateUI() {
-        DispatchQueue.main.async {
-            switch self.state {
-            case .normal:
-                self.codeEntryView.state = .normal
-                self.codeEntryView.clearCodeEntries()
-                self.submitAndSignCodeButton.currentAppearance = .inactive
-                self.submitAndSignCodeButton.isEnabled = false
-                self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.submitAndSign, for: .normal)
-                self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
-                self.submitAndSignCodeButton.addTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
-            case .veryfing:
-                self.codeEntryView.state = .disabled
-                self.submitAndSignCodeButton.currentAppearance = .inactive
-            case .processing:
-                self.mainContainerView.removeFromSuperview()
-                self.stateView.isHidden = false
-            case .success:
-                self.viewModel.finishIdentification()
-            case .error:
-                self.codeEntryView.state = .error
-                self.submitAndSignCodeButton.currentAppearance = .primary
-                self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
-                self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
-                self.submitAndSignCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
-            case .expire:
-                self.submitAndSignCodeButton.currentAppearance = .primary
-                self.submitAndSignCodeButton.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
-                self.submitAndSignCodeButton.removeTarget(self, action: #selector(self.submitCodeAndSign), for: .touchUpInside)
-                self.submitAndSignCodeButton.addTarget(self, action: #selector(self.requestNewCode), for: .touchUpInside)
-                self.codeTimer?.invalidate()
-            }
-        }
-    }
-
-    @objc private func checkStatus() {
-        viewModel.checkIdentificationStatus()
     }
 }
 
-// MARK: SignDocumentsViewModelDelegate methods
+// MARK: - Private methods -
+
+extension SignDocumentsViewController {
+    
+    private func configureUI() {
+        
+        currentStepView.setCurrentStep(.documents)
+        
+        codeEntryHint.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldText(viewModel.mobileNumber, withColorForBoldText: UIColor.sdkColor(.base100))
+        
+        codeEntryView.delegate = self
+        
+        requestCodeTimerLabel.text = Localizable.PhoneVerification.requestNewCodeTimer
+        errorCodeLabel.text = Localizable.PhoneVerification.wrongTan
+        errorCodeLabel.textColor = .sdkColor(.error)
+        
+        sendNewCodeBtn.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
+        sendNewCodeBtn.setTitleColor(.sdkColor(.secondaryAccent), for: .normal)
+        
+        submitCodeBtn.setTitle(Localizable.SignDocuments.Sign.submitAndSign, for: .normal)
+        
+        quitBtn.setTitle(Localizable.Common.quit, for: .normal)
+        
+        stateView.hasDescriptionLabel = true
+        stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: Self.self))
+        stateView.setStateTitle(Localizable.SignDocuments.Sign.applicationIsBeingProcessed)
+        stateView.setStateDescription(Localizable.SignDocuments.Sign.downloadDocuments)
+        
+        state = .normal
+    }
+    
+    // MARK: - Kyeboard hide/show methods
+
+    func registerForKeyboardNotifications() {
+        // Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWasShown(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            quitBtnBottomConstraint.constant = keyboardSize.height
+        }
+    }
+
+    @objc func keyboardWillBeHidden(_ notification: Notification) {
+        quitBtnBottomConstraint.constant = 30
+    }
+    
+    // MARK: - Screen state -
+
+    private func updateScreenState() {
+        
+        switch state {
+        case .normal:
+            transactionInfoLabel.text = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)"
+            requestCodeTimerLabel.isHidden = false
+            sendNewCodeBtn.isHidden = true
+            errorLabelHeightConstraint.constant = 0
+            submitCodeBtn.currentAppearance = .inactive
+            codeEntryView.state = .normal
+            codeEntryView.clearCodeEntries()
+        case .requestCode:
+            requestCodeTimerLabel.isHidden = true
+            sendNewCodeBtn.isHidden = false
+            sendNewCodeBtn.isEnabled = true
+            sendNewCodeBtn.alpha = 1.0
+        case .error:
+            codeEntryView.state = .error
+            submitCodeBtn.currentAppearance = .inactive
+            errorLabelHeightConstraint.constant = 40
+            errorCodeLabel.isHidden = false
+            sendNewCodeBtn.isEnabled = true
+            sendNewCodeBtn.alpha = 1.0
+        case .success:
+            viewModel.finishIdentification()
+        case .processing:
+            mainContainer.removeFromSuperview()
+            stateView.isHidden = false
+        case .veryfing:
+            codeEntryView.state = .disabled
+            submitCodeBtn.currentAppearance = .verifying
+            sendNewCodeBtn.isEnabled = false
+            sendNewCodeBtn.alpha = 0.5
+            requestCodeTimerLabel.isHidden = true
+        }
+    }
+}
+
+
+// MARK: - View model delegate methods -
 
 extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
+    
+    func didEndTimerDelay() {
+        state = .requestCode
+    }
+    
+    func didUpdateTimerLabel(_ seconds: String) {
+        requestCodeTimerLabel.attributedText = "\(Localizable.PhoneVerification.requestNewCodeTimer) 00:\(seconds)".withBoldText("00:\(seconds)")
+    }
+    
 
-    func didSubmitNewCodeRequest() {
+    func didSubmitNewCodeRequest(_ token: String) {
         state = .normal
+        transactionInfoLabel.attributedText = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(token) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)".withBoldText(token, withColorForBoldText: .sdkColor(.black100))
     }
 
     func verificationStarted() {
@@ -300,12 +190,11 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
     }
 
     func verificationIsBeingProcessed() {
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(checkStatus), userInfo: nil, repeats: true)
         state = .processing
     }
 
     func verificationSucceeded() {
-        timer?.invalidate()
+        viewModel.expireVerificationStatusTimer()
         state = .success
     }
 
@@ -317,9 +206,10 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
 // MARK: - Code entry view delegate methods -
 
 extension SignDocumentsViewController: CodeEntryViewDelegate {
-
+    
     func didUpdateCode(_ digits: Int) {
-        submitAndSignCodeButton.isEnabled = ( digits == 6 )
-        submitAndSignCodeButton.currentAppearance = ( digits == 6 ) ? .primary : .inactive
+        let isValidCode = ( digits == 6 )
+        submitCodeBtn.isEnabled = isValidCode
+        submitCodeBtn.currentAppearance = isValidCode ? .primary : .inactive
     }
 }

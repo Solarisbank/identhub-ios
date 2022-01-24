@@ -54,9 +54,10 @@ class BankIDCoordinator: BaseCoordinator {
             exportAllDocuments(documents: documents)
         case .finishIdentification:
             presentFinishIdentification()
-            notifyHandlers()
         case .nextStep(let step):
             perfomIdentStep(step: step)
+        case .notifyHandlers:
+            notifyHandlers()
         case .pop:
             pop()
         case .quit:
@@ -156,9 +157,8 @@ private extension BankIDCoordinator {
     }
 
     private func presentPhoneVerification() {
-        let phoneVerificationViewController = PhoneVerificationViewController()
-        let phoneVerificationViewModel = PhoneVerificationViewModel(flowCoordinator: self, delegate: phoneVerificationViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
-        phoneVerificationViewController.viewModel = phoneVerificationViewModel
+        let phoneVerificationViewModel = PhoneVerificationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
+        let phoneVerificationViewController = PhoneVerificationViewController(phoneVerificationViewModel)
         presenter.push(phoneVerificationViewController, animated: true, completion: nil)
         updateBankIDStep(step: .phoneVerification)
     }
@@ -197,9 +197,8 @@ private extension BankIDCoordinator {
     }
 
     private func presentSignDocuments() {
-        let signDocumentsViewController = SignDocumentsViewController()
-        let signDocumentsViewModel = SignDocumentsViewModel(flowCoordinator: self, delegate: signDocumentsViewController, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
-        signDocumentsViewController.viewModel = signDocumentsViewModel
+        let signDocumentsViewModel = SignDocumentsViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
+        let signDocumentsViewController = SignDocumentsViewController(signDocumentsViewModel)
         presenter.push(signDocumentsViewController, animated: true, completion: nil)
         updateBankIDStep(step: .signDocuments(step: .sign))
     }

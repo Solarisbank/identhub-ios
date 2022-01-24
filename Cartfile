@@ -1,6 +1,6 @@
 github "RedMadRobot/input-mask-ios" == 6.1.0
 
 # Fourthline SDK and dependencies
-github "Fourthline-com/FourthlineSDK-iOS" == 2.8.1
+github "Fourthline-com/FourthlineSDK-iOS" == 2.8.2
 github "weichsel/ZIPFoundation" == 0.9.11
 github "airbnb/lottie-ios" == 3.2.3

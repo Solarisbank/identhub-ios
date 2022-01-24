@@ -18,21 +18,15 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
     var completionHandler: CompletionHandler
 
     private let sessionStorage: StorageSessionInfoProvider
+    private var requestTimer: Timer?
+    private var counts = 20
 
-    init(flowCoordinator: BankIDCoordinator, delegate: PhoneVerificationViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
+    init(flowCoordinator: BankIDCoordinator, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
-        self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
         self.completionHandler = completion
         super.init()
-        requestNewCode()
-    }
-
-    private func fail() {
-        DispatchQueue.main.async {
-            self.delegate?.verificationFailed()
-        }
     }
 
     // MARK: Methods
@@ -40,6 +34,7 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
     /// Submit code.
     func submitCode(_ code: String?) {
         guard let code = code else { return }
+        expireTimer()
         delegate?.verificationStarted()
         verificationService.verifyMobileNumberTAN(token: code) { [weak self] result in
             guard let `self` = self else { return }
@@ -70,23 +65,54 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
 
             switch result {
             case .success(let response):
-                if response.verified {
-                    let mobileNumber = response.number
-                    self.sessionStorage.mobileNumber = mobileNumber
-                    DispatchQueue.main.async {
-                        self.delegate?.didGetPhoneNumber(response.number)
-                    }
+                self.sessionStorage.mobileNumber = response.number
+                DispatchQueue.main.async {
+                    self.delegate?.didGetPhoneNumber(response.number)
                 }
             case .failure(_):
                 self.completionHandler(.failure)
             }
         }
         delegate?.willGetNewCode()
+        setupTimer()
     }
 
     /// Begin bank identification process.
     func beginBankIdentification() {
         flowCoordinator.perform(action: .bankVerification(step: .iban))
+    }
+}
+
+// MARK: - Internal methods -
+
+private extension PhoneVerificationViewModel {
+    
+    private func setupTimer() {
+        requestTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        counts = 20
+        delegate?.didUpdateTimerLabel(String(describing: counts))
+    }
+    
+    private func expireTimer() {
+        requestTimer?.invalidate()
+        delegate?.didEndTimerDelay()
+    }
+    
+    private func fail() {
+        DispatchQueue.main.async {
+            self.delegate?.verificationFailed()
+            self.expireTimer()
+        }
+    }
+    
+    @objc private func updateTimer() {
+        counts -= 1
+        if counts >= 1 {
+            let secondString = (counts >= 10) ? String(describing: counts) : "0\(String(describing: counts))"
+            delegate?.didUpdateTimerLabel(secondString)
+        } else {
+            expireTimer()
+        }
     }
 }
 
@@ -99,4 +125,12 @@ protocol PhoneVerificationViewModelDelegate: VerifiableViewModelDelegate {
 
     /// Called when new code is about to be received.
     func willGetNewCode()
+    
+    /// Method notified when timer expired.
+    /// Display send new code request
+    func didEndTimerDelay()
+    
+    /// Method updated count down timer label
+    /// count - number of seconds
+    func didUpdateTimerLabel(_ count: String)
 }

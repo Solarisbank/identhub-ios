@@ -20,36 +20,35 @@ final internal class SignDocumentsViewModel: NSObject {
     private var completionHander: CompletionHandler
     
     private var identMethod: IdentificationStep?
+    
+    private var requestTimer: Timer?
+    
+    private var statusVerificationTimer: Timer?
+    
+    private var secoundsCounter = 20
 
     /// Mobile number used for current authorization.
     lazy var mobileNumber = {
         self.sessionStorage.mobileNumber ?? ""
     }()
 
-    init(flowCoordinator: BankIDCoordinator, delegate: SignDocumentsViewModelDelegate, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
+    init(flowCoordinator: BankIDCoordinator, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
-        self.delegate = delegate
         self.verificationService = verificationService
         self.sessionStorage = sessionStorage
         self.completionHander = completion
         self.identMethod = sessionStorage.identificationStep
         super.init()
-        requestNewCode()
     }
 
-    private func fail() {
-        self.sessionStorage.isSuccessful = false
-        DispatchQueue.main.async {
-            self.delegate?.verificationFailed()
-        }
-    }
-
-    // MARK: Methods
+    // MARK: - Public methods -
 
     /// Submit code.
     func submitCodeAndSign(_ code: String?) {
         guard let code = code else { return }
+        expireRequestNewCodeTimer()
         delegate?.verificationStarted()
+        
         verificationService.verifyDocumentsTAN(token: code) { [weak self] result in
             guard let `self` = self else { return }
 
@@ -58,54 +57,40 @@ final internal class SignDocumentsViewModel: NSObject {
                 if response.status == Status.confirmed {
                     DispatchQueue.main.async {
                         self.delegate?.verificationIsBeingProcessed()
+                        self.setupStatusVerificationTimer()
                     }
                 } else {
-                    self.fail()
+                    self.codeVerificationFailed()
                     self.completionHander(.failure)
                 }
             case .failure(_):
-                self.fail()
+                self.codeVerificationFailed()
                 self.completionHander(.failure)
             }
         }
     }
 
     func requestNewCode() {
-        verificationService.authorizeDocuments { [weak self] _ in
+        verificationService.authorizeDocuments { [weak self] response in
 
-            self?.delegate?.didSubmitNewCodeRequest()
+            switch response {
+            case .success(let identification):
+                if let transactionToken = identification.referenceToken {
+                    DispatchQueue.main.async {
+                        self?.delegate?.didSubmitNewCodeRequest(transactionToken)
+                    }
+                }
+            case .failure(let error):
+                // TODO: - Discuss and implement solution with showing error message to the user -
+                print(error.localizedDescription)
+            }
         }
+        
+        setupRequestNewCodeTimer()
     }
 
     func quit() {
         flowCoordinator.perform(action: .quit)
-    }
-
-    /// Check the status of the identification.
-    func checkIdentificationStatus() {
-        verificationService.getIdentification { [weak self] result in
-            guard let `self` = self else { return }
-
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    switch response.status {
-                    case .success:
-                        self.delegate?.verificationSucceeded()
-                    case .confirmed:
-                        self.delegate?.verificationSucceeded()
-                        self.completionHander(.onConfirm(identification: response.id))
-                        self.flowCoordinator.perform(action: .close)
-                    default:
-                        self.fail()
-                        self.completionHander(.failure)
-                    }
-                }
-            case .failure(_):
-                self.fail()
-                self.completionHander(.failure)
-            }
-        }
     }
 
     /// Display finish identification screen.
@@ -119,6 +104,77 @@ final internal class SignDocumentsViewModel: NSObject {
     func isVisibleProgress() -> Bool {
         return ( identMethod != .fourthlineSigning )
     }
+    
+    /// Method invalidates verification status timer
+    func expireVerificationStatusTimer() {
+        statusVerificationTimer?.invalidate()
+    }
+}
+
+// MARK: - Internal methods -
+
+private extension SignDocumentsViewModel {
+    
+    private func setupRequestNewCodeTimer() {
+        requestTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        secoundsCounter = 20
+        delegate?.didUpdateTimerLabel(String(describing: secoundsCounter))
+    }
+    
+    private func setupStatusVerificationTimer() {
+        statusVerificationTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(checkIdentificationStatus), userInfo: nil, repeats: true)
+    }
+    
+    private func expireRequestNewCodeTimer() {
+        requestTimer?.invalidate()
+        delegate?.didEndTimerDelay()
+    }
+    
+    private func codeVerificationFailed() {
+        self.sessionStorage.isSuccessful = false
+        DispatchQueue.main.async {
+            self.delegate?.verificationFailed()
+            self.expireRequestNewCodeTimer()
+        }
+    }
+    
+    @objc private func updateTimer() {
+        secoundsCounter -= 1
+        if secoundsCounter >= 1 {
+            let secondString = (secoundsCounter >= 10) ? String(describing: secoundsCounter) : "0\(String(describing: secoundsCounter))"
+            delegate?.didUpdateTimerLabel(secondString)
+        } else {
+            expireRequestNewCodeTimer()
+        }
+    }
+    
+    /// Check the status of the identification.
+    @objc private func checkIdentificationStatus() {
+        verificationService.getIdentification { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    switch response.status {
+                    case .success:
+                        self.delegate?.verificationSucceeded()
+                    case .confirmed:
+                        self.completionHander(.onConfirm(identification: response.id))
+                        self.delegate?.verificationSucceeded()
+                    default:
+                        self.expireVerificationStatusTimer()
+                        self.completionHander(.failure)
+                    }
+                    SessionStorage.clearData()
+                }
+            case .failure(_):
+                self.expireVerificationStatusTimer()
+                self.completionHander(.failure)
+                self.flowCoordinator.perform(action: .close)
+            }
+        }
+    }
 }
 
 protocol SignDocumentsViewModelDelegate: VerifiableViewModelDelegate {
@@ -127,5 +183,14 @@ protocol SignDocumentsViewModelDelegate: VerifiableViewModelDelegate {
     func verificationIsBeingProcessed()
 
     /// Did publish request for new TAN
-    func didSubmitNewCodeRequest()
+    /// - token: string value of the transaction ID
+    func didSubmitNewCodeRequest(_ token: String)
+    
+    /// Method notified when timer expired.
+    /// Display send new code request
+    func didEndTimerDelay()
+    
+    /// Method updated count down timer label
+    /// count - number of seconds
+    func didUpdateTimerLabel(_ count: String)
 }

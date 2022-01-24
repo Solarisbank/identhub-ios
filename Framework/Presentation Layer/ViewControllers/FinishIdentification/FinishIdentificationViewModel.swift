@@ -30,6 +30,7 @@ final internal class FinishIdentificationViewModel: NSObject, DocumentDownloadab
 
     // Finish the identification.
     func finish() {
+        flowCoordinator.perform(action: .notifyHandlers)
         flowCoordinator.perform(action: .close)
     }
 }

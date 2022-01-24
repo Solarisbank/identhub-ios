@@ -32,7 +32,6 @@ final internal class StateView: NibView {
     }
 
     override func configureUI() {
-
         stateDescriptionLabel.isHidden = !hasDescriptionLabel
     }
 

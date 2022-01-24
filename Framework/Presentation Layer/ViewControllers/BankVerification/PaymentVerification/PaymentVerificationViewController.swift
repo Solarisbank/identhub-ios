@@ -74,7 +74,7 @@ final internal class PaymentVerificationViewController: UIViewController {
     private func updateUI() {
         switch state {
         case .establishingConnection:
-            stateView.setStateImage(UIImage.sdkImage(.establishingSecureConnection, type: PaymentVerificationViewController.self))
+            stateView.setStateImage(UIImage.sdkImage(.establishingSecureConnection, type: Self.self))
             stateView.setStateTitle(Localizable.BankVerification.PaymentVerification.establishingSecureConnection)
         case .paymentInitiation:
             stateView.isHidden = true
@@ -82,7 +82,7 @@ final internal class PaymentVerificationViewController: UIViewController {
         case .processingVerification:
             paymentWebView.isHidden = true
             stateView.isHidden = false
-            stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: PaymentVerificationViewController.self))
+            stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: Self.self))
             stateView.setStateTitle(Localizable.BankVerification.PaymentVerification.processingVerification)
         case .success:
             successContainerView.isHidden = false

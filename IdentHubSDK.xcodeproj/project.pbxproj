@@ -45,7 +45,6 @@
 		0C9E56DC25C01E6A00D68B96 /* ConfirmApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E56DB25C01E6A00D68B96 /* ConfirmApplicationViewController.swift */; };
 		0C9E56E425C01E9E00D68B96 /* ConfirmApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E56E325C01E9E00D68B96 /* ConfirmApplicationViewModel.swift */; };
 		0C9E56E925C0358500D68B96 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E56E825C0358500D68B96 /* DocumentTableViewCell.swift */; };
-		0CA7747625C1ADD600E94E77 /* SignDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7747525C1ADD600E94E77 /* SignDocumentsViewController.swift */; };
 		0CA7747E25C1AE1900E94E77 /* SignDocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7747D25C1AE1900E94E77 /* SignDocumentsViewModel.swift */; };
 		0CB1439E259A46760014B643 /* IdentHubSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1439D259A46760014B643 /* IdentHubSession.swift */; };
 		0CB143AA259A47FC0014B643 /* UIColor+SDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB143A9259A47FC0014B643 /* UIColor+SDK.swift */; };
@@ -196,7 +195,6 @@
 		84A01269263875A800672C1B /* FourthlineIdentificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A01268263875A800672C1B /* FourthlineIdentificationRequest.swift */; };
 		84A0126B2638770000672C1B /* FourthlineIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0126A2638770000672C1B /* FourthlineIdentification.swift */; };
 		84A0126D26388E7C00672C1B /* UploadKYCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0126C26388E7C00672C1B /* UploadKYCRequest.swift */; };
-		84A1D48E2617833400E2B2D5 /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A1D48D2617833400E2B2D5 /* PhoneVerificationViewController.swift */; };
 		84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */; };
 		84A7581B25F22D7F004D8F88 /* IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD5CC3A2590F58800FF378F /* IdentHubSDK.framework */; };
 		84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7583225F22F84004D8F88 /* AppDependenciesTest.swift */; };
@@ -210,9 +208,13 @@
 		84B2A8CE25F3EA6000EBA899 /* BeckendRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */; };
 		84C8E56C26B83E64002150D6 /* IPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8E56B26B83E64002150D6 /* IPAddressRequest.swift */; };
 		84C8E56E26B840ED002150D6 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8E56D26B840ED002150D6 /* IPAddress.swift */; };
+		84C940172790772700D091ED /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C940152790772700D091ED /* PhoneVerificationViewController.swift */; };
+		84C940182790772700D091ED /* PhoneVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C940162790772700D091ED /* PhoneVerificationViewController.xib */; };
 		84D15A89266FBA30002DC7EE /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D15A88266FBA30002DC7EE /* Date+Compare.swift */; };
 		84D4B4A5269627D60056E97B /* ErrorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B4A4269627D60056E97B /* ErrorDetail.swift */; };
 		84D527E72631E6B2003123C3 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */; };
+		84D536FE27919A5600E0067D /* SignDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D536FC27919A5600E0067D /* SignDocumentsViewController.swift */; };
+		84D536FF27919A5600E0067D /* SignDocumentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D536FD27919A5600E0067D /* SignDocumentsViewController.xib */; };
 		84DEB64326419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */; };
 		84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */; };
 		84DEB6492641C7AF00E0C5BA /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB6472641C7AF00E0C5BA /* ResultViewController.swift */; };
@@ -300,7 +302,6 @@
 		0C9E56DB25C01E6A00D68B96 /* ConfirmApplicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationViewController.swift; sourceTree = "<group>"; };
 		0C9E56E325C01E9E00D68B96 /* ConfirmApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationViewModel.swift; sourceTree = "<group>"; };
 		0C9E56E825C0358500D68B96 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
-		0CA7747525C1ADD600E94E77 /* SignDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDocumentsViewController.swift; sourceTree = "<group>"; };
 		0CA7747D25C1AE1900E94E77 /* SignDocumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDocumentsViewModel.swift; sourceTree = "<group>"; };
 		0CB1439D259A46760014B643 /* IdentHubSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubSession.swift; sourceTree = "<group>"; };
 		0CB143A9259A47FC0014B643 /* UIColor+SDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+SDK.swift"; sourceTree = "<group>"; };
@@ -467,7 +468,6 @@
 		84A01268263875A800672C1B /* FourthlineIdentificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationRequest.swift; sourceTree = "<group>"; };
 		84A0126A2638770000672C1B /* FourthlineIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentification.swift; sourceTree = "<group>"; };
 		84A0126C26388E7C00672C1B /* UploadKYCRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadKYCRequest.swift; sourceTree = "<group>"; };
-		84A1D48D2617833400E2B2D5 /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		84A7581625F22D7F004D8F88 /* IdentHubSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdentHubSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubSDKTests.swift; sourceTree = "<group>"; };
 		84A7581A25F22D7F004D8F88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -482,9 +482,13 @@
 		84B2A8CD25F3EA6000EBA899 /* BeckendRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeckendRequestTests.swift; sourceTree = "<group>"; };
 		84C8E56B26B83E64002150D6 /* IPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressRequest.swift; sourceTree = "<group>"; };
 		84C8E56D26B840ED002150D6 /* IPAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
+		84C940152790772700D091ED /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
+		84C940162790772700D091ED /* PhoneVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneVerificationViewController.xib; sourceTree = "<group>"; };
 		84D15A88266FBA30002DC7EE /* Date+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
 		84D4B4A4269627D60056E97B /* ErrorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDetail.swift; sourceTree = "<group>"; };
 		84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		84D536FC27919A5600E0067D /* SignDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDocumentsViewController.swift; sourceTree = "<group>"; };
+		84D536FD27919A5600E0067D /* SignDocumentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignDocumentsViewController.xib; sourceTree = "<group>"; };
 		84DEB64226419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatusRequest.swift; sourceTree = "<group>"; };
 		84DEB64426419CA300E0C5BA /* FourthlineIdentificationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatus.swift; sourceTree = "<group>"; };
 		84DEB6472641C7AF00E0C5BA /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -673,8 +677,9 @@
 		0CA7747425C1ADB900E94E77 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
-				0CA7747525C1ADD600E94E77 /* SignDocumentsViewController.swift */,
 				0CA7747D25C1AE1900E94E77 /* SignDocumentsViewModel.swift */,
+				84D536FC27919A5600E0067D /* SignDocumentsViewController.swift */,
+				84D536FD27919A5600E0067D /* SignDocumentsViewController.xib */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -727,8 +732,9 @@
 		0CC25BC125A4AB6C00D839AB /* PhoneVerification */ = {
 			isa = PBXGroup;
 			children = (
-				84A1D48D2617833400E2B2D5 /* PhoneVerificationViewController.swift */,
 				0CC25BC725A4ABD700D839AB /* PhoneVerificationViewModel.swift */,
+				84C940152790772700D091ED /* PhoneVerificationViewController.swift */,
+				84C940162790772700D091ED /* PhoneVerificationViewController.xib */,
 			);
 			path = PhoneVerification;
 			sourceTree = "<group>";
@@ -1661,6 +1667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846432402617626B003C9A7B /* StartBankIdentViewController.xib in Resources */,
+				84D536FF27919A5600E0067D /* SignDocumentsViewController.xib in Resources */,
 				8423EFE8262AF5B50092F003 /* DocumentScannerOverlayView.xib in Resources */,
 				0CD863A125DC5F5000AB3252 /* strip-frameworks.sh in Resources */,
 				84DEB64A2641C7AF00E0C5BA /* ResultViewController.xib in Resources */,
@@ -1669,6 +1676,7 @@
 				841158A6261F384B007B54DF /* SelfieOverlayView.xib in Resources */,
 				841F376B26298FF500D56361 /* DocumentTypeCell.xib in Resources */,
 				24659B0126D62D7300F56089 /* Localizable.strings in Resources */,
+				84C940182790772700D091ED /* PhoneVerificationViewController.xib in Resources */,
 				845D863B260D1E0A008AAC9A /* WelcomePageCell.xib in Resources */,
 				840976972633474300C4DC5B /* CircleProgressView.xib in Resources */,
 				8409767A2632F2CD00C4DC5B /* ProgressCell.xib in Resources */,
@@ -1879,7 +1887,6 @@
 				84E0CF13262EF93900DE0C09 /* DocumentScannerAssetsDataSource.swift in Sources */,
 				84056F4B2655458F0072A10F /* BankIDStep.swift in Sources */,
 				8409766F2632F0F600C4DC5B /* RequestsProgressDDM.swift in Sources */,
-				0CA7747625C1ADD600E94E77 /* SignDocumentsViewController.swift in Sources */,
 				841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */,
 				0CB143AA259A47FC0014B643 /* UIColor+SDK.swift in Sources */,
 				0C1B430025AD9A56004FFF46 /* String+Regex.swift in Sources */,
@@ -1979,6 +1986,7 @@
 				841384C5263C7B7800C39D69 /* IdentificationCoordinator.swift in Sources */,
 				8440C565262F55E0001B8E39 /* DocumentScannerAssetSizing.swift in Sources */,
 				84F521BC263DACBD00FBCECF /* MutableData+Extension.swift in Sources */,
+				84C940172790772700D091ED /* PhoneVerificationViewController.swift in Sources */,
 				847242EC2631D55700CC8DE6 /* BaseFourthlineViewModel.swift in Sources */,
 				0CC25B8F25A4686700D839AB /* Body.swift in Sources */,
 				0CE4A8F625A3703600114CBD /* String+Attributes.swift in Sources */,
@@ -1995,6 +2003,7 @@
 				84ECED1C26305C5C00ACD1B5 /* Date+Extensions.swift in Sources */,
 				8432D275265D71A6002CCAA4 /* DocumentData.swift in Sources */,
 				847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */,
+				84D536FE27919A5600E0067D /* SignDocumentsViewController.swift in Sources */,
 				0C9E56DC25C01E6A00D68B96 /* ConfirmApplicationViewController.swift in Sources */,
 				840DEA6F26285B4C0033A2D8 /* LocationManager.swift in Sources */,
 				0CC8534325D168A600109FFC /* DocumentPreviewViewController.swift in Sources */,
@@ -2008,7 +2017,6 @@
 				845D863A260D1E0A008AAC9A /* WelcomePageCell.swift in Sources */,
 				84280D2426F3BBB40002D119 /* Checkbox.swift in Sources */,
 				849C9E8D260E3B1400D74D35 /* SelfieViewModel.swift in Sources */,
-				84A1D48E2617833400E2B2D5 /* PhoneVerificationViewController.swift in Sources */,
 				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,
 				0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */,
 				84040BD726AF089D00C68D25 /* IdentificationInfo.swift in Sources */,

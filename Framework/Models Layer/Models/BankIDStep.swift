@@ -15,6 +15,7 @@ enum BankIDStep: Codable, Equatable {
     case documentExport(url: URL) // Export signed documents
     case allDocumentsExport(documents: [URL]) // Export all documents
     case finishIdentification // Finish bank identification
+    case notifyHandlers // Case for notifying all handlers about ident results
     case nextStep(step: IdentificationStep) // Method called next step of the identification process
     case pop // return back to the previous bank id step
     case quit // Quit from identificaton process
@@ -29,6 +30,7 @@ enum BankIDStep: Codable, Equatable {
         case documentExport
         case allDocumentsExport
         case finish
+        case notify
         case next
         case pop
         case quit
