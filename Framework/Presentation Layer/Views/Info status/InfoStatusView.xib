@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="scanning..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUj-Rh-byS">
-                    <rect key="frame" x="23" y="23" width="47.5" height="12"/>
+                    <rect key="frame" x="23" y="23" width="47" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="Mjs-gC-rDn"/>
                     </constraints>
@@ -32,11 +32,8 @@
                     <color key="textColor" name="black50"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device not steady" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCq-5o-p8a">
-                    <rect key="frame" x="23" y="38" width="133" height="19"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="19" id="CQK-Ug-Duk"/>
-                    </constraints>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device not steady" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCq-5o-p8a">
+                    <rect key="frame" x="23" y="38" width="336" height="19.5"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                     <color key="textColor" name="black100"/>
                     <color key="highlightedColor" name="black100"/>
@@ -62,7 +59,7 @@
             <constraints>
                 <constraint firstItem="IUj-Rh-byS" firstAttribute="top" secondItem="Vru-Ae-EjB" secondAttribute="top" constant="23" id="1QQ-dw-mZV"/>
                 <constraint firstItem="6wb-Si-b3T" firstAttribute="top" secondItem="Vru-Ae-EjB" secondAttribute="top" constant="25" id="2YD-mm-Tjd"/>
-                <constraint firstItem="RCy-Dy-Fjg" firstAttribute="bottom" secondItem="HCq-5o-p8a" secondAttribute="bottom" constant="23" id="NHb-KR-GV4"/>
+                <constraint firstItem="HCq-5o-p8a" firstAttribute="top" secondItem="IUj-Rh-byS" secondAttribute="bottom" constant="3" id="K3U-dN-jQ9"/>
                 <constraint firstItem="IUj-Rh-byS" firstAttribute="leading" secondItem="Vru-Ae-EjB" secondAttribute="leading" constant="23" id="UlY-af-g20"/>
                 <constraint firstAttribute="trailing" secondItem="6wb-Si-b3T" secondAttribute="trailing" constant="15" id="VCU-kf-3AJ"/>
                 <constraint firstItem="37X-SU-lvN" firstAttribute="top" secondItem="Vru-Ae-EjB" secondAttribute="top" constant="25" id="Z75-zN-iom"/>
@@ -70,6 +67,7 @@
                 <constraint firstItem="RCy-Dy-Fjg" firstAttribute="trailing" secondItem="37X-SU-lvN" secondAttribute="trailing" constant="15" id="gCi-Yx-b7i"/>
                 <constraint firstItem="RCy-Dy-Fjg" firstAttribute="bottom" secondItem="6wb-Si-b3T" secondAttribute="bottom" constant="25" id="ogz-SI-tLz"/>
                 <constraint firstItem="HCq-5o-p8a" firstAttribute="leading" secondItem="RCy-Dy-Fjg" secondAttribute="leading" constant="23" id="sea-sc-U3z"/>
+                <constraint firstItem="6wb-Si-b3T" firstAttribute="leading" secondItem="HCq-5o-p8a" secondAttribute="trailing" constant="10" id="uQ6-qj-vFt"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>

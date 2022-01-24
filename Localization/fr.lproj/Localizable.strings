@@ -160,11 +160,11 @@
 "doc_scanner_description" = "choisissez votre type de document";
 "doc_scanner_passport" = "Passeport";
 "doc_scanner_id_card" = "Carte d’identité";
+"doc_scanner_paper_id" = "Pièce d'identité papier";
 "doc_scanner_scan_successful" = "Scan réussi";
 "doc_scanner_scanning" = "Scan en cours...";
 "doc_scanner_scan_failed" = "Échec du scan";
 "doc_scanner_retake" = "Nouvel essai";
-"doc_scanner_take_picture_notice" = "Prenez une photo du document, s'il-vous-plaît";
 "doc_scanner_confirm_result" = "Veuillez confirmer le résultat";
 "doc_scanner_warning_device_not_steady" = "Appareil instable";
 "doc_scanner_warning_too_dark" = "Trop sombre";
@@ -191,9 +191,9 @@
 "doc_scanner_side_inside_right_name" = "intérieur droite";
 "doc_scanner_side_undefined_name" = "côté du document non défini";
 "doc_scanner_side_front_title" = "Veuillez scanner la première page du document";
-"doc_scanner_side_front_angled_title" = "Veuillez scanner la première page du document sous un autre angle";
+"doc_scanner_side_front_angled_title" = "Prendre une photo du document sous un angle";
 "doc_scanner_side_back_title" = "Veuillez scanner la dernière page du document";
-"doc_scanner_side_back_angled_title" = "Veuillez scanner la dernière page du document sous un autre angle";
+"doc_scanner_side_back_angled_title" = "Prendre une photo du document sous un angle";
 "doc_scanner_side_inside_left_title" = "Veuillez scanner l'intérieur gauche du document";
 "doc_scanner_side_inside_left_angled_title" = "Veuillez scanner l'intérieur gauche du document sous un autre angle";
 "doc_scanner_side_inside_right_title" = "Veuillez scanner l'intérieur droit du document";

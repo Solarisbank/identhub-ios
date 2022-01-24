@@ -160,11 +160,11 @@
 "doc_scanner_description" = "Elige el tipo de documento";
 "doc_scanner_passport" = "Pasaporte";
 "doc_scanner_id_card" = "Documento de identidad";
+"doc_scanner_paper_id" = "Identificación de papel";
 "doc_scanner_scan_successful" = "Escaneo realizado con éxito";
 "doc_scanner_scanning" = "Escaneando...";
 "doc_scanner_scan_failed" = "Escaneo fallido";
 "doc_scanner_retake" = "Intentar de nuevo";
-"doc_scanner_take_picture_notice" = "Por favor, tome una foto de su identificación oficial.";
 "doc_scanner_confirm_result" = "Confirme el resultado";
 "doc_scanner_warning_device_not_steady" = "El dispositivo no está estable";
 "doc_scanner_warning_too_dark" = "Demasiado oscuro";
@@ -191,9 +191,9 @@
 "doc_scanner_side_inside_right_name" = "interior derecha";
 "doc_scanner_side_undefined_name" = "lateral del documento no definido";
 "doc_scanner_side_front_title" = "Escanee la parte frontal del documento";
-"doc_scanner_side_front_angled_title" = "Escanee de manera angular la parte frontal del documento";
+"doc_scanner_side_front_angled_title" = "Tome una foto del documento en ángulo";
 "doc_scanner_side_back_title" = "Escanee la parte trasera del documento";
-"doc_scanner_side_back_angled_title" = "Escanee de manera angular la parte trasera del documento";
+"doc_scanner_side_back_angled_title" = "Tome una foto del documento en ángulo";
 "doc_scanner_side_inside_left_title" = "Escanee el interior izquierdo del documento";
 "doc_scanner_side_inside_left_angled_title" = "Escanee de manera angular el interior izquierdo del documento";
 "doc_scanner_side_inside_right_title" = "Escanee el interior derecho del documento";

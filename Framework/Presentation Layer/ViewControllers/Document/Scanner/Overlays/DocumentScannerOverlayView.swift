@@ -24,7 +24,6 @@ final class DocumentScannerOverlayView: UIView {
     @IBOutlet var maskWidthRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskCenterYConstraint: NSLayoutConstraint!
     @IBOutlet var takePictureBtnView: UIView!
-    @IBOutlet var instructionsLabel: UILabel!
 
     var onDismiss: (() -> Void)?
     var onTakePicture: (() -> Void)?
@@ -87,7 +86,6 @@ final class DocumentScannerOverlayView: UIView {
     /// Method configure custom colors in UI components
     func configureUI() {
         takePictureBtnView.backgroundColor = .sdkColor(.primaryAccent)
-        instructionsLabel.text = Localizable.DocumentScanner.takePictureNotice
     }
 }
 

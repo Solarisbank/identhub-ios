@@ -78,7 +78,7 @@ extension DocumentPickerViewModel {
             case .residencePermit:
                 _ = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "permit_document_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .residencePermit)
             case .paperId:
-                let paperID = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "passport_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .paperId)
+                let paperID = ScanDocumentType(name: Localizable.DocumentScanner.paperID, logo: UIImage(named: "passport_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .paperId)
                 content.append(paperID)
             case .frenchIdCard:
                 let frenchIDCard = ScanDocumentType(name: supportedDocument.type.rawValue, logo: UIImage(named: "idcard_logo_icon", in: Bundle(for: Self.self), compatibleWith: nil)!, type: .frenchIdCard)

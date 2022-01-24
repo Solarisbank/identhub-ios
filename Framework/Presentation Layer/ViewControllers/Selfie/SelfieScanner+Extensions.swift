@@ -22,7 +22,6 @@ extension SelfieScannerWarning {
         case .faceNotDetected:
             return 5
         @unknown default:
-            print("Missing SelfieScannerWarning.priority for \(self)")
             return -1
         }
     }
@@ -42,7 +41,6 @@ extension SelfieScannerWarning {
         case .deviceNotSteady:
             return Localizable.Selfie.Warnings.deviceNotSteady
         @unknown default:
-            print("Missing SelfieScannerWarning.text for \(self)")
             return Localizable.Selfie.Warnings.unknown
         }
     }
@@ -87,7 +85,6 @@ extension SelfieScannerError {
         case .unknown:
             return Localizable.Selfie.Errors.unknown
         @unknown default:
-            print("Missing SelfieScannerError.text for \(self)")
             return Localizable.Selfie.Errors.unknown
         }
     }

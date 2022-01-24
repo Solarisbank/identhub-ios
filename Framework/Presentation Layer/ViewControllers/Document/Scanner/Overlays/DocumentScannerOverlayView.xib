@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -92,12 +92,6 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAL-zK-Z6b">
                     <rect key="frame" x="79.5" y="687" width="255" height="135"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please take a picture of the document" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kab-Hg-54z">
-                            <rect key="frame" x="0.0" y="117.5" width="255" height="17.5"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <color key="textColor" name="base75"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fy-Jy-GZm">
                             <rect key="frame" x="62.5" y="0.0" width="130" height="130"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -123,7 +117,6 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="255" id="A2t-iG-TNE"/>
-                        <constraint firstItem="Kab-Hg-54z" firstAttribute="leading" secondItem="mAL-zK-Z6b" secondAttribute="leading" id="OJv-wI-myB"/>
                         <constraint firstItem="1ma-aB-UUe" firstAttribute="top" secondItem="9fy-Jy-GZm" secondAttribute="top" constant="32" id="SP0-r0-zlY"/>
                         <constraint firstItem="9fy-Jy-GZm" firstAttribute="top" secondItem="mAL-zK-Z6b" secondAttribute="top" id="UqK-UK-sMG"/>
                         <constraint firstItem="1ma-aB-UUe" firstAttribute="leading" secondItem="9fy-Jy-GZm" secondAttribute="leading" constant="32" id="aeA-56-BVh"/>
@@ -131,8 +124,6 @@
                         <constraint firstItem="1ma-aB-UUe" firstAttribute="bottom" secondItem="9fy-Jy-GZm" secondAttribute="bottom" constant="-32" id="cy8-RX-ThO"/>
                         <constraint firstItem="1ma-aB-UUe" firstAttribute="trailing" secondItem="9fy-Jy-GZm" secondAttribute="trailing" constant="-32" id="ogT-a6-uH0"/>
                         <constraint firstItem="9fy-Jy-GZm" firstAttribute="centerX" secondItem="mAL-zK-Z6b" secondAttribute="centerX" id="ouU-jg-fiI"/>
-                        <constraint firstAttribute="bottom" secondItem="Kab-Hg-54z" secondAttribute="bottom" id="rZO-PZ-mOx"/>
-                        <constraint firstAttribute="trailing" secondItem="Kab-Hg-54z" secondAttribute="trailing" id="tdq-Pt-i3q"/>
                     </constraints>
                 </view>
             </subviews>
@@ -179,7 +170,6 @@
                 <outlet property="bottomMaskView" destination="oU1-aN-De4" id="uhQ-nK-XRl"/>
                 <outlet property="documentFrameStatusView" destination="GMG-Dr-Rm2" id="26Z-6U-Mwn"/>
                 <outlet property="documentFrameView" destination="42S-fr-ftO" id="gBK-sd-rOX"/>
-                <outlet property="instructionsLabel" destination="Kab-Hg-54z" id="fNy-ZP-Xwa"/>
                 <outlet property="leftMaskView" destination="bqQ-3Q-rOd" id="oim-sj-Bal"/>
                 <outlet property="manualControlView" destination="mAL-zK-Z6b" id="CUb-Rb-74z"/>
                 <outlet property="maskAspectRatioConstraint" destination="4dT-AC-dvf" id="USl-HZ-cso"/>
@@ -204,13 +194,10 @@
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base100">
-            <color red="0.059000000357627869" green="0.097999997437000275" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="base75">
-            <color red="0.25490196078431371" green="0.30196078431372547" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="1" green="0.3919999897480011" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

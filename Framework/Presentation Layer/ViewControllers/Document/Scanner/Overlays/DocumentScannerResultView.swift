@@ -44,7 +44,7 @@ final class DocumentScannerResultView: UIView {
         documentResult.image = stepResult.image.full
         changeMask(configuration: configuration)
         retakeBtnTitle.text = Localizable.DocumentScanner.retake
-        confirmBtnTitle.text = Localizable.Common.confirm
+        confirmBtnTitle.text = Localizable.Selfie.confirm
     }
 
     // MARK: - Action methods -

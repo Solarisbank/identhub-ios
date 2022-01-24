@@ -217,12 +217,12 @@ enum Localizable {
         static let description = "doc_scanner_description".localized()
         static let passport = "doc_scanner_passport".localized()
         static let idCard = "doc_scanner_id_card".localized()
+        static let paperID = "doc_scanner_paper_id".localized()
         static let successScan = "doc_scanner_scan_successful".localized()
         static let scanning = "doc_scanner_scanning".localized()
         static let scanFailed = "doc_scanner_scan_failed".localized()
         static let retake = "doc_scanner_retake".localized()
         static let confirmResult = "doc_scanner_confirm_result".localized()
-        static let takePictureNotice = "doc_scanner_take_picture_notice".localized()
 
         enum DocSideName {
             static let front = "doc_scanner_side_front_name".localized()

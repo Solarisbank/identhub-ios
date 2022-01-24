@@ -160,11 +160,11 @@
 "doc_scanner_description" = "bitte wählen Sie Ihr Ausweisdokument";
 "doc_scanner_passport" = "Reisepass";
 "doc_scanner_id_card" = "Personalausweis";
+"doc_scanner_paper_id" = "Papierausweis";
 "doc_scanner_scan_successful" = "Scan erfolgreich";
 "doc_scanner_scanning" = "Scannen...";
 "doc_scanner_scan_failed" = "Scan fehlgeschlagen";
 "doc_scanner_retake" = "Wiederholen";
-"doc_scanner_take_picture_notice" = "Bitte fotografieren Sie das Dokument";
 "doc_scanner_confirm_result" = "Bestätigen Sie das Ergebnis";
 "doc_scanner_warning_device_not_steady" = "Handy ist nicht in einer stabilen Position";
 "doc_scanner_warning_too_dark" = "Dokument ist zu dunkel";
@@ -191,9 +191,9 @@
 "doc_scanner_side_inside_right_name" = "innenseite rechts";
 "doc_scanner_side_undefined_name" = "Dokumentenseite nicht definiert";
 "doc_scanner_side_front_title" = "Bitte scannen Sie die Vorderseite von Ihrem Ausweisdokument";
-"doc_scanner_side_front_angled_title" = "Bitte scannen Sie die Vorderseite von Ihrem Ausweisdokument angewinkelt";
+"doc_scanner_side_front_angled_title" = "Fotografieren Sie das Dokument in einem Winkel";
 "doc_scanner_side_back_title" = "Bitte scannen Sie die Hinterseite von Ihrem Ausweisdokument";
-"doc_scanner_side_back_angled_title" = "Bitte scannen Sie die Hinterseite von Ihrem Ausweisdokument angewinkelt";
+"doc_scanner_side_back_angled_title" = "Fotografieren Sie das Dokument in einem Winkel";
 "doc_scanner_side_inside_left_title" = "Bitte scannen Sie die linke Innenseite von Ihrem Ausweisdokument";
 "doc_scanner_side_inside_left_angled_title" = "Bitte scannen Sie die linke Innenseite von Ihrem Ausweisdokument angewinkelt";
 "doc_scanner_side_inside_right_title" = "Bitte scannen Sie die rechte Innenseite von Ihrem Ausweisdokument";
