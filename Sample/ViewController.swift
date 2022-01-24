@@ -93,10 +93,10 @@ extension ViewController: IdentHubSDKManagerDelegate {
         }
     }
 
-    func didFailureSession() {
+    func didFailureSession(_ failureReason: APIError) {
 
         DispatchQueue.main.async {
-            self.updateStatus(false, desc: "Session failed. Try again or create new session URL.")
+            self.updateStatus(false, desc: "Session failed (\"\(failureReason.text())\"). Try again or create new session URL.")
         }
     }
 

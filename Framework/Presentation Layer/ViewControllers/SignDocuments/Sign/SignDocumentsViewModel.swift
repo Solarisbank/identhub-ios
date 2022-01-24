@@ -61,11 +61,11 @@ final internal class SignDocumentsViewModel: NSObject {
                     }
                 } else {
                     self.codeVerificationFailed()
-                    self.completionHander(.failure)
+                    self.completionHander(.failure(.authorizationFailed))
                 }
-            case .failure(_):
+            case .failure(let error):
                 self.codeVerificationFailed()
-                self.completionHander(.failure)
+                self.completionHander(.failure(error.apiError))
             }
         }
     }
@@ -163,13 +163,13 @@ private extension SignDocumentsViewModel {
                         self.delegate?.verificationSucceeded()
                     default:
                         self.expireVerificationStatusTimer()
-                        self.completionHander(.failure)
+                        self.completionHander(.failure(.authorizationFailed))
                     }
                     SessionStorage.clearData()
                 }
-            case .failure(_):
+            case .failure(let error):
                 self.expireVerificationStatusTimer()
-                self.completionHander(.failure)
+                self.completionHander(.failure(error.apiError))
                 self.flowCoordinator.perform(action: .close)
             }
         }

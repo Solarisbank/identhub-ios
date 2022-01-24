@@ -1,21 +1,32 @@
 # Solarisbank IdentHub SDK
 <img src="https://badgen.net/badge/bitcode/Enabled/green">
 
-- [Overview](#overview)
-- [Compatiblity Table](#compatibility-table)
-- [Intergration](#intergration)
-  * [CocoaPods](#cocoapods)
-  * [Carthage](#carthage)
-- [Example usage](#example-usage)
-- [Identification callbacks](#identification-callbacks)
-- [Sample app](#sample-app)
-- [Troubleshooting](#troubleshooting)
-  * [Pod repo add error](#pod-repo-add-error)
-  * [SwiftyTesseract compilation error](#swiftytesseract-compilation-error)
-  * [SwiftyTesseract upload to AppStore error](#swiftytesseract-upload-to-appstore-error)
-  * [Bitcode compilation error](#bitcode-compilation-error)
-  * [iOS Simulator launch error for Xcode 12](#ios-simulator-launch-error-for-xcode-12)
-  * [Xcode 12.3 errors using *.framework* dependencies](#xcode-123-errors-using-framework-dependencies)
+<!--
+    spell-checker:words Fourthline Identhub Podfile Cartfile IBAN  
+    spell-checker:ignore Swifty
+-->
+
+- [Solarisbank IdentHub SDK](#solarisbank-identhub-sdk)
+  - [Overview](#overview)
+  - [Compatibility Table](#compatibility-table)
+  - [Integration](#integration)
+    - [CocoaPods](#cocoapods)
+      - [Dependency to Fourthline SDK](#dependency-to-fourthline-sdk)
+    - [Carthage](#carthage)
+  - [Example Usage](#example-usage)
+  - [Identification callbacks](#identification-callbacks)
+    - [Delegate protocol methods](#delegate-protocol-methods)
+    - [Callback by using closures](#callback-by-using-closures)
+  - [Sample app](#sample-app)
+  - [Troubleshooting](#troubleshooting)
+    - [Pod repo add error](#pod-repo-add-error)
+    - [SwiftyTesseract compilation error](#swiftytesseract-compilation-error)
+    - [SwiftyTesseract upload to AppStore error](#swiftytesseract-upload-to-appstore-error)
+    - [Bitcode compilation error](#bitcode-compilation-error)
+    - [Crash during ZIP creation](#crash-during-zip-creation)
+    - [Crash in pure ObjC applications](#crash-in-pure-objc-applications)
+    - [iOS Simulator launch error for Xcode 12](#ios-simulator-launch-error-for-xcode-12)
+    - [Xcode 12.3 errors using .framework dependencies](#xcode-123-errors-using-framework-dependencies)
 
 ## Overview
 iOS SDK for Solarisbank IdentHub.
@@ -39,7 +50,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 1.1.2 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
 
 
-## Intergration
+## Integration
 
 You can add the desired IdentHub SDK modules to your project by using CocoaPods or Carthage dependency managers.
 
@@ -136,9 +147,10 @@ extension ViewController: IdentHubSDKManagerDelegate {
         }
     }
 
-    func didFailureSession() {
+    func didFailureSession(_ failureReason: APIError) {
         DispatchQueue.main.async {
-            // - ask your backend (receives the webhooks), if app able to retry or not -
+            // - display failure message
+            // - check the IdentificationSession's status in the backend wether app should retry
         }
     }
 
@@ -155,7 +167,7 @@ extension ViewController: IdentHubSDKManagerDelegate {
 
 Callback system implemented by using delegate pattern or closure.
 
-Delegate protocol methods:
+### Delegate protocol methods
 
 <details>
   <summary>Output Delegate</summary>
@@ -168,8 +180,9 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
     /// - Parameter identification: string value of the user identification
     func didFinishWithSuccess(_ identification: String)
 
-    /// Identification session failed
-    func didFailureSession()
+    /// Identification session failed or interrupted with error
+    /// - Parameter failureReason: error object
+    func didFailureSession(_ failureReason: APIError)
 
     /// Session finished with fourthline signing on confirm step and returns identification string
     /// - Parameter identification: string value of the user identification
@@ -178,30 +191,79 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
 ```
 </details>
 
-```bash
+```swift
 func didFinishWithSuccess(_ identification: String)
 ```
-Method notifies when identification session finished with success and returns identificaiton session identifier in parameter
+Method notifies when identification session finished with success and returns identification session identifier in parameter
 
-```bash
-func didFailureSession()
+```swift
+func didFailureSession(_ failureReason: APIError)
 ```
+
 Method notifies when identification session finished or interrupted with error.
 Ask your backend (receives the webhooks), if app able to retry or not.
 App may retry as long as do not get a failed / rejected status on the session.
 
-```bash
+:warning: &nbsp; **Note that your app should not rely on the error details provided in the failure handler. Information about the outcome of the Identification should be taken from the Identification's status only. Provision of the APIError object in the failure handler may be deprecated in future releases of the IdentHub SDK.**
+
+<details>
+  <summary>APIError Description</summary>
+
+```swift
+// Common api error encountered throughout the app.
+//
+// - malformedResponseJson:  indicates that string received in the response couldn't been parsed.
+// - clientError: indicates the error on the client's side.
+// - authorizationFailed: indicates that authorization failed.
+// - unauthorizedAction: action has not been authorized.
+// - resourceNotFound: resource has not been found.
+// - expectationMismatch: data mismatch's
+// - incorrectIdentificationStatus: the identification status was not allowed to proceed with the action.
+// - unprocessableEntity: data invalid or expired.
+// - internalServerError: indicates the internal server error.
+// - requestError: indicates build request error
+// - locationError: indicates issue with fetching device location data
+// - ibanVerfificationFailed: failed IBAN verification
+// - paymentFailed: failed payment initiation
+// - identificationDataInvalid: provided user data is not valid and should be creates one more time
+// - fraudData: provided data defines as fraud
+// - unknownError: indicates that api client encountered an error not listed above.
+public enum APIError: Error {
+    case malformedResponseJson
+    case clientError(error: ErrorDetail?)
+    case authorizationFailed
+    case unauthorizedAction
+    case resourceNotFound
+    case expectationMismatch
+    case incorrectIdentificationStatus(error: ErrorDetail?)
+    case unprocessableEntity
+    case internalServerError
+    case requestError
+    case locationAccessError
+    case locationError
+    case ibanVerfificationFailed
+    case paymentFailed
+    case identificationDataInvalid(error: ErrorDetail?)
+    case fraudData(error: ErrorDetail?)
+    case unknownError
+}
+```
+</details>
+<br />
+
+```swift
 func didFinishOnConfirm(_ identification: String)
 ```
 Method notifies when session finished with fourthline signing on confirm step and returns identification string
 Method is optional and used only for the Fourthline signing session method.
 
-*Callback by using closures.*
+### Callback by using closures
+
 Callback as closure passed as start method parameter
 
-```bash
+```swift
 /// Method starts identification process (BankID) with updating status by closure callback
-/// - Parameter type: identification process session type: bankid, fourhline
+/// - Parameter type: identification process session type: bankid, fourthline
 /// - Parameter completion: closure with result object in parameter, result has two cases: success with id or failure with error
 public func start(_ completion: CompletionHandler?)
 ```
@@ -219,7 +281,8 @@ public enum IdentificationSessionResult {
     case success(identification: String)
 
     /// failure - case used if identification process failed
-    case failure
+    /// - Parameter failureReason: error object
+    case failure(APIError)
 
     /// onConfirm - success result of the Fourthline signing flow with identification value string in parameter
     /// - identification: identification user session identifier
@@ -246,7 +309,7 @@ Fourthline requires to use GitHub 2 factor authentication, please use a PAT inst
 How to create a PAT can be found at -> https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
 ### SwiftyTesseract compilation error
-If you get "Redefenition of module 'libtesseract'" and  "Redefenition of module 'libleptonica'" errors at *module.private.modulemap* file while building your app, comment out next lines of code:
+If you get "Redefinition of module 'libtesseract'" and  "Redefinition of module 'libleptonica'" errors at *module.private.modulemap* file while building your app, comment out next lines of code:
 
 ```bash
 module libtesseract {
@@ -271,7 +334,7 @@ For this go to Build settings of framework target in framework project and make 
 Rebuild and reimport problematic framework.
 
 ### Crash during ZIP creation
-For Xcode 11.X, if ZIPFoundation framework was intergrated via Carthage, you may experience crash after calling *createZipFile(with:)* method on instance of *Zipper* class. To fix this issue, you need to update build settings of ZIPFoundation project and build framework manually.
+For Xcode 11.X, if ZIPFoundation framework was integrated via Carthage, you may experience crash after calling *createZipFile(with:)* method on instance of *Zipper* class. To fix this issue, you need to update build settings of ZIPFoundation project and build framework manually.
 - Go to *YourProjectFolder/Carthage/Checkouts/ZIPFoundation* folder.
 - Open *ZIPFoundation.xcodeproj* file with Xcode.
 - Select *ZIPFoundation* target.
@@ -282,12 +345,12 @@ For Xcode 11.X, if ZIPFoundation framework was intergrated via Carthage, you may
 For Xcode 12.X, make sure you are using 0.9.11 version of framework.
 
 ### Crash in pure ObjC applications
-If you get error message similat to next one: "Class XXX is implemented in both YYY and /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/libswiftCore.dylib. One of the two will be used. Which one is undefined.", you need to add empty swift file to your pure ObjC application, together with bridging file (will be created automatically by Xcode).
+If you get error message similar to next one: "Class XXX is implemented in both YYY and /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/libswiftCore.dylib. One of the two will be used. Which one is undefined.", you need to add empty swift file to your pure ObjC application, together with bridging file (will be created automatically by Xcode).
 
 ### iOS Simulator launch error for Xcode 12
 If you get error "/Path/To/Your/Project/ProjectName.xcodeproj Building for iOS Simulator, but the linked and embedded framework 'FrameworkName.framework' was built for iOS.", you need to rebuild that framework with arm64 architecture excluded for iOS Simulator.
 
-For this go to Build settings of framework target in framework project and make sure that *Excluded Architectures* property containt *arm64* value for *Any iOS Simulator SDK* option for desired build target (*Debug*, *Release*)
+For this go to Build settings of framework target in framework project and make sure that *Excluded Architectures* property contains *arm64* value for *Any iOS Simulator SDK* option for desired build target (*Debug*, *Release*)
 
 Rebuild and reimport problematic framework.
 

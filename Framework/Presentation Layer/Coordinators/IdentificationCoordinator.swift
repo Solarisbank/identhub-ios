@@ -69,7 +69,7 @@ private extension IdentificationCoordinator {
                 self?.close()
             }
         case .abort:
-            completionHandler?(.failure)
+            completionHandler?(.failure(.authorizationFailed))
             close()
         }
     }

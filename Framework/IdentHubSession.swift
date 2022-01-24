@@ -12,8 +12,9 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
     /// - Parameter identification: string value of the user identificaiton
     func didFinishWithSuccess(_ identification: String)
 
-    /// Identificaiton session finished or interrupted with error
-    func didFailureSession()
+    /// Identification session finished or interrupted with error
+    /// - Parameter failureReason: session error object
+    func didFailureSession(_ failureReason: APIError)
 
     /// Session finished with fourthline signing on confirm step and returns identification string
     /// - Parameter identification: string value of the user identificaiton
@@ -90,8 +91,8 @@ private extension IdentHubSession {
         switch result {
         case .success(let identificaiton):
             self.sessionDelegate?.didFinishWithSuccess(identificaiton)
-        case .failure:
-            self.sessionDelegate?.didFailureSession()
+        case .failure(let error):
+            self.sessionDelegate?.didFailureSession(error)
         case .onConfirm(let identification):
             self.sessionDelegate?.didFinishOnConfirm(identification)
         }

@@ -37,10 +37,10 @@ final internal class PaymentVerificationViewModel: NSObject {
         delegate?.verificationStarted()
         guard let path = sessionStorage.identificationPath,
               let url = URL(string: path) else {
-            delegate?.verificationFailed()
-            completionHandler(.failure)
-            return
-        }
+                  delegate?.verificationFailed()
+                  completionHandler(.failure(.requestError))
+                  return
+              }
         let urlRequest = URLRequest(url: url)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             guard let `self` = self else { return }
@@ -92,8 +92,8 @@ private extension PaymentVerificationViewModel {
                 default:
                     print("Status not processed in SDK: \(response.status.rawValue)")
                 }
-            case .failure(_):
-                self.completionHandler(.failure)
+            case .failure(let error):
+                self.completionHandler(.failure(error.apiError))
             }
         }
     }
@@ -110,7 +110,7 @@ private extension PaymentVerificationViewModel {
 
     private func interruptProcess() {
         DispatchQueue.main.async {
-            self.completionHandler(.failure)
+            self.completionHandler(.failure(.paymentFailed))
             self.flowCoordinator.perform(action: .close)
         }
     }
