@@ -139,10 +139,10 @@
                         <constraint firstItem="Ogh-3P-g27" firstAttribute="top" secondItem="J6Y-w0-bA5" secondAttribute="bottom" constant="12" id="Aa0-ij-3VD"/>
                         <constraint firstItem="3XN-46-37p" firstAttribute="leading" secondItem="2Lr-DT-kl8" secondAttribute="leading" constant="16" id="DeE-0S-d38"/>
                         <constraint firstItem="B5y-Vm-Tcu" firstAttribute="top" secondItem="2Lr-DT-kl8" secondAttribute="top" constant="37" id="GvJ-Yh-FIO"/>
-                        <constraint firstAttribute="bottom" secondItem="3XN-46-37p" secondAttribute="bottom" constant="30" id="IKl-bL-FNt"/>
+                        <constraint firstAttribute="bottom" secondItem="3XN-46-37p" secondAttribute="bottom" priority="750" constant="30" id="IKl-bL-FNt"/>
                         <constraint firstItem="J6Y-w0-bA5" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="KSe-sZ-zBS"/>
                         <constraint firstItem="2Jr-YL-y1A" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BTw-bG-7P3" secondAttribute="bottom" priority="750" constant="10" id="RIu-QK-F0p"/>
-                        <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" secondItem="B5y-Vm-Tcu" secondAttribute="bottom" constant="47" id="SLo-gX-Djs"/>
+                        <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="B5y-Vm-Tcu" secondAttribute="bottom" priority="750" constant="10" id="SLo-gX-Djs"/>
                         <constraint firstItem="Ogh-3P-g27" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="Uig-3B-owr"/>
                         <constraint firstAttribute="trailing" secondItem="3XN-46-37p" secondAttribute="trailing" constant="16" id="Y32-8O-Dhe"/>
                         <constraint firstAttribute="trailing" secondItem="B5y-Vm-Tcu" secondAttribute="trailing" constant="20" id="YT1-PG-7Z9"/>
@@ -168,6 +168,7 @@
                 <constraint firstItem="CrA-au-UCf" firstAttribute="trailing" secondItem="mkQ-Xg-O6u" secondAttribute="trailing" id="avj-J3-jUD"/>
                 <constraint firstItem="CrA-au-UCf" firstAttribute="bottom" secondItem="2Lr-DT-kl8" secondAttribute="bottom" id="w51-1p-O9R"/>
                 <constraint firstItem="CrA-au-UCf" firstAttribute="trailing" secondItem="2Lr-DT-kl8" secondAttribute="trailing" id="wAt-Hn-eVm"/>
+                <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" secondItem="FbP-9b-UPj" secondAttribute="bottom" constant="103.5" id="xna-66-X6o"/>
             </constraints>
             <point key="canvasLocation" x="-330" y="-528"/>
         </view>

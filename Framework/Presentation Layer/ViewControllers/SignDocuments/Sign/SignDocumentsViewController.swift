@@ -32,6 +32,7 @@ final internal class SignDocumentsViewController: UIViewController {
         case processing
         case success
         case error
+        case requestCodeError
         case requestCode
     }
 
@@ -150,8 +151,11 @@ extension SignDocumentsViewController {
             submitCodeBtn.currentAppearance = .inactive
             errorLabelHeightConstraint.constant = 40
             errorCodeLabel.isHidden = false
+            requestCodeTimerLabel.isHidden = true
+            sendNewCodeBtn.isHidden = false
             sendNewCodeBtn.isEnabled = true
             sendNewCodeBtn.alpha = 1.0
+            errorCodeLabel.text = Localizable.PhoneVerification.wrongTan
         case .success:
             viewModel.finishIdentification()
         case .processing:
@@ -163,6 +167,13 @@ extension SignDocumentsViewController {
             sendNewCodeBtn.isEnabled = false
             sendNewCodeBtn.alpha = 0.5
             requestCodeTimerLabel.isHidden = true
+        case .requestCodeError:
+            codeEntryView.state = .normal
+            codeEntryView.clearCodeEntries()
+            submitCodeBtn.currentAppearance = .inactive
+            errorLabelHeightConstraint.constant = 40
+            errorCodeLabel.isHidden = false
+            errorCodeLabel.text = Localizable.PhoneVerification.Error.requestCodeError
         }
     }
 }
@@ -203,6 +214,10 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
 
     func verificationFailed() {
         state = .error
+    }
+    
+    func requestNewCodeFailed() {
+        state = .requestCodeError
     }
 }
 

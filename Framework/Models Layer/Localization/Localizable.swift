@@ -61,6 +61,7 @@ enum Localizable {
             static let title = "phone_verification_error_title".localized()
             static let description = "phone_verification_error_description".localized()
             static let action = "phone_verification_error_action".localized()
+            static let requestCodeError = "request_tan_failed".localized()
         }
     }
 

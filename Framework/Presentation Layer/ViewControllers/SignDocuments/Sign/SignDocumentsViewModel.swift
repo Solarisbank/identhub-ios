@@ -80,7 +80,8 @@ final internal class SignDocumentsViewModel: NSObject {
                 }
             case .failure(_):
                 DispatchQueue.main.async {
-                    self?.delegate?.verificationFailed()
+                    self?.expireRequestNewCodeTimer()
+                    self?.delegate?.requestNewCodeFailed()
                 }
             }
         }
@@ -192,4 +193,7 @@ protocol SignDocumentsViewModelDelegate: VerifiableViewModelDelegate {
     /// Method updated count down timer label
     /// count - number of seconds
     func didUpdateTimerLabel(_ count: String)
+    
+    /// Method notified if request new code fails
+    func requestNewCodeFailed()
 }

@@ -208,7 +208,7 @@ internal class CodeEntryView: UIView {
         case .normal:
             textFieldProperties = (.sdkColor(.background), UIColor.sdkColor(.base25).cgColor, true, .sdkColor(.base100))
         case .error:
-            textFieldProperties = (.sdkColor(.base05), UIColor.sdkColor(.error).cgColor, false, .sdkColor(.base25))
+            textFieldProperties = (.sdkColor(.base05), UIColor.sdkColor(.error).cgColor, true, .sdkColor(.base25))
         case .disabled:
             textFieldProperties = (.sdkColor(.base05), UIColor.sdkColor(.base25).cgColor, false, .sdkColor(.base25))
         }
@@ -237,6 +237,10 @@ internal class CodeEntryView: UIView {
 extension CodeEntryView: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if state == .error {
+            state = .normal
+        }
+        
         textField.text = string
         if let currentTextFieldIndex = entryFieldsStackView.arrangedSubviews.firstIndex(of: textField), string.isEmpty == false {
             currentIndex = currentTextFieldIndex

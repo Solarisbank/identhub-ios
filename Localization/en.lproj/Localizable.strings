@@ -36,6 +36,7 @@
 "phone_verification_request_code_timer" = "Request a new code in";
 "phone_verification_send_new_code" = "Send new code";
 "phone_verification_wrong_tan" = "Wrong TAN. You need to request a new TAN and try again.";
+"request_tan_failed" = "Failed to request new TAN.";
 "phone_verification_submit_code" = "Submit code";
 "phone_verification_request_new_code" = "Request new code";
 "phone_verification_success_title" = "Phone verification successful";

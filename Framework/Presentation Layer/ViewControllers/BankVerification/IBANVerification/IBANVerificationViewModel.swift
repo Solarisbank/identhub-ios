@@ -122,7 +122,9 @@ private extension IBANVerificationViewModel {
                         self.delegate?.verificationIBANFailed(error)
                     }
                } else if let nextStep = detail?.nextStep {
-                   self.performFlowStep(nextStep)
+                   DispatchQueue.main.async {
+                       self.performFlowStep(nextStep)
+                   }
                } else {
                    didTriggerQuit()
                }
