@@ -22,6 +22,7 @@ import Foundation
 /// - paymentFailed: failed payment initiation
 /// - identificationDataInvalid: provided user data is not valid and should be creates one more time
 /// - fraudData: provided data defines as fraud
+/// - unsupportedResponse: SDK encountered a response that is not supported in this version
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
@@ -40,6 +41,7 @@ public enum APIError: Error {
     case paymentFailed
     case identificationDataInvalid(error: ErrorDetail?)
     case fraudData(error: ErrorDetail?)
+    case unsupportedResponse
     case unknownError
 }
 
@@ -115,6 +117,8 @@ public extension APIError {
             return Localizable.APIErrorDesc.paymentFailure
         case .identificationDataInvalid:
             return Localizable.APIErrorDesc.unprocessableEntity
+        case .unsupportedResponse:
+            return Localizable.APIErrorDesc.unsupportedResponse
         case .fraudData:
             return Localizable.APIErrorDesc.unprocessableEntity
         }

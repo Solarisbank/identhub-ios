@@ -204,7 +204,7 @@ Method notifies when identification session finished or interrupted with error.
 Ask your backend (receives the webhooks), if app able to retry or not.
 App may retry as long as do not get a failed / rejected status on the session.
 
-:warning: &nbsp; **Note that your app should not rely on the error details provided in the failure handler. Information about the outcome of the Identification should be taken from the Identification's status only. Provision of the APIError object in the failure handler may be deprecated in future releases of the IdentHub SDK.**
+:warning: &nbsp; **Note that your app should not rely on the error details provided in the failure handler to deduce the status of an Identification. Information about the outcome of the Identification should be taken from the Identification's status only. Provision of the APIError object in the failure handler may be deprecated or presented differently in future releases of the IdentHub SDK.**
 
 <details>
   <summary>APIError Description</summary>
@@ -227,6 +227,7 @@ App may retry as long as do not get a failed / rejected status on the session.
 // - paymentFailed: failed payment initiation
 // - identificationDataInvalid: provided user data is not valid and should be creates one more time
 // - fraudData: provided data defines as fraud
+// - unsupportedResponse: SDK encountered a response that is not supported in this version
 // - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
@@ -245,6 +246,7 @@ public enum APIError: Error {
     case paymentFailed
     case identificationDataInvalid(error: ErrorDetail?)
     case fraudData(error: ErrorDetail?)
+    case unsupportedResponse
     case unknownError
 }
 ```

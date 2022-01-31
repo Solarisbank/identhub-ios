@@ -129,5 +129,9 @@ enum IdentificationStep: String, Codable {
     case fourthlineSigning = "fourthline_signing"
     case fourthlineQES = "fourthline_signing/qes"
     case abort = "abort"
-    case unspecified = "unspecified"
+    case unspecified
+    
+    init(from decoder: Decoder) throws {
+        self = try IdentificationStep(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unspecified
+    }
 }
