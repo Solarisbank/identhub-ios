@@ -44,6 +44,27 @@ class BankIDCoordinatorTest: BaseTestCase {
         
         wait(for: [resultExpectation, presenterExpectation], timeout: 1.0)
     }
+    
+    func testPerformPartnerFallbackStep() throws {
+        let presenterExpectation = XCTestExpectation(description: "Presenter is dismissed")
+        presenter.closure = {
+            presenterExpectation.fulfill()
+        }
+
+        let resultExpectation = XCTestExpectation(description: "Result handler gets called")
+        bankIDCoordinator?.perform(step: .partnerFallback) { result in
+            guard case .failure(let apiError) = result else {
+                return XCTFail("Expected to be a failure but got a success with \(result)")
+            }
+            
+            if case .identificationNotPossible = apiError {} else {
+                XCTFail("Expected identificationNotPossible but got \(apiError)")
+            }
+            resultExpectation.fulfill()
+        }
+        
+        wait(for: [resultExpectation, presenterExpectation], timeout: 1.0)
+    }
 
 }
 

@@ -143,6 +143,9 @@ private extension BankIDCoordinator {
         case .abort:
             completionHandler?(.failure(.unauthorizedAction))
             close()
+        case .partnerFallback:
+            completionHandler?(.failure(.identificationNotPossible))
+            close()
         case .unspecified:
             print("Step is not supported or not specified yet")
             completionHandler?(.failure(.unsupportedResponse))

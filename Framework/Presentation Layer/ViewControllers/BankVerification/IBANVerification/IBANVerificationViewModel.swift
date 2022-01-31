@@ -115,19 +115,14 @@ private extension IBANVerificationViewModel {
         case .clientError(let detail),
              .incorrectIdentificationStatus(let detail):
             retriesCount += 1
-
             if retriesCount < sessionStorage.retries {
-               if let _ = detail?.nextStep, let _ = detail?.fallbackStep {
+                if detail?.nextStep != nil || detail?.fallbackStep != nil {
                     DispatchQueue.main.async {
                         self.delegate?.verificationIBANFailed(error)
                     }
-               } else if let nextStep = detail?.nextStep {
-                   DispatchQueue.main.async {
-                       self.performFlowStep(nextStep)
-                   }
-               } else {
-                   didTriggerQuit()
-               }
+                } else {
+                    didTriggerQuit()
+                }
             } else {
                 didTriggerQuit()
             }

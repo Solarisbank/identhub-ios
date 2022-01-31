@@ -89,6 +89,8 @@
 		0CF0AE8B25CC684C00A560E5 /* ContractDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0AE8A25CC684C00A560E5 /* ContractDocument.swift */; };
 		24659B0126D62D7300F56089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24659B0326D62D7300F56089 /* Localizable.strings */; };
 		24659B0526D635E200F56089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24659B0326D62D7300F56089 /* Localizable.strings */; };
+		392F45FF27A41AD90010849E /* IdentHubConstantsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */; };
+		392F460127A44E040010849E /* BankIDCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F460027A44E040010849E /* BankIDCoordinatorTest.swift */; };
 		52847B03AEEEB0DBBD58847C /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A56798BA10659BFAEC4A935 /* Pods_IdentHubSDKTests.framework */; };
 		547BAD1629683B4BAEE729F9 /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8517E805F3C6E6BFE9E56506 /* Pods_IdentHubSDK.framework */; };
 		84040BD426AF07CD00C68D25 /* IdentificationInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */; };
@@ -361,6 +363,8 @@
 		392D18A727045347001FB64D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		392D18A827047FAC001FB64D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		392D18A927049FA9001FB64D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubConstantsTest.swift; sourceTree = "<group>"; };
+		392F460027A44E040010849E /* BankIDCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinatorTest.swift; sourceTree = "<group>"; };
 		4872769C1FDAC7F27B1EBFED /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		79434CC9D9FAE3196029A3D6 /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
 		80F315F38B026C37CB55B792 /* Pods-IdentHubSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1197,6 +1201,7 @@
 				8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */,
 				84B1AABA275E73D300632655 /* IdentificationCoordinatorMock.swift */,
 				844460232755546200EB7972 /* FourthlineIdentCoordinatorMock.swift */,
+				392F460027A44E040010849E /* BankIDCoordinatorTest.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1334,6 +1339,7 @@
 				84A7582625F22E86004D8F88 /* Models Layer */,
 				8444601B274E6E6100EB7972 /* Presentation Layer */,
 				84A7582725F22E97004D8F88 /* Resources */,
+				392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */,
 			);
 			path = IdentHubSDKTests;
 			sourceTree = "<group>";
@@ -2058,10 +2064,12 @@
 				8418E06525F796870054A042 /* Result+Ext.swift in Sources */,
 				84B1AABB275E73D300632655 /* IdentificationCoordinatorMock.swift in Sources */,
 				849B438A25F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift in Sources */,
+				392F460127A44E040010849E /* BankIDCoordinatorTest.swift in Sources */,
 				84B2A8C625F3E7BF00EBA899 /* RequestTests.swift in Sources */,
 				8418E06A25F7A1790054A042 /* SessionInfoProviderTests.swift in Sources */,
 				844460242755546200EB7972 /* FourthlineIdentCoordinatorMock.swift in Sources */,
 				841F5C6D2762363700D68175 /* BaseTestCase.swift in Sources */,
+				392F45FF27A41AD90010849E /* IdentHubConstantsTest.swift in Sources */,
 				844460262755581200EB7972 /* VerificationServiceMock.swift in Sources */,
 				84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,

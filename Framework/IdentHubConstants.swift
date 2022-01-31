@@ -129,6 +129,7 @@ enum IdentificationStep: String, Codable {
     case fourthlineSigning = "fourthline_signing"
     case fourthlineQES = "fourthline_signing/qes"
     case abort = "abort"
+    case partnerFallback = "partner_fallback"
     case unspecified
     
     init(from decoder: Decoder) throws {

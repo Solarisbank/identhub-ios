@@ -228,6 +228,7 @@ App may retry as long as do not get a failed / rejected status on the session.
 // - identificationDataInvalid: provided user data is not valid and should be creates one more time
 // - fraudData: provided data defines as fraud
 // - unsupportedResponse: SDK encountered a response that is not supported in this version
+// - identificationNotPossible: SDK could not identify the user. Try your fallback identification method
 // - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error {
     case malformedResponseJson
@@ -247,6 +248,7 @@ public enum APIError: Error {
     case identificationDataInvalid(error: ErrorDetail?)
     case fraudData(error: ErrorDetail?)
     case unsupportedResponse
+    case identificationNotPossible
     case unknownError
 }
 ```

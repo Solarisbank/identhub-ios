@@ -14,6 +14,8 @@ class IdentHubConstantsTest: XCTestCase {
         // test some of the uniquely defined cases (not all possibilities)
         let mobileNumberIdentificationStep = try JSONDecoder().decode(IdentificationStep.self, from: "\"mobile_number\"".data(using: .utf8)!)
         XCTAssertEqual(mobileNumberIdentificationStep, .mobileNumber)
+        let partnerFallbackIdentificationStep = try JSONDecoder().decode(IdentificationStep.self, from: "\"partner_fallback\"".data(using: .utf8)!)
+        XCTAssertEqual(partnerFallbackIdentificationStep, .partnerFallback)
         let abortIdentificationStep = try JSONDecoder().decode(IdentificationStep.self, from: "\"abort\"".data(using: .utf8)!)
         XCTAssertEqual(abortIdentificationStep, .abort)
         

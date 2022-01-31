@@ -324,6 +324,7 @@ enum Localizable {
         static let ibanVerificationError = "api_error_iban_verification".localized()
         static let paymentFailure = "api_error_payment_failure".localized()
         static let unsupportedResponse = "SDK encountered a response that is not supported in this version"
+        static let identificationNotPossible = "SDK could not identify the user. Try your fallback identification method."
     }
 
     enum Result {

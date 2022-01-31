@@ -140,7 +140,13 @@ private extension IBANVerificationViewController {
             alert.addAction(reactionAction)
         }
 
-        if viewModel.isExistFallbackOption() {
+        if let errorDetail = error, let fallbackStep = errorDetail.fallbackStep, fallbackStep != .abort {
+            let fallbackAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.alternateOption, style: .default, handler: { [weak self] _ in
+                self?.viewModel.performFlowStep(fallbackStep)
+            })
+            
+            alert.addAction(fallbackAction)
+        } else if viewModel.isExistFallbackOption() {
             let fallbackAction = UIAlertAction(title: Localizable.BankVerification.IBANVerification.alternateOption, style: .default, handler: { [weak self] _ in
                 self?.viewModel.performFallbackIdent()
             })
@@ -148,7 +154,7 @@ private extension IBANVerificationViewController {
             alert.addAction(fallbackAction)
         }
 
-        let cancelAction = UIAlertAction(title: Localizable.Common.dismiss, style: .cancel, handler: { [weak self] _ in
+        let cancelAction = UIAlertAction(title: Localizable.Common.quit, style: .cancel, handler: { [weak self] _ in
             self?.viewModel.didTriggerQuit()
         })
 
