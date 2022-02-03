@@ -113,6 +113,8 @@
 "welcome_document_description" = "Questo è il modo in cui ci assicuriamo che sia davvero tu e preveniamo il furto di identità.";
 "welcome_location_title" = "Attiva e carica la posizione";
 "welcome_location_description" = "L'ultima cosa che devi fare è attivare la tua posizione e caricare i tuoi dati! Facile vero?";
+"welcome_page_acknowledgement" = "Ho preso atto delle informazioni sulla protezione dei dati di SAFENED Fourthline.";
+"welcome_page_fourthline_privacy" = "protezione dei dati di SAFENED Fourthline";
 
 // Selfie
 "selfie_title" = "Fatti un selfie";

@@ -157,6 +157,9 @@ enum Localizable {
 
         static let locationTitle = "welcome_location_title".localized()
         static let locationDesc = "welcome_location_description".localized()
+        
+        static let acknowledgement = "welcome_page_acknowledgement".localized()
+        static let fourthlinePrivacy = "welcome_page_fourthline_privacy".localized()
     }
 
     enum Selfie {

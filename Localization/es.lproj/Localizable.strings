@@ -113,6 +113,8 @@
 "welcome_document_description" = "Con esto podemos asegurarnos de que eres realmente quien dices ser y evitar la suplantación de identidad.";
 "welcome_location_title" = "Enviar tu caso";
 "welcome_location_description" = "Lo último que tienes que hacer es habilitar tu ubicación\ny enviar tu caso.\nQué fácil, ¿verdad?";
+"welcome_page_acknowledgement" = "Reconozco la declaración de privacidad de SAFENED Fourthline.";
+"welcome_page_fourthline_privacy" = "declaración de privacidad de SAFENED Fourthline";
 
 // Selfie
 "selfie_title" = "Hazte un selfie";

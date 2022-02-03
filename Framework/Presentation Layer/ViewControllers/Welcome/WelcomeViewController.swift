@@ -4,6 +4,9 @@
 //
 
 import UIKit
+import SafariServices
+
+private let fourthlinePrivacyLink = "https://api.fourthline.com/v1/qualifiedElectronicSignature/legal/PrivacyStatement_SafeNedFourthline_1.0.pdf"
 
 /// Class for managing welcome screen UI components
 /// Class based on SolarisViewController, because used company copyrights view
@@ -17,7 +20,8 @@ class WelcomeViewController: UIViewController {
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var logoFrame: UIImageView!
     @IBOutlet var startBtn: ActionRoundedButton!
-
+    @IBOutlet var acknowledgementLabel: UITextView!
+    
     private var viewModel: WelcomeViewModel!
     private lazy var logoAnimator: WelcomeLogoAnimator = {
         return WelcomeLogoAnimator(logoImage, logoFrameImage: logoFrame)
@@ -64,6 +68,13 @@ class WelcomeViewController: UIViewController {
 
         welcomeLabel.text = Localizable.Welcome.pageTitle
         startBtn.setTitle(Localizable.Welcome.startBtn, for: .normal)
+        acknowledgementLabel.attributedText = buildAcknowledgementText()
+        acknowledgementLabel.linkTextAttributes = [
+            .foregroundColor: UIColor.sdkColor(.primaryAccent),
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        acknowledgementLabel.textColor = UIColor.sdkColor(.base50)
+        acknowledgementLabel.delegate = self
         configureCustomUI()
     }
 
@@ -75,10 +86,39 @@ class WelcomeViewController: UIViewController {
         pageController.pageIndicatorTintColor = .sdkColor(.black25)
         pageController.currentPageIndicatorTintColor = .sdkColor(.primaryAccent)
     }
+    
+    private func buildAcknowledgementText() -> NSAttributedString {
+        let fullText = Localizable.Welcome.acknowledgement
+        let attributedString = NSMutableAttributedString(string: fullText)
+
+        let linkRange: NSRange
+        if let privacyLinkRange = fullText.range(of: Localizable.Welcome.fourthlinePrivacy) {
+            linkRange = NSRange(privacyLinkRange, in: fullText)
+        } else {
+            linkRange = NSRange(location: 0, length: fullText.count)
+        }
+        attributedString.addAttribute(.link, value: fourthlinePrivacyLink, range: linkRange)
+
+        return attributedString
+    }
 
     // MARK: - Actions methods -
 
     @IBAction func didClickStartBtn(_ sender: UIButton) {
         viewModel.didTriggerStart()
+    }
+}
+
+extension WelcomeViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+
+        let safariViewController = SFSafariViewController(url: URL)
+        present(safariViewController, animated: true, completion: nil)
+
+        return false
+    }
+
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        textView.selectedTextRange = nil
     }
 }

@@ -113,6 +113,8 @@
 "welcome_document_description" = "With this we can make sure that you’re really who\nyou say you are and avoid identity theft.";
 "welcome_location_title" = "Submit your case";
 "welcome_location_description" = "Last thing you need to do is enabling your location\nand submitting your case!\nHow easy it that?";
+"welcome_page_acknowledgement" = "I acknowledge SAFENED Fourthline's privacy statement.";
+"welcome_page_fourthline_privacy" = "SAFENED Fourthline's privacy statement";
 
 // Selife
 "selfie_title" = "Take a selfie";
