@@ -1,6 +1,5 @@
-
 source 'https://github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 
 platform :ios, '12.0'
 
