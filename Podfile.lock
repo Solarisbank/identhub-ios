@@ -1,45 +1,45 @@
 PODS:
-  - FourthlineSDK (2.8.1):
-    - FourthlineSDK/Core (= 2.8.1)
-    - FourthlineSDK/KYC (= 2.8.1)
-    - FourthlineSDK/NFC (= 2.8.1)
-    - FourthlineSDK/SDK (= 2.8.1)
-    - FourthlineSDK/Vision (= 2.8.1)
-  - FourthlineSDK/Core (2.8.1)
-  - FourthlineSDK/KYC (2.8.1):
+  - FourthlineSDK (2.8.2):
+    - FourthlineSDK/Core (= 2.8.2)
+    - FourthlineSDK/KYC (= 2.8.2)
+    - FourthlineSDK/NFC (= 2.8.2)
+    - FourthlineSDK/SDK (= 2.8.2)
+    - FourthlineSDK/Vision (= 2.8.2)
+  - FourthlineSDK/Core (2.8.2)
+  - FourthlineSDK/KYC (2.8.2):
     - FourthlineSDK/Core
-  - FourthlineSDK/NFC (2.8.1):
+  - FourthlineSDK/NFC (2.8.2):
     - FourthlineSDK/Core
-  - FourthlineSDK/SDK (2.8.1):
+  - FourthlineSDK/SDK (2.8.2):
     - FourthlineSDK/KYC
     - FourthlineSDK/NFC
     - FourthlineSDK/Vision
-  - FourthlineSDK/Vision (2.8.1):
+  - FourthlineSDK/Vision (2.8.2):
     - FourthlineSDK/Core
   - InputMask (6.1.0)
   - lottie-ios (3.2.3)
   - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
-  - FourthlineSDK (= 2.8.1)
+  - FourthlineSDK (= 2.8.2)
   - InputMask (= 6.1.0)
   - lottie-ios
   - ZIPFoundation (= 0.9.11)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git:
+    - FourthlineSDK
+  trunk:
     - InputMask
     - lottie-ios
     - ZIPFoundation
-  https://github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git:
-    - FourthlineSDK
 
 SPEC CHECKSUMS:
-  FourthlineSDK: 3302b4ceb4050e64e5f2168c3bdd7046148183a7
+  FourthlineSDK: de79503cccb471e267870f7cd26086b27b1644fa
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: 54f8c87fcb86f8840673e9a0151337434ba346e0
+PODFILE CHECKSUM: c6913358cdc91d6fb3e30539d0b1891f83c4f25a
 
 COCOAPODS: 1.11.2
