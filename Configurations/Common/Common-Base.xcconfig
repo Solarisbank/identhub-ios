@@ -5,7 +5,7 @@
 
 #include "Common.xcconfig"
 
-_BUILD_VERSION = 1.2.0
+_BUILD_VERSION = 1.2.1
 _BUILD_NUMBER = 1
 
 _DEPLOYMENT_TARGET_IOS = 12.0
