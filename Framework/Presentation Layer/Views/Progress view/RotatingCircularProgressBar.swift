@@ -35,13 +35,11 @@ class RotatingCircularProgressBar: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayers()
-        createAnimation()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupLayers()
-        createAnimation()
     }
 
     // MARK: - Private methods -
@@ -102,5 +100,7 @@ class RotatingCircularProgressBar: UIView {
 
         gradientLayer.frame = rect
         gradientLayer.colors = [color.cgColor, color.cgColor]
+        
+        createAnimation()
     }
 }

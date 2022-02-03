@@ -82,6 +82,8 @@ private extension RequestsViewController {
                     self.zipFailed(with: zipError)
                 } else if let err = error as? ResponseError {
                     self.displayError(err)
+                } else if let err = error as? APIError {
+                    self.locationFailed(with: err)
                 }
             }
         }
