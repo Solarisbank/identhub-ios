@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +15,6 @@
                 <outlet property="currentStepView" destination="d7x-l6-qBT" id="I4h-Kf-7rv"/>
                 <outlet property="descriptionLabel" destination="2fJ-zb-iYc" id="FIJ-PC-R42"/>
                 <outlet property="documentsTableView" destination="XOw-Ws-ALc" id="VVg-aV-t6B"/>
-                <outlet property="downloadAllDocumentsButton" destination="pB0-Tv-rac" id="T22-AL-ngP"/>
                 <outlet property="progressViewHeight" destination="vvu-mf-ub3" id="ap2-8q-oxI"/>
                 <outlet property="tableHeightConstraint" destination="23X-Af-nLW" id="jng-Ck-sMo"/>
                 <outlet property="titleLabel" destination="s3l-dJ-hb4" id="ROD-dg-BcX"/>
@@ -47,10 +46,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zij-Pi-7tY" customClass="ActionRoundedButton" customModule="IdentHubSDK" customModuleProvider="target">
-                    <rect key="frame" x="16" y="774" width="382" height="48"/>
+                    <rect key="frame" x="16" y="772" width="382" height="50"/>
                     <color key="backgroundColor" name="primary_lighten"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="48" id="tez-U5-8ep"/>
+                        <constraint firstAttribute="height" constant="50" id="tez-U5-8ep"/>
                     </constraints>
                     <state key="normal" title="Send code to sign">
                         <color key="titleColor" name="neutral_white"/>
@@ -64,31 +63,24 @@
                         <action selector="signDocuments" destination="-1" eventType="touchUpInside" id="HrI-A2-NDd"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="54" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XOw-Ws-ALc">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XOw-Ws-ALc">
                     <rect key="frame" x="16" y="272" width="382" height="108"/>
-                    <color key="backgroundColor" name="background"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="108" id="23X-Af-nLW"/>
                     </constraints>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="E5U-W5-aqA"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pB0-Tv-rac" customClass="DownloadDocumentsButton" customModule="IdentHubSDK" customModuleProvider="target">
-                    <rect key="frame" x="206" y="390" width="192" height="36"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="192" id="lHu-gh-681"/>
-                        <constraint firstAttribute="height" constant="36" id="oWF-h4-opr"/>
-                    </constraints>
-                    <color key="tintColor" name="base100"/>
-                    <state key="normal" title="Download">
-                        <color key="titleColor" name="base25"/>
-                    </state>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="i2P-ci-Ndf"/>
-            <color key="backgroundColor" name="background"/>
+            <color key="backgroundColor" name="backgroundConfirm"/>
             <constraints>
                 <constraint firstItem="2fJ-zb-iYc" firstAttribute="top" secondItem="s3l-dJ-hb4" secondAttribute="bottom" constant="24" id="1Xm-AX-STc"/>
                 <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="s3l-dJ-hb4" secondAttribute="trailing" constant="16" id="2Tb-jh-6f2"/>
@@ -96,7 +88,6 @@
                 <constraint firstItem="Zij-Pi-7tY" firstAttribute="leading" secondItem="i2P-ci-Ndf" secondAttribute="leading" constant="16" id="8QD-on-EeI"/>
                 <constraint firstItem="XOw-Ws-ALc" firstAttribute="leading" secondItem="i2P-ci-Ndf" secondAttribute="leading" constant="16" id="CQj-uD-gXf"/>
                 <constraint firstItem="2fJ-zb-iYc" firstAttribute="trailing" secondItem="s3l-dJ-hb4" secondAttribute="trailing" id="GZs-OE-UwS"/>
-                <constraint firstItem="pB0-Tv-rac" firstAttribute="top" secondItem="XOw-Ws-ALc" secondAttribute="bottom" constant="10" id="Ji8-9S-2O1"/>
                 <constraint firstItem="d7x-l6-qBT" firstAttribute="trailing" secondItem="i2P-ci-Ndf" secondAttribute="trailing" id="XQH-hR-DYv"/>
                 <constraint firstItem="s3l-dJ-hb4" firstAttribute="top" secondItem="d7x-l6-qBT" secondAttribute="bottom" constant="40" id="Y3D-NZ-Zc4"/>
                 <constraint firstItem="XOw-Ws-ALc" firstAttribute="top" secondItem="2fJ-zb-iYc" secondAttribute="bottom" constant="32" id="YxD-eL-FxX"/>
@@ -105,7 +96,6 @@
                 <constraint firstItem="i2P-ci-Ndf" firstAttribute="bottom" secondItem="Zij-Pi-7tY" secondAttribute="bottom" constant="40" id="nDW-iR-WgN"/>
                 <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="Zij-Pi-7tY" secondAttribute="trailing" constant="16" id="rXf-dc-dgl"/>
                 <constraint firstItem="2fJ-zb-iYc" firstAttribute="leading" secondItem="s3l-dJ-hb4" secondAttribute="leading" id="tZj-xs-7kJ"/>
-                <constraint firstItem="i2P-ci-Ndf" firstAttribute="trailing" secondItem="pB0-Tv-rac" secondAttribute="trailing" constant="16" id="x0L-3j-sKV"/>
                 <constraint firstItem="s3l-dJ-hb4" firstAttribute="leading" secondItem="i2P-ci-Ndf" secondAttribute="leading" constant="16" id="zWB-qg-02n"/>
             </constraints>
             <point key="canvasLocation" x="-330" y="-528"/>
@@ -113,13 +103,13 @@
     </objects>
     <resources>
         <namedColor name="background">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="backgroundConfirm">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base100">
-            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="base25">
-            <color red="0.78823529411764703" green="0.81176470588235294" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.059000000357627869" green="0.097999997437000275" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base75">
             <color red="0.25490196078431371" green="0.30196078431372547" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -69,8 +69,9 @@
 "payment_verification_error_action" = "IBAN-Verifizierung wiederholen";
 
 // Sign documents
-"sign_documents_application_confirm" = "Bestätigen Sie Ihren Antrag";
-"sign_documents_application_description" = "Um den Vorgang abzuschließen, lesen Sie bitte die folgenden Dokumente und unterzeichnen Sie diese mit einer TAN, die an Ihre Telefonnummer gesendet wird.";
+"sign_documents_application_confirm" = "Prüfen Sie Ihr(e) Dokument(e)";
+"sign_documents_application_description" = "Bitte prüfen Sie das/die Dokument(e), bevor Sie es/sie unterschreiben";
+"sign_documents_application_view_doc" = "Dokument ansehen";
 "sign_documents_application_send_code" = "Code empfangen und unterzeichnen";
 "sign_documents_transaction_info_part_one" = "Ihre Transaktions-ID ist ";
 "sign_documents_transaction_info_part_two" = "\nStellen Sie sicher, dass Sie die gleiche Transaktions-ID in der SMS erhalten haben.";

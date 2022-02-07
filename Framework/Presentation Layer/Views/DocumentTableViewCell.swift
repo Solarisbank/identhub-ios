@@ -73,7 +73,7 @@ final internal class DocumentTableViewCell: UITableViewCell {
         let layer = button.layer
         layer.cornerRadius = Constants.Size.cornerRadius
         layer.masksToBounds = true
-        let image = UIImage.sdkImage(.seeDocument, type: DocumentTableViewCell.self)
+        let image = UIImage.sdkImage(.viewDocument, type: DocumentTableViewCell.self)
         button.setImage(image, for: .normal)
         previewActivityView.center = CGPoint(x: Constants.Size.width / 2, y: Constants.Size.height / 2)
         button.addSubview(previewActivityView)
@@ -194,7 +194,6 @@ final internal class DocumentTableViewCell: UITableViewCell {
             documentImageView.image = UIImage.sdkImage(.documentSigned, type: DocumentTableViewCell.self)?.withRenderingMode(.alwaysTemplate)
             documentImageView.tintColor = .sdkColor(.success)
         } else {
-            documentImageView.image = UIImage.sdkImage(.documentNotSigned, type: DocumentTableViewCell.self)?.withRenderingMode(.alwaysTemplate)
             documentImageView.tintColor = .sdkColor(.base25)
         }
     }

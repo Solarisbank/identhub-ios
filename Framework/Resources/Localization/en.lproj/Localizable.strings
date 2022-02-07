@@ -69,8 +69,9 @@
 "payment_verification_error_action" = "Retry IBAN verification";
 
 // Sign documents
-"sign_documents_application_confirm" = "Confirm your application";
-"sign_documents_application_description" = "To finalise the process, please read the following documents and sign it with a TAN sent to your mobile phone number.";
+"sign_documents_application_confirm" = "Check your document(s)";
+"sign_documents_application_description" = "Please review the document(s) before you sign them.";
+"sign_documents_application_view_doc" = "View document";
 "sign_documents_application_send_code" = "Send code to sign";
 "sign_documents_transaction_info_part_one" = "Your transaction ID is ";
 "sign_documents_transaction_info_part_two" = "\nMake sure it is the same in SMS you just received.";

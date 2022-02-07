@@ -41,7 +41,7 @@ Pod::Spec.new do |spec|
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.source_files = "Framework/**/*.{h,m,swift}", 'fixup_project_structure'
-  spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets}", "Localization/**/*.{lproj,strings}"
+  spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets,lproj,strings}"
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 

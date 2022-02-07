@@ -167,6 +167,8 @@
 		844460262755581200EB7972 /* VerificationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844460252755581200EB7972 /* VerificationServiceMock.swift */; };
 		84489DE02625BBFF00B23B02 /* DocumentExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */; };
 		8451D0EB26A8612D00C3C613 /* IBANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451D0EA26A8612D00C3C613 /* IBANRequest.swift */; };
+		8453CEB7279F238A00488347 /* DocumentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453CEB5279F238A00488347 /* DocumentViewCell.swift */; };
+		8453CEB8279F238A00488347 /* DocumentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453CEB6279F238A00488347 /* DocumentViewCell.xib */; };
 		845D85F4260CD50D008AAC9A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */; };
 		845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */; };
 		845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8611260D051D008AAC9A /* WelcomeViewModel.swift */; };
@@ -442,6 +444,8 @@
 		844460252755581200EB7972 /* VerificationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceMock.swift; sourceTree = "<group>"; };
 		84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExporter.swift; sourceTree = "<group>"; };
 		8451D0EA26A8612D00C3C613 /* IBANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequest.swift; sourceTree = "<group>"; };
+		8453CEB5279F238A00488347 /* DocumentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewCell.swift; sourceTree = "<group>"; };
+		8453CEB6279F238A00488347 /* DocumentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentViewCell.xib; sourceTree = "<group>"; };
 		845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		845D8611260D051D008AAC9A /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 		0C4B67D8259B224F00190C4E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8453CEB4279F236200488347 /* DocumentViewCell */,
 				8409768D2633471600C4DC5B /* Progress view */,
 				8431062D261F01BB00E24E8A /* Info status */,
 				84CD84D126CBC7BB00FD9D23 /* Success View */,
@@ -756,7 +761,6 @@
 		0CD5CC302590F58800FF378F = {
 			isa = PBXGroup;
 			children = (
-				24659AFE26D62CEC00F56089 /* Localization */,
 				0CD5CC4B2590F61200FF378F /* Sample */,
 				0CD5CC3C2590F58800FF378F /* Framework */,
 				0CD5CC8A2590FD3300FF378F /* Configurations */,
@@ -1079,6 +1083,7 @@
 		841A894E25F0F670007878C1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				24659AFE26D62CEC00F56089 /* Localization */,
 				0CD5CC3E2590F58800FF378F /* Info.plist */,
 				0CD863A025DC5F5000AB3252 /* strip-frameworks.sh */,
 				0C527E6E25AC947700B6D5DB /* Assets.xcassets */,
@@ -1228,6 +1233,15 @@
 				84489DDF2625BBFF00B23B02 /* DocumentExporter.swift */,
 			);
 			path = DocumentExporter;
+			sourceTree = "<group>";
+		};
+		8453CEB4279F236200488347 /* DocumentViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8453CEB5279F238A00488347 /* DocumentViewCell.swift */,
+				8453CEB6279F238A00488347 /* DocumentViewCell.xib */,
+			);
+			path = DocumentViewCell;
 			sourceTree = "<group>";
 		};
 		845D85E4260CD35E008AAC9A /* Welcome */ = {
@@ -1675,6 +1689,7 @@
 				846432402617626B003C9A7B /* StartBankIdentViewController.xib in Resources */,
 				84D536FF27919A5600E0067D /* SignDocumentsViewController.xib in Resources */,
 				8423EFE8262AF5B50092F003 /* DocumentScannerOverlayView.xib in Resources */,
+				8453CEB8279F238A00488347 /* DocumentViewCell.xib in Resources */,
 				0CD863A125DC5F5000AB3252 /* strip-frameworks.sh in Resources */,
 				84DEB64A2641C7AF00E0C5BA /* ResultViewController.xib in Resources */,
 				845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */,
@@ -2026,6 +2041,7 @@
 				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,
 				0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */,
 				84040BD726AF089D00C68D25 /* IdentificationInfo.swift in Sources */,
+				8453CEB7279F238A00488347 /* DocumentViewCell.swift in Sources */,
 				842DA66526373D650020E598 /* IdentificationMethodRequest.swift in Sources */,
 				0CCD105C25C9931700251C65 /* MobileNumber.swift in Sources */,
 				0CE01B3125C2C52500FB0E16 /* StateView.swift in Sources */,

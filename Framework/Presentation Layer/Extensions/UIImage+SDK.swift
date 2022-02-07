@@ -12,13 +12,12 @@ internal extension UIImage {
         case poweredBySolarisbank = "powered_by_solarisbank"
         case establishingSecureConnection = "secure_connection"
         case processingVerification = "processing_verification"
-        case documentNotSigned = "document_not_signed"
         case documentSigned = "document_signed"
-        case seeDocument = "document_see"
         case info = "info"
         case downloadDocument = "document_download"
         case warning = "warning"
         case checkmark = "checkmark"
+        case viewDocument = "view_document"
     }
 
     /// Choose custom available image.

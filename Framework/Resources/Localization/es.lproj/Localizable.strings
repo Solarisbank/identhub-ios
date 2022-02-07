@@ -69,8 +69,9 @@
 "payment_verification_error_action" = "Vuelve a intentar la verificación del IBAN";
 
 // Sign Documents
-"sign_documents_application_confirm" = "Confirma tu solicitud";
-"sign_documents_application_description" = "Para finalizar el proceso, lee los siguientes documentos y fírmalos con un TAN enviado a tu número de teléfono móvil.";
+"sign_documents_application_confirm" = "Compruebe su(s) documento(s)";
+"sign_documents_application_description" = "Por favor, revise los documentos antes de firmarlos";
+"sign_documents_application_view_doc" = "Ver documento";
 "sign_documents_application_send_code" = "Enviar código para firmar";
 "sign_documents_transaction_info_part_one" = "Tu ID de la operación es ";
 "sign_documents_transaction_info_part_two" = "\nAsegúrate de que es el mismo en el SMS que acabas de recibir.";

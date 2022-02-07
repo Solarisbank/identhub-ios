@@ -101,6 +101,7 @@ enum Localizable {
         enum ConfirmApplication {
             static let confirmYourApplication = "sign_documents_application_confirm".localized()
             static let description = "sign_documents_application_description".localized()
+            static let docItemTitle = "sign_documents_application_view_doc".localized()
             static let sendCodeToSign = "sign_documents_application_send_code".localized()
         }
 

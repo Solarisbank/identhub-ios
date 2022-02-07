@@ -14,7 +14,6 @@ final internal class ConfirmApplicationViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var documentsTableView: UITableView!
-    @IBOutlet var downloadAllDocumentsButton: DownloadDocumentsButton!
     @IBOutlet var actionButton: ActionRoundedButton!
     @IBOutlet var tableHeightConstraint: NSLayoutConstraint!
 
@@ -23,8 +22,8 @@ final internal class ConfirmApplicationViewController: UIViewController {
     var viewModel: ConfirmApplicationViewModel!
 
     private let documentExporter: DocumentExporter = DocumentExporterService()
-    private var documentCell: DocumentTableViewCell?
-    private let rowHeight: CGFloat = 54
+    private var documentCell: DocumentViewCell?
+    private let rowHeight: CGFloat = 61
     private let progressHeight: CGFloat = 89
 
     /// Initialized with view model object
@@ -61,14 +60,12 @@ final internal class ConfirmApplicationViewController: UIViewController {
         currentStepView.isHidden = viewModel.isInvisibleProgress()
         currentStepView.setCurrentStep(.documents)
 
-        documentsTableView.register(DocumentTableViewCell.self, forCellReuseIdentifier: DocumentTableViewCell.ReuseIdentifier)
+        let cellNib = UINib(nibName: "DocumentViewCell", bundle: Bundle(for: Self.self))
+        documentsTableView.register(cellNib, forCellReuseIdentifier: DocumentViewCell.ReuseIdentifier)
+        documentsTableView.estimatedRowHeight = rowHeight
 
         actionButton.setTitle(Localizable.SignDocuments.ConfirmApplication.sendCodeToSign, for: .normal)
         actionButton.currentAppearance = .dimmed
-
-        downloadAllDocumentsButton.downloadAllDocumentsAction = {
-            self.viewModel.downloadAndSaveAllDocuments()
-        }
     }
 
     // MARK: - Action methods -
@@ -86,35 +83,30 @@ extension ConfirmApplicationViewController: DocumentReceivable {
 
     func didFetchDocuments() {
         documentsTableView.reloadData()
-        downloadAllDocumentsButton.isEnabled = true
         actionButton.currentAppearance = .primary
         let numberOfCells = CGFloat(viewModel.documents.count)
         tableHeightConstraint.constant = numberOfCells * rowHeight
     }
 
     func didFinishLoadingDocument() {
-        documentCell?.stopActivityAnimation()
-    }
-
-    func didFinishLoadingAllDocuments() {
-        downloadAllDocumentsButton.stopAnimation()
+        documentCell?.didFinishDownloading()
     }
 }
 
 // MARK: UITableViewDataSource methods
 
 extension ConfirmApplicationViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard viewModel?.documents.count != nil else { return 0 }
         return viewModel.documents.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DocumentTableViewCell.ReuseIdentifier, for: indexPath) as? DocumentTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DocumentViewCell.ReuseIdentifier, for: indexPath) as? DocumentViewCell else {
             return UITableViewCell()
         }
         let document = viewModel.documents[indexPath.row]
-        cell.setCell(document: document, isDocumentSigned: false)
         cell.previewAction = {[weak self] cell in
 
             self?.documentCell = cell

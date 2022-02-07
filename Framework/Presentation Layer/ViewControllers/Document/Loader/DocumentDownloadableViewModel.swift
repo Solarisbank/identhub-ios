@@ -150,3 +150,7 @@ protocol DocumentReceivable: AnyObject {
     /// Methods notified when all documents loaded
     func didFinishLoadingAllDocuments()
 }
+
+extension DocumentReceivable {
+    func didFinishLoadingAllDocuments() {}
+}

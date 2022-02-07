@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "document_see.pdf",
+      "filename" : "view_document_day.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "dark_document_see.pdf",
+      "filename" : "document_share_dark.pdf",
       "idiom" : "universal"
     }
   ],
