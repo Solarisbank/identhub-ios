@@ -56,7 +56,7 @@ final internal class WelcomeViewModel {
     func setLogoAnimator(_ animator: WelcomeLogoAnimator) {
         self.logoAnimator = animator
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: 200.milliseconds.fromNow) { [weak self] in
             if let pageData = self?.scrollerContent.first {
                 self?.logoAnimator?.updateImageData(pageData)
             }

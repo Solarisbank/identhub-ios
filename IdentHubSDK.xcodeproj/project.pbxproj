@@ -143,6 +143,7 @@
 		841F376A26298FF500D56361 /* DocumentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F376826298FF500D56361 /* DocumentTypeCell.swift */; };
 		841F376B26298FF500D56361 /* DocumentTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841F376926298FF500D56361 /* DocumentTypeCell.xib */; };
 		841F5C6D2762363700D68175 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F5C6C2762363700D68175 /* BaseTestCase.swift */; };
+		84206C8C27AD363C0006058F /* DispatchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84206C8B27AD363C0006058F /* DispatchTime.swift */; };
 		8423EFD5262AEC690092F003 /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFD4262AEC690092F003 /* DocumentScannerViewController.swift */; };
 		8423EFDA262AED3A0092F003 /* DocumentScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFD9262AED3A0092F003 /* DocumentScannerViewModel.swift */; };
 		8423EFE0262AF5A00092F003 /* DocumentScannerOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423EFDF262AF5A00092F003 /* DocumentScannerOverlayView.swift */; };
@@ -420,6 +421,7 @@
 		841F376826298FF500D56361 /* DocumentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypeCell.swift; sourceTree = "<group>"; };
 		841F376926298FF500D56361 /* DocumentTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentTypeCell.xib; sourceTree = "<group>"; };
 		841F5C6C2762363700D68175 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		84206C8B27AD363C0006058F /* DispatchTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchTime.swift; sourceTree = "<group>"; };
 		8423EFD4262AEC690092F003 /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		8423EFD9262AED3A0092F003 /* DocumentScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewModel.swift; sourceTree = "<group>"; };
 		8423EFDF262AF5A00092F003 /* DocumentScannerOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerOverlayView.swift; sourceTree = "<group>"; };
@@ -710,6 +712,7 @@
 				841956752631AB28003A55BD /* Array+Extension.swift */,
 				84D527E62631E6B2003123C3 /* UIApplication+Extension.swift */,
 				84F521BB263DACBD00FBCECF /* MutableData+Extension.swift */,
+				84206C8B27AD363C0006058F /* DispatchTime.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1941,6 +1944,7 @@
 				84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */,
 				0C4B67DA259B228400190C4E /* IdentificationProgressView.swift in Sources */,
 				0C1B431C25ADCBA1004FFF46 /* PaymentVerificationViewModel.swift in Sources */,
+				84206C8C27AD363C0006058F /* DispatchTime.swift in Sources */,
 				84DEB64326419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift in Sources */,
 				0C527E6725AC814000B6D5DB /* IBANVerificationViewModel.swift in Sources */,
 				0C9E56E425C01E9E00D68B96 /* ConfirmApplicationViewModel.swift in Sources */,

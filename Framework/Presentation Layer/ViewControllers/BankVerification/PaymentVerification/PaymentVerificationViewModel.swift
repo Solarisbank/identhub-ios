@@ -42,7 +42,7 @@ final internal class PaymentVerificationViewModel: NSObject {
                   return
               }
         let urlRequest = URLRequest(url: url)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: 1.seconds.fromNow) { [weak self] in
             guard let `self` = self else { return }
             self.delegate?.verificationRecivedURLRequest(urlRequest)
         }
@@ -78,7 +78,7 @@ private extension PaymentVerificationViewModel {
                         self.timer?.invalidate()
                         self.delegate?.verificationIsBeingProcessed()
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: 1.seconds.fromNow) {
                         self.delegate?.verificationSucceeded()
                     }
                 case .failed:

@@ -5,6 +5,11 @@
 
 import Foundation
 
+// Max request retry count
+let maxRetries = 3
+// Retry timeout
+let retryTimeout = 5
+
 protocol APIClient: AnyObject {
 
     func execute<DataType: Decodable>(
@@ -24,6 +29,13 @@ final class DefaultAPIClient: APIClient {
     // MARK: Private properties
 
     private let defaultUrlSession = URLSession(configuration: .default)
+    private var retryCount = 0
+    
+    /// Attribute specifies if published request with nil result object can be retried
+    private var isCanRetryRequest: Bool {
+        retryCount += 1
+        return retryCount < maxRetries
+    }
 
     // MARK: Methods
 
@@ -49,7 +61,20 @@ final class DefaultAPIClient: APIClient {
                 if let self = self,
                    let response = urlResponse as? HTTPURLResponse,
                    let data = data {
-                    completion(self.mapResponse(response: response, data: data))
+                    guard let result: Result<DataType, ResponseError> = self.mapResponse(response: response, data: data) else {
+                        if self.isCanRetryRequest {
+                            DispatchQueue.main.asyncAfter(deadline: retryTimeout.seconds.fromNow) {
+                                self.execute(request: request, answerType: answerType, completion: completion)
+                            }
+                        } else {
+                            completion(.failure(ResponseError(.unknownError, urlResponse as? HTTPURLResponse)))
+                            self.retryCount = 0
+                        }
+                        return
+                    }
+                    
+                    completion(result)
+                    self.retryCount = 0
                 }
             }
             task.resume()
@@ -83,8 +108,10 @@ final class DefaultAPIClient: APIClient {
     }
 
     // MARK: Private methods
-
-    private func mapResponse<DataType: Decodable>(response: HTTPURLResponse, data: Data) -> Result<DataType, ResponseError> {
+    
+    /// Method mapped server response object from data by generic model type
+    /// - Returns: - returns optional result because for error code 502 and 503 object is nil
+    private func mapResponse<DataType: Decodable>(response: HTTPURLResponse, data: Data) -> Result<DataType, ResponseError>? {
         let decoder = JSONDecoder()
 
         switch response.statusCode {
@@ -125,6 +152,9 @@ final class DefaultAPIClient: APIClient {
         case 500:
             let responseError = ResponseError(.internalServerError, response)
             return .failure(responseError)
+        case 502,
+             503:
+            return nil
         case 1001...3999:
             let errorDetail = obtainErrorData(data: data)
             let responseError = ResponseError(.identificationDataInvalid(error: errorDetail), response)

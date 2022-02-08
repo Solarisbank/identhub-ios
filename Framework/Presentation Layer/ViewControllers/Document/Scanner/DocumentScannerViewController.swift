@@ -153,7 +153,7 @@ extension DocumentScannerViewController: DocumentScannerDelegate {
         changeMask(for: .success)
 
         // A delay was added to see the above state for 1 second before showing the result screen.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: 1.seconds.fromNow) { [weak self] in
             self?.displayIntermediate(step: result)
         }
     }

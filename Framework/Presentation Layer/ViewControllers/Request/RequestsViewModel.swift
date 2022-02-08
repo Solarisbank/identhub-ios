@@ -526,7 +526,7 @@ private extension RequestsViewModel {
     }
 
     private func retryVerification() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: 5.seconds.fromNow) { [weak self] in
             guard let `self` = self else { return }
 
             self.startVerificationProcess()

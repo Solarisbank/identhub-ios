@@ -84,7 +84,7 @@ extension SelfieViewController: SelfieScannerDelegate {
         selfieOverlay.status = scanner.step == .selfie ? .success : .livenessSuccess
 
         // A delay was added to see the above state for 1 second before showing the result screen.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: 1.seconds.fromNow) { [weak self] in
             guard let self = self else { return }
 
             // We flip the image to match the the live feed preview.
@@ -109,7 +109,7 @@ extension SelfieViewController: SelfieScannerDelegate {
             }
 
             // A delay was added to see the above state for 1 second before showing the result screen.
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: 2.seconds.fromNow) { [weak self] in
 
                 self?.selfieOverlay.title = Localizable.Selfie.Liveness.title
                 self?.selfieOverlay.status = .livenessCheck
