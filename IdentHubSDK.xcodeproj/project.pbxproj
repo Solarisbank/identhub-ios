@@ -170,6 +170,7 @@
 		8451D0EB26A8612D00C3C613 /* IBANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451D0EA26A8612D00C3C613 /* IBANRequest.swift */; };
 		8453CEB7279F238A00488347 /* DocumentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453CEB5279F238A00488347 /* DocumentViewCell.swift */; };
 		8453CEB8279F238A00488347 /* DocumentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453CEB6279F238A00488347 /* DocumentViewCell.xib */; };
+		84555EFD27B668EC00DF804C /* String+BoldAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84555EFC27B668EC00DF804C /* String+BoldAttribute.swift */; };
 		845D85F4260CD50D008AAC9A /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */; };
 		845D85F5260CD50D008AAC9A /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */; };
 		845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D8611260D051D008AAC9A /* WelcomeViewModel.swift */; };
@@ -448,6 +449,7 @@
 		8451D0EA26A8612D00C3C613 /* IBANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequest.swift; sourceTree = "<group>"; };
 		8453CEB5279F238A00488347 /* DocumentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewCell.swift; sourceTree = "<group>"; };
 		8453CEB6279F238A00488347 /* DocumentViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentViewCell.xib; sourceTree = "<group>"; };
+		84555EFC27B668EC00DF804C /* String+BoldAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+BoldAttribute.swift"; sourceTree = "<group>"; };
 		845D85F2260CD50D008AAC9A /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		845D85F3260CD50D008AAC9A /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		845D8611260D051D008AAC9A /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 			children = (
 				0CD5CC4C2590F61200FF378F /* AppDelegate.swift */,
 				0CD5CC502590F61200FF378F /* ViewController.swift */,
+				84555EFC27B668EC00DF804C /* String+BoldAttribute.swift */,
 				841A895825F0F6E3007878C1 /* Resources */,
 			);
 			path = Sample;
@@ -2063,6 +2066,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84555EFD27B668EC00DF804C /* String+BoldAttribute.swift in Sources */,
 				0CD5CC512590F61200FF378F /* ViewController.swift in Sources */,
 				0CD5CC4D2590F61200FF378F /* AppDelegate.swift in Sources */,
 			);
@@ -2175,6 +2179,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2184,7 +2189,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
@@ -2202,6 +2207,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2211,7 +2217,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
@@ -2234,6 +2240,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 1.2.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2256,6 +2263,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 1.2.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
@@ -2311,6 +2319,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2320,7 +2329,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.2.2;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
@@ -2340,6 +2349,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
+				MARKETING_VERSION = 1.2.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;

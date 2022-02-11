@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet var statusView: UIStackView!
     @IBOutlet var statusState: UILabel!
     @IBOutlet var statusDesc: UILabel!
-
+    @IBOutlet var versionLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,6 +44,8 @@ class ViewController: UIViewController {
 
         sessionURLTV.text = placeholderText
         sessionURLTV.textColor = .lightGray
+        
+        versionLbl.attributedText = "Ident SDK \(IdentHubSession.version())".withBoldText(IdentHubSession.version())
     }
 
     private func startIdentProcess() {
@@ -50,8 +53,26 @@ class ViewController: UIViewController {
 
         do {
             let identHubManager = try IdentHubSession(rootViewController: self, sessionURL: sessionURLTV.text)
-
+            
             identHubManager.start(self)
+            
+            identHubManager.start { result in
+                switch result {
+                case .success(let identification):
+                    DispatchQueue.main.async {
+                        self.updateStatus(true, desc: identification)
+                    }
+                case .failure(let failureReason):
+                    DispatchQueue.main.async {
+                        self.updateStatus(false, desc: "Session failed (\"\(failureReason.text())\"). Try again or create new session URL.")
+                    }
+                case .onConfirm(let identification):
+                    // - display success message on screen with identification -
+                    DispatchQueue.main.async {
+                        self.updateStatus(true, desc: identification)
+                    }
+                }
+            }
         } catch let err as IdentSessionURLError {
             switch err {
             case .invalidSessionURL:

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -91,6 +91,12 @@
                                 <color key="textColor" name="base100"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ident SDK" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beI-kA-F6w">
+                                <rect key="frame" x="20" y="841.5" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="background"/>
@@ -104,7 +110,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKw-gT-FCD" secondAttribute="trailing" constant="20" id="DZD-xu-877"/>
                             <constraint firstItem="vdQ-4l-3bc" firstAttribute="top" secondItem="eKw-gT-FCD" secondAttribute="bottom" constant="40" id="HuE-nk-F1Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z7c-QT-J8K" secondAttribute="bottom" priority="750" constant="200" id="SdX-tD-9qH"/>
+                            <constraint firstItem="beI-kA-F6w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="T6Q-BJ-G66"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LF4-ZO-LD4" secondAttribute="trailing" symbolic="YES" id="Tvn-83-ddI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="beI-kA-F6w" secondAttribute="trailing" constant="20" id="ULT-Es-Tat"/>
+                            <constraint firstItem="beI-kA-F6w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oU4-KZ-xLN"/>
                             <constraint firstItem="z7c-QT-J8K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="och-3G-aKL"/>
                             <constraint firstItem="eKw-gT-FCD" firstAttribute="top" secondItem="LF4-ZO-LD4" secondAttribute="bottom" constant="10" id="ona-Da-sUR"/>
                             <constraint firstItem="vdQ-4l-3bc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xnS-9f-xcQ"/>
@@ -115,6 +124,7 @@
                         <outlet property="statusDesc" destination="WaB-N4-TmI" id="T5b-8t-RmC"/>
                         <outlet property="statusState" destination="Eup-go-ZER" id="ci4-wg-EpY"/>
                         <outlet property="statusView" destination="z7c-QT-J8K" id="gfc-Mv-Q4f"/>
+                        <outlet property="versionLbl" destination="beI-kA-F6w" id="T4f-W5-QqA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -124,10 +134,10 @@
     </scenes>
     <resources>
         <namedColor name="background">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base05">
-            <color red="0.96862745098039216" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96899998188018799" green="0.97299998998641968" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base100">
             <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

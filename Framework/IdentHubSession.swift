@@ -69,6 +69,17 @@ final public class IdentHubSession {
 
         startIdentification()
     }
+    
+    /// Static method builds and return current version and build number of the SDK
+    /// - Returns: version string
+    public static func version() -> String {
+        if let info = Bundle.current.infoDictionary,
+           let version = info["CFBundleShortVersionString"] as? String,
+           let buildNumber = info[kCFBundleVersionKey as String] {
+            return "v\(version)(\(buildNumber))"
+        }
+        return ""
+    }
 }
 
 // MARK: - Internal methods methods -
