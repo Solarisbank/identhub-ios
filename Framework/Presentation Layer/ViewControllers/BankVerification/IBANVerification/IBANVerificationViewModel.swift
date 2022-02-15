@@ -112,11 +112,11 @@ private extension IBANVerificationViewModel {
     private func processedFailure(with error: ResponseError) {
 
         switch error.apiError {
-        case .clientError(let detail),
-             .incorrectIdentificationStatus(let detail):
+        case .clientError,
+             .incorrectIdentificationStatus:
             retriesCount += 1
             if retriesCount < sessionStorage.retries {
-                if detail?.nextStep != nil || detail?.fallbackStep != nil {
+                if error.errorDetail?.nextStep != nil || error.errorDetail?.fallbackStep != nil {
                     DispatchQueue.main.async {
                         self.delegate?.verificationIBANFailed(error)
                     }

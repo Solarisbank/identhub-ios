@@ -82,9 +82,15 @@ private extension RequestsViewController {
                     self.zipFailed(with: zipError)
                 } else if let err = error as? ResponseError {
                     self.displayError(err)
-                } else if let err = error as? APIError {
-                    self.locationFailed(with: err)
                 }
+            }
+        }
+        
+        viewModel.onDisplayLocationError = { [weak self] error in
+            guard let `self` = self else { return }
+            
+            DispatchQueue.main.async {
+                self.locationFailed(with: error)
             }
         }
 
@@ -108,10 +114,10 @@ private extension RequestsViewController {
         case .locationError,
              .locationAccessError:
             self.locationFailed(with: error.apiError)
-        case .identificationDataInvalid(_):
+        case .identificationDataInvalid:
             identificationFailed(with: error)
-        case .fraudData(let err):
-            viewModel.abortIdentProcess(.fraudData(error: err))
+        case .fraudData:
+            viewModel.abortIdentProcess(.fraudData)
         default:
             self.requestFailed(with: error)
         }

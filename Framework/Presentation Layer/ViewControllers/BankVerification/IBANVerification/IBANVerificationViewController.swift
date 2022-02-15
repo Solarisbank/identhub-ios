@@ -108,10 +108,10 @@ extension IBANVerificationViewController: IBANVerificationViewModelDelegate {
         var message = ""
         
         switch error.apiError {
-        case .clientError(let detail),
-             .incorrectIdentificationStatus(let detail):
+        case .clientError,
+             .incorrectIdentificationStatus:
             message = Localizable.BankVerification.IBANVerification.notValidIBAN
-            errorDetail = detail
+            errorDetail = error.errorDetail
         default:
             message = error.apiError.text()
         }

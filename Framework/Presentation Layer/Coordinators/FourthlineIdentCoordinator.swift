@@ -252,7 +252,7 @@ private extension FourthlineIdentCoordinator {
 
             DispatchQueue.main.async {
                 LocationManager.shared.requestLocationAuthorization {[weak self] status, error in
-                    if let locationError = error as? APIError {
+                    if let locationError = error {
                         self?.showPermissionAlert(with: Localizable.Location.Error.title, message: locationError.text())
                     }
                     completionHandler(status)

@@ -128,7 +128,7 @@ final class DefaultAPIClient: APIClient {
             }
         case 400:
             let errorDetail = obtainErrorData(data: data)
-            let responseError = ResponseError(.clientError(error: errorDetail), response)
+            let responseError = ResponseError(.clientError, response, errorDetail)
             return .failure(responseError)
         case 401:
             let responseError = ResponseError(.authorizationFailed, response)
@@ -144,7 +144,7 @@ final class DefaultAPIClient: APIClient {
             return .failure(responseError)
         case 412:
             let errorDetail = obtainErrorData(data: data)
-            let responseError = ResponseError(.incorrectIdentificationStatus(error: errorDetail), response)
+            let responseError = ResponseError(.incorrectIdentificationStatus, response, errorDetail)
             return .failure(responseError)
         case 422:
             let responseError = ResponseError(.unprocessableEntity, response)
@@ -157,11 +157,11 @@ final class DefaultAPIClient: APIClient {
             return nil
         case 1001...3999:
             let errorDetail = obtainErrorData(data: data)
-            let responseError = ResponseError(.identificationDataInvalid(error: errorDetail), response)
+            let responseError = ResponseError(.identificationDataInvalid, response, errorDetail)
             return .failure(responseError)
         case 4000...5000:
             let errorDetail = obtainErrorData(data: data)
-            let responseError = ResponseError(.fraudData(error: errorDetail), response)
+            let responseError = ResponseError(.fraudData, response, errorDetail)
             return .failure(responseError)
         default:
             let responseError = ResponseError(.unknownError, response)

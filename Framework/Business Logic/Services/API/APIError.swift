@@ -25,14 +25,14 @@ import Foundation
 /// - unsupportedResponse: SDK encountered a response that is not supported in this version
 /// - identificationNotPossible: SDK could not identify the user. Try your fallback identification method
 /// - unknownError: indicates that api client encountered an error not listed above.
-public enum APIError: Error {
+@objc public enum APIError: Int {
     case malformedResponseJson
-    case clientError(error: ErrorDetail?)
+    case clientError
     case authorizationFailed
     case unauthorizedAction
     case resourceNotFound
     case expectationMismatch
-    case incorrectIdentificationStatus(error: ErrorDetail?)
+    case incorrectIdentificationStatus
     case unprocessableEntity
     case internalServerError
     case requestError
@@ -40,8 +40,8 @@ public enum APIError: Error {
     case locationError
     case ibanVerfificationFailed
     case paymentFailed
-    case identificationDataInvalid(error: ErrorDetail?)
-    case fraudData(error: ErrorDetail?)
+    case identificationDataInvalid
+    case fraudData
     case unsupportedResponse
     case identificationNotPossible
     case unknownError
@@ -50,11 +50,13 @@ public enum APIError: Error {
 /// Server enum
 struct ResponseError: Error {
     let apiError: APIError
+    let errorDetail: ErrorDetail?
     let response: HTTPURLResponse?
     
-    init(_ error: APIError, _ response: HTTPURLResponse? = nil) {
+    init(_ error: APIError, _ response: HTTPURLResponse? = nil, _ detail: ErrorDetail? = nil) {
         self.apiError = error
         self.response = response
+        self.errorDetail = detail
     }
     
     var statusCode: String {
@@ -89,7 +91,7 @@ public extension APIError {
         switch self {
         case .malformedResponseJson:
             return Localizable.APIErrorDesc.malformedResponseJson
-        case .clientError(_):
+        case .clientError:
             return Localizable.APIErrorDesc.clientError
         case.authorizationFailed:
             return Localizable.APIErrorDesc.authorizationFailed
@@ -97,7 +99,7 @@ public extension APIError {
             return Localizable.APIErrorDesc.unauthorizedAction
         case .expectationMismatch:
             return Localizable.APIErrorDesc.expectationMismatch
-        case .incorrectIdentificationStatus(_):
+        case .incorrectIdentificationStatus:
             return Localizable.APIErrorDesc.incorrectIdentificationStatus
         case .unprocessableEntity:
             return Localizable.APIErrorDesc.unprocessableEntity
