@@ -138,7 +138,6 @@
 "selfie_error_timeout" = "El tiempo para hacer la foto se ha agotado";
 "selfie_error_face_disappeared" = "La cara ha desaparecido";
 "selfie_error_camer_permission" = "Se requiere permiso de cámara";
-"selfie_error_manual_selfie_not_allowed" = "No se permite el selfie manual";
 "selfie_error_recording_failed" = "Algo salió mal";
 "selfie_error_scanner_interrupted" = "El escáner se ha interrumpido";
 "selfie_error_unknown" = "Algo salió mal";

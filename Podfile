@@ -7,7 +7,7 @@ platform :ios, '12.0'
 use_frameworks!
 inhibit_all_warnings!
 
-pod 'FourthlineSDK', '2.8.2'
+pod 'FourthlineSDK', '2.10.0'
 
 # Fourthline dependencies
 pod 'ZIPFoundation', '0.9.11'

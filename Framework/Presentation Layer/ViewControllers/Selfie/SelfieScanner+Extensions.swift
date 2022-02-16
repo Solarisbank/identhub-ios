@@ -70,8 +70,6 @@ extension SelfieScannerError {
             return Localizable.Selfie.Errors.faceDisappeared
         case .cameraPermissionNotGranted:
             return Localizable.Selfie.Errors.cameraPermissionNotGranted
-        case .manualSelfieNotAllowed:
-            return Localizable.Selfie.Errors.manualSelfieNotAllowed
         case .recordingFailed:
             return Localizable.Selfie.Errors.recordingFailed
         case .recordAudioPermissionNotGranted:

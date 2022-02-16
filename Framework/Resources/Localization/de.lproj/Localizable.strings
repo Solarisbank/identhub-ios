@@ -138,7 +138,6 @@
 "selfie_error_timeout" = "Zeitlimit erreicht";
 "selfie_error_face_disappeared" = "Gesicht nicht sichtbar während der Lebendigkeitsprüfung";
 "selfie_error_camer_permission" = "Kamerazugriff benötigt";
-"selfie_error_manual_selfie_not_allowed" = "Manuelles Selfie nicht erlaubt";
 "selfie_error_recording_failed" = "Etwas ist schiefgelaufen";
 "selfie_error_scanner_interrupted" = "Scanner unterbrochen";
 "selfie_error_unknown" = "Etwas ist schiefgelaufen";

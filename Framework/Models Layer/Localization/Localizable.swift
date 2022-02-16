@@ -189,7 +189,6 @@ enum Localizable {
             static let timeout = "selfie_error_timeout".localized()
             static let faceDisappeared = "selfie_error_face_disappeared".localized()
             static let cameraPermissionNotGranted = "selfie_error_camer_permission".localized()
-            static let manualSelfieNotAllowed = "selfie_error_manual_selfie_not_allowed".localized()
             static let recordingFailed = "selfie_error_recording_failed".localized()
             static let scannerInterrupted = "selfie_error_scanner_interrupted".localized()
             static let multipleFaces = "selfie_error_multiple_faces".localized()

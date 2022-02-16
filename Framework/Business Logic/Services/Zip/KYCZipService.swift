@@ -105,13 +105,11 @@ extension KYCZipService {
             errorMessage.append("\n Contacts: \(errors.map { $0 })")
         }
 
-        if result.contains(.invalidMetadata),
-           let metadata = KYCContainer.shared.kycInfo.metadata {
-
+        if result.contains(.invalidMetadata) {
+            let metadata = KYCContainer.shared.kycInfo.metadata
             let errors = Set<DeviceMetadata.DeviceMetadataValidationError>(metadata.validate())
             errorMessage.append("\n DeviceMetadata: \(errors.map { $0 })")
         }
-
         return errorMessage
     }
 

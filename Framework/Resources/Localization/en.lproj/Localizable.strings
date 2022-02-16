@@ -138,7 +138,6 @@
 "selfie_error_timeout" = "Photo timed out";
 "selfie_error_face_disappeared" = "Face disappeared";
 "selfie_error_camer_permission" = "Camera permission required";
-"selfie_error_manual_selfie_not_allowed" = "Manual selfie is not allowed";
 "selfie_error_recording_failed" = "Something went wrong";
 "selfie_error_scanner_interrupted" = "Scanner was interrupted";
 "selfie_error_unknown" = "Something went wrong";

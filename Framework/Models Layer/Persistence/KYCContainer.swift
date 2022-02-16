@@ -107,19 +107,11 @@ final class KYCContainer {
     }
 
     func update(location: CLLocation) {
-        if kycInfo.metadata == nil {
-            kycInfo.metadata = DeviceMetadata()
-        }
-
-        kycInfo.metadata?.location = location
+        kycInfo.metadata.location = location
     }
 
     func update(ipAddress: String) {
-        if kycInfo.metadata == nil {
-            kycInfo.metadata = DeviceMetadata()
-        }
-
-        kycInfo.metadata?.ipAddress = ipAddress
+        kycInfo.metadata.ipAddress = ipAddress
 
         storeIPAddress(ipAddress: ipAddress)
     }

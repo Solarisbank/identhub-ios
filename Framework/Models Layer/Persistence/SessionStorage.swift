@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FourthlineCore
 
 /// Stored values key to the UserDefaults. Used for future clean up
 let kStoredValueKeys = "StoredValueKeys"
@@ -35,6 +36,7 @@ public enum SessionStorage {
     /// Method removes all session data
     static func clearData() {
         SessionStorage.removeDataFromDefaults()
+        FileManager.default.deleteFourthlineFiles()
         SessionStorage.removeTemporaryFiles()
     }
 
