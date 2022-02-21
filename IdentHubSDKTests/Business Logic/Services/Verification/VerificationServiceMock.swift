@@ -17,6 +17,7 @@ enum TestIdentMethod {
 enum TestPersonAddress {
     case numericStreetNumberAddress
     case compositeStreetNumberAddress
+    case emptyStreetNumberAddress
 }
 
 /// Mock class of Verificaiton service.
@@ -309,6 +310,8 @@ extension VerificationServiceMock {
         switch personAddress {
         case .compositeStreetNumberAddress:
             return "5a"
+        case .emptyStreetNumberAddress:
+            return ""
         case .numericStreetNumberAddress,
              .none:
             return "5"

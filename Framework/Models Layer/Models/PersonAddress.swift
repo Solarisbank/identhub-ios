@@ -36,8 +36,8 @@ extension PersonAddress {
     func parseStreetNumber() -> StreetNumber {
         let numberMatches = streetNumber.matches(for: String.streetNumberRegex)
         let suffixMatches = streetNumber.matches(for: String.streetNumberSuffixRegex)
-        guard let number = NumberFormatter().number(from: numberMatches.first ?? "")?.intValue else {
-            return StreetNumber(number: 0, suffix: "")
+        guard let numberSring = numberMatches.first, let number = NumberFormatter().number(from: numberSring)?.intValue else {
+            return StreetNumber(number: 0, suffix: suffixMatches.first)
         }
         
         return StreetNumber(number: number, suffix: suffixMatches.first)
