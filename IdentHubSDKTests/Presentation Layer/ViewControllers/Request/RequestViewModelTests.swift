@@ -131,6 +131,7 @@ class RequestViewModelTests: XCTestCase {
     
     override func setUpWithError() throws {
         SessionStorage.clearData()
+        KYCContainer.shared.clearPresonData()
         storage = StorageSessionInfoProvider(sessionToken: "")
     }
     

@@ -30,3 +30,21 @@ struct PersonAddress: Codable {
         case postalCode = "postal_code"
     }
 }
+
+extension PersonAddress {
+    
+    func parseStreetNumber() -> StreetNumber {
+        let numberMatches = streetNumber.matches(for: String.streetNumberRegex)
+        let suffixMatches = streetNumber.matches(for: String.streetNumberSuffixRegex)
+        guard let number = NumberFormatter().number(from: numberMatches.first ?? "")?.intValue else {
+            return StreetNumber(number: 0, suffix: "")
+        }
+        
+        return StreetNumber(number: number, suffix: suffixMatches.first)
+    }
+}
+
+struct StreetNumber {
+    let number: Int
+    let suffix: String?
+}

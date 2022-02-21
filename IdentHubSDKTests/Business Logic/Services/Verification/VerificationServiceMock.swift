@@ -14,11 +14,18 @@ enum TestIdentMethod {
     case bankID
 }
 
+enum TestPersonAddress {
+    case numericStreetNumberAddress
+    case compositeStreetNumberAddress
+}
+
 /// Mock class of Verificaiton service.
 class VerificationServiceMock: VerificationService {
     
     // MARK: - Public properties -
     var testMethod: TestIdentMethod?
+    
+    var personAddress: TestPersonAddress?
     
     // MARK: - Protocol methods -
 
@@ -117,12 +124,13 @@ class VerificationServiceMock: VerificationService {
     }
     
     func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void) {
+        
         let responseJSON = [
             "first_name": "Test_First_Name",
             "last_name": "Test_Last_Name",
             "address": [
-                "street": "Test_Street,",
-                "street_number": "5",
+                "street": "Test_Street",
+                "street_number": obtainTestStreetNumber(),
                 "city": "Bern",
                 "country": "CHE",
                 "postal_code": "3005"
@@ -294,6 +302,16 @@ extension VerificationServiceMock {
             return "BANKProvider"
         case .bankID:
             return nil
+        }
+    }
+    
+    func obtainTestStreetNumber() -> String {
+        switch personAddress {
+        case .compositeStreetNumberAddress:
+            return "5a"
+        case .numericStreetNumberAddress,
+             .none:
+            return "5"
         }
     }
 }

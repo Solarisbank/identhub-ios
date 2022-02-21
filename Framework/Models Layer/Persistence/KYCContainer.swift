@@ -144,6 +144,13 @@ final class KYCContainer {
         restoreSelfieData()
         restoreDocumentData()
     }
+    
+    /// Method clears stored person data
+    func clearPresonData() {
+        kycInfo.person = Person()
+        kycInfo.address = nil
+        kycInfo.contacts = Contacts()
+    }
 }
 
 // MARK: - Private Zone
@@ -185,17 +192,20 @@ private extension KYCContainer {
         }
     }
 
-    private func fillPersonAddressData(_ data: PersonData) {
+    private func fillPersonAddressData(_ personData: PersonData) {
 
         if kycInfo.address == nil {
             kycInfo.address = Address()
         }
 
-        kycInfo.address?.city = data.address.city
-        kycInfo.address?.countryCode = data.address.country
-        kycInfo.address?.street = data.address.street
-        kycInfo.address?.streetNumber = Int(data.address.streetNumber)
-        kycInfo.address?.postalCode = data.address.postalCode
+        kycInfo.address?.city = personData.address.city
+        kycInfo.address?.countryCode = personData.address.country
+        kycInfo.address?.street = personData.address.street
+        kycInfo.address?.postalCode = personData.address.postalCode
+        
+        let streetNumberData = personData.address.parseStreetNumber()
+        kycInfo.address?.streetNumber = streetNumberData.number
+        kycInfo.address?.streetNumberSuffix = streetNumberData.suffix
     }
 }
 
