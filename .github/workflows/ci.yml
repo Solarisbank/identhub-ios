@@ -20,3 +20,7 @@ jobs:
     - name: Build Sample App
       run: |
         xcodebuild -workspace IdentHubSDK.xcworkspace -scheme Sample -destination "platform=iOS Simulator,name=iPhone 12" build
+    - name: Run Tests
+      run: |
+        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12" test
+  

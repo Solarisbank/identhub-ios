@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol VerificationService: AnyObject {
     
@@ -88,6 +89,7 @@ final class VerificationServiceImplementation: VerificationService {
 
     private let apiClient: APIClient
     private let sessionInfoProvider: SessionInfoProvider
+    private var backgroundTaskId: UIBackgroundTaskIdentifier = .invalid
 
     // MARK: Initializers
 
@@ -269,20 +271,38 @@ final class VerificationServiceImplementation: VerificationService {
     }
 
     func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, ResponseError>) -> Void) {
-
+        startBackgroundTask()
         do {
             let request = try UploadKYCRequest(sessionToken: sessionInfoProvider.sessionToken, sessionID: sessionInfoProvider.identificationUID ?? "", fileURL: fileURL)
 
-            apiClient.execute(request: request, answerType: UploadFourthlineZip.self) { result in
+            apiClient.execute(request: request, answerType: UploadFourthlineZip.self) { [weak self] result in
+                self?.endBackgroundTask()
                 completionHandler(result)
             }
         } catch RequestError.emptySessionToken {
             completionHandler(.failure(ResponseError(.requestError)))
+            endBackgroundTask()
         } catch RequestError.emptySessionID {
             completionHandler(.failure(ResponseError(.requestError)))
+            endBackgroundTask()
         } catch {
             completionHandler(.failure(ResponseError(.requestError)))
+            endBackgroundTask()
         }
+    }
+    
+    func startBackgroundTask() {
+        backgroundTaskId = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+    }
+    
+    func endBackgroundTask() {
+        guard backgroundTaskId != .invalid else {
+            return
+        }
+        UIApplication.shared.endBackgroundTask(backgroundTaskId)
+        backgroundTaskId = .invalid
     }
 
     func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void) {
