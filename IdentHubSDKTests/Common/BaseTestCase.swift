@@ -17,7 +17,7 @@ class BaseTestCase: XCTestCase {
     /// Method executes test code block in main thread asynchronosly with 1 second expectation time out
     /// if code was not executed during 1 second test marks as failed
     /// - Parameter completion: test execution block
-    func executeAsyncTest(_ execution: @escaping () throws -> Void) {
+    func executeAsyncTest(_ execution: @escaping () throws -> Void, _ timeout: TimeInterval = 1.0) {
         let asyncExpectation = XCTestExpectation(description: "Code executes in main thread with 1 second expectation")
         
         DispatchQueue.main.async {
@@ -25,6 +25,6 @@ class BaseTestCase: XCTestCase {
             asyncExpectation.fulfill()
         }
         
-        wait(for: [asyncExpectation], timeout: 1.0)
+        wait(for: [asyncExpectation], timeout: timeout)
     }
 }
