@@ -234,14 +234,14 @@ App may retry as long as do not get a failed / rejected status on the session.
 // - unsupportedResponse: SDK encountered a response that is not supported in this version
 // - identificationNotPossible: SDK could not identify the user. Try your fallback identification method
 // - unknownError: indicates that api client encountered an error not listed above.
-@objc public enum APIError: Int {
+public enum APIError: Error {
     case malformedResponseJson
-    case clientError
+    case clientError(error: ErrorDetail?)
     case authorizationFailed
     case unauthorizedAction
     case resourceNotFound
     case expectationMismatch
-    case incorrectIdentificationStatus
+    case incorrectIdentificationStatus(error: ErrorDetail?)
     case unprocessableEntity
     case internalServerError
     case requestError
@@ -249,8 +249,8 @@ App may retry as long as do not get a failed / rejected status on the session.
     case locationError
     case ibanVerfificationFailed
     case paymentFailed
-    case identificationDataInvalid
-    case fraudData
+    case identificationDataInvalid(error: ErrorDetail?)
+    case fraudData(error: ErrorDetail?)
     case unsupportedResponse
     case identificationNotPossible
     case unknownError

@@ -10,13 +10,13 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
     static let shared = LocationManager()
     private var locationManager: CLLocationManager?
-    private var requestCompletionHandler: ((Bool, APIError?) -> Void)!
-    private var completionLocationHandler: ((CLLocation?, APIError?) -> Void)!
+    private var requestCompletionHandler: ((Bool, Error?) -> Void)!
+    private var completionLocationHandler: ((CLLocation?, Error?) -> Void)!
     private var authStatus: CLAuthorizationStatus = .notDetermined
 
     // MARK: - Public methods -
 
-    func requestLocationAuthorization(completionHandler: @escaping((Bool, APIError?) -> Void)) {
+    func requestLocationAuthorization(completionHandler: @escaping((Bool, Error?) -> Void)) {
         self.requestCompletionHandler = completionHandler
         if locationManager == nil {
             locationManager = CLLocationManager()
@@ -26,7 +26,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         checkLocationStatus(status: CLLocationManager.authorizationStatus())
     }
 
-    func requestDeviceLocation(completionHandler: @escaping((CLLocation?, APIError?) -> Void)) {
+    func requestDeviceLocation(completionHandler: @escaping((CLLocation?, Error?) -> Void)) {
         completionLocationHandler = completionHandler
 
         locationManager?.requestLocation()
@@ -44,9 +44,9 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         case .denied,
              .restricted:
             if let completion = completionLocationHandler {
-                completion(nil, .locationAccessError)
+                completion(nil, APIError.locationAccessError)
             } else if let completion = requestCompletionHandler {
-                completion(false, .locationAccessError)
+                completion(false, APIError.locationAccessError)
             }
         case .notDetermined:
             locationManager?.requestWhenInUseAuthorization()
@@ -65,7 +65,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else {
-            completionLocationHandler(nil, .locationAccessError)
+            completionLocationHandler(nil, APIError.locationAccessError)
             return
         }
 
@@ -73,6 +73,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        completionLocationHandler(nil, .locationError)
+        completionLocationHandler(nil, error)
     }
 }

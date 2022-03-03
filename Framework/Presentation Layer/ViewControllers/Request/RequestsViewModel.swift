@@ -36,7 +36,6 @@ final class RequestsViewModel: NSObject {
     // MARK: - Public attributes -
     var onTableUpdate: (() -> Void)?
     var onDisplayError: ((Error?) -> Void)?
-    var onDisplayLocationError: ((APIError) -> Void)?
     var onRetry: ((FourthlineIdentificationStatus) -> Void)?
 
     // MARK: - Private attributes -
@@ -383,7 +382,7 @@ private extension RequestsViewModel {
 
         LocationManager.shared.requestLocationAuthorization { [weak self] status, error in
             guard status else {
-                if let locationErr = error, let errorHandler = self?.onDisplayLocationError {
+                if let locationErr = error as? APIError, let errorHandler = self?.onDisplayError {
                     errorHandler(locationErr)
                 }
                 return
@@ -392,8 +391,8 @@ private extension RequestsViewModel {
                 guard let `self` = self else { return }
                 guard let location = location else {
 
-                    if let errorHandler = self.onDisplayLocationError {
-                        errorHandler(.locationError)
+                    if let errorHandler = self.onDisplayError {
+                        errorHandler(APIError.locationError)
                     }
                     return
                 }
