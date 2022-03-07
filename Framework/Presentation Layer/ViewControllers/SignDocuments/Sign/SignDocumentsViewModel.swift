@@ -95,8 +95,9 @@ final internal class SignDocumentsViewModel: NSObject {
 
     /// Display finish identification screen.
     func finishIdentification() {
-        self.sessionStorage.isSuccessful = true
-        flowCoordinator.perform(action: .finishIdentification)
+        // Finish identification screen is omitted for now
+        flowCoordinator.perform(action: .close)
+        
     }
     
     /// Method defines if progress view should be visible
