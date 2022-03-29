@@ -55,7 +55,10 @@ class DocumentViewCell: UITableViewCell {
     func didFinishDownloading() {
         state = .normal
     }
-
+    
+    func configure(with document: ContractDocument) {
+        documentTitle.text = document.name
+    }
     
     // MARK: - Actions -
     
@@ -72,7 +75,7 @@ class DocumentViewCell: UITableViewCell {
     }
 }
 
-// MARK: - <#message#> -
+// MARK: - Private -
 
 private extension DocumentViewCell {
     

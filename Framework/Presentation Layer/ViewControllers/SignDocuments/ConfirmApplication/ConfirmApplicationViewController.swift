@@ -118,6 +118,8 @@ extension ConfirmApplicationViewController: UITableViewDataSource {
             self?.documentCell = cell
             self?.viewModel.exportDocument(withId: document.id)
         }
+        
+        cell.configure(with: document)
 
         return cell
     }
