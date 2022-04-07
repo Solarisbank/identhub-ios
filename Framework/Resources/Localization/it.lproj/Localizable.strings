@@ -193,14 +193,14 @@
 "doc_scanner_side_inside_left_name" = "dentro a sinistra";
 "doc_scanner_side_inside_right_name" = "dentro a destra";
 "doc_scanner_side_undefined_name" = "Pagina del documento non definita";
-"doc_scanner_side_front_title" = "Scansioni il fronte del documento";
-"doc_scanner_side_front_angled_title" = "Inclini il telefono e faccia una foto al documento";
-"doc_scanner_side_back_title" = "Scansioni il retro del documento";
-"doc_scanner_side_back_angled_title" = "Inclini il telefono e faccia una foto al documento";
-"doc_scanner_side_inside_left_title" = "Scansioni la parte interna sinistra del documento";
-"doc_scanner_side_inside_left_angled_title" = "Scansioni la parte interna sinistra del documento da un angolo";
-"doc_scanner_side_inside_right_title" = "Scansioni la parte interna destra del documento";
-"doc_scanner_side_inside_right_angled_title" = "Scansioni la parte interna destra del documento da un angolo";
+"doc_scanner_side_front_title" = "Scansiona il fronte del documento";
+"doc_scanner_side_front_angled_title" = "Inclina il telefono e fai una foto al documento";
+"doc_scanner_side_back_title" = "Scansiona il retro del documento";
+"doc_scanner_side_back_angled_title" = "Inclina il telefono e fai una foto al documento";
+"doc_scanner_side_inside_left_title" = "Scansiona la parte interna sinistra del documento";
+"doc_scanner_side_inside_left_angled_title" = "Scansiona la parte interna sinistra del documento da un angolo";
+"doc_scanner_side_inside_right_title" = "Scansiona la parte interna destra del documento";
+"doc_scanner_side_inside_right_angled_title" = "Scansiona la parte interna destra del documento da un angolo";
 "doc_scanner_side_undefined_title" = "Faccia una foto al documento, per favore";
 
 // Location
