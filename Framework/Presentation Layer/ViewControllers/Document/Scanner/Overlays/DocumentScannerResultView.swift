@@ -19,6 +19,7 @@ final class DocumentScannerResultView: UIView {
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var retakeBtnTitle: UILabel!
     @IBOutlet var confirmBtnTitle: UILabel!
+    @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var maskAspectRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskWidthRatioConstraint: NSLayoutConstraint!
     @IBOutlet var maskCenterYConstraint: NSLayoutConstraint!
@@ -45,6 +46,13 @@ final class DocumentScannerResultView: UIView {
         changeMask(configuration: configuration)
         retakeBtnTitle.text = Localizable.DocumentScanner.retake
         confirmBtnTitle.text = Localizable.Selfie.confirm
+        configureUI()
+    }
+
+    /// Method configure custom colors in UI components
+    func configureUI() {
+        confirmBtnTitle.textColor = .white
+        confirmBtn.tintColor = .sdkColor(.primaryAccent)
     }
 
     // MARK: - Action methods -
