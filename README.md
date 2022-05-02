@@ -55,6 +55,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 1.2.2 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
 | 1.2.3 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
 | 1.2.4 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
+| 1.2.5 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
 
 ## Integration
 
@@ -75,7 +76,7 @@ inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
-  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.4'
+  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.5'
 end
 
 post_install do |installer|
@@ -108,7 +109,7 @@ The Fourthline SDK is not publicly available. Please get in contact with Solaris
 2. Include the source of the SDK in the Cartfile with the latest version of the SDK, e.g.:
 
     ```bash
-    github "Solarisbank/identhub-ios" ~> 1.2.4
+    github "Solarisbank/identhub-ios" ~> 1.2.5
     ```
 
 3. Run carthage script:
