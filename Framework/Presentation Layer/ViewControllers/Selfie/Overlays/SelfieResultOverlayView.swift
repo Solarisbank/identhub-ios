@@ -10,6 +10,7 @@ class SelfieResultOverlayView: UIView {
     // MARK: - Properties -
     @IBOutlet var retakeBtnTitle: UILabel!
     @IBOutlet var confirmBtnTitle: UILabel!
+    @IBOutlet var confirmBtn: UIButton!
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var resultContent: UIImageView!
 
@@ -22,6 +23,8 @@ class SelfieResultOverlayView: UIView {
 
         retakeBtnTitle.text = Localizable.Selfie.retake
         confirmBtnTitle.text = Localizable.Selfie.confirm
+        confirmBtnTitle.textColor = .white
+        confirmBtn.tintColor = .sdkColor(.primaryAccent)
         titleLbl.text = Localizable.Selfie.confirmSelfie
     }
 

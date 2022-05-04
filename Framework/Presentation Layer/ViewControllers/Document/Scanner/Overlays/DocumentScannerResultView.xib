@@ -77,7 +77,6 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZf-4l-aak">
                                     <rect key="frame" x="155" y="0.0" width="155" height="80"/>
-                                    <color key="tintColor" name="primary"/>
                                     <state key="normal" image="confirm_btn"/>
                                     <connections>
                                         <action selector="didClickConfirm:" destination="3aT-dO-i3N" eventType="touchUpInside" id="Kll-s6-C1x"/>
@@ -98,7 +97,7 @@
                                     <rect key="frame" x="150" y="28" width="160" height="24"/>
                                     <color key="tintColor" name="background"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                                    <color key="textColor" name="base100"/>
+                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -184,13 +183,10 @@
         <image name="retake_btn" width="155" height="80"/>
         <image name="table_shadow" width="351" height="126"/>
         <namedColor name="background">
-            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base100">
-            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="primary">
-            <color red="1" green="0.39215686274509803" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.059000000357627869" green="0.097999997437000275" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
