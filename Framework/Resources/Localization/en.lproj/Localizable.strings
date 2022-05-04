@@ -186,6 +186,7 @@
 "doc_scanner_info_warning" = "Please confirm if your data derived properly from the document scan";
 "doc_scanner_info_enter_data" = "Please enter";
 "doc_scanner_info_confirm_data" = "Please confirm";
+"doc_scanner_info_expire_date_message" = "Expiry date can not be in the past";
 
 // Document Scanner Side
 "doc_scanner_side_front_name" = "front";

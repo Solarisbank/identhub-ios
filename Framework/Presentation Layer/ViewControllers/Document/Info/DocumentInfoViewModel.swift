@@ -58,26 +58,26 @@ extension DocumentInfoViewModel: DocumentInfoDDMDelegate {
 
         switch content.type {
         case .number:
-            infoContent[DocumentInfoType.number.rawValue] = content
+            infoContent[DocumentItemInfoType.number.rawValue] = content
         case .issueDate:
             if let date = content.content.dateFromString() {
-                infoContent[DocumentInfoType.issueDate.rawValue] = content
+                infoContent[DocumentItemInfoType.issueDate.rawValue] = content
 
-                if infoContent[DocumentInfoType.expireDate.rawValue].prefilledDate == nil {
-                    infoContent[DocumentInfoType.expireDate.rawValue].prefilledDate = date.addYears(10)
+                if infoContent[DocumentItemInfoType.expireDate.rawValue].prefilledDate == nil {
+                    infoContent[DocumentItemInfoType.expireDate.rawValue].prefilledDate = date.addYears(10)
                 }
             } else {
-                infoContent[DocumentInfoType.issueDate.rawValue].content = ""
+                infoContent[DocumentItemInfoType.issueDate.rawValue].content = ""
             }
         case .expireDate:
             if let date = content.content.dateFromString() {
-                infoContent[DocumentInfoType.expireDate.rawValue] = content
+                infoContent[DocumentItemInfoType.expireDate.rawValue] = content
 
-                if infoContent[DocumentInfoType.issueDate.rawValue].prefilledDate == nil {
-                    infoContent[DocumentInfoType.issueDate.rawValue].prefilledDate = date.addYears(-10)
+                if infoContent[DocumentItemInfoType.issueDate.rawValue].prefilledDate == nil {
+                    infoContent[DocumentItemInfoType.issueDate.rawValue].prefilledDate = date.addYears(-10)
                 }
             } else {
-                infoContent[DocumentInfoType.expireDate.rawValue].content = ""
+                infoContent[DocumentItemInfoType.expireDate.rawValue].content = ""
             }
         }
 

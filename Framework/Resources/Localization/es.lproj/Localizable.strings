@@ -186,6 +186,7 @@
 "doc_scanner_info_warning" = "Confirma si se han obtenido correctamente tus datos al escanear documento";
 "doc_scanner_info_enter_data" = "Favor de introducir";
 "doc_scanner_info_confirm_data" = "Por favor confirme";
+"doc_scanner_info_expire_date_message" = "La fecha de caducidad no puede estar en el pasado";
 
 // Document Scanner Side Titles
 "doc_scanner_side_front_name" = "anverso";

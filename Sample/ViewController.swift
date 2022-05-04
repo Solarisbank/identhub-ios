@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         sessionURLTV.textColor = .lightGray
         
         versionLbl.attributedText = "Ident SDK \(IdentHubSession.version())".withBoldText(IdentHubSession.version())
+        
     }
 
     private func startIdentProcess() {

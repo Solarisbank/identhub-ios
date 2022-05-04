@@ -272,6 +272,7 @@ enum Localizable {
             static let warning = "doc_scanner_info_warning".localized()
             static let enterData = "doc_scanner_info_enter_data".localized()
             static let confirmData = "doc_scanner_info_confirm_data".localized()
+            static let expireDateMessage = "doc_scanner_info_expire_date_message".localized()
         }
     }
 

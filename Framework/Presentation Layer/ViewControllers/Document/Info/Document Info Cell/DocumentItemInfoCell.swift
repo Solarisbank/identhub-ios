@@ -29,7 +29,7 @@ class DocumentItemInfoCell: UITableViewCell {
         contentTitle.text = data.title
 
         configureContentField(with: data)
-        contentDidChanged(data.content)
+        contentDidChange()
     }
 }
 
@@ -54,9 +54,8 @@ extension DocumentItemInfoCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         let text = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
-
-        contentDidChanged(text?.trimmingCharacters(in: CharacterSet.whitespaces))
-
+        cellContent?.content = text?.trimmingCharacters(in: CharacterSet.whitespaces) ?? ""
+        contentDidChange()
         return true
     }
 }
@@ -114,52 +113,29 @@ extension DocumentItemInfoCell {
     @objc func donePressed() {
         contentTF.text = datePicker.date.defaultDateString()
         cellContent?.prefilledDate = datePicker.date
-        contentDidChanged(contentTF.text)
+        contentDidChange()
         self.endEditing(true)
     }
 
-    private func configureInformUI(_ isDataValid: Bool) {
-        infoLbl.text = obtainInfoText(isDataValid)
-        infoLbl.textColor = obtainInfoTextColor(isDataValid)
-        infoIcon.image = obtainInfoIcon(isDataValid)
+    private func configureInformUI(_ contentStatus: DocumentItemInfoStatus) {
+        infoLbl.text = contentStatus.description
+        infoLbl.textColor = obtainInfoTextColor(contentStatus)
+        infoIcon.image = obtainInfoIcon(contentStatus)
     }
 
-    private func obtainInfoIcon(_ isDataValid: Bool) -> UIImage? {
-        let iconName = isDataValid ? "document_info_icon" : "document_info_warning_icon"
+    private func obtainInfoIcon(_ contentStatus: DocumentItemInfoStatus) -> UIImage? {
+        let iconName = (contentStatus == DocumentItemInfoStatus.valid) ? "document_info_icon" : "document_info_warning_icon"
 
         return UIImage(named: iconName, in: Bundle.current, compatibleWith: nil)
     }
 
-    private func obtainInfoText(_ isDataValid: Bool) -> String {
-        isDataValid ? Localizable.DocumentScanner.Information.confirmData : Localizable.DocumentScanner.Information.enterData
+    private func obtainInfoTextColor(_ status: DocumentItemInfoStatus) -> UIColor {
+        (status == DocumentItemInfoStatus.valid) ? UIColor.sdkColor(.secondaryAccentLighten) : UIColor.sdkColor(.primaryAccentLighten)
     }
 
-    private func obtainInfoTextColor(_ isDataValid: Bool) -> UIColor {
-        isDataValid ? UIColor.sdkColor(.secondaryAccentLighten) : UIColor.sdkColor(.primaryAccentLighten)
-    }
-
-    private func contentDidChanged(_ text: String?) {
-
-        guard let contentType = cellContent?.type else { return }
-        
-        var isValidData = false
-        
-        switch contentType {
-        case .number:
-            if let docNumber = text {
-                isValidData = !docNumber.isEmpty
-            }
-        case .issueDate,
-             .expireDate:
-            if let date = text?.dateFromString() {
-                if contentType == .expireDate {
-                    isValidData = date.isLaterThanOrEqualTo(Date())
-                } else {
-                    isValidData = true
-                }
-            }
-        }
-        
-        configureInformUI(isValidData)
+    private func contentDidChange() {
+        guard let _ = cellContent?.type else { return }
+        configureInformUI(cellContent!.getStatus())
     }
 }
+ 

@@ -186,6 +186,7 @@
 "doc_scanner_info_warning" = "Veuillez confirmer si vos données ont été correctement dérivées du document scanné";
 "doc_scanner_info_enter_data" = "Entrez, s'il-vous-plaît";
 "doc_scanner_info_confirm_data" = "Confirmez, s'il-vous-plaît";
+"doc_scanner_info_expire_date_message" = "La date d'expiration ne peut pas être dans le passé";
 
 // Document Scanner Side Titles
 "doc_scanner_side_front_name" = "recto";

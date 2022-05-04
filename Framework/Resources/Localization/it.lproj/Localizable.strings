@@ -186,6 +186,7 @@
 "doc_scanner_info_warning" = "Si prega di confermare la correttezza dei dati nel documento.";
 "doc_scanner_info_enter_data" = "Entri, per favore";
 "doc_scanner_info_confirm_data" = "Confermi, per favore";
+"doc_scanner_info_expire_date_message" = "La data di scadenza non può essere nel passato";
 
 // Document Scanner Side Titles
 "doc_scanner_side_front_name" = "davanti";

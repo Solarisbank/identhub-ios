@@ -93,6 +93,7 @@
 		392F460127A44E040010849E /* BankIDCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F460027A44E040010849E /* BankIDCoordinatorTest.swift */; };
 		52847B03AEEEB0DBBD58847C /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A56798BA10659BFAEC4A935 /* Pods_IdentHubSDKTests.framework */; };
 		547BAD1629683B4BAEE729F9 /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8517E805F3C6E6BFE9E56506 /* Pods_IdentHubSDK.framework */; };
+		67F736E52812A37300655AC7 /* DocumentItemInfoCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */; };
 		84040BD426AF07CD00C68D25 /* IdentificationInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */; };
 		84040BD726AF089D00C68D25 /* IdentificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD626AF089D00C68D25 /* IdentificationInfo.swift */; };
 		84040BD926AF101D00C68D25 /* UITableView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD826AF101D00C68D25 /* UITableView+Scroll.swift */; };
@@ -371,6 +372,7 @@
 		392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubConstantsTest.swift; sourceTree = "<group>"; };
 		392F460027A44E040010849E /* BankIDCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinatorTest.swift; sourceTree = "<group>"; };
 		4872769C1FDAC7F27B1EBFED /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
+		67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentItemInfoCellTest.swift; sourceTree = "<group>"; };
 		79434CC9D9FAE3196029A3D6 /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
 		80F315F38B026C37CB55B792 /* Pods-IdentHubSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationInfoRequest.swift; sourceTree = "<group>"; };
@@ -930,6 +932,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		670627E0281168CD00C73F23 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
 		7FFA157377958B770F882B81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1222,6 +1232,7 @@
 		8444601D274E6E7400EB7972 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				670627E0281168CD00C73F23 /* Document */,
 				8444601E274E6E8100EB7972 /* Request */,
 			);
 			path = ViewControllers;
@@ -2099,6 +2110,7 @@
 				841F5C6D2762363700D68175 /* BaseTestCase.swift in Sources */,
 				392F45FF27A41AD90010849E /* IdentHubConstantsTest.swift in Sources */,
 				844460262755581200EB7972 /* VerificationServiceMock.swift in Sources */,
+				67F736E52812A37300655AC7 /* DocumentItemInfoCellTest.swift in Sources */,
 				84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,
