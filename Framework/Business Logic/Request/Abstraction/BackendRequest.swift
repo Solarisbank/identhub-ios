@@ -31,4 +31,5 @@ public enum RequestError: Error {
     case emptyToken
     case emptyDUID // documentUID
     case invalidURL
+    case invalidBoundary
 }

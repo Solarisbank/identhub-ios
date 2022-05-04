@@ -243,7 +243,9 @@ private extension FourthlineIdentCoordinator {
 
         AVCaptureDevice.requestAccess(for: .video) { granted in
             guard granted else {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = `self` else { return }
+                    
                     self.showPermissionAlert(with: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage)
                     completionHandler(false)
                 }

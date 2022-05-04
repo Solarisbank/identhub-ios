@@ -285,6 +285,9 @@ final class VerificationServiceImplementation: VerificationService {
         } catch RequestError.emptySessionID {
             completionHandler(.failure(ResponseError(.requestError)))
             endBackgroundTask()
+        } catch RequestError.invalidURL {
+            completionHandler(.failure(ResponseError(.requestError)))
+            endBackgroundTask()
         } catch {
             completionHandler(.failure(ResponseError(.requestError)))
             endBackgroundTask()

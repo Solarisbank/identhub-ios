@@ -32,7 +32,7 @@ class UploadKYCRequest: BackendRequest {
     private let sessionToken: String
     private let sessionID: String
     private let fileURL: URL
-    private let boundary: String = "Boundary-\(UUID().uuidString)"
+    private let boundary: String
 
     init(sessionToken: String, sessionID: String, fileURL: URL) throws {
         guard sessionToken.isEmpty == false else {
@@ -42,10 +42,17 @@ class UploadKYCRequest: BackendRequest {
         guard sessionID.isEmpty == false else {
             throw RequestError.emptySessionID
         }
+        
+        let uuidString = UUID().uuidString
+        
+        guard uuidString.isEmpty == false else {
+            throw RequestError.invalidBoundary
+        }
 
         self.sessionToken = sessionToken
         self.sessionID = sessionID
         self.fileURL = fileURL
+        self.boundary = uuidString
     }
 
 }
