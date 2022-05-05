@@ -10,7 +10,7 @@ final class FourthlineIdentificationStatusRequest: BackendRequest {
     // MARK: - Public attributes -
 
     var path: String {
-        "/\(sessionToken)/identifications/\(identificationUID)"
+        "/identifications/\(identificationUID)"
     }
 
     var method: HTTPMethod {
@@ -19,25 +19,18 @@ final class FourthlineIdentificationStatusRequest: BackendRequest {
 
     // MARK: Private properties
 
-    private let sessionToken: String
     private let identificationUID: String
 
     /// Initializes the request for defining identification method
     /// - Parameters:
-    ///     - sessionToken: The token of the current session.
     ///     - uid: Identificatoin identifier of the current session.
-    /// - Throws: An error of type `RequestError.emptySessioToken`, `RequestError.emptyIUID`
-    init(sessionToken: String, uid: String) throws {
-
-        guard sessionToken.isEmpty == false else {
-            throw RequestError.emptySessionToken
-        }
+    /// - Throws: An error of type `RequestError.emptyIUID`
+    init(uid: String) throws {
 
         guard uid.isEmpty == false else {
             throw RequestError.emptyIUID
         }
 
-        self.sessionToken = sessionToken
         self.identificationUID = uid
     }
 }

@@ -14,26 +14,29 @@ class MobileNumberAuthorizeRequestTests: XCTestCase {
     // MARK: - Tests methods -
 
     func testRequestPath() throws {
-        let sut = try makeSUT(sessionId)
-        let expectedPath = String(describing: "/\(sessionId)/mobile_number/authorize")
+        let sut = makeSUT()
+        let expectedPath = String(describing: "/mobile_number/authorize")
 
         XCTAssertEqual(sut.path, expectedPath, "Mobile Number Authorization Request path built not correct")
     }
 
     func testRequestHTTPMethod() throws {
-        let sut = try makeSUT(sessionId)
+        let sut = makeSUT()
 
         XCTAssertEqual(sut.method, .post, "Request used wrong HTTP method, expected POST")
     }
 
     func testEmptySessionID() throws {
-        XCTAssertThrowsError(try makeSUT(""), "Session ID have to be not empty") { error in
-            XCTAssertEqual(error as! RequestError, RequestError.emptySessionID, "Error message have to be empty session id")
-        }
+        let sut = makeSUT()
+        APIToken.sessionToken = ""
+        
+        XCTAssertThrowsError(try sut.asURLRequest(), "Mobile NumberAuthorize init method doesn't throws empty session token error", { err in
+            XCTAssertEqual(err as! RequestError, .emptySessionToken, "Mobile NumberAuthorize empty session token throws error .emptySessionToken")
+        })
     }
 
     // MARK: - Intermal methods -
-    func makeSUT(_ id: String) throws -> MobileNumberAuthorizeRequest {
-        return try MobileNumberAuthorizeRequest(sessionId: id)
+    func makeSUT() -> MobileNumberAuthorizeRequest {
+        return MobileNumberAuthorizeRequest()
     }
 }

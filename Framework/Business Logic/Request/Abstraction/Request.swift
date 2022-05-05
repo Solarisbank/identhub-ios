@@ -23,6 +23,9 @@ protocol Request: URLRequestConvertible {
     var headers: [String: String]? { get }
     /// Specifies if request is already percent encoded when created. Fixes wrong encoding for + and @.
     var isPercentEncoded: Bool { get }
+    /// Session token which is passed as header.
+    var sessionToken: String { get }
+    
 }
 
 /// Defines default values for some of the properties.
@@ -33,6 +36,10 @@ extension Request {
 
     var apiPath: String {
         "/v1/person_onboarding"
+    }
+    
+    var sessionToken: String {
+        APIToken.sessionToken
     }
 
     var headers: [String: String]? {
@@ -65,6 +72,7 @@ extension Request {
         let appVersion = Bundle.current.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
         return "IdentHub iOS (\(appVersion))"
     }
+    
 }
 
 // MARK: Conformance to URLRequestConvertible protocol.
@@ -99,6 +107,11 @@ extension URLRequestConvertible where Self: Request {
         headers?.forEach {
             urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
         }
+        
+        guard !sessionToken.isEmpty else {
+            throw RequestError.emptySessionToken
+        }
+        urlRequest.addValue(sessionToken, forHTTPHeaderField: "x-solaris-session-token")
 
         urlRequest.addValue(userAgent, forHTTPHeaderField: "User-Agent")
 

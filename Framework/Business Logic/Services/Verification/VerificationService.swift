@@ -101,54 +101,33 @@ final class VerificationServiceImplementation: VerificationService {
     // MARK: Protocol methods
 
     func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
-
-        do {
-            let request = try IdentificationMethodRequest(sessionToken: sessionInfoProvider.sessionToken)
-
-            apiClient.execute(request: request, answerType: IdentificationMethod.self) { result in
-                completionHandler(result)
-            }
-        } catch RequestError.emptySessionID {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch {
-            completionHandler(.failure(ResponseError(.requestError)))
+        
+        let request = IdentificationMethodRequest()
+        apiClient.execute(request: request, answerType: IdentificationMethod.self) { result in
+            completionHandler(result)
         }
     }
 
     func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void) {
-
-        do {
-            let request = try IdentificationInfoRequest(sessionToken: sessionInfoProvider.sessionToken)
-
-            apiClient.execute(request: request, answerType: IdentificationInfo.self) { result in
-                completionHandler(result)
-            }
-        } catch RequestError.emptySessionID {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch {
-            completionHandler(.failure(ResponseError(.requestError)))
+        
+        let request = IdentificationInfoRequest()
+        apiClient.execute(request: request, answerType: IdentificationInfo.self) { result in
+            completionHandler(result)
         }
     }
 
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
-
-        do {
-            let request = try MobileNumberAuthorizeRequest(sessionId: sessionInfoProvider.sessionToken)
-
-            apiClient.execute(request: request, answerType: MobileNumber.self) { result in
-                completionHandler(result)
-            }
-        } catch RequestError.emptySessionID {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch {
-            completionHandler(.failure(ResponseError(.requestError)))
+        
+        let request = MobileNumberAuthorizeRequest()
+        apiClient.execute(request: request, answerType: MobileNumber.self) { result in
+            completionHandler(result)
         }
     }
 
     func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
 
         do {
-            let request = try MobileNumberTANRequest(sessionId: sessionInfoProvider.sessionToken, token: token)
+            let request = try MobileNumberTANRequest(token: token)
             apiClient.execute(request: request, answerType: MobileNumber.self) { result in
                 completionHandler(result)
             }
@@ -168,9 +147,9 @@ final class VerificationServiceImplementation: VerificationService {
 
             switch sessionInfoProvider.identificationStep {
             case .bankIDIBAN:
-                request = try BankIDIBANRequest(sessionToken: sessionInfoProvider.sessionToken, iban: iban)
+                request = try BankIDIBANRequest(iban: iban)
             default:
-                request = try IBANRequest(sessionToken: sessionInfoProvider.sessionToken, iban: iban)
+                request = try IBANRequest(iban: iban)
             }
 
             apiClient.execute(request: request, answerType: Identification.self) { result in
@@ -189,7 +168,7 @@ final class VerificationServiceImplementation: VerificationService {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
         do {
-            let request = try DocumentsAuthorizeRequest(sessionToken: sessionInfoProvider.sessionToken, identificationUID: identificationUID)
+            let request = try DocumentsAuthorizeRequest(identificationUID: identificationUID)
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
@@ -206,7 +185,7 @@ final class VerificationServiceImplementation: VerificationService {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
         do {
-            let request = try DocumentsTANRequest(sessionToken: sessionInfoProvider.sessionToken, identificationUID: identificationUID, token: token)
+            let request = try DocumentsTANRequest(identificationUID: identificationUID, token: token)
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
@@ -225,7 +204,7 @@ final class VerificationServiceImplementation: VerificationService {
         guard let identificationUID = sessionInfoProvider.identificationUID else { return }
 
         do {
-            let request = try IdentificationRequest(sessionToken: sessionInfoProvider.sessionToken, identificationUID: identificationUID)
+            let request = try IdentificationRequest(identificationUID: identificationUID)
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
@@ -240,7 +219,7 @@ final class VerificationServiceImplementation: VerificationService {
 
     func getFourthlineIdentification(completionHandler: @escaping (Result<FourthlineIdentification, ResponseError>) -> Void) {
         do {
-            let request = try FourthlineIdentificationRequest(sessionToken: sessionInfoProvider.sessionToken, method: sessionInfoProvider.identificationStep ?? .fourthline)
+            let request = try FourthlineIdentificationRequest(method: sessionInfoProvider.identificationStep ?? .fourthline)
 
             apiClient.execute(request: request, answerType: FourthlineIdentification.self) { result in
                 completionHandler(result)
@@ -257,7 +236,7 @@ final class VerificationServiceImplementation: VerificationService {
     func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, ResponseError>) -> Void) {
 
         do {
-            let request = try DocumentDownloadRequest(sessionToken: sessionInfoProvider.sessionToken, documentUID: documentId)
+            let request = try DocumentDownloadRequest(documentUID: documentId)
             apiClient.download(request: request) { result in
                 completionHandler(result)
             }
@@ -273,7 +252,7 @@ final class VerificationServiceImplementation: VerificationService {
     func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, ResponseError>) -> Void) {
         startBackgroundTask()
         do {
-            let request = try UploadKYCRequest(sessionToken: sessionInfoProvider.sessionToken, sessionID: sessionInfoProvider.identificationUID ?? "", fileURL: fileURL)
+            let request = try UploadKYCRequest(sessionID: sessionInfoProvider.identificationUID ?? "", fileURL: fileURL)
 
             apiClient.execute(request: request, answerType: UploadFourthlineZip.self) { [weak self] result in
                 self?.endBackgroundTask()
@@ -310,7 +289,7 @@ final class VerificationServiceImplementation: VerificationService {
 
     func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void) {
         do {
-            let request = try PersonDataRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
+            let request = try PersonDataRequest(uid: sessionInfoProvider.identificationUID ?? "")
 
             apiClient.execute(request: request, answerType: PersonData.self) { result in
                 completion(result)
@@ -327,7 +306,7 @@ final class VerificationServiceImplementation: VerificationService {
     func fetchIPAddress(completion: @escaping (Result<IPAddress, ResponseError>) -> Void) {
 
         do {
-            let request = try IPAddressRequest(sessionToken: sessionInfoProvider.sessionToken)
+            let request = try IPAddressRequest()
             apiClient.execute(request: request, answerType: IPAddress.self) { result in
                 completion(result)
             }
@@ -341,7 +320,7 @@ final class VerificationServiceImplementation: VerificationService {
     func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, ResponseError>) -> Void) {
 
         do {
-            let request = try FourthlineIdentificationStatusRequest(sessionToken: sessionInfoProvider.sessionToken, uid: sessionInfoProvider.identificationUID ?? "")
+            let request = try FourthlineIdentificationStatusRequest(uid: sessionInfoProvider.identificationUID ?? "")
 
             apiClient.execute(request: request, answerType: FourthlineIdentificationStatus.self) { result in
                 completion(result)

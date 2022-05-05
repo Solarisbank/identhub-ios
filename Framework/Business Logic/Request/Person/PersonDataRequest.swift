@@ -10,7 +10,7 @@ class PersonDataRequest: BackendRequest {
     // MARK: - Public attributes -
 
     var path: String {
-        "/\(sessionToken)/identifications/\(identificationUID)/person_data"
+        "/identifications/\(identificationUID)/person_data"
     }
 
     var method: HTTPMethod {
@@ -19,24 +19,18 @@ class PersonDataRequest: BackendRequest {
 
     // MARK: Private properties
 
-    private let sessionToken: String
     private let identificationUID: String
 
     /// Initializes the request for defining identification method
     /// - Parameters:
-    ///     - sessionToken: The token of the current session.
-    /// - Throws: An error of type `RequestError.emptySessioToken`
-    init(sessionToken: String, uid: String) throws {
-
-        guard sessionToken.isEmpty == false else {
-            throw RequestError.emptySessionToken
-        }
+    ///     - uid: Identificatoin identifier of the current session.
+    /// - Throws: An error of type `RequestError.emptyIUID`
+    init(uid: String) throws {
 
         guard uid.isEmpty == false else {
             throw RequestError.emptyIUID
         }
 
-        self.sessionToken = sessionToken
         self.identificationUID = uid
     }
 }

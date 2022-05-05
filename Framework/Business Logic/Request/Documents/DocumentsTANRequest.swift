@@ -8,7 +8,7 @@ import Foundation
 struct DocumentsTANRequest: BackendRequest {
 
     var path: String {
-        "/\(sessionToken)/sign_documents/\(identificationUID)/confirm"
+        "/sign_documents/\(identificationUID)/confirm"
     }
 
     var method: HTTPMethod {
@@ -25,7 +25,6 @@ struct DocumentsTANRequest: BackendRequest {
 
     // MARK: Private properties
 
-    private let sessionToken: String
     private let identificationUID: String
     private let token: String
 
@@ -33,15 +32,10 @@ struct DocumentsTANRequest: BackendRequest {
 
     /// Initializes the receiver.
     /// - Parameters:
-    ///     - sessionId: The token of the current session.
     ///     - identificationUID: The id of the current identification.
     ///     - token: Token obtained to sign documents.
-    /// - Throws: An error of type `RequestError.emptySessioToken` or `RequestError.emptyIUID` or `RequestError.emptyToken`
-    init(sessionToken: String, identificationUID: String, token: String) throws {
-
-        guard sessionToken.isEmpty == false else {
-            throw RequestError.emptySessionToken
-        }
+    /// - Throws: An error of type or `RequestError.emptyIUID` or `RequestError.emptyToken`
+    init(identificationUID: String, token: String) throws {
 
         guard identificationUID.isEmpty == false else {
             throw RequestError.emptyIUID
@@ -51,7 +45,6 @@ struct DocumentsTANRequest: BackendRequest {
             throw RequestError.emptyToken
         }
 
-        self.sessionToken = sessionToken
         self.identificationUID = identificationUID
         self.token = token
     }

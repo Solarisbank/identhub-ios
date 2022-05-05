@@ -25,6 +25,8 @@ final class SessionURLParser {
         guard sessionURL.host != nil else { throw IdentSessionURLError.invalidBaseURL }
 
         guard let token = sessionURL.pathComponents.last, token.count > 30 else { throw IdentSessionURLError.invalidSessionToken }
+        
+        APIToken.sessionToken = token
 
         if let scheme = sessionURL.scheme, let host = sessionURL.host {
             var apiHost = host

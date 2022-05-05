@@ -23,7 +23,7 @@ class VerificationServiceTests: XCTestCase {
     ///  - auth request path
     func testAuthMobileNumberRequest() {
         let sut = makeSUT()
-        let expectedRequestPath = String(describing: "/\(token)/mobile_number/authorize")
+        let expectedRequestPath = String(describing: "/mobile_number/authorize")
         sut.authorizeMobileNumber(completionHandler: { _ in })
 
         XCTAssertTrue(apiClient.executeCommandCalled, "Mobile number authorization command was not executed")
@@ -39,7 +39,7 @@ class VerificationServiceTests: XCTestCase {
     ///  - auth request path
     func testMmobileNumberTANRequest() {
         let sut = makeSUT()
-        let reqPath = String(describing: "/\(token)/mobile_number/confirm")
+        let reqPath = String(describing: "/mobile_number/confirm")
         let token = "7cff7e6cf4e431c1fc99d15cc30b2652ises"
 
         sut.verifyMobileNumberTAN(token: token, completionHandler: { _ in })
@@ -57,7 +57,7 @@ class VerificationServiceTests: XCTestCase {
     ///  - custom request path
     func testIBANVerification() {
         let sut = makeSUT()
-        let reqPath = String(describing: "/\(token)/iban/verify")
+        let reqPath = String(describing: "/iban/verify")
         let iban = "DE11231231231231"
 
         sut.verifyIBAN(iban, completionHandler: { _ in })
@@ -79,7 +79,7 @@ class VerificationServiceTests: XCTestCase {
         defaultStorage?.identificationUID = iduid
 
         let sut = makeSUT()
-        let request = String(describing: "/\(token)/sign_documents/\(iduid)/authorize")
+        let request = String(describing: "/sign_documents/\(iduid)/authorize")
 
         sut.authorizeDocuments(completionHandler: { _ in })
 
@@ -101,7 +101,7 @@ class VerificationServiceTests: XCTestCase {
         defaultStorage?.identificationUID = iduid
 
         let sut = makeSUT()
-        let request = String(describing: "/\(token)/sign_documents/\(iduid)/confirm")
+        let request = String(describing: "/sign_documents/\(iduid)/confirm")
 
         sut.verifyDocumentsTAN(token: docToken, completionHandler: { _ in })
 
@@ -122,7 +122,7 @@ class VerificationServiceTests: XCTestCase {
         defaultStorage?.identificationUID = iduid
 
         let sut = makeSUT()
-        let request = String(describing: "/\(token)/identifications/\(iduid)")
+        let request = String(describing: "/identifications/\(iduid)")
 
         sut.getIdentification(completionHandler: { _ in })
 
@@ -140,7 +140,7 @@ class VerificationServiceTests: XCTestCase {
     func testGetDocument() {
         let sut = makeSUT()
         let docID = "9536e7a3da5a00f15670ef5f459984e4cper"
-        let request = String(describing: "/\(token)/sign_documents/\(docID)/download")
+        let request = String(describing: "/sign_documents/\(docID)/download")
 
         sut.getDocument(documentId: docID, completionHandler: { _ in })
 

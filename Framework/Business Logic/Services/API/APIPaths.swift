@@ -15,4 +15,12 @@ enum APIPaths {
 
     /// Environment path for backend API.
     static let backendApiPath = "/person_onboarding"
+    
+}
+
+/// Container for API Session token.
+enum APIToken {
+    
+    /// API Session token pass as header.
+    static var sessionToken = ""
 }

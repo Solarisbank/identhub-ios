@@ -10,7 +10,7 @@ class UploadKYCRequest: BackendRequest {
     // MARK: - Attributes -
 
     var path: String {
-        "/\(sessionToken)/fourthline_identification/\(sessionID)/data"
+        "/fourthline_identification/\(sessionID)/data"
     }
 
     var method: HTTPMethod {
@@ -27,17 +27,13 @@ class UploadKYCRequest: BackendRequest {
         ]
     }
 
-    // MARK: - Private attributes -
+    // MARK: Private properties
 
-    private let sessionToken: String
     private let sessionID: String
     private let fileURL: URL
     private let boundary: String
 
-    init(sessionToken: String, sessionID: String, fileURL: URL) throws {
-        guard sessionToken.isEmpty == false else {
-            throw RequestError.emptySessionToken
-        }
+    init(sessionID: String, fileURL: URL) throws {
 
         guard sessionID.isEmpty == false else {
             throw RequestError.emptySessionID
@@ -49,7 +45,6 @@ class UploadKYCRequest: BackendRequest {
             throw RequestError.invalidBoundary
         }
 
-        self.sessionToken = sessionToken
         self.sessionID = sessionID
         self.fileURL = fileURL
         self.boundary = uuidString

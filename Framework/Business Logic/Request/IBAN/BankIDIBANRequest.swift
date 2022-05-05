@@ -8,7 +8,7 @@ import Foundation
 internal struct BankIDIBANRequest: BackendRequest {
 
     var path: String {
-        "/\(sessionToken)/bank_id_identification"
+        "/bank_id_identification"
     }
 
     var method: HTTPMethod {
@@ -25,27 +25,20 @@ internal struct BankIDIBANRequest: BackendRequest {
 
     // MARK: Private properties
 
-    private let sessionToken: String
     private let iban: String
 
     // MARK: Initializers
 
     /// Initializes the receiver.
     /// - Parameters:
-    ///     - sessionToken: The id of the current session.
     ///     - iban: The IBAN.
-    /// - Throws: An error of type `RequestError.emptySessionToken` or `RequestError.emptyIBAN`
-    init(sessionToken: String, iban: String) throws {
-
-        guard sessionToken.isEmpty == false else {
-            throw RequestError.emptySessionToken
-        }
+    /// - Throws: An error of type `RequestError.emptyIBAN`
+    init(iban: String) throws {
 
         guard iban.isEmpty == false else {
             throw RequestError.emptyIBAN
         }
 
-        self.sessionToken = sessionToken
         self.iban = iban
     }
 }
