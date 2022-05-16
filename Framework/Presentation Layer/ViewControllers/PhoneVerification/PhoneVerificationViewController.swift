@@ -11,6 +11,7 @@ final internal class PhoneVerificationViewController: UIViewController {
     // MARK: - Outlets -
     @IBOutlet var mainContainer: UIView!
     @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var infoLabel: UILabel!
     @IBOutlet var codeEntryView: CodeEntryView!
     @IBOutlet var countDownTimeLabel: UILabel!
@@ -85,6 +86,7 @@ extension PhoneVerificationViewController {
         
         currentStepView.setCurrentStep(.phoneVerification)
         
+        titleLabel.text = Localizable.PhoneVerification.title
         infoLabel.text = Localizable.PhoneVerification.enterCode
         countDownTimeLabel.text = Localizable.PhoneVerification.requestNewCodeTimer
         errorLabel.text = Localizable.PhoneVerification.wrongTan

@@ -44,6 +44,7 @@ enum Localizable {
     }
 
     enum PhoneVerification {
+        static let title = "phone_verification_title".localized()
         static let enterCode = "phone_verification_enter_code".localized()
         static let requestNewCodeTimer = "phone_verification_request_code_timer".localized()
         static let sendNewCode = "phone_verification_send_new_code".localized()

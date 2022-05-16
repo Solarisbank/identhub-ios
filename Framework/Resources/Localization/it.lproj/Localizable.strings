@@ -32,6 +32,7 @@
 "start_ident_send_code" = "Invia il codice di conferma";
 
 // Phone Verification
+"phone_verification_title" = "Confermare il telefono";
 "phone_verification_enter_code" = "Inserisci il codice a 6 cifre che hai ricevuto";
 "phone_verification_request_code_timer" = "Richiedi nuovo codice in";
 "phone_verification_send_new_code" = "Invia nuovo codice";

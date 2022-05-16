@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +23,7 @@
                 <outlet property="requestNewCodeBtn" destination="BTw-bG-7P3" id="1iY-MA-SIb"/>
                 <outlet property="submitCodeBtn" destination="2Jr-YL-y1A" id="8pQ-ls-7ub"/>
                 <outlet property="successView" destination="mkQ-Xg-O6u" id="y8S-EE-g9H"/>
+                <outlet property="titleLabel" destination="dQh-8f-cOy" id="LgT-l5-efh"/>
                 <outlet property="view" destination="FkW-VK-Y1w" id="Oeg-pV-xJV"/>
             </connections>
         </placeholder>
@@ -49,13 +50,13 @@
                     <rect key="frame" x="0.0" y="133" width="414" height="729"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the 6-digit code sent to" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5y-Vm-Tcu">
-                            <rect key="frame" x="20" y="37" width="374" height="19.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <rect key="frame" x="20" y="100" width="374" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" name="base75"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-w0-bA5" customClass="CodeEntryView" customModule="IdentHubSDK" customModuleProvider="target">
-                            <rect key="frame" x="91" y="103.5" width="232" height="48"/>
+                            <rect key="frame" x="91" y="169" width="232" height="48"/>
                             <color key="backgroundColor" name="background"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="VUr-ay-lI7"/>
@@ -63,13 +64,13 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request new code in 00:20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugs-Np-KgU">
-                            <rect key="frame" x="20" y="175.5" width="374" height="16.5"/>
+                            <rect key="frame" x="20" y="241" width="374" height="16.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" name="base50"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong TAN. You need to request a new TAN and try again." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-3P-g27">
-                            <rect key="frame" x="91" y="163.5" width="232" height="40"/>
+                            <rect key="frame" x="91" y="229" width="232" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="232" id="cNf-5Q-CIl"/>
                                 <constraint firstAttribute="height" constant="40" id="t2O-QU-Yi8"/>
@@ -79,7 +80,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTw-bG-7P3">
-                            <rect key="frame" x="107" y="203.5" width="200" height="40"/>
+                            <rect key="frame" x="107" y="269" width="200" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="4j7-iU-k6D"/>
                                 <constraint firstAttribute="height" constant="40" id="GWq-0Q-OFp"/>
@@ -130,19 +131,28 @@
                                 <action selector="didClickQuit:" destination="-1" eventType="touchUpInside" id="0ue-ch-csi"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQh-8f-cOy">
+                            <rect key="frame" x="20" y="44" width="374" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" name="base75"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="3XN-46-37p" firstAttribute="top" secondItem="2Jr-YL-y1A" secondAttribute="bottom" constant="10" id="2db-TT-vPz"/>
                         <constraint firstItem="BTw-bG-7P3" firstAttribute="top" secondItem="Ogh-3P-g27" secondAttribute="bottom" id="4Id-kX-0YW"/>
+                        <constraint firstItem="B5y-Vm-Tcu" firstAttribute="trailing" secondItem="dQh-8f-cOy" secondAttribute="trailing" id="7uc-5j-Dyb"/>
                         <constraint firstAttribute="trailing" secondItem="ugs-Np-KgU" secondAttribute="trailing" constant="20" id="8Kb-aK-Ek6"/>
                         <constraint firstItem="Ogh-3P-g27" firstAttribute="top" secondItem="J6Y-w0-bA5" secondAttribute="bottom" constant="12" id="Aa0-ij-3VD"/>
                         <constraint firstItem="3XN-46-37p" firstAttribute="leading" secondItem="2Lr-DT-kl8" secondAttribute="leading" constant="16" id="DeE-0S-d38"/>
-                        <constraint firstItem="B5y-Vm-Tcu" firstAttribute="top" secondItem="2Lr-DT-kl8" secondAttribute="top" constant="37" id="GvJ-Yh-FIO"/>
+                        <constraint firstItem="B5y-Vm-Tcu" firstAttribute="top" secondItem="dQh-8f-cOy" secondAttribute="bottom" constant="32" id="H3r-mZ-Zsv"/>
                         <constraint firstAttribute="bottom" secondItem="3XN-46-37p" secondAttribute="bottom" priority="750" constant="30" id="IKl-bL-FNt"/>
                         <constraint firstItem="J6Y-w0-bA5" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="KSe-sZ-zBS"/>
                         <constraint firstItem="2Jr-YL-y1A" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BTw-bG-7P3" secondAttribute="bottom" priority="750" constant="10" id="RIu-QK-F0p"/>
-                        <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="B5y-Vm-Tcu" secondAttribute="bottom" priority="750" constant="10" id="SLo-gX-Djs"/>
+                        <constraint firstItem="B5y-Vm-Tcu" firstAttribute="leading" secondItem="dQh-8f-cOy" secondAttribute="leading" id="RzD-J0-X8v"/>
+                        <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" secondItem="B5y-Vm-Tcu" secondAttribute="bottom" priority="750" constant="52" id="SLo-gX-Djs"/>
+                        <constraint firstItem="dQh-8f-cOy" firstAttribute="top" secondItem="2Lr-DT-kl8" secondAttribute="top" constant="44" id="UOR-iG-Y12"/>
                         <constraint firstItem="Ogh-3P-g27" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="Uig-3B-owr"/>
                         <constraint firstAttribute="trailing" secondItem="3XN-46-37p" secondAttribute="trailing" constant="16" id="Y32-8O-Dhe"/>
                         <constraint firstAttribute="trailing" secondItem="B5y-Vm-Tcu" secondAttribute="trailing" constant="20" id="YT1-PG-7Z9"/>
@@ -168,14 +178,14 @@
                 <constraint firstItem="CrA-au-UCf" firstAttribute="trailing" secondItem="mkQ-Xg-O6u" secondAttribute="trailing" id="avj-J3-jUD"/>
                 <constraint firstItem="CrA-au-UCf" firstAttribute="bottom" secondItem="2Lr-DT-kl8" secondAttribute="bottom" id="w51-1p-O9R"/>
                 <constraint firstItem="CrA-au-UCf" firstAttribute="trailing" secondItem="2Lr-DT-kl8" secondAttribute="trailing" id="wAt-Hn-eVm"/>
-                <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" secondItem="FbP-9b-UPj" secondAttribute="bottom" constant="103.5" id="xna-66-X6o"/>
+                <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" secondItem="FbP-9b-UPj" secondAttribute="bottom" constant="169" id="xna-66-X6o"/>
             </constraints>
-            <point key="canvasLocation" x="-330" y="-528"/>
+            <point key="canvasLocation" x="-330.43478260869568" y="-528.34821428571422"/>
         </view>
     </objects>
     <resources>
         <namedColor name="background">
-            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base50">
             <color red="0.49411764705882355" green="0.52941176470588236" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
