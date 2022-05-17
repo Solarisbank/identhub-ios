@@ -48,8 +48,9 @@ internal class SuccessView: NibView {
     }
 
     /// Set description text.
-    func setDescription(_ text: String) {
-        descriptionLabel.text = text
+    func setDescription(_ text: String) {        
+        descriptionLabel.attributedText = String(format: text, Localizable.BankVerification.IBANVerification.IBAN, Localizable.PhoneVerification.Success.loginCredentials)
+            .withBoldTexts([Localizable.BankVerification.IBANVerification.IBAN, Localizable.PhoneVerification.Success.loginCredentials], withColorForBoldText: .sdkColor(.base75))
     }
 
     /// Set title for action button.

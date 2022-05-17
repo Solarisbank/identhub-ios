@@ -40,11 +40,8 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkQ-Xg-O6u" customClass="SuccessView" customModule="IdentHubSDK" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="133" width="414" height="250"/>
+                    <rect key="frame" x="0.0" y="133" width="414" height="729"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="250" id="Z5L-Sr-Pp2"/>
-                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Lr-DT-kl8">
                     <rect key="frame" x="0.0" y="133" width="414" height="729"/>
@@ -176,6 +173,7 @@
                 <constraint firstItem="FbP-9b-UPj" firstAttribute="top" secondItem="CrA-au-UCf" secondAttribute="top" id="Yid-Ak-Lua"/>
                 <constraint firstItem="FbP-9b-UPj" firstAttribute="trailing" secondItem="CrA-au-UCf" secondAttribute="trailing" id="ZP8-Vu-Wyz"/>
                 <constraint firstItem="CrA-au-UCf" firstAttribute="trailing" secondItem="mkQ-Xg-O6u" secondAttribute="trailing" id="avj-J3-jUD"/>
+                <constraint firstItem="CrA-au-UCf" firstAttribute="bottom" secondItem="mkQ-Xg-O6u" secondAttribute="bottom" id="os7-ge-Gdx"/>
                 <constraint firstItem="CrA-au-UCf" firstAttribute="bottom" secondItem="2Lr-DT-kl8" secondAttribute="bottom" id="w51-1p-O9R"/>
                 <constraint firstItem="CrA-au-UCf" firstAttribute="trailing" secondItem="2Lr-DT-kl8" secondAttribute="trailing" id="wAt-Hn-eVm"/>
                 <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" secondItem="FbP-9b-UPj" secondAttribute="bottom" constant="169" id="xna-66-X6o"/>

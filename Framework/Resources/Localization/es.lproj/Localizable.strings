@@ -40,9 +40,9 @@
 "request_tan_failed" = "Error al solicitar un nuevo TAN.";
 "phone_verification_submit_code" = "Enviar código";
 "phone_verification_request_new_code" = "Solicitar un nuevo código";
-"phone_verification_success_title" = "Verificación telefónica realizada correctamente";
-"phone_verification_success_description" = "Continuar identificándote con una cuenta bancaria.";
-"phone_verification_success_action" = "Comenzar la identificación bancaria";
+"phone_verification_success_title" = "¡Teléfono validado con éxito!";
+"phone_verification_success_description" = "Tenga a mano su %1$@ y los datos de acceso as su banco online para el siguiente paso";
+"phone_verification_login_credentials" = "login credentials";
 "phone_verification_error_title" = "Error de verificación telefónica";
 "phone_verification_error_description" = "El TAN proporcionado no es válido.";
 "phone_verification_error_action" = "Vuelve a intentar la verificación del TAN";

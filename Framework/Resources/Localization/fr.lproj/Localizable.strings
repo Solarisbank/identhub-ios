@@ -5,7 +5,7 @@
 "progress_view_sign_documents" = "Signer documents";
 
 // Common
-"common_next" = "Suivant";
+"common_next" = "Suite";
 "common_quit" = "Quitter";
 "common_continue_button" = "Continuer";
 "common_back" = "Retour";
@@ -40,9 +40,9 @@
 "request_tan_failed" = "Échec de la demande d'un nouveau TAN.";
 "phone_verification_submit_code" = "Soumettre le code";
 "phone_verification_request_new_code" = "Demander un nouveau code";
-"phone_verification_success_title" = "Vérification du téléphone réussie";
-"phone_verification_success_description" = "Continuer à vous identifier avec un compte bancaire.";
-"phone_verification_success_action" = "Commencer l’identification bancaire";
+"phone_verification_success_title" = "Vérification du téléphone réussie !";
+"phone_verification_success_description" = "Pour l'étape suivante, veuillez avoir à portée de main votre %1$@ et vos %2$@ à votre banque en ligne.";
+"phone_verification_login_credentials" = "identifiants de connexion";
 "phone_verification_error_title" = "Erreur de vérification du téléphone";
 "phone_verification_error_description" = "Le TAN fourni n’est pas valide";
 "phone_verification_error_action" = "Réessayer la vérification TAN";

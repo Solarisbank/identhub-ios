@@ -187,7 +187,7 @@ final internal class DocumentTableViewCell: UITableViewCell {
     ///     - document: Document fetched in the cell.
     ///     - isDocumentSigned: Whether the document is signed.
     func setCell(document: ContractDocument, isDocumentSigned: Bool) {
-        titleLabel.attributedText = document.documentType.withBoldText(document.documentType)
+        titleLabel.attributedText = document.documentType.withBoldTexts([document.documentType])
         fileNameLabel.text = document.name
 
         if isDocumentSigned {

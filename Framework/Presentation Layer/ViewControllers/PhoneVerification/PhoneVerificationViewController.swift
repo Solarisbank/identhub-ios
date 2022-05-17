@@ -105,7 +105,7 @@ extension PhoneVerificationViewController {
         
         successView.setTitle(Localizable.PhoneVerification.Success.title)
         successView.setDescription(Localizable.PhoneVerification.Success.description)
-        successView.setActionButtonTitle(Localizable.PhoneVerification.Success.action)
+        successView.setActionButtonTitle(Localizable.Common.next)
         
         successView.setAction { [weak self] in
             self?.viewModel.beginBankIdentification()
@@ -182,7 +182,7 @@ extension PhoneVerificationViewController: CodeEntryViewDelegate {
 extension PhoneVerificationViewController: PhoneVerificationViewModelDelegate {
     
     func didGetPhoneNumber(_ phoneNumber: String) {
-        infoLabel.attributedText = "\(Localizable.PhoneVerification.enterCode) \(phoneNumber)".withBoldText(phoneNumber, withColorForBoldText: .sdkColor(.base75))
+        infoLabel.attributedText = "\(Localizable.PhoneVerification.enterCode) \(phoneNumber)".withBoldTexts([phoneNumber], withColorForBoldText: .sdkColor(.base75))
     }
 
     func willGetNewCode() {
@@ -202,7 +202,7 @@ extension PhoneVerificationViewController: PhoneVerificationViewModelDelegate {
     }
     
     func didUpdateTimerLabel(_ seconds: String) {
-        countDownTimeLabel.attributedText = "\(Localizable.PhoneVerification.requestNewCodeTimer) 00:\(seconds)".withBoldText("00:\(seconds)")
+        countDownTimeLabel.attributedText = "\(Localizable.PhoneVerification.requestNewCodeTimer) 00:\(seconds)".withBoldTexts(["00:\(seconds)"])
     }
     
     func didEndTimerDelay() {

@@ -55,7 +55,7 @@ enum Localizable {
         enum Success {
             static let title = "phone_verification_success_title".localized()
             static let description = "phone_verification_success_description".localized()
-            static let action = "phone_verification_success_action".localized()
+            static let loginCredentials = "phone_verification_login_credentials".localized()
         }
 
         enum Error {

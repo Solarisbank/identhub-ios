@@ -40,9 +40,9 @@
 "request_tan_failed" = "Neue TAN konnte nicht angefordert werden.";
 "phone_verification_submit_code" = "Code senden";
 "phone_verification_request_new_code" = "Neuen Code anfordern";
-"phone_verification_success_title" = "Telefonnummer erfolgreich verifiziert";
-"phone_verification_success_description" = "Identifizieren Sie sich als nächsters mit einem Bankkonto.";
-"phone_verification_success_action" = "Bankidentifikation beginnen";
+"phone_verification_success_title" = "Rufnummer erfolgreich bestätigt";
+"phone_verification_success_description" = "Bitte halten Sie für den nächsten Schritt Ihre %1$@ und %2$@ bereit.";
+"phone_verification_login_credentials" = "Online-Banking-Zugangsdaten";
 "phone_verification_error_title" = "Fehler bei der Verifizierung der Telefonnummer";
 "phone_verification_error_description" = "Angegebene TAN ist nicht gültig.";
 "phone_verification_error_action" = "TAN-Verifizierung wiederholen";

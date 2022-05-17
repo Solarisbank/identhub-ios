@@ -86,7 +86,7 @@ extension SignDocumentsViewController {
         
         currentStepView.setCurrentStep(.documents)
         
-        codeEntryHint.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldText(viewModel.mobileNumber, withColorForBoldText: UIColor.sdkColor(.base100))
+        codeEntryHint.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldTexts([viewModel.mobileNumber], withColorForBoldText: UIColor.sdkColor(.base100))
         
         codeEntryView.delegate = self
         
@@ -188,7 +188,7 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
     }
     
     func didUpdateTimerLabel(_ seconds: String) {
-        requestCodeTimerLabel.attributedText = "\(Localizable.PhoneVerification.requestNewCodeTimer) 00:\(seconds)".withBoldText("00:\(seconds)")
+        requestCodeTimerLabel.attributedText = "\(Localizable.PhoneVerification.requestNewCodeTimer) 00:\(seconds)".withBoldTexts(["00:\(seconds)"])
     }
     
 
@@ -196,7 +196,7 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
         state = .normal
 
         transactionDetailView.isHidden = token.isEmpty
-        transactionInfoLabel.attributedText = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(token) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)".withBoldText(token, withColorForBoldText: .sdkColor(.black100))
+        transactionInfoLabel.attributedText = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(token) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)".withBoldTexts([token], withColorForBoldText: .sdkColor(.black100))
     }
 
     func verificationStarted() {
