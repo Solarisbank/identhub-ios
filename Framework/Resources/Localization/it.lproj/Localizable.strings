@@ -70,10 +70,10 @@
 "payment_verification_error_action" = "Ripeti la verifica dell'IBAN";
 
 // Sign Documents
-"sign_documents_application_confirm" = "Controlli il suo documento(i)";
-"sign_documents_application_description" = "La preghiamo di revisionare il documento(i) prima di firmalo(i)";
+"sign_documents_application_confirm" = "Scarichi e controlli i Suoi dati";
+"sign_documents_application_description" = "La preghiamo di controllare il/i documento/i seguente";
+"sign_documents_application_terms_text" = "Si applicano i termini e le condizioni di Swisscom";
 "sign_documents_application_view_doc" = "Visualizzare il documento";
-"sign_documents_application_send_code" = "Ricevi il codice e firma";
 "sign_documents_transaction_info_part_one" = "Il tuo ID transazione è";
 "sign_documents_transaction_info_part_two" = "\nAssicurati di avere lo stesso ID transazione nell'SMS.";
 "sign_documents_submit_and_sign" = "Firma e invia";

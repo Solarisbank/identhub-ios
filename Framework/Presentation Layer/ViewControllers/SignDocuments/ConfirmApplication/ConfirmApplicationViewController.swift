@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SafariServices
 
 /// UIViewController which displays screen with the documents to read and sign later.
 final internal class ConfirmApplicationViewController: UIViewController {
@@ -14,9 +15,10 @@ final internal class ConfirmApplicationViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var documentsTableView: UITableView!
+    @IBOutlet var termsAndConditionsLabel: UITextView!
     @IBOutlet var actionButton: ActionRoundedButton!
     @IBOutlet var tableHeightConstraint: NSLayoutConstraint!
-
+    
     // MARK: - Properties -
 
     var viewModel: ConfirmApplicationViewModel!
@@ -63,9 +65,35 @@ final internal class ConfirmApplicationViewController: UIViewController {
         let cellNib = UINib(nibName: "DocumentViewCell", bundle: Bundle(for: Self.self))
         documentsTableView.register(cellNib, forCellReuseIdentifier: DocumentViewCell.ReuseIdentifier)
         documentsTableView.estimatedRowHeight = rowHeight
-
-        actionButton.setTitle(Localizable.SignDocuments.ConfirmApplication.sendCodeToSign, for: .normal)
+        
+        /// Note: This line will only be here in the case of 'method_bank')
+        if viewModel.hasTermsAndConditionsLink {
+            termsAndConditionsLabel.delegate = self
+            termsAndConditionsLabel.isHidden = false
+            termsAndConditionsLabel.attributedText = buildTermsConditionsText()
+            termsAndConditionsLabel.linkTextAttributes = [
+                .foregroundColor: UIColor.sdkColor(.primaryAccent)
+            ]
+            termsAndConditionsLabel.textColor = .sdkColor(.base75)
+        }
+        
+        actionButton.setTitle(Localizable.Common.next, for: .normal)
         actionButton.currentAppearance = .dimmed
+    }
+    
+    private func buildTermsConditionsText() -> NSAttributedString {
+        let fullText = Localizable.SignDocuments.ConfirmApplication.termsAndConditionsFootnote
+        let attributedString = NSMutableAttributedString(string: fullText)
+        let font = UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: .regular)
+        
+        if let termsRange = fullText.range(of: "Swisscom") {
+            let attrRange = NSRange(termsRange, in: fullText)
+            attributedString.addAttribute(.link, value: termsLink, range: attrRange)
+            let boldFontAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
+            attributedString.addAttributes(boldFontAttribute, range: attrRange)
+        }
+
+        return attributedString
     }
 
     // MARK: - Action methods -
@@ -122,5 +150,19 @@ extension ConfirmApplicationViewController: UITableViewDataSource {
         cell.configure(with: document)
 
         return cell
+    }
+}
+
+extension ConfirmApplicationViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+
+        let safariViewController = SFSafariViewController(url: URL)
+        present(safariViewController, animated: true, completion: nil)
+
+        return false
+    }
+
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        textView.selectedTextRange = nil
     }
 }

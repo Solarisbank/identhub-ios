@@ -18,6 +18,10 @@ final internal class ConfirmApplicationViewModel: NSObject, DocumentDownloadable
 
     /// - SeeAlso: DocumentDownloadable.documentDelegate
     weak var documentDelegate: DocumentReceivable?
+    
+    var hasTermsAndConditionsLink: Bool {
+        identMethod == .bankIBAN
+    }
 
     init(flowCoordinator: BankIDCoordinator, appDependencies: AppDependencies) {
         self.flowCoordinator = flowCoordinator
