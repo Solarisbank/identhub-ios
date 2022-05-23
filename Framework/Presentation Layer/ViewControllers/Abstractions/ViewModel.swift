@@ -9,10 +9,10 @@ import Foundation
 internal protocol ViewModel: AnyObject {
 
     /// Flow manager backing up the navigation.
-    var flowCoordinator: BankIDCoordinator { get set }
+    var flowCoordinator: BankIDCoordinator { get }
 
     /// Verification service backing up the data.
-    var verificationService: VerificationService { get set }
+    var verificationService: VerificationService { get }
 
     /// Close the flow.
     func quit()

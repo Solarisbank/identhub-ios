@@ -56,7 +56,12 @@ internal class IdentificationProgressView: UIView {
 
         enum Size {
             static let spacing: CGFloat = 4
+            static let height: CGFloat = 89
         }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        .init(width: UIView.noIntrinsicMetric, height: Constants.Size.height)
     }
 
     private lazy var titleLabel: UILabel = {
@@ -103,6 +108,12 @@ internal class IdentificationProgressView: UIView {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        backgroundColor = .sdkColor(.background)
+        configureUI()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         backgroundColor = .sdkColor(.background)
         configureUI()
     }

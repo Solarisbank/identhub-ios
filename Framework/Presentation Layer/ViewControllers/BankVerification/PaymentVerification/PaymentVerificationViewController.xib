@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentVerificationViewController" customModule="IdentHubSDK" customModuleProvider="target">
             <connections>
-                <outlet property="currentStepView" destination="asi-zM-PnZ" id="0ru-LD-V8I"/>
+                <outlet property="headerView" destination="asi-zM-PnZ" id="0ru-LD-V8I"/>
                 <outlet property="paymentWebView" destination="TYH-yT-aJY" id="ZZj-ht-fXH"/>
                 <outlet property="stateView" destination="Te1-ql-5qf" id="jwQ-HB-IVV"/>
                 <outlet property="successContainerView" destination="uHR-aq-a2E" id="FcX-XE-QRG"/>
@@ -23,12 +23,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asi-zM-PnZ" customClass="IdentificationProgressView" customModule="IdentHubSDK" customModuleProvider="target">
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="89" translatesAutoresizingMaskIntoConstraints="NO" id="asi-zM-PnZ" customClass="HeaderView" customModule="IdentHubSDK" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="414" height="89"/>
                     <color key="backgroundColor" name="background"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="89" id="9Xh-IB-FOx"/>
-                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Te1-ql-5qf" customClass="StateView" customModule="IdentHubSDK" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="133" width="414" height="250"/>

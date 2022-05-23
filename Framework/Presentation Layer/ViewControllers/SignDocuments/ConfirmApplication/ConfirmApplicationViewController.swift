@@ -7,11 +7,10 @@ import UIKit
 import SafariServices
 
 /// UIViewController which displays screen with the documents to read and sign later.
-final internal class ConfirmApplicationViewController: UIViewController {
+final internal class ConfirmApplicationViewController: UIViewController, Quitable {
 
     // MARK: - Outlets -
-    @IBOutlet var currentStepView: IdentificationProgressView!
-    @IBOutlet var progressViewHeight: NSLayoutConstraint!
+    @IBOutlet var headerView: HeaderView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var documentsTableView: UITableView!
@@ -58,9 +57,7 @@ final internal class ConfirmApplicationViewController: UIViewController {
         titleLabel.text = Localizable.SignDocuments.ConfirmApplication.confirmYourApplication
         descriptionLabel.text = Localizable.SignDocuments.ConfirmApplication.description
 
-        progressViewHeight.constant = ( viewModel.isInvisibleProgress() ) ? 0 : progressHeight
-        currentStepView.isHidden = viewModel.isInvisibleProgress()
-        currentStepView.setCurrentStep(.documents)
+        headerView.style = viewModel.isInvisibleProgress() ? .none : .quit(target: self)
 
         let cellNib = UINib(nibName: "DocumentViewCell", bundle: Bundle(for: Self.self))
         documentsTableView.register(cellNib, forCellReuseIdentifier: DocumentViewCell.ReuseIdentifier)
@@ -102,6 +99,10 @@ final internal class ConfirmApplicationViewController: UIViewController {
         viewModel.signDocuments()
 
         actionButton.isEnabled = false
+    }
+    
+    @IBAction func didClickQuit(_ sender: Any) {
+        viewModel.quit()
     }
 }
 

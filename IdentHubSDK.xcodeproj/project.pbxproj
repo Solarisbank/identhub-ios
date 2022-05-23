@@ -243,6 +243,8 @@
 		84ECED2E2630769C00ACD1B5 /* DocumentItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECED2D2630769C00ACD1B5 /* DocumentItemInfo.swift */; };
 		84ECED3326307BED00ACD1B5 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ECED3226307BED00ACD1B5 /* Bundle+Extensions.swift */; };
 		84F521BC263DACBD00FBCECF /* MutableData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F521BB263DACBD00FBCECF /* MutableData+Extension.swift */; };
+		881D35AA28352C3500FEA5CA /* QuitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881D35A928352C3500FEA5CA /* QuitView.swift */; };
+		88BF64E02832F2C20005BC61 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BF64DF2832F2C20005BC61 /* HeaderView.swift */; };
 		C7EDE3049A59486294A8B2E6 /* Pods_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF613DE0736DE3578973D63A /* Pods_Sample.framework */; };
 /* End PBXBuildFile section */
 
@@ -526,6 +528,8 @@
 		84ECED3226307BED00ACD1B5 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		84F521BB263DACBD00FBCECF /* MutableData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableData+Extension.swift"; sourceTree = "<group>"; };
 		8517E805F3C6E6BFE9E56506 /* Pods_IdentHubSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		881D35A928352C3500FEA5CA /* QuitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitView.swift; sourceTree = "<group>"; };
+		88BF64DF2832F2C20005BC61 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		8A56798BA10659BFAEC4A935 /* Pods_IdentHubSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF613DE0736DE3578973D63A /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB16099CAD3868C32E33E5B3 /* Pods-IdentHubSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.debug.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -611,8 +615,10 @@
 				0C9E56E825C0358500D68B96 /* DocumentTableViewCell.swift */,
 				0C7FD34225D29AF600A6CC28 /* DownloadDocumentsButton.swift */,
 				0C007F1625D56977003D42B3 /* ErrorView.swift */,
+				88BF64DF2832F2C20005BC61 /* HeaderView.swift */,
 				840DEA7626288F420033A2D8 /* StepsProgressView.swift */,
 				84EAFCA026CBE5740008F0E3 /* NibView.swift */,
+				881D35A928352C3500FEA5CA /* QuitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2015,12 +2021,14 @@
 				845D8633260D1DBC008AAC9A /* WelcomeScrollerDDM.swift in Sources */,
 				841F375D26298CC100D56361 /* DocumentTypesDDM.swift in Sources */,
 				0CC25BA425A4690800D839AB /* Request.swift in Sources */,
+				88BF64E02832F2C20005BC61 /* HeaderView.swift in Sources */,
 				0C1B431425ADB5AE004FFF46 /* PaymentVerificationViewController.swift in Sources */,
 				841CD0A926397F7B00890626 /* RequestsProgressCellObjectBuilder.swift in Sources */,
 				840DEA69262852EC0033A2D8 /* DocumentPickerViewModel.swift in Sources */,
 				0CC25BA925A4692900D839AB /* BackendRequest.swift in Sources */,
 				842A14AD260A6E65005CD33B /* FourthlineIdentCoordinator.swift in Sources */,
 				840A9FC82604F29000D4637A /* SessionURLParser.swift in Sources */,
+				881D35AA28352C3500FEA5CA /* QuitView.swift in Sources */,
 				84040BD926AF101D00C68D25 /* UITableView+Scroll.swift in Sources */,
 				0CB143B7259A48640014B643 /* UIView+Layout.swift in Sources */,
 				845D8644260D22D4008AAC9A /* WelcomePageContent.swift in Sources */,

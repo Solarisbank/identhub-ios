@@ -6,11 +6,11 @@
 import UIKit
 
 /// View of phone verificaiton scree
-final internal class PhoneVerificationViewController: UIViewController {
+final internal class PhoneVerificationViewController: UIViewController, Quitable {
 
     // MARK: - Outlets -
     @IBOutlet var mainContainer: UIView!
-    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var headerView: HeaderView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var infoLabel: UILabel!
     @IBOutlet var codeEntryView: CodeEntryView!
@@ -18,13 +18,12 @@ final internal class PhoneVerificationViewController: UIViewController {
     @IBOutlet var requestNewCodeBtn: UIButton!
     @IBOutlet var errorLabel: UILabel!
     @IBOutlet var submitCodeBtn: ActionRoundedButton!
-    @IBOutlet var quitBtn: ActionRoundedButton!
-    @IBOutlet var quitBtnBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var submitCodeBtnBottomConstraint: NSLayoutConstraint!
     @IBOutlet var errorMessageHeightConstraint: NSLayoutConstraint!
     @IBOutlet var successView: SuccessView!
     
     // MARK: - Properties -
-    var viewModel: PhoneVerificationViewModel!
+    var viewModel: PhoneVerificationViewModel
     
     private enum State {
         case normal
@@ -69,10 +68,9 @@ final internal class PhoneVerificationViewController: UIViewController {
         viewModel.requestNewCode()
     }
     
-    @IBAction func didClickQuit(_ sender: UIButton) {
+    @IBAction func didClickQuit(_ sender: Any) {
         viewModel.quit()
     }
-    
     
     @IBAction func didClickSubmitCode(_ sender: ActionRoundedButton) {
         viewModel.submitCode(codeEntryView.code)
@@ -84,7 +82,7 @@ final internal class PhoneVerificationViewController: UIViewController {
 extension PhoneVerificationViewController {
     private func configureUI() {
         
-        currentStepView.setCurrentStep(.phoneVerification)
+        headerView.style = .quit(target: self)
         
         titleLabel.text = Localizable.PhoneVerification.title
         infoLabel.text = Localizable.PhoneVerification.enterCode
@@ -97,9 +95,6 @@ extension PhoneVerificationViewController {
         
         submitCodeBtn.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
         submitCodeBtn.tintColor = .sdkColor(.primaryAccent)
-        
-        quitBtn.setTitle(Localizable.Common.quit, for: .normal)
-        quitBtn.setTitleColor(.sdkColor(.primaryAccent), for: .normal)
         
         codeEntryView.delegate = self
         
@@ -123,12 +118,12 @@ extension PhoneVerificationViewController {
     
     @objc func keyboardWasShown(_ notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            quitBtnBottomConstraint.constant = keyboardSize.height
+            submitCodeBtnBottomConstraint.constant = keyboardSize.height
         }
     }
 
     @objc func keyboardWillBeHidden(_ notification: Notification) {
-        quitBtnBottomConstraint.constant = 30
+        submitCodeBtnBottomConstraint.constant = 30
     }
     
     // MARK: - Screen state -

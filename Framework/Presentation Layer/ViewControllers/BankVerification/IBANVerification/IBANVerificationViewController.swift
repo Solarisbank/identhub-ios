@@ -7,11 +7,11 @@ import UIKit
 import InputMask
 
 /// UIViewController which displays screen to verify IBAN.
-final internal class IBANVerificationViewController: UIViewController {
+final internal class IBANVerificationViewController: UIViewController, Quitable {
 
     // MARK: - IBOutlets -
 
-    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var headerView: HeaderView!
     @IBOutlet var personalAccountHintLabel: UILabel!
     @IBOutlet var joinedAccountsHintLabel: UILabel!
     @IBOutlet var ibanLabel: UILabel!
@@ -45,7 +45,7 @@ final internal class IBANVerificationViewController: UIViewController {
 
     private func configureUI() {
 
-        currentStepView.setCurrentStep(.bankVerification)
+        headerView.style = .quit(target: self)
 
         personalAccountHintLabel.text = Localizable.BankVerification.IBANVerification.personalAccountDisclaimer
         joinedAccountsHintLabel.text = Localizable.BankVerification.IBANVerification.joinedAccountsDisclaimer
@@ -71,6 +71,10 @@ final internal class IBANVerificationViewController: UIViewController {
 
     @IBAction func didEndEdigitn(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+
+    @IBAction func didClickQuit(_ sender: Any) {
+        viewModel.quit()
     }
 }
 

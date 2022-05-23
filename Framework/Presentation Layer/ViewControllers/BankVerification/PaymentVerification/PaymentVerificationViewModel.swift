@@ -5,14 +5,14 @@
 
 import Foundation
 
-final internal class PaymentVerificationViewModel: NSObject {
+final internal class PaymentVerificationViewModel: NSObject, ViewModel {
 
     /// Delegate which informs about the current state of the performed action.
     weak var delegate: PaymentVerificationViewModelDelegate?
 
-    private let flowCoordinator: BankIDCoordinator
+    let flowCoordinator: BankIDCoordinator
 
-    private let verificationService: VerificationService
+    let verificationService: VerificationService
 
     private let sessionStorage: StorageSessionInfoProvider
 

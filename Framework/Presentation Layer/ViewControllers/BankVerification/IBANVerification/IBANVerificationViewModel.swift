@@ -6,14 +6,14 @@
 import Foundation
 
 /// ViewModel which supports IBAN view controller.
-final internal class IBANVerificationViewModel: NSObject {
+final internal class IBANVerificationViewModel: NSObject, ViewModel {
 
     /// Delegate which informs about the current state of the performed action.
     weak var delegate: IBANVerificationViewModelDelegate?
 
-    private let flowCoordinator: BankIDCoordinator
+    let flowCoordinator: BankIDCoordinator
 
-    private let verificationService: VerificationService
+    let verificationService: VerificationService
 
     private let sessionStorage: StorageSessionInfoProvider
 

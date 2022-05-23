@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,10 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConfirmApplicationViewController" customModule="IdentHubSDK" customModuleProvider="target">
             <connections>
                 <outlet property="actionButton" destination="Zij-Pi-7tY" id="qZv-Ro-HvR"/>
-                <outlet property="currentStepView" destination="d7x-l6-qBT" id="I4h-Kf-7rv"/>
                 <outlet property="descriptionLabel" destination="2fJ-zb-iYc" id="FIJ-PC-R42"/>
                 <outlet property="documentsTableView" destination="XOw-Ws-ALc" id="VVg-aV-t6B"/>
-                <outlet property="progressViewHeight" destination="vvu-mf-ub3" id="ap2-8q-oxI"/>
+                <outlet property="headerView" destination="d7x-l6-qBT" id="t0U-QR-LAg"/>
                 <outlet property="tableHeightConstraint" destination="23X-Af-nLW" id="jng-Ck-sMo"/>
                 <outlet property="termsAndConditionsLabel" destination="lcS-go-F21" id="JLL-2I-Y9n"/>
                 <outlet property="titleLabel" destination="s3l-dJ-hb4" id="ROD-dg-BcX"/>
@@ -27,12 +26,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7x-l6-qBT" customClass="IdentificationProgressView" customModule="IdentHubSDK" customModuleProvider="target">
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="89" translatesAutoresizingMaskIntoConstraints="NO" id="d7x-l6-qBT" customClass="HeaderView" customModule="IdentHubSDK" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="414" height="89"/>
-                    <color key="backgroundColor" name="background"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="89" id="vvu-mf-ub3"/>
-                    </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3l-dJ-hb4">
                     <rect key="frame" x="16" y="173" width="382" height="23.5"/>
@@ -117,9 +112,6 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="background">
-            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="backgroundConfirm">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

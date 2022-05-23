@@ -5,10 +5,9 @@
 
 import UIKit
 
-final internal class SignDocumentsViewController: UIViewController {
-
+final internal class SignDocumentsViewController: UIViewController, Quitable {
     // MARK: - Outlets -
-    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var headerView: HeaderView!
     @IBOutlet var mainContainer: UIView!
     @IBOutlet var codeEntryHint: UILabel!
     @IBOutlet var codeEntryView: CodeEntryView!
@@ -18,8 +17,7 @@ final internal class SignDocumentsViewController: UIViewController {
     @IBOutlet var transactionDetailView: UIView!
     @IBOutlet var transactionInfoLabel: UILabel!
     @IBOutlet var submitCodeBtn: ActionRoundedButton!
-    @IBOutlet var quitBtn: UIButton!
-    @IBOutlet var quitBtnBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var submitCodeBtnBottomConstraint: NSLayoutConstraint!
     @IBOutlet var errorLabelHeightConstraint: NSLayoutConstraint!
     @IBOutlet var stateView: StateView!
     
@@ -83,8 +81,7 @@ final internal class SignDocumentsViewController: UIViewController {
 extension SignDocumentsViewController {
     
     private func configureUI() {
-        
-        currentStepView.setCurrentStep(.documents)
+        headerView.style = .quit(target: self)
         
         codeEntryHint.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldTexts([viewModel.mobileNumber], withColorForBoldText: UIColor.sdkColor(.base100))
         
@@ -98,8 +95,6 @@ extension SignDocumentsViewController {
         sendNewCodeBtn.setTitleColor(.sdkColor(.secondaryAccent), for: .normal)
         
         submitCodeBtn.setTitle(Localizable.SignDocuments.Sign.submitAndSign, for: .normal)
-        
-        quitBtn.setTitle(Localizable.Common.quit, for: .normal)
         
         stateView.hasDescriptionLabel = true
         stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: Self.self))
@@ -120,12 +115,12 @@ extension SignDocumentsViewController {
     
     @objc func keyboardWasShown(_ notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            quitBtnBottomConstraint.constant = keyboardSize.height
+            submitCodeBtnBottomConstraint.constant = keyboardSize.height
         }
     }
 
     @objc func keyboardWillBeHidden(_ notification: Notification) {
-        quitBtnBottomConstraint.constant = 30
+        submitCodeBtnBottomConstraint.constant = 30
     }
     
     // MARK: - Screen state -

@@ -7,11 +7,11 @@ import UIKit
 import WebKit
 
 /// UIViewController which displays screen to verify payment.
-final internal class PaymentVerificationViewController: UIViewController {
+final internal class PaymentVerificationViewController: UIViewController, Quitable {
 
     // MARK: - IBOutlets -
 
-    @IBOutlet var currentStepView: IdentificationProgressView!
+    @IBOutlet var headerView: HeaderView!
     @IBOutlet var stateView: StateView!
     @IBOutlet var paymentWebView: WKWebView!
     @IBOutlet var successContainerView: SuccessView!
@@ -54,8 +54,8 @@ final internal class PaymentVerificationViewController: UIViewController {
     }
 
     private func configureUI() {
+        headerView.style = .quit(target: self)
 
-        currentStepView.setCurrentStep( .bankVerification)
         setupSuccessView()
 
         viewModel.assemblyURLRequest()
@@ -90,6 +90,10 @@ final internal class PaymentVerificationViewController: UIViewController {
         case .failed:
             print("Failed payment verification")
         }
+    }
+
+    @IBAction func didClickQuit(_ sender: Any) {
+        viewModel.quit()
     }
 }
 
