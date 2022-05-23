@@ -107,6 +107,7 @@ enum Localizable {
         }
 
         enum Sign {
+            static let title = "sign_documents_title".localized()
             static let transactionInfoPartOne = "sign_documents_transaction_info_part_one".localized()
             static let transactionInfoPartTwo = "sign_documents_transaction_info_part_two".localized()
             static let submitAndSign = "sign_documents_submit_and_sign".localized()

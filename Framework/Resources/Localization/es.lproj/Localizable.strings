@@ -74,6 +74,8 @@
 "sign_documents_application_description" = "Si prega di rivedere il documento seguente";
 "sign_documents_application_terms_text" = "Se aplican los términos y condiciones de Swisscom.";
 "sign_documents_application_view_doc" = "Ver documento";
+"sign_documents_application_send_code" = "Enviar código para firmar";
+"sign_documents_title" = "Confirme sus detalles";
 "sign_documents_transaction_info_part_one" = "Tu ID de la operación es ";
 "sign_documents_transaction_info_part_two" = "\nAsegúrate de que es el mismo en el SMS que acabas de recibir.";
 "sign_documents_submit_and_sign" = "Enviar y firmar";

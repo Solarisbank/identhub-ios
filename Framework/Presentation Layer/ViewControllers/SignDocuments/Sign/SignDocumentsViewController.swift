@@ -9,6 +9,7 @@ final internal class SignDocumentsViewController: UIViewController, Quitable {
     // MARK: - Outlets -
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var mainContainer: UIView!
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var codeEntryHint: UILabel!
     @IBOutlet var codeEntryView: CodeEntryView!
     @IBOutlet var requestCodeTimerLabel: UILabel!
@@ -83,6 +84,8 @@ extension SignDocumentsViewController {
     private func configureUI() {
         headerView.style = .quit(target: self)
         
+        titleLabel.text = Localizable.SignDocuments.Sign.title
+        
         codeEntryHint.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldTexts([viewModel.mobileNumber], withColorForBoldText: UIColor.sdkColor(.base100))
         
         codeEntryView.delegate = self
@@ -91,11 +94,11 @@ extension SignDocumentsViewController {
         errorCodeLabel.text = Localizable.PhoneVerification.wrongTan
         errorCodeLabel.textColor = .sdkColor(.error)
         
-        sendNewCodeBtn.setTitle(Localizable.SignDocuments.Sign.requestCode, for: .normal)
-        sendNewCodeBtn.setTitleColor(.sdkColor(.secondaryAccent), for: .normal)
+        sendNewCodeBtn.setTitle(Localizable.PhoneVerification.sendNewCode, for: .normal)
+        sendNewCodeBtn.setTitleColor(.sdkColor(.secondaryAccentDarken), for: .normal)
         
-        submitCodeBtn.setTitle(Localizable.SignDocuments.Sign.submitAndSign, for: .normal)
-        
+        submitCodeBtn.setTitle(Localizable.Common.confirm, for: .normal)
+                
         stateView.hasDescriptionLabel = true
         stateView.setStateImage(UIImage.sdkImage(.processingVerification, type: Self.self))
         stateView.setStateTitle(Localizable.SignDocuments.Sign.applicationIsBeingProcessed)
