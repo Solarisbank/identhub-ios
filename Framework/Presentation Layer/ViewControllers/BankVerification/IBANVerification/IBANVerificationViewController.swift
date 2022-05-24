@@ -12,8 +12,8 @@ final internal class IBANVerificationViewController: UIViewController, Quitable 
     // MARK: - IBOutlets -
 
     @IBOutlet var headerView: HeaderView!
-    @IBOutlet var personalAccountHintLabel: UILabel!
-    @IBOutlet var joinedAccountsHintLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var accountHintLabel: UILabel!
     @IBOutlet var ibanLabel: UILabel!
     @IBOutlet var ibanVerificationTextField: VerificationTextField!
     @IBOutlet var maskTextFieldDelegate: MaskedTextFieldDelegate!
@@ -47,8 +47,8 @@ final internal class IBANVerificationViewController: UIViewController, Quitable 
 
         headerView.style = .quit(target: self)
 
-        personalAccountHintLabel.text = Localizable.BankVerification.IBANVerification.personalAccountDisclaimer
-        joinedAccountsHintLabel.text = Localizable.BankVerification.IBANVerification.joinedAccountsDisclaimer
+        titleLabel.text = Localizable.BankVerification.IBANVerification.title
+        accountHintLabel.text = Localizable.BankVerification.IBANVerification.accountDisclaimer
         ibanLabel.text = Localizable.BankVerification.IBANVerification.IBAN
         errorLabel.text = Localizable.BankVerification.IBANVerification.wrongIBANFormat
 
@@ -56,7 +56,7 @@ final internal class IBANVerificationViewController: UIViewController, Quitable 
         ibanVerificationTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.sdkColor(.base25)])
         ibanVerificationTextField.placeholder = placeholderText
 
-        initiatePaymentVerificationButton.setTitle(Localizable.BankVerification.IBANVerification.initiatePaymentVerification, for: .normal)
+        initiatePaymentVerificationButton.setTitle(Localizable.Common.next, for: .normal)
         initiatePaymentVerificationButton.currentAppearance = .primary
 
         ibanVerificationTextField.currentState = .normal

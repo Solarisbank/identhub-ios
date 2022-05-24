@@ -48,12 +48,11 @@
 "phone_verification_error_action" = "Réessayer la vérification TAN";
 
 // IBAN Verification
-"iban_verification_personal_account_disclaimer" = "Veuillez fournir le numéro IBAN de votre compte bancaire personnel.";
-"iban_verification_joined_accounts_disclaimer" = "Veuillez noter que les comptes joints ne satisfont pas aux exigences d’identification.";
-"iban_verification_iban" = "IBAN";
+"iban_verification_title" = "Entrez votre IBAN";
+"iban_verification_account_disclaimer" = "Veuillez saisir l'IBAN de votre compte bancaire allemand. Malheureusement, les comptes joints ne sont pas supportés. Vos données sont chiffrées.";
+"iban_verification_iban" = "Vos données sont chiffrées";
 "iban_verification_iban_input_place_holder" = "par ex. DE21 1234  3456 4567 5678 6789";
 "iban_verification_error_iban_format" = "Le format de l’IBAN n’est pas valide !";
-"iban_verification_initiate_payment_verification" = "Démarrer la vérification du paiement";
 "iban_verification_failure_alert_title" = "Échec de la vérification de l’IBAN";
 "iban_verification_error_invalid_iban" = "Malheureusement, l’IBAN que vous avez saisi n’est pas valide ou n’est pas pris en chargge.";
 "iban_verification_failure_alert_retry" = "Réessayer avec un IBAN différent";

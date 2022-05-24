@@ -68,12 +68,11 @@ enum Localizable {
 
     enum BankVerification {
         enum IBANVerification {
-            static let personalAccountDisclaimer = "iban_verification_personal_account_disclaimer".localized()
-            static let joinedAccountsDisclaimer = "iban_verification_joined_accounts_disclaimer".localized()
+            static let title = "iban_verification_title".localized()
+            static let accountDisclaimer = "iban_verification_account_disclaimer".localized()
             static let IBAN = "iban_verification_iban".localized()
             static let IBANplaceholder = "iban_verification_iban_input_place_holder".localized()
             static let wrongIBANFormat = "iban_verification_error_iban_format".localized()
-            static let initiatePaymentVerification = "iban_verification_initiate_payment_verification".localized()
             static let failureAlertTitle = "iban_verification_failure_alert_title".localized()
             static let notValidIBAN = "iban_verification_error_invalid_iban".localized()
             static let retryOption = "iban_verification_failure_alert_retry".localized()

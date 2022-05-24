@@ -48,12 +48,11 @@
 "phone_verification_error_action" = "TAN-Verifizierung wiederholen";
 
 // IBAN Verification
-"iban_verification_personal_account_disclaimer" = "Bitte geben Sie die IBAN Ihres persönlichen Bankkontos ein.";
-"iban_verification_joined_accounts_disclaimer" = "Bitte beachten Sie, dass die Identifikation mit einem gemeinsamen Konto nicht möglich ist.";
-"iban_verification_iban" = "IBAN";
+"iban_verification_title" = "Geben Sie Ihre IBAN ein";
+"iban_verification_account_disclaimer" = "Bitte geben Sie die IBAN Ihres deutschen Bankkontos ein (kein Gemeinschaftskonto).";
+"iban_verification_iban" = "Your data is encrypted";
 "iban_verification_iban_input_place_holder" = "DEXX XXXX XXXX XXXX XXXX XX";
 "iban_verification_error_iban_format" = "IBAN-Format ungültig!";
-"iban_verification_initiate_payment_verification" = "Zahlungsüberprüfung anfangen";
 "iban_verification_failure_alert_title" = "IBAN-Verifizierung fehlgeschlagen";
 "iban_verification_error_invalid_iban" = "Leider ist die von Ihnen eingegebene IBAN ungültig oder wird nicht unterstützt.";
 "iban_verification_failure_alert_retry" = "Mit einer anderen IBAN versuchen";

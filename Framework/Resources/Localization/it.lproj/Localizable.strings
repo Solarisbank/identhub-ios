@@ -48,12 +48,11 @@
 "phone_verification_error_action" = "Ripetere la verifica TAN";
 
 // IBAN Verification
-"iban_verification_personal_account_disclaimer" = "Inserisci l'IBAN del tuo conto bancario personale.";
-"iban_verification_joined_accounts_disclaimer" = "Si prega di notare che l'identificazione con un conto cointestato non è possibile.";
-"iban_verification_iban" = "IBAN";
+"iban_verification_title" = "Inserisca il suo IBAN";
+"iban_verification_account_disclaimer" = "La preghiamo di inserire l´IBAN del Suo conto tedesco. Purtroppo non é possibile inserire un conto corrente cointestato. I suoi dati sono criptati.";
+"iban_verification_iban" = "I suoi dati sono criptati";
 "iban_verification_iban_input_place_holder" = "DEXX XXXX XXXX XXXX XXXX XX";
 "iban_verification_error_iban_format" = "Formato IBAN non valido!";
-"iban_verification_initiate_payment_verification" = "Inizia la verifica del pagamento";
 "iban_verification_failure_alert_title" = "Verifica IBAN fallita";
 "iban_verification_error_invalid_iban" = "Purtroppo l'IBAN che hai inserito non è valido o non è supportato.";
 "iban_verification_failure_alert_retry" = "Prova un IBAN diverso";
