@@ -50,7 +50,8 @@
 // IBAN Verification
 "iban_verification_title" = "Geben Sie Ihre IBAN ein";
 "iban_verification_account_disclaimer" = "Bitte geben Sie die IBAN Ihres deutschen Bankkontos ein (kein Gemeinschaftskonto).";
-"iban_verification_iban" = "Your data is encrypted";
+"iban_verification_iban" = "IBAN";
+"iban_verification_iban_encryption" = "Ihre Daten werden verschlüsselt übertragen";
 "iban_verification_iban_input_place_holder" = "DEXX XXXX XXXX XXXX XXXX XX";
 "iban_verification_error_iban_format" = "IBAN-Format ungültig!";
 "iban_verification_failure_alert_title" = "IBAN-Verifizierung fehlgeschlagen";

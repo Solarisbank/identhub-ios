@@ -49,7 +49,7 @@ final internal class IBANVerificationViewController: UIViewController, Quitable 
 
         titleLabel.text = Localizable.BankVerification.IBANVerification.title
         accountHintLabel.text = Localizable.BankVerification.IBANVerification.accountDisclaimer
-        ibanLabel.text = Localizable.BankVerification.IBANVerification.IBAN
+        ibanLabel.text = Localizable.BankVerification.IBANVerification.IBANEncryptionInfo
         errorLabel.text = Localizable.BankVerification.IBANVerification.wrongIBANFormat
 
         let placeholderText = Localizable.BankVerification.IBANVerification.IBANplaceholder

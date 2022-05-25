@@ -50,7 +50,8 @@
 // IBAN Verification
 "iban_verification_title" = "Enter your IBAN";
 "iban_verification_account_disclaimer" = "Please enter the IBAN of your German bank account. Unfortunately, joint accounts are not supported.";
-"iban_verification_iban" = "Your data is encrypted";
+"iban_verification_iban" = "IBAN";
+"iban_verification_iban_encryption" = "Your data is encrypted";
 "iban_verification_iban_input_place_holder" = "e.g. DE21 1234  3456 4567 5678 6789";
 "iban_verification_error_iban_format" = "IBAN format is not valid";
 "iban_verification_failure_alert_title" = "IBAN verification failed";

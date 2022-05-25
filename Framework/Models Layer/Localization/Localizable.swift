@@ -71,6 +71,7 @@ enum Localizable {
             static let title = "iban_verification_title".localized()
             static let accountDisclaimer = "iban_verification_account_disclaimer".localized()
             static let IBAN = "iban_verification_iban".localized()
+            static let IBANEncryptionInfo = "iban_verification_iban_encryption".localized()
             static let IBANplaceholder = "iban_verification_iban_input_place_holder".localized()
             static let wrongIBANFormat = "iban_verification_error_iban_format".localized()
             static let failureAlertTitle = "iban_verification_failure_alert_title".localized()

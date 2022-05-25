@@ -50,7 +50,8 @@
 // IBAN Verification
 "iban_verification_title" = "Entrez votre IBAN";
 "iban_verification_account_disclaimer" = "Veuillez saisir l'IBAN de votre compte bancaire allemand. Malheureusement, les comptes joints ne sont pas supportés. Vos données sont chiffrées.";
-"iban_verification_iban" = "Vos données sont chiffrées";
+"iban_verification_iban" = "IBAN";
+"iban_verification_iban_encryption" = "Vos données sont chiffrées";
 "iban_verification_iban_input_place_holder" = "par ex. DE21 1234  3456 4567 5678 6789";
 "iban_verification_error_iban_format" = "Le format de l’IBAN n’est pas valide !";
 "iban_verification_failure_alert_title" = "Échec de la vérification de l’IBAN";
