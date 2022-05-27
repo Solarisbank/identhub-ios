@@ -56,6 +56,7 @@ final class QuitView: UIView {
             $0.equal(.trailing, constant: -Constants.ConstraintsOffset.small),
             $0.equalConstant(.width, Constants.Size.width),
             $0.equalConstant(.height, Constants.Size.height)
-        ]}
+        ]
+        }
     }
 }

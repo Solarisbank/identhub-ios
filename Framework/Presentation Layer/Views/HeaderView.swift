@@ -9,7 +9,7 @@ import UIKit
 ///
 /// Using in Interface Builder please ensure that you allow this view to determine the view's height (use intrinsic size placeholder instead of constraining height).
 final class HeaderView: UIView {
-    public enum Style {
+    enum Style {
         case progress(currentStep: CurrentStep)
         case quit(target: Quitable)
         case none
@@ -50,7 +50,7 @@ final class HeaderView: UIView {
     }
 
     private func configureUI() {
-        var view: UIView? = nil
+        var view: UIView?
 
         subviews.forEach { $0.removeFromSuperview() }
 
@@ -81,7 +81,7 @@ private extension UIView {
             $0.equal(.bottom, constant: .zero),
             $0.equal(.leading, constant: .zero),
             $0.equal(.trailing, constant: .zero)
-        ] }
+        ]
+        }
     }
 }
-

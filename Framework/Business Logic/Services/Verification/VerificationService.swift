@@ -305,15 +305,9 @@ final class VerificationServiceImplementation: VerificationService {
 
     func fetchIPAddress(completion: @escaping (Result<IPAddress, ResponseError>) -> Void) {
 
-        do {
-            let request = try IPAddressRequest()
-            apiClient.execute(request: request, answerType: IPAddress.self) { result in
-                completion(result)
-            }
-        } catch RequestError.emptySessionToken {
-            completion(.failure(ResponseError(.requestError)))
-        } catch {
-            completion(.failure(ResponseError(.requestError)))
+        let request = IPAddressRequest()
+        apiClient.execute(request: request, answerType: IPAddress.self) { result in
+            completion(result)
         }
     }
 

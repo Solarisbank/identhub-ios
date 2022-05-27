@@ -14,7 +14,7 @@ internal extension String {
     ///     - color: Color of the bold text.
     func withBoldTexts(_ boldTexts: [String], withColorForBoldText color: UIColor? = nil) -> NSAttributedString {
         let font = UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: .regular)
-        let fullString = NSMutableAttributedString(string: self, attributes:[NSAttributedString.Key.font: font])
+        let fullString = NSMutableAttributedString(string: self, attributes: [NSAttributedString.Key.font: font])
         let boldFontAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
         
         boldTexts.forEach { text in
