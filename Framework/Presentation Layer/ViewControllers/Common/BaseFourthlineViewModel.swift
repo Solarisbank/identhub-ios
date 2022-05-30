@@ -8,7 +8,7 @@ import Foundation
 internal class BaseFourthlineViewModel: NSObject {
 
     // MARK: - Private attributes -
-    var coordinator: FourthlineIdentCoordinator
+    weak var coordinator: FourthlineIdentCoordinator?
 
     // MARK: - Init methods -
 
@@ -21,6 +21,6 @@ internal class BaseFourthlineViewModel: NSObject {
     // MARK: - Public methods -
 
     func didTriggerQuit() {
-        coordinator.perform(action: .quit)
+        coordinator?.perform(action: .quit)
     }
 }

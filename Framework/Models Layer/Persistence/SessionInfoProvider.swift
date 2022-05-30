@@ -158,12 +158,11 @@ private extension StorageSessionInfoProvider {
 
         if let token = SessionStorage.obtainValue(for: StoredKeys.token.rawValue) as? String {
             if sessionToken != token {
-                SessionStorage.clearData()
+                clearDataAndUpdateSessionTokenValue()
                 return
             }
         } else {
-            SessionStorage.clearData()
-            SessionStorage.updateValue(sessionToken, for: StoredKeys.token.rawValue)
+            clearDataAndUpdateSessionTokenValue()
             return
         }
 
@@ -198,6 +197,11 @@ private extension StorageSessionInfoProvider {
         if let verified = SessionStorage.obtainValue(for: StoredKeys.phoneVerified.rawValue) as? Bool {
             phoneVerified = verified
         }
+    }
+    
+    private func clearDataAndUpdateSessionTokenValue() {
+        SessionStorage.clearData()
+        SessionStorage.updateValue(sessionToken, for: StoredKeys.token.rawValue)
     }
     
     @objc private func enteringBackground() {

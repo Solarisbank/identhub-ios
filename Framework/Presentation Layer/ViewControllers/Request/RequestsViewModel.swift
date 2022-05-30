@@ -50,7 +50,7 @@ final class RequestsViewModel: NSObject {
     private var uploadStep: UploadSteps = .prepareData
     private var uploadFileURL: URL = URL(fileURLWithPath: "")
     private var fourthlineCoordinator: FourthlineIdentCoordinator?
-    private var identCoordinator: IdentificationCoordinator?
+    private weak var identCoordinator: IdentificationCoordinator?
 
     // MARK: - Init methods -
 
@@ -443,31 +443,24 @@ private extension RequestsViewModel {
 private extension RequestsViewModel {
 
     private func startUploadProcess() {
-        if let step = SessionStorage.obtainValue(for: StoredKeys.uploadStep.rawValue) as? Int, let uploadStep = UploadSteps(rawValue: step) {
-            self.uploadStep = uploadStep
-
-            restartProcess()
-        } else {
-            zipUserData()
-        }
+        zipUserData()
     }
 
     private func zipUserData() {
         startStep(number: UploadSteps.prepareData.rawValue)
         uploadStep = .prepareData
-        SessionStorage.updateValue(uploadStep.rawValue, for: StoredKeys.uploadStep.rawValue)
 
-        KYCZipService.createKYCZip { [unowned self] zipURL, err in
+        KYCZipService.createKYCZip { [weak self] zipURL, err in
             guard let url = zipURL else {
 
                 if let err = err {
-                    self.onDisplayError?(err)
+                    self?.onDisplayError?(err)
                 }
                 return
             }
 
-            self.completeStep(number: UploadSteps.prepareData.rawValue)
-            self.uploadZip(url)
+            self?.completeStep(number: UploadSteps.prepareData.rawValue)
+            self?.uploadZip(url)
         }
     }
 
@@ -475,7 +468,6 @@ private extension RequestsViewModel {
         startStep(number: UploadSteps.uploadData.rawValue)
         uploadStep = .uploadData
         uploadFileURL = fileURL
-        SessionStorage.updateValue(uploadStep.rawValue, for: StoredKeys.uploadStep.rawValue)
 
         verificationService.uploadKYCZip(fileURL: fileURL) { [unowned self] result in
 

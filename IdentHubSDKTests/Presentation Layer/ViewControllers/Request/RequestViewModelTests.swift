@@ -105,20 +105,8 @@ class RequestViewModelTests: XCTestCase {
         XCTAssertNil(KYCContainer.shared.kycInfo.provider.name, "Fourthline provider data has to be empty because never used in BankID flow.")
     }
     
-    func testFourthlineKYCUpload() throws {
-        let fourthlineCoord = FourthlineIdentCoordinatorMock()
-        let sut = makeSUT(with: .uploadData, fourthlineCoord: fourthlineCoord)
-        
-        // Value needs to be stored to the session storage for fake kyc zip service and prevent start zipping process, becuase during tests execution no scanned data is present
-        SessionStorage.updateValue("test_kyc_file_name.zip", for: StoredKeys.kycZipData.rawValue)
-        
-        sut.executeCommand()
-
-        XCTAssertEqual(fourthlineCoord.performAction, FourthlineStep.confirmation, "Fourthline flow step after uploading proccess is not correct")
-    }
-    
     func testFourthlineIdentificationStatus() throws {
-        let fourthlineCoord = FourthlineIdentCoordinatorMock()
+        let fourthlineCoord = try FourthlineIdentCoordinatorMock()
         let sut = makeSUT(with: .confirmation, fourthlineCoord: fourthlineCoord)
         
         sut.executeCommand()

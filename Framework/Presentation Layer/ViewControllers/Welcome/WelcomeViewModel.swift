@@ -10,7 +10,7 @@ import UIKit
 final internal class WelcomeViewModel {
 
     // MARK: - Properties -
-    private var flowCoordinator: FourthlineIdentCoordinator
+    private weak var flowCoordinator: FourthlineIdentCoordinator?
     private var pageScrollerDDM: WelcomeScrollerDDM?
     private var scrollerContent: [WelcomePageContent]
     private var pageController: UIPageControl?
@@ -65,9 +65,9 @@ final internal class WelcomeViewModel {
 
     func didTriggerStart() {
         if identificationMethod == .fourthline || identificationMethod == .fourthlineSigning {
-            flowCoordinator.perform(action: .documentPicker)
+            flowCoordinator?.perform(action: .documentPicker)
         } else {
-            flowCoordinator.perform(action: .fetchData)
+            flowCoordinator?.perform(action: .fetchData)
         }
     }
 

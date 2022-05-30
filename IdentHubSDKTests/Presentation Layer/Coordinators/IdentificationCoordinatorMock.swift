@@ -12,9 +12,11 @@ class IdentificationCoordinatorMock: IdentificationCoordinator {
     var performAction: Action?
     
     // MARK: - Init methods -
-    init() {
+    init() throws {
         let appDependencies = AppDependencies(sessionToken: "")
-        let router = IdentHubSDKRouter(rootViewController: UIViewController())
+        let rootViewController = UIViewController()
+        let identHubSession = try IdentHubSession(rootViewController: rootViewController, sessionURL: "https://solarisssandbox.de/sesionToken-abcdefgHIJKlmnoprsTQUWXyz0123456789")
+        let router = IdentHubSDKRouter(rootViewController: rootViewController, identHubSession: identHubSession)
         
         super.init(appDependencies: appDependencies, presenter: router)
     }

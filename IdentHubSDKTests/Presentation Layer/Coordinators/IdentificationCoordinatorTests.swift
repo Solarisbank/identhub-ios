@@ -52,7 +52,7 @@ class IdentificationCoordinatorTests: BaseTestCase {
 
     override func setUpWithError() throws {
         resetStorage()
-        sut = makeSUT()
+        sut = try makeSUT()
     }
 
     override func tearDownWithError() throws {
@@ -60,7 +60,7 @@ class IdentificationCoordinatorTests: BaseTestCase {
         resetStorage()
     }
     
-    private func makeSUT() -> IdentificationCoordinatorMock {
-        return IdentificationCoordinatorMock()
+    private func makeSUT() throws -> IdentificationCoordinatorMock {
+        return try IdentificationCoordinatorMock()
     }
 }

@@ -54,7 +54,7 @@ final class DocumentPickerViewModel: BaseFourthlineViewModel {
     func startDocumentScanner() {
         guard let type = selectedDocument else { return }
 
-        coordinator.perform(action: .documentScanner(type: type))
+        coordinator?.perform(action: .documentScanner(type: type))
     }
 }
 

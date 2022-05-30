@@ -24,7 +24,7 @@ class FourthlineIdentCoordinator: BaseCoordinator {
 
         super.init(presenter: presenter)
 
-        self.restoreStep()
+        KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
     }
 
     // MARK: - Coordinator methods -
@@ -104,7 +104,6 @@ private extension FourthlineIdentCoordinator {
         let welcomeVC = WelcomeViewController(welcomeVM)
 
         presenter.push(welcomeVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .welcome)
     }
 
     private func presentSelfieScreen() {
@@ -117,7 +116,6 @@ private extension FourthlineIdentCoordinator {
             selfieVC.setViewModel(selfieVM)
 
             self.presenter.push(selfieVC, animated: true, completion: nil)
-            self.updateFourthlineStep(step: .selfie)
         }
     }
 
@@ -126,7 +124,6 @@ private extension FourthlineIdentCoordinator {
         let fetchDataVC = RequestsViewController(fetchDataVM)
 
         presenter.push(fetchDataVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .fetchData)
     }
 
     private func presentDocumentPicker() {
@@ -134,7 +131,6 @@ private extension FourthlineIdentCoordinator {
         let documentPickerVC = DocumentPickerViewController(documentPickerVM)
 
         presenter.push(documentPickerVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .documentPicker)
     }
 
     private func presentDocumentScanner(_ documentType: DocumentType) {
@@ -147,13 +143,10 @@ private extension FourthlineIdentCoordinator {
             documentScannerVC.modalPresentationStyle = .fullScreen
 
             self.presenter.present(documentScannerVC, animated: true)
-            self.updateFourthlineStep(step: .documentScanner(type: documentType))
         }
     }
 
     private func presentDocumentInfoConfirmation() {
-        updateFourthlineStep(step: .documentInfo)
-
         let documentInfoVM = DocumentInfoViewModel(self)
         let documentInfoVC = DocumentInfoViewController(documentInfoVM)
 
@@ -165,7 +158,6 @@ private extension FourthlineIdentCoordinator {
         let uploadVC = RequestsViewController(uploadVM)
 
         presenter.push(uploadVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .upload)
     }
 
     private func presentDataVerification() {
@@ -173,7 +165,6 @@ private extension FourthlineIdentCoordinator {
         let verificationVC = RequestsViewController(verificationVM)
 
         presenter.push(verificationVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .confirmation)
     }
 
     private func presentResult(_ result: FourthlineIdentificationStatus) {
@@ -183,7 +174,6 @@ private extension FourthlineIdentCoordinator {
         let resultVC = ResultViewController(resultVM)
 
         presenter.push(resultVC, animated: true, completion: nil)
-        updateFourthlineStep(step: .result(result: result))
     }
 
     private func completeIdent(with result: FourthlineIdentificationStatus) {
@@ -211,26 +201,6 @@ private extension FourthlineIdentCoordinator {
         DispatchQueue.main.async { [weak self] in
             self?.completionHandler?(.failure(error))
             self?.close()
-        }
-    }
-}
-
-// MARK: - Save / load ident data -
-
-private extension FourthlineIdentCoordinator {
-
-    private func restoreStep() {
-        guard let restoreData = SessionStorage.obtainValue(for: StoredKeys.fourthlineStep.rawValue) as? Data else { return }
-
-        if let step = try? JSONDecoder().decode(FourthlineStep.self, from: restoreData) {
-            identificationStep = step
-            KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
-        }
-    }
-
-    private func updateFourthlineStep(step: FourthlineStep) {
-        if let stepData = try? JSONEncoder().encode(step) {
-            SessionStorage.updateValue(stepData, for: StoredKeys.fourthlineStep.rawValue)
         }
     }
 }

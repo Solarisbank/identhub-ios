@@ -22,6 +22,8 @@ class IdentificationCoordinator: BaseCoordinator {
     private var documentExporter: DocumentExporter = DocumentExporterService()
     private var executedStep: Action = .initialization
     private var identificationMethod: IdentificationStep?
+    private var fourthlineCoordinator: FourthlineIdentCoordinator?
+    private var bankIDSessionCoordinator: BankIDCoordinator?
 
     // MARK: - Init methods -
     init(appDependencies: AppDependencies, presenter: Router) {
@@ -123,21 +125,25 @@ private extension IdentificationCoordinator {
     }
 
     private func startBankID() {
-        let bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: presenter)
+        bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: presenter)
 
-        bankIDSessionCoordinator.start(completionHandler!)
+        bankIDSessionCoordinator?.start(completionHandler!)
     }
 
     private func startFourthline() {
-        let fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
-        let bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: presenter)
+        fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
+        bankIDSessionCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: presenter)
 
-        fourthlineCoordinator.start(completionHandler!)
+        fourthlineCoordinator?.start(completionHandler!)
 
-        fourthlineCoordinator.nextStepHandler = { [weak self] nextStep in
-            guard let self = self else { return }
+        fourthlineCoordinator?.nextStepHandler = { [weak self] nextStep in
+            guard let self = self else {
+                print("Cannot handle fourthline coordinator nextStepHandler. `self` is not present")
+                
+                return
+            }
 
-            bankIDSessionCoordinator.perform(step: nextStep, self.completionHandler!)
+            self.bankIDSessionCoordinator?.perform(step: nextStep, self.completionHandler!)
         }
     }
 

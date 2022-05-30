@@ -54,7 +54,7 @@ final class ResultViewModel: BaseFourthlineViewModel {
 
     func didTriggerClose() {
         if let identResult = result {
-            coordinator.perform(action: .complete(result: identResult))
+            coordinator?.perform(action: .complete(result: identResult))
         }
     }
 }

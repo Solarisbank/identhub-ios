@@ -59,17 +59,8 @@ enum StoredKeys: String {
     /// BankID identification session process step value key
     case bankIDStep = "BankIDIdentificationStepKey"
 
-    /// Fourthline identification process step value key
-    case fourthlineStep = "FourthlineIdentificationStepKey"
-
     /// Personal data value key
     case personData = "IndentificationPersonDataKey"
-
-    /// Fourthline selfie step result data
-    case selfieData = "FourthlineSelfieDataKey"
-
-    /// Fourthline scanned document data key
-    case documentData = "FourthlineDocumentDataKey"
 
     /// Fourthline provider data key
     case providerData = "FourthlineProviderDataKey"
@@ -77,29 +68,11 @@ enum StoredKeys: String {
     /// Device IP-address data key
     case ipAddressData = "IPAddressDataKey"
 
-    /// Fourthline kyc zip file url
-    case kycZipData = "KYCZipDataURLKey"
-
     /// Prepare users data
     case fetchDataStep = "FetchPersonDataProcessKey"
 
     /// Identification UI colors
     case styleColors = "IdentificationUIColorsKey"
-
-    /// Upload process step
-    case uploadStep = "UploadProcessKey"
-
-    /// Selfie data store keys enumeration
-    enum SelfieData: String {
-
-        case fullImage = "FullImagePathKey"
-
-        case location = "LocationDataKey"
-
-        case timestamp = "TimestampKey"
-
-        case videoURL = "VideoURLKey"
-    }
 
     /// Style colors keys enumeration
     enum StyleColor: String {

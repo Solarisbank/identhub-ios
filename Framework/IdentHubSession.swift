@@ -35,10 +35,20 @@ public typealias CompletionHandler = (IdentificationSessionResult) -> Void
 final public class IdentHubSession {
 
     private let appDependencies: AppDependencies
-    private let identRouter: IdentHubSDKRouter
     private weak var sessionDelegate: IdentHubSDKManagerDelegate?
     private var completionSessionBlock: CompletionHandler?
     private var bankIDSessionCoordinator: BankIDCoordinator?
+    private var identCoordinator: IdentificationCoordinator?
+    private weak var rootViewController: UIViewController?
+    
+    private lazy var identRouter: IdentHubSDKRouter = {
+        guard let rootViewController = self.rootViewController else {
+            fatalError("Please provide root view controller first.")
+        }
+        
+        return IdentHubSDKRouter(rootViewController: rootViewController, identHubSession: self)
+    }()
+    
 
     /// Initiate ident hub session manager
     /// - Parameters:
@@ -49,7 +59,7 @@ final public class IdentHubSession {
         let sessionToken = try SessionURLParser.obtainSessionToken(sessionURL)
 
         self.appDependencies = AppDependencies(sessionToken: sessionToken)
-        self.identRouter = IdentHubSDKRouter(rootViewController: rootViewController)
+        self.rootViewController = rootViewController
     }
 
     /// Method starts BandID identification process with updating status by delegate
@@ -87,9 +97,15 @@ final public class IdentHubSession {
 private extension IdentHubSession {
 
     private func startIdentification() {
-        let identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
-
-        identCoordinator.start { result in
+        identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
+        
+        identCoordinator?.start { [weak self] result in
+            guard let self = self else {
+                print("Cannot handle identification coordinator start completion. `self` is not present")
+                
+                return
+            }
+            
             self.updateSessionResult(result)
         }
     }

@@ -9,6 +9,9 @@ import UIKit
 class IdentHubSDKRouter: NSObject, Router {
 
     // MARK: - Properties -
+    
+    /// Strong reference to `IdentHubSession` to ensure its alive until the flow is over
+    private var identHubSession: IdentHubSession?
 
     /// Array with all completions block passed as parameter on push/pop/present/dismiss methods
     private var completions: [UIViewController : () -> Void]
@@ -24,9 +27,12 @@ class IdentHubSDKRouter: NSObject, Router {
     /// Initialized completions array with empty array
     /// Sets main navigation controller delegate conforms object
     /// - Parameter navigationController: main navigation controller used in identity flow
-    init(rootViewController: UIViewController) {
+    init(rootViewController: UIViewController, identHubSession: IdentHubSession) {
         self.completions = [:]
+        self.identHubSession = identHubSession
+        
         super.init()
+        
         navigationController.delegate = self
         navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.modalPresentationStyle = .overFullScreen
@@ -56,7 +62,8 @@ class IdentHubSDKRouter: NSObject, Router {
     ///   - animated: dismissing  animation flag
     ///   - completion: the block to execute after the view controller is dismissed.
     func dismissModule(animated: Bool, completion: (() -> Void)?) {
-
+      identHubSession = nil
+        
       navigationController.dismiss(animated: animated, completion: completion)
     }
 

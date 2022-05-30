@@ -36,12 +36,12 @@ final class DocumentInfoViewModel: BaseFourthlineViewModel {
     }
 
     func didTriggerBack() {
-        coordinator.perform(action: .documentPicker)
+        coordinator?.perform(action: .documentPicker)
     }
 
     func didTriggerContinue() {
         updateKYC()
-        coordinator.perform(action: .selfie)
+        coordinator?.perform(action: .selfie)
     }
 }
 
@@ -160,7 +160,5 @@ private extension DocumentInfoViewModel {
                 KYCContainer.shared.update(of: info.content.dateFromString())
             }
         }
-
-        KYCContainer.shared.updateDocumentData()
     }
 }

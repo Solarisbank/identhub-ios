@@ -12,6 +12,7 @@ class BankIDCoordinator: BaseCoordinator {
     private var currentIdentStep: BankIDStep = .startIdentification
     private var completionHandler: CompletionHandler?
     private var documentExporter: DocumentExporter = DocumentExporterService()
+    private var fourthlineCoordinator: FourthlineIdentCoordinator?
 
     // MARK: - Init methods -
     init(appDependencies: AppDependencies, presenter: Router) {
@@ -241,10 +242,15 @@ private extension BankIDCoordinator {
     }
 
     private func presentFourthlineFlow() {
-        let fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
+        fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
 
-        fourthlineCoordinator.start { result in
-
+        fourthlineCoordinator?.start { [weak self] result in
+            guard let self = self else {
+                print("Cannot handle fourthline coordinator start completion. `self` is not present")
+                
+                return
+            }
+            
             switch result {
             case .success( _ ):
                 self.presentSignDocuments()
@@ -255,8 +261,12 @@ private extension BankIDCoordinator {
             }
         }
 
-        fourthlineCoordinator.nextStepHandler = { [weak self] nextStep in
-            guard let `self` = self else { return }
+        fourthlineCoordinator?.nextStepHandler = { [weak self] nextStep in
+            guard let self = self else {
+                print("Cannot handle fourthline coordinator nextStepHandler. `self` is not present")
+                
+                return
+            }
 
             self.perfomIdentStep(step: nextStep)
         }

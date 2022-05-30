@@ -16,25 +16,18 @@ enum KYCZipService {
 
     static func createKYCZip(_ completion: @escaping((URL?, Error?) -> Void)) {
 
-        if let storedZipName = SessionStorage.obtainValue(for: StoredKeys.kycZipData.rawValue) as? String {
-            let zipPath = NSTemporaryDirectory() + storedZipName
-            let zipURL = URL(fileURLWithPath: zipPath)
-            completion(zipURL, nil)
-        } else {
-            DispatchQueue.global(qos: .userInitiated).async {
-                do {
-                    let zipper = Zipper()
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                let zipper = Zipper()
 
-                    let kycZipUrl = try zipper.createZipFile(with: KYCContainer.shared.kycInfo)
-                    SessionStorage.updateValue(kycZipUrl.lastPathComponent, for: StoredKeys.kycZipData.rawValue)
+                let kycZipUrl = try zipper.createZipFile(with: KYCContainer.shared.kycInfo)
 
-                    DispatchQueue.main.async {
-                        completion(kycZipUrl, nil)
-                    }
-                } catch let error {
-                    DispatchQueue.main.async {
-                        completion(nil, error)
-                    }
+                DispatchQueue.main.async {
+                    completion(kycZipUrl, nil)
+                }
+            } catch let error {
+                DispatchQueue.main.async {
+                    completion(nil, error)
                 }
             }
         }
