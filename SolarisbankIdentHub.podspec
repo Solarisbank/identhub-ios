@@ -45,7 +45,7 @@ Pod::Spec.new do |spec|
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.dependency 'FourthlineSDK', '2.10.0'
+  spec.dependency 'FourthlineSDK', '2.11.4'
   spec.dependency 'ZIPFoundation', '0.9.11'
   spec.dependency 'InputMask', '6.1.0'
   spec.dependency 'lottie-ios'

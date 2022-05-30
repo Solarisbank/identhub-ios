@@ -27,7 +27,7 @@ struct DocumentData {
     var images: [DocumentAttachmentData] = []
 
     /// Document scan video url
-    let videoURL: URL
+    let videoRecording: VideoRecording?
 
     // MARK: - Init methods -
 
@@ -39,75 +39,11 @@ struct DocumentData {
         self.number = document.number ?? ""
         self.issueDate = document.issueDate
         self.expirationDate = document.expirationDate
-        self.videoURL = document.videoUrl ?? URL(fileURLWithPath: "")
+        self.videoRecording = document.videoRecording
 
         for image in document.images {
             let attachment = DocumentAttachmentData(attachment: image)
             self.images.append(attachment)
         }
-    }
-
-    /// Method initialized document object with restored data
-    /// - Parameter data: stored data object
-    /// - Throws: Method throws errors of the unarchiving process
-    init?(data: Data) throws {
-        let unarchiver = try NSKeyedUnarchiver(forReadingFrom: data)
-
-        defer {
-            unarchiver.finishDecoding()
-        }
-
-        guard let number = unarchiver.decodeObject(forKey: CodingKeys.number.rawValue) as? String else { return nil }
-        guard let videoName = unarchiver.decodeObject(forKey: CodingKeys.videoURL.rawValue) as? String else { return nil }
-        guard let attachmentsData = unarchiver.decodeObject(forKey: CodingKeys.attachments.rawValue) as? Data else { return nil }
-        guard let attachments = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(attachmentsData) as? [Data] else { return nil }
-
-        self.type = DocumentType.init(rawValue: unarchiver.decodeInteger(forKey: CodingKeys.type.rawValue)) ?? .passport
-        self.issueDate = unarchiver.decodeObject(of: NSDate.self, forKey: CodingKeys.issueDate.rawValue) as Date?
-        self.expirationDate = unarchiver.decodeObject(of: NSDate.self, forKey: CodingKeys.expirationDate.rawValue) as Date?
-        self.number = number
-        self.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent(videoName)
-        self.images = try attachments.compactMap { return try DocumentAttachmentData(data: $0) }
-    }
-
-    // MARK: - Public methods -
-
-    /// Method encoded document data attributes to the Data object for storing to Session storage
-    /// - Returns: encoded data
-    func encode() -> Data {
-        let archiver = NSKeyedArchiver(requiringSecureCoding: false)
-
-        archiver.encode(type.rawValue, forKey: CodingKeys.type.rawValue)
-        archiver.encode(number, forKey: CodingKeys.number.rawValue)
-        archiver.encode(issueDate, forKey: CodingKeys.issueDate.rawValue)
-        archiver.encode(expirationDate, forKey: CodingKeys.expirationDate.rawValue)
-        archiver.encode(videoURL.lastPathComponent, forKey: CodingKeys.videoURL.rawValue)
-
-        let attachmentsEncodedData = images.map { $0.encode() }
-
-        do {
-            let attachmentsData = try NSKeyedArchiver.archivedData(withRootObject: attachmentsEncodedData, requiringSecureCoding: false)
-            archiver.encode(attachmentsData, forKey: CodingKeys.attachments.rawValue)
-        } catch {
-            print("Error with encoding attachments encoded data: \(error.localizedDescription)")
-        }
-
-        archiver.finishEncoding()
-
-        return archiver.encodedData
-    }
-}
-
-private extension DocumentData {
-
-    /// Coding document data attributes keys
-    enum CodingKeys: String, CodingKey {
-
-        case type = "type"
-        case number = "number"
-        case issueDate = "issueDate"
-        case expirationDate = "expirationDate"
-        case attachments = "attachments"
-        case videoURL = "videoURL"
     }
 }

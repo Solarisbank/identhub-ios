@@ -38,12 +38,7 @@ final class KYCContainer {
         kycInfo.metadata.location = data.metadata.location
         
         kycInfo.selfie?.timestamp = data.metadata.timestamp
-
-        if let url = data.videoUrl {
-            kycInfo.selfie?.videoUrl = url
-        } else {
-            kycInfo.selfie?.videoUrl = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("selfieVideo.mp4")
-        }
+        kycInfo.selfie?.videoRecording = data.videoRecording
     }
 
     // MARK: - Filling with Document Result Data
@@ -62,9 +57,7 @@ final class KYCContainer {
             updatePersonData(with: mrzInfo)
         }
 
-        if let url = data.videoUrl {
-            kycInfo.document?.videoUrl = url
-        }
+        kycInfo.document?.videoRecording = data.videoRecording
     }
 
     // MARK: - Filling with Document Step Result Data
@@ -293,7 +286,7 @@ private extension KYCContainer {
         }
 
         kycInfo.document?.type = documentData.type
-        kycInfo.document?.videoUrl = documentData.videoURL
+        kycInfo.document?.videoRecording = documentData.videoRecording
         kycInfo.document?.number = documentData.number
         kycInfo.document?.expirationDate = documentData.expirationDate
         kycInfo.document?.issueDate = documentData.issueDate
