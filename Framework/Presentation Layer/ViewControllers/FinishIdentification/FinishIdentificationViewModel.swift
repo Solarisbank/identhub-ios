@@ -10,7 +10,7 @@ final internal class FinishIdentificationViewModel: NSObject, DocumentDownloadab
 
     var verificationService: VerificationService
 
-    var flowCoordinator: BankIDCoordinator
+    private(set) weak var flowCoordinator: BankIDCoordinator?
 
     /// - SeeAlso: DocumentDownloadable.documents
     var documents: [ContractDocument] = []
@@ -30,7 +30,7 @@ final internal class FinishIdentificationViewModel: NSObject, DocumentDownloadab
 
     // Finish the identification.
     func finish() {
-        flowCoordinator.perform(action: .notifyHandlers)
-        flowCoordinator.perform(action: .close)
+        flowCoordinator?.perform(action: .notifyHandlers)
+        flowCoordinator?.perform(action: .close)
     }
 }

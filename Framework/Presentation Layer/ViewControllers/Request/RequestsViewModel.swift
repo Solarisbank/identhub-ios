@@ -49,7 +49,7 @@ final class RequestsViewModel: NSObject {
     private var prepareData: DataFetchStep = .fetchPersonData
     private var uploadStep: UploadSteps = .prepareData
     private var uploadFileURL: URL = URL(fileURLWithPath: "")
-    private var fourthlineCoordinator: FourthlineIdentCoordinator?
+    private weak var fourthlineCoordinator: FourthlineIdentCoordinator?
     private weak var identCoordinator: IdentificationCoordinator?
 
     // MARK: - Init methods -

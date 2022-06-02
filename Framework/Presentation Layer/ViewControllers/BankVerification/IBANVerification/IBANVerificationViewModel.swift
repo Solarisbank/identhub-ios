@@ -11,7 +11,7 @@ final internal class IBANVerificationViewModel: NSObject, ViewModel {
     /// Delegate which informs about the current state of the performed action.
     weak var delegate: IBANVerificationViewModelDelegate?
 
-    let flowCoordinator: BankIDCoordinator
+    private(set) weak var flowCoordinator: BankIDCoordinator?
 
     let verificationService: VerificationService
 
@@ -46,14 +46,14 @@ final internal class IBANVerificationViewModel: NSObject, ViewModel {
 
     /// Perform alternative step of user validation
     func performFlowStep(_ step: IdentificationStep) {
-        self.flowCoordinator.perform(action: .nextStep(step: step))
+        flowCoordinator?.perform(action: .nextStep(step: step))
     }
 
     /// Perform alternate flow of user validation
     func performFallbackIdent() {
 
         if let fallback = sessionStorage.fallbackIdentificationStep {
-            flowCoordinator.perform(action: .nextStep(step: fallback))
+            flowCoordinator?.perform(action: .nextStep(step: fallback))
         }
     }
 
@@ -61,7 +61,7 @@ final internal class IBANVerificationViewModel: NSObject, ViewModel {
     func didTriggerQuit() {
         DispatchQueue.main.async {[weak self] in
             self?.completionHandler(.failure(.ibanVerfificationFailed))
-            self?.flowCoordinator.perform(action: .close)
+            self?.flowCoordinator?.perform(action: .close)
         }
     }
 
@@ -90,7 +90,7 @@ private extension IBANVerificationViewModel {
 
     private func verifyIBAN(_ iban: String) {
         verificationService.verifyIBAN(iban) { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             switch result {
             case .success(let response):
@@ -98,9 +98,9 @@ private extension IBANVerificationViewModel {
                 self.sessionStorage.identificationPath = response.url
                 DispatchQueue.main.async {
                     if let step = response.nextStep, let nextStep = IdentificationStep(rawValue: step) {
-                        self.flowCoordinator.perform(action: .nextStep(step: nextStep))
+                        self.flowCoordinator?.perform(action: .nextStep(step: nextStep))
                     } else {
-                        self.flowCoordinator.perform(action: .bankVerification(step: .payment))
+                        self.flowCoordinator?.perform(action: .bankVerification(step: .payment))
                     }
                 }
             case .failure(let error):

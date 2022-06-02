@@ -65,7 +65,7 @@ extension DocumentDownloadableViewModel {
         downloadAndSaveDocument(withID: id) {[weak self] path in
 
             DispatchQueue.main.async { [weak self] in
-                self?.flowCoordinator.perform(action: .documentPreview(url: path))
+                self?.flowCoordinator?.perform(action: .documentPreview(url: path))
                 self?.documentDelegate?.didFinishLoadingDocument()
             }
         }
@@ -76,7 +76,7 @@ extension DocumentDownloadableViewModel {
 
         downloadAndSaveDocument(withID: id) {[weak self] path in
             DispatchQueue.main.async {
-                self?.flowCoordinator.perform(action: .documentExport(url: path))
+                self?.flowCoordinator?.perform(action: .documentExport(url: path))
                 self?.documentDelegate?.didFinishLoadingDocument()
             }
         }
@@ -94,7 +94,7 @@ extension DocumentDownloadableViewModel {
 
                 if savedDocuments.count == self.documents.count {
                     DispatchQueue.main.async {
-                        self.flowCoordinator.perform(action: .allDocumentsExport(documents: savedDocuments))
+                        self.flowCoordinator?.perform(action: .allDocumentsExport(documents: savedDocuments))
                         self.documentDelegate?.didFinishLoadingAllDocuments()
                     }
                 }

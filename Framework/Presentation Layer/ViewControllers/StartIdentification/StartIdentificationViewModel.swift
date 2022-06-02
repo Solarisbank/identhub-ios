@@ -8,7 +8,7 @@ import Foundation
 /// ViewModel which backs up the start identification view controller.
 final internal class StartIdentificationViewModel: NSObject {
 
-    private let flowCoordinator: BankIDCoordinator
+    private weak var flowCoordinator: BankIDCoordinator?
 
     init(flowCoordinator: BankIDCoordinator) {
         self.flowCoordinator = flowCoordinator
@@ -18,11 +18,11 @@ final internal class StartIdentificationViewModel: NSObject {
 
     /// Go to send code screen.
     func startIdentification() {
-        flowCoordinator.perform(action: .phoneVerification)
+        flowCoordinator?.perform(action: .phoneVerification)
     }
 
     /// Quit the flow.
     func quit() {
-        flowCoordinator.perform(action: .quit)
+        flowCoordinator?.perform(action: .quit)
     }
 }

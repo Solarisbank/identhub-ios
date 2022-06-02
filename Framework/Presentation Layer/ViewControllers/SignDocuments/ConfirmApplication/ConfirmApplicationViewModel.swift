@@ -9,7 +9,7 @@ final internal class ConfirmApplicationViewModel: NSObject, DocumentDownloadable
 
     var verificationService: VerificationService
 
-    var flowCoordinator: BankIDCoordinator
+    private(set) weak var flowCoordinator: BankIDCoordinator?
     
     private var identMethod: IdentificationStep?
 
@@ -39,7 +39,7 @@ final internal class ConfirmApplicationViewModel: NSObject, DocumentDownloadable
 
     /// Move to signing documents.
     func signDocuments() {
-        flowCoordinator.perform(action: .signDocuments(step: .sign))
+        flowCoordinator?.perform(action: .signDocuments(step: .sign))
     }
     
     /// Method defines if progress view should be invisible

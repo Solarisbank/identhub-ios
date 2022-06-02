@@ -11,7 +11,7 @@ final internal class SignDocumentsViewModel: NSObject {
     /// Delegate which informs about the current state of the performed action.
     weak var delegate: SignDocumentsViewModelDelegate?
 
-    private let flowCoordinator: BankIDCoordinator
+    private weak var flowCoordinator: BankIDCoordinator?
 
     private let verificationService: VerificationService
 
@@ -90,13 +90,13 @@ final internal class SignDocumentsViewModel: NSObject {
     }
 
     func quit() {
-        flowCoordinator.perform(action: .quit)
+        flowCoordinator?.perform(action: .quit)
     }
 
     /// Display finish identification screen.
     func finishIdentification() {
         // Finish identification screen is omitted for now
-        flowCoordinator.perform(action: .close)
+        flowCoordinator?.perform(action: .close)
         
     }
     
@@ -172,7 +172,7 @@ private extension SignDocumentsViewModel {
             case .failure(let error):
                 self.expireVerificationStatusTimer()
                 self.completionHander(.failure(error.apiError))
-                self.flowCoordinator.perform(action: .close)
+                self.flowCoordinator?.perform(action: .close)
             }
         }
     }

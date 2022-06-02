@@ -11,7 +11,7 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
     /// Delegate which informs about the current state of the performed action.
     weak var delegate: PhoneVerificationViewModelDelegate?
 
-    var flowCoordinator: BankIDCoordinator
+    weak var flowCoordinator: BankIDCoordinator?
 
     var verificationService: VerificationService
 
@@ -79,7 +79,7 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
 
     /// Begin bank identification process.
     func beginBankIdentification() {
-        flowCoordinator.perform(action: .bankVerification(step: .iban))
+        flowCoordinator?.perform(action: .bankVerification(step: .iban))
     }
 }
 

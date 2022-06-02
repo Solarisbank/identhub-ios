@@ -10,7 +10,7 @@ final internal class PaymentVerificationViewModel: NSObject, ViewModel {
     /// Delegate which informs about the current state of the performed action.
     weak var delegate: PaymentVerificationViewModelDelegate?
 
-    let flowCoordinator: BankIDCoordinator
+    private(set) weak var flowCoordinator: BankIDCoordinator?
 
     let verificationService: VerificationService
 
@@ -53,9 +53,9 @@ final internal class PaymentVerificationViewModel: NSObject, ViewModel {
     /// Begin sign documents.
     func executeStep() {
         if nextStep != .unspecified {
-            flowCoordinator.perform(action: .nextStep(step: nextStep))
+            flowCoordinator?.perform(action: .nextStep(step: nextStep))
         } else {
-            flowCoordinator.perform(action: .signDocuments(step: .confirmApplication))
+            flowCoordinator?.perform(action: .signDocuments(step: .confirmApplication))
         }
     }
 }
@@ -111,7 +111,7 @@ private extension PaymentVerificationViewModel {
     private func interruptProcess() {
         DispatchQueue.main.async {
             self.completionHandler(.failure(.paymentFailed))
-            self.flowCoordinator.perform(action: .close)
+            self.flowCoordinator?.perform(action: .close)
         }
     }
 }
