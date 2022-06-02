@@ -82,7 +82,7 @@ final internal class PhoneVerificationViewController: UIViewController, Quitable
 extension PhoneVerificationViewController {
     private func configureUI() {
         
-        headerView.style = .quit(target: self)
+        headerView.setStyle(.quit(target: self))
         
         titleLabel.text = Localizable.PhoneVerification.title
         infoLabel.text = Localizable.PhoneVerification.enterCode

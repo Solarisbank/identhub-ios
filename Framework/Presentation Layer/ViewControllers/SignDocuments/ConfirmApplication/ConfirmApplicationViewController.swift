@@ -57,7 +57,7 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
         titleLabel.text = Localizable.SignDocuments.ConfirmApplication.confirmYourApplication
         descriptionLabel.text = Localizable.SignDocuments.ConfirmApplication.description
 
-        headerView.style = viewModel.isInvisibleProgress() ? .none : .quit(target: self)
+        headerView.setStyle(viewModel.isInvisibleProgress() ? .none : .quit(target: self))
 
         let cellNib = UINib(nibName: "DocumentViewCell", bundle: Bundle(for: Self.self))
         documentsTableView.register(cellNib, forCellReuseIdentifier: DocumentViewCell.ReuseIdentifier)

@@ -82,7 +82,7 @@ final internal class SignDocumentsViewController: UIViewController, Quitable {
 extension SignDocumentsViewController {
     
     private func configureUI() {
-        headerView.style = .quit(target: self)
+        headerView.setStyle(.quit(target: self))
         
         titleLabel.text = Localizable.SignDocuments.Sign.title
         

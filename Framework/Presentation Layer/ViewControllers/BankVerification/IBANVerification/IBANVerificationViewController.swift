@@ -45,7 +45,7 @@ final internal class IBANVerificationViewController: UIViewController, Quitable 
 
     private func configureUI() {
 
-        headerView.style = .quit(target: self)
+        headerView.setStyle(.quit(target: self))
 
         titleLabel.text = Localizable.BankVerification.IBANVerification.title
         accountHintLabel.text = Localizable.BankVerification.IBANVerification.accountDisclaimer

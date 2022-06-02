@@ -54,7 +54,7 @@ final internal class PaymentVerificationViewController: UIViewController, Quitab
     }
 
     private func configureUI() {
-        headerView.style = .quit(target: self)
+        headerView.setStyle(.quit(target: self))
 
         setupSuccessView()
 

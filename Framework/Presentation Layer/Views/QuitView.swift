@@ -10,7 +10,7 @@ import UIKit
 }
 
 /// A view with a quit button displayed on the right side.
-final class QuitView: UIView {
+final class QuitView: UIView, Quitable {
     private enum Constants {
         enum ConstraintsOffset {
             static let small: CGFloat = 10
@@ -27,6 +27,7 @@ final class QuitView: UIView {
     }
 
     private let quitBtn = UIButton()
+    private weak var target: Quitable?
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -40,13 +41,11 @@ final class QuitView: UIView {
     
     /// Sets target on quit button.
     func setTarget(_ target: Quitable) {
-        quitBtn.allTargets
-            .compactMap { $0 as? Quitable }
-            .forEach { quitBtn.removeTarget($0, action: #selector($0.didClickQuit(_:)), for: .touchUpInside) }
-        quitBtn.addTarget(target, action: #selector(target.didClickQuit(_:)), for: .touchUpInside)
+        self.target = target
     }
     
     private func configureUI() {
+        quitBtn.addTarget(self, action: #selector(didClickQuit(_:)), for: .touchUpInside)
         quitBtn.setImage(Constants.Image.close, for: .normal)
 
         addSubview(quitBtn)
@@ -58,5 +57,9 @@ final class QuitView: UIView {
             $0.equalConstant(.height, Constants.Size.height)
         ]
         }
+    }
+    
+    func didClickQuit(_ sender: Any) {
+        target?.didClickQuit(sender)
     }
 }

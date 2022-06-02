@@ -15,16 +15,6 @@ final class HeaderView: UIView {
         case none
     }
 
-    /// Display style
-    /// * progress - shows progress steps
-    /// * quit - shows only quit button
-    /// * none - empty header
-    var style: Style = Style.none {
-        didSet {
-            configureUI()
-        }
-    }
-
     private lazy var progressView: IdentificationProgressView = {
         let progressView = IdentificationProgressView(frame: .zero)
         return progressView
@@ -37,19 +27,27 @@ final class HeaderView: UIView {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configureUI()
+        configureUI(with: Style.none)
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
+        configureUI(with: Style.none)
     }
 
     override var intrinsicContentSize: CGSize {
         subviews.first?.intrinsicContentSize ?? .zero
     }
 
-    private func configureUI() {
+    /// Display style
+    /// * progress - shows progress steps
+    /// * quit - shows only quit button
+    /// * none - empty header
+    func setStyle(_ style: Style) {
+        configureUI(with: style)
+    }
+
+    private func configureUI(with style: Style) {
         var view: UIView?
 
         subviews.forEach { $0.removeFromSuperview() }
