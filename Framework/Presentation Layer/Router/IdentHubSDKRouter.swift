@@ -62,9 +62,11 @@ class IdentHubSDKRouter: NSObject, Router {
     ///   - animated: dismissing  animation flag
     ///   - completion: the block to execute after the view controller is dismissed.
     func dismissModule(animated: Bool, completion: (() -> Void)?) {
-      identHubSession = nil
-        
-      navigationController.dismiss(animated: animated, completion: completion)
+        navigationController.dismiss(animated: animated) { [weak self] in
+            completion?()
+            
+            self?.identHubSession = nil
+        }
     }
 
     /// Method pushed controller to the main navigation stack
