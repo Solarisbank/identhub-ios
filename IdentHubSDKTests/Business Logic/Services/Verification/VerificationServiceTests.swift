@@ -247,7 +247,11 @@ class VerificationServiceTests: XCTestCase {
     /// Method built verification service object wtih mock api client. SUT - service under test
     /// - Returns: initialized verification service
     func makeSUT() -> VerificationService {
-        return VerificationServiceImplementation(apiClient: apiClient, sessionInfoProvider: defaultStorage!)
+        let service = VerificationServiceImplementation(apiClient: apiClient, sessionInfoProvider: defaultStorage!)
+        
+        trackForMemoryLeaks(service)
+        
+        return service
     }
     
     /// Method built mock verification service with mocked API client.

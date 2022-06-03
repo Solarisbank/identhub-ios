@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */; };
 		0C007F0425D52A4E003D42B3 /* PopUpWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C007F0325D52A4E003D42B3 /* PopUpWindowViewController.swift */; };
 		0C007F0925D536B7003D42B3 /* QuitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C007F0825D536B7003D42B3 /* QuitPopUpViewController.swift */; };
 		0C007F1725D56977003D42B3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C007F1625D56977003D42B3 /* ErrorView.swift */; };
@@ -287,6 +288,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackForMemoryLeaks.swift"; sourceTree = "<group>"; };
 		0A25113E10B923DBDC45167B /* Pods-IdentHubSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDK.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.release.xcconfig"; sourceTree = "<group>"; };
 		0C007F0325D52A4E003D42B3 /* PopUpWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindowViewController.swift; sourceTree = "<group>"; };
 		0C007F0825D536B7003D42B3 /* QuitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitPopUpViewController.swift; sourceTree = "<group>"; };
@@ -568,6 +570,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		057C59552848F65A0090A44C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0C12CAA525A783870032B520 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -1374,6 +1384,7 @@
 			children = (
 				84A7581825F22D7F004D8F88 /* IdentHubSDKTests.swift */,
 				841F5C6B2762360B00D68175 /* Common */,
+				057C59552848F65A0090A44C /* Extensions */,
 				84A7582525F22E7C004D8F88 /* Business Logic */,
 				84A7582625F22E86004D8F88 /* Models Layer */,
 				8444601B274E6E6100EB7972 /* Presentation Layer */,
@@ -2120,6 +2131,7 @@
 				844460262755581200EB7972 /* VerificationServiceMock.swift in Sources */,
 				67F736E52812A37300655AC7 /* DocumentItemInfoCellTest.swift in Sources */,
 				84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */,
+				057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,
 				84B2A89825F3CCD800EBA899 /* IBANRequestTests.swift in Sources */,
