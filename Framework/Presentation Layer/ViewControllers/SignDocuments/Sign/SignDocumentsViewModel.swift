@@ -159,6 +159,7 @@ private extension SignDocumentsViewModel {
                 DispatchQueue.main.async {
                     switch response.status {
                     case .success:
+                        self.completionHander(.success(identification: response.id))
                         self.delegate?.verificationSucceeded()
                     case .confirmed:
                         self.completionHander(.onConfirm(identification: response.id))
