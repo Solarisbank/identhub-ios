@@ -6,6 +6,16 @@
 import Foundation
 
 extension Date {
+    
+    static var defaultDateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        return dateFormatter
+    }
 
     /// Method converts date object to string with format passed as parameter
     /// - Parameter format: string value of the required date format
@@ -23,26 +33,14 @@ extension Date {
     /// Method returns date with default format for SDK
     /// - Returns: string of the date
     func defaultDateString() -> String {
-        let dateFormatter = DateFormatter()
-
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-
-        return dateFormatter.string(from: self)
+        return Date.defaultDateFormatter.string(from: self)
     }
 }
 
 extension String {
 
     func dateFromString() -> Date? {
-        let dateFormatter = DateFormatter()
-
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-
-        return dateFormatter.date(from: self)
+        return Date.defaultDateFormatter.date(from: self)
     }
 }
 
