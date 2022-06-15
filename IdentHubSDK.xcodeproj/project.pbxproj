@@ -2225,7 +2225,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
@@ -2253,7 +2253,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
@@ -2277,7 +2277,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2304,7 +2304,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2371,7 +2371,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
@@ -2395,7 +2395,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.2.6;
+				MARKETING_VERSION = 1.2.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
