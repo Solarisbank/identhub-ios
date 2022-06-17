@@ -69,6 +69,15 @@
                <Test
                   Identifier = "BaseTestCase">
                </Test>
+               <Test
+                  Identifier = "SBLogDestinationTests/testBackendAPIClient()">
+               </Test>
+               <Test
+                  Identifier = "SBLogDestinationTests/testBackendLogDestination()">
+               </Test>
+               <Test
+                  Identifier = "SBLogDestinationTests/testConsoleLogDestination()">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

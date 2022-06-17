@@ -92,6 +92,12 @@
 		24659B0526D635E200F56089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24659B0326D62D7300F56089 /* Localizable.strings */; };
 		392F45FF27A41AD90010849E /* IdentHubConstantsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */; };
 		392F460127A44E040010849E /* BankIDCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F460027A44E040010849E /* BankIDCoordinatorTest.swift */; };
+		39C8D0892852454C00657375 /* SBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D0882852454C00657375 /* SBLog.swift */; };
+		39C8D08C28524B9300657375 /* SBLogConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */; };
+		39C8D08F2852507A00657375 /* SBLogBackendDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */; };
+		39E2F3D628571DB700CE28CB /* SBLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2F3D528571DB700CE28CB /* SBLogDestination.swift */; };
+		39E2F3DD28577C4200CE28CB /* SBLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2F3DC28577C4200CE28CB /* SBLogTests.swift */; };
+		39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */; };
 		52847B03AEEEB0DBBD58847C /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A56798BA10659BFAEC4A935 /* Pods_IdentHubSDKTests.framework */; };
 		547BAD1629683B4BAEE729F9 /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8517E805F3C6E6BFE9E56506 /* Pods_IdentHubSDK.framework */; };
 		67F736E52812A37300655AC7 /* DocumentItemInfoCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */; };
@@ -375,6 +381,12 @@
 		392D18A927049FA9001FB64D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubConstantsTest.swift; sourceTree = "<group>"; };
 		392F460027A44E040010849E /* BankIDCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinatorTest.swift; sourceTree = "<group>"; };
+		39C8D0882852454C00657375 /* SBLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLog.swift; sourceTree = "<group>"; };
+		39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogConsoleDestination.swift; sourceTree = "<group>"; };
+		39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogBackendDestination.swift; sourceTree = "<group>"; };
+		39E2F3D528571DB700CE28CB /* SBLogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestination.swift; sourceTree = "<group>"; };
+		39E2F3DC28577C4200CE28CB /* SBLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SBLogTests.swift; path = IdentHubSDKTests/Logging/SBLogTests.swift; sourceTree = SOURCE_ROOT; };
+		39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestinationTests.swift; sourceTree = "<group>"; };
 		4872769C1FDAC7F27B1EBFED /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentItemInfoCellTest.swift; sourceTree = "<group>"; };
 		79434CC9D9FAE3196029A3D6 /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
@@ -809,6 +821,7 @@
 		0CD5CC3C2590F58800FF378F /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				39C8D0872852451F00657375 /* Logging */,
 				0CD5CC3D2590F58800FF378F /* IdentHubSDK.h */,
 				0CB1439D259A46760014B643 /* IdentHubSession.swift */,
 				842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */,
@@ -946,6 +959,34 @@
 				24659B0326D62D7300F56089 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		39C8D0872852451F00657375 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				39C8D0882852454C00657375 /* SBLog.swift */,
+				39E2F3D428571D9F00CE28CB /* Log Destinations */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		39E2F3D428571D9F00CE28CB /* Log Destinations */ = {
+			isa = PBXGroup;
+			children = (
+				39E2F3D528571DB700CE28CB /* SBLogDestination.swift */,
+				39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */,
+				39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */,
+			);
+			path = "Log Destinations";
+			sourceTree = "<group>";
+		};
+		39E2F3DB28577BFF00CE28CB /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				39E2F3DC28577C4200CE28CB /* SBLogTests.swift */,
+				39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		670627E0281168CD00C73F23 /* Document */ = {
@@ -1388,6 +1429,7 @@
 				84A7582525F22E7C004D8F88 /* Business Logic */,
 				84A7582625F22E86004D8F88 /* Models Layer */,
 				8444601B274E6E6100EB7972 /* Presentation Layer */,
+				39E2F3DB28577BFF00CE28CB /* Logging */,
 				84A7582725F22E97004D8F88 /* Resources */,
 				392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */,
 			);
@@ -1975,6 +2017,7 @@
 				84D15A89266FBA30002DC7EE /* Date+Compare.swift in Sources */,
 				8409768F2633473800C4DC5B /* CircleProgressView.swift in Sources */,
 				0C12CAAE25A784220032B520 /* MobileNumberTANRequest.swift in Sources */,
+				39C8D0892852454C00657375 /* SBLog.swift in Sources */,
 				84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */,
 				0C4B67DA259B228400190C4E /* IdentificationProgressView.swift in Sources */,
 				0C1B431C25ADCBA1004FFF46 /* PaymentVerificationViewModel.swift in Sources */,
@@ -1983,6 +2026,7 @@
 				0C527E6725AC814000B6D5DB /* IBANVerificationViewModel.swift in Sources */,
 				0C9E56E425C01E9E00D68B96 /* ConfirmApplicationViewModel.swift in Sources */,
 				0C527E7525AC9C6D00B6D5DB /* BankIDIBANRequest.swift in Sources */,
+				39E2F3D628571DB700CE28CB /* SBLogDestination.swift in Sources */,
 				841E9BBD264EC8D00025FE15 /* FourthlineStep.swift in Sources */,
 				0CF0AE8025CC153000A560E5 /* Status.swift in Sources */,
 				84C8E56C26B83E64002150D6 /* IPAddressRequest.swift in Sources */,
@@ -2061,6 +2105,7 @@
 				845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */,
 				84ECED282630688700ACD1B5 /* DocumentItemInfoCell.swift in Sources */,
 				0C527E5825AC4BF000B6D5DB /* IBANVerificationViewController.swift in Sources */,
+				39C8D08F2852507A00657375 /* SBLogBackendDestination.swift in Sources */,
 				84ECED1C26305C5C00ACD1B5 /* Date+Extensions.swift in Sources */,
 				8432D275265D71A6002CCAA4 /* DocumentData.swift in Sources */,
 				847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */,
@@ -2071,6 +2116,7 @@
 				841F376326298E1400D56361 /* ScanDocumentType.swift in Sources */,
 				84D4B4A5269627D60056E97B /* ErrorDetail.swift in Sources */,
 				0CA7747E25C1AE1900E94E77 /* SignDocumentsViewModel.swift in Sources */,
+				39C8D08C28524B9300657375 /* SBLogConsoleDestination.swift in Sources */,
 				0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */,
 				8499BFEE2678E46100794B64 /* PersonAddress.swift in Sources */,
 				8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */,
@@ -2133,7 +2179,9 @@
 				84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */,
 				057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
+				39E2F3DD28577C4200CE28CB /* SBLogTests.swift in Sources */,
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,
+				39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */,
 				84B2A89825F3CCD800EBA899 /* IBANRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
