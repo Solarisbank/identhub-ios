@@ -14,10 +14,13 @@
       - [Dependency to Fourthline SDK](#dependency-to-fourthline-sdk)
     - [Carthage](#carthage)
   - [Example Usage](#example-usage)
-  - [Identification callbacks](#identification-callbacks)
-    - [Delegate protocol methods](#delegate-protocol-methods)
-    - [Callback by using closures](#callback-by-using-closures)
-  - [SDK Version](#sdk-version)
+  - [Receiving IdentificationSession result](#receiving-identificationsession-result)
+    - [IdentHubSDKManagerDelegate implementation](#identhubsdkmanagerdelegate-implementation)
+      - [IdentHubSDKManagerDelegate protocol definition](#identhubsdkmanagerdelegate-protocol-definition)
+      - [IdentHubSDKManagerDelegate methods](#identhubsdkmanagerdelegate-methods)
+    - [Implementation using a callback handler](#implementation-using-a-callback-handler)
+    - [APIError values](#apierror-values)
+  - [SDK version](#sdk-version)
   - [Sample app](#sample-app)
   - [Troubleshooting](#troubleshooting)
     - [Pod repo add error](#pod-repo-add-error)
@@ -147,7 +150,7 @@ class ViewController: UIViewController {
     }
 }
 
-// MARK: Delegate
+// MARK: IdentHubSDK Delegate
 extension ViewController: IdentHubSDKManagerDelegate {
 
     func didFinishWithSuccess(_ identification: String) {
@@ -172,14 +175,17 @@ extension ViewController: IdentHubSDKManagerDelegate {
 ```
 </details>
 
-## Identification callbacks
+## Receiving IdentificationSession result
 
-Callback system implemented by using delegate pattern or closure.
+Your app can be notified of the outcome of the IdentificationSession by implementing one of the following schemes:
+- Provide a [delegate that implements the IdentHubSDKManagerDelegate protocol](#identhubsdkmanagerdelegate-implementation)
+- Provide a [callback handler and evaluate the provided `Result` object](#implementation-using-a-callback-handler).
 
-### Delegate protocol methods
+### IdentHubSDKManagerDelegate implementation
 
-<details>
-  <summary>Output Delegate</summary>
+You can specify a delegate to take care of handling the IdentHubSession outcome:
+
+#### IdentHubSDKManagerDelegate protocol definition
 
 ```swift
 /// Identification session results delegate
@@ -198,97 +204,44 @@ public protocol IdentHubSDKManagerDelegate: AnyObject {
     func didFinishOnConfirm(_ identification: String)
 }
 ```
-</details>
+#### IdentHubSDKManagerDelegate methods
 
 ```swift
 func didFinishWithSuccess(_ identification: String)
 ```
-Method notifies when identification session finished with success and returns identification session identifier in parameter
+Method notifies when identification session finished with success and returns identification session identifier in parameter.
 
 ```swift
 func didFailureSession(_ failureReason: APIError)
 ```
-
 Method notifies when identification session finished or interrupted with error.
 Ask your backend (receives the webhooks), if app able to retry or not.
 App may retry as long as do not get a failed / rejected status on the session.
 
-:warning: &nbsp; **Note that your app should not rely on the error details provided in the failure handler to deduce the status of an Identification. Information about the outcome of the Identification should be taken from the Identification's status only. Provision of the APIError object in the failure handler may be deprecated or presented differently in future releases of the IdentHub SDK.**
+See also the description of the [possible APIError values](#apierror-values).
 
-<details>
-  <summary>APIError Description</summary>
-
-```swift
-// Common api error encountered throughout the app.
-//
-// - malformedResponseJson:  indicates that string received in the response couldn't been parsed.
-// - clientError: indicates the error on the client's side.
-// - authorizationFailed: indicates that authorization failed.
-// - unauthorizedAction: action has not been authorized.
-// - resourceNotFound: resource has not been found.
-// - expectationMismatch: data mismatch's
-// - incorrectIdentificationStatus: the identification status was not allowed to proceed with the action.
-// - unprocessableEntity: data invalid or expired.
-// - internalServerError: indicates the internal server error.
-// - requestError: indicates build request error
-// - locationError: indicates issue with fetching device location data
-// - ibanVerfificationFailed: failed IBAN verification
-// - paymentFailed: failed payment initiation
-// - identificationDataInvalid: provided user data is not valid and should be creates one more time
-// - fraudData: provided data defines as fraud
-// - unsupportedResponse: SDK encountered a response that is not supported in this version
-// - identificationNotPossible: SDK could not identify the user. Try your fallback identification method
-// - unknownError: indicates that api client encountered an error not listed above.
-public enum APIError: Error {
-    case malformedResponseJson
-    case clientError(error: ErrorDetail?)
-    case authorizationFailed
-    case unauthorizedAction
-    case resourceNotFound
-    case expectationMismatch
-    case incorrectIdentificationStatus(error: ErrorDetail?)
-    case unprocessableEntity
-    case internalServerError
-    case requestError
-    case locationAccessError
-    case locationError
-    case ibanVerfificationFailed
-    case paymentFailed
-    case identificationDataInvalid(error: ErrorDetail?)
-    case fraudData(error: ErrorDetail?)
-    case unsupportedResponse
-    case identificationNotPossible
-    case unknownError
-}
-```
-</details>
-<br />
 
 ```swift
 func didFinishOnConfirm(_ identification: String)
 ```
-Method notifies when session finished with fourthline signing on confirm step and returns identification string
+Method notifies when session finished with Fourthline signing on confirm step and returns identification string.
 Method is optional and used only for the Fourthline signing session method.
 
-### Callback by using closures
+### Implementation using a callback handler
 
-Callback as closure passed as start method parameter
+Alternatively to the [implementation of a IdentHubSDKManagerDelegate](#identhubsdkmanagerdelegate-implementation), the IdentHubSession can be started with a completion handler:
 
 ```swift
-/// Method starts identification process (BankID) with updating status by closure callback
-/// - Parameter type: identification process session type: bankid, fourthline
-/// - Parameter completion: closure with result object in parameter, result has two cases: success with id or failure with error
+/// Method starts identification process and calling the provided handler when completed.
+/// - Parameter completion: closure to receive IdentificationSessionResult containing outcome of identification process.
 public func start(_ completion: CompletionHandler?)
-```
 
-CompletionHandler closure has enum input parameter with name: `IdentificationSessionResult`
+/// Completion handler type definition
+public typealias CompletionHandler = (IdentificationSessionResult) -> Void
 
-<details>
-  <summary>IdentificationSessionResult</summary>
-
-```swift
-/// Ident hub session result
+/// IdentHubSession result
 public enum IdentificationSessionResult {
+
     /// success - successful result with identification string in parameter
     /// - identification: identification user session identifier
     case success(identification: String)
@@ -301,8 +254,39 @@ public enum IdentificationSessionResult {
     /// - identification: identification user session identifier
     case onConfirm(identification: String)
 }
+
+/// Details about an IdentHubSession failure
+public enum APIError: Error {
+    // ...
+}
 ```
-</details>
+
+### APIError values
+
+In case of a failure during the IdentHubSession, the partner's app will receive details about the failure through the provided `APIError`.
+
+:warning: &nbsp; **Note that your app should not only rely on the error details provided in the failure handler to deduce the status of an Identification. Information about the outcome of the actual customer identification should be taken from the underlying Identification's status only. Provision of the APIError object in the failure handler may be deprecated or presented differently in future releases of the IdentHub SDK.**
+
+| APIError | Description |
+| -------- | ----------- |
+| `malformedResponseJson` | indicates that string received in the response couldn't been parsed. |
+| `clientError` | indicates the error on the client's side. |
+| `authorizationFailed` | indicates that authorization failed. |
+| `unauthorizedAction` | action has not been authorized. |
+| `resourceNotFound` | resource has not been found. |
+| `expectationMismatch` | data mismatch's |
+| `incorrectIdentificationStatus` | the identification status was not allowed to proceed with the action. |
+| `unprocessableEntity` | data invalid or expired. |
+| `internalServerError` | indicates the internal server error. |
+| `requestError` | indicates build request error |
+| `locationError` | indicates issue with fetching device location data |
+| `ibanVerfificationFailed` | failed IBAN verification |
+| `paymentFailed` | failed payment initiation |
+| `identificationDataInvalid` | provided user data is not valid and should be creates one more time |
+| `fraudData` | provided data defines as fraud |
+| `unsupportedResponse` | SDK encountered a response that is not supported in this version |
+| `identificationNotPossible` | SDK could not identify the user. Try your fallback identification method |
+| `unknownError` | indicates that api client encountered an error not listed above. |
 
 ## SDK version
 IdentHubSession class has static method `version()`.

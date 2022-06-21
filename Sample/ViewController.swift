@@ -53,11 +53,10 @@ class ViewController: UIViewController {
         statusView.isHidden = true
 
         do {
-            let identHubManager = try IdentHubSession(rootViewController: self, sessionURL: sessionURLTV.text)
+            let identHubSession = try IdentHubSession(rootViewController: self, sessionURL: sessionURLTV.text)
             
-            identHubManager.start(self)
-            
-            identHubManager.start { result in
+            // Start IdentHubSession using callbacks (comment out if using delegate pattern)
+            identHubSession.start { result in
                 switch result {
                 case .success(let identification):
                     DispatchQueue.main.async {
@@ -74,6 +73,14 @@ class ViewController: UIViewController {
                     }
                 }
             }
+            
+            /*
+            
+            // Start IdentHubSession using delegate pattern (comment out if using callbacks)
+             identHubSession.start(self)
+            
+            */
+             
         } catch let err as IdentSessionURLError {
             switch err {
             case .invalidSessionURL:
@@ -106,6 +113,10 @@ class ViewController: UIViewController {
     }
 }
 
+/*
+ 
+// IdentHubSession delegate implementation (not needed when using callbacks)
+
 extension ViewController: IdentHubSDKManagerDelegate {
 
     func didFinishWithSuccess(_ identification: String) {
@@ -129,6 +140,8 @@ extension ViewController: IdentHubSDKManagerDelegate {
         }
     }
 }
+ 
+*/
 
 extension ViewController: UITextViewDelegate {
 
