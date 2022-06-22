@@ -60,7 +60,7 @@ final internal class SignDocumentsViewController: UIViewController, Quitable {
 
         configureUI()
         registerForKeyboardNotifications()
-        viewModel.requestNewCode()
+        viewModel.viewLoaded()
     }
 
     @IBAction func didClickSendNewCode(_ sender: UIButton) {
@@ -85,9 +85,6 @@ extension SignDocumentsViewController {
         headerView.setStyle(.quit(target: self))
         
         titleLabel.text = Localizable.SignDocuments.Sign.title
-        
-        codeEntryHint.attributedText = "\(Localizable.PhoneVerification.enterCode) \(viewModel.mobileNumber)".withBoldTexts([viewModel.mobileNumber], withColorForBoldText: UIColor.sdkColor(.base100))
-        
         codeEntryView.delegate = self
         
         requestCodeTimerLabel.text = Localizable.PhoneVerification.requestNewCodeTimer
@@ -189,7 +186,6 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
         requestCodeTimerLabel.attributedText = "\(Localizable.PhoneVerification.requestNewCodeTimer) 00:\(seconds)".withBoldTexts(["00:\(seconds)"])
     }
     
-
     func didSubmitNewCodeRequest(_ token: String) {
         state = .normal
 
@@ -216,6 +212,14 @@ extension SignDocumentsViewController: SignDocumentsViewModelDelegate {
     
     func requestNewCodeFailed() {
         state = .requestCodeError
+    }
+    
+    func didUpdateMobileNumber(_ phoneNumber: String?) {
+        guard let number = phoneNumber else {
+            codeEntryHint.text = String(format: Localizable.PhoneVerification.enterCode, "")
+            return
+        }
+        codeEntryHint.attributedText = String(format: Localizable.PhoneVerification.enterCode, number).withBoldTexts([number], withColorForBoldText: UIColor.sdkColor(.base100))
     }
 }
 

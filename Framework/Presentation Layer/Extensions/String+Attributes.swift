@@ -33,4 +33,16 @@ internal extension String {
     func localized() -> String {
         return Bundle(for: IdentHubSession.self).localizedString(forKey: self, value: self, table: nil)
     }
+    
+    /// Changes chosen text to mobile number with format.
+    ///
+    /// Returns the string with star format
+    func withStarFormat() -> String {
+        guard self.count > 3 else {
+            return ""
+        }
+        let stars = String(repeating: "*", count: self.count - 3)
+        return stars + "\(self.suffix(3))"
+    }
+    
 }

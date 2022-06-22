@@ -42,10 +42,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Lr-DT-kl8">
                     <rect key="frame" x="0.0" y="133" width="414" height="729"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the 6-digit code sent to" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5y-Vm-Tcu">
-                            <rect key="frame" x="20" y="100" width="374" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" name="base75"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5y-Vm-Tcu">
+                            <rect key="frame" x="20" y="100" width="374" height="0.0"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-w0-bA5" customClass="CodeEntryView" customModule="IdentHubSDK" customModuleProvider="target">
@@ -105,7 +104,7 @@
                                 <action selector="didClickSubmitCode:" destination="-1" eventType="touchUpInside" id="Srw-K6-aix"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQh-8f-cOy">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Confirm phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQh-8f-cOy">
                             <rect key="frame" x="20" y="44" width="374" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" name="base75"/>
@@ -124,7 +123,7 @@
                         <constraint firstItem="2Jr-YL-y1A" firstAttribute="leading" secondItem="2Lr-DT-kl8" secondAttribute="leading" constant="24" id="OLF-O3-ust"/>
                         <constraint firstItem="2Jr-YL-y1A" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BTw-bG-7P3" secondAttribute="bottom" priority="750" constant="10" id="RIu-QK-F0p"/>
                         <constraint firstItem="B5y-Vm-Tcu" firstAttribute="leading" secondItem="dQh-8f-cOy" secondAttribute="leading" id="RzD-J0-X8v"/>
-                        <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" secondItem="B5y-Vm-Tcu" secondAttribute="bottom" priority="750" constant="52" id="SLo-gX-Djs"/>
+                        <constraint firstItem="J6Y-w0-bA5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="B5y-Vm-Tcu" secondAttribute="bottom" priority="750" constant="30" id="SLo-gX-Djs"/>
                         <constraint firstItem="dQh-8f-cOy" firstAttribute="top" secondItem="2Lr-DT-kl8" secondAttribute="top" constant="44" id="UOR-iG-Y12"/>
                         <constraint firstItem="Ogh-3P-g27" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="Uig-3B-owr"/>
                         <constraint firstAttribute="trailing" secondItem="2Jr-YL-y1A" secondAttribute="trailing" constant="24" id="V68-ag-Lco"/>

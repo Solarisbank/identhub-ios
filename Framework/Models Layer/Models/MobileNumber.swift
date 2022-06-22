@@ -8,7 +8,7 @@ import Foundation
 struct MobileNumber: Decodable {
 
     /// Id.
-    let id: String
+    let id: String?
 
     /// Mobile number of a person.
     let number: String

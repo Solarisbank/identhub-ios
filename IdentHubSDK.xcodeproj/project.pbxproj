@@ -100,6 +100,8 @@
 		39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */; };
 		52847B03AEEEB0DBBD58847C /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A56798BA10659BFAEC4A935 /* Pods_IdentHubSDKTests.framework */; };
 		547BAD1629683B4BAEE729F9 /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8517E805F3C6E6BFE9E56506 /* Pods_IdentHubSDK.framework */; };
+		67424AD1284F846900A3E337 /* MobileNumberRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424AD0284F846900A3E337 /* MobileNumberRequest.swift */; };
+		67C7B6BF2853221D00C55D11 /* MobileNumberRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C7B6BE2853221D00C55D11 /* MobileNumberRequestTests.swift */; };
 		67F736E52812A37300655AC7 /* DocumentItemInfoCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */; };
 		84040BD426AF07CD00C68D25 /* IdentificationInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD326AF07CD00C68D25 /* IdentificationInfoRequest.swift */; };
 		84040BD726AF089D00C68D25 /* IdentificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84040BD626AF089D00C68D25 /* IdentificationInfo.swift */; };
@@ -388,6 +390,8 @@
 		39E2F3DC28577C4200CE28CB /* SBLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SBLogTests.swift; path = IdentHubSDKTests/Logging/SBLogTests.swift; sourceTree = SOURCE_ROOT; };
 		39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestinationTests.swift; sourceTree = "<group>"; };
 		4872769C1FDAC7F27B1EBFED /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
+		67424AD0284F846900A3E337 /* MobileNumberRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberRequest.swift; sourceTree = "<group>"; };
+		67C7B6BE2853221D00C55D11 /* MobileNumberRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberRequestTests.swift; sourceTree = "<group>"; };
 		67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentItemInfoCellTest.swift; sourceTree = "<group>"; };
 		79434CC9D9FAE3196029A3D6 /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
 		80F315F38B026C37CB55B792 /* Pods-IdentHubSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -696,6 +700,7 @@
 			children = (
 				0CC9574625A8733400A3458B /* MobileNumberAuthorizeRequest.swift */,
 				0C12CAAD25A784220032B520 /* MobileNumberTANRequest.swift */,
+				67424AD0284F846900A3E337 /* MobileNumberRequest.swift */,
 			);
 			path = MobileNumber;
 			sourceTree = "<group>";
@@ -1397,6 +1402,7 @@
 			children = (
 				849B438125F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift */,
 				849B438925F3AFBB00CD5D9E /* MobileNumberTANRequestTests.swift */,
+				67C7B6BE2853221D00C55D11 /* MobileNumberRequestTests.swift */,
 			);
 			path = MobileNumber;
 			sourceTree = "<group>";
@@ -2048,6 +2054,7 @@
 				0CC25B8525A4682000D839AB /* APIError.swift in Sources */,
 				841158AB261F38C1007B54DF /* SelfieScanner+Extensions.swift in Sources */,
 				841384C1263C594A00C39D69 /* PersonData.swift in Sources */,
+				67424AD1284F846900A3E337 /* MobileNumberRequest.swift in Sources */,
 				8423EFED262B2A050092F003 /* DocumentScannerResultView.swift in Sources */,
 				0CC25B9E25A468D300D839AB /* APIClient.swift in Sources */,
 				841956762631AB29003A55BD /* Array+Extension.swift in Sources */,
@@ -2183,6 +2190,7 @@
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,
 				39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */,
 				84B2A89825F3CCD800EBA899 /* IBANRequestTests.swift in Sources */,
+				67C7B6BF2853221D00C55D11 /* MobileNumberRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

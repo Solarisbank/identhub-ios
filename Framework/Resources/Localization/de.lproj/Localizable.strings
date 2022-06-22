@@ -33,7 +33,7 @@
 
 // Phone verification
 "phone_verification_title" = "Rufnummer bestätigen";
-"phone_verification_enter_code" = "Geben Sie den 6-stelligen Code ein, den Sie empfangen haben";
+"phone_verification_enter_code" = "Geben Sie den 6-stelligen Code ein, der an Ihre Handynummer %1$@ gesendet wurde";
 "phone_verification_request_code_timer" = "Neuen Code anfordern in";
 "phone_verification_send_new_code" = "Neuen Code senden";
 "phone_verification_wrong_tan" = "Falsche TAN. Sie müssen eine neue TAN anfordern und es erneut versuchen.";

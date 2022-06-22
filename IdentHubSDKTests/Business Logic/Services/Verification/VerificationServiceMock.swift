@@ -64,6 +64,10 @@ class VerificationServiceMock: VerificationService {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     
+    func getMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
+        XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
+    }
+    
     func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }

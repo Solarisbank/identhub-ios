@@ -33,7 +33,7 @@
 
 // Phone verification
 "phone_verification_title" = "Confirm phone";
-"phone_verification_enter_code" = "Enter the 6-digit code sent to";
+"phone_verification_enter_code" = "Enter the 6-digit code sent to your mobile number %1$@";
 "phone_verification_request_code_timer" = "Request a new code in";
 "phone_verification_send_new_code" = "Send new code";
 "phone_verification_wrong_tan" = "Wrong TAN. You need to request a new TAN and try again.";

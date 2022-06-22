@@ -67,10 +67,12 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
             case .success(let response):
                 self.sessionStorage.mobileNumber = response.number
                 DispatchQueue.main.async {
-                    self.delegate?.didGetPhoneNumber(response.number)
+                    self.delegate?.didGetPhoneNumber(response.number.withStarFormat())
                 }
-            case .failure(let error):
-                self.completionHandler(.failure(error.apiError))
+            case .failure:
+                DispatchQueue.main.async {
+                    self.delegate?.didGetPhoneNumber(nil)
+                }
             }
         }
         delegate?.willGetNewCode()
@@ -121,7 +123,7 @@ protocol PhoneVerificationViewModelDelegate: VerifiableViewModelDelegate {
     /// Called when the phone number has been fetched.
     ///
     /// - Parameter phoneNumber: Current client phone number.
-    func didGetPhoneNumber(_ phoneNumber: String)
+    func didGetPhoneNumber(_ phoneNumber: String?)
 
     /// Called when new code is about to be received.
     func willGetNewCode()

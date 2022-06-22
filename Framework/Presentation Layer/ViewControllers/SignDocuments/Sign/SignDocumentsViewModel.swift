@@ -27,11 +27,6 @@ final internal class SignDocumentsViewModel: NSObject {
     
     private var secoundsCounter = 20
 
-    /// Mobile number used for current authorization.
-    lazy var mobileNumber = {
-        self.sessionStorage.mobileNumber ?? ""
-    }()
-
     init(flowCoordinator: BankIDCoordinator, verificationService: VerificationService, sessionStorage: StorageSessionInfoProvider, completion: @escaping CompletionHandler) {
         self.flowCoordinator = flowCoordinator
         self.verificationService = verificationService
@@ -42,6 +37,12 @@ final internal class SignDocumentsViewModel: NSObject {
     }
 
     // MARK: - Public methods -
+    
+    /// Initial methods request when view loaded
+    func viewLoaded() {
+        requestNewCode()
+        fetchMobileNumber()
+    }
 
     /// Submit code.
     func submitCodeAndSign(_ code: String?) {
@@ -78,7 +79,7 @@ final internal class SignDocumentsViewModel: NSObject {
                 DispatchQueue.main.async {
                     self?.delegate?.didSubmitNewCodeRequest(identification.referenceToken ?? "")
                 }
-            case .failure(_):
+            case .failure:
                 DispatchQueue.main.async {
                     self?.expireRequestNewCodeTimer()
                     self?.delegate?.requestNewCodeFailed()
@@ -87,6 +88,26 @@ final internal class SignDocumentsViewModel: NSObject {
         }
         
         setupRequestNewCodeTimer()
+    }
+    
+    private func fetchMobileNumber() {
+        if let mobileNumber = sessionStorage.mobileNumber {
+            self.delegate?.didUpdateMobileNumber(mobileNumber.withStarFormat())
+        } else {
+            verificationService.getMobileNumber { [weak self] result in
+                switch result {
+                case .success(let response):
+                    self?.sessionStorage.mobileNumber = response.number
+                    DispatchQueue.main.async {
+                        self?.delegate?.didUpdateMobileNumber(response.number.withStarFormat())
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self?.delegate?.didUpdateMobileNumber(nil)
+                    }
+                }
+            }
+        }
     }
 
     func quit() {
@@ -198,4 +219,7 @@ protocol SignDocumentsViewModelDelegate: VerifiableViewModelDelegate {
     
     /// Method notified if request new code fails
     func requestNewCodeFailed()
+    
+    /// Method update mobile number.
+    func didUpdateMobileNumber(_ phoneNumber: String?)
 }

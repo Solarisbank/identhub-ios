@@ -30,6 +30,22 @@ class VerificationServiceTests: XCTestCase {
         XCTAssertEqual(apiClient.inputRequest?.method, .post, "Mobile number auth command request HTTP method is not POST")
         XCTAssertEqual(apiClient.inputRequest?.path, expectedRequestPath, "Mobile number auth command request path is not valid")
     }
+    
+    /// Method tested Get mobile number
+    /// In request used fake token
+    /// Method tests:
+    ///  - Get mobile number method execution status
+    ///  - type of request
+    ///  - auth request path
+    func testGetMobileNumberRequest() {
+        let sut = makeSUT()
+        let expectedRequestPath = String(describing: "/mobile_number")
+        sut.getMobileNumber(completionHandler: { _ in })
+
+        XCTAssertTrue(apiClient.executeCommandCalled, "Get Mobile number command was not executed")
+        XCTAssertEqual(apiClient.inputRequest?.method, .get, "Get Mobile number command request HTTP method is not GET")
+        XCTAssertEqual(apiClient.inputRequest?.path, expectedRequestPath, "Get Mobile number command request path is not valid")
+    }
 
     /// Method tested mobile number confirm process
     /// Request used fake token number

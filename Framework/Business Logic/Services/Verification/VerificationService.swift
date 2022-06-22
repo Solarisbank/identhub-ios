@@ -20,6 +20,10 @@ protocol VerificationService: AnyObject {
     /// - Parameter completionHandler: Response back if the verification was successful.
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void)
     
+    /// Get mobile number.
+    /// - Parameter completionHandler: Response back with mobile number or error.
+    func getMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void)
+    
     /// Confirm if TAN complies with the mobile number.
     ///
     /// - Parameters:
@@ -119,6 +123,14 @@ final class VerificationServiceImplementation: VerificationService {
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
         
         let request = MobileNumberAuthorizeRequest()
+        apiClient.execute(request: request, answerType: MobileNumber.self) { result in
+            completionHandler(result)
+        }
+    }
+    
+    func getMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
+        
+        let request = MobileNumberRequest()
         apiClient.execute(request: request, answerType: MobileNumber.self) { result in
             completionHandler(result)
         }

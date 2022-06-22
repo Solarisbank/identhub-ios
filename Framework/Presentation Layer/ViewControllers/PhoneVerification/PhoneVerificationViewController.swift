@@ -85,7 +85,6 @@ extension PhoneVerificationViewController {
         headerView.setStyle(.quit(target: self))
         
         titleLabel.text = Localizable.PhoneVerification.title
-        infoLabel.text = Localizable.PhoneVerification.enterCode
         countDownTimeLabel.text = Localizable.PhoneVerification.requestNewCodeTimer
         errorLabel.text = Localizable.PhoneVerification.wrongTan
         errorLabel.textColor = .sdkColor(.error)
@@ -93,7 +92,7 @@ extension PhoneVerificationViewController {
         requestNewCodeBtn.setTitle(Localizable.PhoneVerification.requestNewCode, for: .normal)
         requestNewCodeBtn.setTitleColor(.sdkColor(.secondaryAccent), for: .normal)
         
-        submitCodeBtn.setTitle(Localizable.PhoneVerification.submitCode, for: .normal)
+        submitCodeBtn.setTitle(Localizable.Common.confirm, for: .normal)
         submitCodeBtn.tintColor = .sdkColor(.primaryAccent)
         
         codeEntryView.delegate = self
@@ -176,8 +175,12 @@ extension PhoneVerificationViewController: CodeEntryViewDelegate {
 
 extension PhoneVerificationViewController: PhoneVerificationViewModelDelegate {
     
-    func didGetPhoneNumber(_ phoneNumber: String) {
-        infoLabel.attributedText = "\(Localizable.PhoneVerification.enterCode) \(phoneNumber)".withBoldTexts([phoneNumber], withColorForBoldText: .sdkColor(.base75))
+    func didGetPhoneNumber(_ phoneNumber: String?) {
+        guard let number = phoneNumber else {
+            infoLabel.text = String(format: Localizable.PhoneVerification.enterCode, "")
+            return
+        }
+        infoLabel.attributedText = String(format: Localizable.PhoneVerification.enterCode, number).withBoldTexts([number], withColorForBoldText: .sdkColor(.base75))
     }
 
     func willGetNewCode() {
