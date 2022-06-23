@@ -49,6 +49,7 @@ final class RequestsViewModel: NSObject {
     private var prepareData: DataFetchStep = .fetchPersonData
     private var uploadStep: UploadSteps = .prepareData
     private var uploadFileURL: URL = URL(fileURLWithPath: "")
+    private var willEnterForegroundObserver: AnyObject?
     private weak var fourthlineCoordinator: FourthlineIdentCoordinator?
     private weak var identCoordinator: IdentificationCoordinator?
 
@@ -73,6 +74,16 @@ final class RequestsViewModel: NSObject {
             self.identCoordinator = coordinator
         } else if let coordinator = fourthlineCoordinator {
             self.fourthlineCoordinator = coordinator
+        }
+        
+        super.init()
+        
+        setupNotifications()
+    }
+    
+    deinit {
+        if let willEnterForegroundObserver = willEnterForegroundObserver {
+            NotificationCenter.default.removeObserver(willEnterForegroundObserver)
         }
     }
 
@@ -212,12 +223,12 @@ private extension RequestsViewModel {
                 fetchIPAddress()
             }
         case .uploadData:
-                switch uploadStep {
-                case .prepareData:
-                    zipUserData()
-                case .uploadData:
-                    uploadZip(uploadFileURL)
-                }
+            switch uploadStep {
+            case .prepareData:
+                zipUserData()
+            case .uploadData:
+                uploadZip(uploadFileURL)
+            }
         case .confirmation:
             startVerificationProcess()
         }
@@ -248,6 +259,21 @@ private extension RequestsViewModel {
         ddm?.updateContent(requestsSteps)
         onTableUpdate?()
     }
+    
+    private func setupNotifications() {
+        willEnterForegroundObserver = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] notification in
+            self?.restartFetchLocationIfNeeded()
+        }
+    }
+    
+    private func restartFetchLocationIfNeeded() {
+        switch (requestsType, initStep, prepareData) {
+        case (.initateFlow, .fetchLocation, _), (.fetchData, _, .location):
+            fetchLocationData()
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - Initial ident flow methods -
@@ -263,7 +289,7 @@ private extension RequestsViewModel {
         initStep = .defineMethod
 
         verificationService.defineIdentificationMethod { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             switch result {
             case .success(let response):
@@ -288,7 +314,7 @@ private extension RequestsViewModel {
         initStep = .obtainInfo
 
         verificationService.obtainIdentificationInfo { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             switch result {
             case .success(let response):
@@ -321,7 +347,7 @@ private extension RequestsViewModel {
         initStep = .registerMethod
 
         verificationService.getFourthlineIdentification { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             switch result {
             case .success(let response):
@@ -355,7 +381,7 @@ private extension RequestsViewModel {
         startNextStep(initStep: .fetchPersonData, dataStep: .fetchPersonData)
 
         verificationService.fetchPersonData { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             switch result {
             case .success(let response):
@@ -381,8 +407,10 @@ private extension RequestsViewModel {
         startNextStep(initStep: .fetchLocation, dataStep: .location)
 
         LocationManager.shared.requestLocationAuthorization { [weak self] status, error in
+            guard let self = self else { return }
+            
             guard status else {
-                if let locationErr = error as? APIError, let errorHandler = self?.onDisplayError {
+                if let locationErr = error as? APIError, let errorHandler = self.onDisplayError {
                     errorHandler(locationErr)
                 }
                 return
@@ -414,7 +442,7 @@ private extension RequestsViewModel {
         startNextStep(initStep: .fetchIPAddress, dataStep: .fetchIPAddress)
 
         verificationService.fetchIPAddress { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             switch result {
             case .success(let response):
@@ -519,7 +547,7 @@ private extension RequestsViewModel {
 
     private func retryVerification() {
         DispatchQueue.main.asyncAfter(deadline: 5.seconds.fromNow) { [weak self] in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
             self.startVerificationProcess()
         }

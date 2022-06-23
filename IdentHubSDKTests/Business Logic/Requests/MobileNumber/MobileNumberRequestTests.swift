@@ -37,4 +37,3 @@ class MobileNumberRequestTests: XCTestCase {
         return MobileNumberRequest()
     }
 }
-
