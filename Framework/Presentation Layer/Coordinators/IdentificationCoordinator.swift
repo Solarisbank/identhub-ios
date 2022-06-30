@@ -67,7 +67,8 @@ private extension IdentificationCoordinator {
         case .identification:
             startIdentProcess()
         case .quit:
-            quit {[weak self] in
+            quit { [weak self] in
+                self?.completionHandler?(.failure(.unauthorizedAction))
                 self?.close()
             }
         case .abort:
