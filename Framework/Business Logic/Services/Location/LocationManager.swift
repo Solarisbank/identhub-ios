@@ -75,4 +75,8 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         completionLocationHandler(nil, error)
     }
+    
+    func releaseCompletionHandler() {
+        completionLocationHandler = nil
+    }
 }

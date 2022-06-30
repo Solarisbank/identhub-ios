@@ -417,6 +417,9 @@ private extension RequestsViewModel {
             }
             LocationManager.shared.requestDeviceLocation { [weak self] location, error in
                 guard let `self` = self else { return }
+                
+                LocationManager.shared.releaseCompletionHandler()
+                
                 guard let location = location else {
 
                     if let errorHandler = self.onDisplayError {
