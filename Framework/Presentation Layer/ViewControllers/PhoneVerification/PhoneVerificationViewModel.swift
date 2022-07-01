@@ -88,9 +88,21 @@ final internal class PhoneVerificationViewModel: NSObject, ViewModel {
 // MARK: - Internal methods -
 
 private extension PhoneVerificationViewModel {
+    enum Constants {
+        static let updateTimerInterval: TimeInterval = 1.0
+    }
     
     private func setupTimer() {
-        requestTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        requestTimer = Timer.scheduledTimer(withTimeInterval: Constants.updateTimerInterval, repeats: true, block: { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                
+                return
+            }
+            
+            self.updateTimer()
+        })
+        
         counts = 20
         delegate?.didUpdateTimerLabel(String(describing: counts))
     }
@@ -107,7 +119,7 @@ private extension PhoneVerificationViewModel {
         }
     }
     
-    @objc private func updateTimer() {
+    private func updateTimer() {
         counts -= 1
         if counts >= 1 {
             let secondString = (counts >= 10) ? String(describing: counts) : "0\(String(describing: counts))"

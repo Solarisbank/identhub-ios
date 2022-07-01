@@ -47,7 +47,15 @@ final internal class PaymentVerificationViewModel: NSObject, ViewModel {
             self.delegate?.verificationRecivedURLRequest(urlRequest)
         }
 
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(checkIdentificationStatus), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(withTimeInterval: Constants.identificationStatusCheckInterval, repeats: true, block: { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                
+                return
+            }
+            
+            self.checkIdentificationStatus()
+        })
     }
 
     /// Begin sign documents.
@@ -63,7 +71,7 @@ final internal class PaymentVerificationViewModel: NSObject, ViewModel {
 private extension PaymentVerificationViewModel {
 
     /// Check the payment status of the identification.
-    @objc private func checkIdentificationStatus() {
+    private func checkIdentificationStatus() {
         verificationService.getIdentification { [weak self] result in
             guard let `self` = self else { return }
 
@@ -123,4 +131,10 @@ protocol PaymentVerificationViewModelDelegate: VerifiableViewModelDelegate {
 
     /// Called when the verification is being processed.
     func verificationIsBeingProcessed()
+}
+
+private extension PaymentVerificationViewModel {
+    enum Constants {
+        static let identificationStatusCheckInterval: TimeInterval = 3.0
+    }
 }

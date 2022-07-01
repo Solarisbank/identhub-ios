@@ -165,8 +165,12 @@ extension SelfieViewController {
 
     private func startProcessingWarnings() {
 
-        warningsTimer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: { [weak self] _ in
-            guard let self = self else { return }
+        warningsTimer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                
+                return
+            }
 
             guard !self.cachedWarnings.isEmpty else {
                 return

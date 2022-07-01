@@ -186,8 +186,12 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
 
     private func startProcessingWarnings() {
 
-        warningsTimer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: { [weak self] _ in
-            guard let self = self else { return }
+        warningsTimer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                
+                return
+            }
 
             guard !self.cachedWarnings.isEmpty else {
                 self.documentOverlay.state = .warning(self.currentStep.localizedName)
@@ -222,9 +226,15 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
     private func scheduleAutodetectTimer() {
         stopAutodetectTimer()
         autodetectTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { [weak self] timer in
-            self?.stopProcessingWarnings()
-            self?.documentOverlay.displayManualScan(true)
-            self?.stopAutodetectTimer()
+            guard let self = self else {
+                timer.invalidate()
+                
+                return
+            }
+            
+            self.stopProcessingWarnings()
+            self.documentOverlay.displayManualScan(true)
+            self.stopAutodetectTimer()
         })
     }
 
