@@ -17,12 +17,12 @@ final internal class QuitPopUpViewController: PopUpWindowViewController {
         setTitle(Localizable.Quiting.title)
         setDescription(Localizable.Quiting.description)
         setPrimaryButtonTitle(Localizable.Common.quit)
-        setPrimaryButtonAction {
-            self.quitAction?()
+        setPrimaryButtonAction { [weak self] in
+            self?.quitAction?()
         }
         setSecondaryButtonTitle(Localizable.Quiting.stay)
-        setSecondaryButtonAction {
-            self.dismiss(animated: false)
+        setSecondaryButtonAction { [weak self] in
+            self?.dismiss(animated: false)
         }
     }
 }
