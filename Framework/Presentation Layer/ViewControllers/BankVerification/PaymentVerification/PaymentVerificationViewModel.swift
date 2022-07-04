@@ -92,6 +92,7 @@ private extension PaymentVerificationViewModel {
                 case .failed:
                     if self.nextStep != .unspecified {
                         DispatchQueue.main.async {
+                            self.timer?.invalidate()
                             self.executeStep()
                         }
                     } else {
