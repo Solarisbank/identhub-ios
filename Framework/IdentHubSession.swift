@@ -61,6 +61,10 @@ final public class IdentHubSession {
         self.appDependencies = AppDependencies(sessionToken: sessionToken)
         self.rootViewController = rootViewController
     }
+    
+    deinit {
+        KYCContainer.removeSharedContainer()
+    }
 
     /// Method starts BandID identification process with updating status by delegate
     /// - Parameter type: identification process session type: bankid, fourhline

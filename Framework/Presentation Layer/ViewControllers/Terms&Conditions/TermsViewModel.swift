@@ -17,9 +17,10 @@ protocol TermsViewModelDelegate: AnyObject {
 final internal class TermsViewModel: NSObject {
 
     // MARK: - Properties -
-    private let coordinator: IdentificationCoordinator
     weak var delegate: TermsViewModelDelegate?
 
+    private weak var coordinator: IdentificationCoordinator?
+    
     // MARK: - Init -
     init(coordinator: IdentificationCoordinator) {
         self.coordinator = coordinator
@@ -41,12 +42,12 @@ final internal class TermsViewModel: NSObject {
 
     /// Start Fourthline identification process
     func continueProcess() {
-        coordinator.perform(action: .identification)
+        coordinator?.perform(action: .identification)
     }
 
     /// Quit the flow
     func quit() {
-        coordinator.perform(action: .quit)
+        coordinator?.perform(action: .quit)
     }
 
     // MARK: - Internal methods -

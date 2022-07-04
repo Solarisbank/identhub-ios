@@ -14,12 +14,26 @@ import CoreLocation
 let selfieFullImagePath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("selfieFullImage.jpeg")
 
 final class KYCContainer {
-    static let shared = KYCContainer()
-    private init() {}
-
+    static var shared: KYCContainer {
+        let container = self.container ?? KYCContainer()
+        
+        self.container = container
+        
+        return container
+    }
+    
+    private static var container: KYCContainer?
+    
     let kycInfo: KYCInfo = KYCInfo()
+    
     private var mrzInfo: MRZInfo?
     private var infoProvider: SessionInfoProvider?
+
+    private init() {}
+    
+    static func removeSharedContainer() {
+        container = nil
+    }
 
     // MARK: - Filling with provider value -
     func update(provider: String) {
