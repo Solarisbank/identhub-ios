@@ -99,8 +99,8 @@ class DestinationMock: NSObject, SBLogDestination {
     var sendEntriesReceived = [SBLogEntry]()
 
     func send(_ entry: SBLogEntry) {
-        self.sendCalledTimes += 1
         self.sendEntriesReceived.append(entry)
+        self.sendCalledTimes += 1
     }
     
     func flush() {
