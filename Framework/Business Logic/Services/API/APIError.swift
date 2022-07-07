@@ -48,7 +48,8 @@ public enum APIError: Error {
 }
 
 /// Server enum
-struct ResponseError: Error {
+struct ResponseError: Error, CustomStringConvertible {
+    
     let apiError: APIError
     let response: HTTPURLResponse?
     
@@ -70,6 +71,11 @@ struct ResponseError: Error {
     var detailDescription: String {
         return "Code: \(statusCode)\nReason: \(failureReason)"
     }
+    
+    var description: String {
+        return "ResponseError – \(apiError) (HTTP Code: \(statusCode) Reason: \(failureReason))"
+    }
+
 }
 
 /// Server error codes

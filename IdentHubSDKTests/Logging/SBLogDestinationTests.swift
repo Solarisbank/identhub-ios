@@ -13,7 +13,7 @@ class SBLogDestinationTests: XCTestCase {
         MockURLProtocol.loadingHandler = nil
     }
 
-    // MARK: - Destination Tests -
+    // MARK: - Destination Tests
 
     func testLogDestinationShouldSend() throws {
         let destination = SBLogBaseDestination()
@@ -53,30 +53,36 @@ class SBLogDestinationTests: XCTestCase {
         XCTAssertTrue(destination.shouldSendForLevel(.fault))
     }
 
-    // MARK: - ConsoleDestination Tests -
+    // MARK: - ConsoleDestination Tests
 
     func testConsoleLogDestination() throws {
         // TBD
     }
     
-    // MARK: - BackendDestination Tests -
+    // MARK: - BackendDestination Tests
 
     func testBackendDestinationLogEntrySerialization() throws {
         let destination = SBLogBackendDestination()
-        let logEntry = SBLogEntry(level: .error, message: "Log message")
-        
-        // single entry
+
+        // single entry w/o category
+        let logEntry = SBLogEntry("Log message", level: .error)
         var expectedPayload = "{\"content\":[{\"message\":\"Log message\",\"type\":\"ERROR\"}]}"
         var payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntry]))
         XCTAssertEqual(payload, expectedPayload)
-        
+
+        // single entry w/o category
+        let logEntryWithCategory = SBLogEntry("Log message", level: .info, category: .nav)
+        expectedPayload = "{\"content\":[{\"category\":\"NAV\",\"message\":\"Log message\",\"type\":\"INFO\"}]}"
+        payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntryWithCategory]))
+        XCTAssertEqual(payload, expectedPayload)
+
         // empty entry
         expectedPayload = "{\"content\":[]}"
         payload = try XCTUnwrap(destination.buildPayloadForEntries([]))
         XCTAssertEqual(payload, expectedPayload)
 
         // multiple entries
-        let logEntry2 = SBLogEntry(level: .fault, message: "Log message 2")
+        let logEntry2 = SBLogEntry("Log message 2", level: .fault)
         expectedPayload = "{\"content\":[{\"message\":\"Log message\",\"type\":\"ERROR\"},{\"message\":\"Log message 2\",\"type\":\"FAULT\"}]}"
         payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntry, logEntry2]))
         XCTAssertEqual(payload, expectedPayload)
@@ -87,7 +93,7 @@ class SBLogDestinationTests: XCTestCase {
         let mockAPIClient = SBLogBackendMockAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
         destination.apiClient = mockAPIClient
 
-        let logEntry = SBLogEntry(level: .error, message: "Log message")
+        let logEntry = SBLogEntry("Log message", level: .error)
         destination.send(logEntry)
         
         let expectedPayload = "{\"content\":[{\"message\":\"Log message\",\"type\":\"ERROR\"}]}"
@@ -98,7 +104,7 @@ class SBLogDestinationTests: XCTestCase {
         let destination = SBLogBackendDestination()
         let mockAPIClient = SBLogBackendMockAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
 
-        let logEntry = SBLogEntry(level: .error, message: "Log message")
+        let logEntry = SBLogEntry("Log message", level: .error)
         destination.send(logEntry)
         
         XCTAssertEqual(destination.queuedEntries.count, 1)
@@ -129,7 +135,18 @@ class SBLogDestinationTests: XCTestCase {
         XCTAssertTrue(destination.canSendToBackend)
     }
     
-    // MARK: - BackendAPICLient Tests -
+    // MARK: - BackendAPICLient Tests
+    
+    func testAPIClientURLGeneration() throws {
+        let validURL = SBLogBackendAPIClient.urlForAPIBasePath("https://person-onboarding-api.solaris-sandbox.de/person_onboarding")
+        XCTAssertEqual(validURL?.absoluteString, "https://person-onboarding-api.solaris-sandbox.de/person_onboarding/sdk_logging")
+
+        let validLocalURL = SBLogBackendAPIClient.urlForAPIBasePath("http://local.dev:3000")
+        XCTAssertEqual(validLocalURL?.absoluteString, "http://local.dev:3000/sdk_logging")
+
+        let invalidURL = SBLogBackendAPIClient.urlForAPIBasePath("")
+        XCTAssertNil(invalidURL)
+    }
     
     func testAPIClientURLSessionSetup() throws {
         let apiClient = SBLogBackendAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
@@ -139,14 +156,6 @@ class SBLogDestinationTests: XCTestCase {
         XCTAssertEqual(apiClient.urlSession.configuration.httpAdditionalHeaders?["x-solaris-session-token"] as! String, SOME_SESSION_TOKEN)
     }
     
-    func testAPIClientURLSession() throws {
-        let apiClient = SBLogBackendAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
-        let urlSession = apiClient.urlSession
-        
-        XCTAssertNotNil(urlSession)
-        XCTAssertEqual(apiClient.urlSession.configuration.httpAdditionalHeaders?["x-solaris-session-token"] as! String, SOME_SESSION_TOKEN)
-    }
-
     func testAPIClientSending() throws {
         let apiClient = SBLogBackendAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
         let configuration = URLSessionConfiguration.ephemeral
@@ -169,7 +178,7 @@ class SBLogDestinationTests: XCTestCase {
 
 }
 
-// MARK: - Helpers and Mocks -
+// MARK: - Helpers and Mocks
 
 // Minimal implementation of SBLogDestination protocol to test included methods.
 class SBLogBaseDestination: SBLogDestination {

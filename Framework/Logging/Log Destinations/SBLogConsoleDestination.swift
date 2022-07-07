@@ -20,7 +20,11 @@ public class SBLogConsoleDestination: SBLogDestination {
         guard shouldSendForLevel(entry.level) else {
             return
         }
-        print("\(entry.level): \(entry.message)")
+        var output = "\(entry.level): \(entry.message)"
+        if let category = entry.category {
+            output = "[\(category)] \(output)"
+        }
+        print(output)
     }
 
     public func flush() {

@@ -71,6 +71,30 @@ class APIClientTests: XCTestCase {
             return
         }
     }
+    
+    func testLoggingHelperCompletionCalled() throws {
+        
+        /// `completionCalled` takes a result and a completion, logs the result and
+        /// executes the completion with the result.
+        /// We need to make sure that the completion is always called.
+        /// Don't bother to test the log output.
+        
+        let aResult: Result<String, MockError> = .failure(.test)
+        
+        var completionCalled = false, receivedResult: Result<String, MockError>?
+        let completion: (Result<String, MockError>) -> Void = { result in
+            completionCalled = true
+            receivedResult = result
+        }
+        
+        completeWithResult(aResult, completion: completion)
+        XCTAssertTrue(completionCalled)
+        XCTAssertEqual(receivedResult, aResult)
+    }
+}
+
+enum MockError: Error, Equatable {
+    case test
 }
 
 /// Mock class of APIClient service.

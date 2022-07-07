@@ -159,7 +159,9 @@ public class SBLogBackendAPIClient: SBLogBackendConnectable {
     var urlSession: URLSession
     private(set) var url: URL
 
-    // TODO: handle result of URLRequest?
+    // NOTE: No handling of the result of the at this time.
+    // If the request to the backend fails, the log items to be sent are discarded.
+    // To be improved in future iteration.
     public func execute(payload: String?) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -183,6 +185,13 @@ public class SBLogBackendAPIClient: SBLogBackendConnectable {
     
 }
 
+extension SBLogBackendAPIClient {
+    /// Create an URL instance pointing to the SDK BFF based on the provided base path.
+    public static func urlForAPIBasePath(_ basePath: String) -> URL? {
+        return URL(string: basePath)?.appendingPathComponent("sdk_logging")
+    }
+}
+
 extension SBLogLevel {
     /// Use log level text representation (e.g. "DEBUG", "INFO") as values for JSON encoding.
     public func encode(to encoder: Encoder) throws {
@@ -191,10 +200,20 @@ extension SBLogLevel {
     }
 }
 
+extension SBLogCategory {
+    /// Use log category text representation (e.g. "NAV", "API") as values for JSON encoding.
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(self.description)
+    }
+}
+
 extension SBLogEntry {
+    /// Use JSON key `type` for encoding the log item category.
     enum CodingKeys: String, CodingKey {
         case level = "type"
         case message
+        case category
     }
 }
 

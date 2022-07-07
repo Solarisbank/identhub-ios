@@ -48,9 +48,27 @@ class SBLogTests: XCTestCase {
         XCTAssertEqual(entry.level, .fault)
         XCTAssertEqual(entry.message, message)
 
-        entry = log.log(level: .error, message: message)
+        entry = log.log(message, level: .error)
         XCTAssertEqual(entry.level, .error)
         XCTAssertEqual(entry.message, message)
+    }
+    
+    func testLogCategories() throws {
+        let log = SBLog()
+        let message = "A log message"
+        var entry: SBLogEntry
+        
+        entry = log.log(message, level: .debug)
+        XCTAssertNil(entry.category)
+
+        entry = log.log(message, level: .debug, category: .api)
+        XCTAssertEqual(entry.category, .api)
+        entry = log.log(message, level: .info, category: .nav)
+        XCTAssertEqual(entry.category, .nav)
+        
+        let category = SBLogCategory.other("something")
+        entry = log.log(message, level: .warn, category: category)
+        XCTAssertEqual(entry.category, category)
     }
 
     func testDestinationReceive() throws {
@@ -66,6 +84,18 @@ class SBLogTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
         XCTAssertEqual(destinationMock.sendCalledTimes, 1)
         XCTAssertEqual(destinationMock.sendEntriesReceived.first, entry)
+    }
+    
+    func testNoDuplicateDestinations() throws {
+        let log = SBLog()
+        let destinationMock1 = DestinationMock()
+        log.addDestination(destinationMock1)
+        log.addDestination(destinationMock1)
+        XCTAssertEqual(log.destinationItems.count, 1)
+        
+        let destinationMock2 = DestinationMock()
+        log.addDestination(destinationMock2)
+        XCTAssertEqual(log.destinationItems.count, 2)
     }
     
     func testDestinationMultipleReceives() throws {
@@ -87,6 +117,29 @@ class SBLogTests: XCTestCase {
         XCTAssertEqual(destinationMock.sendCalledTimes, 3)
         XCTAssertEqual(destinationMock.sendEntriesReceived.count, 3)
         XCTAssertEqual(destinationMock.sendEntriesReceived.last, entry)
+    }
+    
+    func testCategoryLogger() throws {
+        let log = SBLog()
+        let navLog = SBCategorizingLog(.nav, log: log)
+        
+        // should set .nav category by default
+        var entry = navLog.debug("A test message")
+        XCTAssertEqual(entry.category, .nav)
+        
+        // should override explicit category
+        entry = navLog.debug("A test message", category: .api)
+        XCTAssertEqual(entry.category, .nav)
+        
+        // should log to the underlying logger
+        let apiLog = log.withCategory(.api)
+        XCTAssertEqual(apiLog.category, .api)
+        let destinationMock = DestinationMock()
+        log.addDestination(destinationMock)
+        let expectation = keyValueObservingExpectation(for: destinationMock, keyPath: "sendCalledTimes", expectedValue: 1)
+        apiLog.debug("A test message")
+        wait(for: [expectation], timeout: 2)
+
     }
 
 }
