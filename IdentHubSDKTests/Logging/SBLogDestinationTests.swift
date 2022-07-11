@@ -62,17 +62,20 @@ class SBLogDestinationTests: XCTestCase {
     // MARK: - BackendDestination Tests
 
     func testBackendDestinationLogEntrySerialization() throws {
+        let dateString = "2022-07-08T16:22:13Z"
+        let date = ISO8601DateFormatter().date(from: dateString)!
+
         let destination = SBLogBackendDestination()
 
         // single entry w/o category
-        let logEntry = SBLogEntry("Log message", level: .error)
-        var expectedPayload = "{\"content\":[{\"message\":\"Log message\",\"type\":\"ERROR\"}]}"
+        let logEntry = SBLogEntry("Log message", level: .error, timestamp: date)
+        var expectedPayload = "{\"content\":[{\"level\":\"\(logEntry.level)\",\"message\":\"\(logEntry.message)\",\"timestamp\":\"\(dateString)\"}]}"
         var payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntry]))
         XCTAssertEqual(payload, expectedPayload)
 
         // single entry w/o category
-        let logEntryWithCategory = SBLogEntry("Log message", level: .info, category: .nav)
-        expectedPayload = "{\"content\":[{\"category\":\"NAV\",\"message\":\"Log message\",\"type\":\"INFO\"}]}"
+        let logEntryWithCategory = SBLogEntry("Log message", level: .info, category: .nav, timestamp: date)
+        expectedPayload = "{\"content\":[{\"category\":\"\(logEntryWithCategory.category!)\",\"level\":\"\(logEntryWithCategory.level)\",\"message\":\"\(logEntryWithCategory.message)\",\"timestamp\":\"\(dateString)\"}]}"
         payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntryWithCategory]))
         XCTAssertEqual(payload, expectedPayload)
 
@@ -82,21 +85,24 @@ class SBLogDestinationTests: XCTestCase {
         XCTAssertEqual(payload, expectedPayload)
 
         // multiple entries
-        let logEntry2 = SBLogEntry("Log message 2", level: .fault)
-        expectedPayload = "{\"content\":[{\"message\":\"Log message\",\"type\":\"ERROR\"},{\"message\":\"Log message 2\",\"type\":\"FAULT\"}]}"
+        let logEntry2 = SBLogEntry("Log message 2", level: .fault, timestamp: date)
+        expectedPayload = "{\"content\":[{\"level\":\"\(logEntry.level)\",\"message\":\"\(logEntry.message)\",\"timestamp\":\"\(dateString)\"},{\"level\":\"\(logEntry2.level)\",\"message\":\"\(logEntry2.message)\",\"timestamp\":\"\(dateString)\"}]}"
         payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntry, logEntry2]))
         XCTAssertEqual(payload, expectedPayload)
     }
     
     func testBackendDestinationClientReceivesPayload() throws {
+        let dateString = "2022-07-08T16:22:13Z"
+        let date = ISO8601DateFormatter().date(from: dateString)!
+
         let destination = SBLogBackendDestination()
         let mockAPIClient = SBLogBackendMockAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
         destination.apiClient = mockAPIClient
 
-        let logEntry = SBLogEntry("Log message", level: .error)
+        let logEntry = SBLogEntry("Log message", level: .error, timestamp: date)
         destination.send(logEntry)
         
-        let expectedPayload = "{\"content\":[{\"message\":\"Log message\",\"type\":\"ERROR\"}]}"
+        let expectedPayload = "{\"content\":[{\"level\":\"\(logEntry.level)\",\"message\":\"\(logEntry.message)\",\"timestamp\":\"\(dateString)\"}]}"
         XCTAssertEqual(mockAPIClient.receivedPayload, expectedPayload)
     }
 

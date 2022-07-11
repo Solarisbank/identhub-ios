@@ -126,14 +126,19 @@ public class SBLogBackendDestination: SBLogDestination {
             payloadString = String(data: data, encoding: .utf8)
         } catch {
             print("Error while trying to encode logging payload!")
-            payloadString = "{\"contents\":[{\"type\":\"error\",\"message\":\"Error while trying to encode logging payload!\"}]}"
+            payloadString = "{\"contents\":[{\"level\":\"WARN\",\"message\":\"Error while trying to encode logging payload!\"}]}"
         }
         return payloadString
     }
     
     static var jsonEncoder: JSONEncoder {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         let encoder = JSONEncoder()
         encoder.outputFormatting = .sortedKeys
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
         return encoder
     }
     
@@ -205,15 +210,6 @@ extension SBLogCategory {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.description)
-    }
-}
-
-extension SBLogEntry {
-    /// Use JSON key `type` for encoding the log item category.
-    enum CodingKeys: String, CodingKey {
-        case level = "type"
-        case message
-        case category
     }
 }
 

@@ -89,14 +89,16 @@ public typealias SBLogMessage = String
 
 /// Representation of a log entry.
 public struct SBLogEntry: Encodable, Equatable {
-    init(_ message: SBLogMessage, level: SBLogLevel, category: SBLogCategory? = nil) {
+    init(_ message: SBLogMessage, level: SBLogLevel, category: SBLogCategory? = nil, timestamp: Date = Date()) {
         self.message = message
         self.level = level
         self.category = category
+        self.timestamp = timestamp
     }
     let level: SBLogLevel
     let message: SBLogMessage
     let category: SBLogCategory?
+    let timestamp: Date
 }
 
 // MARK: -
