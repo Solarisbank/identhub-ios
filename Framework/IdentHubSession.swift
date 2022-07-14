@@ -63,8 +63,8 @@ final public class IdentHubSession {
         
         // Logging setup via Swift compile-time flags:
         
-        #if IDENTHUB_LOGGING
-        self.enableLogging()
+        #if DEBUG
+        self.enableLogging(level: .warn)
         #endif
         
         #if IDENTHUB_LOGGING_REMOTE
@@ -122,8 +122,8 @@ extension IdentHubSession {
     /// Enable logging messages to be sent to Solarisbank servers for the active IdentHubSession.
     ///
     /// - Parameters:
-    ///   - level: Minimum log level to display. Defaults to `.info`.
-    public func enableRemoteLogging(level: SBLogLevel = .info) {
+    ///   - level: Minimum log level to display. Defaults to `.warn`.
+    public func enableRemoteLogging(level: SBLogLevel = .warn) {
         let sessionToken = self.appDependencies.sessionInfoProvider.sessionToken
         // Only enable backend logging if we have a valid URL to send entries to
         if let logURL = SBLogBackendAPIClient.urlForAPIBasePath(APIPaths.backendBasePath) {
@@ -175,18 +175,19 @@ private extension IdentHubSession {
 
     private func updateSessionResult(_ result: IdentificationSessionResult) {
         if let completion = self.completionSessionBlock {
-            SBLog.debug("Invoking IdentHubSession completion handler: \(result)")
+            SBLog.info("Invoking IdentHubSession completion handler: \(result)")
             completion(result)
         }
 
         switch result {
         case .success(let identification):
-            SBLog.debug("Invoking IdentHubSession delegate's didFinishWithSuccess method: \(identification)")
+            SBLog.info("Invoking IdentHubSession delegate's didFinishWithSuccess method: \(identification)")
             self.sessionDelegate?.didFinishWithSuccess(identification)
         case .failure(let error):
+            SBLog.warn("Invoking IdentHubSession delegate's didFailureSession method: \(error.logDescription)")
             self.sessionDelegate?.didFailureSession(error)
         case .onConfirm(let identification):
-            SBLog.debug("Invoking IdentHubSession delegate's didFinishOnConfirm method: \(identification)")
+            SBLog.info("Invoking IdentHubSession delegate's didFinishOnConfirm method: \(identification)")
             self.sessionDelegate?.didFinishOnConfirm(identification)
         }
     }

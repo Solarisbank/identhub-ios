@@ -1,0 +1,13 @@
+//
+//  Framework-Development.xcconfig
+//  IdentHubSDK
+//
+
+#include "Framework-Base.xcconfig"
+#include "../../Pods/Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.debug.xcconfig"
+
+__PRODUCT_BUNDLE_IDENTIFIER_SUFFIX = .development
+
+_ENVIRONMENTS = ENV_DEVELOPMENT DEBUG
+
+_BUNDLE_TESTABLE = YES

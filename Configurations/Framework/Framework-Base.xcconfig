@@ -5,7 +5,6 @@
 
 #include "../Platforms/iOS.xcconfig"
 #include "../Targets/Framework.xcconfig"
-#include "../../Pods/Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.debug.xcconfig"
 #include "../../Pods/Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.staging.xcconfig"
 #include "../../Pods/Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.release.xcconfig"
 

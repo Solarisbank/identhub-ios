@@ -92,6 +92,7 @@
 		24659B0526D635E200F56089 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24659B0326D62D7300F56089 /* Localizable.strings */; };
 		392F45FF27A41AD90010849E /* IdentHubConstantsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */; };
 		392F460127A44E040010849E /* BankIDCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F460027A44E040010849E /* BankIDCoordinatorTest.swift */; };
+		393502852878BACE00923779 /* SBLogHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393502842878BACD00923779 /* SBLogHelpers.swift */; };
 		39C8D0892852454C00657375 /* SBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D0882852454C00657375 /* SBLog.swift */; };
 		39C8D08C28524B9300657375 /* SBLogConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */; };
 		39C8D08F2852507A00657375 /* SBLogBackendDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */; };
@@ -383,6 +384,8 @@
 		392D18A927049FA9001FB64D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		392F45FE27A41AD90010849E /* IdentHubConstantsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubConstantsTest.swift; sourceTree = "<group>"; };
 		392F460027A44E040010849E /* BankIDCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinatorTest.swift; sourceTree = "<group>"; };
+		393502832878AA1100923779 /* Framework-Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Framework-Development.xcconfig"; sourceTree = "<group>"; };
+		393502842878BACD00923779 /* SBLogHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogHelpers.swift; sourceTree = "<group>"; };
 		39C8D0882852454C00657375 /* SBLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLog.swift; sourceTree = "<group>"; };
 		39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogConsoleDestination.swift; sourceTree = "<group>"; };
 		39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogBackendDestination.swift; sourceTree = "<group>"; };
@@ -883,6 +886,7 @@
 			isa = PBXGroup;
 			children = (
 				0CD5CC942590FE6500FF378F /* Framework-Base.xcconfig */,
+				393502832878AA1100923779 /* Framework-Development.xcconfig */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -970,6 +974,7 @@
 			isa = PBXGroup;
 			children = (
 				39C8D0882852454C00657375 /* SBLog.swift */,
+				393502842878BACD00923779 /* SBLogHelpers.swift */,
 				39E2F3D428571D9F00CE28CB /* Log Destinations */,
 			);
 			path = Logging;
@@ -2037,6 +2042,7 @@
 				0CF0AE8025CC153000A560E5 /* Status.swift in Sources */,
 				84C8E56C26B83E64002150D6 /* IPAddressRequest.swift in Sources */,
 				84A0126726384BED00672C1B /* KYCZipService.swift in Sources */,
+				393502852878BACE00923779 /* SBLogHelpers.swift in Sources */,
 				84A0126D26388E7C00672C1B /* UploadKYCRequest.swift in Sources */,
 				0C8805A125CAE7CA00DD6E31 /* DocumentsTANRequest.swift in Sources */,
 				0CB1439E259A46760014B643 /* IdentHubSession.swift in Sources */,
@@ -2264,7 +2270,7 @@
 		};
 		0CD5CC432590F58800FF378F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CD5CC942590FE6500FF378F /* Framework-Base.xcconfig */;
+			baseConfigurationReference = 393502832878AA1100923779 /* Framework-Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APPLICATION_EXTENSION_API_ONLY = NO;
@@ -2282,7 +2288,6 @@
 					"$(inherited)",
 				);
 				MARKETING_VERSION = 1.2.7;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D IDENTHUB_DEBUG";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
@@ -2336,7 +2341,6 @@
 				);
 				MARKETING_VERSION = 1.2.7;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D IDENTHUB_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2517,7 +2521,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 27A5X8DE8E;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
