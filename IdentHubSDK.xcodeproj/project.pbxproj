@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		05458B5A288050F900305706 /* Loggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05458B59288050F900305706 /* Loggers.swift */; };
 		057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */; };
 		0C007F0425D52A4E003D42B3 /* PopUpWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C007F0325D52A4E003D42B3 /* PopUpWindowViewController.swift */; };
 		0C007F0925D536B7003D42B3 /* QuitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C007F0825D536B7003D42B3 /* QuitPopUpViewController.swift */; };
@@ -297,6 +298,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05458B59288050F900305706 /* Loggers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggers.swift; sourceTree = "<group>"; };
 		057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackForMemoryLeaks.swift"; sourceTree = "<group>"; };
 		0A25113E10B923DBDC45167B /* Pods-IdentHubSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDK.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.release.xcconfig"; sourceTree = "<group>"; };
 		0C007F0325D52A4E003D42B3 /* PopUpWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindowViewController.swift; sourceTree = "<group>"; };
@@ -973,6 +975,7 @@
 		39C8D0872852451F00657375 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
+				05458B59288050F900305706 /* Loggers.swift */,
 				39C8D0882852454C00657375 /* SBLog.swift */,
 				393502842878BACD00923779 /* SBLogHelpers.swift */,
 				39E2F3D428571D9F00CE28CB /* Log Destinations */,
@@ -2123,6 +2126,7 @@
 				8432D275265D71A6002CCAA4 /* DocumentData.swift in Sources */,
 				847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */,
 				84D536FE27919A5600E0067D /* SignDocumentsViewController.swift in Sources */,
+				05458B5A288050F900305706 /* Loggers.swift in Sources */,
 				0C9E56DC25C01E6A00D68B96 /* ConfirmApplicationViewController.swift in Sources */,
 				840DEA6F26285B4C0033A2D8 /* LocationManager.swift in Sources */,
 				0CC8534325D168A600109FFC /* DocumentPreviewViewController.swift in Sources */,
@@ -2331,7 +2335,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AHH97A972W;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2341,7 +2345,7 @@
 				);
 				MARKETING_VERSION = 1.2.7;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
+				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development.cachedlogic;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;

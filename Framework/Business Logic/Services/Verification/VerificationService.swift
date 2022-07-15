@@ -105,55 +105,51 @@ final class VerificationServiceImplementation: VerificationService {
     // MARK: Protocol methods
 
     func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
-        
         let request = IdentificationMethodRequest()
+        
         apiClient.execute(request: request, answerType: IdentificationMethod.self) { result in
             completionHandler(result)
         }
     }
 
     func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void) {
-        
         let request = IdentificationInfoRequest()
+        
         apiClient.execute(request: request, answerType: IdentificationInfo.self) { result in
             completionHandler(result)
         }
     }
 
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
-        
         let request = MobileNumberAuthorizeRequest()
+        
         apiClient.execute(request: request, answerType: MobileNumber.self) { result in
             completionHandler(result)
         }
     }
     
     func getMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
-        
         let request = MobileNumberRequest()
+        
         apiClient.execute(request: request, answerType: MobileNumber.self) { result in
             completionHandler(result)
         }
     }
 
     func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
-
         do {
             let request = try MobileNumberTANRequest(token: token)
+            
             apiClient.execute(request: request, answerType: MobileNumber.self) { result in
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionID {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyToken {
-            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
     func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-
         do {
             var request: Request
 
@@ -167,47 +163,46 @@ final class VerificationServiceImplementation: VerificationService {
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionToken {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyIBAN {
-            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
     func authorizeDocuments(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-        guard let identificationUID = sessionInfoProvider.identificationUID else { return }
+        guard let identificationUID = sessionInfoProvider.identificationUID else {
+            log(error: RequestError.emptyIUID)
+            
+            return
+        }
 
         do {
             let request = try DocumentsAuthorizeRequest(identificationUID: identificationUID)
+            
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionToken {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyIUID {
-            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
     func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-        guard let identificationUID = sessionInfoProvider.identificationUID else { return }
+        guard let identificationUID = sessionInfoProvider.identificationUID else {
+            log(error: RequestError.emptyIUID)
+            
+            return
+        }
 
         do {
             let request = try DocumentsTANRequest(identificationUID: identificationUID, token: token)
+            
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionToken {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyIUID {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyToken {
-            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
         }
     }
@@ -217,14 +212,12 @@ final class VerificationServiceImplementation: VerificationService {
 
         do {
             let request = try IdentificationRequest(identificationUID: identificationUID)
+            
             apiClient.execute(request: request, answerType: Identification.self) { result in
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionToken {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyIUID {
-            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
         }
     }
@@ -236,65 +229,56 @@ final class VerificationServiceImplementation: VerificationService {
             apiClient.execute(request: request, answerType: FourthlineIdentification.self) { result in
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionToken {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyIUID {
-            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
     func getDocument(documentId: String, completionHandler: @escaping (Result<URL?, ResponseError>) -> Void) {
-
         do {
             let request = try DocumentDownloadRequest(documentUID: documentId)
+            
             apiClient.download(request: request) { result in
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionToken {
-            completionHandler(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptyDUID {
-            completionHandler(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
         }
     }
 
     func uploadKYCZip(fileURL: URL, completionHandler: @escaping (Result<UploadFourthlineZip, ResponseError>) -> Void) {
-        startBackgroundTask()
+        startKYCZipUploadBackgroundTask()
+        
         do {
             let request = try UploadKYCRequest(sessionID: sessionInfoProvider.identificationUID ?? "", fileURL: fileURL)
 
             apiClient.execute(request: request, answerType: UploadFourthlineZip.self) { [weak self] result in
-                self?.endBackgroundTask()
+                self?.endKYCZipUploadBackgroundTask()
                 completionHandler(result)
             }
-        } catch RequestError.emptySessionToken {
-            completionHandler(.failure(ResponseError(.requestError)))
-            endBackgroundTask()
-        } catch RequestError.emptySessionID {
-            completionHandler(.failure(ResponseError(.requestError)))
-            endBackgroundTask()
-        } catch RequestError.invalidURL {
-            completionHandler(.failure(ResponseError(.requestError)))
-            endBackgroundTask()
         } catch {
+            log(error: error)
             completionHandler(.failure(ResponseError(.requestError)))
-            endBackgroundTask()
+            endKYCZipUploadBackgroundTask()
         }
     }
     
-    func startBackgroundTask() {
+    func startKYCZipUploadBackgroundTask() {
+        SBLog.info("Starting KYCZip upload \(Date())")
         backgroundTaskId = UIApplication.shared.beginBackgroundTask { [weak self] in
-            self?.endBackgroundTask()
+            self?.endKYCZipUploadBackgroundTask()
         }
     }
     
-    func endBackgroundTask() {
+    func endKYCZipUploadBackgroundTask() {
         guard backgroundTaskId != .invalid else {
             return
         }
+        
+        SBLog.info("Finished KYCZip upload \(Date())")
+        
         UIApplication.shared.endBackgroundTask(backgroundTaskId)
         backgroundTaskId = .invalid
     }
@@ -306,37 +290,36 @@ final class VerificationServiceImplementation: VerificationService {
             apiClient.execute(request: request, answerType: PersonData.self) { result in
                 completion(result)
             }
-        } catch RequestError.emptySessionToken {
-            completion(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptySessionID {
-            completion(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completion(.failure(ResponseError(.requestError)))
         }
     }
 
     func fetchIPAddress(completion: @escaping (Result<IPAddress, ResponseError>) -> Void) {
-
         let request = IPAddressRequest()
+        
         apiClient.execute(request: request, answerType: IPAddress.self) { result in
             completion(result)
         }
     }
 
     func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, ResponseError>) -> Void) {
-
         do {
             let request = try FourthlineIdentificationStatusRequest(uid: sessionInfoProvider.identificationUID ?? "")
 
             apiClient.execute(request: request, answerType: FourthlineIdentificationStatus.self) { result in
                 completion(result)
             }
-        } catch RequestError.emptySessionToken {
-            completion(.failure(ResponseError(.requestError)))
-        } catch RequestError.emptySessionID {
-            completion(.failure(ResponseError(.requestError)))
         } catch {
+            log(error: error)
             completion(.failure(ResponseError(.requestError)))
         }
+    }
+}
+
+private extension VerificationService {
+    func log(error: Error, for function: StaticString = #function) {
+        SBLog.warn("Got error for \(function): \(error.localizedDescription)")
     }
 }

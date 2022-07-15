@@ -28,6 +28,8 @@ class BankIDCoordinator: BaseCoordinator {
 
     /// Performs a specified action.
     func perform(action: BankIDStep) {
+        bankLog.info("Performing action: \(action)")
+        
         switch action {
         case .startIdentification:
             presentStartIdentification()
@@ -73,6 +75,8 @@ class BankIDCoordinator: BaseCoordinator {
 
     // MARK: - Coordinator methods -
     override func start(_ completion: @escaping CompletionHandler) {
+        bankLog.info("Starting bank id coordinator")
+        
         completionHandler = completion
         perform(action: currentIdentStep)
     }
@@ -82,6 +86,8 @@ class BankIDCoordinator: BaseCoordinator {
     ///   - step: IdentifcationStep value
     ///   - completion: completion ident process handler
     func perform(step: IdentificationStep, _ completion: @escaping CompletionHandler) {
+        bankLog.info("Performing step \(step)")
+        
         completionHandler = completion
         perfomIdentStep(step: step)
     }
@@ -105,7 +111,7 @@ private extension BankIDCoordinator {
             currentIdentStep = step
             KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
         } catch {
-            print("Stored bank id step data decoding failed: \(error.localizedDescription).\nIdentification process would be started from beginning")
+            bankLog.warn("Stored bank id step data decoding failed: \(error.localizedDescription).\nIdentification process would be started from beginning")
         }
     }
 
@@ -114,7 +120,7 @@ private extension BankIDCoordinator {
             let stepData = try JSONEncoder().encode(step)
             SessionStorage.updateValue(stepData, for: StoredKeys.bankIDStep.rawValue)
         } catch {
-            print("Coding bank id step data failed: \(error.localizedDescription)")
+            bankLog.warn("Coding bank id step data failed: \(error.localizedDescription)")
         }
     }
 }
@@ -124,7 +130,8 @@ private extension BankIDCoordinator {
 private extension BankIDCoordinator {
 
     private func perfomIdentStep(step: IdentificationStep) {
-
+        bankLog.debug("Performing ident step \(step)")
+        
         switch step {
         case .mobileNumber:
             presentPhoneVerification()
@@ -149,7 +156,8 @@ private extension BankIDCoordinator {
             completionHandler?(.failure(.identificationNotPossible))
             close()
         case .unspecified:
-            print("Step is not supported or not specified yet")
+            bankLog.error("Step is not supported or not specified yet")
+            
             completionHandler?(.failure(.unsupportedResponse))
             close()
         }
@@ -247,7 +255,7 @@ private extension BankIDCoordinator {
 
         fourthlineCoordinator?.start { [weak self] result in
             guard let self = self else {
-                print("Cannot handle fourthline coordinator start completion. `self` is not present")
+                bankLog.error("Cannot handle fourthline coordinator start completion. `self` is not present")
                 
                 return
             }
@@ -258,16 +266,18 @@ private extension BankIDCoordinator {
             case .failure( _ ):
                 self.completionHandler?(result)
             case .onConfirm( _ ):
-                print("Fourthline signing confirmed")
+                bankLog.debug("Fourthline signing confirmed")
             }
         }
 
         fourthlineCoordinator?.nextStepHandler = { [weak self] nextStep in
             guard let self = self else {
-                print("Cannot handle fourthline coordinator nextStepHandler. `self` is not present")
+                bankLog.error("Cannot handle fourthline coordinator nextStepHandler. `self` is not present")
                 
                 return
             }
+            
+            bankLog.info("Fourthline flow nextStepHandler. Performing step \(nextStep)")
 
             self.perfomIdentStep(step: nextStep)
         }

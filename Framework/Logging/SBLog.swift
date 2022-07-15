@@ -159,6 +159,17 @@ public class SBLog: SBLogClient {
     public static func warn(_ message: SBLogMessage, category: SBLogCategory? = nil) -> SBLogEntry {
         return standard.warn(message, category: category)
     }
+    
+    /// Convencience method to log a message only if `evaluation` is evaluated as false with `WARN` level and optional category.
+    /// - Parameters:
+    ///   - evaluation: Expression to evaluate if message should be logged
+    ///   - message: The log message.
+    ///   - category: An optional category for the log event.
+    /// - Returns: The created log entry.
+    @discardableResult
+    public static func assertWarn(_ evaluation: @autoclosure () -> Bool, _ message: SBLogMessage, category: SBLogCategory? = nil) -> SBLogEntry? {
+        return standard.assertWarn(evaluation(), message, category: category)
+    }
 
     /// Convencience method to log a message with `ERROR` level to the standard logger.
     /// - Parameters:
@@ -312,6 +323,21 @@ extension SBLogClient {
         return self.log(message, level: .warn, category: category)
     }
     
+    /// Log a message only if `evaluation` is evaluated as false with `WARN` level and optional category.
+    /// - Parameters:
+    ///   - evaluation: Expression to evaluate if message should be logged
+    ///   - message: The log message.
+    ///   - category: An optional category for the log event.
+    /// - Returns: The created log entry.
+    @discardableResult
+    public func assertWarn(_ evaluation: @autoclosure () -> Bool, _ message: SBLogMessage, category: SBLogCategory? = nil) -> SBLogEntry? {
+        guard !evaluation() else {
+            return nil
+        }
+        
+        return self.log(message, level: .warn, category: category)
+    }
+    
     /// Log a message with `ERROR` level and optional category.
     /// - Parameters:
     ///   - message: The log message.
@@ -359,6 +385,7 @@ public class SBCategorizingLog: SBLogClient {
         self.category = category
     }
     
+    @discardableResult
     public func log(_ message: SBLogMessage, level: SBLogLevel, category: SBLogCategory? = nil) -> SBLogEntry {
         // We always override an explicitly provided category with our own:
         return target.log(message, level: level, category: self.category)

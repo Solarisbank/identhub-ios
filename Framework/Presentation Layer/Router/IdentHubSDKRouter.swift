@@ -45,16 +45,21 @@ class IdentHubSDKRouter: NSObject, Router {
     /// Method returns main navigation flow controller object
     /// - Returns: main navigation controller
     func toPresentable() -> UIViewController {
-      return navigationController
+        return navigationController
     }
-
+    
     /// Presents controller on main flow navigaiton controller
     /// - Parameters:
     ///   - module: presented object
     ///   - animated: presenting animation flag
     func present(_ module: Showable, animated: Bool) {
-
-      navigationController.present(module.toShowable(), animated: animated, completion: nil)
+        let controller = module.toShowable()
+        
+        navLog.info("Presenting \(controller) animated \(animated)...")
+        
+        navigationController.present(controller, animated: animated) {
+            navLog.info("Presented \(controller)")
+        }
     }
 
     /// Method dimissed showable controller from navigation view
@@ -62,7 +67,11 @@ class IdentHubSDKRouter: NSObject, Router {
     ///   - animated: dismissing  animation flag
     ///   - completion: the block to execute after the view controller is dismissed.
     func dismissModule(animated: Bool, completion: (() -> Void)?) {
+        navLog.info("Dismissing navigation controller animated \(animated)...")
+        
         navigationController.dismiss(animated: animated) { [weak self] in
+            navLog.info("Dismissed navigation controller")
+            
             completion?()
             
             self?.identHubSession = nil
@@ -73,29 +82,37 @@ class IdentHubSDKRouter: NSObject, Router {
     /// - Parameters:
     ///   - module: next viewed screen controller object
     ///   - animated: animate transition boolean flag
-    ///   - completion: the block to execute after the view controller is pushed.
+    ///   - completion: the block to execute after the view controller is popped.
     func push(_ module: Showable, animated: Bool = true, completion: (() -> Void)? = nil) {
-      // Avoid pushing UINavigationController onto stack
-      let controller = module.toShowable()
-
-      // Avoid pushing UINavigationController onto stack
-      guard controller is UINavigationController == false else {
-        return
-      }
-
-      if let completion = completion {
-        completions[controller] = completion
-      }
-      navigationController.pushViewController(controller, animated: animated)
+        // Avoid pushing UINavigationController onto stack
+        let controller = module.toShowable()
+        
+        navLog.info("Pushing \(controller) animated \(animated)")
+        
+        // Avoid pushing UINavigationController onto stack
+        guard controller is UINavigationController == false else {
+            navLog.error("Navigation controller cannot be pushed. Returning")
+            
+            return
+        }
+        
+        if let completion = completion {
+            completions[controller] = completion
+        }
+        
+        navigationController.pushViewController(controller, animated: animated)
     }
 
     /// Method poped controller from main navigation stack
     /// - Parameter animated: animate transition boolean flag
     func pop(animated: Bool = true) {
-
-      if let controller = navigationController.popViewController(animated: animated) {
-        runCompletion(for: controller)
-      }
+        navLog.info("Popping view controller...")
+        
+        if let controller = navigationController.popViewController(animated: animated) {
+            navLog.info("Popped view controller \(controller)")
+            
+            runCompletion(for: controller)
+        }
     }
 
     // MARK: - Internal methods -
@@ -104,24 +121,28 @@ class IdentHubSDKRouter: NSObject, Router {
     /// After executing completion block removes objects from completions storage
     /// - Parameter controller: controller object requires calling transition completion block
     fileprivate func runCompletion(for controller: UIViewController) {
-      guard let completion = completions[controller] else {
-        return
-      }
-      completion()
-      completions.removeValue(forKey: controller)
+        guard let completion = completions[controller] else {
+            return
+        }
+        
+        navLog.debug("Completing after pop \(controller)")
+        
+        completion()
+        completions.removeValue(forKey: controller)
     }
 }
 
 extension IdentHubSDKRouter: UINavigationControllerDelegate {
-
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-
-      // Make sure the view controller is popping, not pushing, and check for existence
-      guard let poppedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from), !navigationController.viewControllers.contains(poppedViewController) else {
-        return
-      }
-
-      // As long as the closure is properly setup, it can now be used to clean up any resources
-      runCompletion(for: poppedViewController)
+        navLog.debug("navigationController did show \(viewController) animated: \(animated)")
+        
+        // Make sure the view controller is popping, not pushing, and check for existence
+        guard let poppedViewController = navigationController.transitionCoordinator?.viewController(forKey: .from), !navigationController.viewControllers.contains(poppedViewController) else {
+            navLog.debug("navigationController is not popping or popped view controller is not in navigation controller stack")
+            return
+        }
+        
+        // As long as the closure is properly setup, it can now be used to clean up any resources
+        runCompletion(for: poppedViewController)
     }
 }

@@ -32,6 +32,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     /// Method starts Fourthline identificaiton process
     /// - Parameter completion: completion handler with success or failure parameter, used for updating users UI
     override func start(_ completion: @escaping CompletionHandler) {
+        fourthlineLog.info("Starting Fourthline identification coordinator")
+        
         completionHandler = completion
 
         executeStep(step: identificationStep)
@@ -40,7 +42,8 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     /// Performs a specified Fourthline identifiaction action.
     /// - Parameter action: type of the execution action
     func perform(action: FourthlineStep) {
-
+        fourthlineLog.info("Performing action: \(action)")
+        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             
@@ -62,6 +65,7 @@ private extension FourthlineIdentCoordinator {
     // MARK: - Navigation methods -
     
     private func executeStep(step: FourthlineStep) {
+        fourthlineLog.debug("executeStep \(step)")
         
         switch step {
         case .welcome:
@@ -177,7 +181,12 @@ private extension FourthlineIdentCoordinator {
     }
 
     private func completeIdent(with result: FourthlineIdentificationStatus) {
-
+        let resultIsInfo = result.identificationStatus == .success || result.identificationStatus == .confirmed
+        fourthlineLog.log(
+            "Completed identification with \(result.identificationStatus)",
+            level: resultIsInfo ? .info : .warn
+        )
+        
         switch result.identificationStatus {
         case .success:
             completionHandler?(.success(identification: result.identification))
@@ -193,11 +202,13 @@ private extension FourthlineIdentCoordinator {
         case .authorizationRequired:
             nextStepHandler?(.bankIDQES)
         default:
-            print("\(result.identificationStatus) not processed.")
+            fourthlineLog.warn("\(result.identificationStatus) not processed.")
         }
     }
 
     private func interruptIdentProcess(with error: APIError) {
+        fourthlineLog.warn("Interupt ident process with error: \(error)")
+        
         DispatchQueue.main.async { [weak self] in
             self?.completionHandler?(.failure(error))
             self?.close()
@@ -210,20 +221,33 @@ private extension FourthlineIdentCoordinator {
 private extension FourthlineIdentCoordinator {
 
     private func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
-
+        fourthlineLog.info("Requesting permissions for camera...")
+        
         AVCaptureDevice.requestAccess(for: .video) { granted in
             guard granted else {
+                fourthlineLog.warn("Permissions for camera not granted")
+                
                 DispatchQueue.main.async { [weak self] in
-                    guard let self = `self` else { return }
+                    guard let self = self else { return }
                     
                     self.showPermissionAlert(with: Localizable.Camera.permissionErrorAlertTitle, message: Localizable.Camera.permissionErrorAlertMessage)
                     completionHandler(false)
                 }
                 return
             }
-
+            
+            fourthlineLog.info("Permissions for camera granted")
+            
             DispatchQueue.main.async {
-                LocationManager.shared.requestLocationAuthorization {[weak self] status, error in
+                fourthlineLog.info("Requesting location permissions...")
+                
+                LocationManager.shared.requestLocationAuthorization { [weak self] status, error in
+                    if status {
+                        fourthlineLog.info("Location permissions are granted")
+                    } else {
+                        fourthlineLog.warn("Location permissions are not granted with error: \(String(describing: error?.localizedDescription))")
+                    }
+                    
                     if let locationError = error as? APIError {
                         self?.showPermissionAlert(with: Localizable.Location.Error.title, message: locationError.text())
                     }
@@ -234,10 +258,13 @@ private extension FourthlineIdentCoordinator {
     }
     
     private func showPermissionAlert(with title: String, message: String) {
-
+        fourthlineLog.info("Showing permissions alert \(title)")
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         let tryAgainAction = UIAlertAction(title: Localizable.Common.settings, style: .default, handler: { _ in
+            fourthlineLog.warn("User chose showing iOS settings")
+            
             if let url = URL(string: UIApplication.openSettingsURLString),
                UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
@@ -246,6 +273,8 @@ private extension FourthlineIdentCoordinator {
         })
 
         let cancelAction = UIAlertAction(title: Localizable.Common.cancel, style: .cancel) { _ in
+            fourthlineLog.warn("Canceled granting permissions by user")
+            
             switch self.identificationStep {
             case .documentScanner(_),
                  .selfie:

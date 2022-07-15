@@ -36,6 +36,8 @@ class IdentificationCoordinator: BaseCoordinator {
     // MARK: - Public methods -
 
     override func start(_ completion: @escaping CompletionHandler) {
+        identLog.info("Starting identification coordinator")
+        
         completionHandler = completion
 
         if let step = SessionStorage.obtainValue(for: StoredKeys.initialStep.rawValue) as? Int {
@@ -46,7 +48,8 @@ class IdentificationCoordinator: BaseCoordinator {
     }
 
     func perform(action: IdentificationCoordinator.Action) {
-
+        identLog.info("Performing action \(action)")
+        
         DispatchQueue.main.async { [weak self] in
             self?.execute(action: action)
         }
@@ -58,6 +61,7 @@ class IdentificationCoordinator: BaseCoordinator {
 private extension IdentificationCoordinator {
     
     private func execute(action: IdentificationCoordinator.Action) {
+        identLog.debug("Executing action \(action)")
         
         switch action {
         case .initialization:
@@ -106,7 +110,8 @@ private extension IdentificationCoordinator {
     }
 
     private func initiateMethod() {
-
+        identLog.info("Initiating identification method \(String(describing: identificationMethod))")
+        
         switch identificationMethod {
         case .mobileNumber,
              .bankIBAN,
@@ -116,9 +121,9 @@ private extension IdentificationCoordinator {
              .fourthlineSigning:
             startFourthline()
         case .unspecified:
-            print("Identificaiton flow is not specified")
+            identLog.error("Identificaiton flow is not specified")
         default:
-            print("Identificaiton flow is not specified")
+            identLog.error("Identificaiton flow is not handled")
         }
 
         executedStep = .identification
@@ -139,10 +144,12 @@ private extension IdentificationCoordinator {
 
         fourthlineCoordinator?.nextStepHandler = { [weak self] nextStep in
             guard let self = self else {
-                print("Cannot handle fourthline coordinator nextStepHandler. `self` is not present")
+                identLog.error("Cannot handle fourthline coordinator nextStepHandler. `self` is not present")
                 
                 return
             }
+            
+            identLog.info("Fourthline flow nextStepHandler. Executing next step \(nextStep) on bankId coordinator: \(String(describing: self.bankIDSessionCoordinator))")
 
             self.bankIDSessionCoordinator?.perform(step: nextStep, self.completionHandler!)
         }

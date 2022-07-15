@@ -10,8 +10,6 @@ let maxRetries = 3
 // Retry timeout
 let retryTimeout = 5
 
-fileprivate let apiLog = SBLog.standard.withCategory(.api)
-
 protocol APIClient: AnyObject {
 
     func execute<DataType: Decodable>(
@@ -86,6 +84,7 @@ final class DefaultAPIClient: APIClient {
             }
             task.resume()
         } catch {
+            apiLog.warn("Request error: \(error)")
             completeWithResult(.failure(ResponseError(.unknownError)), completion: completion)
         }
     }
@@ -101,6 +100,8 @@ final class DefaultAPIClient: APIClient {
     ) {
         do {
             let urlRequest = try request.asURLRequest()
+            
+            log(urlRequest)
 
             let task = defaultUrlSession.downloadTask(with: urlRequest) { location, response, error in
                 log(response: response as? HTTPURLResponse, error: error)
@@ -115,6 +116,7 @@ final class DefaultAPIClient: APIClient {
             }
             task.resume()
         } catch {
+            apiLog.warn("Request error: \(error)")
             completeWithResult(.failure(ResponseError(.unknownError)), completion: completion)
         }
     }

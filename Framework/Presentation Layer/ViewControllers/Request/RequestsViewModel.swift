@@ -197,8 +197,12 @@ final class RequestsViewModel: NSObject {
 private extension RequestsViewModel {
 
     private func restartProcess() {
+        identLog.info("Restarting process with \(requestsType)")
+        
         switch requestsType {
         case .initateFlow:
+            identLog.info("Restarting with initStep \(initStep)")
+            
             switch initStep {
             case .defineMethod:
                 defineIdentificationMethod()
@@ -214,6 +218,8 @@ private extension RequestsViewModel {
                 fetchIPAddress()
             }
         case .fetchData:
+            identLog.info("Restarting with prepareData \(prepareData)")
+            
             switch prepareData {
             case .fetchPersonData:
                 fetchPersonalData()
@@ -223,6 +229,8 @@ private extension RequestsViewModel {
                 fetchIPAddress()
             }
         case .uploadData:
+            identLog.info("Restarting with uploadStep \(uploadStep)")
+            
             switch uploadStep {
             case .prepareData:
                 zipUserData()
@@ -236,9 +244,13 @@ private extension RequestsViewModel {
 
     private func startNextStep(initStep: InitStep, dataStep: DataFetchStep) {
         if isFourthlineFlow() {
+            identLog.info("Starting step \(initStep)")
+            
             startStep(number: initStep.rawValue)
             self.initStep = initStep
         } else {
+            identLog.info("Starting step \(dataStep)")
+            
             startStep(number: dataStep.rawValue)
             prepareData = dataStep
             SessionStorage.updateValue(dataStep.rawValue, for: StoredKeys.fetchDataStep.rawValue)
@@ -405,8 +417,16 @@ private extension RequestsViewModel {
 
     private func fetchLocationData() {
         startNextStep(initStep: .fetchLocation, dataStep: .location)
-
+        
+        identLog.info("Requesting location permissions...")
+        
         LocationManager.shared.requestLocationAuthorization { [weak self] status, error in
+            if status {
+                identLog.info("Location permissions are granted")
+            } else {
+                identLog.warn("Location permissions are not granted with error \(String(describing: error?.localizedDescription))")
+            }
+            
             guard let self = self else { return }
             
             guard status else {
@@ -415,20 +435,27 @@ private extension RequestsViewModel {
                 }
                 return
             }
+            
+            identLog.info("Requesting device location...")
+            
             LocationManager.shared.requestDeviceLocation { [weak self] location, error in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 
                 LocationManager.shared.releaseCompletionHandler()
                 
                 guard let location = location else {
-
+                    identLog.warn("Device location not updated. Error: \(String(describing: error?.localizedDescription))")
+                    
                     if let errorHandler = self.onDisplayError {
                         errorHandler(APIError.locationError)
                     }
+                    
                     return
                 }
-
+                
                 KYCContainer.shared.update(location: location)
+                
+                identLog.info("Updated device location")
 
                 if self.isFourthlineFlow() {
                     self.completeStep(number: InitStep.fetchLocation.rawValue)
@@ -499,14 +526,19 @@ private extension RequestsViewModel {
         startStep(number: UploadSteps.uploadData.rawValue)
         uploadStep = .uploadData
         uploadFileURL = fileURL
+        
+        kycLog.info("Uploading zip file...")
 
         verificationService.uploadKYCZip(fileURL: fileURL) { [unowned self] result in
-
             switch result {
-            case .success(_):
+            case .success:
+                kycLog.info("Zip file sucessfully uploaded")
+                
                 self.fourthlineCoordinator?.perform(action: .confirmation)
                 self.deleteFile(at: fileURL)
             case .failure(let error):
+                kycLog.error("Error uploading zip file \(error.localizedDescription)")
+                
                 self.onDisplayError?(error)
             }
 
@@ -518,7 +550,7 @@ private extension RequestsViewModel {
         do {
             try FileManager.default.removeItem(at: url)
         } catch let error as NSError {
-            print("Error occurs during removing uploaded zip file: \(error.localizedDescription)")
+            kycLog.warn("Error occurs during removing uploaded zip file: \(error.localizedDescription)")
         }
     }
 }
@@ -530,7 +562,9 @@ private extension RequestsViewModel {
     private func startVerificationProcess() {
         startStep(number: VerificationSteps.verification.rawValue)
 
-        verificationService.obtainFourthlineIdentificationStatus { [unowned self] result in
+        verificationService.obtainFourthlineIdentificationStatus { [weak self] result in
+            guard let self = self else { return }
+            
             self.completeStep(number: VerificationSteps.verification.rawValue)
 
             switch result {
@@ -538,7 +572,7 @@ private extension RequestsViewModel {
                 switch response.identificationStatus {
                 case .pending,
                      .processed:
-                    retryVerification()
+                    self.retryVerification()
                 default:
                     self.manageResponseStatus(response)
                 }

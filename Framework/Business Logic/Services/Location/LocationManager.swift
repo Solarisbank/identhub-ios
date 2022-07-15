@@ -17,7 +17,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Public methods -
 
     func requestLocationAuthorization(completionHandler: @escaping((Bool, Error?) -> Void)) {
+        SBLog.debug("LocationManager.requestLocationAuthorization")
+        
         self.requestCompletionHandler = completionHandler
+        
         if locationManager == nil {
             locationManager = CLLocationManager()
             locationManager?.delegate = self
@@ -27,6 +30,8 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func requestDeviceLocation(completionHandler: @escaping((CLLocation?, Error?) -> Void)) {
+        SBLog.debug("LocationManager.requestDeviceLocation")
+        
         completionLocationHandler = completionHandler
 
         locationManager?.requestLocation()
@@ -35,6 +40,8 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - Internal methods -
 
     private func checkLocationStatus(status: CLAuthorizationStatus) {
+        SBLog.debug("LocationManager.checkLocationStatus \(status)")
+        
         authStatus = status
 
         switch status {
@@ -58,12 +65,18 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - CLLocationManagerDelegate
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        SBLog.debug("LocationManager didChangeAuthorization \(status)")
+        
+        SBLog.assertWarn(status == .authorizedWhenInUse || status == .authorizedAlways, "LocationManager authorization status changed to \(status)")
+        
         if authStatus != status {
             checkLocationStatus(status: status)
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        SBLog.debug("LocationManager didUpdateLocations \(locations.count)")
+        
         guard let location = locations.first else {
             completionLocationHandler(nil, APIError.locationAccessError)
             return
@@ -73,10 +86,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        SBLog.warn("LocationManager didFailWithError \(error.localizedDescription)")
+        
         completionLocationHandler(nil, error)
     }
     
     func releaseCompletionHandler() {
+        SBLog.debug("LocationManager releaseCompletionHandler")
+        
         completionLocationHandler = nil
     }
 }

@@ -13,19 +13,29 @@ enum KYCZipErrorType {
 }
 
 enum KYCZipService {
-
     static func createKYCZip(_ completion: @escaping((URL?, Error?) -> Void)) {
-
         DispatchQueue.global(qos: .userInitiated).async {
+            kycLog.info("Creating zip file...")
+            
             do {
                 let zipper = Zipper()
 
                 let kycZipUrl = try zipper.createZipFile(with: KYCContainer.shared.kycInfo)
-
+                
+                kycLog.info("Zip file creation success")
+                
                 DispatchQueue.main.async {
                     completion(kycZipUrl, nil)
                 }
-            } catch let error {
+            } catch let error as ZipperError {
+                kycLog.error("Zip file creation error: \(KYCZipService.text(for: error))")
+                
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            } catch {
+                kycLog.error("Error during zip file creation: \(error.localizedDescription)")
+                
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
@@ -34,7 +44,6 @@ enum KYCZipService {
     }
 
     static func text(for zipperError: ZipperError) -> String {
-
         switch zipperError {
         case .kycIsNotValid:
             return Localizable.Zipper.Error.kycIsNotValid + getValidationErrors()

@@ -95,8 +95,13 @@ private extension DocumentInfoViewModel {
         typealias InfoText = Localizable.DocumentScanner.Information
 
         let document = KYCContainer.shared.kycInfo.document
-
+        
+        fourthlineLog.assertWarn(document?.number != nil, "Document number is not available")
+        fourthlineLog.assertWarn(document?.issueDate != nil, "Issue date is not available")
+        fourthlineLog.assertWarn(document?.expirationDate != nil, "Expiration date is not available")
+        
         let docNumber = DocumentItemInfo(title: InfoText.docNumber, content: document?.number ?? "", type: .number)
+        // TODO: This is optional and we dont have to send it anymore
         let issueDate = DocumentItemInfo(title: InfoText.issue, content: document?.issueDate?.defaultDateString() ?? "", type: .issueDate, prefilledDate: obtainDateOfIssue(document))
         let expireDate = DocumentItemInfo(title: InfoText.expire, content: document?.expirationDate?.defaultDateString() ?? "", type: .expireDate, prefilledDate: obtainExpirationDate(document))
 
