@@ -131,7 +131,7 @@ public class SBLogBackendDestination: SBLogDestination {
         return payloadString
     }
     
-    static var jsonEncoder: JSONEncoder {
+    static var jsonEncoder: JSONEncoder = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
@@ -140,7 +140,7 @@ public class SBLogBackendDestination: SBLogDestination {
         encoder.outputFormatting = .sortedKeys
         encoder.dateEncodingStrategy = .formatted(dateFormatter)
         return encoder
-    }
+    }()
     
 }
 

@@ -26,7 +26,8 @@ public class SBLogConsoleDestination: SBLogDestination {
             output = "[\(category)] \(output)"
         }
         
-        let logOutput = "[\(Constants.logPrefix)] \(output)"
+        let timestamp = SBLogConsoleDestination.dateFormatter.string(from: entry.timestamp)
+        let logOutput = "[\(Constants.logPrefix)] \(output) (\(timestamp))"
         
         print(logOutput)
     }
@@ -35,6 +36,15 @@ public class SBLogConsoleDestination: SBLogDestination {
         // nothing to flush
     }
     
+    static var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        return dateFormatter
+    }()
 }
 
 private extension SBLogConsoleDestination {
