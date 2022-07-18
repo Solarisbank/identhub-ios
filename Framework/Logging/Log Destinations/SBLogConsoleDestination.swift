@@ -21,14 +21,24 @@ public class SBLogConsoleDestination: SBLogDestination {
             return
         }
         var output = "\(entry.level): \(entry.message)"
+        
         if let category = entry.category {
             output = "[\(category)] \(output)"
         }
-        print(output)
+        
+        let logOutput = "[\(Constants.logPrefix)] \(output)"
+        
+        print(logOutput)
     }
 
     public func flush() {
         // nothing to flush
     }
     
+}
+
+private extension SBLogConsoleDestination {
+    enum Constants {
+        static let logPrefix = "IdentHub"
+    }
 }
