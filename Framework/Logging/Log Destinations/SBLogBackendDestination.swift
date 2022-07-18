@@ -125,7 +125,7 @@ public class SBLogBackendDestination: SBLogDestination {
             let data = try SBLogBackendDestination.jsonEncoder.encode(payload)
             payloadString = String(data: data, encoding: .utf8)
         } catch {
-            print("Error while trying to encode logging payload!")
+            print("Error while trying to encode logging payload.")
             payloadString = "{\"contents\":[{\"level\":\"WARN\",\"message\":\"Error while trying to encode logging payload!\"}]}"
         }
         return payloadString
@@ -174,18 +174,16 @@ public class SBLogBackendAPIClient: SBLogBackendConnectable {
             request.httpBody = payload.data(using: .utf8)
         }
         let task = urlSession.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil, let httpResponse = response as? HTTPURLResponse else {
-                print("Error while sending log entries", error ?? "No valid response")
+            guard data != nil && error == nil, let httpResponse = response as? HTTPURLResponse else {
+                print("Error while trying to send log entries:", error ?? "No valid response")
                 return
             }
             guard 200 ..< 300 ~= httpResponse.statusCode else {
-                print("Error while sending log entries: backend replied with status code \(httpResponse.statusCode), but expected 2xx")
+                print("Error while trying to send log entries: backend replied with status code \(httpResponse.statusCode).")
                 return
             }
-            print("Log entries sucessfully submitted (response: \(String(data: data, encoding: .utf8) ?? ""))")
         }
         task.resume()
-        print("Sending log entries to \(request.url!)...")
     }
     
 }
