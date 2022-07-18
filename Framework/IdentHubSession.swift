@@ -130,6 +130,7 @@ extension IdentHubSession {
             let logAPIClient = SBLogBackendAPIClient(url: logURL, sessionToken: sessionToken)
             SBLogBackendDestination.standard.apiClient = logAPIClient
             SBLogBackendDestination.standard.level = level
+            SBLogBackendDestination.standard.backendRequestBundlingPeriod = 3.0
             SBLog.standard.addDestination(SBLogBackendDestination.standard)
             SBLog.info("Enabled backend logging")
         } else {
