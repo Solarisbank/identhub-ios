@@ -210,11 +210,10 @@ internal func completeWithResult<T, U>(_ result: Result<T, U>, completion: (Resu
 
 /// Log an API request.
 fileprivate func log(_ request: URLRequest) {
+    // TODO: Add redacted body logging
+    
     let urlString = request.url?.absoluteString ?? "<URL undefined>"
     apiLog.info("\(request.httpMethod ?? "") \(urlString)")
-    if let body = request.httpBody, let payload = String(data: body, encoding: .utf8) {
-        apiLog.debug("Request payload: \(payload)")
-    }
 }
 
 /// Log the result of an API request.
