@@ -1,0 +1,29 @@
+// Sign Documents
+"sign_documents_application_confirm" = "Téléchargez et vérifiez vos données";
+"sign_documents_application_description" = "Veuillez examiner le(s) document(s) avant de le(s) signer";
+"sign_documents_application_terms_text" = "Les conditions générales de Swisscom s'appliquent.";
+"sign_documents_application_view_doc" = "Afficher le document";
+"sign_documents_application_send_code" = "Envoyer un code pour signer";
+"sign_documents_title" = "Confirmez vos détails";
+"sign_documents_transaction_info_part_one" = "Votre ID de transaction est ";
+"sign_documents_transaction_info_part_two" = "\nAssurez-vous qu’il s’agit du même SMS que celui que vous venez de recevoir.";
+"sign_documents_submit_and_sign" = "Soumettre et signer";
+"sign_documents_request_code" = "Demander un nouveau code";
+"sign_documents_application_being_processed" = "Votre demande est en cours de traitement...";
+"sign_documents_download_documents" = "Vous allez pouvoir télécharger tous les documents signés bientôt.";
+
+// Phone Verification
+"phone_verification_title" = "Confirmez votre numéro de téléphone";
+"phone_verification_enter_code" = "Saisissez le code à 6 chiffres envoyé à votre numéro de téléphone mobile %1$@";
+"phone_verification_request_code_timer" = "Demander un nouveau code";
+"phone_verification_send_new_code" = "Envoyer un nouveau code";
+"phone_verification_wrong_tan" = "TAN incorrect. Vous devez demander un nouveau TAN et réessayer.";
+"request_tan_failed" = "Échec de la demande d'un nouveau TAN.";
+"phone_verification_submit_code" = "Soumettre le code";
+"phone_verification_request_new_code" = "Demander un nouveau code";
+"phone_verification_success_title" = "Vérification du téléphone réussie !";
+"phone_verification_success_description" = "Pour l'étape suivante, veuillez avoir à portée de main votre %1$@ et vos %2$@ à votre banque en ligne.";
+"phone_verification_login_credentials" = "identifiants de connexion";
+"phone_verification_error_title" = "Erreur de vérification du téléphone";
+"phone_verification_error_description" = "Le TAN fourni n’est pas valide";
+"phone_verification_error_action" = "Réessayer la vérification TAN";

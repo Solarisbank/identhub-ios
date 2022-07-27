@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 /// Welcome screen view model class
 /// Class used for preparing displaying data, connect UI components with adapter and DDM

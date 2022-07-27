@@ -17,13 +17,15 @@ PODS:
   - FourthlineSDK/Vision (2.11.4):
     - FourthlineSDK/Core
   - InputMask (6.1.0)
-  - lottie-ios (3.3.0)
+  - lottie-ios (3.4.0)
+  - SnapshotTesting (1.9.0)
   - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
   - FourthlineSDK (= 2.11.4)
   - InputMask (= 6.1.0)
   - lottie-ios
+  - SnapshotTesting (~> 1.9.0)
   - ZIPFoundation (= 0.9.11)
 
 SPEC REPOS:
@@ -32,14 +34,16 @@ SPEC REPOS:
   trunk:
     - InputMask
     - lottie-ios
+    - SnapshotTesting
     - ZIPFoundation
 
 SPEC CHECKSUMS:
   FourthlineSDK: 6c283d61659e6edacc52c8b6a176c1a6413fcf9d
   InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
-  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  lottie-ios: 69495122151a378fdc7d1bb4c5930347e37baf1f
+  SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: c7a64d1baa9f7f06bb1aed83f29cceb46c55f9b8
+PODFILE CHECKSUM: 313ceb78c155545e7cf18f119c2760506c6a8cdb
 
 COCOAPODS: 1.11.3

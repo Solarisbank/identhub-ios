@@ -103,4 +103,9 @@ class RotatingCircularProgressBar: UIView {
         
         createAnimation()
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setNeedsDisplay()
+    }
 }

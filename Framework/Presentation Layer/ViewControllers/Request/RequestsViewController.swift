@@ -5,6 +5,7 @@
 
 import UIKit
 import FourthlineKYC
+import IdentHubSDKCore
 
 class RequestsViewController: UIViewController {
 

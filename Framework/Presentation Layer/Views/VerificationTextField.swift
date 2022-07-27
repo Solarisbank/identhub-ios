@@ -82,6 +82,11 @@ internal class VerificationTextField: UITextField {
         }
         layer.borderColor = borderColor
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
+    }
 }
 
 // MARK: - Delegate methods -

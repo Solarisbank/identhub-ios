@@ -1,29 +1,3 @@
-// ProgressView
-"progress_view_progress" = "Progression de l’identification";
-"progress_view_phone_verification" = "Vérification du téléphone";
-"progress_view_bank_verification" = "Vérification bancaire";
-"progress_view_sign_documents" = "Signer documents";
-
-// Common
-"common_next" = "Suite";
-"common_quit" = "Quitter";
-"common_continue_button" = "Continuer";
-"common_back" = "Retour";
-"common_powered_by_solarisbank" = "Fourni par Solarisbank";
-"common_verifying" = "Vérification en cours...";
-"common_download_all_documents" = "Télécharger tous les documents";
-"common_dismiss" = "Rejeter";
-"common_try_again" = "Réessayer";
-"common_cancel" = "Annuler";
-"common_settings" = "Paramètres";
-"common_generic_error" = "Une erreur s’est produite";
-"common_confirm" = "Confirmer";
-
-// Quitting
-"quitting_title" = "Êtes-vous sûr de vouloir quitter le processus d’intégration ?";
-"quitting_description" = "Votre progression sera perdue. Vous devrez répéter les étapes la prochaine fois.";
-"quitting_stay_action" = "Rester";
-
 // Start Identification
 "start_ident_title" = "Démarrer identification";
 "start_ident_disclaimer" = "Pour terminer le processus d’identification, on va vous demander de :";
@@ -68,20 +42,6 @@
 "payment_verification_error_title" = "Erreur de vérification du paiement";
 "payment_verification_error_description" = "Malheureusement, une erreur technique s’est produite. Veuillez réessayer.";
 "payment_verification_error_action" = "Réessayer la vérification IBAN";
-
-// Sign Documents
-"sign_documents_application_confirm" = "Téléchargez et vérifiez vos données";
-"sign_documents_application_description" = "Veuillez examiner le(s) document(s) avant de le(s) signer";
-"sign_documents_application_terms_text" = "Les conditions générales de Swisscom s'appliquent.";
-"sign_documents_application_view_doc" = "Afficher le document";
-"sign_documents_application_send_code" = "Envoyer un code pour signer";
-"sign_documents_title" = "Confirmez vos détails";
-"sign_documents_transaction_info_part_one" = "Votre ID de transaction est ";
-"sign_documents_transaction_info_part_two" = "\nAssurez-vous qu’il s’agit du même SMS que celui que vous venez de recevoir.";
-"sign_documents_submit_and_sign" = "Soumettre et signer";
-"sign_documents_request_code" = "Demander un nouveau code";
-"sign_documents_application_being_processed" = "Votre demande est en cours de traitement...";
-"sign_documents_download_documents" = "Vous allez pouvoir télécharger tous les documents signés bientôt.";
 
 // Finish identification
 "finish_ident_successful_title" = "Identification réussie !";
@@ -232,23 +192,6 @@
 "verification_title" = "Vérification";
 "verification_description" = "Veuillez attendre la vérification..";
 "verification_process_title" = "Date de vérification...";
-
-// API Errors
-"api_error_malformed_json" = "Indique que la chaîne reçue dans la réponse n’a pas pu être analysée.";
-"api_error_client_error" = "Indique que l’erreur est du côté du client.";
-"api_error_authorization_failed" = "Indique que l’autorisation a échoué.";
-"api_error_unauthorized" = "L’action n’a pas été autorisée.";
-"api_error_data_mismatch" = "Données non concordantes.";
-"api_error_incorrect_ident_status" = "Le statut d’identification n’a pas permis de poursuivre l’action.";
-"api_error_unprocessable_entity" = "Données non valides ou expirées.";
-"api_error_internal_server_error" = "Indique l’erreur de serveur interne.";
-"api_error_request_build_error" = "Indique une erreur de demande de construction.";
-"api_error_unknown" = "Indique que l’api client a rencontré une erreur non répertoriée ci-dessus.";
-"api_error_resource_not_found" = "La ressource n’a pas été trouvée.";
-"api_error_location_permission" = "Autorisation de localisation refusée.";
-"api_error_location_error" = "L’appareil ne peut pas définir les données de localisation.";
-"api_error_iban_verification" = "Échec de la vérification de l’IBAN.";
-"api_error_payment_failure" = "Échec de vérification du paiement.";
 
 // Result
 "result_success_title" = "Félicitations";

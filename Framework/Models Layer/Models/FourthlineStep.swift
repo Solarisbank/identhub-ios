@@ -5,6 +5,7 @@
 
 import Foundation
 import FourthlineCore
+import IdentHubSDKCore
 
 /// The list of all available actions.
 enum FourthlineStep: Codable, Equatable {

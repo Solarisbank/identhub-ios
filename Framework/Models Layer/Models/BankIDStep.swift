@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 /// The list of all available actions.
 enum BankIDStep: Codable, Equatable {
@@ -11,9 +12,6 @@ enum BankIDStep: Codable, Equatable {
     case phoneVerification // BankID phone verification
     case bankVerification(step: BankVerification) // Bank payment verification
     case signDocuments(step: SignDocuments) // Sign bank contracts
-    case documentPreview(url: URL) // Signed documents preview
-    case documentExport(url: URL) // Export signed documents
-    case allDocumentsExport(documents: [URL]) // Export all documents
     case finishIdentification // Finish bank identification
     case notifyHandlers // Case for notifying all handlers about ident results
     case nextStep(step: IdentificationStep) // Method called next step of the identification process

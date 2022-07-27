@@ -31,7 +31,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="89" translatesAutoresizingMaskIntoConstraints="NO" id="FbP-9b-UPj" customClass="HeaderView" customModule="IdentHubSDK" customModuleProvider="target">
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="89" translatesAutoresizingMaskIntoConstraints="NO" id="FbP-9b-UPj" customClass="HeaderView" customModule="IdentHubSDKCore">
                     <rect key="frame" x="0.0" y="44" width="414" height="89"/>
                     <color key="backgroundColor" name="background"/>
                 </view>
@@ -47,7 +47,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-w0-bA5" customClass="CodeEntryView" customModule="IdentHubSDK" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6Y-w0-bA5" customClass="CodeEntryView" customModule="IdentHubSDKCore">
                             <rect key="frame" x="91" y="169" width="232" height="48"/>
                             <color key="backgroundColor" name="background"/>
                             <constraints>
@@ -156,7 +156,7 @@
     </objects>
     <resources>
         <namedColor name="background">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base50">
             <color red="0.49411764705882355" green="0.52941176470588236" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

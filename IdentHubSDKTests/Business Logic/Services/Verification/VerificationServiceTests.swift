@@ -5,6 +5,7 @@
 
 import XCTest
 @testable import IdentHubSDK
+import IdentHubSDKTestBase
 
 class VerificationServiceTests: XCTestCase {
 
@@ -31,22 +32,6 @@ class VerificationServiceTests: XCTestCase {
         XCTAssertEqual(apiClient.inputRequest?.path, expectedRequestPath, "Mobile number auth command request path is not valid")
     }
     
-    /// Method tested Get mobile number
-    /// In request used fake token
-    /// Method tests:
-    ///  - Get mobile number method execution status
-    ///  - type of request
-    ///  - auth request path
-    func testGetMobileNumberRequest() {
-        let sut = makeSUT()
-        let expectedRequestPath = String(describing: "/mobile_number")
-        sut.getMobileNumber(completionHandler: { _ in })
-
-        XCTAssertTrue(apiClient.executeCommandCalled, "Get Mobile number command was not executed")
-        XCTAssertEqual(apiClient.inputRequest?.method, .get, "Get Mobile number command request HTTP method is not GET")
-        XCTAssertEqual(apiClient.inputRequest?.path, expectedRequestPath, "Get Mobile number command request path is not valid")
-    }
-
     /// Method tested mobile number confirm process
     /// Request used fake token number
     /// Method tests:
@@ -81,49 +66,6 @@ class VerificationServiceTests: XCTestCase {
         XCTAssertTrue(apiClient.executeCommandCalled, "IBAN verification request wasn't executed")
         XCTAssertEqual(apiClient.inputRequest?.method, .post, "IBAN verification request HTTP method is not correct")
         XCTAssertEqual(apiClient.inputRequest?.path, reqPath, "IBAN verification request path is not correct")
-    }
-
-    /// Method tested documents authorize mock request
-    /// Used fake identifierUID value
-    /// Method tests:
-    ///  - doc auth method execution status
-    ///  - type of request
-    ///  - custom request path
-    func testAuthorizeDocuments() {
-        let iduid = "c4bd19319a6f4b258c03687be2773a14avi"
-
-        defaultStorage?.identificationUID = iduid
-
-        let sut = makeSUT()
-        let request = String(describing: "/sign_documents/\(iduid)/authorize")
-
-        sut.authorizeDocuments(completionHandler: { _ in })
-
-        XCTAssertTrue(apiClient.executeCommandCalled, "Documents authorize request wasn't executed")
-        XCTAssertEqual(apiClient.inputRequest?.method, .patch, "Documents authorize request HTTP method is not correct")
-        XCTAssertEqual(apiClient.inputRequest?.path, request, "Documents authorize request path is not correct")
-    }
-
-    /// Method tested document TAN value verification
-    /// Used fake identificationUID and doc token value
-    /// Method tests:
-    ///  - verification document TAN value method execution status
-    ///  - type of request
-    ///  - custom request path
-    func testVerifyDocumentsTAN() {
-        let iduid = "c4bd19319a6f4b258c03687be2773a14avi"
-        let docToken = "7cff7e6cf4e431c1fc99d15cc30b2652ises"
-
-        defaultStorage?.identificationUID = iduid
-
-        let sut = makeSUT()
-        let request = String(describing: "/sign_documents/\(iduid)/confirm")
-
-        sut.verifyDocumentsTAN(token: docToken, completionHandler: { _ in })
-
-        XCTAssertTrue(apiClient.executeCommandCalled, "Documents verification request wasn't executed")
-        XCTAssertEqual(apiClient.inputRequest?.method, .patch, "Documents verification request HTTP method is not correct")
-        XCTAssertEqual(apiClient.inputRequest?.path, request, "Documents verification request path is not correct")
     }
 
     /// Method tested fetching identification value request

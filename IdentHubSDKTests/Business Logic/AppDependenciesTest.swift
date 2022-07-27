@@ -5,6 +5,7 @@
 
 import XCTest
 @testable import IdentHubSDK
+import IdentHubSDKTestBase
 
 class AppDependenciesTest: XCTestCase {
 
@@ -22,7 +23,7 @@ class AppDependenciesTest: XCTestCase {
 
     /// Method tested case if app dependencies contained empty session token if init method take empty string
     func testEmptyToken() {
-        let sut = AppDependencies(sessionToken: "")
+        let sut = AppDependencies(sessionToken: "", presenter: PresenterMock())
 
         XCTAssertTrue(sut.sessionInfoProvider.sessionToken.isEmpty, "Session token is not empty by default")
     }
@@ -36,12 +37,12 @@ class AppDependenciesTest: XCTestCase {
         let sut = makeSut()
 
         XCTAssertNotNil(sut.sessionInfoProvider, "Session info provider not initialized properly")
-        XCTAssertNotNil(sut.apiClient, "API client property not initialized properly")
+        XCTAssertNotNil(sut.serviceLocator.apiClient, "API client property not initialized properly")
         XCTAssertNotNil(sut.verificationService, "Verification service is not initialized properly")
     }
 
     // MARK: - Internal methods -
     func makeSut() -> AppDependencies {
-        return AppDependencies(sessionToken: sessionToken)
+        return AppDependencies(sessionToken: sessionToken, presenter: PresenterMock())
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1320"
-   version = "1.3">
+   LastUpgradeVersion = "1330"
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -54,8 +54,28 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:IdentHubSDK.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:IdentHubSDKSnapshotTests.xctestplan">
+         </TestPlanReference>
+      </TestPlans>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "88F3A562283CD72000DB273A"
+               BuildableName = "IdentHubSDKCoreTests.xctest"
+               BlueprintName = "IdentHubSDKCoreTests"
+               ReferencedContainer = "container:Modules/Core/Core.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -79,6 +99,26 @@
                   Identifier = "SBLogDestinationTests/testConsoleLogDestination()">
                </Test>
             </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "88F3A586283CD73A00DB273A"
+               BuildableName = "IdentHubSDKQESTests.xctest"
+               BlueprintName = "IdentHubSDKQESTests"
+               ReferencedContainer = "container:Modules/QES/QES.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "88EF24A12853571700D98123"
+               BuildableName = "IdentHubSDKQESSnapshotTests.xctest"
+               BlueprintName = "IdentHubSDKQESSnapshotTests"
+               ReferencedContainer = "container:Modules/QES/QES.xcodeproj">
+            </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>

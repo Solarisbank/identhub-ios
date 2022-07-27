@@ -5,6 +5,7 @@
 
 import UIKit
 @testable import IdentHubSDK
+import IdentHubSDKTestBase
 
 class FourthlineIdentCoordinatorMock: FourthlineIdentCoordinator {
     
@@ -13,7 +14,7 @@ class FourthlineIdentCoordinatorMock: FourthlineIdentCoordinator {
     
     // MARK: - Init methods -
     init() throws {
-        let appDependencies = AppDependencies(sessionToken: "")
+        let appDependencies = AppDependencies(sessionToken: "", presenter: PresenterMock())
         let rootViewController = UIViewController()
         let identHubSession = try IdentHubSession(rootViewController: rootViewController, sessionURL: "https://solarisssandbox.de/sesionToken-abcdefgHIJKlmnoprsTQUWXyz0123456789")
         let router = IdentHubSDKRouter(rootViewController: UIViewController(), identHubSession: identHubSession)

@@ -5,6 +5,7 @@
 
 import UIKit
 import InputMask
+import IdentHubSDKCore
 
 /// UIViewController which displays screen to verify IBAN.
 final internal class IBANVerificationViewController: UIViewController, Quitable {

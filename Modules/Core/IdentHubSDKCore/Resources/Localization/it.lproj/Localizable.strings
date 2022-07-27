@@ -1,0 +1,42 @@
+// API Errors
+"api_error_malformed_json" = "Impossibile analizzare la stringa ricevuta nella risposta.";
+"api_error_client_error" = "Si è verificato un errore lato client.";
+"api_error_authorization_failed" = "Autorizzazione fallita.";
+"api_error_unauthorized" = "Azione non autorizzata.";
+"api_error_data_mismatch" = "Conflitto di dati.";
+"api_error_incorrect_ident_status" = "Lo stato di identificazione non è autorizzato a continuare l'azione.";
+"api_error_unprocessable_entity" = "Dati non validi o scaduti.";
+"api_error_internal_server_error" = "Si è verificato un errore interno del server.";
+"api_error_request_build_error" = "Si è verificato un errore di richiesta di compilazione.";
+"api_error_unknown" = "Si è verificato un errore non elencato sopra.";
+"api_error_resource_not_found" = "Risorsa non trovata.";
+"api_error_location_permission" = "Accesso alla posizione negato.";
+"api_error_location_error" = "Il dispositivo non riesce a trovare i dati sulla posizione.";
+"api_error_iban_verification" = "Verifica IBAN non riuscita.";
+"api_error_payment_failure" = "Verifica del pagamento non riuscita.";
+
+// Common
+"common_next" = "Avanti";
+"common_quit" = "Uscire";
+"common_continue_button" = "Continuare";
+"common_back" = "Indietro";
+"common_powered_by_solarisbank" = "Realizzato da Solarisbank";
+"common_verifying" = "Verificare...";
+"common_download_all_documents" = "Scarica tutti i documenti";
+"common_dismiss" = "Eliminare";
+"common_try_again" = "Riprovare";
+"common_cancel" = "Cancellare";
+"common_settings" = "Impostazioni";
+"common_generic_error" = "Qualcosa è andato storto";
+"common_confirm" = "Confermare";
+
+// ProgressView
+"progress_view_progress" = "Identificazione in corso";
+"progress_view_phone_verification" = "Verifica del numero di telefono";
+"progress_view_bank_verification" = "Verifica delle coordinate bancarie";
+"progress_view_sign_documents" = "Firma documenti";
+
+// Quitting
+"quitting_title" = "Sei sicuro di voler uscire dal processo di registrazione?";
+"quitting_description" = "I tuoi progressi non verranno salvati. La prossima volta che proverai, ricomincerai dall'inizio.";
+"quitting_stay_action" = "Restare";

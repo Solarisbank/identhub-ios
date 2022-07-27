@@ -23,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="89" translatesAutoresizingMaskIntoConstraints="NO" id="asi-zM-PnZ" customClass="HeaderView" customModule="IdentHubSDK" customModuleProvider="target">
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="89" translatesAutoresizingMaskIntoConstraints="NO" id="asi-zM-PnZ" customClass="HeaderView" customModule="IdentHubSDKCore">
                     <rect key="frame" x="0.0" y="44" width="414" height="89"/>
                     <color key="backgroundColor" name="background"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Te1-ql-5qf" customClass="StateView" customModule="IdentHubSDK" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Te1-ql-5qf" customClass="StateView" customModule="IdentHubSDKCore">
                     <rect key="frame" x="0.0" y="133" width="414" height="250"/>
                     <color key="backgroundColor" name="background"/>
                     <constraints>
@@ -78,7 +78,7 @@
     </objects>
     <resources>
         <namedColor name="background">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

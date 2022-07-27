@@ -4,18 +4,23 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 internal class BaseCoordinator: Coordinator {
 
     // MARK: - Properties -
     internal let presenter: Router
+    private let appDependencies: AppDependencies
+    private let actionPerformer: ActionPerformer
 
     // MARK: - Init method -
 
     /// Initiate coordinator object
     /// - Parameter presenter: root navigaiton router in Fourthline flow
-    internal init(presenter: Router) {
+    internal init(presenter: Router, appDependencies: AppDependencies) {
         self.presenter = presenter
+        self.appDependencies = appDependencies
+        self.actionPerformer = ActionPerformer()
     }
 
     // MARK: - Public methods -
@@ -27,10 +32,11 @@ internal class BaseCoordinator: Coordinator {
     }
 
     internal func quit(action: @escaping () -> Void) {
-        let quitPopUpViewController = QuitPopUpViewController()
-        quitPopUpViewController.quitAction = action
-        quitPopUpViewController.modalPresentationStyle = .overFullScreen
-        presenter.present(quitPopUpViewController, animated: false)
+        let quitAction = QuitAction(colors: appDependencies.serviceLocator.configuration.colors)
+        actionPerformer.performAction(quitAction) { isQuitting in
+            if isQuitting { action() }
+            return true
+        }?.present(on: presenter, animated: false)
     }
 
     internal func close() {

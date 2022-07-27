@@ -12,5 +12,3 @@ FOUNDATION_EXPORT double IdentHubSDKVersionNumber;
 FOUNDATION_EXPORT const unsigned char IdentHubSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <IdentHubSDK/PublicHeader.h>
-
-

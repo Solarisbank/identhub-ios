@@ -5,6 +5,7 @@
 
 import Foundation
 import UIKit
+import IdentHubSDKCore
 
 protocol VerificationService: AnyObject {
     
@@ -20,10 +21,6 @@ protocol VerificationService: AnyObject {
     /// - Parameter completionHandler: Response back if the verification was successful.
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void)
     
-    /// Get mobile number.
-    /// - Parameter completionHandler: Response back with mobile number or error.
-    func getMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void)
-    
     /// Confirm if TAN complies with the mobile number.
     ///
     /// - Parameters:
@@ -37,18 +34,6 @@ protocol VerificationService: AnyObject {
     ///     - iban: IBAN provided by the user.
     ///     - completionHandler: Response back if the verification was successful.
     func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void)
-    
-    /// Authorize signing the documents and send sms with a TAN.
-    ///
-    /// - Parameter completionHandler: Response back if the verification was successful.
-    func authorizeDocuments(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void)
-    
-    /// Confirm the TAN while signing the documents.
-    ///
-    /// - Parameters:
-    ///     - token: Code sent for the given phone number.
-    ///     - completionHandler: Response back if the verification was successful.
-    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void)
     
     /// Get indentification.
     ///
@@ -128,14 +113,6 @@ final class VerificationServiceImplementation: VerificationService {
         }
     }
     
-    func getMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
-        let request = MobileNumberRequest()
-        
-        apiClient.execute(request: request, answerType: MobileNumber.self) { result in
-            completionHandler(result)
-        }
-    }
-
     func verifyMobileNumberTAN(token: String, completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {
         do {
             let request = try MobileNumberTANRequest(token: token)
@@ -169,46 +146,12 @@ final class VerificationServiceImplementation: VerificationService {
         }
     }
 
-    func authorizeDocuments(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-        guard let identificationUID = sessionInfoProvider.identificationUID else {
-            log(error: RequestError.emptyIUID)
-            
-            return
-        }
-
-        do {
-            let request = try DocumentsAuthorizeRequest(identificationUID: identificationUID)
-            
-            apiClient.execute(request: request, answerType: Identification.self) { result in
-                completionHandler(result)
-            }
-        } catch {
-            log(error: error)
-            completionHandler(.failure(ResponseError(.requestError)))
-        }
-    }
-
-    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-        guard let identificationUID = sessionInfoProvider.identificationUID else {
-            log(error: RequestError.emptyIUID)
-            
-            return
-        }
-
-        do {
-            let request = try DocumentsTANRequest(identificationUID: identificationUID, token: token)
-            
-            apiClient.execute(request: request, answerType: Identification.self) { result in
-                completionHandler(result)
-            }
-        } catch {
-            log(error: error)
-            completionHandler(.failure(ResponseError(.requestError)))
-        }
-    }
-
     func getIdentification(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-        guard let identificationUID = sessionInfoProvider.identificationUID else { return }
+        guard let identificationUID = sessionInfoProvider.identificationUID else {
+            completionHandler(.failure(.init(.requestError)))
+            
+            return
+        }
 
         do {
             let request = try IdentificationRequest(identificationUID: identificationUID)

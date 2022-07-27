@@ -5,6 +5,7 @@
 
 import Foundation
 import MapKit
+import IdentHubSDKCore
 
 final class LocationManager: NSObject, CLLocationManagerDelegate {
 

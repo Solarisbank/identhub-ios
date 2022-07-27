@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 internal struct BankIDIBANRequest: BackendRequest {
 

@@ -6,6 +6,7 @@
 import UIKit
 
 /// UIButton which has three adoptable appearances.
+@available(*, deprecated, message: "Moved to the Core module")
 class ActionRoundedButton: UIButton {
 
     enum Constants {

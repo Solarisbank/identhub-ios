@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 public enum IdentSessionURLError: Error {
     case invalidSessionURL // Session URL is empty or not valid, defines by creation URL object from url string. If URL object is nil raised error

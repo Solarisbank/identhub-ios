@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 final class IPAddressRequest: BackendRequest {
 

@@ -29,6 +29,9 @@ class Checkbox: UIButton {
     }
 
     // MARK: - Private methods -
+    private func updateUI() {
+        layer.borderColor = UIColor.sdkColor(.primaryAccent).cgColor
+    }
     private func configureUI() {
 
         layer.cornerRadius = 5
@@ -42,5 +45,10 @@ class Checkbox: UIButton {
 
         layer.borderWidth = isSelected ? 0 : 1
         backgroundColor = isSelected ? .sdkColor(.primaryAccent) : .clear
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
     }
 }

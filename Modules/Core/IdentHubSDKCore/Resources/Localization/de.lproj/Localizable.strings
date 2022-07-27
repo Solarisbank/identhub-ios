@@ -1,0 +1,43 @@
+// API Errors
+"api_error_malformed_json" = "Der in der Antwort empfangene String kann nicht geparst werden.";
+"api_error_client_error" = "Ein clientseitiger Fehler ist aufgetreten.";
+"api_error_authorization_failed" = "Autorisierung fehlgeschlagen.";
+"api_error_unauthorized" = "Aktion nicht autorisiert.";
+"api_error_data_mismatch" = "Datenkonflikt.";
+"api_error_incorrect_ident_status" = "Der Identifikationsstatus darf die Aktion nicht fortsetzen.";
+"api_error_unprocessable_entity" = "Daten ungültig oder abgelaufen.";
+"api_error_internal_server_error" = "Interner Serverfehler ist aufgetreten.";
+"api_error_request_build_error" = "Build-Request-Fehler ist aufgetreten.";
+"api_error_unknown" = "Ein oben nicht aufgeführter Fehler ist aufgetreten.";
+"api_error_resource_not_found" = "Ressource nicht gefunden.";
+"api_error_location_permission" = "Standortzugriff abgelehnt.";
+"api_error_location_error" = "Gerät kann Standortdaten nicht finden.";
+"api_error_iban_verification" = "IBAN-Überprüfung fehlgeschlagen.";
+"api_error_payment_failure" = "Zahlungsüberprüfung fehlgeschlagen.";
+
+// Common
+"common_next" = "Weiter";
+"common_quit" = "Verlassen";
+"common_continue_button" = "Weiter";
+"common_back" = "Zurück";
+"common_powered_by_solarisbank" = "Powered by Solarisbank";
+"common_verifying" = "Verifizieren...";
+"common_download_all_documents" = "Alle Dokumente herunterladen";
+"common_dismiss" = "Verwerfen";
+"common_try_again" = "Erneut versuchen";
+"common_cancel" = "Abbrechen";
+"common_settings" = "Einstellungen";
+"common_generic_error" = "Etwas ist schiefgelaufen";
+"common_confirm" = "Bestätigen";
+
+// ProgressView
+"progress_view_progress" = "Identifikation in Bearbeitung";
+"progress_view_phone_verification" = "Verifizierung der Telefonnummer";
+"progress_view_bank_verification" = "Verifizierung der Bankverbindung";
+"progress_view_sign_documents" = "Dokumente unterschreiben";
+
+// Quitting
+"quitting_title" = "Sind Sie sich sicher, dass Sie den Anmeldeprozess verlassen wollen?";
+"quitting_description" = "Ihr Fortschritt wird nicht gespeichert. Beim nächsten Versuch werden Sie wieder von vorne beginnen.";
+"quitting_stay_action" = "Bleiben";
+

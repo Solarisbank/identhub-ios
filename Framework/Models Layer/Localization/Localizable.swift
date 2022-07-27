@@ -4,36 +4,11 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 enum Localizable {
-    enum IdentificationProgressView {
-        static let identificationProgress = "progress_view_progress".localized()
-        static let phoneVerification = "progress_view_phone_verification".localized()
-        static let bankVerification = "progress_view_bank_verification".localized()
-        static let documents = "progress_view_sign_documents".localized()
-    }
-
-    enum Common {
-        static let next = "common_next".localized()
-        static let quit = "common_quit".localized()
-        static let continueBtn = "common_continue_button".localized()
-        static let back = "common_back".localized()
-        static let poweredBySolarisBank = "common_powered_by_solarisbank".localized()
-        static let verifying = "common_verifying".localized()
-        static let downloadAllDocuments = "common_download_all_documents".localized()
-        static let dismiss = "common_dismiss".localized()
-        static let tryAgain = "common_try_again".localized()
-        static let cancel = "common_cancel".localized()
-        static let settings = "common_settings".localized()
-        static let defaultErr = "common_generic_error".localized()
-        static let confirm = "common_confirm".localized()
-    }
-
-    enum Quiting {
-        static let title = "quitting_title".localized()
-        static let description = "quitting_description".localized()
-        static let stay = "quitting_stay_action".localized()
-    }
+    typealias Common = IdentHubSDKCore.Localizable.Common
+    typealias APIErrorDesc = IdentHubSDKCore.Localizable.APIErrorDesc
 
     enum StartIdentification {
         static let startIdentification = "start_ident_title".localized()
@@ -95,25 +70,6 @@ enum Localizable {
                 static let technicalIssueDescription = "payment_verification_error_description".localized()
                 static let action = "payment_verification_error_action".localized()
             }
-        }
-    }
-
-    enum SignDocuments {
-        enum ConfirmApplication {
-            static let confirmYourApplication = "sign_documents_application_confirm".localized()
-            static let description = "sign_documents_application_description".localized()
-            static let docItemTitle = "sign_documents_application_view_doc".localized()
-            static let termsAndConditionsFootnote = "sign_documents_application_terms_text".localized()
-        }
-
-        enum Sign {
-            static let title = "sign_documents_title".localized()
-            static let transactionInfoPartOne = "sign_documents_transaction_info_part_one".localized()
-            static let transactionInfoPartTwo = "sign_documents_transaction_info_part_two".localized()
-            static let submitAndSign = "sign_documents_submit_and_sign".localized()
-            static let requestCode = "sign_documents_request_code".localized()
-            static let applicationIsBeingProcessed = "sign_documents_application_being_processed".localized()
-            static let downloadDocuments = "sign_documents_download_documents".localized()
         }
     }
 
@@ -311,26 +267,6 @@ enum Localizable {
         static let title = "verification_title".localized()
         static let description = "verification_description".localized()
         static let processTitle = "verification_process_title".localized()
-    }
-
-    enum APIErrorDesc {
-        static let malformedResponseJson = "api_error_malformed_json".localized()
-        static let clientError = "api_error_client_error".localized()
-        static let authorizationFailed = "api_error_authorization_failed".localized()
-        static let unauthorizedAction = "api_error_unauthorized".localized()
-        static let expectationMismatch = "api_error_data_mismatch".localized()
-        static let incorrectIdentificationStatus = "api_error_incorrect_ident_status".localized()
-        static let unprocessableEntity = "api_error_unprocessable_entity".localized()
-        static let internalServerError = "api_error_internal_server_error".localized()
-        static let requestError = "api_error_request_build_error".localized()
-        static let unknownError = "api_error_unknown".localized()
-        static let resourceNotFound = "api_error_resource_not_found".localized()
-        static let locationAccessError = "api_error_location_permission".localized()
-        static let locationError = "api_error_location_error".localized()
-        static let ibanVerificationError = "api_error_iban_verification".localized()
-        static let paymentFailure = "api_error_payment_failure".localized()
-        static let unsupportedResponse = "SDK encountered a response that is not supported in this version"
-        static let identificationNotPossible = "SDK could not identify the user. Try your fallback identification method."
     }
 
     enum Result {

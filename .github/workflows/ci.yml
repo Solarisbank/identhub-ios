@@ -16,10 +16,45 @@ jobs:
       run: |
         pod repo add fourthline-specs https://${{ secrets.FOURTHLINE_COCOAPODS_USER }}:${{ secrets.FOURTHLINE_COCOAPODS_TOKEN }}@github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git
         pod install
+    - name: Build For Testing
+      run: |
+        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" build-for-testing
+
+    - name: Run Unit Tests
+      id: unit_tests
+      run: |
+        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" -resultBundlePath UnitTestsResults.xcresult test-without-building
+    - name: Archive Unit Tests Results
+      if: ${{ failure() && steps.unit_tests.conclusion == 'failure' }}
+      run: |
+        zip -r UnitTestsResults.zip UnitTestsResults.xcresult/
+    - name: Upload Unit Tests Results
+      if: ${{ failure() && steps.unit_tests.conclusion == 'failure' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: UnitTestsResults.zip
+        path: UnitTestsResults.zip
+        retention-days: 1
+        if-no-files-found: ignore
+
+    - name: Run Snapshot Tests
+      id: snapshot_tests
+      run: |
+        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" -resultBundlePath SnapshotTestsResults.xcresult -testPlan IdentHubSDKSnapshotTests test-without-building
+    - name: Archive Snapshot Tests Results
+      if: ${{ steps.snapshot_tests.conclusion == 'failure' }}
+      run: |
+        zip -r SnapshotTestsResults.zip SnapshotTestsResults.xcresult/
+    - name: Upload Snapshot Tests Results
+      if: ${{ steps.snapshot_tests.conclusion == 'failure' }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: SnapshotTestsResults.zip
+        path: SnapshotTestsResults.zip
+        retention-days: 1
+        if-no-files-found: ignore
+
     - name: Build Sample App
       run: |
         xcodebuild -workspace IdentHubSDK.xcworkspace -scheme Sample -destination "platform=iOS Simulator,name=iPhone 12" build
-    - name: Run Tests
-      run: |
-        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12" test
-  
+

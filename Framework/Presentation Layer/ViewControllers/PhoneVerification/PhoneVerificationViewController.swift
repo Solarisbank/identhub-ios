@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 /// View of phone verificaiton scree
 final internal class PhoneVerificationViewController: UIViewController, Quitable {

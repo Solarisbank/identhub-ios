@@ -5,17 +5,18 @@
 
 import XCTest
 @testable import IdentHubSDK
-
+import IdentHubSDKCore
+import IdentHubSDKTestBase
 
 class BankIDCoordinatorTest: BaseTestCase {
 
     var bankIDCoordinator: BankIDCoordinator?
-    var presenter: MockRouter!
+    var presenter: RouterMock!
     
     override func setUpWithError() throws {
         resetStorage()
-        let appDependencies = AppDependencies(sessionToken: "")
-        presenter = MockRouter()
+        let appDependencies = AppDependencies(sessionToken: "", presenter: PresenterMock())
+        presenter = RouterMock()
         self.bankIDCoordinator = BankIDCoordinator(appDependencies: appDependencies, presenter: self.presenter)
     }
 
@@ -68,11 +69,12 @@ class BankIDCoordinatorTest: BaseTestCase {
 
 }
 
-class MockRouter: Router {
+class RouterMock: Router {
     var closure: (() -> Void)?
 
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
+    var topShowable: Showable { rootViewController ?? navigationController }
 
     init() {
         navigationController = UINavigationController()

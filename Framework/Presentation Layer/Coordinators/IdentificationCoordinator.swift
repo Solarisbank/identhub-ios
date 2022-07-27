@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 class IdentificationCoordinator: BaseCoordinator {
 
@@ -19,7 +20,6 @@ class IdentificationCoordinator: BaseCoordinator {
     // MARK: - Properties -
     private let appDependencies: AppDependencies
     private var completionHandler: CompletionHandler?
-    private var documentExporter: DocumentExporter = DocumentExporterService()
     private var executedStep: Action = .initialization
     private var identificationMethod: IdentificationStep?
     private var fourthlineCoordinator: FourthlineIdentCoordinator?
@@ -30,7 +30,10 @@ class IdentificationCoordinator: BaseCoordinator {
 
         self.appDependencies = appDependencies
 
-        super.init(presenter: presenter)
+        super.init(
+            presenter: presenter,
+            appDependencies: appDependencies
+        )
     }
 
     // MARK: - Public methods -
@@ -85,7 +88,8 @@ private extension IdentificationCoordinator {
         let requestVM = RequestsViewModel(appDependencies.verificationService, storage: appDependencies.sessionInfoProvider, type: .initateFlow, identCoordinator: self)
         let requestVC = RequestsViewController(requestVM)
 
-        presenter.push(requestVC, animated: true, completion: nil)
+        let animated = presenter.navigationController.viewControllers.isNotEmpty()
+        presenter.push(requestVC, animated: animated, completion: nil)
         executedStep = .initialization
         updateAction(action: .initialization)
     }
@@ -100,6 +104,8 @@ private extension IdentificationCoordinator {
     }
 
     private func startIdentProcess() {
+        configureColors()
+
         if let method = appDependencies.sessionInfoProvider.identificationStep {
             identificationMethod = method
         } else if let method = SessionStorage.obtainValue(for: StoredKeys.identMethod.rawValue) as? String {
@@ -153,6 +159,11 @@ private extension IdentificationCoordinator {
 
             self.bankIDSessionCoordinator?.perform(step: nextStep, self.completionHandler!)
         }
+    }
+
+    private func configureColors() {
+        let colors = ColorsImpl(styleColors: StyleColors.obtainFromStorage())
+        appDependencies.serviceLocator.configuration = Configuration(colors: colors)
     }
 
     private func updateAction(action: Action) {

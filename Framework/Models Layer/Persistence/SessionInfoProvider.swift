@@ -5,6 +5,7 @@
 
 import Foundation
 import UIKit
+import IdentHubSDKCore
 
 /// Describes entity capable of providing information about the session.
 protocol SessionInfoProvider: AnyObject {

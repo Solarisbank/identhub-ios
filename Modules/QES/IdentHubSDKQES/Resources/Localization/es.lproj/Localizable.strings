@@ -1,0 +1,29 @@
+// Sign Documents
+"sign_documents_application_confirm" = "Descargue y compruebe sus datos";
+"sign_documents_application_description" = "Si prega di rivedere il documento seguente";
+"sign_documents_application_terms_text" = "Se aplican los términos y condiciones de Swisscom.";
+"sign_documents_application_view_doc" = "Ver documento";
+"sign_documents_application_send_code" = "Enviar código para firmar";
+"sign_documents_title" = "Confirme sus detalles";
+"sign_documents_transaction_info_part_one" = "Tu ID de la operación es ";
+"sign_documents_transaction_info_part_two" = "\nAsegúrate de que es el mismo en el SMS que acabas de recibir.";
+"sign_documents_submit_and_sign" = "Enviar y firmar";
+"sign_documents_request_code" = "Solicitar un nuevo código";
+"sign_documents_application_being_processed" = "Tu solicitud está siendo procesada...";
+"sign_documents_download_documents" = "Pronto podrás descargar todos los documentos firmados.";
+
+// Phone Verification
+"phone_verification_title" = "Confirme su numero de teléfono";
+"phone_verification_enter_code" = "Introducir el código de 6 dígitos enviado a %1$@";
+"phone_verification_request_code_timer" = "Solicitar un nuevo código en";
+"phone_verification_send_new_code" = "Enviar nuevo código";
+"phone_verification_wrong_tan" = "TAN incorrecto. Debes solicitar un nuevo TAN e intentarlo de nuevo.";
+"request_tan_failed" = "Error al solicitar un nuevo TAN.";
+"phone_verification_submit_code" = "Enviar código";
+"phone_verification_request_new_code" = "Solicitar un nuevo código";
+"phone_verification_success_title" = "¡Teléfono validado con éxito!";
+"phone_verification_success_description" = "Tenga a mano su %1$@ y los datos de acceso as su banco online para el siguiente paso";
+"phone_verification_login_credentials" = "login credentials";
+"phone_verification_error_title" = "Error de verificación telefónica";
+"phone_verification_error_description" = "El TAN proporcionado no es válido.";
+"phone_verification_error_action" = "Vuelve a intentar la verificación del TAN";

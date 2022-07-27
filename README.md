@@ -65,7 +65,7 @@ IdentHub SDK requires minimum iOS version 12.
 
 ## Integration
 
-You can add the desired IdentHub SDK modules to your project by using CocoaPods or Carthage dependency managers.
+You can add the desired IdentHub SDK modules to your project by using CocoaPods dependency manager.
 
 ### CocoaPods
 
@@ -83,6 +83,8 @@ platform :ios, '12.0'
 
 target 'YourTargetName' do
   pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
+  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
+  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
 end
 
 post_install do |installer|
@@ -104,31 +106,11 @@ end
 #### Dependency to Fourthline SDK
 The Fourthline SDK is not publicly available. Please get in contact with Solarisbank to request access to it.
 
-### Carthage
+### Required modules to integrate SDK:
 
-1. Create Cartfile in your projects folder:
-
-    ```bash
-    touch Cartfile
-    ```
-
-2. Include the source of the SDK in the Cartfile with the latest version of the SDK, e.g.:
-
-    ```bash
-    github "Solarisbank/identhub-ios" ~> 1.2.8
-    ```
-
-3. Run carthage script:
-
-    ```bash
-    carthage bootstrap --platform iOS --cache-builds
-    ```
-
-4. Follow [Carthage framework setup guidelines](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos):
-- Skip creating Cartfile step
-- Skip `carthage update` step
-
-5. Open your project and build it.
+ - SolarisbankIdentHub
+ - SolarisbankIdentHubCore
+ - SolarisbankIdentHubQES
 
 ## Example Usage
 

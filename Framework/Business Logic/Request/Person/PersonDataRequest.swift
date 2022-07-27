@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 class PersonDataRequest: BackendRequest {
 

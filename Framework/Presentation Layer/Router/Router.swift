@@ -4,9 +4,10 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 /// App navigation protocol
-protocol Router {
+protocol Router: Presenter {
 
     var navigationController: UINavigationController { get }
     var rootViewController: UIViewController? { get }

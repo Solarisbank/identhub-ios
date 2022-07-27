@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 final internal class PaymentVerificationViewModel: NSObject, ViewModel {
 

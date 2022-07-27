@@ -1,0 +1,5 @@
+ACTION: SignDocumentsAction.perform(SignDocumentsActionInput(identificationUID: "uid", mobileNumber: Optional("+49 111 222 333")))
+ACTION: SignDocumentsAction.callback((result: Swift.Result<IdentHubSDKQES.SignDocumentsActionOutput, IdentHubSDKCore.APIError>.success(IdentHubSDKQES.SignDocumentsActionOutput.quit), isFinished: false))
+ACTION: Quit.perform(())
+ACTION: Quit.callback((result: false, isFinished: true))
+ACTION: SignDocumentsAction.callback((result: Swift.Result<IdentHubSDKQES.SignDocumentsActionOutput, IdentHubSDKCore.APIError>.success(IdentHubSDKQES.SignDocumentsActionOutput.identificationConfirmed(token: "XXX")), isFinished: true))

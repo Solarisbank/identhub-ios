@@ -5,6 +5,7 @@
 
 import UIKit
 import FourthlineKYC
+import IdentHubSDKCore
 
 let progressCellID = "UploadProgressCellID"
 

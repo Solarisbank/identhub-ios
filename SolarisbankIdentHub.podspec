@@ -41,14 +41,15 @@ Pod::Spec.new do |spec|
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.source_files = "Framework/**/*.{h,m,swift}", 'fixup_project_structure'
-  spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets,lproj,strings}"
-
+  spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets,lproj,strings}","Shared/Colors.xcassets"
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.dependency 'FourthlineSDK', '2.11.4'
   spec.dependency 'ZIPFoundation', '0.9.11'
   spec.dependency 'InputMask', '6.1.0'
   spec.dependency 'lottie-ios'
+  spec.dependency 'SolarisbankIdentHubCore', "#{spec.version}"
+  spec.dependency 'SolarisbankIdentHubQES', "#{spec.version}"
 
   spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

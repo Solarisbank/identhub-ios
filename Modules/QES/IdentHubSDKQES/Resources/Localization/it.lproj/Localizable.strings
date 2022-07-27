@@ -1,0 +1,29 @@
+// Sign Documents
+"sign_documents_application_confirm" = "Scarichi e controlli i Suoi dati";
+"sign_documents_application_description" = "La preghiamo di controllare il/i documento/i seguente";
+"sign_documents_application_terms_text" = "Si applicano i termini e le condizioni di Swisscom";
+"sign_documents_application_view_doc" = "Visualizzare il documento";
+"sign_documents_application_send_code" = "Ricevi il codice e firma";
+"sign_documents_title" = "Confermi i Suoi dettagli";
+"sign_documents_transaction_info_part_one" = "Il tuo ID transazione è";
+"sign_documents_transaction_info_part_two" = "\nAssicurati di avere lo stesso ID transazione nell'SMS.";
+"sign_documents_submit_and_sign" = "Firma e invia";
+"sign_documents_request_code" = "Richiedi nuovo codice";
+"sign_documents_application_being_processed" = "La tua richiesta è in fase di elaborazione...";
+"sign_documents_download_documents" = "Presto potrai scaricare tutti i documenti firmati.";
+
+// Phone Verification
+"phone_verification_title" = "Confermare il telefono";
+"phone_verification_enter_code" = "Introduzca el código de 6 dígitos enviado a su número móvil %1$@";
+"phone_verification_request_code_timer" = "Richiedi nuovo codice in";
+"phone_verification_send_new_code" = "Invia nuovo codice";
+"phone_verification_wrong_tan" = "TAN errato. Devi richiedere un nuovo TAN e riprovare.";
+"request_tan_failed" = "Impossibile richiedere il nuovo TAN.";
+"phone_verification_submit_code" = "Manda il codice";
+"phone_verification_request_new_code" = "Richiedi un nuovo codice";
+"phone_verification_success_title" = "Verifica telefonica riuscita!";
+"phone_verification_success_description" = "Per il prossimo passo la preghiamo di avere l´%1$@ e %2$@ a portata di mano";
+"phone_verification_login_credentials" = "le credenziali di accesso";
+"phone_verification_error_title" = "Errore di verifica del numero di telefono";
+"phone_verification_error_description" = "Il TAN specificato non è valido.";
+"phone_verification_error_action" = "Ripetere la verifica TAN";

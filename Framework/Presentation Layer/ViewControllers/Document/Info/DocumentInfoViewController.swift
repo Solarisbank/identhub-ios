@@ -70,6 +70,7 @@ extension DocumentInfoViewController {
         warningLbl.text = InfoText.warning
         quitBtn.setTitle(Localizable.Common.back, for: .normal)
         continueBtn.setTitle(Localizable.Common.continueBtn, for: .normal)
+        continueBtn.setTitle(Localizable.Common.continueBtn, for: .disabled)
     }
 
     private func handleUIUpdates() {

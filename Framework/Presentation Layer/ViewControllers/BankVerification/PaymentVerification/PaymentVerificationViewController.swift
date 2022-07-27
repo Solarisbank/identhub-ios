@@ -5,6 +5,7 @@
 
 import UIKit
 import WebKit
+import IdentHubSDKCore
 
 /// UIViewController which displays screen to verify payment.
 final internal class PaymentVerificationViewController: UIViewController, Quitable {

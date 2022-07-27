@@ -1,0 +1,4 @@
+ACTION: ConfirmApplicationAction.perform(ConfirmApplicationActionInput(identificationUID: "uid"))
+ACTION: ConfirmApplicationAction.callback((result: IdentHubSDKQES.ConfirmApplicationActionOutput.quit, isFinished: true))
+ACTION: Quit.perform(())
+ACTION: Quit.callback((result: true, isFinished: true))

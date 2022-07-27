@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 /// SDK navigation router exectured all navigation commands and conformed Router protocol
 class IdentHubSDKRouter: NSObject, Router {
@@ -15,6 +16,10 @@ class IdentHubSDKRouter: NSObject, Router {
 
     /// Array with all completions block passed as parameter on push/pop/present/dismiss methods
     private var completions: [UIViewController : () -> Void]
+
+    var topShowable: Showable {
+        rootViewController ?? navigationController
+    }
 
     var rootViewController: UIViewController? {
       return navigationController.viewControllers.first
@@ -75,6 +80,7 @@ class IdentHubSDKRouter: NSObject, Router {
             completion?()
             
             self?.identHubSession = nil
+            self?.navigationController = UINavigationController()
         }
     }
 

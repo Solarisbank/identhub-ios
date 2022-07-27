@@ -6,6 +6,7 @@
 import UIKit
 import XCTest
 @testable import IdentHubSDK
+import IdentHubSDKCore
 
 enum TestIdentMethod {
     case fourthlineSimplified
@@ -73,14 +74,6 @@ class VerificationServiceMock: VerificationService {
     }
     
     func verifyIBAN(_ iban: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-        XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
-    }
-    
-    func authorizeDocuments(completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
-        XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
-    }
-    
-    func verifyDocumentsTAN(token: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         XCTExpectFailure("Method will be used in \"bank_id\" or \"bank\" test coverage cases")
     }
     

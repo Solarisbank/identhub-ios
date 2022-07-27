@@ -4,8 +4,9 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
-class CircleProgressView: NibView {
+final class CircleProgressView: NibView {
 
     // MARK: - Outlets -
     @IBOutlet var contentView: UIView!

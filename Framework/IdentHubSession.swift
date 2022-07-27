@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 /// Identification session results delegate
 public protocol IdentHubSDKManagerDelegate: AnyObject {
@@ -34,13 +35,12 @@ public typealias CompletionHandler = (IdentificationSessionResult) -> Void
 /// Responsible for creating and managing identification process provided by `Solarisbank` into your iOS app
 final public class IdentHubSession {
 
-    private let appDependencies: AppDependencies
-    private weak var sessionDelegate: IdentHubSDKManagerDelegate?
-    private var completionSessionBlock: CompletionHandler?
-    private var bankIDSessionCoordinator: BankIDCoordinator?
-    private var identCoordinator: IdentificationCoordinator?
-    private weak var rootViewController: UIViewController?
-    
+    private let sessionToken: String
+
+    private lazy var appDependencies: AppDependencies = {
+        AppDependencies(sessionToken: sessionToken, presenter: identRouter)
+    }()
+
     private lazy var identRouter: IdentHubSDKRouter = {
         guard let rootViewController = self.rootViewController else {
             fatalError("Please provide root view controller first.")
@@ -49,6 +49,10 @@ final public class IdentHubSession {
         return IdentHubSDKRouter(rootViewController: rootViewController, identHubSession: self)
     }()
     
+    private var identCoordinator: IdentificationCoordinator?
+    private var completionSessionBlock: CompletionHandler?
+    private weak var rootViewController: UIViewController?
+    private weak var sessionDelegate: IdentHubSDKManagerDelegate?
 
     /// Initiate ident hub session manager
     /// - Parameters:
@@ -56,9 +60,7 @@ final public class IdentHubSession {
     ///   - sessionURL: string value of the session url with host URL and session token value in path component
     /// - Throws: validation session url cases
     public init(rootViewController: UIViewController, sessionURL: String) throws {
-        let sessionToken = try SessionURLParser.obtainSessionToken(sessionURL)
-
-        self.appDependencies = AppDependencies(sessionToken: sessionToken)
+        self.sessionToken = try SessionURLParser.obtainSessionToken(sessionURL)
         self.rootViewController = rootViewController
         
         // Logging setup via Swift compile-time flags:
@@ -76,7 +78,7 @@ final public class IdentHubSession {
     deinit {
         KYCContainer.removeSharedContainer()
     }
-
+    
     /// Method starts BandID identification process with updating status by delegate
     /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter delegate: object conforms process status delegate methods

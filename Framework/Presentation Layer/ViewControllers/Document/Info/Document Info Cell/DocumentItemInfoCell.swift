@@ -63,6 +63,9 @@ extension DocumentItemInfoCell: UITextFieldDelegate {
 // MARK: - Internal methods -
 extension DocumentItemInfoCell {
 
+    private func updateUI() {
+        borderView.layer.borderColor = UIColor.sdkColor(.base100).cgColor
+    }
     private func configureBorderView() {
         borderView.layer.borderWidth = 2
         borderView.layer.borderColor = UIColor.sdkColor(.base100).cgColor
@@ -136,6 +139,11 @@ extension DocumentItemInfoCell {
     private func contentDidChange() {
         guard let _ = cellContent?.type else { return }
         configureInformUI(cellContent!.getStatus())
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateUI()
     }
 }
  

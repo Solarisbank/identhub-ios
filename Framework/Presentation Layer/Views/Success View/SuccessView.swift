@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 /// UIView which displays a success message.
 internal class SuccessView: NibView {

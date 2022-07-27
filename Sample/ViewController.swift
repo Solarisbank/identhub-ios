@@ -5,6 +5,7 @@
 
 import UIKit
 import IdentHubSDK
+import IdentHubSDKCore
 
 let placeholderText = "Please enter session URL"
 

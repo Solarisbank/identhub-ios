@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 /// ViewModel which supports IBAN view controller.
 final internal class IBANVerificationViewModel: NSObject, ViewModel {

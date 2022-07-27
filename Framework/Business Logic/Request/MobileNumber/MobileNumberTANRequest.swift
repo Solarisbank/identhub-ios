@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import IdentHubSDKCore
 
 struct MobileNumberTANRequest: BackendRequest {
 

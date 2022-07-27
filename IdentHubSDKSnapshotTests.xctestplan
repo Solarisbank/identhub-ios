@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "65BB76A8-ECA2-4DD4-B151-7B26A2A2DA59",
+      "name" : "English",
+      "options" : {
+        "language" : "en",
+        "region" : "US"
+      }
+    },
+    {
+      "id" : "835F74AA-9760-4B9F-8A9B-85B5135D216D",
+      "name" : "German",
+      "options" : {
+        "language" : "de",
+        "region" : "DE"
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/QES\/QES.xcodeproj",
+        "identifier" : "88EF24A12853571700D98123",
+        "name" : "IdentHubSDKQESSnapshotTests"
+      }
+    }
+  ],
+  "version" : 1
+}

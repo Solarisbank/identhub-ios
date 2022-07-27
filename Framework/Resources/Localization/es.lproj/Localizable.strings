@@ -1,29 +1,3 @@
-// ProgressView
-"progress_view_progress" = "Progreso de la identificación";
-"progress_view_phone_verification" = "Verificación telefónica";
-"progress_view_bank_verification" = "Verificación bancaria";
-"progress_view_sign_documents" = "Firma de documentos";
-
-// Common
-"common_next" = "Siguiente";
-"common_quit" = "Salir";
-"common_continue_button" = "Continuar";
-"common_back" = "Atrás";
-"common_powered_by_solarisbank" = "Desarrollado por Solarisbank";
-"common_verifying" = "Verificando...";
-"common_download_all_documents" = "Descargar todos los documentos";
-"common_dismiss" = "Descartar";
-"common_try_again" = "Volver a intentar";
-"common_cancel" = "Cancelar";
-"common_settings" = "Ajustes";
-"common_generic_error" = "Algo salió mal";
-"common_confirm" = "Confirmar";
-
-// Quitting
-"quitting_title" = "¿Estás seguro de que deseas abandonar el proceso de registro?";
-"quitting_description" = "Tu progreso se perderá. La próxima vez deberás repetir los pasos ya realizados.";
-"quitting_stay_action" = "Permanecer";
-
 // Start Identification
 "start_ident_title" = "Iniciar identificación";
 "start_ident_disclaimer" = "Para completar el proceso de identificación, tendrás que:";
@@ -68,20 +42,6 @@
 "payment_verification_error_title" = "Error de verificación del pago";
 "payment_verification_error_description" = "Lamentablemente se ha producido un error técnico. Vuelve a intentarlo.";
 "payment_verification_error_action" = "Vuelve a intentar la verificación del IBAN";
-
-// Sign Documents
-"sign_documents_application_confirm" = "Descargue y compruebe sus datos";
-"sign_documents_application_description" = "Si prega di rivedere il documento seguente";
-"sign_documents_application_terms_text" = "Se aplican los términos y condiciones de Swisscom.";
-"sign_documents_application_view_doc" = "Ver documento";
-"sign_documents_application_send_code" = "Enviar código para firmar";
-"sign_documents_title" = "Confirme sus detalles";
-"sign_documents_transaction_info_part_one" = "Tu ID de la operación es ";
-"sign_documents_transaction_info_part_two" = "\nAsegúrate de que es el mismo en el SMS que acabas de recibir.";
-"sign_documents_submit_and_sign" = "Enviar y firmar";
-"sign_documents_request_code" = "Solicitar un nuevo código";
-"sign_documents_application_being_processed" = "Tu solicitud está siendo procesada...";
-"sign_documents_download_documents" = "Pronto podrás descargar todos los documentos firmados.";
 
 // Finish identification
 "finish_ident_successful_title" = "¡Identificación realizada con éxito!";
@@ -232,23 +192,6 @@
 "verification_title" = "Verificación";
 "verification_description" = "Espera la verificación...";
 "verification_process_title" = "Verificación de datos...";
-
-// API Errors
-"api_error_malformed_json" = "Indica que la cadena recibida en la respuesta no ha podido ser analizada.";
-"api_error_client_error" = "Indica error por parte del cliente.";
-"api_error_authorization_failed" = "Indica que la autorización ha fallado.";
-"api_error_unauthorized" = "La acción no ha sido autorizada.";
-"api_error_data_mismatch" = "Incompatibilidad de datos.";
-"api_error_incorrect_ident_status" = "El estado de identificación no fue autorizado para proceder con la acción.";
-"api_error_unprocessable_entity" = "Datos no válidos o caducados.";
-"api_error_internal_server_error" = "Indica error interno del servidor.";
-"api_error_request_build_error" = "Indica error de solicitud de estructura.";
-"api_error_unknown" = "Indica que el cliente api ha encontrado un error que no está en la lista anterior.";
-"api_error_resource_not_found" = "No se ha encontrado el recurso.";
-"api_error_location_permission" = "Permiso de ubicación denegado.";
-"api_error_location_error" = "El dispositivo no puede definir los datos de ubicación.";
-"api_error_iban_verification" = "Fallo en la verificación del IBAN.";
-"api_error_payment_failure" = "Fallo en la verificación del pago.";
 
 // Result
 "result_success_title" = "Enhorabuena";

@@ -6,6 +6,7 @@
 import UIKit
 import AVFoundation
 import FourthlineCore
+import IdentHubSDKCore
 
 /// Fourthline identification process flow coordinator class
 /// Used for navigating between screens and update process status
@@ -22,7 +23,10 @@ class FourthlineIdentCoordinator: BaseCoordinator {
     init(appDependencies: AppDependencies, presenter: Router) {
         self.appDependencies = appDependencies
 
-        super.init(presenter: presenter)
+        super.init(
+            presenter: presenter,
+            appDependencies: appDependencies
+        )
 
         KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
     }
@@ -198,6 +202,8 @@ private extension FourthlineIdentCoordinator {
             close()
         case .confirmed:
             completionHandler?(.onConfirm(identification: result.identification))
+            SessionStorage.clearData()
+            appDependencies.serviceLocator.modulesStorageManager.clearAllData()
             close()
         case .authorizationRequired:
             nextStepHandler?(.bankIDQES)

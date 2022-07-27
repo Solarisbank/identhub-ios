@@ -1,0 +1,2 @@
+UPDATE_VIEW: SignDocumentsState(mobileNumber: Optional("+49 111 222 333"), state: IdentHubSDKQES.SignDocumentsState.State.requestingCode, newCodeRemainingTime: 0, transactionId: nil)
+EVENT: quit()
