@@ -10,6 +10,10 @@ jobs:
 
     runs-on: macos-latest
 
+    env:
+      UNIT_TESTS_RESULTS: UnitTestsResults_${{ github.run_number }}#${{ github.run_attempt }}
+      SNAPSHOT_TESTS_RESULTS: SnapshotTestsResults_${{ github.run_number }}#${{ github.run_attempt }}
+
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
@@ -23,34 +27,34 @@ jobs:
     - name: Run Unit Tests
       id: unit_tests
       run: |
-        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" -resultBundlePath UnitTestsResults.xcresult test-without-building
+        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" -resultBundlePath $UNIT_TESTS_RESULTS.xcresult test-without-building
     - name: Archive Unit Tests Results
       if: ${{ failure() && steps.unit_tests.conclusion == 'failure' }}
       run: |
-        zip -r UnitTestsResults.zip UnitTestsResults.xcresult/
+        zip -r $UNIT_TESTS_RESULTS.zip $UNIT_TESTS_RESULTS.xcresult/
     - name: Upload Unit Tests Results
       if: ${{ failure() && steps.unit_tests.conclusion == 'failure' }}
       uses: actions/upload-artifact@v3
       with:
-        name: UnitTestsResults.zip
-        path: UnitTestsResults.zip
+        name: ${{ env.UNIT_TESTS_RESULTS }}
+        path: ${{ env.UNIT_TESTS_RESULTS }}.zip
         retention-days: 1
         if-no-files-found: ignore
 
     - name: Run Snapshot Tests
       id: snapshot_tests
       run: |
-        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" -resultBundlePath SnapshotTestsResults.xcresult -testPlan IdentHubSDKSnapshotTests test-without-building
+        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" -resultBundlePath $SNAPSHOT_TESTS_RESULTS.xcresult -testPlan IdentHubSDKSnapshotTests test-without-building
     - name: Archive Snapshot Tests Results
-      if: ${{ steps.snapshot_tests.conclusion == 'failure' }}
+      if: ${{ failure() && steps.snapshot_tests.conclusion == 'failure' }}
       run: |
-        zip -r SnapshotTestsResults.zip SnapshotTestsResults.xcresult/
+        zip -r $SNAPSHOT_TESTS_RESULTS.zip $SNAPSHOT_TESTS_RESULTS.xcresult/
     - name: Upload Snapshot Tests Results
-      if: ${{ steps.snapshot_tests.conclusion == 'failure' }}
+      if: ${{ failure() && steps.snapshot_tests.conclusion == 'failure' }}
       uses: actions/upload-artifact@v3
       with:
-        name: SnapshotTestsResults.zip
-        path: SnapshotTestsResults.zip
+        name: ${{ env.SNAPSHOT_TESTS_RESULTS }}
+        path: ${{ env.SNAPSHOT_TESTS_RESULTS }}.zip
         retention-days: 1
         if-no-files-found: ignore
 

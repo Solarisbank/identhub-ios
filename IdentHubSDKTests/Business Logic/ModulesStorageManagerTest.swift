@@ -20,7 +20,7 @@ class ModulesStorageManagerTests: XCTestCase {
             let fileStorage = sut.fileStorage(for: moduleName)
 
             storage[.testKey] = storageTestKeyValue
-            assertAsync { expectation in
+            assertAsync(timeout: 1.0) { expectation in
                 fileStorage.write(url: RequestFileMock.bankDocument.url, asFile: "mockFile") { result in
                     result
                         .onSuccess { url in
