@@ -21,8 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		05458B5A288050F900305706 /* Loggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05458B59288050F900305706 /* Loggers.swift */; };
 		057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */; };
+		05AC64DD28927B6F0039D883 /* Loggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64DC28927B6F0039D883 /* Loggers.swift */; };
 		05ED6EE8288A918A00632718 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ED6EE7288A918A00632718 /* LoadingViewController.swift */; };
 		0C007F1725D56977003D42B3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C007F1625D56977003D42B3 /* ErrorView.swift */; };
 		0C12CA9225A71AF50032B520 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C12CA9125A71AF50032B520 /* SuccessView.swift */; };
@@ -59,13 +59,6 @@
 		0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8F025A368E700114CBD /* StartIdentificationViewModel.swift */; };
 		221922DD7B24A3748F1A2522 /* Pods_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D1393CBC90E9D324DA770A6 /* Pods_Sample.framework */; };
 		392F460127A44E040010849E /* BankIDCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F460027A44E040010849E /* BankIDCoordinatorTest.swift */; };
-		393502852878BACE00923779 /* SBLogHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393502842878BACD00923779 /* SBLogHelpers.swift */; };
-		39C8D0892852454C00657375 /* SBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D0882852454C00657375 /* SBLog.swift */; };
-		39C8D08C28524B9300657375 /* SBLogConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */; };
-		39C8D08F2852507A00657375 /* SBLogBackendDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */; };
-		39E2F3D628571DB700CE28CB /* SBLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2F3D528571DB700CE28CB /* SBLogDestination.swift */; };
-		39E2F3DD28577C4200CE28CB /* SBLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2F3DC28577C4200CE28CB /* SBLogTests.swift */; };
-		39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */; };
 		4B7ABC5563AED08F2EEF0E3B /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167F96F5B8A6818DC4F88F5A /* Pods_IdentHubSDK.framework */; };
 		61EA0DCB0CD224FA09654B5A /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8415064EF8021866EE779A02 /* Pods_IdentHubSDKTests.framework */; };
 		67F736E52812A37300655AC7 /* DocumentItemInfoCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */; };
@@ -328,8 +321,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		05458B59288050F900305706 /* Loggers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggers.swift; sourceTree = "<group>"; };
 		057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackForMemoryLeaks.swift"; sourceTree = "<group>"; };
+		05AC64DC28927B6F0039D883 /* Loggers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggers.swift; sourceTree = "<group>"; };
 		05ED6EE7288A918A00632718 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0C007F1625D56977003D42B3 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		0C12CA9125A71AF50032B520 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
@@ -386,13 +379,6 @@
 		392D18A927049FA9001FB64D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		392F460027A44E040010849E /* BankIDCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinatorTest.swift; sourceTree = "<group>"; };
 		393502832878AA1100923779 /* Framework-Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Framework-Development.xcconfig"; sourceTree = "<group>"; };
-		393502842878BACD00923779 /* SBLogHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogHelpers.swift; sourceTree = "<group>"; };
-		39C8D0882852454C00657375 /* SBLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLog.swift; sourceTree = "<group>"; };
-		39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogConsoleDestination.swift; sourceTree = "<group>"; };
-		39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogBackendDestination.swift; sourceTree = "<group>"; };
-		39E2F3D528571DB700CE28CB /* SBLogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestination.swift; sourceTree = "<group>"; };
-		39E2F3DC28577C4200CE28CB /* SBLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SBLogTests.swift; path = IdentHubSDKTests/Logging/SBLogTests.swift; sourceTree = SOURCE_ROOT; };
-		39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestinationTests.swift; sourceTree = "<group>"; };
 		5093DB250CA8BA19E409D745 /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
 		67F736E42812A37300655AC7 /* DocumentItemInfoCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentItemInfoCellTest.swift; sourceTree = "<group>"; };
 		694F9D071A1A037DC6C2A9B2 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -585,6 +571,14 @@
 				057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		05AC64D828927B5B0039D883 /* Loggers */ = {
+			isa = PBXGroup;
+			children = (
+				05AC64DC28927B6F0039D883 /* Loggers.swift */,
+			);
+			path = Loggers;
 			sourceTree = "<group>";
 		};
 		05ED6EE3288A917A00632718 /* Loading */ = {
@@ -784,10 +778,10 @@
 		0CD5CC3C2590F58800FF378F /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				39C8D0872852451F00657375 /* Logging */,
 				0CD5CC3D2590F58800FF378F /* IdentHubSDK.h */,
 				0CB1439D259A46760014B643 /* IdentHubSession.swift */,
 				842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */,
+				05AC64D828927B5B0039D883 /* Loggers */,
 				0CC25B8325A4680500D839AB /* Business Logic */,
 				841A894725F0F648007878C1 /* Presentation Layer */,
 				841A894F25F0F68A007878C1 /* Models Layer */,
@@ -910,36 +904,6 @@
 				24659B0326D62D7300F56089 /* Localizable.strings */,
 			);
 			path = Localization;
-			sourceTree = "<group>";
-		};
-		39C8D0872852451F00657375 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				05458B59288050F900305706 /* Loggers.swift */,
-				39C8D0882852454C00657375 /* SBLog.swift */,
-				393502842878BACD00923779 /* SBLogHelpers.swift */,
-				39E2F3D428571D9F00CE28CB /* Log Destinations */,
-			);
-			path = Logging;
-			sourceTree = "<group>";
-		};
-		39E2F3D428571D9F00CE28CB /* Log Destinations */ = {
-			isa = PBXGroup;
-			children = (
-				39E2F3D528571DB700CE28CB /* SBLogDestination.swift */,
-				39C8D08B28524B9300657375 /* SBLogConsoleDestination.swift */,
-				39C8D08E2852507A00657375 /* SBLogBackendDestination.swift */,
-			);
-			path = "Log Destinations";
-			sourceTree = "<group>";
-		};
-		39E2F3DB28577BFF00CE28CB /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				39E2F3DC28577C4200CE28CB /* SBLogTests.swift */,
-				39E2F3DE28579F4800CE28CB /* SBLogDestinationTests.swift */,
-			);
-			path = Logging;
 			sourceTree = "<group>";
 		};
 		670627E0281168CD00C73F23 /* Document */ = {
@@ -1304,7 +1268,6 @@
 				84A7582525F22E7C004D8F88 /* Business Logic */,
 				84A7582625F22E86004D8F88 /* Models Layer */,
 				8444601B274E6E6100EB7972 /* Presentation Layer */,
-				39E2F3DB28577BFF00CE28CB /* Logging */,
 				84A7582725F22E97004D8F88 /* Resources */,
 			);
 			path = IdentHubSDKTests;
@@ -1948,19 +1911,17 @@
 				8440C56A262F560E001B8E39 /* DocumentScannerAssetBuilder.swift in Sources */,
 				8409768F2633473800C4DC5B /* CircleProgressView.swift in Sources */,
 				0C12CAAE25A784220032B520 /* MobileNumberTANRequest.swift in Sources */,
-				39C8D0892852454C00657375 /* SBLog.swift in Sources */,
 				84DEB64526419CA300E0C5BA /* FourthlineIdentificationStatus.swift in Sources */,
 				0C1B431C25ADCBA1004FFF46 /* PaymentVerificationViewModel.swift in Sources */,
 				84DEB64326419AA900E0C5BA /* FourthlineIdentificationStatusRequest.swift in Sources */,
 				0C527E6725AC814000B6D5DB /* IBANVerificationViewModel.swift in Sources */,
 				0C527E7525AC9C6D00B6D5DB /* BankIDIBANRequest.swift in Sources */,
-				39E2F3D628571DB700CE28CB /* SBLogDestination.swift in Sources */,
 				841E9BBD264EC8D00025FE15 /* FourthlineStep.swift in Sources */,
 				84C8E56C26B83E64002150D6 /* IPAddressRequest.swift in Sources */,
 				84A0126726384BED00672C1B /* KYCZipService.swift in Sources */,
-				393502852878BACE00923779 /* SBLogHelpers.swift in Sources */,
 				84A0126D26388E7C00672C1B /* UploadKYCRequest.swift in Sources */,
 				0CB1439E259A46760014B643 /* IdentHubSession.swift in Sources */,
+				05AC64DD28927B6F0039D883 /* Loggers.swift in Sources */,
 				84A01269263875A800672C1B /* FourthlineIdentificationRequest.swift in Sources */,
 				8423EFE0262AF5A00092F003 /* DocumentScannerOverlayView.swift in Sources */,
 				88483D7E283CE8B4000E8AEB /* ServiceLocatorImpl.swift in Sources */,
@@ -2014,14 +1975,11 @@
 				845D8612260D051D008AAC9A /* WelcomeViewModel.swift in Sources */,
 				84ECED282630688700ACD1B5 /* DocumentItemInfoCell.swift in Sources */,
 				0C527E5825AC4BF000B6D5DB /* IBANVerificationViewController.swift in Sources */,
-				39C8D08F2852507A00657375 /* SBLogBackendDestination.swift in Sources */,
 				8432D275265D71A6002CCAA4 /* DocumentData.swift in Sources */,
 				88291450284A195E00FB7F4D /* String+Localization.swift in Sources */,
 				847D428E260B6C370067ED63 /* TermsViewModel.swift in Sources */,
-				05458B5A288050F900305706 /* Loggers.swift in Sources */,
 				840DEA6F26285B4C0033A2D8 /* LocationManager.swift in Sources */,
 				841F376326298E1400D56361 /* ScanDocumentType.swift in Sources */,
-				39C8D08C28524B9300657375 /* SBLogConsoleDestination.swift in Sources */,
 				0CE4A8DF25A3666500114CBD /* ActionRoundedButton.swift in Sources */,
 				8499BFEE2678E46100794B64 /* PersonAddress.swift in Sources */,
 				8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */,
@@ -2074,9 +2032,7 @@
 				84A7583325F22F84004D8F88 /* AppDependenciesTest.swift in Sources */,
 				057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
-				39E2F3DD28577C4200CE28CB /* SBLogTests.swift in Sources */,
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,
-				39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */,
 				84B2A89825F3CCD800EBA899 /* IBANRequestTests.swift in Sources */,
 				88F725FF286D8E6C00D32702 /* ModulesStorageManagerTest.swift in Sources */,
 			);

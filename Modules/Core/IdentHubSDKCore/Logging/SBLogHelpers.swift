@@ -4,9 +4,8 @@
 //
 
 import Foundation
-import IdentHubSDKCore
 
-extension Error {
+public extension Error {
     var logDescription: String {
         switch self {
         case let error as ResponseError:
@@ -17,7 +16,7 @@ extension Error {
     }
 }
 
-extension Result {
+public extension Result {
     /// Provide a text representation of the result suitable for logging.
     var logDescription: String {
         switch self {

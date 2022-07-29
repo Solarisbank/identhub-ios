@@ -4,10 +4,9 @@
 //
 
 import XCTest
-@testable import IdentHubSDK
+@testable import IdentHubSDKCore
 
-
-class SBLogDestinationTests: XCTestCase {
+final class SBLogDestinationTests: XCTestCase {
     
     override func tearDownWithError() throws {
         MockURLProtocol.loadingHandler = nil

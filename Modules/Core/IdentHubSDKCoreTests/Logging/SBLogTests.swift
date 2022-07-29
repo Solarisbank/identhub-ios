@@ -4,9 +4,9 @@
 //
 
 import XCTest
-@testable import IdentHubSDK
+@testable import IdentHubSDKCore
 
-class SBLogTests: XCTestCase {
+final class SBLogTests: XCTestCase {
 
     func testLogLevelRepresentation() throws {
         XCTAssertEqual(SBLogLevel.debug.description, "DEBUG")

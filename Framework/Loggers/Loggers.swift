@@ -3,6 +3,8 @@
 //  IdentHubSDK
 //
 
+import IdentHubSDKCore
+
 // TODO: Move loggers to appropriate modules
 
 /// Logger related to navigation events

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		0565508C28758DFA007E8CBE /* XCTAssertResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565508B28758DFA007E8CBE /* XCTAssertResult.swift */; };
 		05A8B6962874561C00F4A9D5 /* NSError+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A8B6952874561C00F4A9D5 /* NSError+Mock.swift */; };
+		05AC64D228927B280039D883 /* SBLogHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64C628927A8B0039D883 /* SBLogHelpers.swift */; };
+		05AC64D328927B280039D883 /* SBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64C528927A8B0039D883 /* SBLog.swift */; };
+		05AC64D528927B280039D883 /* SBLogBackendDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64C928927A8B0039D883 /* SBLogBackendDestination.swift */; };
+		05AC64D628927B280039D883 /* SBLogConsoleDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64C828927A8B0039D883 /* SBLogConsoleDestination.swift */; };
+		05AC64D728927B280039D883 /* SBLogDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64C728927A8B0039D883 /* SBLogDestination.swift */; };
+		05AC64E228927C5A0039D883 /* SBLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64E128927C5A0039D883 /* SBLogTests.swift */; };
+		05AC64E328927C600039D883 /* SBLogDestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64DF28927C3A0039D883 /* SBLogDestinationTests.swift */; };
 		1D5C44CCC7ED8EF1B6CC9E48 /* Pods_IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E70E1446713B3FA086DDC6 /* Pods_IdentHubSDKTestBase.framework */; };
 		700A022D4974B4CA90B20049 /* Pods_IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0C887285351AF000E176E /* Pods_IdentHubSDKTestBase.framework */; };
 		881E69E42857B46C00E1C130 /* CommandLine+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E69E32857B46C00E1C130 /* CommandLine+Convenience.swift */; };
@@ -151,6 +158,13 @@
 /* Begin PBXFileReference section */
 		0565508B28758DFA007E8CBE /* XCTAssertResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertResult.swift; sourceTree = "<group>"; };
 		05A8B6952874561C00F4A9D5 /* NSError+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Mock.swift"; sourceTree = "<group>"; };
+		05AC64C528927A8B0039D883 /* SBLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLog.swift; sourceTree = "<group>"; };
+		05AC64C628927A8B0039D883 /* SBLogHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogHelpers.swift; sourceTree = "<group>"; };
+		05AC64C728927A8B0039D883 /* SBLogDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestination.swift; sourceTree = "<group>"; };
+		05AC64C828927A8B0039D883 /* SBLogConsoleDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogConsoleDestination.swift; sourceTree = "<group>"; };
+		05AC64C928927A8B0039D883 /* SBLogBackendDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogBackendDestination.swift; sourceTree = "<group>"; };
+		05AC64DF28927C3A0039D883 /* SBLogDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestinationTests.swift; sourceTree = "<group>"; };
+		05AC64E128927C5A0039D883 /* SBLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBLogTests.swift; sourceTree = "<group>"; };
 		881E69E32857B46C00E1C130 /* CommandLine+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandLine+Convenience.swift"; sourceTree = "<group>"; };
 		881E69EB2857D11B00E1C130 /* ColorsImpl+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorsImpl+Mock.swift"; sourceTree = "<group>"; };
 		88291439284A18E600FB7F4D /* Date+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Compare.swift"; sourceTree = "<group>"; };
@@ -313,6 +327,35 @@
 				0565508B28758DFA007E8CBE /* XCTAssertResult.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		05AC64CA28927A8B0039D883 /* Log Destinations */ = {
+			isa = PBXGroup;
+			children = (
+				05AC64C728927A8B0039D883 /* SBLogDestination.swift */,
+				05AC64C828927A8B0039D883 /* SBLogConsoleDestination.swift */,
+				05AC64C928927A8B0039D883 /* SBLogBackendDestination.swift */,
+			);
+			path = "Log Destinations";
+			sourceTree = "<group>";
+		};
+		05AC64CB28927A8B0039D883 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				05AC64C528927A8B0039D883 /* SBLog.swift */,
+				05AC64C628927A8B0039D883 /* SBLogHelpers.swift */,
+				05AC64CA28927A8B0039D883 /* Log Destinations */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		05AC64E028927C3A0039D883 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				05AC64E128927C5A0039D883 /* SBLogTests.swift */,
+				05AC64DF28927C3A0039D883 /* SBLogDestinationTests.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		88291437284A189A00FB7F4D /* Framework */ = {
@@ -786,6 +829,7 @@
 		88F3A55B283CD72000DB273A /* IdentHubSDKCore */ = {
 			isa = PBXGroup;
 			children = (
+				05AC64CB28927A8B0039D883 /* Logging */,
 				8893B979283CDAB900F1C872 /* Modules */,
 				8893B97C283CDAE400F1C872 /* Services */,
 				8893B97B283CDADC00F1C872 /* Presentation */,
@@ -800,6 +844,7 @@
 		88F3A567283CD72000DB273A /* IdentHubSDKCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				05AC64E028927C3A0039D883 /* Logging */,
 				884D858A283FA52E004EA791 /* Services */,
 				884D8568283FA308004EA791 /* IdentificationStepTests.swift */,
 			);
@@ -1076,6 +1121,7 @@
 				88E9153D2844FEC200284CCE /* Storage.swift in Sources */,
 				88F72627286F043800D32702 /* MobileNumber.swift in Sources */,
 				88EED7B42844B4A100BF8B2B /* FlowCoordinator.swift in Sources */,
+				05AC64D728927B280039D883 /* SBLogDestination.swift in Sources */,
 				8829144E284A191400FB7F4D /* UIView+Autolayout.swift in Sources */,
 				88EED7B32844B49400BF8B2B /* Module.swift in Sources */,
 				881E69E42857B46C00E1C130 /* CommandLine+Convenience.swift in Sources */,
@@ -1087,6 +1133,7 @@
 				88E9153F2845074F00284CCE /* UserDefaultsStorage.swift in Sources */,
 				8829144A284A191400FB7F4D /* UIImage+SDK.swift in Sources */,
 				88CB9D02284A1F4600F55D31 /* IdentificationProgressView.swift in Sources */,
+				05AC64D628927B280039D883 /* SBLogConsoleDestination.swift in Sources */,
 				88EED7AF2844B3C100BF8B2B /* QESOutput.swift in Sources */,
 				8848D90E2844B932002CD781 /* UIColor+Convenience.swift in Sources */,
 				88C35C43284E4DEC00720C11 /* Status.swift in Sources */,
@@ -1094,6 +1141,7 @@
 				88C35C46284E501D00720C11 /* Presenter.swift in Sources */,
 				88C35C1B284DFDF700720C11 /* ActionPerformer.swift in Sources */,
 				88EED7AE2844B3BB00BF8B2B /* CoordinatorFactory.swift in Sources */,
+				05AC64D528927B280039D883 /* SBLogBackendDestination.swift in Sources */,
 				88291440284A18E700FB7F4D /* String+Regex.swift in Sources */,
 				88CDE6C4284E8B3F00FB659F /* CodeEntryView.swift in Sources */,
 				884D8541283F98CE004EA791 /* ServerError.swift in Sources */,
@@ -1133,10 +1181,12 @@
 				8848D96D2844D66F002CD781 /* Image.swift in Sources */,
 				8829144D284A191400FB7F4D /* ViewExtensions.swift in Sources */,
 				88CB9CFD284A1EF200F55D31 /* QuitView.swift in Sources */,
+				05AC64D328927B280039D883 /* SBLog.swift in Sources */,
 				88F120B82865A68400E76618 /* FileStorage.swift in Sources */,
 				88291449284A191400FB7F4D /* UITableView+Scroll.swift in Sources */,
 				8848D9962844E61A002CD781 /* Localizable.swift in Sources */,
 				88CDE692284E63FC00FB659F /* QuitAction.swift in Sources */,
+				05AC64D228927B280039D883 /* SBLogHelpers.swift in Sources */,
 				884D854D283F99E8004EA791 /* Bundle+Extensions.swift in Sources */,
 				88CDE693284E647200FB659F /* QuitPopUpViewController.swift in Sources */,
 				88CDE697284E648C00FB659F /* PopUpWindowViewController.swift in Sources */,
@@ -1153,6 +1203,8 @@
 				88F120C02865A98800E76618 /* FileStorageTests.swift in Sources */,
 				88E915682846410E00284CCE /* UserDefaultsStorageTests.swift in Sources */,
 				8848D9762844DAEC002CD781 /* ImageTests.swift in Sources */,
+				05AC64E328927C600039D883 /* SBLogDestinationTests.swift in Sources */,
+				05AC64E228927C5A0039D883 /* SBLogTests.swift in Sources */,
 				884D8594283FA560004EA791 /* RequestTests.swift in Sources */,
 				884D8593283FA560004EA791 /* BeckendRequestTests.swift in Sources */,
 				884D8589283FA4D3004EA791 /* IdentificationStepTests.swift in Sources */,
