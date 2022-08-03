@@ -7,7 +7,7 @@ import Foundation
 import IdentHubSDKCore
 
 /// Ident hub session result
-public enum IdentificationSessionResult {
+public enum IdentificationSessionResult: Equatable {
     /// success - successful result with identification string in parameter
     /// - identification: identification user session identifier
     case success(identification: String)

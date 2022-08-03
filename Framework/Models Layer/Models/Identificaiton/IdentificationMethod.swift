@@ -40,3 +40,24 @@ extension IdentificationMethod: Decodable {
         fourthlineProvider = try container.decodeIfPresent(String.self, forKey: .fourthlineProvider)
     }
 }
+
+protocol Modularizable {
+    var requiredModules: Set<ModuleName> { get }
+}
+
+extension IdentificationMethod: Modularizable {
+    var requiredModules: Set<ModuleName> {
+        firstStep.requiredModules.union(fallbackStep?.requiredModules ?? [])
+    }
+}
+
+extension IdentificationStep: Modularizable {
+    var requiredModules: Set<ModuleName> {
+        switch self {
+        case .unspecified, .abort, .partnerFallback, .mobileNumber:
+            return []
+        case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthline, .fourthlineSigning, .fourthlineQES:
+            return [.qes]
+        }
+    }
+}

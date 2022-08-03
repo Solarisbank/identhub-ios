@@ -24,6 +24,7 @@ import Foundation
 /// - fraudData: provided data defines as fraud
 /// - unsupportedResponse: SDK encountered a response that is not supported in this version
 /// - identificationNotPossible: SDK could not identify the user. Try your fallback identification method
+/// - modulesNotFound: SDK could not found required modules. Check if your application has embedded the module's library.
 /// - unknownError: indicates that api client encountered an error not listed above.
 public enum APIError: Error, Equatable {
     case malformedResponseJson
@@ -44,6 +45,7 @@ public enum APIError: Error, Equatable {
     case fraudData(error: ErrorDetail?)
     case unsupportedResponse
     case identificationNotPossible
+    case modulesNotFound([String])
     case unknownError
 }
 

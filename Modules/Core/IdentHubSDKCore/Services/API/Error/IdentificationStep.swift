@@ -4,7 +4,7 @@
 //
 
 /// Identification steps
-public enum IdentificationStep: String, Codable {
+public enum IdentificationStep: String, Codable, CaseIterable {
     case mobileNumber = "mobile_number"
     case bankIBAN = "bank/iban"
     case bankIDIBAN = "bank_id/iban"

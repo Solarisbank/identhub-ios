@@ -5,23 +5,34 @@
 
 import XCTest
 @testable import IdentHubSDK
+import IdentHubSDKTestBase
+import IdentHubSDKCore
+@testable import IdentHubSDKQESTests
 
 class IdentificationCoordinatorTests: BaseTestCase {
+    var moduleFactory: ModuleFactoryMock!
     
-    // Test variable
-    var sut: IdentificationCoordinatorMock?
-
+    override func setUp() {
+        moduleFactory = ModuleFactoryMock()
+    }
+    
+    override func tearDown() {
+        moduleFactory = nil
+    }
+    
     // MARK: - Test methods -
     
     func testStartAction() throws {
-        sut?.start({ _ in })
+        let sut = try makeSUT()
+        sut.start({ _ in })
         
         let action = try XCTUnwrap(SessionStorage.obtainValue(for: StoredKeys.initialStep.rawValue) as? Int, "Initial action was not stored")
         XCTAssertEqual(action, IdentificationCoordinator.Action.initialization.rawValue, "Initial coordinator inital step is not correct")
     }
     
     func testPerformInitAction() throws {
-        sut?.perform(action: .initialization)
+        let sut = try makeSUT()
+        sut.perform(action: .initialization)
         
         executeAsyncTest {
             let action = try XCTUnwrap(SessionStorage.obtainValue(for: StoredKeys.initialStep.rawValue) as? Int, "Initial action was not stored")
@@ -30,7 +41,8 @@ class IdentificationCoordinatorTests: BaseTestCase {
     }
 
     func testPerformTermsAndConditionsAction() throws {
-        sut?.perform(action: .termsAndConditions)
+        let sut = try makeSUT()
+        sut.perform(action: .termsAndConditions)
         
         executeAsyncTest {
             let action = try XCTUnwrap(SessionStorage.obtainValue(for: StoredKeys.initialStep.rawValue) as? Int, "Initial action was not stored")
@@ -39,7 +51,8 @@ class IdentificationCoordinatorTests: BaseTestCase {
     }
 
     func testPerformIdentificationAction() throws {
-        sut?.perform(action: .identification)
+        let sut = try makeSUT()
+        sut.perform(action: .identification)
         
         executeAsyncTest {
             let action = try XCTUnwrap(SessionStorage.obtainValue(for: StoredKeys.initialStep.rawValue) as? Int, "Initial action was not stored")
@@ -47,20 +60,61 @@ class IdentificationCoordinatorTests: BaseTestCase {
         }
     }
 
-    
+    func testValidateModulesSuccessful() throws {
+        let modularizableMock = ModularizableMock(requiredModules: .init(arrayLiteral: .qes))
+        let sut = try makeSUT()
+        
+        moduleFactory.qesMock = QESCoordinatorFactoryMock()
+        
+        assertAsync { expectation in
+            expectation.isInverted = true
+            sut.start({ result in
+                expectation.fulfill()
+            })
+            sut.validateModules(for: modularizableMock)
+        }
+    }
+
+    func testValidateModulesFailed() throws {
+        let modularizableMock = ModularizableMock(requiredModules: .init(arrayLiteral: .qes))
+        let sut = try makeSUT()
+
+        assertAsync { expectation in
+            sut.start({ result in
+                XCTAssertEqual(result, .failure(.modulesNotFound(["qes"])))
+                expectation.fulfill()
+            })
+            sut.validateModules(for: modularizableMock)
+        }
+    }
+
+    func testValidateModulesFailedFallbackStepNotSupported() throws {
+        let identificationMethod = IdentificationMethod(firstStep: .partnerFallback, fallbackStep: .fourthlineQES, retries: 1, fourthlineProvider: nil)
+        let sut = try makeSUT()
+
+        XCTAssertEqual(identificationMethod.firstStep.requiredModules, [])
+        XCTAssertEqual(identificationMethod.fallbackStep?.requiredModules, [.qes])
+
+        assertAsync { expectation in
+            sut.start({ result in
+                XCTAssertEqual(result, .failure(.modulesNotFound(["qes"])))
+                expectation.fulfill()
+            })
+            sut.validateModules(for: identificationMethod)
+        }
+    }
+
     // MARK: - Internal methods -
 
     override func setUpWithError() throws {
         resetStorage()
-        sut = try makeSUT()
     }
 
     override func tearDownWithError() throws {
-        sut = nil
         resetStorage()
     }
     
     private func makeSUT() throws -> IdentificationCoordinatorMock {
-        return try IdentificationCoordinatorMock()
+        return try IdentificationCoordinatorMock(moduleFactory: moduleFactory)
     }
 }

@@ -20,6 +20,7 @@ public enum Localizable {
         public static let locationError = "api_error_location_error".localized()
         public static let ibanVerificationError = "api_error_iban_verification".localized()
         public static let paymentFailure = "api_error_payment_failure".localized()
+        public static let modulesNotFound = "api_error_modules_not_found".localized()
         public static let unsupportedResponse = "SDK encountered a response that is not supported in this version"
         public static let identificationNotPossible = "SDK could not identify the user. Try your fallback identification method."
     }

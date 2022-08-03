@@ -30,9 +30,9 @@ final class AppDependencies {
 
     // MARK: Init
 
-    init(sessionToken: String, presenter: Presenter) {
+    init(sessionToken: String, presenter: Presenter, moduleFactory: ModuleFactory = RuntimeModuleFactory()) {
         self.sessionInfoProvider = StorageSessionInfoProvider(sessionToken: sessionToken)
         self.presenter = presenter
-        self.moduleFactory = RuntimeModuleFactory()
+        self.moduleFactory = moduleFactory
     }
 }

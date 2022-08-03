@@ -5,6 +5,7 @@
 
 import UIKit
 @testable import IdentHubSDK
+import IdentHubSDKCore
 import IdentHubSDKTestBase
 
 class IdentificationCoordinatorMock: IdentificationCoordinator {
@@ -13,8 +14,12 @@ class IdentificationCoordinatorMock: IdentificationCoordinator {
     var performAction: Action?
     
     // MARK: - Init methods -
-    init() throws {
-        let appDependencies = AppDependencies(sessionToken: "", presenter: PresenterMock())
+    init(moduleFactory: ModuleFactory) throws {
+        let appDependencies = AppDependencies(
+            sessionToken: "",
+            presenter: PresenterMock(),
+            moduleFactory: moduleFactory
+        )
         let rootViewController = UIViewController()
         let identHubSession = try IdentHubSession(rootViewController: rootViewController, sessionURL: "https://solarisssandbox.de/sesionToken-abcdefgHIJKlmnoprsTQUWXyz0123456789")
         let router = IdentHubSDKRouter(rootViewController: rootViewController, identHubSession: identHubSession)

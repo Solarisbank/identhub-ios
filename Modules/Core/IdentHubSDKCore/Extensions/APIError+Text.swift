@@ -43,6 +43,8 @@ public extension APIError {
             return Localizable.APIErrorDesc.unsupportedResponse
         case .identificationNotPossible:
             return Localizable.APIErrorDesc.identificationNotPossible
+        case .modulesNotFound(let modules):
+            return String(format: Localizable.APIErrorDesc.modulesNotFound, modules.joined(separator: ", "))
         case .fraudData:
             return Localizable.APIErrorDesc.unprocessableEntity
         }

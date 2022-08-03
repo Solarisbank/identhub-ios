@@ -108,6 +108,9 @@
 		88DAFE2E284F94A100C85503 /* TestRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DAFE2D284F94A100C85503 /* TestRecorder.swift */; };
 		88DAFE34284F9CE500C85503 /* UpdateableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DAFE33284F9CE500C85503 /* UpdateableMock.swift */; };
 		88DD1804283E160F00A94ABC /* Showable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DD1803283E160E00A94ABC /* Showable.swift */; };
+		88E075AF2897C24A00FC1EE4 /* ModuleFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E075AE2897C24A00FC1EE4 /* ModuleFactoryMock.swift */; };
+		88E075C82899581000FC1EE4 /* QESCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E075C72899581000FC1EE4 /* QESCoordinatorFactoryMock.swift */; };
+		88E075CA2899582F00FC1EE4 /* FlowCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E075C92899582F00FC1EE4 /* FlowCoordinatorMock.swift */; };
 		88E0C87A285349D1000E176E /* XCTestCase+Snapshotting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0C879285349D1000E176E /* XCTestCase+Snapshotting.swift */; };
 		88E232CD28896B7C00D24CEC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E232CC28896B7C00D24CEC /* Colors.xcassets */; };
 		88E915022844EE9100284CCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88E914FC2844EE9100284CCE /* Localizable.strings */; };
@@ -258,6 +261,9 @@
 		88DAFE2D284F94A100C85503 /* TestRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRecorder.swift; sourceTree = "<group>"; };
 		88DAFE33284F9CE500C85503 /* UpdateableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateableMock.swift; sourceTree = "<group>"; };
 		88DD1803283E160E00A94ABC /* Showable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Showable.swift; sourceTree = "<group>"; };
+		88E075AE2897C24A00FC1EE4 /* ModuleFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryMock.swift; sourceTree = "<group>"; };
+		88E075C72899581000FC1EE4 /* QESCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QESCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
+		88E075C92899582F00FC1EE4 /* FlowCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinatorMock.swift; sourceTree = "<group>"; };
 		88E0C879285349D1000E176E /* XCTestCase+Snapshotting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshotting.swift"; sourceTree = "<group>"; };
 		88E0C887285351AF000E176E /* Pods_IdentHubSDKTestBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_IdentHubSDKTestBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E0C88C28535277000E176E /* SnapshotTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapshotTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -639,13 +645,16 @@
 			isa = PBXGroup;
 			children = (
 				883F1B052851F16B00037AED /* APIClient */,
+				88E075AE2897C24A00FC1EE4 /* ModuleFactoryMock.swift */,
 				88A9FB7A284A14880074557B /* ModuleServiceLocatorMock.swift */,
 				88F120C12865AFBD00E76618 /* FileStorageMock.swift */,
+				88E075C92899582F00FC1EE4 /* FlowCoordinatorMock.swift */,
 				88CDE6A3284E783100FB659F /* PresenterMock.swift */,
 				88A9FB7B284A14880074557B /* StorageMock.swift */,
 				88DAFE33284F9CE500C85503 /* UpdateableMock.swift */,
 				88DA494D285244780008631E /* ActionMock.swift */,
 				881E69EB2857D11B00E1C130 /* ColorsImpl+Mock.swift */,
+				88E075C72899581000FC1EE4 /* QESCoordinatorFactoryMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -1095,6 +1104,7 @@
 				05A8B6962874561C00F4A9D5 /* NSError+Mock.swift in Sources */,
 				88DAFE34284F9CE500C85503 /* UpdateableMock.swift in Sources */,
 				88F120C22865AFBD00E76618 /* FileStorageMock.swift in Sources */,
+				88E075C82899581000FC1EE4 /* QESCoordinatorFactoryMock.swift in Sources */,
 				88291435284A16EA00FB7F4D /* ModuleServiceLocatorMock.swift in Sources */,
 				88DAFE2E284F94A100C85503 /* TestRecorder.swift in Sources */,
 				881E69EC2857D11B00E1C130 /* ColorsImpl+Mock.swift in Sources */,
@@ -1104,7 +1114,9 @@
 				88A9FB74284A14790074557B /* IdentHubSDKTestBase.docc in Sources */,
 				88291434284A16E700FB7F4D /* APIClientMock.swift in Sources */,
 				0565508C28758DFA007E8CBE /* XCTAssertResult.swift in Sources */,
+				88E075AF2897C24A00FC1EE4 /* ModuleFactoryMock.swift in Sources */,
 				88E0C87A285349D1000E176E /* XCTestCase+Snapshotting.swift in Sources */,
+				88E075CA2899582F00FC1EE4 /* FlowCoordinatorMock.swift in Sources */,
 				88291436284A16ED00FB7F4D /* StorageMock.swift in Sources */,
 				883F1B1828521FC000037AED /* RequestFileMock.swift in Sources */,
 				88DA494E285244780008631E /* ActionMock.swift in Sources */,

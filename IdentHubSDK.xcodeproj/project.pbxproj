@@ -190,6 +190,8 @@
 		88483DA4283CFD66000E8AEB /* RuntimeModuleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88483DA3283CFD66000E8AEB /* RuntimeModuleFactoryTests.swift */; };
 		886D7FB4288FDE68005FC86C /* DefaultAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D7FB3288FDE68005FC86C /* DefaultAPIClient.swift */; };
 		88A9FB92284A15640074557B /* IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A9FB86284A15290074557B /* IdentHubSDKTestBase.framework */; };
+		88C1B3B6289AA0070003ED15 /* ModularizableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C1B3B5289AA0070003ED15 /* ModularizableMock.swift */; };
+		88C1B3BB289AA14E0003ED15 /* IdentificationMethodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C1B3BA289AA14E0003ED15 /* IdentificationMethodTests.swift */; };
 		88C35C39284E22E300720C11 /* ModuleResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C35C38284E22E300720C11 /* ModuleResolver.swift */; };
 		88C858AA2849F7D9001EA045 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C858A92849F7D9001EA045 /* ServiceLocator.swift */; };
 		88C858B22849FBE9001EA045 /* ModuleServiceLocatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C858B12849FBE9001EA045 /* ModuleServiceLocatorImpl.swift */; };
@@ -515,6 +517,8 @@
 		884D8C182858639700628162 /* IdentHubSDK.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = IdentHubSDK.xctestplan; sourceTree = "<group>"; };
 		884D8C1C285863D300628162 /* IdentHubSDKSnapshotTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = IdentHubSDKSnapshotTests.xctestplan; sourceTree = "<group>"; };
 		886D7FB3288FDE68005FC86C /* DefaultAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAPIClient.swift; sourceTree = "<group>"; };
+		88C1B3B5289AA0070003ED15 /* ModularizableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModularizableMock.swift; sourceTree = "<group>"; };
+		88C1B3BA289AA14E0003ED15 /* IdentificationMethodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationMethodTests.swift; sourceTree = "<group>"; };
 		88C35C38284E22E300720C11 /* ModuleResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleResolver.swift; sourceTree = "<group>"; };
 		88C858A92849F7D9001EA045 /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		88C858B12849FBE9001EA045 /* ModuleServiceLocatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleServiceLocatorImpl.swift; sourceTree = "<group>"; };
@@ -1070,6 +1074,7 @@
 				841384C4263C7B7800C39D69 /* IdentificationCoordinator.swift */,
 				841C81CC2603748300F4A079 /* BankIDCoordinator.swift */,
 				842A14AC260A6E65005CD33B /* FourthlineIdentCoordinator.swift */,
+				88C1B3B5289AA0070003ED15 /* ModularizableMock.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1289,6 +1294,7 @@
 			isa = PBXGroup;
 			children = (
 				84A7583025F22F05004D8F88 /* Percistance */,
+				88C1B3BA289AA14E0003ED15 /* IdentificationMethodTests.swift */,
 			);
 			path = "Models Layer";
 			sourceTree = "<group>";
@@ -1994,6 +2000,7 @@
 				0C007F1725D56977003D42B3 /* ErrorView.swift in Sources */,
 				84179D93260DF4A2003C0097 /* WelcomeLogoAnimator.swift in Sources */,
 				0CE4A8E725A368CC00114CBD /* SolarisViewController.swift in Sources */,
+				88C1B3B6289AA0070003ED15 /* ModularizableMock.swift in Sources */,
 				8423EFD5262AEC690092F003 /* DocumentScannerViewController.swift in Sources */,
 				841CD0A7263978C300890626 /* UploadFourthlineZip.swift in Sources */,
 			);
@@ -2033,6 +2040,8 @@
 				057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */,
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,
+				88C1B3BB289AA14E0003ED15 /* IdentificationMethodTests.swift in Sources */,
+				39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */,
 				84B2A89825F3CCD800EBA899 /* IBANRequestTests.swift in Sources */,
 				88F725FF286D8E6C00D32702 /* ModulesStorageManagerTest.swift in Sources */,
 			);

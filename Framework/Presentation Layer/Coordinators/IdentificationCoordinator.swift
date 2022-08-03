@@ -57,6 +57,20 @@ class IdentificationCoordinator: BaseCoordinator {
             self?.execute(action: action)
         }
     }
+    
+    func validateModules(for modularizable: Modularizable?) {
+        guard let modularizable = modularizable else {
+            return
+        }
+
+        let missingModules = modularizable.requiredModules
+            .subtracting(appDependencies.moduleResolver.availableModules)
+        
+        if missingModules.isNotEmpty() {
+            completionHandler?(.failure(.modulesNotFound(missingModules.map { $0.rawValue })))
+            close()
+        }
+    }
 }
 
 // MARK: - Manager Session Tracker methods -

@@ -14,6 +14,7 @@
 "api_error_location_error" = "El dispositivo no puede definir los datos de ubicación.";
 "api_error_iban_verification" = "Fallo en la verificación del IBAN.";
 "api_error_payment_failure" = "Fallo en la verificación del pago.";
+"api_error_modules_not_found" = "Algunos módulos no están disponiblesTesting (%1$@).";
 
 // Common
 "common_next" = "Siguiente";

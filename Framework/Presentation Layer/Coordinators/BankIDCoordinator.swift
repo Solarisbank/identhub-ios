@@ -314,7 +314,8 @@ private extension BankIDCoordinator {
             return
         }
         guard let qes = appDependencies.moduleResolver.qes?.makeQESCoordinator() else {
-            print("Error: QES module not found")
+            completionHandler?(.failure(.modulesNotFound([ModuleName.qes.rawValue])))
+            close()
             return
         }
         let input = QESInput(

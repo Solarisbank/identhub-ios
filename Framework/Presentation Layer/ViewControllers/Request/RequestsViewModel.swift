@@ -315,6 +315,10 @@ private extension RequestsViewModel {
                     KYCContainer.shared.update(provider: provider)
                 }
 
+                DispatchQueue.main.async {
+                    self.identCoordinator?.validateModules(for: response)
+                }
+
                 self.obtainIdentificationInfo()
             case .failure(let error):
                 self.onDisplayError?(error)
