@@ -8,7 +8,7 @@ import SnapshotTesting
 import UIKit
 
 public extension XCTestCase {
-    func assertSnapshot(for viewController: UIViewController, file: StaticString = #file, testName: String = #function) {
+    func assertSnapshot(for viewController: UIViewController, isRecording: Bool = false, file: StaticString = #file, testName: String = #function) {
         let languageCode = CommandLine.locale?.languageCode ?? Locale.current.languageCode!
 
         if #available(iOS 13.0, *) {
@@ -18,6 +18,7 @@ public extension XCTestCase {
         SnapshotTesting.assertSnapshot(
             matching: viewController,
             as: .custom,
+            record: isRecording,
             file: file,
             testName: languageCode + "_" + testName
         )
