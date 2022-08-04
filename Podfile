@@ -9,7 +9,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'IdentHubSDK' do
-pod 'FourthlineSDK', '2.11.4'
+pod 'FourthlineSDK', '2.13.1'
 
 # Fourthline dependencies
 pod 'ZIPFoundation', '0.9.11'
