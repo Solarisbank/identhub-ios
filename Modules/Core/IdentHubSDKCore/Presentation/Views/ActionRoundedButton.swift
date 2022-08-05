@@ -26,7 +26,7 @@ public class ActionRoundedButton: UIButton {
         }
     }
 
-    private var actualBackgroundColor: UIColor? {
+    var actualBackgroundColor: UIColor? {
         get {
             return super.backgroundColor
         }

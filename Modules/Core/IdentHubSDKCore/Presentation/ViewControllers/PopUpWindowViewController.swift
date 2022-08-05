@@ -58,6 +58,7 @@ public class PopUpWindowViewController: UIViewController {
     private lazy var primaryButton: UIButton = {
         let button = ActionRoundedButton()
         button.setAppearance(.dimmed, colors: colors)
+        button.actualBackgroundColor = UIColor.clear
         return button
     }()
 
@@ -66,7 +67,15 @@ public class PopUpWindowViewController: UIViewController {
     private lazy var secondaryButton: UIButton = {
         let button = ActionRoundedButton()
         button.setAppearance(.primary, colors: colors)
+        button.actualBackgroundColor = UIColor.clear
+        button.setTitleColor(colors[.primaryAccent], for: .normal)
         return button
+    }()
+    
+    private lazy var separatorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = colors[.base50]
+        return view
     }()
 
     private var secondaryButtonAction: (() -> Void)?
@@ -100,7 +109,8 @@ public class PopUpWindowViewController: UIViewController {
         popUpWindowView.addSubviews([
             titleLabel,
             descriptionLabel,
-            buttonsStackView
+            buttonsStackView,
+            separatorLine
         ])
 
         titleLabel.addConstraints { [
@@ -127,6 +137,14 @@ public class PopUpWindowViewController: UIViewController {
 
         buttonsStackView.addArrangedSubview(primaryButton)
         buttonsStackView.addArrangedSubview(secondaryButton)
+        
+        separatorLine.addConstraints { [
+            $0.equalConstant(.width,1),
+            $0.equalConstant(.height,20),
+            $0.equalTo(buttonsStackView, .centerY, .centerY),
+            $0.equalTo(buttonsStackView, .centerX, .centerX)
+        ]
+        }
 
         primaryButton.addTarget(self, action: #selector(primaryAction), for: .touchUpInside)
         secondaryButton.addTarget(self, action: #selector(secondaryAction), for: .touchUpInside)
