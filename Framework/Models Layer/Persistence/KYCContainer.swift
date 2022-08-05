@@ -8,6 +8,7 @@ import FourthlineKYC
 import FourthlineVision
 import FourthlineCore
 import CoreLocation
+import Foundation
 
 /// URL of the stored selfie full image location
 /// Used for restoring identification session
@@ -69,6 +70,16 @@ final class KYCContainer {
         if let mrzInfo = data.mrzInfo as? MRTDMRZInfo {
             update(with: mrzInfo)
             updatePersonData(with: mrzInfo)
+            
+            // Extract tax information if available
+            if let optionalData = mrzInfo.optionalData {
+                let taxInfo = kycInfo.taxInfo ?? TaxInfo()
+                
+                taxInfo.taxpayerIdentificationNumber = optionalData
+                taxInfo.taxationCountryCode = mrzInfo.issuingCountry
+                
+                kycInfo.taxInfo = taxInfo
+            }
         }
 
         kycInfo.document?.videoRecording = data.videoRecording
