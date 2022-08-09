@@ -42,10 +42,17 @@ protocol SessionInfoProvider: AnyObject {
 
     /// Documents list
     var documentsList: [SupportedDocument]? { get set }
-
+    
+    /// Is remote logging enabled
+    var remoteLogging: Bool { get set }
+    
     /// Method stored style colors to the user defaults
     /// - Parameter color: colors model
     func setStyleColors(_ color: StyleColors?)
+    
+    /// Method to add remote logging enable callback
+    /// - Parameter callback: Closure to be called when `remoteLogging` value is set to true. Will trigger only if set from `false` to `true`
+    func addEnableRemoteLoggingCallback(_ callback: @escaping () -> ())
 }
 
 /// Count of default retries. Used if from server comes null value
@@ -118,12 +125,27 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
             SessionStorage.updateValue(phoneVerified, for: StoredKeys.phoneVerified.rawValue)
         }
     }
+    
+    /// - SeeAlso: SessionInfoProvider.remoteLogging
+    var remoteLogging: Bool = false {
+        didSet {
+            guard oldValue != remoteLogging else {
+                return
+            }
+            
+            SessionStorage.updateValue(remoteLogging, for: StoredKeys.remoteLogging.rawValue)
+
+            notifyEnableRemoteLoggingObserversIfNeeded()
+        }
+    }
 
     /// - SeeAlso: SessionInfoProvider.isSuccessful
     var isSuccessful: Bool?
 
     /// - SeeAlso: SessionInfoProvider.documentsList
     var documentsList: [SupportedDocument]?
+    
+    private var enableRemoteLogginCallbacks: [() -> Void] = []
 
     // MARK: Init
 
@@ -147,6 +169,21 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
 
         if let secondaryColor = color?.secondary {
             SessionStorage.updateValue(secondaryColor, for: StoredKeys.StyleColor.secondary.rawValue)
+        }
+    }
+    
+    /// - SeeAlso: SessionInfoProvider.addEnableRemoteLoggingCallback
+    func addEnableRemoteLoggingCallback(_ callback: @escaping () -> Void) {
+        enableRemoteLogginCallbacks.append(callback)
+        
+        notifyEnableRemoteLoggingObserversIfNeeded()
+    }
+    
+    private func notifyEnableRemoteLoggingObserversIfNeeded() {
+        if remoteLogging {
+            enableRemoteLogginCallbacks.forEach { $0() }
+        } else {
+            // TODO: We cannot disable on SBLog level yet. Waiting for implementation.
         }
     }
 }
@@ -197,6 +234,10 @@ private extension StorageSessionInfoProvider {
 
         if let verified = SessionStorage.obtainValue(for: StoredKeys.phoneVerified.rawValue) as? Bool {
             phoneVerified = verified
+        }
+        
+        if let remoteLogging = SessionStorage.obtainValue(for: StoredKeys.remoteLogging.rawValue) as? Bool {
+            self.remoteLogging = remoteLogging
         }
     }
     

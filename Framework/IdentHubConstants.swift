@@ -74,7 +74,10 @@ enum StoredKeys: String {
 
     /// Identification UI colors
     case styleColors = "IdentificationUIColorsKey"
-
+    
+    /// Remote logging value
+    case remoteLogging = "RemoteLogging"
+    
     /// Style colors keys enumeration
     enum StyleColor: String {
 

@@ -28,6 +28,50 @@ class SessionInfoProviderTests: XCTestCase {
         XCTAssertTrue(sut.sessionToken.isEmpty, "Storage session provider data wasn't cleared properly")
         XCTAssertNil(sut.mobileNumber, "Mobile number value in storage session provider wasn't cleared")
     }
+    
+    func test_addEnableRemoteLoggingCallback_remoteLoggingIsEnabled_callsCalbackImmediatelyWithValue() {
+        let sut = makeSUT()
+        
+        sut.remoteLogging = true
+        
+        assertAsync { expectation in
+            sut.addEnableRemoteLoggingCallback {
+                expectation.fulfill()
+            }
+        }
+    }
+    
+    func test_addEnableRemoteLoggingCallback_remoteLoggingIsDisabled_doesNotCallCallback() {
+        let sut = makeSUT()
+        
+        sut.remoteLogging = false
+        
+        assertAsync { expectation in
+            expectation.isInverted = true
+            
+            sut.addEnableRemoteLoggingCallback {
+                expectation.fulfill()
+            }
+        }
+    }
+    
+    func test_addEnableRemoteLoggingCallback_remoteLoggingIsDisabledAndThenEnabled_callsCallbackExpectedTimes() {
+        let sut = makeSUT()
+
+        assertAsync { expectation in
+            expectation.expectedFulfillmentCount = 2
+            
+            sut.addEnableRemoteLoggingCallback {
+                expectation.fulfill()
+            }
+            
+            sut.remoteLogging = false
+            sut.remoteLogging = true
+            sut.remoteLogging = true
+            sut.remoteLogging = false
+            sut.remoteLogging = true
+        }
+    }
 
     // MARK: - Internal methods -
     func makeSUT() -> StorageSessionInfoProvider {

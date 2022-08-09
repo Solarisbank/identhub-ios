@@ -34,6 +34,7 @@ class RequestViewModelTests: XCTestCase {
         XCTAssertEqual(storage.identificationStep, .fourthline, "Identification first flow step is not correct.")
         XCTAssertEqual(storage.identificationUID, "test_fourthline_identification_id", "Expected Fourthline ID is not match. Register fourthline flow failed")
         XCTAssertTrue(storage.acceptedTC, "Terms and conditions accepted. Returned value is invalid")
+        XCTAssertFalse(storage.remoteLogging, "Remote logging is turned off. Returned value is invalid")
         XCTAssertEqual(KYCContainer.shared.kycInfo.provider.name, "FourthlineSimplifiedProvider", "Fourthline provider is not valid")
         XCTAssertEqual(KYCContainer.shared.kycInfo.person.firstName, "Test_First_Name", "Person data is not loaded")
         XCTAssertEqual(KYCContainer.shared.kycInfo.provider.clientNumber, "test_person_udid", "Person ID value is not valid")
@@ -59,6 +60,7 @@ class RequestViewModelTests: XCTestCase {
         XCTAssertEqual(storage.identificationStep, .fourthlineSigning, "Identification first flow step is not correct.")
         XCTAssertEqual(storage.identificationUID, "test_fourthline_signing_identification_id", "Expected Fourthline ID is not match. Register fourthline flow failed.")
         XCTAssertTrue(storage.acceptedTC, "Terms and conditions accepted. Returned value is invalid.")
+        XCTAssertFalse(storage.remoteLogging, "Remote logging is turned off. Returned value is invalid")
         XCTAssertEqual(KYCContainer.shared.kycInfo.provider.name, "FourthlineSigningProvider", "Fourthline provider is not valid.")
         XCTAssertEqual(KYCContainer.shared.kycInfo.person.firstName, "Test_First_Name", "Person data is not loaded.")
         XCTAssertEqual(KYCContainer.shared.kycInfo.provider.clientNumber, "test_person_udid", "Person ID value is not valid.")
@@ -82,6 +84,7 @@ class RequestViewModelTests: XCTestCase {
         XCTAssertEqual(storage.fallbackIdentificationStep, .fourthline, "BANK identification fallback flow step is not correct.")
         XCTAssertEqual(KYCContainer.shared.kycInfo.provider.name, "BANKProvider", "Fourthline provider is not valid.")
         XCTAssertTrue(storage.acceptedTC, "Terms and conditions accepted. Returned value is invalid.")
+        XCTAssertFalse(storage.remoteLogging, "Remote logging is turned off. Returned value is invalid")
         XCTAssertNil(KYCContainer.shared.kycInfo.person.firstName, "Person data has to be empty because never used in Bank flow.")
     }
 
@@ -101,6 +104,7 @@ class RequestViewModelTests: XCTestCase {
         XCTAssertEqual(storage.identificationStep, .bankIDIBAN, "Identification first flow step is not correct.")
         XCTAssertNil(storage.fallbackIdentificationStep, "Fallback flow step in BankID flow is absent.")
         XCTAssertTrue(storage.acceptedTC, "Terms and conditions accepted. Returned value is invalid.")
+        XCTAssertFalse(storage.remoteLogging, "Remote logging is turned off. Returned value is invalid")
         XCTAssertNil(KYCContainer.shared.kycInfo.person.firstName, "Person data has to be empty because never used in BankID flow.")
         XCTAssertNil(KYCContainer.shared.kycInfo.provider.name, "Fourthline provider data has to be empty because never used in BankID flow.")
     }

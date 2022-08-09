@@ -164,10 +164,21 @@ private extension IdentHubSession {
     private func startIdentification() {
         identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
         
+        appDependencies.sessionInfoProvider.addEnableRemoteLoggingCallback { [weak self] in
+            guard let self = self else {
+                SBLog.error("Cannot handle remote logging : `self` is not present")
+                
+                return
+            }
+            
+            self.enableRemoteLogging()
+        }
+        
         SBLog.debug("Starting IdentificationCoordinator")
         identCoordinator?.start { [weak self] result in
             guard let self = self else {
                 SBLog.error("Cannot handle identification coordinator start completion: `self` is not present")
+                
                 return
             }
             

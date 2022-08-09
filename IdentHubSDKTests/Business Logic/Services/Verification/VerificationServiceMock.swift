@@ -55,7 +55,8 @@ class VerificationServiceMock: VerificationService {
             "terms_and_conditions_pre_accepted": true,
             "style": nil,
             "fourthline_provider": obtainFourthlineProvider(),
-            "verified_mobile_number": false
+            "verified_mobile_number": false,
+            "sdk_logging": false
         ] as [String: Any?]
         
         completionHandler(mapResponse(responseJSON: responseJSON))

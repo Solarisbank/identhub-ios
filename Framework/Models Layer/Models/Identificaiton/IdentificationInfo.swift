@@ -29,6 +29,9 @@ struct IdentificationInfo: Decodable {
 
     /// Style used in SDK setup by partner
     let style: IdentificationStyle?
+    
+    /// If `true` remote logging should be enabled with `.warn` level
+    let remoteLogging: Bool
 
     enum CodingKeys: String, CodingKey {
         case status
@@ -38,5 +41,6 @@ struct IdentificationInfo: Decodable {
         case fourthlineProvider = "fourthline_provider"
         case phoneVerificationStatus = "verified_mobile_number"
         case style
+        case remoteLogging = "sdk_logging"
     }
 }
