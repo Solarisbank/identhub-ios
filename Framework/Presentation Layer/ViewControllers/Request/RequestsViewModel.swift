@@ -571,8 +571,6 @@ private extension RequestsViewModel {
         verificationService.obtainFourthlineIdentificationStatus { [weak self] result in
             guard let self = self else { return }
             
-            self.completeStep(number: VerificationSteps.verification.rawValue)
-
             switch result {
             case .success(let response):
                 switch response.identificationStatus {
@@ -580,6 +578,8 @@ private extension RequestsViewModel {
                      .processed:
                     self.retryVerification()
                 default:
+                    self.completeStep(number: VerificationSteps.verification.rawValue)
+                    
                     self.manageResponseStatus(response)
                 }
             case .failure(let error):
