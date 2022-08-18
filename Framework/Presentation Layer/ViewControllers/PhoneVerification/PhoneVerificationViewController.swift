@@ -138,6 +138,7 @@ extension PhoneVerificationViewController {
             submitCodeBtn.currentAppearance = .inactive
             codeEntryView.state = .normal
             codeEntryView.clearCodeEntries()
+            errorLabel.isHidden = true
         case .disabled:
             requestNewCodeBtn.isEnabled = false
             requestNewCodeBtn.alpha = 0.5

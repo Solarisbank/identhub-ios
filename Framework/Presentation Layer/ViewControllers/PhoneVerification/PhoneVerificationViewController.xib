@@ -44,6 +44,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5y-Vm-Tcu">
                             <rect key="frame" x="20" y="100" width="374" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -62,10 +63,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong TAN. You need to request a new TAN and try again." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-3P-g27">
-                            <rect key="frame" x="91" y="229" width="232" height="40"/>
+                            <rect key="frame" x="20" y="229" width="374" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="232" id="cNf-5Q-CIl"/>
-                                <constraint firstAttribute="height" constant="40" id="t2O-QU-Yi8"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="t2O-QU-Yi8"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" name="error"/>
@@ -118,6 +118,7 @@
                         <constraint firstAttribute="trailing" secondItem="ugs-Np-KgU" secondAttribute="trailing" constant="20" id="8Kb-aK-Ek6"/>
                         <constraint firstItem="Ogh-3P-g27" firstAttribute="top" secondItem="J6Y-w0-bA5" secondAttribute="bottom" constant="12" id="Aa0-ij-3VD"/>
                         <constraint firstAttribute="bottom" secondItem="2Jr-YL-y1A" secondAttribute="bottom" constant="30" id="Bud-vc-F02"/>
+                        <constraint firstAttribute="trailing" secondItem="Ogh-3P-g27" secondAttribute="trailing" constant="20" id="EE8-xK-Z4j"/>
                         <constraint firstItem="B5y-Vm-Tcu" firstAttribute="top" secondItem="dQh-8f-cOy" secondAttribute="bottom" constant="32" id="H3r-mZ-Zsv"/>
                         <constraint firstItem="J6Y-w0-bA5" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="KSe-sZ-zBS"/>
                         <constraint firstItem="2Jr-YL-y1A" firstAttribute="leading" secondItem="2Lr-DT-kl8" secondAttribute="leading" constant="24" id="OLF-O3-ust"/>
@@ -128,6 +129,7 @@
                         <constraint firstItem="Ogh-3P-g27" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="Uig-3B-owr"/>
                         <constraint firstAttribute="trailing" secondItem="2Jr-YL-y1A" secondAttribute="trailing" constant="24" id="V68-ag-Lco"/>
                         <constraint firstAttribute="trailing" secondItem="B5y-Vm-Tcu" secondAttribute="trailing" constant="20" id="YT1-PG-7Z9"/>
+                        <constraint firstItem="Ogh-3P-g27" firstAttribute="leading" secondItem="2Lr-DT-kl8" secondAttribute="leading" constant="20" id="epi-Ln-bi8"/>
                         <constraint firstItem="B5y-Vm-Tcu" firstAttribute="leading" secondItem="2Lr-DT-kl8" secondAttribute="leading" constant="20" id="iBs-ZU-GX0"/>
                         <constraint firstItem="BTw-bG-7P3" firstAttribute="centerX" secondItem="2Lr-DT-kl8" secondAttribute="centerX" id="rqB-JC-BJU"/>
                         <constraint firstItem="ugs-Np-KgU" firstAttribute="top" secondItem="J6Y-w0-bA5" secondAttribute="bottom" constant="24" id="vYF-D8-Rt8"/>
@@ -159,10 +161,10 @@
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base50">
-            <color red="0.49411764705882355" green="0.52941176470588236" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.49399998784065247" green="0.52899998426437378" blue="0.57999998331069946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base75">
-            <color red="0.25490196078431371" green="0.30196078431372547" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.25499999523162842" green="0.30199998617172241" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="error">
             <color red="0.88627450980392153" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -171,10 +173,10 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary_lighten">
-            <color red="1" green="0.51372549019607838" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.51399999856948853" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondary">
-            <color red="0.19607843137254902" green="0.51764705882352946" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19599999487400055" green="0.51800000667572021" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
