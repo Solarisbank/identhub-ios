@@ -41,9 +41,10 @@ internal protocol DocumentExporter {
 final internal class DocumentExporterService: NSObject, DocumentExporter {
 
     private var documentExporter: UIDocumentInteractionController?
-    private var presenter: UIViewController?
     private var previewItem: QLPreviewItem?
     private var callback: (() -> Void)?
+
+    private weak var presenter: UIViewController?
 
     // MARK: - Document exporter protocol methods -
     func presentExporter(
@@ -83,7 +84,7 @@ final internal class DocumentExporterService: NSObject, DocumentExporter {
 // MARK: - Internal methods methods -
 extension DocumentExporterService {
 
-    func buildDocumentInteractor(from controller: UIViewController, documentURL: URL) {
+    private func buildDocumentInteractor(from controller: UIViewController, documentURL: URL) {
         presenter = controller
 
         documentExporter = UIDocumentInteractionController(url: documentURL)
@@ -97,12 +98,15 @@ extension DocumentExporterService {
 extension DocumentExporterService: UIDocumentInteractionControllerDelegate {
 
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return self.presenter!
+        guard let presenter = presenter else {
+            fatalError("No view controller available to present UIDocumentInteractionController")
+        }
+
+        return presenter
     }
 
     func documentInteractionControllerDidDismissOptionsMenu(_ controller: UIDocumentInteractionController) {
         documentExporter = nil
-        presenter = nil
     }
 }
 
