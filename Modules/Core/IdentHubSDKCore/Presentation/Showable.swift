@@ -5,7 +5,7 @@
 
 import UIKit
 
-public protocol Showable {
+public protocol Showable: AnyObject {
 
     func toShowable() -> UIViewController
 }

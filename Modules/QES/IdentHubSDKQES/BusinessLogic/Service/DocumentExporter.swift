@@ -6,6 +6,7 @@
 import UIKit
 import MobileCoreServices
 import QuickLook
+import IdentHubSDKCore
 
 internal protocol DocumentExporter {
 
@@ -15,26 +16,18 @@ internal protocol DocumentExporter {
     ///   - frame: start presentation frame
     ///   - documentURL: exported document URL
     func presentExporter(
-        from controller: UIViewController,
+        from showable: Showable,
         in frame: CGRect,
-        documentURL: URL,
-        completion: (() -> Void)?
+        documentURL: URL
     )
-
-    /// Method presented UIActivityViewController with exported items
-    /// - Parameters:
-    ///   - from: presented controller object
-    ///   - documents: array with exported documents URLs
-    func presentAllDocumentsExporter(from controller: UIViewController, documents: [URL])
 
     /// Method presents preview component with document data
     /// - Parameters:
     ///   - from: presented controller object
     ///   - documentURL: preview document URL
-    func previewDocument(
-        from controller: UIViewController,
-        documentURL: URL,
-        completion: (() -> Void)?
+    func presentPreviewer(
+        from showable: Showable,
+        documentURL: URL
     )
 }
 
@@ -42,33 +35,18 @@ final internal class DocumentExporterService: NSObject, DocumentExporter {
 
     private var documentExporter: UIDocumentInteractionController?
     private var previewItem: QLPreviewItem?
-    private var callback: (() -> Void)?
 
     private weak var presenter: UIViewController?
 
     // MARK: - Document exporter protocol methods -
-    func presentExporter(
-        from controller: UIViewController,
-        in frame: CGRect,
-        documentURL: URL,
-        completion: (() -> Void)?
-    ) {
-        callback = completion
-        buildDocumentInteractor(from: controller, documentURL: documentURL)
+    func presentExporter(from showable: Showable, in frame: CGRect, documentURL: URL) {
+        buildDocumentInteractor(from: showable.toShowable(), documentURL: documentURL)
 
         documentExporter?.presentOptionsMenu(from: frame, in: presenter!.view, animated: true)
     }
 
-    func presentAllDocumentsExporter(from controller: UIViewController, documents: [URL]) {
-
-        let activityController = UIActivityViewController(activityItems: documents, applicationActivities: nil)
-
-        controller.present(activityController, animated: true, completion: nil)
-    }
-
-    func previewDocument(from controller: UIViewController, documentURL: URL, completion: (() -> Void)? = nil) {
+    func presentPreviewer(from showable: Showable, documentURL: URL) {
         previewItem = documentURL as QLPreviewItem
-        callback = completion
 
         if QLPreviewController.canPreview(previewItem!) {
             let previewController = QLPreviewController()
@@ -76,7 +54,7 @@ final internal class DocumentExporterService: NSObject, DocumentExporter {
             previewController.dataSource = self
             previewController.delegate = self
 
-            controller.present(previewController, animated: true, completion: nil)
+            showable.toShowable().present(previewController, animated: true, completion: nil)
         }
     }
 }
@@ -129,7 +107,6 @@ extension DocumentExporterService: QLPreviewControllerDataSource, QLPreviewContr
             } catch let error {
                 print("Occurs error during removing previewed file: \(error)")
             }
-            callback?()
         }
     }
 }

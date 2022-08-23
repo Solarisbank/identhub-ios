@@ -7,76 +7,40 @@ import IdentHubSDKCore
 
 // MARK: - Input, Output and Dependencies
 
-internal enum SignDocumentsActionOutput: Equatable {
+internal enum SignDocumentsOutput: Equatable {
     case identificationConfirmed(token: String)
     case quit
 }
 
-internal struct SignDocumentsActionInput {
+internal struct SignDocumentsInput {
     let identificationUID: String
     let mobileNumber: String?
 }
 
-// MARK: - Action -
+// MARK: - Events Logic -
 
-final internal class SignDocumentsAction<ViewController: UpdateableShowable>: Action
-    where ViewController.EventHandler == SignDocumentsEventHandler, ViewController.ViewState == SignDocumentsState {
+typealias SignDocumentsCallback = (Result<SignDocumentsOutput, APIError>) -> Void
+
+final internal class SignDocumentsEventHandlerImpl<ViewController: UpdateableShowable>: SignDocumentsEventHandler where ViewController.EventHandler == SignDocumentsEventHandler, ViewController.ViewState == SignDocumentsState {
     
-    private let verificationService: VerificationService
-    private let statusCheckService: StatusCheckService
-    private var viewController: ViewController
-    private var logic: SignDocumentsLogic?
-
-    init(
-        viewController: ViewController,
-        verificationService: VerificationService,
-        statusCheckService: StatusCheckService
-    ) {
-        self.viewController = viewController
-        self.verificationService = verificationService
-        self.statusCheckService = statusCheckService
+    weak var updatableView: ViewController? {
+        didSet {
+            updatableView?.updateView(state)
+        }
     }
-
-    func perform(
-        input: SignDocumentsActionInput,
-        callback: @escaping (Result<SignDocumentsActionOutput, APIError>) -> Void
-    ) -> Showable? {
-
-        logic = SignDocumentsLogic(
-            verificationService: verificationService,
-            statusCheckService: statusCheckService,
-            input: input,
-            callback: callback,
-            updateStateCallback: viewController.updateView(_:)
-        )
-        viewController.eventHandler = logic
-
-        logic?.loadMobileNumber()
-
-        return viewController
-    }
-}
-
-// MARK: - Logic -
-
-private class SignDocumentsLogic: SignDocumentsEventHandler {
-    typealias Callback = (Result<SignDocumentsActionOutput, APIError>) -> Void
-    typealias UpdateStateCallback = (SignDocumentsState) -> Void
-
+    
     private let verificationService: VerificationService
     private let statusCheckService: StatusCheckService
 
     private var state: SignDocumentsState
-    private var input: SignDocumentsActionInput
-    private var callback: Callback
-    private var updateStateCallback: UpdateStateCallback
+    private var input: SignDocumentsInput
+    private var callback: SignDocumentsCallback
 
     init(
         verificationService: VerificationService,
         statusCheckService: StatusCheckService,
-        input: SignDocumentsActionInput,
-        callback: @escaping Callback,
-        updateStateCallback: @escaping UpdateStateCallback
+        input: SignDocumentsInput,
+        callback: @escaping SignDocumentsCallback
     ) {
 
         self.verificationService = verificationService
@@ -84,18 +48,17 @@ private class SignDocumentsLogic: SignDocumentsEventHandler {
 
         self.input = input
         self.callback = callback
-        self.updateStateCallback = updateStateCallback
 
         self.state = SignDocumentsState(mobileNumber: input.mobileNumber)
-        
-        updateStateCallback(state)
+
+        loadMobileNumber()
     }
 
     func loadMobileNumber() {
         if input.mobileNumber == nil {
-            verificationService.getMobileNumber { result in
+            verificationService.getMobileNumber { [weak self] result in
                 result.onSuccess { mobileNumber in
-                    self.updateState { state in
+                    self?.updateState { state in
                         state.mobileNumber = mobileNumber.number
                     }
                 }
@@ -183,7 +146,7 @@ private class SignDocumentsLogic: SignDocumentsEventHandler {
     private func updateState(_ update: @escaping (inout SignDocumentsState) -> Void) {
         DispatchQueue.main.async {
             update(&self.state)
-            self.updateStateCallback(self.state)
+            self.updatableView?.updateView(self.state)
         }
     }
 }

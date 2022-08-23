@@ -1,4 +1,4 @@
-ACTION: ConfirmApplicationAction.perform(ConfirmApplicationActionInput(identificationUID: "uid"))
-ACTION: ConfirmApplicationAction.callback((result: IdentHubSDKQES.ConfirmApplicationActionOutput.quit, isFinished: true))
-ACTION: Quit.perform(())
-ACTION: Quit.callback((result: true, isFinished: true))
+SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable(input: "ConfirmApplicationInput(identificationUID: "uid")", callback:)
+SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable.callback(quit)
+UI: AlertsServiceMock.presentQuitAlert(callback:)
+UI: AlertsServiceMock.presentQuitAlert.callback(true)

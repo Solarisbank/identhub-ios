@@ -1,5 +1,5 @@
 //
-//  ConfirmApplicationActionFlowsTest.swift
+//  ConfirmApplicationEventFlowsTest.swift
 //  IdentHubSDKQESTests
 //
 @testable import IdentHubSDKQES
@@ -7,7 +7,7 @@ import XCTest
 import IdentHubSDKCore
 import IdentHubSDKTestBase
 
-final class ConfirmApplicationActionFlowsTests: XCTestCase {
+final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     typealias ViewController = UpdateableMock<ConfirmApplicationState, ConfirmApplicationEventHandler>
 
     private let uid = "someIdentId"
@@ -16,12 +16,10 @@ final class ConfirmApplicationActionFlowsTests: XCTestCase {
     private var recorder: TestRecorder!
     private var apiClient: APIClientMock!
     private var verificationService: VerificationServiceSpy!
-    private var showable: ViewController!
 
     override func setUp() {
         recorder = TestRecorder()
         apiClient = APIClientMock(failUnexpectedRequests: true, recorder: recorder)
-        showable = ViewController(recorder: recorder)
         
         let verificationServiceImpl = VerificationServiceImpl(
             apiClient: apiClient,
@@ -40,14 +38,12 @@ final class ConfirmApplicationActionFlowsTests: XCTestCase {
         recorder = nil
         apiClient = nil
         verificationService = nil
-        showable = nil
     }
 
     func testSignDocuments() {
-        let sut = makeSut()
-        let input = ConfirmApplicationActionInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid)
 
-        assertAsyncActionPeform(sut, with: input, expectedResult: .confirmedApplication) {
+        assertFlow(input: input, expectedOutput: .confirmedApplication) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
             showable.loadDocuments()
 
@@ -58,91 +54,101 @@ final class ConfirmApplicationActionFlowsTests: XCTestCase {
     }
     
     func testPreviewDocument() {
-        let sut = makeSut()
-        let input = ConfirmApplicationActionInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid)
 
-        assertAsyncActionPeform(sut, with: input, expectedResult: .previewDocument(url: RequestFileMock.bankDocument.url)) {
+        assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
             showable.loadDocuments()
 
             apiClient.expectSuccess(.bankDocument, for: try! DocumentDownloadRequest(documentUID: documentUID))
             showable.previewDocument(withId: documentUID)
+            assertAsyncViewStateIn(showable) { viewState in
+                viewState.documents.first?.isLoading == false
+            }
         }
 
         recorder.assert()
     }
     
     func testDownloadDocument() {
-        let sut = makeSut()
-        let input = ConfirmApplicationActionInput(identificationUID: uid)
-
-        assertAsyncActionPeform(sut, with: input, expectedResult: .downloadDocument(url: RequestFileMock.bankDocument.url)) {
+        let input = ConfirmApplicationInput(identificationUID: uid)
+        
+        assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
             showable.loadDocuments()
 
             apiClient.expectSuccess(.bankDocument, for: try! DocumentDownloadRequest(documentUID: documentUID))
             showable.downloadDocument(withId: documentUID)
+            assertAsyncViewStateIn(showable) { viewState in
+                viewState.documents.first?.isLoading == false
+            }
         }
 
         recorder.assert()
     }
     
     func testQuit() {
-        let sut = makeSut()
-        let input = ConfirmApplicationActionInput(identificationUID: uid)
-
-        assertAsyncActionPeform(sut, with: input, expectedResult: .quit) {
+        let input = ConfirmApplicationInput(identificationUID: uid)
+        
+        assertFlow(input: input, expectedOutput: .quit) { showable in
             showable.quit()
         }
 
         recorder.assert()
     }
 
-    // TODO: Scenarios to review - at the moment we are doing nothing in these cases
-    // IdentificationRequest failed - we can't display documents, sign button is disabled
-    // DocumentDownloadRequest failed (preview or download) - we are not doing anything - infinite loading on a document is displayed
-    
-    private func makeSut() -> ConfirmApplicationAction<ViewController> {
-        let sut = ConfirmApplicationAction(
-            presenter: showable,
-            verificationService: verificationService
-        )
+    func makeShowableWithSut(
+        input: ConfirmApplicationInput,
+        callback: @escaping ConfirmApplicationCallback = { _ in XCTFail("Unexpected callback") }
+    ) -> ViewController {
+        let showable = ViewController(recorder: recorder)
+        let sut = ConfirmApplicationEventHandlerImpl<ViewController>(
+            verificationService: verificationService,
+            documentExporter: DocumentExporterMock(recorder: recorder),
+            input: input,
+            callback: callback
+            )
+        showable.eventHandler = sut
+        sut.updatableView = showable
+
         trackForMemoryLeaks(sut)
-        return sut
+        trackForMemoryLeaks(showable)
+
+        return showable
     }
 }
 
 extension UpdateableMock: ConfirmApplicationEventHandler where EventHandler == ConfirmApplicationEventHandler {
 
     public func loadDocuments() {
-        recorder?.record(event: .event, value: #function)
-        eventHandler?.loadDocuments()
+        self.recorder?.record(event: .event, in: #function)
+        self.eventHandler?.loadDocuments()
     }
     
     public func signDocuments() {
         DispatchQueue.main.async {
-            self.recorder?.record(event: .event, value: #function)
+            self.recorder?.record(event: .event, in: #function)
             self.eventHandler?.signDocuments()
         }
     }
     
     public func previewDocument(withId id: String) {
         DispatchQueue.main.async {
-            self.recorder?.record(event: .event, value: #function)
+            self.recorder?.record(event: .event, in: #function, arguments: id)
             self.eventHandler?.previewDocument(withId: id)
         }
     }
     
     public func downloadDocument(withId id: String) {
         DispatchQueue.main.async {
-            self.recorder?.record(event: .event, value: #function)
+            self.recorder?.record(event: .event, in: #function, arguments: id)
             self.eventHandler?.downloadDocument(withId: id)
         }
     }
     
     public func quit() {
         DispatchQueue.main.async {
-            self.recorder?.record(event: .event, value: #function)
+            self.recorder?.record(event: .event, in: #function)
             self.eventHandler?.quit()
         }
     }

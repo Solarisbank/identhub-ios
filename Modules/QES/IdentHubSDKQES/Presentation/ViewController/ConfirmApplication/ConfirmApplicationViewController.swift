@@ -9,14 +9,13 @@ import IdentHubSDKCore
 
 /// UIViewController which displays screen with the documents to read and sign later.
 final internal class ConfirmApplicationViewController: UIViewController, Quitable, Updateable {
+    
+    typealias ViewState = ConfirmApplicationState
+    typealias EventHandler = ConfirmApplicationEventHandler
 
     // MARK: - Properties -
 
-    weak var eventHandler: ConfirmApplicationEventHandler? {
-        didSet {
-            eventHandler?.loadDocuments()
-        }
-    }
+    var eventHandler: ConfirmApplicationEventHandler?
 
     private let rowHeight: CGFloat = 61
     private let progressHeight: CGFloat = 89
@@ -34,8 +33,9 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
     
     /// Initialized with view model object
     /// - Parameter viewModel: view model object
-    init(colors: Colors) {
+    init(colors: Colors, eventHandler: ConfirmApplicationEventHandler) {
         self.colors = colors
+        self.eventHandler = eventHandler
         super.init(nibName: String(describing: Self.self), bundle: Bundle(for: Self.self))
     }
 
@@ -48,6 +48,7 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        eventHandler?.loadDocuments()
     }
 
     // MARK: - Update -

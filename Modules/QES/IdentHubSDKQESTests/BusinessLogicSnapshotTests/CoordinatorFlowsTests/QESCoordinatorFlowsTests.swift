@@ -12,8 +12,8 @@ final class QESCoordinatorFlowsTests: XCTestCase {
     var recorder: TestRecorder!
     var apiClient: APIClientMock!
     var verificationService: VerificationService!
-    var actionFactory: ActionFactoryMock!
-    var actionPerformer: ActionPerformer!
+    var alertsService: AlertsServiceMock!
+    var showableFactory: ShowableFactoryMock!
 
     override func setUp() {
         recorder = TestRecorder()
@@ -22,8 +22,8 @@ final class QESCoordinatorFlowsTests: XCTestCase {
             apiClient: apiClient,
             fileStorage: FileStorageMock()
         )
-        actionFactory = ActionFactoryMock(testRecorder: recorder)
-        actionPerformer = ActionPerformer()
+        alertsService = AlertsServiceMock(recorder: recorder)
+        showableFactory = ShowableFactoryMock(testRecorder: recorder)
     }
     
     func testConfirmApplicationAndSignDocuments() {
@@ -35,26 +35,13 @@ final class QESCoordinatorFlowsTests: XCTestCase {
         )
         
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.identificationConfirmed(identificationToken: "XXX"))) {
-            actionFactory.confirmApplicationAction.mockCallback(with: .previewDocument(url: .mock()))
-            actionFactory.previewDocumentAction.mockCallback(with: true, isFinished: true)
-            actionFactory.previewDocumentAction = nil
+            showableFactory.confirmApplicationCallback?(.quit)
+            alertsService.quitAlertCallback?(false)
+            showableFactory.confirmApplicationCallback?(.confirmedApplication)
 
-            actionFactory.confirmApplicationAction.mockCallback(with: .downloadDocument(url: .mock()))
-            actionFactory.downloadDocumentAction.mockCallback(with: true, isFinished: true)
-            actionFactory.downloadDocumentAction = nil
-            
-
-            actionFactory.confirmApplicationAction.mockCallback(with: .quit)
-            actionFactory.quitAction.mockCallback(with: false, isFinished: true)
-            actionFactory.quitAction = nil
-
-            actionFactory.confirmApplicationAction.mockCallback(with: .confirmedApplication, isFinished: true)
-            actionFactory.confirmApplicationAction = nil
-
-            actionFactory.signDocumentsAction.mockCallback(with: .success(.identificationConfirmed(token: "XXX")), isFinished: true)
-            actionFactory.signDocumentsAction = nil
-
-            XCTAssertEqual(actionPerformer.actions.count, 0)
+            showableFactory.signDocumentsCallback?(.success(.quit))
+            alertsService.quitAlertCallback?(false)
+            showableFactory.signDocumentsCallback?(.success(.identificationConfirmed(token: "XXX")))
         }
 
         recorder.assert()
@@ -68,17 +55,8 @@ final class QESCoordinatorFlowsTests: XCTestCase {
             mobileNumber: "+49 111 222 333"
         )
 
-        actionFactory.confirmApplicationAction = nil
-        actionFactory.previewDocumentAction = nil
-        actionFactory.downloadDocumentAction = nil
-
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.identificationConfirmed(identificationToken: "XXX"))) {
-            actionFactory.signDocumentsAction.mockCallback(with: .success(.quit))
-            actionFactory.quitAction.mockCallback(with: false, isFinished: true)
-            actionFactory.quitAction = nil
-
-            actionFactory.signDocumentsAction.mockCallback(with: .success(.identificationConfirmed(token: "XXX")), isFinished: true)
-            actionFactory.signDocumentsAction = nil
+            showableFactory.signDocumentsCallback?(.success(.identificationConfirmed(token: "XXX")))
         }
         
         recorder.assert()
@@ -92,17 +70,9 @@ final class QESCoordinatorFlowsTests: XCTestCase {
             mobileNumber: "+49 111 222 333"
         )
 
-        actionFactory.signDocumentsAction = nil
-        actionFactory.previewDocumentAction = nil
-        actionFactory.downloadDocumentAction = nil
-
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.abort)) {
-            actionFactory.confirmApplicationAction.mockCallback(with: .quit, isFinished: true)
-            actionFactory.quitAction.mockCallback(with: true, isFinished: true)
-            actionFactory.quitAction = nil
-            actionFactory.confirmApplicationAction = nil
-
-            XCTAssertEqual(actionPerformer.actions.count, 0)
+            showableFactory.confirmApplicationCallback?(.quit)
+            alertsService?.quitAlertCallback?(true)
         }
 
         recorder.assert()
@@ -116,18 +86,10 @@ final class QESCoordinatorFlowsTests: XCTestCase {
             mobileNumber: "+49 111 222 333"
         )
 
-        actionFactory.previewDocumentAction = nil
-        actionFactory.downloadDocumentAction = nil
-
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.abort)) {
-            actionFactory.confirmApplicationAction.mockCallback(with: .confirmedApplication, isFinished: true)
-            actionFactory.confirmApplicationAction = nil
-
-            actionFactory.signDocumentsAction.mockCallback(with: .success(.quit), isFinished: true)
-            actionFactory.quitAction.mockCallback(with: true, isFinished: true)
-            actionFactory.quitAction = nil
-            actionFactory.signDocumentsAction = nil
-            XCTAssertEqual(actionPerformer.actions.count, 0)
+            showableFactory.confirmApplicationCallback?(.confirmedApplication)
+            showableFactory.signDocumentsCallback?(.success(.quit))
+            alertsService.quitAlertCallback?(true)
         }
 
         recorder.assert()
@@ -136,19 +98,14 @@ final class QESCoordinatorFlowsTests: XCTestCase {
     private func makeSut() -> QESCoordinatorImpl {
         let sut = QESCoordinatorImpl(
             presenter: PresenterMock(),
-            actionFactory: actionFactory,
+            showableFactory: showableFactory,
             verificationService: verificationService,
+            alertsService: alertsService,
             storage: StorageMock(),
-            documentExporter: DocumentExporterService(),
             colors: ColorsImpl()
         )
 
         trackForMemoryLeaks(sut)
-        trackForMemoryLeaks(actionFactory.confirmApplicationAction)
-        trackForMemoryLeaks(actionFactory.signDocumentsAction)
-        trackForMemoryLeaks(actionFactory.quitAction)
-        trackForMemoryLeaks(actionFactory.previewDocumentAction)
-        trackForMemoryLeaks(actionFactory.downloadDocumentAction)
 
         return sut
     }

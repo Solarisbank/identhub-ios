@@ -1,5 +1,5 @@
 //
-//  SignDocumentsActionTests.swift
+//  SignDocumentsEventHandlerTests.swift
 //  IdentHubSDKQESTests
 //
 
@@ -8,8 +8,7 @@
 import XCTest
 import IdentHubSDKTestBase
 
-final class SignDocumentsActionTests: XCTestCase {
-    private var viewController: UpdateableShowableMock!
+final class SignDocumentsEventHandlerTests: XCTestCase {
     private var verificationService: VerificationServiceMock!
     private var statusCheckService: StatusCheckServiceMock!
     
@@ -19,7 +18,6 @@ final class SignDocumentsActionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        viewController = UpdateableShowableMock()
         verificationService = VerificationServiceMock()
         statusCheckService = StatusCheckServiceMock()
     }
@@ -27,7 +25,6 @@ final class SignDocumentsActionTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         
-        viewController = nil
         verificationService = nil
         statusCheckService = nil
     }
@@ -35,80 +32,56 @@ final class SignDocumentsActionTests: XCTestCase {
     // MARK: - perform
     
     func test_perform_mobileNumberIsNil_callsGetMobileNumber_doesNotCallCallback() {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedState = SignDocumentsState.mock()
-        
-        let sut = makeSut()
-        
-        var result: Showable?
-        
+        let showable = UpdateableShowableMock()
+
         assertAsync { updateViewExpectation in
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                
-                updateViewExpectation.fulfill()
-            }
-            
+            showable.assertLastStateUpdate(expectedState, fulfill: updateViewExpectation)
+
             assertAsync { callbackExpectation in
                 callbackExpectation.isInverted = true
                 
-                result = sut.perform(input: input) { _ in
+                makeSut(for: showable, input: input) { _ in
                     callbackExpectation.fulfill()
                 }
             }
+            XCTAssertNotNil(showable.eventHandler)
+            XCTAssertEqual(verificationService.getMobileNumberCallsCount, 1)
         }
-        
-        XCTAssertIdentical(viewController.toShowable(), result?.toShowable())
-        XCTAssertNotNil(viewController.eventHandler)
-        XCTAssertEqual(verificationService.getMobileNumberCallsCount, 1)
     }
     
     func test_perform_mobileNumberIsNotNil_doesNotCallGetMobileNumber_doesNotCallCallback() {
         let mobileNumber = "555555555"
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: mobileNumber)
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: mobileNumber)
         let expectedState = SignDocumentsState.mock(mobileNumber: mobileNumber)
-        
-        let sut = makeSut()
-        
-        var result: Showable?
-        
-        assertAsync { updateViewExpectation in
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
+        let showable = UpdateableShowableMock()
 
-                updateViewExpectation.fulfill()
-            }
-            
+        assertAsync { updateViewExpectation in
+            showable.assertLastStateUpdate(expectedState, fulfill: updateViewExpectation)
+
             assertAsync { callbackExpectation in
                 callbackExpectation.isInverted = true
                 
-                result = sut.perform(input: input) { _ in
+                makeSut(for: showable, input: input) { _ in
                     callbackExpectation.fulfill()
                 }
             }
         }
         
-        XCTAssertIdentical(viewController.toShowable(), result?.toShowable())
-        XCTAssertNotNil(viewController.eventHandler)
+        XCTAssertNotNil(showable.eventHandler)
         XCTAssertEqual(verificationService.getMobileNumberCallsCount, 0)
     }
     
     func test_perform_mobileNumberIsNil_callGetMobileNumberSucceeds_updatesStateWithExpectedValue() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedMobileNumber = "555555555"
         let expectedState = SignDocumentsState.mock(mobileNumber: expectedMobileNumber)
-        
-        let sut = makeSut()
-        
-        _ = sut.perform(input: input) { _ in }
-        
+        let showable = makeViewControllerWithSut(input: input)
+
         try assertAsync { updateViewExpectation in
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                
-                updateViewExpectation.fulfill()
-            }
-            
+            showable.assertLastStateUpdate(expectedState, fulfill: updateViewExpectation)
+
             let getMobileNumberArgumentsCompletion = try XCTUnwrap(verificationService.getMobileNumberArguments.last)
             
             getMobileNumberArgumentsCompletion(.success(.init(id: nil, number: expectedMobileNumber, verified: true)))
@@ -118,17 +91,14 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_perform_mobileNumberIsNil_callGetMobileNumberFails_doesNotUpdateState() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedState = SignDocumentsState.mock()
-        
-        let sut = makeSut()
-
-        _ = sut.perform(input: input) { _ in }
+        let showable = makeViewControllerWithSut(input: input)
 
         try assertAsync { updateViewExpectation in
             updateViewExpectation.isInverted = true
             
-            viewController.updateViewCompletion = {
+            showable.updateViewCompletion = {
                 updateViewExpectation.fulfill()
             }
             
@@ -138,18 +108,16 @@ final class SignDocumentsActionTests: XCTestCase {
         }
         
         XCTAssertEqual(verificationService.getMobileNumberCallsCount, 1)
-        XCTAssertEqual(viewController.updateViewArguments.last, expectedState)
+        XCTAssertEqual(showable.updateViewArguments.last, expectedState)
     }
     
     // MARK: - quit
     
     func test_quit_callsCallbackWithExpectedResult() {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        
-        let sut = makeSut()
-        
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
+
         assertAsync { expectation in
-            _ = sut.perform(input: input) { result in
+            let showable = makeViewControllerWithSut(input: input) { result in
                 XCTAssertResultIsSuccess(result) { value in
                     XCTAssertEqual(value, .quit)
                 }
@@ -157,47 +125,45 @@ final class SignDocumentsActionTests: XCTestCase {
                 expectation.fulfill()
             }
             
-            viewController.eventHandler?.quit()
+            showable.eventHandler?.quit()
         }
     }
     
     // MARK: - requestNewCode
     
     func test_requestNewCode_callsSetupNewCodeTimer_callsAuthorizeDocuments() {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
-        
-        _ = sut.perform(input: input) { _ in }
-        
-        viewController.eventHandler?.requestNewCode()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
+        let showable = makeViewControllerWithSut(input: input)
+
+        showable.eventHandler?.requestNewCode()
         
         XCTAssertEqual(statusCheckService.setupNewCodeTimerCallsCount, 1)
         XCTAssertEqual(verificationService.authorizeDocumentsCallsCount, 1)
         XCTAssertEqual(verificationService.authorizeDocumentsArguments.last?.identificationUID, identificationUID)
+        
+        assertAsync { expectation in
+            showable.updateViewCompletion = {
+                expectation.fulfill()
+            }
+        }
     }
     
     func test_requestNewCode_setupNewCodeTimerCompletes_stateIsUpdated() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedNewCodeRemainingTime = 10
         let expectedState = SignDocumentsState.mock(newCodeRemainingTime: expectedNewCodeRemainingTime)
-        
-        _ = sut.perform(input: input) { _ in }
-        
-        viewController.eventHandler?.requestNewCode()
+        let showable = makeViewControllerWithSut(input: input)
+
+        showable.eventHandler?.requestNewCode()
         
         assertAsync { expectation in
-            viewController.updateViewCompletion = {
+            showable.updateViewCompletion = {
                 expectation.fulfill()
             }
         }
         
         try assertAsync { expectation in
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                
-                expectation.fulfill()
-            }
+            showable.assertLastStateUpdate(expectedState, fulfill: expectation)
 
             let setupNewCodeTimerCompletion = try XCTUnwrap(statusCheckService.setupNewCodeTimerArguments.last)
             
@@ -206,24 +172,22 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_requestNewCode_authorizeDocumentsCompletesWithSuccessWithTransactionId_stateIsUpdated() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedTransactionId = "transaction_id"
         let expectedState = SignDocumentsState.mock(state: .codeAvailable, transactionId: expectedTransactionId)
+        let showable = makeViewControllerWithSut(input: input)
 
-        _ = sut.perform(input: input) { _ in }
-        
-        viewController.eventHandler?.requestNewCode()
+        showable.eventHandler?.requestNewCode()
         
         assertAsync { expectation in
-            viewController.updateViewCompletion = {
+            showable.updateViewCompletion = {
                 expectation.fulfill()
             }
         }
         
         try assertAsync { expectation in
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
+            showable.updateViewCompletion = { [weak showable] in
+                XCTAssertEqual(showable?.updateViewArguments.last, expectedState)
                 
                 expectation.fulfill()
             }
@@ -235,26 +199,20 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_requestNewCode_authorizeDocumentsCompletesWithSuccessWithoutTransactionId_stateIsUpdated() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedState = SignDocumentsState.mock(state: .codeAvailable)
-        
-        _ = sut.perform(input: input) { _ in }
-        
-        viewController.eventHandler?.requestNewCode()
+        let showable = makeViewControllerWithSut(input: input)
+
+        showable.eventHandler?.requestNewCode()
         
         assertAsync { expectation in
-            viewController.updateViewCompletion = {
+            showable.updateViewCompletion = {
                 expectation.fulfill()
             }
         }
         
         try assertAsync { expectation in
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                
-                expectation.fulfill()
-            }
+            showable.assertLastStateUpdate(expectedState, fulfill: expectation)
 
             let authorizeDocumentsCompletion = try XCTUnwrap(verificationService.authorizeDocumentsArguments.last?.completionHandler)
             
@@ -263,16 +221,14 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_requestNewCode_authorizeDocumentsCompletesWithFailure_stateIsUpdated_callsInvalidateNewCodeTimer() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedState = SignDocumentsState.mock(state: .codeUnavailable)
-        
-        _ = sut.perform(input: input) { _ in }
-        
-        viewController.eventHandler?.requestNewCode()
+        let showable = makeViewControllerWithSut(input: input)
+
+        showable.eventHandler?.requestNewCode()
         
         assertAsync { expectation in
-            viewController.updateViewCompletion = {
+            showable.updateViewCompletion = {
                 expectation.fulfill()
             }
         }
@@ -280,11 +236,7 @@ final class SignDocumentsActionTests: XCTestCase {
         XCTAssertEqual(statusCheckService.invalidateNewCodeTimerCallsCount, 0)
         
         try assertAsync { expectation in
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                
-                expectation.fulfill()
-            }
+            showable.assertLastStateUpdate(expectedState, fulfill: expectation)
 
             let authorizeDocumentsCompletion = try XCTUnwrap(verificationService.authorizeDocumentsArguments.last?.completionHandler)
             
@@ -297,30 +249,32 @@ final class SignDocumentsActionTests: XCTestCase {
     // MARK: - submitCodeAndSign
     
     func test_submitCodeAndSign_callsInvalidateNewCodeTimer_callsVerifyDocumentsTANWithExpectedArguments() {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
-        
-        _ = sut.perform(input: input) { _ in }
-        
-        viewController.eventHandler?.submitCodeAndSign(code)
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
+        let showable = makeViewControllerWithSut(input: input)
+
+        showable.eventHandler?.submitCodeAndSign(code)
         
         XCTAssertEqual(statusCheckService.invalidateNewCodeTimerCallsCount, 1)
         XCTAssertEqual(verificationService.verifyDocumentsTANCallsCount, 1)
         XCTAssertEqual(verificationService.verifyDocumentsTANArguments.last?.identificationUID, identificationUID)
         XCTAssertEqual(verificationService.verifyDocumentsTANArguments.last?.token, code)
+
+        assertAsync { expectation in
+            showable.updateViewCompletion = {
+                expectation.fulfill()
+            }
+        }
     }
     
     func test_submitCodeAndSign_verifyDocumentsTANCompletesWithSuccess_statusConfirmed_updatesState_callsSetupStatusVerificationTimer() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedState = SignDocumentsState.mock(state: .processingIdentfication)
-        
-        _ = sut.perform(input: input) { _ in }
-        
-        viewController.eventHandler?.submitCodeAndSign(code)
+        let showable = makeViewControllerWithSut(input: input)
+
+        showable.eventHandler?.submitCodeAndSign(code)
         
         assertAsync { expectation in
-            viewController.updateViewCompletion = {
+            showable.updateViewCompletion = {
                 expectation.fulfill()
             }
         }
@@ -328,12 +282,8 @@ final class SignDocumentsActionTests: XCTestCase {
         try assertAsync { expectation in
             expectation.expectedFulfillmentCount = 2
             
-            viewController.updateViewCompletion = {
-                XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                
-                expectation.fulfill()
-            }
-            
+            showable.assertLastStateUpdate(expectedState, fulfill: expectation)
+
             statusCheckService.setupStatusVerificationTimerCompletion = {
                 XCTAssertEqual(self.statusCheckService.setupStatusVerificationTimerArguments.last?.identificationUID, self.identificationUID)
                 
@@ -347,13 +297,12 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_submitCodeAndSign_verifyDocumentsTANCompletesWithSuccess_statusConfirmed_setupStatusVerificationTimerCompletesWithConfirmed_updatesState_callsCallback() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedToken = "token"
         let expectedState = SignDocumentsState(state: .identificationSuccessful)
         
         try assertAsync { callbackExpectation in
-            _ = sut.perform(input: input) { result in
+            let showable = makeViewControllerWithSut(input: input) { result in
                 XCTAssertResultIsSuccess(result) { value in
                     XCTAssertEqual(value, .identificationConfirmed(token: expectedToken))
                 }
@@ -361,7 +310,7 @@ final class SignDocumentsActionTests: XCTestCase {
                 callbackExpectation.fulfill()
             }
             
-            viewController.eventHandler?.submitCodeAndSign(code)
+            showable.eventHandler?.submitCodeAndSign(code)
             
             try assertAsync { expectation in
                 statusCheckService.setupStatusVerificationTimerCompletion = {
@@ -374,12 +323,8 @@ final class SignDocumentsActionTests: XCTestCase {
             }
             
             try assertAsync { expectation in
-                viewController.updateViewCompletion = {
-                    XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                    
-                    expectation.fulfill()
-                }
-                
+                showable.assertLastStateUpdate(expectedState, fulfill: expectation)
+
                 let setupStatusVerificationTimerCallback = try XCTUnwrap(statusCheckService.setupStatusVerificationTimerArguments.last?.callback)
                 
                 setupStatusVerificationTimerCallback(.success(expectedToken))
@@ -388,22 +333,19 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_submitCodeAndSign_verifyDocumentsTANCompletesWithSuccess_statusConfirmed_setupStatusVerificationTimerCompletesWithSucceeded_updatesState_callsCallback() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedToken = "token"
         let expectedState = SignDocumentsState(state: .identificationSuccessful)
 
         try assertAsync(timeout: 0.3) { callbackExpectation in
-            
-            _ = sut.perform(input: input) { result in
+            callbackExpectation.isInverted = true
+            let showable = makeViewControllerWithSut(input: input) { result in
                 XCTAssertResultIsSuccess(result) { value in
                     XCTAssertEqual(value, .identificationConfirmed(token: expectedToken))
                 }
-                
-                callbackExpectation.fulfill()
             }
             
-            viewController.eventHandler?.submitCodeAndSign(code)
+            showable.eventHandler?.submitCodeAndSign(code)
             
             try assertAsync { expectation in
                 statusCheckService.setupStatusVerificationTimerCompletion = {
@@ -416,12 +358,8 @@ final class SignDocumentsActionTests: XCTestCase {
             }
             
             try assertAsync { expectation in
-                viewController.updateViewCompletion = {
-                    XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                    
-                    expectation.fulfill()
-                }
-                
+                showable.assertLastStateUpdate(expectedState, fulfill: expectation)
+
                 let setupStatusVerificationTimerCallback = try XCTUnwrap(statusCheckService.setupStatusVerificationTimerArguments.last?.callback)
                 
                 setupStatusVerificationTimerCallback(.success(expectedToken))
@@ -430,12 +368,11 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_submitCodeAndSign_verifyDocumentsTANCompletesWithSuccess_statusConfirmed_setupStatusVerificationTimerCompletesWithFailure_doesNotUpdatesState_callsCallback() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
-        let sut = makeSut()
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedError = APIError.unknownError
         
         try assertAsync(timeout: 0.3) { callbackExpectation in
-            _ = sut.perform(input: input) { result in
+            let showable = makeViewControllerWithSut(input: input) { result in
                 XCTAssertResultIsFailure(result) { error in
                     XCTAssertEqual(error, expectedError)
                 }
@@ -443,7 +380,7 @@ final class SignDocumentsActionTests: XCTestCase {
                 callbackExpectation.fulfill()
             }
             
-            viewController.eventHandler?.submitCodeAndSign(code)
+            showable.eventHandler?.submitCodeAndSign(code)
             
             try assertAsync { expectation in
                 statusCheckService.setupStatusVerificationTimerCompletion = {
@@ -458,7 +395,7 @@ final class SignDocumentsActionTests: XCTestCase {
             try assertAsync { expectation in
                 expectation.isInverted = true
                 
-                viewController.updateViewCompletion = {
+                showable.updateViewCompletion = {
                     expectation.fulfill()
                 }
                 
@@ -472,26 +409,24 @@ final class SignDocumentsActionTests: XCTestCase {
     
     func test_submitCodeAndSign_verifyDocumentsTANCompletesWithSuccess_statusOtherThanConfirmed_callsInvalidateNewCodeTimer_updatesState_doesNotCallCallback() throws {
         let statuses: [Status] = Status.allCases.filter { $0 != .confirmed }
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedState = SignDocumentsState.mock(state: .codeInvalid)
 
         try statuses.forEach { status in
             statusCheckService = StatusCheckServiceMock()
-            viewController = UpdateableShowableMock()
+            let showable = UpdateableShowableMock()
             verificationService = VerificationServiceMock()
-            
-            let sut = makeSut()
             
             try assertAsync(timeout: 1.0) { callbackExpectation in
                 callbackExpectation.isInverted = true
-                _ = sut.perform(input: input) { _ in
+                makeSut(for: showable, input: input) { _ in
                     callbackExpectation.fulfill()
                 }
                 
-                viewController.eventHandler?.submitCodeAndSign(code)
+                showable.eventHandler?.submitCodeAndSign(code)
                 
                 assertAsync { expectation in
-                    viewController.updateViewCompletion = {
+                    showable.updateViewCompletion = {
                         expectation.fulfill()
                     }
                 }
@@ -505,11 +440,7 @@ final class SignDocumentsActionTests: XCTestCase {
                         expectation.fulfill()
                     }
                     
-                    viewController.updateViewCompletion = {
-                        XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                        
-                        expectation.fulfill()
-                    }
+                    showable.assertLastStateUpdate(expectedState, fulfill: expectation)
 
                     let verifyDocumentsTANCompletion = try XCTUnwrap(verificationService.verifyDocumentsTANArguments.last?.completionHandler)
                     
@@ -522,21 +453,19 @@ final class SignDocumentsActionTests: XCTestCase {
     }
     
     func test_submitCodeAndSign_verifyDocumentsTANCompletesWithFailure_callsInvalidateNewCodeTimer_updatesState_doesNotCallCallback() throws {
-        let input = SignDocumentsActionInput(identificationUID: identificationUID, mobileNumber: nil)
+        let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let expectedState = SignDocumentsState.mock(state: .codeInvalid)
 
-        let sut = makeSut()
-        
         try assertAsync(timeout: 1.0) { callbackExpectation in
             callbackExpectation.isInverted = true
-            _ = sut.perform(input: input) { _ in
+            let showable = makeViewControllerWithSut(input: input) { _ in
                 callbackExpectation.fulfill()
             }
             
-            viewController.eventHandler?.submitCodeAndSign(code)
+            showable.eventHandler?.submitCodeAndSign(code)
             
             assertAsync { expectation in
-                viewController.updateViewCompletion = {
+                showable.updateViewCompletion = {
                     expectation.fulfill()
                 }
             }
@@ -550,12 +479,8 @@ final class SignDocumentsActionTests: XCTestCase {
                     expectation.fulfill()
                 }
                 
-                viewController.updateViewCompletion = {
-                    XCTAssertEqual(self.viewController.updateViewArguments.last, expectedState)
-                    
-                    expectation.fulfill()
-                }
-                
+                showable.assertLastStateUpdate(expectedState, fulfill: expectation)
+
                 let verifyDocumentsTANCompletion = try XCTUnwrap(verificationService.verifyDocumentsTANArguments.last?.completionHandler)
                 
                 verifyDocumentsTANCompletion(.failure(.init(.unknownError)))
@@ -565,16 +490,28 @@ final class SignDocumentsActionTests: XCTestCase {
         }
     }
     
-    private func makeSut() -> SignDocumentsAction<UpdateableShowableMock> {
-        let sut = SignDocumentsAction(
-            viewController: viewController,
+    private func makeViewControllerWithSut(input: SignDocumentsInput, callback: @escaping (Result<SignDocumentsOutput, APIError>) -> Void = { _ in }) -> UpdateableShowableMock {
+        let showable = UpdateableShowableMock()
+        makeSut(for: showable, input: input, callback: callback)
+        return showable
+    }
+    
+    private func makeSut(
+        for showable: UpdateableShowableMock,
+        input: SignDocumentsInput,
+        callback: @escaping (Result<SignDocumentsOutput, APIError>) -> Void = { _ in XCTFail("Unexpected callback") }
+    ) {
+        let sut = SignDocumentsEventHandlerImpl<UpdateableShowableMock>(
             verificationService: verificationService,
-            statusCheckService: statusCheckService
+            statusCheckService: statusCheckService,
+            input: input,
+            callback: callback
         )
+        showable.eventHandler = sut
+        sut.updatableView = showable
         
         trackForMemoryLeaks(sut)
-        
-        return sut
+        trackForMemoryLeaks(showable)
     }
 }
 
@@ -616,5 +553,15 @@ private extension SignDocumentsState {
             newCodeRemainingTime: newCodeRemainingTime,
             transactionId: transactionId
         )
+    }
+}
+
+private extension UpdateableShowableMock {
+    func assertLastStateUpdate(_ expectedState: ViewState, fulfill expectation: XCTestExpectation) {
+        updateViewCompletion = { [weak self] in
+            XCTAssertEqual(self?.updateViewArguments.last, expectedState)
+            
+            expectation.fulfill()
+        }
     }
 }

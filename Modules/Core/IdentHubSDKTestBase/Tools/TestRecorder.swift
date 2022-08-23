@@ -12,7 +12,7 @@ public class TestRecorder {
         case updateView = "UPDATE_VIEW"
         case api = "API"
         case service = "SERVICE"
-        case action = "ACTION"
+        case ui = "UI"
     }
 
     private var recording = ""
@@ -27,13 +27,15 @@ public class TestRecorder {
         recording.append(text)
     }
 
-    public func record(event: Event, in function: StaticString = #function, caller: Any) {
-        let value = String(describing: type(of: caller)) + "." + valueForFunction(function, with: [])
+    public func record(event: Event, in function: StaticString = #function, caller: Any? = nil) {
+        let prefix = caller == nil ? "" : String(describing: type(of: caller!)) + "."
+        let value = prefix + valueForFunction(function, with: [])
         record(event: event, value: value)
     }
 
-    public func record(event: Event, in function: StaticString = #function, caller: Any, arguments: Any...) {
-        let value = String(describing: type(of: caller)) + "." + valueForFunction(function, with: arguments)
+    public func record(event: Event, in function: StaticString = #function, caller: Any? = nil, arguments: Any...) {
+        let prefix = caller == nil ? "" : String(describing: type(of: caller!)) + "."
+        let value = prefix + valueForFunction(function, with: arguments)
         record(event: event, value: value)
     }
     
@@ -80,14 +82,16 @@ public class TestRecorder {
         }
 
         var returnValues: [String] = []
-        
+
         argumentsStrings.forEach { argument in
             returnValues.append(String(functionParts.removeFirst()) + ": \"" + argument + "\"")
         }
         
-        returnValues.append(functionParts.joined(separator: ":"))
-        
-        return returnValues.joined(separator: ", ")
+        while functionParts.count > 1 {
+            returnValues.append(String(functionParts.removeFirst()) + ":")
+        }
+
+        return returnValues.joined(separator: ", ") + functionParts.joined(separator: "")
     }
 }
 

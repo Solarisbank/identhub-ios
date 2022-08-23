@@ -3,8 +3,9 @@ EVENT: loadDocuments()
 SERVICE: VerificationServiceSpy.getIdentification(for: "someIdentId", completionHandler:)
 API: /person_onboarding/identifications/someIdentId: OK
 UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [LoadableDocument(ContractDocument(someDocumentId), isLoading: false)], hasTermsAndConditionsLink: true)
-EVENT: previewDocument(withId:)
+EVENT: downloadDocument(withId: "someDocumentId")
 SERVICE: VerificationServiceSpy.downloadAndSaveDocument(withId: "someDocumentId", completion:)
 API: /person_onboarding/sign_documents/someDocumentId/download: OK
 UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [LoadableDocument(ContractDocument(someDocumentId), isLoading: true)], hasTermsAndConditionsLink: true)
+UI: DocumentExporterMock.presentExporter(from:, in:, documentURL:)
 UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [LoadableDocument(ContractDocument(someDocumentId), isLoading: false)], hasTermsAndConditionsLink: true)

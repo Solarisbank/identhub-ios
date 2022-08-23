@@ -44,7 +44,7 @@ Pod::Spec.new do |spec|
   spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets,lproj,strings}","Shared/Colors.xcassets"
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.dependency 'FourthlineSDK', '2.11.4'
+  spec.dependency 'FourthlineSDK', '2.13.1'
   spec.dependency 'ZIPFoundation', '0.9.11'
   spec.dependency 'InputMask', '6.1.0'
   spec.dependency 'lottie-ios'

@@ -1,5 +1,5 @@
 //
-//  SignDocumentsActionFlowsTests.swift
+//  SignDocumentsEventFlowsTests.swift
 //  IdentHubSDKQESTests
 //
 import XCTest
@@ -7,7 +7,7 @@ import XCTest
 @testable import IdentHubSDKCore
 import IdentHubSDKTestBase
 
-final class SignDocumentsActionFlowsTests: XCTestCase {
+final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
     typealias ViewController = UpdateableMock<SignDocumentsState, SignDocumentsEventHandler>
 
     private let uid = "someIdentId"
@@ -68,12 +68,12 @@ final class SignDocumentsActionFlowsTests: XCTestCase {
     }
     
     func testSuccessfulSigning() {
-        let sut = makeSut()
-        let input = SignDocumentsActionInput(identificationUID: uid, mobileNumber: nil)
+        let input = SignDocumentsInput(identificationUID: uid, mobileNumber: nil)
 
         apiClient.expectSuccess(.mobileNumber, for: MobileNumberRequest())
 
-        assertAsyncActionPeform(sut, with: input, expectedResult: .success(.identificationConfirmed(token: identificationToken))) {
+        assertFlow(input: input, expectedOutput: .success(.identificationConfirmed(token: identificationToken))) { showable in
+
             apiClient.expectSuccess(
                 .signDocumentsAuthorize,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
@@ -90,18 +90,18 @@ final class SignDocumentsActionFlowsTests: XCTestCase {
                 for: try! IdentificationRequest(identificationUID: uid)
             )
             showable.submitCodeAndSign(transactionId)
+            assertAsyncViewStateIn(showable) { $0.state == .identificationSuccessful }
         }
 
         recorder.assert()
     }
     
     func testLoadingMobileNumberFailed() {
-        let sut = makeSut()
-        let input = SignDocumentsActionInput(identificationUID: uid, mobileNumber: nil)
+        let input = SignDocumentsInput(identificationUID: uid, mobileNumber: nil)
 
         apiClient.expectError(.internalServerError, for: MobileNumberRequest())
 
-        assertAsyncActionPeform(sut, with: input, expectedResult: .success(.identificationConfirmed(token: identificationToken))) {
+        assertFlow(input: input, expectedOutput: .success(.identificationConfirmed(token: identificationToken))) { showable in
             apiClient.expectSuccess(
                 .signDocumentsAuthorize,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
@@ -118,16 +118,16 @@ final class SignDocumentsActionFlowsTests: XCTestCase {
                 for: try! IdentificationRequest(identificationUID: uid)
             )
             showable.submitCodeAndSign(transactionId)
+            assertAsyncViewStateIn(showable) { $0.state == .identificationSuccessful }
         }
 
         recorder.assert()
     }
     
     func testQuit() {
-        let sut = makeSut()
-        let input = SignDocumentsActionInput(identificationUID: uid, mobileNumber: mobileNumber)
+        let input = SignDocumentsInput(identificationUID: uid, mobileNumber: mobileNumber)
 
-        assertAsyncActionPeform(sut, with: input, expectedResult: .success(.quit)) {
+        assertFlow(input: input, expectedOutput: .success(.quit)) { showable in
             showable.quit()
         }
 
@@ -135,28 +135,22 @@ final class SignDocumentsActionFlowsTests: XCTestCase {
     }
     
     func testRequestCodeFailed() {
-        let sut = makeSut()
-        let input = SignDocumentsActionInput(identificationUID: uid, mobileNumber: mobileNumber)
-
-        _ = sut.perform(input: input) { _ in XCTFail("Unexpected result") }
-
-        apiClient.expectError(
-            .internalServerError,
-            for: try! DocumentsAuthorizeRequest(identificationUID: uid)
-        )
-        showable.requestNewCode()
-        
-        assertAsyncViewStateIn(showable) { $0.state == .requestingCode }
-        assertAsyncViewStateIn(showable) { $0.state == .codeUnavailable }
+        let input = SignDocumentsInput(identificationUID: uid, mobileNumber: mobileNumber)
+        assertFlow(input: input) { showable in
+            apiClient.expectError(
+                .internalServerError,
+                for: try! DocumentsAuthorizeRequest(identificationUID: uid)
+            )
+            showable.requestNewCode()
+        }
 
         recorder.assert()
     }
 
     func testStatusCheckFailed() {
-        let sut = makeSut()
-        let input = SignDocumentsActionInput(identificationUID: uid, mobileNumber: mobileNumber)
+        let input = SignDocumentsInput(identificationUID: uid, mobileNumber: mobileNumber)
 
-        assertAsyncActionPeform(sut, with: input, expectedResult: .failure(.authorizationFailed)) {
+        assertFlow(input: input, expectedOutput: .failure(.authorizationFailed)) { showable in
             apiClient.expectSuccess(
                 .signDocumentsAuthorize,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
@@ -176,38 +170,42 @@ final class SignDocumentsActionFlowsTests: XCTestCase {
     }
 
     func testInvalidCode() {
-        let sut = makeSut()
-        let input = SignDocumentsActionInput(identificationUID: uid, mobileNumber: mobileNumber)
+        let input = SignDocumentsInput(identificationUID: uid, mobileNumber: mobileNumber)
 
-        _ = sut.perform(input: input) { _ in XCTFail("Unexpected result") }
+        assertFlow(input: input) { showable in
+            apiClient.expectSuccess(
+                .signDocumentsAuthorize,
+                for: try! DocumentsAuthorizeRequest(identificationUID: uid)
+            )
+            showable.requestNewCode()
+            assertAsyncViewStateIn(showable) { $0.state == .codeAvailable }
 
-        apiClient.expectSuccess(
-            .signDocumentsAuthorize,
-            for: try! DocumentsAuthorizeRequest(identificationUID: uid)
-        )
-        showable.requestNewCode()
-        assertAsyncViewStateIn(showable) { $0.state == .codeAvailable }
-
-        apiClient.expectError(
-            .internalServerError,
-            for: try! DocumentsTANRequest(identificationUID: uid, token: transactionId)
-        )
-        showable.submitCodeAndSign(transactionId)
-        assertAsyncViewStateIn(showable) { $0.state == .codeInvalid }
+            apiClient.expectError(
+                .internalServerError,
+                for: try! DocumentsTANRequest(identificationUID: uid, token: transactionId)
+            )
+            showable.submitCodeAndSign(transactionId)
+            assertAsyncViewStateIn(showable) { $0.state == .codeInvalid }
+        }
 
         recorder.assert()
     }
 
-    private func makeSut() -> SignDocumentsAction<ViewController> {
-        let sut = SignDocumentsAction(
-            viewController: showable,
+    func makeShowableWithSut(input: SignDocumentsInput, callback: @escaping SignDocumentsCallback) -> ViewController {
+        let showable = ViewController(recorder: recorder)
+        let sut = SignDocumentsEventHandlerImpl<ViewController>(
             verificationService: verificationService,
-            statusCheckService: statusCheckService
+            statusCheckService: statusCheckService,
+            input: input,
+            callback: callback
         )
-        
+        showable.eventHandler = sut
+        sut.updatableView = showable
+
         trackForMemoryLeaks(sut)
-        
-        return sut
+        trackForMemoryLeaks(showable)
+
+        return showable
     }
 }
 

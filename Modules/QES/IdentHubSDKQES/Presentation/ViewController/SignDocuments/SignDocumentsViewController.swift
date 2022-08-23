@@ -47,19 +47,16 @@ final internal class SignDocumentsViewController: UIViewController, Quitable, Up
     @IBOutlet var stateView: StateView!
     
     // MARK: - Properties -
-    weak var eventHandler: SignDocumentsEventHandler? {
-        didSet {
-            eventHandler?.requestNewCode()
-        }
-    }
+    var eventHandler: SignDocumentsEventHandler?
 
     private var colors: Colors
     private var state: SignDocumentsState.State = .requestingCode
     
     /// Initialized with view model object
     /// - Parameter viewModel: view model object
-    init(colors: Colors) {
+    init(colors: Colors, eventHandler: SignDocumentsEventHandler) {
         self.colors = colors
+        self.eventHandler = eventHandler
         super.init(nibName: String(describing: Self.self), bundle: Bundle(for: Self.self))
     }
 
@@ -67,13 +64,18 @@ final internal class SignDocumentsViewController: UIViewController, Quitable, Up
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle methods -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureUI()
         registerForKeyboardNotifications()
+        eventHandler?.requestNewCode()
     }
     
+    // MARK: - Internal methods -
+
     func updateView(_ state: SignDocumentsState) {
         loadViewIfNeeded()
         

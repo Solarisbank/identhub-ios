@@ -10,6 +10,15 @@ public extension XCTestCase {
     static let defaultActionTimeout = 10.0
     static let defaultViewInStateTimeout = 10.0
 
+    func assertOnMainThread(checks: @escaping () -> Void) {
+        assertAsync { expectation in
+            DispatchQueue.main.async {
+                checks()
+                expectation.fulfill()
+            }
+        }
+    }
+
     func assertAsync(timeout: TimeInterval = defaultTimeout, checks: (XCTestExpectation) -> Void) {
         let expectation = expectation(description: name)
         checks(expectation)
@@ -22,41 +31,6 @@ public extension XCTestCase {
         wait(for: [expectation], timeout: timeout)
     }
 
-    func assertAsyncActionPeform<A: Action>(
-        _ action: A,
-        with input: A.ActionInput,
-        name: String = #function,
-        expectedResult: A.ActionResult,
-        timeout: TimeInterval = defaultActionTimeout,
-        checks: () -> Void
-    ) where A.ActionResult: Equatable {
-
-        assertAsyncActionPerform(
-            action,
-            with: input,
-            expectedResultCheck: { XCTAssertEqual($0, expectedResult) },
-            checks: checks
-        )
-    }
-
-    func assertAsyncActionPerform<A: Action>(
-        _ action: A,
-        with input: A.ActionInput,
-        name: String = #function,
-        expectedResultCheck: @escaping (A.ActionResult) -> Void,
-        timeout: TimeInterval = defaultActionTimeout,
-        checks: () -> Void
-    ) {
-
-        let expectation = expectation(description: name)
-        _ = action.perform(input: input) { result in
-            expectedResultCheck(result)
-            expectation.fulfill()
-        }
-        checks()
-        wait(for: [expectation], timeout: timeout)
-    }
-    
     func assertAsyncCoordinatorStart<C: FlowCoordinator>(
         _ coordinator: C,
         with input: C.Input,
@@ -78,7 +52,7 @@ public extension XCTestCase {
     func assertAsyncViewStateIn<ViewState, EventHandler>(
         _ updateable: UpdateableMock<ViewState, EventHandler>,
         timeout: TimeInterval = defaultViewInStateTimeout,
-        expectedState: @escaping (ViewState) -> Bool
+        expectedState: @escaping (ViewState) -> Bool = { _ in return true }
     ) {
         let expectation = updateable.expect(in: self, state: expectedState)
         wait(for: [expectation], timeout: timeout)

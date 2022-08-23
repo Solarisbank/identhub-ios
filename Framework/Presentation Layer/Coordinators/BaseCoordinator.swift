@@ -11,7 +11,7 @@ internal class BaseCoordinator: Coordinator {
     // MARK: - Properties -
     internal let presenter: Router
     private let appDependencies: AppDependencies
-    private let actionPerformer: ActionPerformer
+    private let alertsService: AlertsService
 
     // MARK: - Init method -
 
@@ -20,7 +20,7 @@ internal class BaseCoordinator: Coordinator {
     internal init(presenter: Router, appDependencies: AppDependencies) {
         self.presenter = presenter
         self.appDependencies = appDependencies
-        self.actionPerformer = ActionPerformer()
+        self.alertsService = AlertsServiceImpl(presenter: presenter, colors: appDependencies.serviceLocator.configuration.colors)
     }
 
     // MARK: - Public methods -
@@ -32,11 +32,9 @@ internal class BaseCoordinator: Coordinator {
     }
 
     internal func quit(action: @escaping () -> Void) {
-        let quitAction = QuitAction(colors: appDependencies.serviceLocator.configuration.colors)
-        actionPerformer.performAction(quitAction) { isQuitting in
+        alertsService.presentQuitAlert { isQuitting in
             if isQuitting { action() }
-            return true
-        }?.present(on: presenter, animated: false)
+        }
     }
 
     internal func close() {

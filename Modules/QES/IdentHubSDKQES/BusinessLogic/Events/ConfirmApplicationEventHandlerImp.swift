@@ -4,74 +4,48 @@
 //
 import Foundation
 import IdentHubSDKCore
+import UIKit
 
-internal enum ConfirmApplicationActionOutput: Equatable {
+internal enum ConfirmApplicationOutput: Equatable {
     case confirmedApplication
-    case previewDocument(url: URL)
-    case downloadDocument(url: URL)
     case quit
 }
 
-internal struct ConfirmApplicationActionInput {
+internal struct ConfirmApplicationInput {
     var identificationUID: String
 }
 
-final internal class ConfirmApplicationAction<ViewController: UpdateableShowable>: Action
-    where ViewController.ViewState == ConfirmApplicationState, ViewController.EventHandler == ConfirmApplicationEventHandler {
+// MARK: - Confirm application events logic -
 
-    private let verificationService: VerificationService
+typealias ConfirmApplicationCallback = (ConfirmApplicationOutput) -> Void
 
-    private var viewController: ViewController
-    private var logic: ConfirmApplicationLogic?
-
-    init(presenter: ViewController, verificationService: VerificationService) {
-        self.verificationService = verificationService
-        self.viewController = presenter
+final internal class ConfirmApplicationEventHandlerImpl<ViewController: UpdateableShowable>: ConfirmApplicationEventHandler where ViewController.EventHandler == ConfirmApplicationEventHandler, ViewController.ViewState == ConfirmApplicationState {
+    
+    weak var updatableView: ViewController? {
+        didSet {
+            updatableView?.updateView(state)
+        }
     }
-
-    func perform(
-        input: ConfirmApplicationActionInput,
-        callback: @escaping (ConfirmApplicationActionOutput) -> Void
-    ) -> Showable? {
-
-        logic = ConfirmApplicationLogic(
-            verificationService: verificationService,
-            input: input,
-            callback: callback,
-            updateStateCallback: viewController.updateView(_:)
-        )
-        viewController.eventHandler = logic
-        return viewController
-    }
-}
-
-final private class ConfirmApplicationLogic: ConfirmApplicationEventHandler {
-    typealias Callback = (ConfirmApplicationActionOutput) -> Void
-    typealias UpdateStateCallback = (ConfirmApplicationState) -> Void
-
+    
     private let verificationService: VerificationService
-
+    private var documentExporter: DocumentExporter
     private var state: ConfirmApplicationState
-    private var input: ConfirmApplicationActionInput
-    private var callback: Callback
-    private var updateStateCallback: UpdateStateCallback
+    private var input: ConfirmApplicationInput
+    private var callback: ConfirmApplicationCallback
 
     init(
         verificationService: VerificationService,
-        input: ConfirmApplicationActionInput,
-        callback: @escaping Callback,
-        updateStateCallback: @escaping UpdateStateCallback
+        documentExporter: DocumentExporter,
+        input: ConfirmApplicationInput,
+        callback: @escaping ConfirmApplicationCallback
     ) {
 
         self.verificationService = verificationService
-
+        self.documentExporter = documentExporter
         self.input = input
         self.callback = callback
-        self.updateStateCallback = updateStateCallback
-
-        self.state = ConfirmApplicationState()
         
-        updateStateCallback(state)
+        self.state = ConfirmApplicationState()
     }
 
     func loadDocuments() {
@@ -98,13 +72,15 @@ final private class ConfirmApplicationLogic: ConfirmApplicationEventHandler {
 
     func previewDocument(withId id: String) {
         downloadDocument(withId: id) { [weak self] url in
-            self?.callback(.previewDocument(url: url))
+            guard let showable = self?.updatableView else { return }
+            self?.documentExporter.presentPreviewer(from: showable, documentURL: url)
         }
     }
     
     func downloadDocument(withId id: String) {
         downloadDocument(withId: id) { [weak self] url in
-            self?.callback(.downloadDocument(url: url))
+            guard let showable = self?.updatableView else { return }
+            self?.documentExporter.presentExporter(from: showable, in: .zero, documentURL: url)
         }
     }
 
@@ -134,7 +110,7 @@ final private class ConfirmApplicationLogic: ConfirmApplicationEventHandler {
     private func updateState(_ update: @escaping (inout ConfirmApplicationState) -> Void) {
         DispatchQueue.main.async {
             update(&self.state)
-            self.updateStateCallback(self.state)
+            self.updatableView?.updateView(self.state)
         }
     }
 }

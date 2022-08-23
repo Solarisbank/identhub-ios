@@ -1,6 +1,6 @@
-UPDATE_VIEW: SignDocumentsState(mobileNumber: nil, state: IdentHubSDKQES.SignDocumentsState.State.requestingCode, newCodeRemainingTime: 0, transactionId: nil)
 SERVICE: VerificationServiceSpy.getMobileNumber(completionHandler:)
 API: /person_onboarding/mobile_number: OK
+UPDATE_VIEW: SignDocumentsState(mobileNumber: nil, state: IdentHubSDKQES.SignDocumentsState.State.requestingCode, newCodeRemainingTime: 0, transactionId: nil)
 UPDATE_VIEW: SignDocumentsState(mobileNumber: Optional("+48111222333"), state: IdentHubSDKQES.SignDocumentsState.State.requestingCode, newCodeRemainingTime: 0, transactionId: nil)
 EVENT: requestNewCode()
 SERVICE: StatusCheckServiceSpy.setupNewCodeTimer(callback:)
@@ -19,3 +19,4 @@ UPDATE_VIEW: SignDocumentsState(mobileNumber: Optional("+48111222333"), state: I
 SERVICE: StatusCheckServiceSpy.setupStatusVerificationTimer(identificationUID: "someIdentId", callback:)
 SERVICE: VerificationServiceSpy.getIdentification(for: "someIdentId", completionHandler:)
 API: /person_onboarding/identifications/someIdentId: OK
+UPDATE_VIEW: SignDocumentsState(mobileNumber: Optional("+48111222333"), state: IdentHubSDKQES.SignDocumentsState.State.identificationSuccessful, newCodeRemainingTime: 0, transactionId: Optional("Transaktions-ID: 1234-5678"))
