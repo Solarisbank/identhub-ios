@@ -34,6 +34,7 @@ public typealias CompletionHandler = (IdentificationSessionResult) -> Void
 
 /// Responsible for creating and managing identification process provided by `Solarisbank` into your iOS app
 final public class IdentHubSession {
+    private static var isSessionStarted = false
 
     private let sessionToken: String
 
@@ -162,6 +163,17 @@ extension IdentHubSession {
 private extension IdentHubSession {
 
     private func startIdentification() {
+        guard !IdentHubSession.isSessionStarted else {
+            SBLog.error("Another session is already starter. Please finish previously started session to start this one.")
+
+            // TODO: Use proper error to indicate state
+            updateSessionResult(.failure(.identificationNotPossible))
+
+            return
+        }
+
+        IdentHubSession.isSessionStarted = true
+
         identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
         
         appDependencies.sessionInfoProvider.addEnableRemoteLoggingCallback { [weak self] in
@@ -184,6 +196,8 @@ private extension IdentHubSession {
             
             SBLog.debug("IdentificationCoordinator result: \(result)")
             self.updateSessionResult(result)
+
+            IdentHubSession.isSessionStarted = false
         }
     }
 
