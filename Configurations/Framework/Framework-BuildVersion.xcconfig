@@ -1,0 +1,7 @@
+//
+//  Framework-BuildVersion.xcconfig
+//  IdentHubSDK
+//
+
+_BUILD_VERSION = 1.2.8
+_BUILD_NUMBER = 1

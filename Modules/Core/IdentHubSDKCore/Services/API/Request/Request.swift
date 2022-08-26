@@ -69,10 +69,20 @@ public extension Request {
     }
 
     var userAgent: String {
-        let appVersion = Bundle.current.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        let appVersion: String
+        let marketingVersion = CoreVersion.marketingVersion
+
+        if !marketingVersion.isEmpty {
+            appVersion = marketingVersion
+        } else if let shortVersionString = Bundle.current.infoDictionary?["CFBundleShortVersionString"] as? String {
+            // fallback in case we are building without pre processor macros set
+            appVersion = shortVersionString
+        } else {
+            fatalError("No appVersion string")
+        }
+
         return "IdentHub iOS (\(appVersion))"
     }
-    
 }
 
 // MARK: Conformance to URLRequestConvertible protocol.

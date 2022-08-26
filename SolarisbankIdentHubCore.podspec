@@ -43,6 +43,6 @@ Pod::Spec.new do |spec|
   
   spec.source_files = "Modules/Core/IdentHubSDKCore/**/*.{h,m,swift}", 'fixup_project_structure'
   spec.resources = "Modules/Core/IdentHubSDKCore/**/*.{png,xib,storyboard,xcassets,lproj,strings}","Shared/Colors.xcassets"
-  
+  spec.xcconfig = { "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) MARKETING_VERSION=#{spec.version}" }
 end
 
