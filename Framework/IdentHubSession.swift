@@ -188,6 +188,8 @@ private extension IdentHubSession {
         
         SBLog.debug("Starting IdentificationCoordinator")
         identCoordinator?.start { [weak self] result in
+            IdentHubSession.isSessionStarted = false
+
             guard let self = self else {
                 SBLog.error("Cannot handle identification coordinator start completion: `self` is not present")
                 
@@ -196,8 +198,6 @@ private extension IdentHubSession {
             
             SBLog.debug("IdentificationCoordinator result: \(result)")
             self.updateSessionResult(result)
-
-            IdentHubSession.isSessionStarted = false
         }
     }
 
