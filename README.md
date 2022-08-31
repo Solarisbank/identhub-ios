@@ -21,6 +21,7 @@
     - [Implementation using a callback handler](#implementation-using-a-callback-handler)
     - [APIError values](#apierror-values)
   - [SDK version](#sdk-version)
+  - [Architecture](Documentation/Architecture.md)
   - [Sample app](#sample-app)
   - [Troubleshooting](#troubleshooting)
     - [Pod repo add error](#pod-repo-add-error)
