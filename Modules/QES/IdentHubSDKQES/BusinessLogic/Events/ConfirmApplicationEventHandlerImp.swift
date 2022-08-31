@@ -19,7 +19,7 @@ internal struct ConfirmApplicationInput {
 
 typealias ConfirmApplicationCallback = (ConfirmApplicationOutput) -> Void
 
-final internal class ConfirmApplicationEventHandlerImpl<ViewController: UpdateableShowable>: ConfirmApplicationEventHandler where ViewController.EventHandler == ConfirmApplicationEventHandler, ViewController.ViewState == ConfirmApplicationState {
+final internal class ConfirmApplicationEventHandlerImpl<ViewController: UpdateableShowable>: EventHandler where ViewController.EventHandler == AnyEventHandler<ConfirmApplicationEvent>, ViewController.ViewState == ConfirmApplicationState {
     
     weak var updatableView: ViewController? {
         didSet {
@@ -46,6 +46,21 @@ final internal class ConfirmApplicationEventHandlerImpl<ViewController: Updateab
         self.callback = callback
         
         self.state = ConfirmApplicationState()
+    }
+
+    func handleEvent(_ event: ConfirmApplicationEvent) {
+        switch event {
+        case .loadDocuments:
+            loadDocuments()
+        case .signDocuments:
+            signDocuments()
+        case .previewDocument(let id):
+            previewDocument(withId: id)
+        case .downloadDocument(let id):
+            downloadDocument(withId: id)
+        case .quit:
+            quit()
+        }
     }
 
     func loadDocuments() {

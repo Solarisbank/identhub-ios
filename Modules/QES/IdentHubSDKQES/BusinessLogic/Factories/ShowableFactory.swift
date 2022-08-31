@@ -31,7 +31,7 @@ internal struct ShowableFactoryImpl: ShowableFactory {
 
     func makeConfirmApplicationShowable(input: ConfirmApplicationInput, callback: @escaping ConfirmApplicationCallback) -> Showable? {
         let eventHandler = ConfirmApplicationEventHandlerImpl<ConfirmApplicationViewController>(verificationService: verificationService, documentExporter: documentExporter, input: input, callback: callback)
-        let presenter = ConfirmApplicationViewController(colors: colors, eventHandler: eventHandler)
+        let presenter = ConfirmApplicationViewController(colors: colors, eventHandler: eventHandler.asAnyEventHandler())
         
         eventHandler.updatableView = presenter
         
@@ -48,7 +48,7 @@ internal struct ShowableFactoryImpl: ShowableFactory {
             callback: callback
         )
         
-        let presenter = SignDocumentsViewController(colors: colors, eventHandler: eventsHandler)
+        let presenter = SignDocumentsViewController(colors: colors, eventHandler: eventsHandler.asAnyEventHandler())
         
         eventsHandler.updatableView = presenter
         

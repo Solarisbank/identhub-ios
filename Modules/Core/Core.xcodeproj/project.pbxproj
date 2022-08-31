@@ -35,6 +35,8 @@
 		8829144B284A191400FB7F4D /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88291445284A191300FB7F4D /* UIView+Layout.swift */; };
 		8829144D284A191400FB7F4D /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88291447284A191400FB7F4D /* ViewExtensions.swift */; };
 		8829144E284A191400FB7F4D /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88291444284A191300FB7F4D /* UIView+Autolayout.swift */; };
+		882DE5EC28B7564F001BED9A /* AlertsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDE691284E63FC00FB659F /* AlertsService.swift */; };
+		882DE5ED28B75655001BED9A /* XCTestCase+Snapshotting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0C879285349D1000E176E /* XCTestCase+Snapshotting.swift */; };
 		883F1B0D2852039500037AED /* bankDocument.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 883F1B0C2852039500037AED /* bankDocument.pdf */; };
 		883F1B1828521FC000037AED /* RequestFileMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883F1B1728521FC000037AED /* RequestFileMock.swift */; };
 		883F1B2728522D8100037AED /* identificationConfirmed.json in Resources */ = {isa = PBXBuildFile; fileRef = 883F1B2628522D8100037AED /* identificationConfirmed.json */; };
@@ -75,6 +77,8 @@
 		88A9FB74284A14790074557B /* IdentHubSDKTestBase.docc in Sources */ = {isa = PBXBuildFile; fileRef = 88A9FB73284A14790074557B /* IdentHubSDKTestBase.docc */; };
 		88A9FB75284A14790074557B /* IdentHubSDKTestBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 88A9FB72284A14790074557B /* IdentHubSDKTestBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88A9FB82284A151C0074557B /* IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A9FB70284A14790074557B /* IdentHubSDKTestBase.framework */; };
+		88AB271C28B74FB8008FABD4 /* EventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AB271B28B74FB8008FABD4 /* EventHandler.swift */; };
+		88AB271F28B751F9008FABD4 /* EventHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AB271E28B751F9008FABD4 /* EventHandlerMock.swift */; };
 		88AED3FC28730B7A001D04BE /* mobileNumber.json in Resources */ = {isa = PBXBuildFile; fileRef = 88AED3FB28730B7A001D04BE /* mobileNumber.json */; };
 		88C15099285759B5007A395E /* Assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C15098285759B5007A395E /* Assert.swift */; };
 		88C35C0F284DF9D700720C11 /* QESInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C35C0E284DF9D700720C11 /* QESInput.swift */; };
@@ -91,7 +95,6 @@
 		88CB9CFD284A1EF200F55D31 /* QuitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CB9CFA284A1EF200F55D31 /* QuitView.swift */; };
 		88CB9D02284A1F4600F55D31 /* IdentificationProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CB9D01284A1F4600F55D31 /* IdentificationProgressView.swift */; };
 		88CB9D0E284A267100F55D31 /* ActionRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CB9D0D284A267100F55D31 /* ActionRoundedButton.swift */; };
-		88CDE692284E63FC00FB659F /* AlertsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDE691284E63FC00FB659F /* AlertsService.swift */; };
 		88CDE693284E647200FB659F /* QuitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C35C51284E637300720C11 /* QuitPopUpViewController.swift */; };
 		88CDE697284E648C00FB659F /* PopUpWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDE694284E648C00FB659F /* PopUpWindowViewController.swift */; };
 		88CDE69C284E6C3D00FB659F /* Result+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDE69B284E6C3D00FB659F /* Result+Convenience.swift */; };
@@ -231,6 +234,8 @@
 		88A9FB79284A14880074557B /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
 		88A9FB7A284A14880074557B /* ModuleServiceLocatorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleServiceLocatorMock.swift; sourceTree = "<group>"; };
 		88A9FB7B284A14880074557B /* StorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageMock.swift; sourceTree = "<group>"; };
+		88AB271B28B74FB8008FABD4 /* EventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandler.swift; sourceTree = "<group>"; };
+		88AB271E28B751F9008FABD4 /* EventHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandlerMock.swift; sourceTree = "<group>"; };
 		88AED3FB28730B7A001D04BE /* mobileNumber.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mobileNumber.json; sourceTree = "<group>"; };
 		88C15098285759B5007A395E /* Assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assert.swift; sourceTree = "<group>"; };
 		88C35C0E284DF9D700720C11 /* QESInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QESInput.swift; sourceTree = "<group>"; };
@@ -578,6 +583,7 @@
 		8893B97A283CDAC000F1C872 /* Abstraction */ = {
 			isa = PBXGroup;
 			children = (
+				88AB271B28B74FB8008FABD4 /* EventHandler.swift */,
 				8893B971283CDAAE00F1C872 /* FlowCoordinator.swift */,
 				88C35C18284DFCC500720C11 /* FlowCoordinatorPerformer.swift */,
 				88483D90283CF314000E8AEB /* CoordinatorFactory.swift */,
@@ -657,6 +663,7 @@
 				88D7257B289D1A0E001518FC /* AlertsServiceMock.swift */,
 				88E075AE2897C24A00FC1EE4 /* ModuleFactoryMock.swift */,
 				88A9FB7A284A14880074557B /* ModuleServiceLocatorMock.swift */,
+				88AB271E28B751F9008FABD4 /* EventHandlerMock.swift */,
 				88F120C12865AFBD00E76618 /* FileStorageMock.swift */,
 				88E075C92899582F00FC1EE4 /* FlowCoordinatorMock.swift */,
 				88CDE6A3284E783100FB659F /* PresenterMock.swift */,
@@ -1120,6 +1127,7 @@
 				88F120C22865AFBD00E76618 /* FileStorageMock.swift in Sources */,
 				88E075C82899581000FC1EE4 /* QESCoordinatorFactoryMock.swift in Sources */,
 				88291435284A16EA00FB7F4D /* ModuleServiceLocatorMock.swift in Sources */,
+				882DE5ED28B75655001BED9A /* XCTestCase+Snapshotting.swift in Sources */,
 				88DAFE2E284F94A100C85503 /* TestRecorder.swift in Sources */,
 				881E69EC2857D11B00E1C130 /* ColorsImpl+Mock.swift in Sources */,
 				88CDE6A4284E783100FB659F /* PresenterMock.swift in Sources */,
@@ -1129,11 +1137,10 @@
 				88291434284A16E700FB7F4D /* APIClientMock.swift in Sources */,
 				0565508C28758DFA007E8CBE /* XCTAssertResult.swift in Sources */,
 				88D7257C289D1A0E001518FC /* AlertsServiceMock.swift in Sources */,
-				88E0C87A285349D1000E176E /* XCTestCase+Snapshotting.swift in Sources */,
 				88E075CD289A774800FC1EE4 /* XCTestCase+FlowTest.swift in Sources */,
 				88E075AF2897C24A00FC1EE4 /* ModuleFactoryMock.swift in Sources */,
-				88E0C87A285349D1000E176E /* XCTestCase+Snapshotting.swift in Sources */,
 				88E075CA2899582F00FC1EE4 /* FlowCoordinatorMock.swift in Sources */,
+				88AB271F28B751F9008FABD4 /* EventHandlerMock.swift in Sources */,
 				88291436284A16ED00FB7F4D /* StorageMock.swift in Sources */,
 				883F1B1828521FC000037AED /* RequestFileMock.swift in Sources */,
 			);
@@ -1163,6 +1170,7 @@
 				88E9153F2845074F00284CCE /* UserDefaultsStorage.swift in Sources */,
 				8829144A284A191400FB7F4D /* UIImage+SDK.swift in Sources */,
 				88CB9D02284A1F4600F55D31 /* IdentificationProgressView.swift in Sources */,
+				882DE5EC28B7564F001BED9A /* AlertsService.swift in Sources */,
 				05AC64D628927B280039D883 /* SBLogConsoleDestination.swift in Sources */,
 				88EED7AF2844B3C100BF8B2B /* QESOutput.swift in Sources */,
 				8848D90E2844B932002CD781 /* UIColor+Convenience.swift in Sources */,
@@ -1174,6 +1182,7 @@
 				88291440284A18E700FB7F4D /* String+Regex.swift in Sources */,
 				88CDE6C4284E8B3F00FB659F /* CodeEntryView.swift in Sources */,
 				884D8541283F98CE004EA791 /* ServerError.swift in Sources */,
+				88AB271C28B74FB8008FABD4 /* EventHandler.swift in Sources */,
 				8848D90A2844B920002CD781 /* ColorsImpl.swift in Sources */,
 				884D8535283F9869004EA791 /* HTTPMethod.swift in Sources */,
 				88C15099285759B5007A395E /* Assert.swift in Sources */,

@@ -1,2 +1,2 @@
 UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [], hasTermsAndConditionsLink: true)
-EVENT: quit()
+EVENT: quit

@@ -38,5 +38,7 @@ public extension FlowTest where Self: XCTestCase {
         checks(showable)
 
         wait(for: [expectation], timeout: 0.1)
+
+        assertOnMainThread {}
     }
 }

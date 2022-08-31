@@ -55,7 +55,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         
         let showable = makeShowableWithSut(input: input)
         
-        showable.eventHandler?.loadDocuments()
+        showable.eventHandler?.handleEvent(.loadDocuments)
         
         XCTAssertEqual(verificationService.getIdentificationCallsCount, 1)
         XCTAssertEqual(verificationService.getIdentificationArguments.last?.identificationUID, identificationUID)
@@ -78,8 +78,8 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         
         let showable = makeShowableWithSut(input: input)
         
-        showable.eventHandler?.loadDocuments()
-        
+        showable.eventHandler?.handleEvent(.loadDocuments)
+
         XCTAssertEqual(verificationService.getIdentificationCallsCount, 1)
         XCTAssertEqual(verificationService.getIdentificationArguments.last?.identificationUID, identificationUID)
         
@@ -106,8 +106,8 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         
         let showable = makeShowableWithSut(input: input)
 
-        showable.eventHandler?.loadDocuments()
-        
+        showable.eventHandler?.handleEvent(.loadDocuments)
+
         XCTAssertEqual(verificationService.getIdentificationCallsCount, 1)
         XCTAssertEqual(verificationService.getIdentificationArguments.last?.identificationUID, identificationUID)
         
@@ -138,8 +138,8 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         
         let showable = makeShowableWithSut(input: input)
 
-        showable.eventHandler?.loadDocuments()
-        
+        showable.eventHandler?.handleEvent(.loadDocuments)
+
         XCTAssertEqual(verificationService.getIdentificationCallsCount, 1)
         XCTAssertEqual(verificationService.getIdentificationArguments.last?.identificationUID, identificationUID)
         
@@ -168,7 +168,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
                 expectation.fulfill()
             }
             
-            showable.eventHandler?.quit()
+            showable.eventHandler?.handleEvent(.quit)
         }
     }
     
@@ -184,7 +184,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
                 expectation.fulfill()
             }
             
-            showable.eventHandler?.signDocuments()
+            showable.eventHandler?.handleEvent(.signDocuments)
         }
     }
     
@@ -199,11 +199,11 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
 
         let showable = makeShowableWithSut(input: input)
 
-        showable.eventHandler?.loadDocuments()
+        showable.eventHandler?.handleEvent(.loadDocuments)
         
         verificationService.getIdentificationArguments.last?.completionHandler(.success(identification))
         
-        showable.eventHandler?.downloadDocument(withId: documentId)
+        showable.eventHandler?.handleEvent(.downloadDocument(withId: documentId))
         
         XCTAssertEqual(verificationService.downloadAndSaveDocumentCallsCount, 1)
         XCTAssertEqual(verificationService.downloadAndSaveDocumentArguments.last?.id, documentId)
@@ -228,11 +228,11 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
 
         let showable = makeShowableWithSut(input: input)
 
-        showable.eventHandler?.loadDocuments()
-        
+        showable.eventHandler?.handleEvent(.loadDocuments)
+
         verificationService.getIdentificationArguments.last?.completionHandler(.success(identification))
         
-        showable.eventHandler?.downloadDocument(withId: documentId)
+        showable.eventHandler?.handleEvent(.downloadDocument(withId: documentId))
         
         XCTAssertEqual(verificationService.downloadAndSaveDocumentCallsCount, 1)
         XCTAssertEqual(verificationService.downloadAndSaveDocumentArguments.last?.id, documentId)
@@ -257,11 +257,11 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
 
         let showable = makeShowableWithSut(input: input)
 
-        showable.eventHandler?.loadDocuments()
+        showable.eventHandler?.handleEvent(.loadDocuments)
         
         verificationService.getIdentificationArguments.last?.completionHandler(.success(identification))
         
-        showable.eventHandler?.previewDocument(withId: documentId)
+        showable.eventHandler?.handleEvent(.previewDocument(withId: documentId))
         
         XCTAssertEqual(verificationService.downloadAndSaveDocumentCallsCount, 1)
         XCTAssertEqual(verificationService.downloadAndSaveDocumentArguments.last?.id, documentId)
@@ -285,11 +285,11 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         let input = ConfirmApplicationInput(identificationUID: "identification_uid")
 
         let showable = makeShowableWithSut(input: input)
-        showable.eventHandler?.loadDocuments()
+        showable.eventHandler?.handleEvent(.loadDocuments)
         
         verificationService.getIdentificationArguments.last?.completionHandler(.success(identification))
         
-        showable.eventHandler?.previewDocument(withId: documentId)
+        showable.eventHandler?.handleEvent(.previewDocument(withId: documentId))
         
         XCTAssertEqual(verificationService.downloadAndSaveDocumentCallsCount, 1)
         XCTAssertEqual(verificationService.downloadAndSaveDocumentArguments.last?.id, documentId)
@@ -311,7 +311,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
             callback: callback
         )
         let showable = UpdateableShowableMock()
-        showable.eventHandler = sut
+        showable.eventHandler = sut.asAnyEventHandler()
         sut.updatableView = showable
         
         trackForMemoryLeaks(showable)
@@ -322,7 +322,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
 }
 
 private class UpdateableShowableMock: UpdateableShowable {
-    var eventHandler: ConfirmApplicationEventHandler?
+    var eventHandler: AnyEventHandler<ConfirmApplicationEvent>?
 
     var toShowableCallsCount = 0
     var toShowableReturnValue = UIViewController()

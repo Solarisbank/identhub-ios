@@ -1,7 +1,7 @@
 SERVICE: VerificationServiceSpy.getMobileNumber(completionHandler:)
 API: /person_onboarding/mobile_number: ResponseError – internalServerError (HTTP Code:  Reason: )
 UPDATE_VIEW: SignDocumentsState(mobileNumber: nil, state: IdentHubSDKQES.SignDocumentsState.State.requestingCode, newCodeRemainingTime: 0, transactionId: nil)
-EVENT: requestNewCode()
+EVENT: requestNewCode
 SERVICE: StatusCheckServiceSpy.setupNewCodeTimer(callback:)
 SERVICE: VerificationServiceSpy.authorizeDocuments(identificationUID: "someIdentId", completionHandler:)
 API: /person_onboarding/sign_documents/someIdentId/authorize: OK
@@ -9,7 +9,7 @@ UPDATE_VIEW: SignDocumentsState(mobileNumber: nil, state: IdentHubSDKQES.SignDoc
 UPDATE_VIEW: SignDocumentsState(mobileNumber: nil, state: IdentHubSDKQES.SignDocumentsState.State.requestingCode, newCodeRemainingTime: 2, transactionId: nil)
 UPDATE_VIEW: SignDocumentsState(mobileNumber: nil, state: IdentHubSDKQES.SignDocumentsState.State.codeAvailable, newCodeRemainingTime: 2, transactionId: Optional("Transaktions-ID: 1234-5678"))
 UPDATE_VIEW: SignDocumentsState(mobileNumber: nil, state: IdentHubSDKQES.SignDocumentsState.State.codeAvailable, newCodeRemainingTime: 1, transactionId: Optional("Transaktions-ID: 1234-5678"))
-EVENT: submitCodeAndSign(_:)
+EVENT: submitCodeAndSign("1234-5678")
 SERVICE: StatusCheckServiceSpy.invalidateNewCodeTimer()
 SERVICE: VerificationServiceSpy.verifyDocumentsTAN(identificationUID: "someIdentId", token: "1234-5678", completionHandler:)
 API: /person_onboarding/sign_documents/someIdentId/confirm: OK

@@ -21,7 +21,7 @@ internal struct SignDocumentsInput {
 
 typealias SignDocumentsCallback = (Result<SignDocumentsOutput, APIError>) -> Void
 
-final internal class SignDocumentsEventHandlerImpl<ViewController: UpdateableShowable>: SignDocumentsEventHandler where ViewController.EventHandler == SignDocumentsEventHandler, ViewController.ViewState == SignDocumentsState {
+final internal class SignDocumentsEventHandlerImpl<ViewController: UpdateableShowable>: EventHandler where ViewController.EventHandler == AnyEventHandler<SignDocumentsEvent>, ViewController.ViewState == SignDocumentsState {
     
     weak var updatableView: ViewController? {
         didSet {
@@ -52,6 +52,17 @@ final internal class SignDocumentsEventHandlerImpl<ViewController: UpdateableSho
         self.state = SignDocumentsState(mobileNumber: input.mobileNumber)
 
         loadMobileNumber()
+    }
+    
+    func handleEvent(_ event: SignDocumentsEvent) {
+        switch event {
+        case .requestNewCode:
+            requestNewCode()
+        case .submitCodeAndSign(let code):
+            submitCodeAndSign(code)
+        case .quit:
+            quit()
+        }
     }
 
     func loadMobileNumber() {

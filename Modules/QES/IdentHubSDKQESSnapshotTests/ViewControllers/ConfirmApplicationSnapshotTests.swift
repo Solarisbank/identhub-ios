@@ -6,7 +6,6 @@ import XCTest
 @testable import IdentHubSDKQES
 import IdentHubSDKCore
 import IdentHubSDKTestBase
-@testable import IdentHubSDKQESTests
 
 final class ConfirmApplicationSnapshotTests: XCTestCase {
     private var state: ConfirmApplicationState!
@@ -23,7 +22,7 @@ final class ConfirmApplicationSnapshotTests: XCTestCase {
     
     private func makeSut() -> ConfirmApplicationViewController {
         return trackedForMemoryLeaks(
-            ConfirmApplicationViewController(colors: ColorsImpl.mock(), eventHandler: ConfirmApplicationEventHandlerMock())
+            ConfirmApplicationViewController(colors: ColorsImpl.mock(), eventHandler: EventHandlerMock<ConfirmApplicationEvent>().asAnyEventHandler())
         )
     }
 }

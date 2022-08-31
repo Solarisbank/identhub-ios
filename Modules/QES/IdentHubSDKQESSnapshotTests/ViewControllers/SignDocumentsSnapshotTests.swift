@@ -7,7 +7,6 @@ import XCTest
 @testable import IdentHubSDKQES
 import IdentHubSDKCore
 import IdentHubSDKTestBase
-@testable import IdentHubSDKQESTests
 
 final class SignDocumentsSnapshotTests: XCTestCase {
     private let transactionId = "8981-7341"
@@ -85,7 +84,7 @@ final class SignDocumentsSnapshotTests: XCTestCase {
     
     private func makeSut() -> SignDocumentsViewController {
         return trackedForMemoryLeaks(
-            SignDocumentsViewController(colors: ColorsImpl.mock(), eventHandler: SignDocumentsEventHandlerMock())
+            SignDocumentsViewController(colors: ColorsImpl.mock(), eventHandler: EventHandlerMock<SignDocumentsEvent>().asAnyEventHandler())
         )
     }
 }

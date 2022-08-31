@@ -124,8 +124,7 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
                 
                 expectation.fulfill()
             }
-            
-            showable.eventHandler?.quit()
+            showable.eventHandler?.handleEvent(.quit)
         }
     }
     
@@ -135,7 +134,7 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
         let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let showable = makeViewControllerWithSut(input: input)
 
-        showable.eventHandler?.requestNewCode()
+        showable.eventHandler?.handleEvent(.requestNewCode)
         
         XCTAssertEqual(statusCheckService.setupNewCodeTimerCallsCount, 1)
         XCTAssertEqual(verificationService.authorizeDocumentsCallsCount, 1)
@@ -154,8 +153,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
         let expectedState = SignDocumentsState.mock(newCodeRemainingTime: expectedNewCodeRemainingTime)
         let showable = makeViewControllerWithSut(input: input)
 
-        showable.eventHandler?.requestNewCode()
-        
+        showable.eventHandler?.handleEvent(.requestNewCode)
+
         assertAsync { expectation in
             showable.updateViewCompletion = {
                 expectation.fulfill()
@@ -177,8 +176,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
         let expectedState = SignDocumentsState.mock(state: .codeAvailable, transactionId: expectedTransactionId)
         let showable = makeViewControllerWithSut(input: input)
 
-        showable.eventHandler?.requestNewCode()
-        
+        showable.eventHandler?.handleEvent(.requestNewCode)
+
         assertAsync { expectation in
             showable.updateViewCompletion = {
                 expectation.fulfill()
@@ -203,8 +202,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
         let expectedState = SignDocumentsState.mock(state: .codeAvailable)
         let showable = makeViewControllerWithSut(input: input)
 
-        showable.eventHandler?.requestNewCode()
-        
+        showable.eventHandler?.handleEvent(.requestNewCode)
+
         assertAsync { expectation in
             showable.updateViewCompletion = {
                 expectation.fulfill()
@@ -225,8 +224,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
         let expectedState = SignDocumentsState.mock(state: .codeUnavailable)
         let showable = makeViewControllerWithSut(input: input)
 
-        showable.eventHandler?.requestNewCode()
-        
+        showable.eventHandler?.handleEvent(.requestNewCode)
+
         assertAsync { expectation in
             showable.updateViewCompletion = {
                 expectation.fulfill()
@@ -252,7 +251,7 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
         let input = SignDocumentsInput(identificationUID: identificationUID, mobileNumber: nil)
         let showable = makeViewControllerWithSut(input: input)
 
-        showable.eventHandler?.submitCodeAndSign(code)
+        showable.eventHandler?.handleEvent(.submitCodeAndSign(code))
         
         XCTAssertEqual(statusCheckService.invalidateNewCodeTimerCallsCount, 1)
         XCTAssertEqual(verificationService.verifyDocumentsTANCallsCount, 1)
@@ -271,7 +270,7 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
         let expectedState = SignDocumentsState.mock(state: .processingIdentfication)
         let showable = makeViewControllerWithSut(input: input)
 
-        showable.eventHandler?.submitCodeAndSign(code)
+        showable.eventHandler?.handleEvent(.submitCodeAndSign(code))
         
         assertAsync { expectation in
             showable.updateViewCompletion = {
@@ -310,8 +309,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
                 callbackExpectation.fulfill()
             }
             
-            showable.eventHandler?.submitCodeAndSign(code)
-            
+            showable.eventHandler?.handleEvent(.submitCodeAndSign(code))
+
             try assertAsync { expectation in
                 statusCheckService.setupStatusVerificationTimerCompletion = {
                     expectation.fulfill()
@@ -345,8 +344,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
                 }
             }
             
-            showable.eventHandler?.submitCodeAndSign(code)
-            
+            showable.eventHandler?.handleEvent(.submitCodeAndSign(code))
+
             try assertAsync { expectation in
                 statusCheckService.setupStatusVerificationTimerCompletion = {
                     expectation.fulfill()
@@ -380,8 +379,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
                 callbackExpectation.fulfill()
             }
             
-            showable.eventHandler?.submitCodeAndSign(code)
-            
+            showable.eventHandler?.handleEvent(.submitCodeAndSign(code))
+
             try assertAsync { expectation in
                 statusCheckService.setupStatusVerificationTimerCompletion = {
                     expectation.fulfill()
@@ -423,8 +422,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
                     callbackExpectation.fulfill()
                 }
                 
-                showable.eventHandler?.submitCodeAndSign(code)
-                
+                showable.eventHandler?.handleEvent(.submitCodeAndSign(code))
+
                 assertAsync { expectation in
                     showable.updateViewCompletion = {
                         expectation.fulfill()
@@ -462,8 +461,8 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
                 callbackExpectation.fulfill()
             }
             
-            showable.eventHandler?.submitCodeAndSign(code)
-            
+            showable.eventHandler?.handleEvent(.submitCodeAndSign(code))
+
             assertAsync { expectation in
                 showable.updateViewCompletion = {
                     expectation.fulfill()
@@ -507,7 +506,7 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
             input: input,
             callback: callback
         )
-        showable.eventHandler = sut
+        showable.eventHandler = sut.asAnyEventHandler()
         sut.updatableView = showable
         
         trackForMemoryLeaks(sut)
@@ -516,7 +515,7 @@ final class SignDocumentsEventHandlerTests: XCTestCase {
 }
 
 private class UpdateableShowableMock: UpdateableShowable {
-    var eventHandler: SignDocumentsEventHandler?
+    var eventHandler: AnyEventHandler<SignDocumentsEvent>?
 
     var toShowableCallsCount = 0
     var toShowableReturnValue = UIViewController()

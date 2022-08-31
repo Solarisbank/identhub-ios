@@ -18,7 +18,7 @@ class ShowableFactoryMock: ShowableFactory {
     }
 
     func makeConfirmApplicationShowable(input: ConfirmApplicationInput, callback: @escaping ConfirmApplicationCallback) -> Showable? {
-        let showable = UpdateableMock<ConfirmApplicationState, ConfirmApplicationEventHandler>(recorder: testRecorder)
+        let showable = UpdateableMock<ConfirmApplicationState, ConfirmApplicationEvent>(recorder: testRecorder)
         testRecorder?.record(event: .service, caller: self, arguments: input)
         confirmApplicationCallback = { result in
             self.testRecorder?.record(event: .service, value: "ShowableFactoryMock.makeConfirmApplicationShowable.callback(\(result))")
@@ -28,7 +28,7 @@ class ShowableFactoryMock: ShowableFactory {
     }
     
     func makeSignDocumentsShowable(input: SignDocumentsInput, callback: @escaping SignDocumentsCallback) -> Showable? {
-        let showable = UpdateableMock<SignDocumentsState, SignDocumentsEventHandler>(recorder: testRecorder)
+        let showable = UpdateableMock<SignDocumentsState, SignDocumentsEvent>(recorder: testRecorder)
         testRecorder?.record(event: .service, caller: self, arguments: input)
         signDocumentsCallback = { result in
             self.testRecorder?.record(event: .service, value: "ShowableFactoryMock.makeSignDocumentsShowable.callback(\(result))")

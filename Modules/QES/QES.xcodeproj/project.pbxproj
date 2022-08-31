@@ -18,10 +18,9 @@
 		05A8B6982874629C00F4A9D5 /* SignDocumentsEventHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A8B6972874629C00F4A9D5 /* SignDocumentsEventHandlerTests.swift */; };
 		05B76CF5287FEB6E007EACA3 /* StatusCheckServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B76CF4287FEB6E007EACA3 /* StatusCheckServiceTests.swift */; };
 		05EE9646287DA59C00937335 /* MobileNumberMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE9645287DA59B00937335 /* MobileNumberMock.swift */; };
-		388398B50037B022CE8174D2 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		493E842C9079F76E2A3FABA4 /* Pods_IdentHubSDKQESTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EF2480285355C900D98123 /* Pods_IdentHubSDKQESTests.framework */; };
 		4D2678AB9829AF12E7DD8BEE /* Pods_IdentHubSDKQESSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009A8CC22E5B0EC9CE5D3603 /* Pods_IdentHubSDKQESSnapshotTests.framework */; };
-		8462A6C1287D8A1300A945F3 /* ConfirmApplicationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462A6C0287D8A1300A945F3 /* ConfirmApplicationEventHandler.swift */; };
+		8462A6C1287D8A1300A945F3 /* ConfirmApplicationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462A6C0287D8A1300A945F3 /* ConfirmApplicationEvent.swift */; };
 		84D8B26F2881A88E0005C706 /* TimerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8B26D2881A88E0005C706 /* TimerFactory.swift */; };
 		881E5D19284E95D700CBC5EC /* SignDocumentsEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E5D18284E95D700CBC5EC /* SignDocumentsEventHandler.swift */; };
 		881E5D1E284E9BBD00CBC5EC /* DocumentsTANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E5D1B284E9BBD00CBC5EC /* DocumentsTANRequest.swift */; };
@@ -35,9 +34,6 @@
 		886EA212285A508300C2AE0F /* StorageKey+QES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886EA211285A508200C2AE0F /* StorageKey+QES.swift */; };
 		8893B955283CD90000F1C872 /* QESModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8893B953283CD90000F1C872 /* QESModule.swift */; };
 		88A9FB8D284A15410074557B /* IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A9FB8C284A153B0074557B /* IdentHubSDKTestBase.framework */; };
-		88C1B3A9289A98020003ED15 /* SignDocumentsEventHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C1B3A8289A98020003ED15 /* SignDocumentsEventHandlerMock.swift */; };
-		88C1B3AB289A988C0003ED15 /* SignDocumentsEventHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C1B3A8289A98020003ED15 /* SignDocumentsEventHandlerMock.swift */; };
-		88C1B3AC289A98AA0003ED15 /* ConfirmApplicationEventHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DAFE27284F7F0B00C85503 /* ConfirmApplicationEventHandlerMock.swift */; };
 		88C35C0C284DF9B900720C11 /* QESCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C35C0B284DF9B900720C11 /* QESCoordinatorImpl.swift */; };
 		88C35C21284E026B00720C11 /* ConfirmApplicationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C35C1F284E026B00720C11 /* ConfirmApplicationViewController.xib */; };
 		88C35C22284E026B00720C11 /* ConfirmApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C35C20284E026B00720C11 /* ConfirmApplicationViewController.swift */; };
@@ -56,7 +52,6 @@
 		88DAFDF3284F4C5D00C85503 /* VerificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DAFDF2284F4C5D00C85503 /* VerificationServiceTests.swift */; };
 		88DAFDFB284F4D9600C85503 /* VerificationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DAFDFA284F4D9600C85503 /* VerificationServiceMock.swift */; };
 		88DAFE26284F765D00C85503 /* ConfirmApplicationEventFlowsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DAFE25284F765D00C85503 /* ConfirmApplicationEventFlowsTests.swift */; };
-		88DAFE28284F7F0B00C85503 /* ConfirmApplicationEventHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DAFE27284F7F0B00C85503 /* ConfirmApplicationEventHandlerMock.swift */; };
 		88E232D028896BCF00D24CEC /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E232CF28896BCF00D24CEC /* Colors.xcassets */; };
 		88E9150E2844EFAC00284CCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E915052844EFAC00284CCE /* Assets.xcassets */; };
 		88E9150F2844EFAC00284CCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88E915072844EFAC00284CCE /* Localizable.strings */; };
@@ -154,7 +149,7 @@
 		47C75338B67EB74515C78077 /* Pods-IdentHubSDKQESTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKQESTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKQESTests/Pods-IdentHubSDKQESTests.release.xcconfig"; sourceTree = "<group>"; };
 		58EC672C96DD3497617A5510 /* Pods-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.release.xcconfig"; path = "Target Support Files/Pods-UITests/Pods-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		66E732215CC1805AF1B87BD9 /* Pods-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.debug.xcconfig"; path = "Target Support Files/Pods-UITests/Pods-UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		8462A6C0287D8A1300A945F3 /* ConfirmApplicationEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationEventHandler.swift; sourceTree = "<group>"; };
+		8462A6C0287D8A1300A945F3 /* ConfirmApplicationEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationEvent.swift; sourceTree = "<group>"; };
 		84D8B26D2881A88E0005C706 /* TimerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFactory.swift; sourceTree = "<group>"; };
 		881E5D18284E95D700CBC5EC /* SignDocumentsEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDocumentsEventHandler.swift; sourceTree = "<group>"; };
 		881E5D1B284E9BBD00CBC5EC /* DocumentsTANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsTANRequest.swift; sourceTree = "<group>"; };
@@ -168,7 +163,6 @@
 		886E7735283D2F4400FBE882 /* TestCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TestCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		886EA211285A508200C2AE0F /* StorageKey+QES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageKey+QES.swift"; sourceTree = "<group>"; };
 		8893B953283CD90000F1C872 /* QESModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QESModule.swift; sourceTree = "<group>"; };
-		88C1B3A8289A98020003ED15 /* SignDocumentsEventHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDocumentsEventHandlerMock.swift; sourceTree = "<group>"; };
 		88C35C0B284DF9B900720C11 /* QESCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QESCoordinatorImpl.swift; sourceTree = "<group>"; };
 		88C35C1F284E026B00720C11 /* ConfirmApplicationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmApplicationViewController.xib; sourceTree = "<group>"; };
 		88C35C20284E026B00720C11 /* ConfirmApplicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +181,6 @@
 		88DAFDF2284F4C5D00C85503 /* VerificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceTests.swift; sourceTree = "<group>"; };
 		88DAFDFA284F4D9600C85503 /* VerificationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceMock.swift; sourceTree = "<group>"; };
 		88DAFE25284F765D00C85503 /* ConfirmApplicationEventFlowsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationEventFlowsTests.swift; sourceTree = "<group>"; };
-		88DAFE27284F7F0B00C85503 /* ConfirmApplicationEventHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationEventHandlerMock.swift; sourceTree = "<group>"; };
 		88DD17A3283D3D0D00A94ABC /* Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Core.xcodeproj; path = ../Core/Core.xcodeproj; sourceTree = "<group>"; };
 		88E0C87D28534AD5000E176E /* ConfirmApplicationSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmApplicationSnapshotTests.swift; sourceTree = "<group>"; };
 		88E0C87F28534EF7000E176E /* SnapshotTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapshotTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,7 +217,6 @@
 				88EF24BB28535E8000D98123 /* IdentHubSDKTestBase.framework in Frameworks */,
 				88EF24A62853571700D98123 /* IdentHubSDKQES.framework in Frameworks */,
 				4D2678AB9829AF12E7DD8BEE /* Pods_IdentHubSDKQESSnapshotTests.framework in Frameworks */,
-				388398B50037B022CE8174D2 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +337,7 @@
 			children = (
 				88C35C30284E18C200720C11 /* DocumentViewCell */,
 				88C35C25284E032900720C11 /* ConfirmApplicationState.swift */,
-				8462A6C0287D8A1300A945F3 /* ConfirmApplicationEventHandler.swift */,
+				8462A6C0287D8A1300A945F3 /* ConfirmApplicationEvent.swift */,
 				88C35C20284E026B00720C11 /* ConfirmApplicationViewController.swift */,
 				88C35C1F284E026B00720C11 /* ConfirmApplicationViewController.xib */,
 			);
@@ -427,13 +419,11 @@
 		88DAFDF9284F4D8600C85503 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				88DAFE27284F7F0B00C85503 /* ConfirmApplicationEventHandlerMock.swift */,
 				05015CB72876C64E005D7F25 /* ContractDocumentMock.swift */,
 				883276C828A0F3A400F1336C /* DocumentExporterMock.swift */,
 				05015CB428759ACE005D7F25 /* IdentificationMock.swift */,
 				05EE9645287DA59B00937335 /* MobileNumberMock.swift */,
 				88DA494A285244390008631E /* ShowableFactoryMock.swift */,
-				88C1B3A8289A98020003ED15 /* SignDocumentsEventHandlerMock.swift */,
 				05015CC72876E389005D7F25 /* StatusCheckServiceMock.swift */,
 				05015CD6287C068E005D7F25 /* TimerMock.swift */,
 				05015CD8287C0716005D7F25 /* TimerFactoryMock.swift */,
@@ -856,8 +846,6 @@
 			files = (
 				88EF24BD2853605F00D98123 /* SignDocumentsSnapshotTests.swift in Sources */,
 				88EF24AE285357E100D98123 /* ConfirmApplicationSnapshotTests.swift in Sources */,
-				88C1B3AB289A988C0003ED15 /* SignDocumentsEventHandlerMock.swift in Sources */,
-				88C1B3AC289A98AA0003ED15 /* ConfirmApplicationEventHandlerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,7 +860,7 @@
 				881E5D20284E9D3700CBC5EC /* DocumentsAuthorizeRequest.swift in Sources */,
 				88CDE6C0284E8AF200FB659F /* SignDocumentsViewController.swift in Sources */,
 				88E915142844F02700284CCE /* Localizable.swift in Sources */,
-				8462A6C1287D8A1300A945F3 /* ConfirmApplicationEventHandler.swift in Sources */,
+				8462A6C1287D8A1300A945F3 /* ConfirmApplicationEvent.swift in Sources */,
 				84D8B26F2881A88E0005C706 /* TimerFactory.swift in Sources */,
 				8893B955283CD90000F1C872 /* QESModule.swift in Sources */,
 				88C35C22284E026B00720C11 /* ConfirmApplicationViewController.swift in Sources */,
@@ -906,7 +894,6 @@
 				88DA494B285244390008631E /* ShowableFactoryMock.swift in Sources */,
 				883F1B1A285223F900037AED /* SignDocumentsEventFlowsTests.swift in Sources */,
 				05015CD9287C0716005D7F25 /* TimerFactoryMock.swift in Sources */,
-				88C1B3A9289A98020003ED15 /* SignDocumentsEventHandlerMock.swift in Sources */,
 				88DAFE26284F765D00C85503 /* ConfirmApplicationEventFlowsTests.swift in Sources */,
 				88DAFDED284F4BCE00C85503 /* DocumentsTANRequestTests.swift in Sources */,
 				05EE9646287DA59C00937335 /* MobileNumberMock.swift in Sources */,
@@ -918,7 +905,6 @@
 				88483DA1283CFB1B000E8AEB /* QESModuleTests.swift in Sources */,
 				05015CB82876C64E005D7F25 /* ContractDocumentMock.swift in Sources */,
 				05015CD7287C068E005D7F25 /* TimerMock.swift in Sources */,
-				88DAFE28284F7F0B00C85503 /* ConfirmApplicationEventHandlerMock.swift in Sources */,
 				05015CC82876E389005D7F25 /* StatusCheckServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

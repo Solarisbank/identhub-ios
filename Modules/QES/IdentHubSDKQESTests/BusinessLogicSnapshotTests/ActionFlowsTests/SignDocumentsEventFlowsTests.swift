@@ -8,7 +8,7 @@ import XCTest
 import IdentHubSDKTestBase
 
 final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
-    typealias ViewController = UpdateableMock<SignDocumentsState, SignDocumentsEventHandler>
+    typealias ViewController = UpdateableMock<SignDocumentsState, SignDocumentsEvent>
 
     private let uid = "someIdentId"
     private let mobileNumber = "+49 111 222 333"
@@ -78,7 +78,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 .signDocumentsAuthorize,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
             )
-            showable.requestNewCode()
+            showable.sendEvent(.requestNewCode)
             assertAsyncViewStateIn(showable) { $0.state == .codeAvailable }
 
             apiClient.expectSuccess(
@@ -89,7 +89,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 .identificationConfirmed,
                 for: try! IdentificationRequest(identificationUID: uid)
             )
-            showable.submitCodeAndSign(transactionId)
+            showable.sendEvent(.submitCodeAndSign(transactionId))
             assertAsyncViewStateIn(showable) { $0.state == .identificationSuccessful }
         }
 
@@ -106,7 +106,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 .signDocumentsAuthorize,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
             )
-            showable.requestNewCode()
+            showable.sendEvent(.requestNewCode)
             assertAsyncViewStateIn(showable) { $0.state == .codeAvailable }
 
             apiClient.expectSuccess(
@@ -117,7 +117,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 .identificationConfirmed,
                 for: try! IdentificationRequest(identificationUID: uid)
             )
-            showable.submitCodeAndSign(transactionId)
+            showable.sendEvent(.submitCodeAndSign(transactionId))
             assertAsyncViewStateIn(showable) { $0.state == .identificationSuccessful }
         }
 
@@ -128,7 +128,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
         let input = SignDocumentsInput(identificationUID: uid, mobileNumber: mobileNumber)
 
         assertFlow(input: input, expectedOutput: .success(.quit)) { showable in
-            showable.quit()
+            showable.sendEvent(.quit)
         }
 
         recorder.assert()
@@ -141,7 +141,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 .internalServerError,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
             )
-            showable.requestNewCode()
+            showable.sendEvent(.requestNewCode)
         }
 
         recorder.assert()
@@ -155,7 +155,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 .signDocumentsAuthorize,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
             )
-            showable.requestNewCode()
+            showable.sendEvent(.requestNewCode)
             assertAsyncViewStateIn(showable) { $0.state == .codeAvailable }
 
             apiClient.expectSuccess(
@@ -163,7 +163,7 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 for: try! DocumentsTANRequest(identificationUID: uid, token: transactionId)
             )
             apiClient.expectError(.authorizationFailed, for: try! IdentificationRequest(identificationUID: uid))
-            showable.submitCodeAndSign(transactionId)
+            showable.sendEvent(.submitCodeAndSign(transactionId))
         }
 
         recorder.assert()
@@ -177,14 +177,14 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
                 .signDocumentsAuthorize,
                 for: try! DocumentsAuthorizeRequest(identificationUID: uid)
             )
-            showable.requestNewCode()
+            showable.sendEvent(.requestNewCode)
             assertAsyncViewStateIn(showable) { $0.state == .codeAvailable }
 
             apiClient.expectError(
                 .internalServerError,
                 for: try! DocumentsTANRequest(identificationUID: uid, token: transactionId)
             )
-            showable.submitCodeAndSign(transactionId)
+            showable.sendEvent(.submitCodeAndSign(transactionId))
             assertAsyncViewStateIn(showable) { $0.state == .codeInvalid }
         }
 
@@ -199,35 +199,12 @@ final class SignDocumentsEventFlowsTests: XCTestCase, FlowTest {
             input: input,
             callback: callback
         )
-        showable.eventHandler = sut
+        showable.eventHandler = sut.asAnyEventHandler()
         sut.updatableView = showable
 
         trackForMemoryLeaks(sut)
         trackForMemoryLeaks(showable)
 
         return showable
-    }
-}
-
-extension UpdateableMock: SignDocumentsEventHandler where EventHandler == SignDocumentsEventHandler {
-    public func requestNewCode() {
-        DispatchQueue.main.async {
-            self.recorder?.record(event: .event, value: #function)
-            self.eventHandler?.requestNewCode()
-        }
-    }
-    
-    public func submitCodeAndSign(_ code: String) {
-        DispatchQueue.main.async {
-            self.recorder?.record(event: .event, value: #function)
-            self.eventHandler?.submitCodeAndSign(code)
-        }
-    }
-    
-    public func quit() {
-        DispatchQueue.main.async {
-            self.recorder?.record(event: .event, value: #function)
-            self.eventHandler?.quit()
-        }
     }
 }

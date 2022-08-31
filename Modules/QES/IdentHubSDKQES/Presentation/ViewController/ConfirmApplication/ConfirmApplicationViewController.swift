@@ -11,11 +11,10 @@ import IdentHubSDKCore
 final internal class ConfirmApplicationViewController: UIViewController, Quitable, Updateable {
     
     typealias ViewState = ConfirmApplicationState
-    typealias EventHandler = ConfirmApplicationEventHandler
 
     // MARK: - Properties -
 
-    var eventHandler: ConfirmApplicationEventHandler?
+    var eventHandler: AnyEventHandler<ConfirmApplicationEvent>?
 
     private let rowHeight: CGFloat = 61
     private let progressHeight: CGFloat = 89
@@ -33,7 +32,7 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
     
     /// Initialized with view model object
     /// - Parameter viewModel: view model object
-    init(colors: Colors, eventHandler: ConfirmApplicationEventHandler) {
+    init(colors: Colors, eventHandler: AnyEventHandler<ConfirmApplicationEvent>) {
         self.colors = colors
         self.eventHandler = eventHandler
         super.init(nibName: String(describing: Self.self), bundle: Bundle(for: Self.self))
@@ -48,7 +47,7 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        eventHandler?.loadDocuments()
+        eventHandler?.handleEvent(.loadDocuments)
     }
 
     // MARK: - Update -
@@ -101,10 +100,10 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
             cell.configure(with: loadableDocument.document)
             
             cell.previewAction = { [weak self] in
-                self?.eventHandler?.previewDocument(withId: loadableDocument.document.id)
+                self?.eventHandler?.handleEvent(.previewDocument(withId: loadableDocument.document.id))
             }
             cell.downloadAction = { [weak self] in
-                self?.eventHandler?.downloadDocument(withId: loadableDocument.document.id)
+                self?.eventHandler?.handleEvent(.downloadDocument(withId: loadableDocument.document.id))
             }
             cell.state = loadableDocument.isLoading ? .downloading : .normal
         })
@@ -130,12 +129,12 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
     // MARK: - Action methods -
 
     @IBAction func signDocuments() {
-        eventHandler?.signDocuments()
+        eventHandler?.handleEvent(.signDocuments)
         actionButton.isEnabled = false
     }
     
     @IBAction func didClickQuit(_ sender: Any) {
-        eventHandler?.quit()
+        eventHandler?.handleEvent(.quit)
     }
 }
 

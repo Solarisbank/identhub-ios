@@ -52,7 +52,7 @@ protocol SessionInfoProvider: AnyObject {
     
     /// Method to add remote logging enable callback
     /// - Parameter callback: Closure to be called when `remoteLogging` value is set to true. Will trigger only if set from `false` to `true`
-    func addEnableRemoteLoggingCallback(_ callback: @escaping () -> ())
+    func addEnableRemoteLoggingCallback(_ callback: @escaping () -> Void)
 }
 
 /// Count of default retries. Used if from server comes null value

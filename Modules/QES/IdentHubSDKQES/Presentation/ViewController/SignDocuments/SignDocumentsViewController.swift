@@ -6,10 +6,10 @@
 import UIKit
 import IdentHubSDKCore
 
-internal protocol SignDocumentsEventHandler: AnyObject {
-    func requestNewCode()
-    func submitCodeAndSign(_ code: String)
-    func quit()
+internal enum SignDocumentsEvent {
+    case requestNewCode
+    case submitCodeAndSign(_ code: String)
+    case quit
 }
 
 internal struct SignDocumentsState: Equatable {
@@ -47,14 +47,14 @@ final internal class SignDocumentsViewController: UIViewController, Quitable, Up
     @IBOutlet var stateView: StateView!
     
     // MARK: - Properties -
-    var eventHandler: SignDocumentsEventHandler?
+    var eventHandler: AnyEventHandler<SignDocumentsEvent>?
 
     private var colors: Colors
     private var state: SignDocumentsState.State = .requestingCode
     
     /// Initialized with view model object
     /// - Parameter viewModel: view model object
-    init(colors: Colors, eventHandler: SignDocumentsEventHandler) {
+    init(colors: Colors, eventHandler: AnyEventHandler<SignDocumentsEvent>) {
         self.colors = colors
         self.eventHandler = eventHandler
         super.init(nibName: String(describing: Self.self), bundle: Bundle(for: Self.self))
@@ -71,7 +71,7 @@ final internal class SignDocumentsViewController: UIViewController, Quitable, Up
 
         configureUI()
         registerForKeyboardNotifications()
-        eventHandler?.requestNewCode()
+        eventHandler?.handleEvent(.requestNewCode)
     }
     
     // MARK: - Internal methods -
@@ -87,17 +87,17 @@ final internal class SignDocumentsViewController: UIViewController, Quitable, Up
     }
 
     @IBAction func didClickSendNewCode(_ sender: UIButton) {
-        eventHandler?.requestNewCode()
+        eventHandler?.handleEvent(.requestNewCode)
     }
     
     @IBAction func didClickSubmitCode(_ sender: Any) {
         if let code = codeEntryView.code {
-            eventHandler?.submitCodeAndSign(code)
+            eventHandler?.handleEvent(.submitCodeAndSign(code))
         }
     }
     
     @IBAction func didClickQuit(_ sender: Any) {
-        eventHandler?.quit()
+        eventHandler?.handleEvent(.quit)
     }
 }
 

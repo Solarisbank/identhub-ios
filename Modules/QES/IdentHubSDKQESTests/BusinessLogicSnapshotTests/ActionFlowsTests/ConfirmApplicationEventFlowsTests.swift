@@ -8,7 +8,7 @@ import IdentHubSDKCore
 import IdentHubSDKTestBase
 
 final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
-    typealias ViewController = UpdateableMock<ConfirmApplicationState, ConfirmApplicationEventHandler>
+    typealias ViewController = UpdateableMock<ConfirmApplicationState, ConfirmApplicationEvent>
 
     private let uid = "someIdentId"
     private let documentUID = "someDocumentId"
@@ -45,9 +45,11 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
 
         assertFlow(input: input, expectedOutput: .confirmedApplication) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
-            showable.loadDocuments()
-
-            showable.signDocuments()
+            showable.sendEvent(.loadDocuments)
+            assertAsyncViewStateIn(showable) { state in
+                state.documents.isNotEmpty()
+            }
+            showable.sendEvent(.signDocuments)
         }
 
         recorder.assert()
@@ -58,13 +60,13 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
 
         assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
-            showable.loadDocuments()
+            showable.sendEvent(.loadDocuments)
+            assertAsyncViewStateIn(showable) { state in
+                state.documents.isNotEmpty()
+            }
 
             apiClient.expectSuccess(.bankDocument, for: try! DocumentDownloadRequest(documentUID: documentUID))
-            showable.previewDocument(withId: documentUID)
-            assertAsyncViewStateIn(showable) { viewState in
-                viewState.documents.first?.isLoading == false
-            }
+            showable.sendEvent(.previewDocument(withId: documentUID))
         }
 
         recorder.assert()
@@ -75,13 +77,13 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
         
         assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
-            showable.loadDocuments()
+            showable.sendEvent(.loadDocuments)
+            assertAsyncViewStateIn(showable) { state in
+                state.documents.isNotEmpty()
+            }
 
             apiClient.expectSuccess(.bankDocument, for: try! DocumentDownloadRequest(documentUID: documentUID))
-            showable.downloadDocument(withId: documentUID)
-            assertAsyncViewStateIn(showable) { viewState in
-                viewState.documents.first?.isLoading == false
-            }
+            showable.sendEvent(.downloadDocument(withId: documentUID))
         }
 
         recorder.assert()
@@ -91,7 +93,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
         let input = ConfirmApplicationInput(identificationUID: uid)
         
         assertFlow(input: input, expectedOutput: .quit) { showable in
-            showable.quit()
+            showable.sendEvent(.quit)
         }
 
         recorder.assert()
@@ -108,49 +110,13 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
             input: input,
             callback: callback
             )
-        showable.eventHandler = sut
+        showable.eventHandler = sut.asAnyEventHandler()
         sut.updatableView = showable
 
         trackForMemoryLeaks(sut)
         trackForMemoryLeaks(showable)
 
         return showable
-    }
-}
-
-extension UpdateableMock: ConfirmApplicationEventHandler where EventHandler == ConfirmApplicationEventHandler {
-
-    public func loadDocuments() {
-        self.recorder?.record(event: .event, in: #function)
-        self.eventHandler?.loadDocuments()
-    }
-    
-    public func signDocuments() {
-        DispatchQueue.main.async {
-            self.recorder?.record(event: .event, in: #function)
-            self.eventHandler?.signDocuments()
-        }
-    }
-    
-    public func previewDocument(withId id: String) {
-        DispatchQueue.main.async {
-            self.recorder?.record(event: .event, in: #function, arguments: id)
-            self.eventHandler?.previewDocument(withId: id)
-        }
-    }
-    
-    public func downloadDocument(withId id: String) {
-        DispatchQueue.main.async {
-            self.recorder?.record(event: .event, in: #function, arguments: id)
-            self.eventHandler?.downloadDocument(withId: id)
-        }
-    }
-    
-    public func quit() {
-        DispatchQueue.main.async {
-            self.recorder?.record(event: .event, in: #function)
-            self.eventHandler?.quit()
-        }
     }
 }
 

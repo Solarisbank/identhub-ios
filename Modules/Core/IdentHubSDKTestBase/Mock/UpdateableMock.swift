@@ -5,10 +5,11 @@
 import IdentHubSDKCore
 import UIKit
 import XCTest
+import IdentHubSDKQES
 
-public class UpdateableMock<ViewState, EventHandler>: Updateable {
+public class UpdateableMock<ViewState, Event>: Updateable {
     public var state: ViewState!
-    public var eventHandler: EventHandler?
+    public var eventHandler: AnyEventHandler<Event>?
     public var recorder: TestRecorder?
     private var stateExpectation: XCTestExpectation?
     private var stateExpectationCheck: ((ViewState) -> Bool)?
@@ -26,6 +27,11 @@ public class UpdateableMock<ViewState, EventHandler>: Updateable {
         recorder?.record(event: .updateView, value: state)
     }
     
+    public func sendEvent(_ event: Event) {
+        self.recorder?.record(event: .event, value: event)
+        self.eventHandler?.handleEvent(event)
+    }
+
     @discardableResult
     public func expect(in test: XCTestCase, state checkState: @escaping (ViewState) -> Bool) -> XCTestExpectation {
         stateExpectation = XCTestExpectation(description: "Wait for view state")

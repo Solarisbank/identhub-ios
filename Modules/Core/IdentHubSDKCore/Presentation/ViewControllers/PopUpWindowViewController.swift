@@ -139,8 +139,8 @@ public class PopUpWindowViewController: UIViewController {
         buttonsStackView.addArrangedSubview(secondaryButton)
         
         separatorLine.addConstraints { [
-            $0.equalConstant(.width,1),
-            $0.equalConstant(.height,20),
+            $0.equalConstant(.width, 1),
+            $0.equalConstant(.height, 20),
             $0.equalTo(buttonsStackView, .centerY, .centerY),
             $0.equalTo(buttonsStackView, .centerX, .centerX)
         ]
