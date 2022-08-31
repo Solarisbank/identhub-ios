@@ -2041,7 +2041,6 @@
 				849B438225F3935100CD5D9E /* MobileNumberAuthorizeRequestTests.swift in Sources */,
 				84A7581925F22D7F004D8F88 /* IdentHubSDKTests.swift in Sources */,
 				88C1B3BB289AA14E0003ED15 /* IdentificationMethodTests.swift in Sources */,
-				39E2F3DF28579F4800CE28CB /* SBLogDestinationTests.swift in Sources */,
 				84B2A89825F3CCD800EBA899 /* IBANRequestTests.swift in Sources */,
 				88F725FF286D8E6C00D32702 /* ModulesStorageManagerTest.swift in Sources */,
 			);
@@ -2197,7 +2196,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AHH97A972W;
+				DEVELOPMENT_TEAM = "";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2207,7 +2206,7 @@
 				);
 				MARKETING_VERSION = 1.2.8;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development.cachedlogic;
+				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;

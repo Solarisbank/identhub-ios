@@ -14,6 +14,8 @@ internal enum Localizable {
             static let description = "sign_documents_application_description".localized()
             static let docItemTitle = "sign_documents_application_view_doc".localized()
             static let termsAndConditionsFootnote = "sign_documents_application_terms_text".localized()
+            static let documentFetchErrorTitle = "sign_document_document_fetch_error_title".localized()
+            static let documentFetchErrorMessage = "sign_document_document_fetch_error_message".localized()
         }
 
         enum Sign {

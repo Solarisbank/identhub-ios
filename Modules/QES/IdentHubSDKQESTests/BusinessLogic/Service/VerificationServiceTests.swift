@@ -244,8 +244,6 @@ final class VerificationServiceTests: XCTestCase {
     }
     
     func test_downloadAndSaveDocument_apiCompletesWithSuccessWithURLNil_completesWithExpectedResponse() throws {
-        XCTExpectFailure("This needs to be handled in implemetation, otherwise no completion is called and we are left in undefined state.")
-        
         let expectedValue: URL? = nil
         let sut = makeSut()
         
@@ -253,9 +251,19 @@ final class VerificationServiceTests: XCTestCase {
         
         assertAsync { expectation in
             sut.downloadAndSaveDocument(withId: documentToken) { result in
-                XCTAssertResultIsSuccess(result, expectedValue: expectedValue)
-                
-                expectation.fulfill()
+                XCTAssertResultIsFailure(result) { error in
+                    if case .fileDownloadError(let actualError) = error {
+                        if let apiError = actualError as? APIError,
+                            apiError == APIError.resourceNotFound {
+
+                            expectation.fulfill()
+                        } else {
+                            XCTFail("Wrong actual error \(String(describing: actualError))")
+                        }
+                    } else {
+                        XCTFail("Wrong error \(error)")
+                    }
+                }
             }
         }
     }

@@ -6,10 +6,13 @@
 @testable import IdentHubSDKCore
 
 internal extension ContractDocument {
-    static func mock(id: String) -> ContractDocument {
+    static func mock(
+        id: String,
+        name: String = "name"
+    ) -> ContractDocument {
         ContractDocument(
             id: id,
-            name: "name",
+            name: name,
             contentType: "content",
             documentType: "document",
             size: 0,

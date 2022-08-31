@@ -16,6 +16,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     private var recorder: TestRecorder!
     private var apiClient: APIClientMock!
     private var verificationService: VerificationServiceSpy!
+    private var alertsService: AlertsServiceMock!
 
     override func setUp() {
         recorder = TestRecorder()
@@ -30,6 +31,8 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
             verificationService: verificationServiceImpl,
             recorder: recorder
         )
+
+        alertsService = AlertsServiceMock(recorder: recorder)
     }
     
     override func tearDown() {
@@ -38,6 +41,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
         recorder = nil
         apiClient = nil
         verificationService = nil
+        alertsService = nil
     }
 
     func testSignDocuments() {
@@ -71,6 +75,23 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
 
         recorder.assert()
     }
+
+    func testPreviewDocumentFailure() {
+        let input = ConfirmApplicationInput(identificationUID: uid)
+
+        assertFlow(input: input) { showable in
+            apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
+            showable.sendEvent(.loadDocuments)
+
+            apiClient.expectError(.unknownError, for: try! DocumentDownloadRequest(documentUID: documentUID))
+            showable.sendEvent(.previewDocument(withId: documentUID))
+            assertAsyncViewStateIn(showable) { viewState in
+                viewState.documents.first?.isLoading == false
+            }
+        }
+
+        recorder.assert()
+    }
     
     func testDownloadDocument() {
         let input = ConfirmApplicationInput(identificationUID: uid)
@@ -84,6 +105,24 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
 
             apiClient.expectSuccess(.bankDocument, for: try! DocumentDownloadRequest(documentUID: documentUID))
             showable.sendEvent(.downloadDocument(withId: documentUID))
+        }
+
+        recorder.assert()
+    }
+
+    func testDownloadDocumentFailure() {
+        let input = ConfirmApplicationInput(identificationUID: uid)
+
+        assertFlow(input: input) { showable in
+            apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
+            showable.sendEvent(.loadDocuments)
+
+            apiClient.expectError(.unknownError, for: try! DocumentDownloadRequest(documentUID: documentUID))
+            showable.sendEvent(.downloadDocument(withId: documentUID))
+
+            assertAsyncViewStateIn(showable) { viewState in
+                viewState.documents.first?.isLoading == false
+            }
         }
 
         recorder.assert()
@@ -106,6 +145,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
         let showable = ViewController(recorder: recorder)
         let sut = ConfirmApplicationEventHandlerImpl<ViewController>(
             verificationService: verificationService,
+            alertsService: alertsService,
             documentExporter: DocumentExporterMock(recorder: recorder),
             input: input,
             callback: callback

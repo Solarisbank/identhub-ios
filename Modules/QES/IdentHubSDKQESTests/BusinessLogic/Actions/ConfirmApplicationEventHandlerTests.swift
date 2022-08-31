@@ -11,6 +11,7 @@ import IdentHubSDKTestBase
 final class ConfirmApplicationEventHandlerTests: XCTestCase {
     private var verificationService: VerificationServiceMock!
     private var documentExporter: DocumentExporterMock!
+    private var alertsService: AlertsServiceMock!
     
     private let identificationUID = "identification_uid"
     
@@ -19,12 +20,15 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         
         verificationService = VerificationServiceMock()
         documentExporter = DocumentExporterMock()
+        alertsService = AlertsServiceMock()
     }
     
     override func tearDown() {
         super.tearDown()
         
         verificationService = nil
+        documentExporter = nil
+        alertsService = nil
     }
     
     func test_perform_updatesViewWithExpectedState() {
@@ -243,6 +247,16 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
 
         assertOnMainThread {
             XCTAssertEqual(self.documentExporter.presentExporterCallsCount, 0)
+            XCTAssertEqual(self.alertsService.presentAlertCallsCount, 1)
+            XCTAssertEqual(
+                self.alertsService.presentAlertLastArguments?.title,
+                Localizable.SignDocuments.ConfirmApplication.documentFetchErrorTitle
+            )
+
+            XCTAssertEqual(
+                self.alertsService.presentAlertLastArguments?.message,
+                String(format: Localizable.SignDocuments.ConfirmApplication.documentFetchErrorMessage, document.name)
+            )
         }
     }
     
@@ -300,12 +314,24 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
 
         assertOnMainThread {
             XCTAssertEqual(self.documentExporter.presentPreviewerCallsCount, 0)
+            XCTAssertEqual(self.alertsService.presentAlertCallsCount, 1)
+            XCTAssertEqual(
+                self.alertsService.presentAlertLastArguments?.title,
+                Localizable.SignDocuments.ConfirmApplication.documentFetchErrorTitle
+            )
+
+            XCTAssertEqual(
+                self.alertsService.presentAlertLastArguments?.message,
+                String(format: Localizable.SignDocuments.ConfirmApplication.documentFetchErrorMessage, document.name)
+            )
+
         }
     }
     
     private func makeShowableWithSut(input: ConfirmApplicationInput, callback: @escaping ConfirmApplicationCallback = { _ in }) -> UpdateableShowableMock {
         let sut = ConfirmApplicationEventHandlerImpl<UpdateableShowableMock>(
             verificationService: verificationService,
+            alertsService: alertsService,
             documentExporter: documentExporter,
             input: input,
             callback: callback

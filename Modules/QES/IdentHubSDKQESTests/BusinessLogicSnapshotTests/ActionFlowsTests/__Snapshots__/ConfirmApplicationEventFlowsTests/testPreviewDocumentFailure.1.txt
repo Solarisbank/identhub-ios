@@ -1,0 +1,11 @@
+UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [], hasTermsAndConditionsLink: true)
+EVENT: loadDocuments
+SERVICE: VerificationServiceSpy.getIdentification(for: "someIdentId", completionHandler:)
+API: /person_onboarding/identifications/someIdentId: OK
+EVENT: previewDocument(withId: "someDocumentId")
+SERVICE: VerificationServiceSpy.downloadAndSaveDocument(withId: "someDocumentId", completion:)
+API: /person_onboarding/sign_documents/someDocumentId/download: ResponseError – unknownError (HTTP Code:  Reason: )
+UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [LoadableDocument(ContractDocument(someDocumentId), isLoading: false)], hasTermsAndConditionsLink: true)
+UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [LoadableDocument(ContractDocument(someDocumentId), isLoading: true)], hasTermsAndConditionsLink: true)
+UI: AlertsServiceMock.presentAlert(with:, message:, okActionCallback:, retryActionCallback:)
+UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [LoadableDocument(ContractDocument(someDocumentId), isLoading: false)], hasTermsAndConditionsLink: true)

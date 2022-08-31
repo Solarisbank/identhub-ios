@@ -2,7 +2,7 @@
 //  QESCoordinatorImpl.swift
 //  IdentHubSDKQES
 //
-import Foundation
+import UIKit
 import IdentHubSDKCore
 
 final internal class QESCoordinatorImpl: QESCoordinator {
@@ -89,7 +89,7 @@ final internal class QESCoordinatorImpl: QESCoordinator {
             }
         }
     }
-    
+
     private func quit() {
         alertsService.presentQuitAlert { [weak self] shouldClose in
             guard let self = self else {

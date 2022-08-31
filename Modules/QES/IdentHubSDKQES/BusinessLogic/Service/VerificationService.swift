@@ -70,12 +70,21 @@ internal struct VerificationServiceImpl: VerificationService {
     
     func downloadAndSaveDocument(withId id: String, completion: @escaping (Result<URL, FileStorageError>) -> Void) {
         getDocument(withId: id) { result in
-            // TODO: Handle case with url == nil
-            if case .success(let url) = result, let url = url {
-                fileStorage.write(url: url, asFile: url.lastPathComponent + ".pdf") { result in
-                    completion(result)
+            result
+                .onSuccess { url in
+                    guard let url = url else {
+                        completion(.failure(.fileDownloadError(APIError.resourceNotFound)))
+                        
+                        return
+                    }
+                    
+                    fileStorage.write(url: url, asFile: url.lastPathComponent + ".pdf") { result in
+                        completion(result)
+                    }
                 }
-            }
+                .onFailure { error in
+                    completion(.failure(.fileDownloadError(error)))
+                }
         }
     }
     

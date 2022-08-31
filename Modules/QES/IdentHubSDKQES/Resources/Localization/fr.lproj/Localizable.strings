@@ -11,6 +11,8 @@
 "sign_documents_request_code" = "Demander un nouveau code";
 "sign_documents_application_being_processed" = "Votre demande est en cours de traitement...";
 "sign_documents_download_documents" = "Vous allez pouvoir télécharger tous les documents signés bientôt.";
+"sign_document_document_fetch_error_title" = "Impossible de charger le document";
+"sign_document_document_fetch_error_message" = "Le téléchargement du %1$@ a échoué.\nVeuillez réessayer.";
 
 // Phone Verification
 "phone_verification_title" = "Confirmez votre numéro de téléphone";

@@ -18,6 +18,7 @@
 		05A8B6982874629C00F4A9D5 /* SignDocumentsEventHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A8B6972874629C00F4A9D5 /* SignDocumentsEventHandlerTests.swift */; };
 		05B76CF5287FEB6E007EACA3 /* StatusCheckServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B76CF4287FEB6E007EACA3 /* StatusCheckServiceTests.swift */; };
 		05EE9646287DA59C00937335 /* MobileNumberMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EE9645287DA59B00937335 /* MobileNumberMock.swift */; };
+		05FFC31028BDF19A00E08BBF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FFC30F28BDF19A00E08BBF /* Logger.swift */; };
 		493E842C9079F76E2A3FABA4 /* Pods_IdentHubSDKQESTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EF2480285355C900D98123 /* Pods_IdentHubSDKQESTests.framework */; };
 		4D2678AB9829AF12E7DD8BEE /* Pods_IdentHubSDKQESSnapshotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009A8CC22E5B0EC9CE5D3603 /* Pods_IdentHubSDKQESSnapshotTests.framework */; };
 		8462A6C1287D8A1300A945F3 /* ConfirmApplicationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462A6C0287D8A1300A945F3 /* ConfirmApplicationEvent.swift */; };
@@ -144,6 +145,7 @@
 		05A8B6972874629C00F4A9D5 /* SignDocumentsEventHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDocumentsEventHandlerTests.swift; sourceTree = "<group>"; };
 		05B76CF4287FEB6E007EACA3 /* StatusCheckServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCheckServiceTests.swift; sourceTree = "<group>"; };
 		05EE9645287DA59B00937335 /* MobileNumberMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberMock.swift; sourceTree = "<group>"; };
+		05FFC30F28BDF19A00E08BBF /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		15A6A60550C316D3D86D30CD /* Pods-IdentHubSDKQESSnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKQESSnapshotTests.debug.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKQESSnapshotTests/Pods-IdentHubSDKQESSnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3F590CBA6873DF9F18F8006C /* Pods-IdentHubSDKQESSnapshotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKQESSnapshotTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKQESSnapshotTests/Pods-IdentHubSDKQESSnapshotTests.release.xcconfig"; sourceTree = "<group>"; };
 		47C75338B67EB74515C78077 /* Pods-IdentHubSDKQESTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKQESTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKQESTests/Pods-IdentHubSDKQESTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 				05A8B6972874629C00F4A9D5 /* SignDocumentsEventHandlerTests.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		05FFC30D28BDF18F00E08BBF /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				05FFC30F28BDF19A00E08BBF /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		321700F27953B5F690BC4807 /* Pods */ = {
@@ -556,6 +566,7 @@
 		88F3A57F283CD73A00DB273A /* IdentHubSDKQES */ = {
 			isa = PBXGroup;
 			children = (
+				05FFC30D28BDF18F00E08BBF /* Logger */,
 				88C35C2B284E095F00720C11 /* BusinessLogic */,
 				88E915102844EFCE00284CCE /* Presentation */,
 				88E915162844F0A800284CCE /* Extensions */,
@@ -861,6 +872,7 @@
 				88CDE6C0284E8AF200FB659F /* SignDocumentsViewController.swift in Sources */,
 				88E915142844F02700284CCE /* Localizable.swift in Sources */,
 				8462A6C1287D8A1300A945F3 /* ConfirmApplicationEvent.swift in Sources */,
+				05FFC31028BDF19A00E08BBF /* Logger.swift in Sources */,
 				84D8B26F2881A88E0005C706 /* TimerFactory.swift in Sources */,
 				8893B955283CD90000F1C872 /* QESModule.swift in Sources */,
 				88C35C22284E026B00720C11 /* ConfirmApplicationViewController.swift in Sources */,

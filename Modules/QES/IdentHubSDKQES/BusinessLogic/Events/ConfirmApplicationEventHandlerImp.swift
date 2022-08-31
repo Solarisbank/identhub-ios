@@ -28,19 +28,22 @@ final internal class ConfirmApplicationEventHandlerImpl<ViewController: Updateab
     }
     
     private let verificationService: VerificationService
-    private var documentExporter: DocumentExporter
+    private let alertsService: AlertsService
+    private let documentExporter: DocumentExporter
     private var state: ConfirmApplicationState
     private var input: ConfirmApplicationInput
     private var callback: ConfirmApplicationCallback
 
     init(
         verificationService: VerificationService,
+        alertsService: AlertsService,
         documentExporter: DocumentExporter,
         input: ConfirmApplicationInput,
         callback: @escaping ConfirmApplicationCallback
     ) {
 
         self.verificationService = verificationService
+        self.alertsService = alertsService
         self.documentExporter = documentExporter
         self.input = input
         self.callback = callback
@@ -64,6 +67,8 @@ final internal class ConfirmApplicationEventHandlerImpl<ViewController: Updateab
     }
 
     func loadDocuments() {
+        qesLog.info("Fetching documents")
+        
         verificationService.getIdentification(for: input.identificationUID) { [weak self] result in
             switch result {
             case .success(let response):
@@ -86,39 +91,70 @@ final internal class ConfirmApplicationEventHandlerImpl<ViewController: Updateab
     }
 
     func previewDocument(withId id: String) {
-        downloadDocument(withId: id) { [weak self] url in
-            guard let showable = self?.updatableView else { return }
-            self?.documentExporter.presentPreviewer(from: showable, documentURL: url)
-        }
+        qesLog.info("Fetching document for preview")
+        
+        fetchDocument(
+            withId: id,
+            success: { [weak self] url in
+                guard let showable = self?.updatableView else { return }
+                self?.documentExporter.presentPreviewer(from: showable, documentURL: url)
+
+            },
+            retry: { [weak self] in
+                self?.previewDocument(withId: id)
+            }
+        )
     }
     
     func downloadDocument(withId id: String) {
-        downloadDocument(withId: id) { [weak self] url in
-            guard let showable = self?.updatableView else { return }
-            self?.documentExporter.presentExporter(from: showable, in: .zero, documentURL: url)
-        }
+        qesLog.info("Fetching document for \"open in...\"")
+        
+        fetchDocument(
+            withId: id,
+            success: { [weak self] url in
+                guard let showable = self?.updatableView else { return }
+                self?.documentExporter.presentExporter(from: showable, in: .zero, documentURL: url)
+
+            },
+            retry: { [weak self] in
+                self?.downloadDocument(withId: id)
+            }
+        )
     }
 
     func quit() {
         callback(.quit)
     }
     
-    private func downloadDocument(withId id: String, callback: @escaping (URL) -> Void) {
+    private func fetchDocument(withId id: String, success: @escaping (URL) -> Void, retry: @escaping () -> Void) {
+        guard state.documents.isNotLoadingAnyDocument else {
+            qesLog.warn("Action skipped as other documents are already loading.")
+            
+            return
+        }
+        
         updateState { state in
             state.documents.updateLoading(for: id, isLoading: true)
         }
 
         verificationService.downloadAndSaveDocument(withId: id) { [weak self] result in
-            result
-                .onSuccess { url in
-                    self?.updateState { state in
-                        state.documents.updateLoading(for: id, isLoading: false)
-                        callback(url)
+            self?.updateState { state in
+                state.documents.updateLoading(for: id, isLoading: false)
+
+                result
+                    .onSuccess { url in
+                        qesLog.info("Document fetch success: \(url.lastPathComponent)")
+                        
+                        success(url)
                     }
-                }
-                .onFailure { error in
-                    print("Error! Document download error \(error)")
-                }
+                    .onFailure { [state] error in
+                        let documentName = state.documents.name(for: id) ?? id
+
+                        qesLog.warn("Document fetch failure: \(documentName) with error: \(error.localizedDescription)")
+
+                        self?.presentFailedToFetchDocumentAlert(documentName, retryAction: retry)
+                    }
+            }
         }
     }
 
@@ -128,9 +164,29 @@ final internal class ConfirmApplicationEventHandlerImpl<ViewController: Updateab
             self.updatableView?.updateView(self.state)
         }
     }
+
+    private func presentFailedToFetchDocumentAlert(_ documentName: String, retryAction: @escaping () -> Void) {
+        let title = Localizable.SignDocuments.ConfirmApplication.documentFetchErrorTitle
+        let message = String(format: Localizable.SignDocuments.ConfirmApplication.documentFetchErrorMessage, documentName)
+
+        alertsService.presentAlert(
+            with: title,
+            message: message,
+            okActionCallback: {},
+            retryActionCallback: retryAction
+        )
+    }
 }
 
 private extension Array where Element == LoadableDocument {
+    var isNotLoadingAnyDocument: Bool {
+        return firstIndex(where: { $0.isLoading }) == nil
+    }
+    
+    func name(for id: String) -> String? {
+        return first(where: { $0.document.id == id })?.document.name
+    }
+    
     mutating func updateLoading(for id: String, isLoading: Bool) {
         if let index = firstIndex(where: { $0.document.id == id }) {
             self[index].isLoading = isLoading
