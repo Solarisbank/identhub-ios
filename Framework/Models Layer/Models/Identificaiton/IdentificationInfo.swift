@@ -31,7 +31,7 @@ struct IdentificationInfo: Decodable {
     let style: IdentificationStyle?
     
     /// If `true` remote logging should be enabled with `.warn` level
-    let remoteLogging: Bool
+    let remoteLogging: Bool?
 
     enum CodingKeys: String, CodingKey {
         case status

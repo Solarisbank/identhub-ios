@@ -339,7 +339,7 @@ private extension RequestsViewModel {
                 self.sessionStorage.acceptedTC = response.acceptedTC
                 self.sessionStorage.phoneVerified = response.phoneVerificationStatus ?? false
                 self.sessionStorage.setStyleColors(response.style?.colors)
-                self.sessionStorage.remoteLogging = response.remoteLogging
+                self.sessionStorage.remoteLogging = response.remoteLogging ?? false
 
                 if let provider = response.fourthlineProvider {
                     KYCContainer.shared.update(provider: provider)
