@@ -2,7 +2,7 @@
 <img src="https://badgen.net/badge/bitcode/Enabled/green">
 
 <!--
-    spell-checker:words Fourthline Identhub Podfile Cartfile IBAN  
+    spell-checker:words Fourthline Identhub Podfile IBAN  
     spell-checker:ignore Swifty
 -->
 
@@ -12,7 +12,6 @@
   - [Integration](#integration)
     - [CocoaPods](#cocoapods)
       - [Dependency to Fourthline SDK](#dependency-to-fourthline-sdk)
-    - [Carthage](#carthage)
   - [Example Usage](#example-usage)
   - [Receiving IdentificationSession result](#receiving-identificationsession-result)
     - [IdentHubSDKManagerDelegate implementation](#identhubsdkmanagerdelegate-implementation)
@@ -42,27 +41,27 @@ IdentHub SDK requires minimum iOS version 12.
 
 ## Compatibility Table
 
-| SDK Version | Cocoa Xcode Compatible<br>.xcframework/.framework | Carthage Xcode Compatible<br>.framework | Minimum iOS support |
-|:------------:|:----------------------------------------------------:|:----------------:|:--------:|
-| 0.3.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 0.4.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 0.5.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 0.6.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 0.7.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 0.7.1 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 1.0.0 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 1.1.1 | 11.0 - 12.4                                                         | 12.3 - 12.4      | iOS 12 |
-| 1.1.2 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.1.3 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.0 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.1 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.2 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.3 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.4 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.5 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.6 | 13.0 - 13.1                                                         | 13.0 - 13.1      | iOS 12 |
-| 1.2.7 | 13.3.1 - 13.4                                                       | 13.3.1 - 13.4    | iOS 12 |
-| 1.2.8 | 13.3.1 - 13.4                                                       | 13.3.1 - 13.4    | iOS 12 |
+| SDK Version | Cocoa Xcode Compatible<br>.xcframework/.framework | Minimum iOS support |
+|:------------:|:----------------------------------------------------:|:--------:|
+| 0.3.0 | 11.0 - 12.4                                                         | iOS 12 |
+| 0.4.0 | 11.0 - 12.4                                                         | iOS 12 |
+| 0.5.0 | 11.0 - 12.4                                                         | iOS 12 |
+| 0.6.0 | 11.0 - 12.4                                                         | iOS 12 |
+| 0.7.0 | 11.0 - 12.4                                                         | iOS 12 |
+| 0.7.1 | 11.0 - 12.4                                                         | iOS 12 |
+| 1.0.0 | 11.0 - 12.4                                                         | iOS 12 |
+| 1.1.1 | 11.0 - 12.4                                                         | iOS 12 |
+| 1.1.2 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.1.3 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.0 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.1 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.2 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.3 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.4 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.5 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.6 | 13.0 - 13.1                                                         | iOS 12 |
+| 1.2.7 | 13.3.1 - 13.4                                                       | iOS 12 |
+| 1.2.8 | 13.3.1 - 13.4                                                       | iOS 12 |
 
 ## Integration
 
@@ -316,17 +315,6 @@ For this go to Build settings of framework target in framework project and make 
 - User defined settings contain *BITCODE_GENERATION_MODE* key with *bitcode* value.
 
 Rebuild and reimport problematic framework.
-
-### Crash during ZIP creation
-For Xcode 11.X, if ZIPFoundation framework was integrated via Carthage, you may experience crash after calling *createZipFile(with:)* method on instance of *Zipper* class. To fix this issue, you need to update build settings of ZIPFoundation project and build framework manually.
-- Go to *YourProjectFolder/Carthage/Checkouts/ZIPFoundation* folder.
-- Open *ZIPFoundation.xcodeproj* file with Xcode.
-- Select *ZIPFoundation* target.
-- Go to *Build Settings*, search for *Linking* section.
-- Change value of *Compatibility Version* property from empty to "1".
-- Build framework and use it in your app.
-
-For Xcode 12.X, make sure you are using 0.9.11 version of framework.
 
 ### Crash in pure ObjC applications
 If you get error message similar to next one: "Class XXX is implemented in both YYY and /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/libswiftCore.dylib. One of the two will be used. Which one is undefined.", you need to add empty swift file to your pure ObjC application, together with bridging file (will be created automatically by Xcode).
