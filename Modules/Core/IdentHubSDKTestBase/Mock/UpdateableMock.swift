@@ -5,7 +5,6 @@
 import IdentHubSDKCore
 import UIKit
 import XCTest
-import IdentHubSDKQES
 
 public class UpdateableMock<ViewState, Event>: Updateable {
     public var state: ViewState!
