@@ -16,6 +16,10 @@ public enum APIPaths {
     /// Environment path for backend API.
     public static let backendApiPath = "/person_onboarding"
     
+    public static var backendApiURL: URL? {
+        URL(string: backendBasePath)?.appendingPathComponent(backendApiPath)
+    }
+    
 }
 
 /// Container for API Session token.

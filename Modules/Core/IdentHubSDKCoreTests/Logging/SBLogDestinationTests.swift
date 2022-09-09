@@ -61,33 +61,33 @@ final class SBLogDestinationTests: XCTestCase {
     // MARK: - BackendDestination Tests
 
     func testBackendDestinationLogEntrySerialization() throws {
+        let destination = SBLogBackendAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
+
         let dateString = "2022-07-08T16:22:13Z"
         let date = ISO8601DateFormatter().date(from: dateString)!
-
-        let destination = SBLogBackendDestination()
 
         // single entry w/o category
         let logEntry = SBLogEntry("Log message", level: .error, timestamp: date)
         var expectedPayload = "{\"content\":[{\"level\":\"\(logEntry.level)\",\"message\":\"\(logEntry.message)\",\"timestamp\":\"\(dateString)\"}]}"
-        var payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntry]))
-        XCTAssertEqual(payload, expectedPayload)
+        var payload = destination.encodePayload(SBLogBackendPayload(content: [logEntry]))
+        XCTAssertEqual(payload, expectedPayload.data(using: .utf8))
 
-        // single entry w/o category
+        // single entry with category
         let logEntryWithCategory = SBLogEntry("Log message", level: .info, category: .nav, timestamp: date)
         expectedPayload = "{\"content\":[{\"category\":\"\(logEntryWithCategory.category!)\",\"level\":\"\(logEntryWithCategory.level)\",\"message\":\"\(logEntryWithCategory.message)\",\"timestamp\":\"\(dateString)\"}]}"
-        payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntryWithCategory]))
-        XCTAssertEqual(payload, expectedPayload)
+        payload = destination.encodePayload(SBLogBackendPayload(content: [logEntryWithCategory]))
+        XCTAssertEqual(payload, expectedPayload.data(using: .utf8))
 
         // empty entry
         expectedPayload = "{\"content\":[]}"
-        payload = try XCTUnwrap(destination.buildPayloadForEntries([]))
-        XCTAssertEqual(payload, expectedPayload)
+        payload = destination.encodePayload(SBLogBackendPayload(content: []))
+        XCTAssertEqual(payload, expectedPayload.data(using: .utf8))
 
         // multiple entries
         let logEntry2 = SBLogEntry("Log message 2", level: .fault, timestamp: date)
         expectedPayload = "{\"content\":[{\"level\":\"\(logEntry.level)\",\"message\":\"\(logEntry.message)\",\"timestamp\":\"\(dateString)\"},{\"level\":\"\(logEntry2.level)\",\"message\":\"\(logEntry2.message)\",\"timestamp\":\"\(dateString)\"}]}"
-        payload = try XCTUnwrap(destination.buildPayloadForEntries([logEntry, logEntry2]))
-        XCTAssertEqual(payload, expectedPayload)
+        payload = destination.encodePayload(SBLogBackendPayload(content: [logEntry, logEntry2]))
+        XCTAssertEqual(payload, expectedPayload.data(using: .utf8))
     }
     
     func testBackendDestinationClientReceivesPayload() throws {
@@ -143,13 +143,13 @@ final class SBLogDestinationTests: XCTestCase {
     // MARK: - BackendAPICLient Tests
     
     func testAPIClientURLGeneration() throws {
-        let validURL = SBLogBackendAPIClient.urlForAPIBasePath("https://person-onboarding-api.solaris-sandbox.de/person_onboarding")
+        let validURL = SBLogBackendAPIClient.urlForAPIURL(URL(string: "https://person-onboarding-api.solaris-sandbox.de/person_onboarding"))
         XCTAssertEqual(validURL?.absoluteString, "https://person-onboarding-api.solaris-sandbox.de/person_onboarding/sdk_logging")
 
-        let validLocalURL = SBLogBackendAPIClient.urlForAPIBasePath("http://local.dev:3000")
+        let validLocalURL = SBLogBackendAPIClient.urlForAPIURL(URL(string: "http://local.dev:3000"))
         XCTAssertEqual(validLocalURL?.absoluteString, "http://local.dev:3000/sdk_logging")
 
-        let invalidURL = SBLogBackendAPIClient.urlForAPIBasePath("")
+        let invalidURL = SBLogBackendAPIClient.urlForAPIURL(nil)
         XCTAssertNil(invalidURL)
     }
     
@@ -163,21 +163,25 @@ final class SBLogDestinationTests: XCTestCase {
     
     func testAPIClientSending() throws {
         let apiClient = SBLogBackendAPIClient(url: SOME_URL, sessionToken: SOME_SESSION_TOKEN)
-        let configuration = URLSessionConfiguration.ephemeral
+        let configuration = apiClient.urlSession.configuration
         configuration.protocolClasses = [MockURLProtocol.self]
         apiClient.urlSession = URLSession(configuration: configuration)
         
-        let payload = "payload string"
+        let payloadString = "{\"item\":\"payload string\"}"
         let expectation = expectation(description: "HTTP request intercepted")
         MockURLProtocol.loadingHandler = { request in
-            let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)!
             XCTAssertEqual(request.url, SOME_URL)
-            XCTAssertEqual(request.bodyStreamAsData(), payload.data(using: .utf8))
+            XCTAssertEqual(request.bodyStreamAsData(), payloadString.data(using: .utf8))
+            XCTAssertEqual(request.httpMethod, "POST")
+            XCTAssertEqual(request.value(forHTTPHeaderField: "x-solaris-session-token"), SOME_SESSION_TOKEN)
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
             expectation.fulfill()
+            let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (response, "true".data(using: .utf8), nil)
         }
 
-        apiClient.execute(payload: payload)
+        let payload: [String: String] = ["item": "payload string"]
+        apiClient.sendToBackend(payload: payload)
         wait(for: [expectation], timeout: 2)
     }
 
@@ -198,8 +202,9 @@ class SBLogBackendMockAPIClient: SBLogBackendConnectable {
     @objc dynamic var receivedPayload: String?
     required init(url: URL, sessionToken: String) { }
     
-    func execute(payload: String?) {
-        self.receivedPayload = payload
+    func sendToBackend<T>(payload: T) where T: Encodable {
+        let encoder = SBLogBackendAPIClient.jsonEncoder
+        self.receivedPayload = String(data: (try? encoder.encode(payload))!, encoding: .utf8)
     }
 }
 

@@ -85,7 +85,7 @@ public class SBLogBackendDestination: SBLogDestination {
             sendToBackend()
             queuedEntries.removeAll()
         } else {
-            print("[IdentHub] Can't flush backend log queue without API client being set, postponing.")
+            print("[IdentHub] Can't flush backend log queue without API Client being set, postponing.")
         }
     }
     
@@ -114,39 +114,15 @@ public class SBLogBackendDestination: SBLogDestination {
         guard queuedEntries.isNotEmpty() else {
             return
         }
-        let payload = buildPayloadForEntries(queuedEntries)
-        apiClient?.execute(payload: payload)
+        let payload = SBLogBackendPayload(content: queuedEntries)
+        apiClient?.sendToBackend(payload: payload)
     }
-    
-    func buildPayloadForEntries(_ entries: [SBLogEntry]) -> String? {
-        let payload = SBLogBackendPayload(content: entries)
-        let payloadString: String?
-        do {
-            let data = try SBLogBackendDestination.jsonEncoder.encode(payload)
-            payloadString = String(data: data, encoding: .utf8)
-        } catch {
-            print("[IdentHub] Error while trying to encode logging payload.")
-            payloadString = "{\"contents\":[{\"level\":\"WARN\",\"message\":\"Error while trying to encode logging payload!\"}]}"
-        }
-        return payloadString
-    }
-    
-    static var jsonEncoder: JSONEncoder = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .sortedKeys
-        encoder.dateEncodingStrategy = .formatted(dateFormatter)
-        return encoder
-    }()
     
 }
 
 public protocol SBLogBackendConnectable {
     init(url: URL, sessionToken: String)
-    func execute(payload: String?)
+    func sendToBackend<T>(payload: T) where T: Encodable
 }
 
 public class SBLogBackendAPIClient: SBLogBackendConnectable {
@@ -163,23 +139,46 @@ public class SBLogBackendAPIClient: SBLogBackendConnectable {
 
     var urlSession: URLSession
     private(set) var url: URL
+    
+    static var jsonEncoder: JSONEncoder = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .sortedKeys
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        return encoder
+    }()
 
-    // NOTE: No handling of the result of the at this time.
-    // If the request to the backend fails, the log items to be sent are discarded.
-    // To be improved in future iteration.
-    public func execute(payload: String?) {
+    public func encodePayload<T>(_ payload: T) -> Data where T: Encodable {
+        var encodedPayload: Data
+        do {
+            encodedPayload = try Self.jsonEncoder.encode(payload)
+        } catch {
+            print("[IdentHub] Error while trying to encode logging payload.")
+            encodedPayload = "{\"contents\":[{\"level\":\"WARN\",\"message\":\"Error while trying to encode logging payload!\"}]}".data(using: .utf8)!
+        }
+        return encodedPayload
+    }
+
+    /// Send the payload to the backend. Payload must be (JSON)-encodable and will be sent with content type `application/json`.
+    public func sendToBackend<T>(payload: T) where T: Encodable {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        if let payload = payload {
-            request.httpBody = payload.data(using: .utf8)
-        }
+        request.httpBody = encodePayload(payload)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // NOTE: No handling of the result of the request at this time.
+        // If the request to the backend fails, the log items to be sent are discarded.
+        // To be improved in future iterations.
         let task = urlSession.dataTask(with: request) { data, response, error in
             guard data != nil && error == nil, let httpResponse = response as? HTTPURLResponse else {
                 print("[IdentHub] Error while trying to send log entries:", error ?? "No valid response")
                 return
             }
             guard 200 ..< 300 ~= httpResponse.statusCode else {
-                print("[IdentHub] Error while trying to send log entries: backend replied with status code \(httpResponse.statusCode).")
+                print("[IdentHub] Failed to send log entries: backend replied with status code \(httpResponse.statusCode).")
                 return
             }
         }
@@ -190,8 +189,8 @@ public class SBLogBackendAPIClient: SBLogBackendConnectable {
 
 extension SBLogBackendAPIClient {
     /// Create an URL instance pointing to the SDK BFF based on the provided base path.
-    public static func urlForAPIBasePath(_ basePath: String) -> URL? {
-        return URL(string: basePath)?.appendingPathComponent("sdk_logging")
+    public static func urlForAPIURL(_ apiURL: URL?) -> URL? {
+        apiURL?.appendingPathComponent("sdk_logging")
     }
 }
 

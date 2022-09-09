@@ -67,7 +67,10 @@ final public class IdentHubSession {
         // Logging setup via Swift compile-time flags:
         
         #if DEBUG
-        self.enableLogging(level: .warn)
+        // Enable console logging at WARN level if logging hasn't already been explicitly configured
+        if !IdentHubSession.loggingConfigured {
+            self.enableLogging(level: .warn)
+        }
         #endif
         
         #if IDENTHUB_LOGGING_REMOTE
@@ -114,6 +117,8 @@ final public class IdentHubSession {
 
 extension IdentHubSession {
     
+    static var loggingConfigured = false
+    
     /// Enable logging messages to the console.
     ///
     /// - Parameters:
@@ -127,18 +132,19 @@ extension IdentHubSession {
     /// - Parameters:
     ///   - level: Minimum log level to display. Defaults to `.warn`.
     public func enableRemoteLogging(level: SBLogLevel = .warn) {
-        let sessionToken = self.appDependencies.sessionInfoProvider.sessionToken
-        // Only enable backend logging if we have a valid URL to send entries to
-        if let logURL = SBLogBackendAPIClient.urlForAPIBasePath(APIPaths.backendBasePath) {
-            let logAPIClient = SBLogBackendAPIClient(url: logURL, sessionToken: sessionToken)
-            SBLogBackendDestination.standard.apiClient = logAPIClient
-            SBLogBackendDestination.standard.level = level
-            SBLogBackendDestination.standard.backendRequestBundlingPeriod = 3.0
-            SBLog.standard.addDestination(SBLogBackendDestination.standard)
-            SBLog.info("Enabled backend logging")
-        } else {
+        // We can only enable backend logging if we have a valid URL to send entries to
+        let backendURL = APIPaths.backendApiURL
+        guard let logURL = SBLogBackendAPIClient.urlForAPIURL(backendURL) else {
             SBLog.warn("Could not initialize backend logging")
+            return
         }
+        let sessionToken = self.appDependencies.sessionInfoProvider.sessionToken
+        let logAPIClient = SBLogBackendAPIClient(url: logURL, sessionToken: sessionToken)
+        SBLogBackendDestination.standard.apiClient = logAPIClient
+        SBLogBackendDestination.standard.level = level
+        SBLogBackendDestination.standard.backendRequestBundlingPeriod = 3.0
+        SBLog.standard.addDestination(SBLogBackendDestination.standard)
+        SBLog.info("Enabled backend logging (\(level))")
     }
 
     /// Enable logging messages to the console.
@@ -148,7 +154,7 @@ extension IdentHubSession {
     public static func enableLogging(level: SBLogLevel = .debug) {
         SBLogConsoleDestination.standard.level = level
         SBLog.standard.addDestination(SBLogConsoleDestination.standard)
-        SBLog.info("Enabled console logging")
+        SBLog.info("Enabled console logging (\(level))")
     }
     
     // NOTE: No static version of enableRemoteLogging(…) as remote logging requires
@@ -164,7 +170,7 @@ private extension IdentHubSession {
 
     private func startIdentification() {
         guard !IdentHubSession.isSessionStarted else {
-            SBLog.error("Another session is already starter. Please finish previously started session to start this one.")
+            SBLog.error("Another session is already running. Please finish previously started session before starting another one.")
 
             // TODO: Use proper error to indicate state
             updateSessionResult(.failure(.identificationNotPossible))
