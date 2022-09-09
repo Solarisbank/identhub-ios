@@ -54,9 +54,9 @@ extension IdentificationMethod: Modularizable {
 extension IdentificationStep: Modularizable {
     var requiredModules: Set<ModuleName> {
         switch self {
-        case .unspecified, .abort, .partnerFallback, .mobileNumber:
+        case .unspecified, .abort, .partnerFallback, .mobileNumber, .fourthline:
             return []
-        case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthline, .fourthlineSigning, .fourthlineQES:
+        case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthlineSigning, .fourthlineQES:
             return [.qes]
         }
     }

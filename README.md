@@ -84,6 +84,8 @@ platform :ios, '12.0'
 target 'YourTargetName' do
   pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
   pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
+
+  # Optional if your identification methods includes a Qualified Electronic Signature (QES).
   pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
 end
 
@@ -106,10 +108,22 @@ end
 #### Dependency to Fourthline SDK
 The Fourthline SDK is not publicly available. Please get in contact with Solarisbank to request access to it.
 
-### Required modules to integrate SDK:
+### IdentHub SDK Modules
+
+The Solaris IdentHub SDK uses a modular approach that allows you to only include components that are necessary for the identification methods that you will actually use.
+
+If you try to start an identification method for which one or more modules are missing, the `IdentificationSession` will terminate with a failure `modulesNotFound([<list of missing modules>])`.
+#### Required Modules
+
+The following modules are required dependencies for all identification methods and fundamental functionalities of the IdentHubSDK:
 
  - SolarisbankIdentHub
  - SolarisbankIdentHubCore
+
+#### Optional Modules
+
+The following modules are required for specific identification methods only and may be skipped for other identification flows. Get in touch with your Integration Engineer to determine which modules should be included in your integration.
+
  - SolarisbankIdentHubQES
 
 ## Example Usage
@@ -263,12 +277,14 @@ In case of a failure during the IdentHubSession, the partner's app will receive 
 | `internalServerError` | indicates the internal server error. |
 | `requestError` | indicates build request error |
 | `locationError` | indicates issue with fetching device location data |
+| `locationAccessError` | The user did not give permission to access device location data |
 | `ibanVerfificationFailed` | failed IBAN verification |
 | `paymentFailed` | failed payment initiation |
 | `identificationDataInvalid` | provided user data is not valid and should be creates one more time |
 | `fraudData` | provided data defines as fraud |
 | `unsupportedResponse` | SDK encountered a response that is not supported in this version |
 | `identificationNotPossible` | SDK could not identify the user. Try your fallback identification method |
+| `modulesNotFound` | one or more modules are missing for the chosen identification method. |
 | `unknownError` | indicates that api client encountered an error not listed above. |
 
 ## SDK version

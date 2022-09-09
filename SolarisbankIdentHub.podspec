@@ -4,12 +4,13 @@ Pod::Spec.new do |spec|
 
   spec.name    = "SolarisbankIdentHub"
   spec.version = "1.2.8"
-  spec.summary = "iOS SDK for Solarisbank IdentHub."
+  spec.summary = "Solaris IdentHub SDK for iOS"
 
   spec.description = <<-DESC
-  iOS SDK for Solarisbank IdentHub.
-
-  It provides an easy way to integrate identification provided by Solarisbank into your iOS app.
+  Solaris IdentHub SDK for iOS.
+  
+  The Solaris IdentHub SDKs provide an easy way to integrate the
+  identification methods provided by Solarisbank into your iOS app.
   DESC
 
   spec.homepage = "https://www.solarisbank.com/en/"
@@ -18,14 +19,14 @@ Pod::Spec.new do |spec|
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.license	= { :type => 'Copyright', :text => <<-LICENSE
-                  Copyright © 2021 Solarisbank AG. All rights reserved.
+                  Copyright © 2022 Solarisbank AG. All rights reserved.
                   LICENSE
                 }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.author = { "Solarisbank Mobile Team" => "Jan.Ehrhardt@solarisbank.de" }
+  spec.author = { "Solaris Identity Team" => "matthew.aberdein@solarisgroup.com" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
@@ -49,7 +50,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'InputMask', '6.1.0'
   spec.dependency 'lottie-ios'
   spec.dependency 'SolarisbankIdentHubCore', "#{spec.version}"
-  spec.dependency 'SolarisbankIdentHubQES', "#{spec.version}"
 
   spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

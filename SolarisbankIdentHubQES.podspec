@@ -5,10 +5,10 @@ Pod::Spec.new do |spec|
   spec.name    = "SolarisbankIdentHubQES"
   spec.module_name = "IdentHubSDKQES"
   spec.version = "1.2.8"
-  spec.summary = "iOS QES Module for Solarisbank IdentHub SDK"
+  spec.summary = "Solaris IdentHub SDK for iOS - QES Module"
 
   spec.description = <<-DESC
-    iOS QES Module for Solarisbank IdentHub SDK
+    Functionalities for Qualified Electronic Signature flows for the Solaris IdentHub SDK for iOS.
   DESC
 
   spec.homepage = "https://www.solarisbank.com/en/"
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.author = { "Solarisbank Mobile Team" => "Jan.Ehrhardt@solarisbank.de" }
+  spec.author = { "Solaris Identity Team" => "matthew.aberdein@solarisgroup.com" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 

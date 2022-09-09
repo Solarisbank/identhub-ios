@@ -11,19 +11,19 @@ final class IdentificationMethodTests: XCTestCase {
     func testRequriedModules() {
         for firstStep in IdentificationStep.allCases {
             switch firstStep {
-            case .unspecified, .abort, .partnerFallback, .mobileNumber:
+            case .unspecified, .abort, .partnerFallback, .mobileNumber, .fourthline:
                 for fallbackStep in IdentificationStep.allCases {
                     switch fallbackStep {
-                    case .unspecified, .abort, .partnerFallback, .mobileNumber:
+                    case .unspecified, .abort, .partnerFallback, .mobileNumber, .fourthline:
                         assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [])
                         
-                    case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthline, .fourthlineSigning, .fourthlineQES:
+                    case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthlineSigning, .fourthlineQES:
                         assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [.qes])
                     }
                 }
                 
                 assertIdentificationMethod(firstStep: firstStep, expectedModules: [])
-            case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthline, .fourthlineSigning, .fourthlineQES:
+            case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthlineSigning, .fourthlineQES:
                 for fallbackStep in IdentificationStep.allCases {
                     assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [.qes])
                 }
