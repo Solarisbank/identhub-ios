@@ -754,12 +754,9 @@
 		0CD5CC302590F58800FF378F = {
 			isa = PBXGroup;
 			children = (
-				884D8C182858639700628162 /* IdentHubSDK.xctestplan */,
-				884D8C1C285863D300628162 /* IdentHubSDKSnapshotTests.xctestplan */,
-				88DD17C2283D3F0800A94ABC /* Core.xcodeproj */,
-				88DD17D2283D3F1600A94ABC /* QES.xcodeproj */,
 				0CD5CC4B2590F61200FF378F /* Sample */,
 				0CD5CC3C2590F58800FF378F /* Framework */,
+				39184C9428C78438001BF9D0 /* Modules */,
 				88E232C428896B0E00D24CEC /* Shared */,
 				0CD5CC8A2590FD3300FF378F /* Configurations */,
 				84A7581725F22D7F004D8F88 /* IdentHubSDKTests */,
@@ -908,6 +905,24 @@
 				24659B0326D62D7300F56089 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		39184C8E28C783B9001BF9D0 /* Test Plans */ = {
+			isa = PBXGroup;
+			children = (
+				884D8C182858639700628162 /* IdentHubSDK.xctestplan */,
+				884D8C1C285863D300628162 /* IdentHubSDKSnapshotTests.xctestplan */,
+			);
+			path = "Test Plans";
+			sourceTree = "<group>";
+		};
+		39184C9428C78438001BF9D0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				88DD17C2283D3F0800A94ABC /* Core.xcodeproj */,
+				88DD17D2283D3F1600A94ABC /* QES.xcodeproj */,
+			);
+			name = Modules;
 			sourceTree = "<group>";
 		};
 		670627E0281168CD00C73F23 /* Document */ = {
@@ -1274,6 +1289,7 @@
 				84A7582625F22E86004D8F88 /* Models Layer */,
 				8444601B274E6E6100EB7972 /* Presentation Layer */,
 				84A7582725F22E97004D8F88 /* Resources */,
+				39184C8E28C783B9001BF9D0 /* Test Plans */,
 			);
 			path = IdentHubSDKTests;
 			sourceTree = "<group>";

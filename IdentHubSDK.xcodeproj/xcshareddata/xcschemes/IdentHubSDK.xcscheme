@@ -58,11 +58,11 @@
       codeCoverageEnabled = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:IdentHubSDK.xctestplan"
+            reference = "container:IdentHubSDKTests/Test Plans/IdentHubSDK.xctestplan"
             default = "YES">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:IdentHubSDKSnapshotTests.xctestplan">
+            reference = "container:IdentHubSDKTests/Test Plans/IdentHubSDKSnapshotTests.xctestplan">
          </TestPlanReference>
       </TestPlans>
       <Testables>

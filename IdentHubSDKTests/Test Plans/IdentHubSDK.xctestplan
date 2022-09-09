@@ -13,13 +13,6 @@
   },
   "testTargets" : [
     {
-      "target" : {
-        "containerPath" : "container:Modules\/Core\/Core.xcodeproj",
-        "identifier" : "88F3A562283CD72000DB273A",
-        "name" : "IdentHubSDKCoreTests"
-      }
-    },
-    {
       "skippedTests" : [
         "BaseTestCase"
       ],
@@ -27,6 +20,13 @@
         "containerPath" : "container:IdentHubSDK.xcodeproj",
         "identifier" : "84A7581525F22D7F004D8F88",
         "name" : "IdentHubSDKTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/Core\/Core.xcodeproj",
+        "identifier" : "88F3A562283CD72000DB273A",
+        "name" : "IdentHubSDKCoreTests"
       }
     },
     {
