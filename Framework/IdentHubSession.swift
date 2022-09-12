@@ -76,7 +76,6 @@ final public class IdentHubSession {
         #if IDENTHUB_LOGGING_REMOTE
         self.enableRemoteLogging()
         #endif
-        
     }
     
     deinit {
@@ -87,6 +86,16 @@ final public class IdentHubSession {
     /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter delegate: object conforms process status delegate methods
     public func start(_ delegate: IdentHubSDKManagerDelegate) {
+    
+        // Make sure no other IdentificationSession is running
+        guard !Self.isSessionStarted else {
+            SBLog.error("Another session is already running. Please finish previously started session before starting again.")
+            // TODO: Use proper error to indicate state
+            updateSessionResult(.failure(.identificationNotPossible))
+            return
+        }
+        Self.isSessionStarted = true
+        
         SBLog.info("Starting IdentHubSession (using delegate)")
         sessionDelegate = delegate
         startIdentification()
@@ -96,6 +105,16 @@ final public class IdentHubSession {
     /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter completion: closure with result object in parameter, result has two cases: success with id or failure with error
     public func start(_ completion: CompletionHandler?) {
+
+        // Make sure no other IdentificationSession is running before we start
+        guard !Self.isSessionStarted else {
+            SBLog.error("Another session is already running. Please finish previously started session before starting again.")
+            // TODO: Use proper error to indicate state
+            updateSessionResult(.failure(.identificationNotPossible))
+            return
+        }
+        Self.isSessionStarted = true
+
         SBLog.info("Starting IdentHubSession (using completion handler)")
         completionSessionBlock = completion
         startIdentification()
@@ -169,23 +188,11 @@ extension IdentHubSession {
 private extension IdentHubSession {
 
     private func startIdentification() {
-        guard !IdentHubSession.isSessionStarted else {
-            SBLog.error("Another session is already running. Please finish previously started session before starting another one.")
-
-            // TODO: Use proper error to indicate state
-            updateSessionResult(.failure(.identificationNotPossible))
-
-            return
-        }
-
-        IdentHubSession.isSessionStarted = true
-
         identCoordinator = IdentificationCoordinator(appDependencies: appDependencies, presenter: identRouter)
         
         appDependencies.sessionInfoProvider.addEnableRemoteLoggingCallback { [weak self] in
             guard let self = self else {
                 SBLog.error("Cannot handle remote logging : `self` is not present")
-                
                 return
             }
             
@@ -194,15 +201,15 @@ private extension IdentHubSession {
         
         SBLog.debug("Starting IdentificationCoordinator")
         identCoordinator?.start { [weak self] result in
+            SBLog.debug("IdentificationCoordinator result: \(result)")
+
             IdentHubSession.isSessionStarted = false
 
             guard let self = self else {
                 SBLog.error("Cannot handle identification coordinator start completion: `self` is not present")
-                
                 return
             }
             
-            SBLog.debug("IdentificationCoordinator result: \(result)")
             self.updateSessionResult(result)
         }
     }
