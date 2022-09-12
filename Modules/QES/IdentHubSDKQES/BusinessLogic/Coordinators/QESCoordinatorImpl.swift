@@ -48,7 +48,7 @@ final internal class QESCoordinatorImpl: QESCoordinator {
         guard storage[.step] != .signDocuments else {
             return signDocuments()
         }
-        let input = ConfirmApplicationInput(identificationUID: input.identificationUID)
+        let input = ConfirmApplicationInput(identificationUID: input.identificationUID, identificationStep: self.input.identificationStep)
     
         return showableFactory.makeConfirmApplicationShowable(input: input) { [weak self] result in
             guard let self = self else {

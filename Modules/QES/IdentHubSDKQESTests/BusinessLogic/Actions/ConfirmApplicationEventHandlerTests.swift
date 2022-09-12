@@ -36,7 +36,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         let expectedState = ConfirmApplicationState(
             hasQuitButton: true,
             documents: [],
-            hasTermsAndConditionsLink: true
+            hasTermsAndConditionsLink: false
         )
         
         assertAsync { expectation in
@@ -105,7 +105,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         let expectedState = ConfirmApplicationState(
             hasQuitButton: true,
             documents: [],
-            hasTermsAndConditionsLink: true
+            hasTermsAndConditionsLink: false
         )
         
         let showable = makeShowableWithSut(input: input)
@@ -137,7 +137,7 @@ final class ConfirmApplicationEventHandlerTests: XCTestCase {
         let expectedState = ConfirmApplicationState(
             hasQuitButton: true,
             documents: expectedDocuments.map { LoadableDocument(isLoading: false, document: $0) },
-            hasTermsAndConditionsLink: true
+            hasTermsAndConditionsLink: false
         )
         
         let showable = makeShowableWithSut(input: input)

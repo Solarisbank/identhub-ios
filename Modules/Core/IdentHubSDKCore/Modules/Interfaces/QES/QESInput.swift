@@ -12,10 +12,12 @@ public struct QESInput {
     public let step: QESStep
     public let identificationUID: String
     public let mobileNumber: String?
+    public let identificationStep: IdentificationStep?
 
-    public init(step: QESStep, identificationUID: String, mobileNumber: String?) {
+    public init(step: QESStep, identificationUID: String, mobileNumber: String?, identificationStep: IdentificationStep?) {
         self.step = step
         self.identificationUID = identificationUID
         self.mobileNumber = mobileNumber
+        self.identificationStep = identificationStep
     }
 }

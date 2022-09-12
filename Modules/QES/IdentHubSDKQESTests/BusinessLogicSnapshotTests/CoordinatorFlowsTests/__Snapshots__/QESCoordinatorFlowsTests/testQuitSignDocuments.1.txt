@@ -1,4 +1,4 @@
-SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable(input: "ConfirmApplicationInput(identificationUID: "uid")", callback:)
+SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable(input: "ConfirmApplicationInput(identificationUID: "uid", identificationStep: Optional(IdentHubSDKCore.IdentificationStep.bankQES))", callback:)
 SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable.callback(confirmedApplication)
 SERVICE: ShowableFactoryMock.makeSignDocumentsShowable(input: "SignDocumentsInput(identificationUID: "uid", mobileNumber: Optional("+49 111 222 333"))", callback:)
 SERVICE: ShowableFactoryMock.makeSignDocumentsShowable.callback(success(IdentHubSDKQES.SignDocumentsOutput.quit))

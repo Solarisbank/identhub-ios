@@ -13,5 +13,5 @@ internal struct LoadableDocument: Equatable {
 internal struct ConfirmApplicationState: Equatable {
     var hasQuitButton: Bool = true
     var documents: [LoadableDocument] = []
-    var hasTermsAndConditionsLink = true
+    var hasTermsAndConditionsLink = false
 }

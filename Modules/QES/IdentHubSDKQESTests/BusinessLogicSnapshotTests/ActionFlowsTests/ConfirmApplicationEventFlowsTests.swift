@@ -45,7 +45,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     }
 
     func testSignDocuments() {
-        let input = ConfirmApplicationInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid, identificationStep: .bankQES)
 
         assertFlow(input: input, expectedOutput: .confirmedApplication) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
@@ -60,7 +60,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     }
     
     func testPreviewDocument() {
-        let input = ConfirmApplicationInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid, identificationStep: .bankQES)
 
         assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
@@ -77,7 +77,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     }
 
     func testPreviewDocumentFailure() {
-        let input = ConfirmApplicationInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid, identificationStep: .bankQES)
 
         assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
@@ -94,7 +94,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     }
     
     func testDownloadDocument() {
-        let input = ConfirmApplicationInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid, identificationStep: .bankQES)
         
         assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
@@ -111,7 +111,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     }
 
     func testDownloadDocumentFailure() {
-        let input = ConfirmApplicationInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid, identificationStep: .bankQES)
 
         assertFlow(input: input) { showable in
             apiClient.expectSuccess(.identificationNotConfirmed, for: try! IdentificationRequest(identificationUID: uid))
@@ -129,7 +129,7 @@ final class ConfirmApplicationEventFlowsTests: XCTestCase, FlowTest {
     }
     
     func testQuit() {
-        let input = ConfirmApplicationInput(identificationUID: uid)
+        let input = ConfirmApplicationInput(identificationUID: uid, identificationStep: .bankQES)
         
         assertFlow(input: input, expectedOutput: .quit) { showable in
             showable.sendEvent(.quit)

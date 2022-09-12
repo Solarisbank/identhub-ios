@@ -1,4 +1,4 @@
-SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable(input: "ConfirmApplicationInput(identificationUID: "uid")", callback:)
+SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable(input: "ConfirmApplicationInput(identificationUID: "uid", identificationStep: Optional(IdentHubSDKCore.IdentificationStep.bankQES))", callback:)
 SERVICE: ShowableFactoryMock.makeConfirmApplicationShowable.callback(quit)
 UI: AlertsServiceMock.presentQuitAlert(callback:)
 UI: AlertsServiceMock.presentQuitAlert.callback(false)

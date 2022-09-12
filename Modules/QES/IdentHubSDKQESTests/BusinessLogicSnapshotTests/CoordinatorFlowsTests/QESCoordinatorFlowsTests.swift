@@ -31,7 +31,8 @@ final class QESCoordinatorFlowsTests: XCTestCase {
         let input = QESInput(
             step: .confirmAndSignDocuments,
             identificationUID: "uid",
-            mobileNumber: "+49 111 222 333"
+            mobileNumber: "+49 111 222 333",
+            identificationStep: .bankQES
         )
         
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.identificationConfirmed(identificationToken: "XXX"))) {
@@ -52,7 +53,8 @@ final class QESCoordinatorFlowsTests: XCTestCase {
         let input = QESInput(
             step: .signDocuments,
             identificationUID: "uid",
-            mobileNumber: "+49 111 222 333"
+            mobileNumber: "+49 111 222 333",
+            identificationStep: .bankQES
         )
 
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.identificationConfirmed(identificationToken: "XXX"))) {
@@ -67,7 +69,8 @@ final class QESCoordinatorFlowsTests: XCTestCase {
         let input = QESInput(
             step: .confirmAndSignDocuments,
             identificationUID: "uid",
-            mobileNumber: "+49 111 222 333"
+            mobileNumber: "+49 111 222 333",
+            identificationStep: .bankQES
         )
 
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.abort)) {
@@ -83,7 +86,8 @@ final class QESCoordinatorFlowsTests: XCTestCase {
         let input = QESInput(
             step: .confirmAndSignDocuments,
             identificationUID: "uid",
-            mobileNumber: "+49 111 222 333"
+            mobileNumber: "+49 111 222 333",
+            identificationStep: .bankQES
         )
 
         assertAsyncCoordinatorStart(sut, with: input, expectedResult: .success(.abort)) {

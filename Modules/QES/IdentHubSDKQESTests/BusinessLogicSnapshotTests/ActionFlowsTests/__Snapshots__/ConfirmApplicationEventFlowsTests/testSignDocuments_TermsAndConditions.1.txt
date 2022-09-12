@@ -1,0 +1,4 @@
+UPDATE_VIEW: ConfirmApplicationState(hasQuitButton: true, documents: [], hasTermsAndConditionsLink: true)
+EVENT: loadDocuments
+SERVICE: VerificationServiceSpy.getIdentification(for: "identification_uid", completionHandler:)
+EVENT: signDocuments

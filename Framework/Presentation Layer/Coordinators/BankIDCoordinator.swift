@@ -50,7 +50,7 @@ class BankIDCoordinator: BaseCoordinator {
         case .signDocuments(let step):
             switch step {
             case .confirmApplication:
-                presentConfirmApplication()
+                presentConfirmApplication(step: .unspecified)
             case .sign:
                 presentSignDocuments()
             }
@@ -237,7 +237,7 @@ private extension BankIDCoordinator {
         case .bankQES,
              .bankIDQES,
              .fourthlineQES:
-            presentConfirmApplication()
+            presentConfirmApplication(step: step)
         case .fourthline,
             .fourthlineSigning:
             presentFourthlineFlow()
@@ -298,8 +298,8 @@ private extension BankIDCoordinator {
         updateBankIDStep(step: .bankVerification(step: .payment))
     }
 
-    private func presentConfirmApplication() {
-        presentQES(step: .confirmAndSignDocuments)
+    private func presentConfirmApplication(step: IdentificationStep) {
+        presentQES(step: .confirmAndSignDocuments, currentStep: step)
         updateBankIDStep(step: .signDocuments(step: .confirmApplication))
     }
 
@@ -308,7 +308,7 @@ private extension BankIDCoordinator {
         updateBankIDStep(step: .signDocuments(step: .sign))
     }
 
-    private func presentQES(step: QESStep) {
+    private func presentQES(step: QESStep, currentStep: IdentificationStep = .unspecified) {
         guard let identificationUID = appDependencies.sessionInfoProvider.identificationUID else {
             print("Error: No identificationUID")
             return
@@ -321,7 +321,8 @@ private extension BankIDCoordinator {
         let input = QESInput(
             step: step,
             identificationUID: identificationUID,
-            mobileNumber: appDependencies.sessionInfoProvider.mobileNumber
+            mobileNumber: appDependencies.sessionInfoProvider.mobileNumber,
+            identificationStep: currentStep
         )
         coordinatorPerformer.startCoordinator(qes, input: input, callback: { [weak self] result in
             guard let self = self else {

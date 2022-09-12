@@ -9,13 +9,21 @@ import IdentHubSDKTestBase
 
 final class ConfirmApplicationSnapshotTests: XCTestCase {
     private var state: ConfirmApplicationState!
-
+    
     override func setUp() {
         state = ConfirmApplicationState(documents: .mock())
     }
-
+    
     func testLoadedDocuments() {
         let sut = makeSut()
+        sut.updateView(state)
+        assertSnapshot(for: sut)
+    }
+    
+    func testLoadedDocuments_TermsAndConditionsLink() {
+        let input = ConfirmApplicationInput(identificationUID: "identification_uid", identificationStep: .bankQES)
+        let sut = makeSut()
+        state.hasTermsAndConditionsLink = (input.identificationStep == .bankQES)
         sut.updateView(state)
         assertSnapshot(for: sut)
     }

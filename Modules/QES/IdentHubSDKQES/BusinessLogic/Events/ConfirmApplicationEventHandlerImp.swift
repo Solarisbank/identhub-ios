@@ -13,6 +13,7 @@ internal enum ConfirmApplicationOutput: Equatable {
 
 internal struct ConfirmApplicationInput {
     var identificationUID: String
+    var identificationStep: IdentificationStep?
 }
 
 // MARK: - Confirm application events logic -
@@ -47,8 +48,9 @@ final internal class ConfirmApplicationEventHandlerImpl<ViewController: Updateab
         self.documentExporter = documentExporter
         self.input = input
         self.callback = callback
-        
-        self.state = ConfirmApplicationState()
+        self.state = ConfirmApplicationState(hasQuitButton: true,
+                                             documents: [],
+                                             hasTermsAndConditionsLink: input.identificationStep == .bankQES)
     }
 
     func handleEvent(_ event: ConfirmApplicationEvent) {
