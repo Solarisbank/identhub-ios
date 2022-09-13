@@ -16,7 +16,3 @@ _BUNDLE_INFOPLIST_PATH = $(PROJECT_DIR)/Framework/Resources/Info.plist
 _BUNDLE_TESTABLE = NO
 
 BITCODE_GENERATION_MODE = bitcode
-
-ONLY_ACTIVE_ARCH = YES
-
-EXCLUDED_ARCHS[sdk=iphonesimulator*] = arm64
