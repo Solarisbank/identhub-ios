@@ -62,6 +62,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 1.2.6 | 13.0 - 13.1                                                         | iOS 12 |
 | 1.2.7 | 13.3.1 - 13.4                                                       | iOS 12 |
 | 1.2.8 | 13.3.1 - 13.4                                                       | iOS 12 |
+| 1.3.0 | 13.4 - 14.0                                                         | iOS 12 |
 
 ## Integration
 
@@ -82,11 +83,11 @@ inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
-  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
-  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
+  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.3.0'
+  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.3.0'
 
   # Optional if your identification methods includes a Qualified Electronic Signature (QES).
-  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
+  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.3.0'
 end
 
 post_install do |installer|
