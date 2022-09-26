@@ -40,24 +40,6 @@ jobs:
         path: ${{ env.UNIT_TESTS_RESULTS }}.zip
         retention-days: 1
         if-no-files-found: ignore
-
-    - name: Run Snapshot Tests
-      id: snapshot_tests
-      run: |
-        xcodebuild -workspace IdentHubSDK.xcworkspace -scheme IdentHubSDK -destination "platform=iOS Simulator,name=iPhone 12,OS=15.2" -resultBundlePath $SNAPSHOT_TESTS_RESULTS.xcresult -testPlan IdentHubSDKSnapshotTests test-without-building
-    - name: Archive Snapshot Tests Results
-      if: ${{ failure() && steps.snapshot_tests.conclusion == 'failure' }}
-      run: |
-        zip -r $SNAPSHOT_TESTS_RESULTS.zip $SNAPSHOT_TESTS_RESULTS.xcresult/
-    - name: Upload Snapshot Tests Results
-      if: ${{ failure() && steps.snapshot_tests.conclusion == 'failure' }}
-      uses: actions/upload-artifact@v3
-      with:
-        name: ${{ env.SNAPSHOT_TESTS_RESULTS }}
-        path: ${{ env.SNAPSHOT_TESTS_RESULTS }}.zip
-        retention-days: 1
-        if-no-files-found: ignore
-
     - name: Build Sample App
       run: |
         xcodebuild -workspace IdentHubSDK.xcworkspace -scheme Sample -destination "platform=iOS Simulator,name=iPhone 12" build
