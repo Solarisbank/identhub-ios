@@ -68,7 +68,7 @@ We have several types of tests in the SDK
 
 The snapshot tests needs to be run on a specific version and model of the iPhone simulator.
 
-Currently snapshot tests are using **iPhone 12 (IOS 15.2)**.
+Currently snapshot tests are using **iPhone 12 (IOS 15.6)**.
 
 ## References
 [Diagrams](https://miro.com/app/board/uXjVPcSBpCU=/)

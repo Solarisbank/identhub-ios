@@ -25,22 +25,18 @@ end
 
 target 'IdentHubSDKTestBase' do
   project 'Modules/Core/Core'
-  pod 'SnapshotTesting', '~> 1.9.0'
 end
 
 target 'IdentHubSDKCoreTests' do
   project 'Modules/Core/Core'
-  pod 'SnapshotTesting', '~> 1.9.0'
 end
 
 target 'IdentHubSDKQESTests' do
   project 'Modules/QES/QES'
-  pod 'SnapshotTesting', '~> 1.9.0'
 end
 
 target 'IdentHubSDKQESSnapshotTests' do
   project 'Modules/QES/QES'
-  pod 'SnapshotTesting', '~> 1.9.0'
 end
 
 target 'Sample' do

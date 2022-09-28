@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -58,6 +58,7 @@
 		0CE4A8E725A368CC00114CBD /* SolarisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8E625A368CC00114CBD /* SolarisViewController.swift */; };
 		0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4A8F025A368E700114CBD /* StartIdentificationViewModel.swift */; };
 		221922DD7B24A3748F1A2522 /* Pods_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D1393CBC90E9D324DA770A6 /* Pods_Sample.framework */; };
+		39022A6828E19F640083B9AE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 39022A6728E19F640083B9AE /* SnapshotTesting */; };
 		392F460127A44E040010849E /* BankIDCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F460027A44E040010849E /* BankIDCoordinatorTest.swift */; };
 		4B7ABC5563AED08F2EEF0E3B /* Pods_IdentHubSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167F96F5B8A6818DC4F88F5A /* Pods_IdentHubSDK.framework */; };
 		61EA0DCB0CD224FA09654B5A /* Pods_IdentHubSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8415064EF8021866EE779A02 /* Pods_IdentHubSDKTests.framework */; };
@@ -559,6 +560,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39022A6828E19F640083B9AE /* SnapshotTesting in Frameworks */,
 				88A9FB92284A15640074557B /* IdentHubSDKTestBase.framework in Frameworks */,
 				88DD17EA283D405400A94ABC /* IdentHubSDKQES.framework in Frameworks */,
 				84A7581B25F22D7F004D8F88 /* IdentHubSDK.framework in Frameworks */,
@@ -1596,6 +1598,9 @@
 				84A7582925F22EA3004D8F88 /* PBXTargetDependency */,
 			);
 			name = IdentHubSDKTests;
+			packageProductDependencies = (
+				39022A6728E19F640083B9AE /* SnapshotTesting */,
+			);
 			productName = IdentHubSDKTests;
 			productReference = 84A7581625F22D7F004D8F88 /* IdentHubSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1639,6 +1644,9 @@
 				es,
 			);
 			mainGroup = 0CD5CC302590F58800FF378F;
+			packageReferences = (
+				39022A6628E19F640083B9AE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 0CD5CC3B2590F58800FF378F /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -2423,7 +2431,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = IdentHubSDKTests/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2494,7 +2502,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = IdentHubSDKTests/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2563,7 +2571,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = IdentHubSDKTests/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2638,6 +2646,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		39022A6628E19F640083B9AE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		39022A6728E19F640083B9AE /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39022A6628E19F640083B9AE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0CD5CC312590F58800FF378F /* Project object */;
 }

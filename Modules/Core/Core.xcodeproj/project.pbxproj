@@ -19,6 +19,7 @@
 		05AC64E228927C5A0039D883 /* SBLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64E128927C5A0039D883 /* SBLogTests.swift */; };
 		05AC64E328927C600039D883 /* SBLogDestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64DF28927C3A0039D883 /* SBLogDestinationTests.swift */; };
 		1D5C44CCC7ED8EF1B6CC9E48 /* Pods_IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E70E1446713B3FA086DDC6 /* Pods_IdentHubSDKTestBase.framework */; };
+		39022A6E28E19FCA0083B9AE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 39022A6D28E19FCA0083B9AE /* SnapshotTesting */; };
 		700A022D4974B4CA90B20049 /* Pods_IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0C887285351AF000E176E /* Pods_IdentHubSDKTestBase.framework */; };
 		849206D62891648A0020D2C8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849206D52891648A0020D2C8 /* Colors.xcassets */; };
 		881E69E42857B46C00E1C130 /* CommandLine+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E69E32857B46C00E1C130 /* CommandLine+Convenience.swift */; };
@@ -116,7 +117,6 @@
 		88E075C82899581000FC1EE4 /* QESCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E075C72899581000FC1EE4 /* QESCoordinatorFactoryMock.swift */; };
 		88E075CA2899582F00FC1EE4 /* FlowCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E075C92899582F00FC1EE4 /* FlowCoordinatorMock.swift */; };
 		88E075CD289A774800FC1EE4 /* XCTestCase+FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E075CC289A774800FC1EE4 /* XCTestCase+FlowTest.swift */; };
-		88E0C87A285349D1000E176E /* XCTestCase+Snapshotting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0C879285349D1000E176E /* XCTestCase+Snapshotting.swift */; };
 		88E915022844EE9100284CCE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88E914FC2844EE9100284CCE /* Localizable.strings */; };
 		88E9151C2844F28C00284CCE /* Bundle+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E9151B2844F28C00284CCE /* Bundle+Resources.swift */; };
 		88E915202844F9F700284CCE /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E9151F2844F9F700284CCE /* String+Localization.swift */; };
@@ -308,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39022A6E28E19FCA0083B9AE /* SnapshotTesting in Frameworks */,
 				8829142D284A15A600FB7F4D /* IdentHubSDKCore.framework in Frameworks */,
 				88DAFDF8284F4D6500C85503 /* XCTest.framework in Frameworks */,
 				1D5C44CCC7ED8EF1B6CC9E48 /* Pods_IdentHubSDKTestBase.framework in Frameworks */,
@@ -930,6 +931,9 @@
 				8829142C284A159D00FB7F4D /* PBXTargetDependency */,
 			);
 			name = IdentHubSDKTestBase;
+			packageProductDependencies = (
+				39022A6D28E19FCA0083B9AE /* SnapshotTesting */,
+			);
 			productName = IdentHubSDKTestBase;
 			productReference = 88A9FB70284A14790074557B /* IdentHubSDKTestBase.framework */;
 			productType = "com.apple.product-type.framework";
@@ -960,7 +964,6 @@
 				88F3A55F283CD72000DB273A /* Sources */,
 				88F3A560283CD72000DB273A /* Frameworks */,
 				88F3A561283CD72000DB273A /* Resources */,
-				9E6B2D9FE3C81DD1C529DA3C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1008,6 +1011,9 @@
 				fr,
 			);
 			mainGroup = 88F3A54F283CD72000DB273A;
+			packageReferences = (
+				39022A6C28E19FCA0083B9AE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 88F3A55A283CD72000DB273A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1074,23 +1080,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9E6B2D9FE3C81DD1C529DA3C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IdentHubSDKCoreTests/Pods-IdentHubSDKCoreTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IdentHubSDKCoreTests/Pods-IdentHubSDKCoreTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IdentHubSDKCoreTests/Pods-IdentHubSDKCoreTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D6CB355F836FFB919BF6028F /* [CP] Check Pods Manifest.lock */ = {
@@ -1222,8 +1211,6 @@
 				88F120B82865A68400E76618 /* FileStorage.swift in Sources */,
 				88291449284A191400FB7F4D /* UITableView+Scroll.swift in Sources */,
 				8848D9962844E61A002CD781 /* Localizable.swift in Sources */,
-				88CDE692284E63FC00FB659F /* AlertsService.swift in Sources */,
-				88CDE692284E63FC00FB659F /* AlertsService.swift in Sources */,
 				05AC64D228927B280039D883 /* SBLogHelpers.swift in Sources */,
 				884D854D283F99E8004EA791 /* Bundle+Extensions.swift in Sources */,
 				88CDE693284E647200FB659F /* QuitPopUpViewController.swift in Sources */,
@@ -1299,7 +1286,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1328,7 +1315,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1553,6 +1540,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.CoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1570,6 +1558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.CoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1619,6 +1608,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		39022A6C28E19FCA0083B9AE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		39022A6D28E19FCA0083B9AE /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39022A6C28E19FCA0083B9AE /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 88F3A550283CD72000DB273A /* Project object */;
 }
