@@ -29,6 +29,8 @@ class VerificationServiceMock: VerificationService {
     
     var personAddress: TestPersonAddress?
     
+    var mockResoponse = [String:Any?]()
+    
     // MARK: - Protocol methods -
 
     func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
@@ -184,34 +186,7 @@ class VerificationServiceMock: VerificationService {
     }
     
     func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, ResponseError>) -> Void) {
-        let responseJSON = [
-            "id": "test_fourthline_identification_udid",
-            "url": nil,
-            "status": "rejected",
-            "failure_reason": nil,
-            "method": "fourthline",
-            "authorization_expires_at": nil,
-            "confirmation_expires_at": nil,
-            "provider_status_code": "1035",
-            "next_step": nil,
-            "fallback_step": nil,
-            "documents":
-              [
-                [
-                  "id": "test_document_id",
-                  "name": "test_signed_document_id.pdf",
-                  "content_type": "application/pdf",
-                  "document_type": "QES_DOCUMENT",
-                  "size": 87049,
-                  "customer_accessible": false,
-                  "created_at": "2021-11-24T11: 27: 46.000Z"
-                ]
-              ],
-            "current_reference_token": nil,
-            "reference": "test_reference_id"
-        ] as [String: Any?]
-        
-        completion(mapResponse(responseJSON: responseJSON))
+        completion(mapResponse(responseJSON: self.mockResoponse))
     }
     
     // MARK: - Internal methods -

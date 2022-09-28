@@ -5,6 +5,7 @@
 
 import XCTest
 @testable import IdentHubSDK
+import IdentHubSDKCore
 
 class RequestViewModelTests: XCTestCase {
     
@@ -111,13 +112,65 @@ class RequestViewModelTests: XCTestCase {
     
     func testFourthlineIdentificationStatus() throws {
         let fourthlineCoord = try FourthlineIdentCoordinatorMock()
+        service.mockResoponse = [
+            "id": "test_fourthline_identification_udid",
+            "url": nil,
+            "status": "rejected",
+            "failure_reason": nil,
+            "method": "fourthline",
+            "authorization_expires_at": nil,
+            "confirmation_expires_at": nil,
+            "provider_status_code": "1035",
+            "next_step": nil,
+            "fallback_step": nil,
+            "documents":
+              [
+                [
+                  "id": "test_document_id",
+                  "name": "test_signed_document_id.pdf",
+                  "content_type": "application/pdf",
+                  "document_type": "QES_DOCUMENT",
+                  "size": 87049,
+                  "customer_accessible": false,
+                  "created_at": "2021-11-24T11: 27: 46.000Z"
+                ]
+              ],
+            "current_reference_token": nil,
+            "reference": "test_reference_id"
+        ] as [String: Any?]
+
         let sut = makeSUT(with: .confirmation, fourthlineCoord: fourthlineCoord)
-        
         sut.executeCommand()
-        
         XCTAssertEqual(fourthlineCoord.performAction, FourthlineStep.abort)
     }
-
+    
+    func testFourthlineIdentificationStatusFailed() throws {
+        
+        let fourthlineCoord = try FourthlineIdentCoordinatorMock()
+        service.mockResoponse = [
+            "id": "test_fourthline_identification_udid",
+            "url": nil,
+            "status": "failed",
+            "failure_reason": "The element 'DocumentsToSign' has incomplete content. List of possible elements expected: 'DocumentToSign'.",
+            "method": "fourthline_signing",
+            "authorization_expires_at": nil,
+            "confirmation_expires_at": nil,
+            "provider_status_code": "1035",
+            "next_step": nil,
+            "fallback_step": "abort",
+            "documents":
+              [],
+            "current_reference_token": nil,
+            "reference": "test_reference_id"
+        ] as [String: Any?]
+        let sut = makeSUT(with: .confirmation, fourthlineCoord: fourthlineCoord)
+        
+        sut.onRetry = { status in
+            sut.didTriggerRetry(status: status)
+            XCTAssertEqual(status.fallbackStep, IdentificationStep.abort)
+        }
+        sut.executeCommand()
+    }
     
     // MARK: - Internal methods -
     

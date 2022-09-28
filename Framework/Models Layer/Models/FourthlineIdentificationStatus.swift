@@ -21,7 +21,7 @@ struct FourthlineIdentificationStatus: Codable {
     let identificationMethod: IdentificationMethodType
 
     /// Identification request failure reason
-    let failureReason: FailureReasonType?
+    let failureReason: String?
 
     /// Terms and conditions signed at
     let termsSignedDate: String?
@@ -77,7 +77,7 @@ extension FourthlineIdentificationStatus {
         self.url = try data.decodeIfPresent(String.self, forKey: .url)
         self.identificationStatus = try data.decode(Status.self, forKey: .identificationStatus)
         self.identificationMethod = try data.decode(IdentificationMethodType.self, forKey: .identificationMethod)
-        self.failureReason = try data.decodeIfPresent(FailureReasonType.self, forKey: .failureReason)
+        self.failureReason = try data.decodeIfPresent(String.self, forKey: .failureReason)
         self.termsSignedDate = try data.decodeIfPresent(String.self, forKey: .termsSignedDate)
         self.authExpireDate = try data.decodeIfPresent(String.self, forKey: .authExpireDate)
         self.confirmExpireDate = try data.decodeIfPresent(String.self, forKey: .confirmExpireDate)
@@ -93,7 +93,7 @@ extension FourthlineIdentificationStatus {
         try container.encode(identification, forKey: .identification)
         try container.encode(identificationStatus.self.rawValue, forKey: .identificationStatus)
         try container.encode(identificationMethod.self.rawValue, forKey: .identificationMethod)
-        try container.encode(failureReason.self?.rawValue, forKey: .failureReason)
+        try container.encode(failureReason, forKey: .failureReason)
         try container.encode(termsSignedDate, forKey: .termsSignedDate)
         try container.encode(authExpireDate, forKey: .authExpireDate)
         try container.encode(confirmExpireDate, forKey: .confirmExpireDate)
@@ -111,11 +111,4 @@ enum IdentificationMethodType: String, Decodable {
     case fourthline = "fourthline"
     case fourthlineSigning = "fourthline_signing"
     case unknown
-}
-
-enum FailureReasonType: String, Decodable {
-    case invalidData = "invalid_data"
-    case inconsistentData = "inconsistent_data"
-    case clientRejected = "client_rejected"
-    case uknown = ""
 }
