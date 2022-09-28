@@ -1,6 +1,6 @@
 {
    "id":"someIdentId",
-   "url":"https://fts-payment-initiation-wizard.solaris-sandbox.de/index.html?wizard_session_key=ZnxAYamPQJBdobAxUxhYUCMFQnp6DKyCGjk61FUn\u0026interface_id=5dda",
+   "url":"https://someRandomData.solaris-sandbox.de/someUrlData",
    "status":"authorization_required",
    "failure_reason":null,
    "method":"bank",
@@ -12,7 +12,7 @@
    "documents":[
       {
          "id":"someDocumentId",
-         "name":"someIdentId_prepared_for_signing_kyc_report.pdf",
+         "name":"someDocumentName.pdf",
          "content_type":"application/pdf",
          "document_type":"QES_DOCUMENT",
          "size":88100,

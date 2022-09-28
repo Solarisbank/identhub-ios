@@ -1,1 +1,16 @@
-{"id":"someIdentId","reference":null,"url":"https://someRandomData.solaris-sandbox.de/someUrlData","status":"confirmation_required","completed_at":null,"method":"bank","proof_of_address_type":null,"proof_of_address_issued_at":null,"iban":"DE77110101010100000093","terms_and_conditions_signed_at":"2022-06-09T13:23:01.000Z","authorization_expires_at":"2022-06-09T13:33:28.000Z","confirmation_expires_at":"2022-06-09T13:31:38.000Z","current_reference_token":"Transaktions-ID: 1234-5678","estimated_waiting_time":null}
+{
+    "id": "someIdentId",
+    "reference": null,
+    "url": "https://someRandomData.solaris-sandbox.de/someUrlData",
+    "status": "confirmation_required",
+    "completed_at": null,
+    "method": "bank",
+    "proof_of_address_type": null,
+    "proof_of_address_issued_at": null,
+    "iban": "DE11111111111111111111",
+    "terms_and_conditions_signed_at": "2022-06-09T13:23:01.000Z",
+    "authorization_expires_at": "2022-06-09T13:33:28.000Z",
+    "confirmation_expires_at": "2022-06-09T13:31:38.000Z",
+    "current_reference_token": "Transaktions-ID: 1234-5678",
+    "estimated_waiting_time": null
+}
