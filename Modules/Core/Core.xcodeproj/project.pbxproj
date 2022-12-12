@@ -20,6 +20,33 @@
 		05AC64E328927C600039D883 /* SBLogDestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64DF28927C3A0039D883 /* SBLogDestinationTests.swift */; };
 		1D5C44CCC7ED8EF1B6CC9E48 /* Pods_IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E70E1446713B3FA086DDC6 /* Pods_IdentHubSDKTestBase.framework */; };
 		39022A6E28E19FCA0083B9AE /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 39022A6D28E19FCA0083B9AE /* SnapshotTesting */; };
+		6706EB0028FE838D000A9941 /* StorageKey+Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6706EAFF28FE838D000A9941 /* StorageKey+Core.swift */; };
+		670CF47828F4406300B909CE /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF47628F4406300B909CE /* SuccessView.swift */; };
+		670CF47928F4406300B909CE /* SuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 670CF47728F4406300B909CE /* SuccessView.xib */; };
+		670CF47D28F44A4200B909CE /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF47B28F44A4200B909CE /* PhoneVerificationViewController.swift */; };
+		670CF47E28F44A4200B909CE /* PhoneVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 670CF47C28F44A4200B909CE /* PhoneVerificationViewController.xib */; };
+		670CF48128F4583400B909CE /* CoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF48028F4583400B909CE /* CoreInput.swift */; };
+		670CF48328F4585C00B909CE /* CoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF48228F4585C00B909CE /* CoreCoordinator.swift */; };
+		670CF48528F458B200B909CE /* CoreCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF48428F458B200B909CE /* CoreCoordinatorFactory.swift */; };
+		670CF49328F5489B00B909CE /* PhoneVerificationEventHandlerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF49228F5489B00B909CE /* PhoneVerificationEventHandlerImpl.swift */; };
+		670CF49628F54C2C00B909CE /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF49528F54C2C00B909CE /* VerificationService.swift */; };
+		670CF49928F54DB600B909CE /* MobileNumberAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF49828F54DB600B909CE /* MobileNumberAuthorizeRequest.swift */; };
+		670CF49B28F54E0A00B909CE /* MobileNumberTANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF49A28F54E0A00B909CE /* MobileNumberTANRequest.swift */; };
+		670CF49E28F57E3300B909CE /* CoreCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF49D28F57E3300B909CE /* CoreCoordinatorImpl.swift */; };
+		670CF4A128F57F6F00B909CE /* ShowableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF4A028F57F6F00B909CE /* ShowableFactory.swift */; };
+		670CF4A328F590C200B909CE /* CoreModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF4A228F590C200B909CE /* CoreModule.swift */; };
+		670CF4A528F6E60F00B909CE /* CoreCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF4A428F6E60F00B909CE /* CoreCoordinatorFactoryMock.swift */; };
+		670CF4A728F6E83800B909CE /* BankCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670CF4A628F6E83800B909CE /* BankCoordinatorFactoryMock.swift */; };
+		672100A328EC4DB30081FAD0 /* BankInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672100A228EC4DB30081FAD0 /* BankInput.swift */; };
+		672100A528EC4DC00081FAD0 /* BankOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672100A428EC4DC00081FAD0 /* BankOutput.swift */; };
+		672100A728EC4DD70081FAD0 /* BankCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672100A628EC4DD70081FAD0 /* BankCoordinator.swift */; };
+		672100A928EC4DEF0081FAD0 /* BankCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672100A828EC4DEF0081FAD0 /* BankCoordinatorFactory.swift */; };
+		67424BFF28F99603009A8736 /* MobileNumberTANRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424BFE28F99603009A8736 /* MobileNumberTANRequestTest.swift */; };
+		67424C0128F99639009A8736 /* MobileNumberAuthorizeRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C0028F99639009A8736 /* MobileNumberAuthorizeRequestTest.swift */; };
+		67424C0528F9968B009A8736 /* ShowableFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C0428F9968B009A8736 /* ShowableFactoryTests.swift */; };
+		67424C0828F996C3009A8736 /* CoreModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C0728F996C3009A8736 /* CoreModuleTests.swift */; };
+		67424C0A28F9974D009A8736 /* VerificationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C0928F9974D009A8736 /* VerificationServiceMock.swift */; };
+		67424C0D28F9995D009A8736 /* PhoneVerificationEventHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C0C28F9995D009A8736 /* PhoneVerificationEventHandlerTests.swift */; };
 		700A022D4974B4CA90B20049 /* Pods_IdentHubSDKTestBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0C887285351AF000E176E /* Pods_IdentHubSDKTestBase.framework */; };
 		849206D62891648A0020D2C8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849206D52891648A0020D2C8 /* Colors.xcassets */; };
 		881E69E42857B46C00E1C130 /* CommandLine+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881E69E32857B46C00E1C130 /* CommandLine+Convenience.swift */; };
@@ -175,6 +202,33 @@
 		05AC64C928927A8B0039D883 /* SBLogBackendDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogBackendDestination.swift; sourceTree = "<group>"; };
 		05AC64DF28927C3A0039D883 /* SBLogDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestinationTests.swift; sourceTree = "<group>"; };
 		05AC64E128927C5A0039D883 /* SBLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBLogTests.swift; sourceTree = "<group>"; };
+		6706EAFF28FE838D000A9941 /* StorageKey+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageKey+Core.swift"; sourceTree = "<group>"; };
+		670CF47628F4406300B909CE /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		670CF47728F4406300B909CE /* SuccessView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuccessView.xib; sourceTree = "<group>"; };
+		670CF47B28F44A4200B909CE /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
+		670CF47C28F44A4200B909CE /* PhoneVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneVerificationViewController.xib; sourceTree = "<group>"; };
+		670CF48028F4583400B909CE /* CoreInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreInput.swift; sourceTree = "<group>"; };
+		670CF48228F4585C00B909CE /* CoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCoordinator.swift; sourceTree = "<group>"; };
+		670CF48428F458B200B909CE /* CoreCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCoordinatorFactory.swift; sourceTree = "<group>"; };
+		670CF49228F5489B00B909CE /* PhoneVerificationEventHandlerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationEventHandlerImpl.swift; sourceTree = "<group>"; };
+		670CF49528F54C2C00B909CE /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
+		670CF49828F54DB600B909CE /* MobileNumberAuthorizeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberAuthorizeRequest.swift; sourceTree = "<group>"; };
+		670CF49A28F54E0A00B909CE /* MobileNumberTANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberTANRequest.swift; sourceTree = "<group>"; };
+		670CF49D28F57E3300B909CE /* CoreCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCoordinatorImpl.swift; sourceTree = "<group>"; };
+		670CF4A028F57F6F00B909CE /* ShowableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowableFactory.swift; sourceTree = "<group>"; };
+		670CF4A228F590C200B909CE /* CoreModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModule.swift; sourceTree = "<group>"; };
+		670CF4A428F6E60F00B909CE /* CoreCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
+		670CF4A628F6E83800B909CE /* BankCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
+		672100A228EC4DB30081FAD0 /* BankInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankInput.swift; sourceTree = "<group>"; };
+		672100A428EC4DC00081FAD0 /* BankOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankOutput.swift; sourceTree = "<group>"; };
+		672100A628EC4DD70081FAD0 /* BankCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCoordinator.swift; sourceTree = "<group>"; };
+		672100A828EC4DEF0081FAD0 /* BankCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCoordinatorFactory.swift; sourceTree = "<group>"; };
+		67424BFE28F99603009A8736 /* MobileNumberTANRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberTANRequestTest.swift; sourceTree = "<group>"; };
+		67424C0028F99639009A8736 /* MobileNumberAuthorizeRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberAuthorizeRequestTest.swift; sourceTree = "<group>"; };
+		67424C0428F9968B009A8736 /* ShowableFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowableFactoryTests.swift; sourceTree = "<group>"; };
+		67424C0728F996C3009A8736 /* CoreModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModuleTests.swift; sourceTree = "<group>"; };
+		67424C0928F9974D009A8736 /* VerificationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceMock.swift; sourceTree = "<group>"; };
+		67424C0C28F9995D009A8736 /* PhoneVerificationEventHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationEventHandlerTests.swift; sourceTree = "<group>"; };
 		849206D52891648A0020D2C8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = ../../../../Shared/Colors.xcassets; sourceTree = "<group>"; };
 		881E69E32857B46C00E1C130 /* CommandLine+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandLine+Convenience.swift"; sourceTree = "<group>"; };
 		881E69EB2857D11B00E1C130 /* ColorsImpl+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorsImpl+Mock.swift"; sourceTree = "<group>"; };
@@ -381,6 +435,142 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
+		670CF47528F4403A00B909CE /* Success View */ = {
+			isa = PBXGroup;
+			children = (
+				670CF47628F4406300B909CE /* SuccessView.swift */,
+				670CF47728F4406300B909CE /* SuccessView.xib */,
+			);
+			path = "Success View";
+			sourceTree = "<group>";
+		};
+		670CF47A28F44A2300B909CE /* PhoneVerification */ = {
+			isa = PBXGroup;
+			children = (
+				670CF47B28F44A4200B909CE /* PhoneVerificationViewController.swift */,
+				670CF47C28F44A4200B909CE /* PhoneVerificationViewController.xib */,
+			);
+			path = PhoneVerification;
+			sourceTree = "<group>";
+		};
+		670CF47F28F4580000B909CE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				670CF48028F4583400B909CE /* CoreInput.swift */,
+				670CF48228F4585C00B909CE /* CoreCoordinator.swift */,
+				670CF48428F458B200B909CE /* CoreCoordinatorFactory.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		670CF49028F5487100B909CE /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				670CF49F28F57F4D00B909CE /* Factories */,
+				670CF49C28F57DEE00B909CE /* Coordinators */,
+				670CF49728F54D8E00B909CE /* Request */,
+				670CF49428F54C1600B909CE /* Service */,
+				670CF49128F5488300B909CE /* Events */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		670CF49128F5488300B909CE /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				670CF49228F5489B00B909CE /* PhoneVerificationEventHandlerImpl.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		670CF49428F54C1600B909CE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				670CF49528F54C2C00B909CE /* VerificationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		670CF49728F54D8E00B909CE /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				670CF49828F54DB600B909CE /* MobileNumberAuthorizeRequest.swift */,
+				670CF49A28F54E0A00B909CE /* MobileNumberTANRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		670CF49C28F57DEE00B909CE /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				670CF49D28F57E3300B909CE /* CoreCoordinatorImpl.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		670CF49F28F57F4D00B909CE /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				670CF4A028F57F6F00B909CE /* ShowableFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		672100A128EC4DA10081FAD0 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				672100A228EC4DB30081FAD0 /* BankInput.swift */,
+				672100A428EC4DC00081FAD0 /* BankOutput.swift */,
+				672100A628EC4DD70081FAD0 /* BankCoordinator.swift */,
+				672100A828EC4DEF0081FAD0 /* BankCoordinatorFactory.swift */,
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		67424BFD28F995DF009A8736 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				67424C0B28F9994C009A8736 /* Action */,
+				67424C0628F996B3009A8736 /* Coordinators */,
+				67424C0328F9966A009A8736 /* Request */,
+				67424C0228F9964F009A8736 /* Service */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		67424C0228F9964F009A8736 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				67424C0428F9968B009A8736 /* ShowableFactoryTests.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		67424C0328F9966A009A8736 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				67424BFE28F99603009A8736 /* MobileNumberTANRequestTest.swift */,
+				67424C0028F99639009A8736 /* MobileNumberAuthorizeRequestTest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		67424C0628F996B3009A8736 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				67424C0728F996C3009A8736 /* CoreModuleTests.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		67424C0B28F9994C009A8736 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				67424C0C28F9995D009A8736 /* PhoneVerificationEventHandlerTests.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
 		88291437284A189A00FB7F4D /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +730,7 @@
 				88291437284A189A00FB7F4D /* Framework */,
 				88291438284A18A300FB7F4D /* UIKit */,
 				8848D9902844E5F1002CD781 /* APIError+Text.swift */,
+				6706EAFF28FE838D000A9941 /* StorageKey+Core.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -628,6 +819,8 @@
 		8893B987283CDB7500F1C872 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				670CF47F28F4580000B909CE /* Core */,
+				672100A128EC4DA10081FAD0 /* Bank */,
 				8893B988283CDB7500F1C872 /* QES */,
 			);
 			path = Interfaces;
@@ -647,6 +840,7 @@
 		88A9FB71284A14790074557B /* IdentHubSDKTestBase */ = {
 			isa = PBXGroup;
 			children = (
+				67424BFD28F995DF009A8736 /* BusinessLogic */,
 				88DAFDF4284F4D0500C85503 /* Extensions */,
 				88A9FB7C284A14880074557B /* Mock */,
 				88DAFE2C284F948F00C85503 /* Tools */,
@@ -672,6 +866,9 @@
 				88DAFE33284F9CE500C85503 /* UpdateableMock.swift */,
 				881E69EB2857D11B00E1C130 /* ColorsImpl+Mock.swift */,
 				88E075C72899581000FC1EE4 /* QESCoordinatorFactoryMock.swift */,
+				670CF4A428F6E60F00B909CE /* CoreCoordinatorFactoryMock.swift */,
+				670CF4A628F6E83800B909CE /* BankCoordinatorFactoryMock.swift */,
+				67424C0928F9974D009A8736 /* VerificationServiceMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -718,6 +915,7 @@
 		88CB9CF6284A1EC500F55D31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				670CF47528F4403A00B909CE /* Success View */,
 				88CB9CF8284A1EE500F55D31 /* Header */,
 				88CDE6C7284E8DF200FB659F /* StateView */,
 				88CB9D0D284A267100F55D31 /* ActionRoundedButton.swift */,
@@ -748,6 +946,7 @@
 		88CDE698284E649100FB659F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				670CF47A28F44A2300B909CE /* PhoneVerification */,
 				88C35C52284E637300720C11 /* Quit */,
 				88CDE694284E648C00FB659F /* PopUpWindowViewController.swift */,
 			);
@@ -857,6 +1056,7 @@
 		88F3A55B283CD72000DB273A /* IdentHubSDKCore */ = {
 			isa = PBXGroup;
 			children = (
+				670CF49028F5487100B909CE /* BusinessLogic */,
 				05AC64CB28927A8B0039D883 /* Logging */,
 				8893B979283CDAB900F1C872 /* Modules */,
 				8893B97C283CDAE400F1C872 /* Services */,
@@ -866,6 +1066,7 @@
 				88F3A55C283CD72000DB273A /* Core.h */,
 				05A7B08828B7843E00319510 /* CoreVersion.m */,
 				05A7B08D28B7966D00319510 /* CoreVersion.swift */,
+				670CF4A228F590C200B909CE /* CoreModule.swift */,
 				88F3A55D283CD72000DB273A /* Core.docc */,
 			);
 			path = IdentHubSDKCore;
@@ -1043,8 +1244,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				670CF47E28F44A4200B909CE /* PhoneVerificationViewController.xib in Resources */,
 				88CDE6C9284E8E1400FB659F /* StateView.xib in Resources */,
 				849206D62891648A0020D2C8 /* Colors.xcassets in Resources */,
+				670CF47928F4406300B909CE /* SuccessView.xib in Resources */,
 				8848D9202844C676002CD781 /* Assets.xcassets in Resources */,
 				88E915022844EE9100284CCE /* Localizable.strings in Resources */,
 			);
@@ -1113,6 +1316,7 @@
 			files = (
 				05A8B6962874561C00F4A9D5 /* NSError+Mock.swift in Sources */,
 				88DAFE34284F9CE500C85503 /* UpdateableMock.swift in Sources */,
+				670CF4A528F6E60F00B909CE /* CoreCoordinatorFactoryMock.swift in Sources */,
 				88F120C22865AFBD00E76618 /* FileStorageMock.swift in Sources */,
 				88E075C82899581000FC1EE4 /* QESCoordinatorFactoryMock.swift in Sources */,
 				88291435284A16EA00FB7F4D /* ModuleServiceLocatorMock.swift in Sources */,
@@ -1130,6 +1334,7 @@
 				88E075AF2897C24A00FC1EE4 /* ModuleFactoryMock.swift in Sources */,
 				88E075CA2899582F00FC1EE4 /* FlowCoordinatorMock.swift in Sources */,
 				88AB271F28B751F9008FABD4 /* EventHandlerMock.swift in Sources */,
+				670CF4A728F6E83800B909CE /* BankCoordinatorFactoryMock.swift in Sources */,
 				88291436284A16ED00FB7F4D /* StorageMock.swift in Sources */,
 				883F1B1828521FC000037AED /* RequestFileMock.swift in Sources */,
 			);
@@ -1144,7 +1349,9 @@
 				8848D8F42844B7F8002CD781 /* ModuleFactory.swift in Sources */,
 				8848D90B2844B920002CD781 /* Colors.swift in Sources */,
 				88E9153D2844FEC200284CCE /* Storage.swift in Sources */,
+				670CF49B28F54E0A00B909CE /* MobileNumberTANRequest.swift in Sources */,
 				88F72627286F043800D32702 /* MobileNumber.swift in Sources */,
+				670CF47828F4406300B909CE /* SuccessView.swift in Sources */,
 				88EED7B42844B4A100BF8B2B /* FlowCoordinator.swift in Sources */,
 				05AC64D728927B280039D883 /* SBLogDestination.swift in Sources */,
 				8829144E284A191400FB7F4D /* UIView+Autolayout.swift in Sources */,
@@ -1163,10 +1370,12 @@
 				05AC64D628927B280039D883 /* SBLogConsoleDestination.swift in Sources */,
 				88EED7AF2844B3C100BF8B2B /* QESOutput.swift in Sources */,
 				8848D90E2844B932002CD781 /* UIColor+Convenience.swift in Sources */,
+				670CF48128F4583400B909CE /* CoreInput.swift in Sources */,
 				88C35C43284E4DEC00720C11 /* Status.swift in Sources */,
 				88CDE69C284E6C3D00FB659F /* Result+Convenience.swift in Sources */,
 				88C35C46284E501D00720C11 /* Presenter.swift in Sources */,
 				88EED7AE2844B3BB00BF8B2B /* CoordinatorFactory.swift in Sources */,
+				670CF49E28F57E3300B909CE /* CoreCoordinatorImpl.swift in Sources */,
 				05AC64D528927B280039D883 /* SBLogBackendDestination.swift in Sources */,
 				88291440284A18E700FB7F4D /* String+Regex.swift in Sources */,
 				88CDE6C4284E8B3F00FB659F /* CodeEntryView.swift in Sources */,
@@ -1174,6 +1383,7 @@
 				88AB271C28B74FB8008FABD4 /* EventHandler.swift in Sources */,
 				8848D90A2844B920002CD781 /* ColorsImpl.swift in Sources */,
 				884D8535283F9869004EA791 /* HTTPMethod.swift in Sources */,
+				670CF48328F4585C00B909CE /* CoreCoordinator.swift in Sources */,
 				88C15099285759B5007A395E /* Assert.swift in Sources */,
 				884D8547283F9950004EA791 /* Date+Extensions.swift in Sources */,
 				88C35C0F284DF9D700720C11 /* QESInput.swift in Sources */,
@@ -1182,6 +1392,7 @@
 				88CB9D0E284A267100F55D31 /* ActionRoundedButton.swift in Sources */,
 				884D853C283F989E004EA791 /* Request.swift in Sources */,
 				88C35C28284E034800720C11 /* Updateable.swift in Sources */,
+				670CF48528F458B200B909CE /* CoreCoordinatorFactory.swift in Sources */,
 				88F3A55E283CD72000DB273A /* Core.docc in Sources */,
 				88DD1804283E160F00A94ABC /* Showable.swift in Sources */,
 				88F7262C286F05D700D32702 /* Array+Extensions.swift in Sources */,
@@ -1189,21 +1400,30 @@
 				88CDE6A2284E773200FB659F /* IdentificationRequest.swift in Sources */,
 				88CDE6CB284E8E2400FB659F /* NibView.swift in Sources */,
 				884D854B283F99B6004EA791 /* MutableData+Extension.swift in Sources */,
+				670CF49928F54DB600B909CE /* MobileNumberAuthorizeRequest.swift in Sources */,
 				88C35C45284E4E0C00720C11 /* ContractDocument.swift in Sources */,
+				672100A328EC4DB30081FAD0 /* BankInput.swift in Sources */,
 				884D8531283F9869004EA791 /* Body.swift in Sources */,
 				8848D9932844E5F1002CD781 /* APIError+Text.swift in Sources */,
 				88CB9CFC284A1EF200F55D31 /* HeaderView.swift in Sources */,
+				670CF4A328F590C200B909CE /* CoreModule.swift in Sources */,
 				88291442284A18E700FB7F4D /* UIApplication+Extension.swift in Sources */,
+				672100A528EC4DC00081FAD0 /* BankOutput.swift in Sources */,
 				884D8536283F9869004EA791 /* APIError.swift in Sources */,
+				670CF4A128F57F6F00B909CE /* ShowableFactory.swift in Sources */,
 				8829143E284A18E700FB7F4D /* Date+Compare.swift in Sources */,
 				88CDE6CD284E90C200FB659F /* String+Attributes.swift in Sources */,
 				884D8542283F98CE004EA791 /* ErrorDetail.swift in Sources */,
+				670CF49328F5489B00B909CE /* PhoneVerificationEventHandlerImpl.swift in Sources */,
 				884D854F283F9A48004EA791 /* IdentificationStep.swift in Sources */,
 				884D853D283F989E004EA791 /* BackendRequest.swift in Sources */,
+				670CF47D28F44A4200B909CE /* PhoneVerificationViewController.swift in Sources */,
+				6706EB0028FE838D000A9941 /* StorageKey+Core.swift in Sources */,
 				884D8532283F9869004EA791 /* URLRequestConvertible.swift in Sources */,
 				8829144B284A191400FB7F4D /* UIView+Layout.swift in Sources */,
 				884D8534283F9869004EA791 /* APIClient.swift in Sources */,
 				884D8545283F992C004EA791 /* DispatchTime.swift in Sources */,
+				670CF49628F54C2C00B909CE /* VerificationService.swift in Sources */,
 				8848D96D2844D66F002CD781 /* Image.swift in Sources */,
 				8829144D284A191400FB7F4D /* ViewExtensions.swift in Sources */,
 				88CB9CFD284A1EF200F55D31 /* QuitView.swift in Sources */,
@@ -1215,6 +1435,8 @@
 				884D854D283F99E8004EA791 /* Bundle+Extensions.swift in Sources */,
 				88CDE693284E647200FB659F /* QuitPopUpViewController.swift in Sources */,
 				88CDE697284E648C00FB659F /* PopUpWindowViewController.swift in Sources */,
+				672100A728EC4DD70081FAD0 /* BankCoordinator.swift in Sources */,
+				672100A928EC4DEF0081FAD0 /* BankCoordinatorFactory.swift in Sources */,
 				88C35C2E284E159300720C11 /* TableViewDataSource.swift in Sources */,
 				88E915202844F9F700284CCE /* String+Localization.swift in Sources */,
 			);
@@ -1225,10 +1447,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8848D91D2844C62D002CD781 /* ColorsImplTests.swift in Sources */,
+				67424BFF28F99603009A8736 /* MobileNumberTANRequestTest.swift in Sources */,
+				67424C0A28F9974D009A8736 /* VerificationServiceMock.swift in Sources */,
+				67424C0D28F9995D009A8736 /* PhoneVerificationEventHandlerTests.swift in Sources */,
+				67424C0828F996C3009A8736 /* CoreModuleTests.swift in Sources */,
 				88F120C02865A98800E76618 /* FileStorageTests.swift in Sources */,
 				88E915682846410E00284CCE /* UserDefaultsStorageTests.swift in Sources */,
 				8848D9762844DAEC002CD781 /* ImageTests.swift in Sources */,
+				67424C0528F9968B009A8736 /* ShowableFactoryTests.swift in Sources */,
 				05AC64E328927C600039D883 /* SBLogDestinationTests.swift in Sources */,
+				67424C0128F99639009A8736 /* MobileNumberAuthorizeRequestTest.swift in Sources */,
 				05AC64E228927C5A0039D883 /* SBLogTests.swift in Sources */,
 				884D8594283FA560004EA791 /* RequestTests.swift in Sources */,
 				884D8593283FA560004EA791 /* BeckendRequestTests.swift in Sources */,

@@ -8,9 +8,11 @@ import UIKit
 public protocol AlertsService {
     func presentQuitAlert(callback: @escaping (Bool) -> Void)
     func presentAlert(with title: String, message: String, okActionCallback: @escaping () -> Void, retryActionCallback: (() -> Void)?)
+    func presentCustomAlert(alert: UIAlertController)
 }
 
 public final class AlertsServiceImpl: AlertsService {
+    
     private let colors: Colors
     private let presenter: Presenter
 
@@ -47,6 +49,10 @@ public final class AlertsServiceImpl: AlertsService {
 
         alert.addAction(cancelAction)
 
+        presenter.present(alert.toShowable(), animated: true)
+    }
+    
+    public func presentCustomAlert(alert: UIAlertController) {
         presenter.present(alert.toShowable(), animated: true)
     }
 }

@@ -41,3 +41,21 @@
 "quitting_title" = "¿Estás seguro de que deseas abandonar el proceso de registro?";
 "quitting_description" = "Tu progreso se perderá. La próxima vez deberás repetir los pasos ya realizados.";
 "quitting_stay_action" = "Permanecer";
+
+// Phone Verification
+"phone_verification_title" = "Confirme su numero de teléfono";
+"phone_verification_enter_code" = "Introduzca el código de 6 dígitos enviado a su número móvil %1$@";
+"phone_verification_request_code_timer" = "Solicitar un nuevo código en";
+"phone_verification_send_new_code" = "Enviar nuevo código";
+"phone_verification_wrong_tan" = "TAN incorrecto. Debes solicitar un nuevo TAN e intentarlo de nuevo.";
+"request_tan_failed" = "Error al solicitar un nuevo TAN.";
+"phone_verification_submit_code" = "Enviar código";
+"phone_verification_request_new_code" = "Solicitar un nuevo código";
+"phone_verification_success_title" = "¡Teléfono validado con éxito!";
+"phone_verification_success_description" = "Tenga a mano su %1$@ y los datos de acceso as su banco online para el siguiente paso";
+"phone_verification_login_credentials" = "login credentials";
+"phone_verification_error_title" = "Error de verificación telefónica";
+"phone_verification_error_description" = "El TAN proporcionado no es válido.";
+"phone_verification_error_action" = "Vuelve a intentar la verificación del TAN";
+
+"iban_verification_iban" = "IBAN";

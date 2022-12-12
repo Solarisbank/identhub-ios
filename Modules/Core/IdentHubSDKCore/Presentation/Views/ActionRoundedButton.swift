@@ -36,7 +36,11 @@ public class ActionRoundedButton: UIButton {
     }
 
     private var colors: Colors = ColorsImpl()
-    private var currentAppearance = Appearance.primary
+    public var currentAppearance = Appearance.primary {
+        didSet {
+            updateAppearance()
+        }
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: .zero)

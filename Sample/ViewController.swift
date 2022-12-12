@@ -45,7 +45,7 @@ class ViewController: UIViewController {
 
         sessionURLTV.text = placeholderText
         sessionURLTV.textColor = .lightGray
-        
+
         versionLbl.attributedText = "IdentHub SDK \(IdentHubSession.version())".withBoldText(IdentHubSession.version())
         
     }

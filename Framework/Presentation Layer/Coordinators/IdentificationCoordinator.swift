@@ -13,8 +13,9 @@ class IdentificationCoordinator: BaseCoordinator {
         case initialization = 1 // Screen with init requests to the server for obtaining init data
         case termsAndConditions = 2 // Privacy statement and Terms-Conditions screen
         case identification = 3 // Start identification process
-        case quit = 4 // Quit from identification process
-        case abort = 5 // Close identification session with throwing error
+        case phoneVerification = 4 // Mobile number verification
+        case quit = 5 // Quit from identification process
+        case abort = 6 // Close identification session with throwing error
     }
 
     // MARK: - Properties -
@@ -22,6 +23,7 @@ class IdentificationCoordinator: BaseCoordinator {
     private var completionHandler: CompletionHandler?
     private var executedStep: Action = .initialization
     private var identificationMethod: IdentificationStep?
+    private var coreScreensCoordinator: CoreScreensCoordinator?
     private var fourthlineCoordinator: FourthlineIdentCoordinator?
     private var bankIDSessionCoordinator: BankIDCoordinator?
 
@@ -62,7 +64,6 @@ class IdentificationCoordinator: BaseCoordinator {
         guard let modularizable = modularizable else {
             return
         }
-
         let missingModules = modularizable.requiredModules
             .subtracting(appDependencies.moduleResolver.availableModules)
         
@@ -85,6 +86,8 @@ private extension IdentificationCoordinator {
             presentInitialScreen()
         case .termsAndConditions:
             presentPrivacyTermsScreen()
+        case .phoneVerification:
+            startCore()
         case .identification:
             startIdentProcess()
         case .quit:
@@ -100,6 +103,9 @@ private extension IdentificationCoordinator {
 
     private func presentInitialScreen() {
         let requestVM = RequestsViewModel(appDependencies.verificationService, storage: appDependencies.sessionInfoProvider, type: .initateFlow, identCoordinator: self)
+        requestVM.onActionPerformed = { [weak self] in
+            self?.performPrechecksThenProceed()
+        }
         let requestVC = RequestsViewController(requestVM)
 
         let animated = presenter.navigationController.viewControllers.isNotEmpty()
@@ -107,9 +113,26 @@ private extension IdentificationCoordinator {
         executedStep = .initialization
         updateAction(action: .initialization)
     }
+    
+    private func performPrechecksThenProceed() {
+        let storage = appDependencies.sessionInfoProvider
+        if !storage.acceptedTC && !storage.performedTCAcceptance {
+            perform(action: .termsAndConditions)
+            return
+        }
+        if !storage.phoneVerified && !storage.performedPhoneVerification {
+            perform(action: .phoneVerification)
+            return
+        }
+        perform(action: .identification)
+    }
 
     private func presentPrivacyTermsScreen() {
         let termsVM = TermsViewModel(coordinator: self)
+        termsVM.onActionPerformed = { [weak self] in
+            self?.appDependencies.sessionInfoProvider.performedTCAcceptance = true
+            self?.performPrechecksThenProceed()
+        }
         let termsVC = TermsViewController(termsVM)
 
         presenter.push(termsVC, animated: false, completion: nil)
@@ -133,8 +156,9 @@ private extension IdentificationCoordinator {
         identLog.info("Initiating identification method \(String(describing: identificationMethod))")
         
         switch identificationMethod {
-        case .mobileNumber,
-             .bankIBAN,
+        case .mobileNumber:
+            startCore()
+        case .bankIBAN,
              .bankIDIBAN:
             startBankID()
         case .fourthline,
@@ -148,6 +172,17 @@ private extension IdentificationCoordinator {
 
         executedStep = .identification
         updateAction(action: .identification)
+    }
+    
+    private func startCore() {
+        coreScreensCoordinator = CoreScreensCoordinator(appDependencies: appDependencies, presenter: presenter)
+        
+        coreScreensCoordinator?.start(completionHandler!)
+        
+        coreScreensCoordinator?.coreScreensDoneHandler = { [weak self] in
+            self?.appDependencies.sessionInfoProvider.performedPhoneVerification = true
+            self?.performPrechecksThenProceed()
+        }
     }
 
     private func startBankID() {

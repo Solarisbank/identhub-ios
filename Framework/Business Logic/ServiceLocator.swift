@@ -6,7 +6,9 @@ import Foundation
 import IdentHubSDKCore
 
 public enum ModuleName: String, CaseIterable {
+    case core
     case qes
+    case bank
 }
 
 /// Provides access to services.

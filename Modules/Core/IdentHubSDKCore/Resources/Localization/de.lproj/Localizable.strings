@@ -42,3 +42,20 @@
 "quitting_description" = "Ihr Fortschritt wird nicht gespeichert. Beim nächsten Versuch werden Sie wieder von vorne beginnen.";
 "quitting_stay_action" = "Bleiben";
 
+// Phone verification
+"phone_verification_title" = "Rufnummer bestätigen";
+"phone_verification_enter_code" = "Geben Sie den 6-stelligen Code ein, der an Ihre Handynummer %1$@ gesendet wurde";
+"phone_verification_request_code_timer" = "Neuen Code anfordern in";
+"phone_verification_send_new_code" = "Neuen Code senden";
+"phone_verification_wrong_tan" = "Falsche TAN. Sie müssen eine neue TAN anfordern und es erneut versuchen.";
+"request_tan_failed" = "Neue TAN konnte nicht angefordert werden.";
+"phone_verification_submit_code" = "Code senden";
+"phone_verification_request_new_code" = "Neuen Code anfordern";
+"phone_verification_success_title" = "Rufnummer erfolgreich bestätigt";
+"phone_verification_success_description" = "Bitte halten Sie für den nächsten Schritt Ihre %1$@ und %2$@ bereit.";
+"phone_verification_login_credentials" = "Online-Banking-Zugangsdaten";
+"phone_verification_error_title" = "Fehler bei der Verifizierung der Telefonnummer";
+"phone_verification_error_description" = "Angegebene TAN ist nicht gültig.";
+"phone_verification_error_action" = "TAN-Verifizierung wiederholen";
+
+"iban_verification_iban" = "IBAN";

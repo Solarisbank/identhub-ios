@@ -39,6 +39,12 @@ protocol SessionInfoProvider: AnyObject {
 
     /// Identified person phone verificatoin status
     var phoneVerified: Bool { get set }
+    
+    /// Whether in case of acceptedTC == false, we had the user accept the terms
+    var performedTCAcceptance: Bool { get set }
+    
+    /// Whether in case of phoneVerified == false, we had the user verify their phone number
+    var performedPhoneVerification: Bool { get set }
 
     /// Documents list
     var documentsList: [SupportedDocument]? { get set }
@@ -123,6 +129,20 @@ final class StorageSessionInfoProvider: SessionInfoProvider {
     var phoneVerified: Bool = false {
         didSet {
             SessionStorage.updateValue(phoneVerified, for: StoredKeys.phoneVerified.rawValue)
+        }
+    }
+    
+    /// - SeeAlso: SessionInfoProvider.acceptedTC
+    var performedTCAcceptance: Bool = false {
+        didSet {
+            SessionStorage.updateValue(performedTCAcceptance, for: StoredKeys.performedTCAcceptance.rawValue)
+        }
+    }
+
+    /// - SeeAlso: SessionInfoProvider.phoneVerified
+    var performedPhoneVerification: Bool = false {
+        didSet {
+            SessionStorage.updateValue(phoneVerified, for: StoredKeys.performedPhoneVerification.rawValue)
         }
     }
     
@@ -231,9 +251,13 @@ private extension StorageSessionInfoProvider {
         if let accepted = SessionStorage.obtainValue(for: StoredKeys.acceptedTC.rawValue) as? Bool {
             acceptedTC = accepted
         }
+        
+        if let performedTC = SessionStorage.obtainValue(for: StoredKeys.performedTCAcceptance.rawValue) as? Bool {
+            performedTCAcceptance = performedTC
+        }
 
-        if let verified = SessionStorage.obtainValue(for: StoredKeys.phoneVerified.rawValue) as? Bool {
-            phoneVerified = verified
+        if let performedPhone = SessionStorage.obtainValue(for: StoredKeys.performedPhoneVerification.rawValue) as? Bool {
+            performedPhoneVerification = performedPhone
         }
         
         if let remoteLogging = SessionStorage.obtainValue(for: StoredKeys.remoteLogging.rawValue) as? Bool {

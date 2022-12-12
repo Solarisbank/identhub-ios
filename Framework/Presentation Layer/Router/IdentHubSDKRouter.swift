@@ -15,7 +15,7 @@ class IdentHubSDKRouter: NSObject, Router {
     private var identHubSession: IdentHubSession?
 
     /// Array with all completions block passed as parameter on push/pop/present/dismiss methods
-    private var completions: [UIViewController : () -> Void]
+    private var completions: [UIViewController: () -> Void]
 
     var topShowable: Showable {
         rootViewController ?? navigationController

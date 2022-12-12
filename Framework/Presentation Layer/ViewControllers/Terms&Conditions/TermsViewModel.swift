@@ -20,6 +20,7 @@ final internal class TermsViewModel: NSObject {
     weak var delegate: TermsViewModelDelegate?
 
     private weak var coordinator: IdentificationCoordinator?
+    var onActionPerformed: (() -> Void)?
     
     // MARK: - Init -
     init(coordinator: IdentificationCoordinator) {
@@ -42,7 +43,7 @@ final internal class TermsViewModel: NSObject {
 
     /// Start Fourthline identification process
     func continueProcess() {
-        coordinator?.perform(action: .identification)
+        onActionPerformed?()
     }
 
     /// Quit the flow

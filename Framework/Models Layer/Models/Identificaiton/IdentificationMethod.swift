@@ -56,8 +56,10 @@ extension IdentificationStep: Modularizable {
         switch self {
         case .unspecified, .abort, .partnerFallback, .mobileNumber, .fourthline:
             return []
-        case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthlineSigning, .fourthlineQES:
+        case .bankIDFourthline, .bankQES, .bankIDQES, .fourthlineSigning, .fourthlineQES:
             return [.qes]
+        case .bankIBAN, .bankIDIBAN:
+            return [.bank]
         }
     }
 }

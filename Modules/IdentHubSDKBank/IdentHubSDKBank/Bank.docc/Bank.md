@@ -1,0 +1,3 @@
+# ``IdentHubSDKBank``
+
+Bank module implementation.

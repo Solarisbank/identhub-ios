@@ -1,0 +1,20 @@
+// IBAN Verification
+"iban_verification_title" = "Inserisca il suo IBAN";
+"iban_verification_account_disclaimer" = "La preghiamo di inserire l´IBAN del Suo conto tedesco. Purtroppo non é possibile inserire un conto corrente cointestato. I suoi dati sono criptati.";
+"iban_verification_iban_encryption" = "I suoi dati sono criptati";
+"iban_verification_iban_input_place_holder" = "DEXX XXXX XXXX XXXX XXXX XX";
+"iban_verification_error_iban_format" = "Formato IBAN non valido!";
+"iban_verification_failure_alert_title" = "Verifica IBAN fallita";
+"iban_verification_error_invalid_iban" = "Purtroppo l'IBAN che hai inserito non è valido o non è supportato.";
+"iban_verification_failure_alert_retry" = "Prova un IBAN diverso";
+"iban_verification_failure_alert_fallback" = "Identificare usando un altro metodo";
+
+// Payment Verification
+"payment_verification_establishing_connection" = "Viene stabilita una connessione sicura con la tua banca ......";
+"payment_verification_processing" = "La verifica è in fase di elaborazione...";
+"payment_verification_success_title" = "Verifica del pagamento riuscita";
+"payment_verification_success_description" = "Firma i documenti per completare il processo di identificazione.";
+"payment_verification_success_action" = "Continua";
+"payment_verification_error_title" = "Errore di verifica del pagamento";
+"payment_verification_error_description" = "Purtroppo si è verificato un errore tecnico. Per favore riprova.";
+"payment_verification_error_action" = "Ripeti la verifica dell'IBAN";

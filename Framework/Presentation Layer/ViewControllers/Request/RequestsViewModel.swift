@@ -38,6 +38,7 @@ final class RequestsViewModel: NSObject {
     var onTableUpdate: (() -> Void)?
     var onDisplayError: ((Error?) -> Void)?
     var onRetry: ((FourthlineIdentificationStatus) -> Void)?
+    var onActionPerformed: (() -> Void)?
 
     // MARK: - Private attributes -
     private var ddm: RequestsProgressDDM?
@@ -314,7 +315,7 @@ private extension RequestsViewModel {
                 if let provider = response.fourthlineProvider, provider.isEmpty == false {
                     KYCContainer.shared.update(provider: provider)
                 }
-
+                
                 DispatchQueue.main.async {
                     self.identCoordinator?.validateModules(for: response)
                 }
@@ -379,11 +380,7 @@ private extension RequestsViewModel {
     }
 
     private func finishInitialization() {
-        if self.sessionStorage.acceptedTC {
-            self.identCoordinator?.perform(action: .identification)
-        } else {
-            self.identCoordinator?.perform(action: .termsAndConditions)
-        }
+        onActionPerformed?()
     }
 }
 

@@ -35,6 +35,13 @@
         "identifier" : "88F3A586283CD73A00DB273A",
         "name" : "IdentHubSDKQESTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/IdentHubSDKBank\/Bank.xcodeproj",
+        "identifier" : "67CADD6028EEDCB6004BA73D",
+        "name" : "IdentHubSDKBankTests"
+      }
     }
   ],
   "version" : 1

@@ -17,17 +17,26 @@ final class IdentificationMethodTests: XCTestCase {
                     case .unspecified, .abort, .partnerFallback, .mobileNumber, .fourthline:
                         assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [])
                         
-                    case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthlineSigning, .fourthlineQES:
+                    case .bankIDFourthline, .bankQES, .bankIDQES, .fourthlineSigning, .fourthlineQES:
                         assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [.qes])
+                    case .bankIBAN, .bankIDIBAN:
+                        assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [.bank])
                     }
                 }
                 
                 assertIdentificationMethod(firstStep: firstStep, expectedModules: [])
-            case .bankIBAN, .bankIDFourthline, .bankQES, .bankIDQES, .bankIDIBAN, .fourthlineSigning, .fourthlineQES:
+            case .bankIDFourthline, .bankQES, .bankIDQES, .fourthlineSigning, .fourthlineQES:
                 for fallbackStep in IdentificationStep.allCases {
-                    assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [.qes])
+                    switch fallbackStep {
+                    case .bankIBAN, .bankIDIBAN:
+                        assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [.qes, .bank])
+                    default:
+                        assertIdentificationMethod(firstStep: firstStep, fallbackStep: fallbackStep, expectedModules: [.qes])
+                    }
                 }
                 assertIdentificationMethod(firstStep: firstStep, expectedModules: [.qes])
+            case .bankIBAN, .bankIDIBAN:
+                assertIdentificationMethod(firstStep: firstStep, expectedModules: [.bank])
             }
         }
     }
@@ -37,3 +46,5 @@ final class IdentificationMethodTests: XCTestCase {
         XCTAssertEqual(identificationMethod.requiredModules, expectedModules)
     }
 }
+
+

@@ -40,6 +40,7 @@ public enum Localizable {
         public static let defaultErr = "common_generic_error".localized()
         public static let confirm = "common_confirm".localized()
         public static let wrongTan = "phone_verification_wrong_tan".localized()
+        public static let IBAN = "iban_verification_iban".localized()
     }
     
     enum IdentificationProgressView {
@@ -53,5 +54,28 @@ public enum Localizable {
         static let title = "quitting_title".localized()
         static let description = "quitting_description".localized()
         static let stay = "quitting_stay_action".localized()
+    }
+    
+    enum PhoneVerification {
+        static let title = "phone_verification_title".localized()
+        static let enterCode = "phone_verification_enter_code".localized()
+        static let requestNewCodeTimer = "phone_verification_request_code_timer".localized()
+        static let sendNewCode = "phone_verification_send_new_code".localized()
+        static let wrongTan = "phone_verification_wrong_tan".localized()
+        static let submitCode = "phone_verification_submit_code".localized()
+        static let requestNewCode = "phone_verification_request_new_code".localized()
+
+        enum Success {
+            static let title = "phone_verification_success_title".localized()
+            static let description = "phone_verification_success_description".localized()
+            static let loginCredentials = "phone_verification_login_credentials".localized()
+        }
+        
+        enum Error {
+            static let title = "phone_verification_error_title".localized()
+            static let description = "phone_verification_error_description".localized()
+            static let action = "phone_verification_error_action".localized()
+            static let requestCodeError = "request_tan_failed".localized()
+        }
     }
 }

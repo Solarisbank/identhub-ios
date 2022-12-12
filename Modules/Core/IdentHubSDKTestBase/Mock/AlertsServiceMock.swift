@@ -4,8 +4,10 @@
 //
 
 import IdentHubSDKCore
+import UIKit
 
 public class AlertsServiceMock: AlertsService {
+    
     public var quitAlertCallback: ((Bool) -> Void)?
     public var okActionCallback: (() -> Void)?
     public var retryActionCallback: (() -> Void)?
@@ -45,4 +47,10 @@ public class AlertsServiceMock: AlertsService {
             retryActionCallback?()
         }
     }
+    
+    public func presentCustomAlert(alert: UIAlertController) {
+        presentAlertCallsCount += 1
+        recorder?.record(event: .ui, in: #function, caller: self)
+    }
+    
 }

@@ -41,3 +41,21 @@
 "quitting_title" = "Êtes-vous sûr de vouloir quitter le processus d’intégration ?";
 "quitting_description" = "Votre progression sera perdue. Vous devrez répéter les étapes la prochaine fois.";
 "quitting_stay_action" = "Rester";
+
+// Phone Verification
+"phone_verification_title" = "Confirmez votre numéro de téléphone";
+"phone_verification_enter_code" = "Saisissez le code à 6 chiffres envoyé à votre numéro de téléphone mobile %1$@";
+"phone_verification_request_code_timer" = "Demander un nouveau code";
+"phone_verification_send_new_code" = "Envoyer un nouveau code";
+"phone_verification_wrong_tan" = "TAN incorrect. Vous devez demander un nouveau TAN et réessayer.";
+"request_tan_failed" = "Échec de la demande d'un nouveau TAN.";
+"phone_verification_submit_code" = "Soumettre le code";
+"phone_verification_request_new_code" = "Demander un nouveau code";
+"phone_verification_success_title" = "Vérification du téléphone réussie !";
+"phone_verification_success_description" = "Pour l'étape suivante, veuillez avoir à portée de main votre %1$@ et vos %2$@ à votre banque en ligne.";
+"phone_verification_login_credentials" = "identifiants de connexion";
+"phone_verification_error_title" = "Erreur de vérification du téléphone";
+"phone_verification_error_description" = "Le TAN fourni n’est pas valide";
+"phone_verification_error_action" = "Réessayer la vérification TAN";
+
+"iban_verification_iban" = "IBAN";

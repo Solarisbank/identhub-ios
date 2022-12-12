@@ -17,20 +17,35 @@ internal class ModuleResolver {
 
     subscript(name: ModuleName) -> CoordinatorFactory? {
         switch name {
+        case .core: return core
         case .qes: return qes
+        case .bank: return bank
         }
     }
-
-    lazy var qes: QESCoordinatorFactory? = {
-        let moduleServiceLocator = ModuleServiceLocatorImpl(
+    
+    func moduleServiceLocator(module: ModuleName) -> ModuleServiceLocator {
+        return ModuleServiceLocatorImpl(
             apiClient: serviceLocator.apiClient,
             configuration: serviceLocator.configuration,
-            fileStorage: serviceLocator.modulesStorageManager.fileStorage(for: .qes),
-            storage: serviceLocator.modulesStorageManager.storage(for: .qes),
+            fileStorage: serviceLocator.modulesStorageManager.fileStorage(for: module),
+            storage: serviceLocator.modulesStorageManager.storage(for: module),
             presenter: serviceLocator.presenter
         )
+    }
+    
+    lazy var core: CoreCoordinatorFactory? = {
         return moduleFactory
-            .makeQES(serviceLocator: moduleServiceLocator)
+            .makeCore(serviceLocator: moduleServiceLocator(module: .core))
+    }()
+
+    lazy var qes: QESCoordinatorFactory? = {
+        return moduleFactory
+            .makeQES(serviceLocator: moduleServiceLocator(module: .qes))
+    }()
+    
+    lazy var bank: BankCoordinatorFactory? = {
+        return moduleFactory
+            .makeBank(serviceLocator: moduleServiceLocator(module: .bank))
     }()
 
     init(moduleFactory: ModuleFactory, serviceLocator: ServiceLocator) {

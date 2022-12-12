@@ -18,7 +18,7 @@ final internal class StartIdentificationViewModel: NSObject {
 
     /// Go to send code screen.
     func startIdentification() {
-        flowCoordinator?.perform(action: .phoneVerification)
+        //flowCoordinator?.perform(action: )
     }
 
     /// Quit the flow.

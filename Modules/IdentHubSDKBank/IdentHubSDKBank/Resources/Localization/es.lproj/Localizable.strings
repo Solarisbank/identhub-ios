@@ -1,0 +1,22 @@
+// IBAN Verification
+"iban_verification_title" = "Introduzca su IBAN";
+"iban_verification_account_disclaimer" = "Introduzca el IBAN de su cuenta bancaria alemana. Desafortunadamente, las cuentas conjuntas no son compatibles. Sus datos están encriptados.";
+"iban_verification_iban_encryption" = "Sus datos están encriptados";
+"iban_verification_iban_input_place_holder" = "por ejemplo, DE21 1234 3456 4567 5678 6789";
+"iban_verification_error_iban_format" = "El formato IBAN no es válido.";
+"iban_verification_failure_alert_title" = "Fallo en la verificación del IBAN";
+"iban_verification_error_invalid_iban" = "Lamentablemente, el IBAN que has introducido no es válido o no es compatible.";
+"iban_verification_failure_alert_retry" = "Vuelve a intentarlo con otro IBAN";
+"iban_verification_failure_alert_fallback" = "Identifícate con un método alternativo";
+
+// IBAN Verification
+"iban_verification_title" = "Introduzca su IBAN";
+"iban_verification_account_disclaimer" = "Introduzca el IBAN de su cuenta bancaria alemana. Desafortunadamente, las cuentas conjuntas no son compatibles. Sus datos están encriptados.";
+"iban_verification_iban" = "IBAN";
+"iban_verification_iban_encryption" = "Sus datos están encriptados";
+"iban_verification_iban_input_place_holder" = "por ejemplo, DE21 1234 3456 4567 5678 6789";
+"iban_verification_error_iban_format" = "El formato IBAN no es válido.";
+"iban_verification_failure_alert_title" = "Fallo en la verificación del IBAN";
+"iban_verification_error_invalid_iban" = "Lamentablemente, el IBAN que has introducido no es válido o no es compatible.";
+"iban_verification_failure_alert_retry" = "Vuelve a intentarlo con otro IBAN";
+"iban_verification_failure_alert_fallback" = "Identifícate con un método alternativo";

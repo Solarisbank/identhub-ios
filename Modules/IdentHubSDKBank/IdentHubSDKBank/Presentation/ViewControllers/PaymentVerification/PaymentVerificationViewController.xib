@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentVerificationViewController" customModule="IdentHubSDKBank" customModuleProvider="target">
+            <connections>
+                <outlet property="headerView" destination="JU5-Eo-Fau" id="eM7-Ag-Fw6"/>
+                <outlet property="paymentWebView" destination="4gc-d2-7KR" id="sub-aE-hWg"/>
+                <outlet property="stateView" destination="x0F-ou-CRm" id="toM-aK-Lbn"/>
+                <outlet property="successContainerView" destination="OTU-An-Dv6" id="Mm1-qN-yw6"/>
+                <outlet property="view" destination="rYf-p5-UMv" id="f8h-35-CSN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rYf-p5-UMv">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="89" translatesAutoresizingMaskIntoConstraints="NO" id="JU5-Eo-Fau" customClass="HeaderView" customModule="IdentHubSDKCore">
+                    <rect key="frame" x="0.0" y="47" width="390" height="89"/>
+                    <color key="backgroundColor" name="background"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-ou-CRm" customClass="StateView" customModule="IdentHubSDKCore">
+                    <rect key="frame" x="0.0" y="136" width="390" height="250"/>
+                    <color key="backgroundColor" name="background"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="I8N-7k-QRJ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasDescriptionLabel" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <wkWebView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gc-d2-7KR">
+                    <rect key="frame" x="20" y="156" width="350" height="654"/>
+                    <color key="backgroundColor" name="background"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </wkWebView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTU-An-Dv6" customClass="SuccessView" customModule="IdentHubSDKCore">
+                    <rect key="frame" x="0.0" y="136" width="390" height="674"/>
+                    <color key="backgroundColor" name="background"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="1dC-X2-dkc"/>
+            <color key="backgroundColor" name="background"/>
+            <constraints>
+                <constraint firstItem="4gc-d2-7KR" firstAttribute="leading" secondItem="1dC-X2-dkc" secondAttribute="leading" constant="20" id="1kr-gb-3uf"/>
+                <constraint firstItem="x0F-ou-CRm" firstAttribute="leading" secondItem="1dC-X2-dkc" secondAttribute="leading" id="3PV-oB-fZD"/>
+                <constraint firstItem="4gc-d2-7KR" firstAttribute="top" secondItem="JU5-Eo-Fau" secondAttribute="bottom" constant="20" id="7co-js-le0"/>
+                <constraint firstItem="4gc-d2-7KR" firstAttribute="bottom" secondItem="1dC-X2-dkc" secondAttribute="bottom" id="Adl-8n-LZ0"/>
+                <constraint firstItem="x0F-ou-CRm" firstAttribute="top" secondItem="JU5-Eo-Fau" secondAttribute="bottom" id="GdZ-X8-W0s"/>
+                <constraint firstItem="1dC-X2-dkc" firstAttribute="trailing" secondItem="x0F-ou-CRm" secondAttribute="trailing" id="MF4-uz-8Jz"/>
+                <constraint firstItem="1dC-X2-dkc" firstAttribute="trailing" secondItem="JU5-Eo-Fau" secondAttribute="trailing" id="MNp-OB-28F"/>
+                <constraint firstItem="1dC-X2-dkc" firstAttribute="trailing" secondItem="4gc-d2-7KR" secondAttribute="trailing" constant="20" id="Nyf-Sy-zLI"/>
+                <constraint firstItem="1dC-X2-dkc" firstAttribute="bottom" secondItem="OTU-An-Dv6" secondAttribute="bottom" id="hGF-1Y-E0H"/>
+                <constraint firstItem="OTU-An-Dv6" firstAttribute="top" secondItem="JU5-Eo-Fau" secondAttribute="bottom" id="nSo-15-njx"/>
+                <constraint firstItem="JU5-Eo-Fau" firstAttribute="leading" secondItem="rYf-p5-UMv" secondAttribute="leading" id="oqa-kK-P2d"/>
+                <constraint firstItem="JU5-Eo-Fau" firstAttribute="top" secondItem="1dC-X2-dkc" secondAttribute="top" id="sSv-6b-ISd"/>
+                <constraint firstItem="OTU-An-Dv6" firstAttribute="leading" secondItem="1dC-X2-dkc" secondAttribute="leading" id="xEP-Pj-Ee5"/>
+                <constraint firstItem="1dC-X2-dkc" firstAttribute="trailing" secondItem="OTU-An-Dv6" secondAttribute="trailing" id="yWG-h8-Tdq"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="background">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

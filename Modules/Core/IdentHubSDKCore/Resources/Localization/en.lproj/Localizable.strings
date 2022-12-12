@@ -42,3 +42,20 @@
 "quitting_description" = "Your progress will be lost. You will be required to repeat the steps next time.";
 "quitting_stay_action" = "Stay";
 
+// Phone verification
+"phone_verification_title" = "Confirm phone";
+"phone_verification_enter_code" = "Enter the 6-digit code sent to your mobile number %1$@";
+"phone_verification_request_code_timer" = "Request a new code in";
+"phone_verification_send_new_code" = "Send new code";
+"phone_verification_wrong_tan" = "Wrong TAN. You need to request a new TAN and try again.";
+"request_tan_failed" = "Failed to request new TAN.";
+"phone_verification_submit_code" = "Submit code";
+"phone_verification_request_new_code" = "Request new code";
+"phone_verification_success_title" = "Phone verification successful!";
+"phone_verification_success_description" = "For the next step please have your %1$@ and \n%2$@ for your online banking at hand.";
+"phone_verification_login_credentials" = "login credentials";
+"phone_verification_error_title" = "Phone verification error";
+"phone_verification_error_description" = "Provided TAN is not valid.";
+"phone_verification_error_action" = "Retry TAN verification";
+
+"iban_verification_iban" = "IBAN";

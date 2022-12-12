@@ -38,8 +38,6 @@ class BankIDCoordinator: BaseCoordinator {
         switch action {
         case .startIdentification:
             presentStartIdentification()
-        case .phoneVerification:
-            presentPhoneVerification()
         case .bankVerification(let step):
             switch step {
             case .iban:
@@ -131,7 +129,7 @@ extension BankIDCoordinator {
 extension BankIDCoordinator {
     private func isIdentificationStatusCheckNeeded() -> Bool {
         switch currentIdentStep {
-        case .startIdentification, .phoneVerification, .bankVerification(step: .iban), .nextStep:
+        case .startIdentification, .bankVerification(step: .iban), .nextStep:
             return false
         default:
             return true
@@ -225,8 +223,6 @@ private extension BankIDCoordinator {
     private func performIdentStep(step: IdentificationStep) {
         bankLog.debug("Performing ident step \(step)")
         switch step {
-        case .mobileNumber:
-            presentPhoneVerification()
         case .bankIBAN,
              .bankIDIBAN:
             if currentIdentStep != .bankVerification(step: .iban) { // If user already on IBAN screen no reason open it once again
@@ -247,7 +243,7 @@ private extension BankIDCoordinator {
         case .partnerFallback:
             completionHandler?(.failure(.identificationNotPossible))
             close()
-        case .unspecified:
+        case .mobileNumber, .unspecified:
             bankLog.error("Step is not supported or not specified yet")
             
             completionHandler?(.failure(.unsupportedResponse))
@@ -263,40 +259,64 @@ private extension BankIDCoordinator {
         presenter.push(startIdentificationViewController, animated: animated, completion: nil)
         updateBankIDStep(step: .startIdentification)
     }
-
-    private func presentPhoneVerification() {
-        let phoneVerificationViewModel = PhoneVerificationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
-        let phoneVerificationViewController = PhoneVerificationViewController(phoneVerificationViewModel)
-        presenter.push(phoneVerificationViewController, animated: true, completion: nil)
-        updateBankIDStep(step: .phoneVerification)
-    }
+    
+    // MARK: - BANK
 
     private func presentIBANVerification() {
-        guard appDependencies.sessionInfoProvider.phoneVerified else {
-            perform(action: .phoneVerification)
-            return
-        }
-
-        let ibanVerificationViewModel = IBANVerificationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
-        let ibanVerificationViewController = IBANVerificationViewController(ibanVerificationViewModel)
-
-        ibanVerificationViewModel.delegate = ibanVerificationViewController
-
-        let animated = presenter.navigationController.viewControllers.isNotEmpty()
-        presenter.push(ibanVerificationViewController, animated: animated, completion: nil)
+        presentBank(step: .bankVerification(step: .iban))
         updateBankIDStep(step: .bankVerification(step: .iban))
     }
 
     private func presentPaymentVerification() {
-        let paymentVerificationViewModel = PaymentVerificationViewModel(flowCoordinator: self, verificationService: appDependencies.verificationService, sessionStorage: appDependencies.sessionInfoProvider, completion: completionHandler!)
-        let paymentVerificationViewController = PaymentVerificationViewController(paymentVerificationViewModel)
-
-        paymentVerificationViewModel.delegate = paymentVerificationViewController
-
-        let animated = presenter.navigationController.viewControllers.isNotEmpty()
-        presenter.push(paymentVerificationViewController, animated: animated, completion: nil)
+        presentBank(step: .bankVerification(step: .payment))
         updateBankIDStep(step: .bankVerification(step: .payment))
     }
+    
+    private func presentBank(step: BankStep) {
+        guard let bank = appDependencies.moduleResolver.bank?.makeBankCoordinator() else {
+            completionHandler?(.failure(.modulesNotFound([ModuleName.bank.rawValue])))
+            close()
+            return
+        }
+        let bankInput = BankInput(
+            step: step,
+            retriesCount: appDependencies.sessionInfoProvider.retries,
+            fallbackIdentStep: appDependencies.sessionInfoProvider.fallbackIdentificationStep,
+            identificationUID: appDependencies.sessionInfoProvider.identificationUID ?? "",
+            identificationStep: appDependencies.sessionInfoProvider.identificationStep
+        )
+        coordinatorPerformer.startCoordinator(bank, input: bankInput, callback: { [weak self] result in
+            guard let self = self else {
+                Assert.notNil(self)
+                return true
+            }
+            
+            switch result {
+            case .success(let output):
+                print("BANK output: \(output)")
+                switch output {
+                case .performQES(identID: let identUID):
+                    self.appDependencies.sessionInfoProvider.identificationUID = identUID
+                    self.presentConfirmApplication(step: .unspecified)
+                case .nextStep(step: let step, let identUID):
+                    self.appDependencies.sessionInfoProvider.identificationUID = identUID
+                    self.perform(action: .nextStep(step: step))
+                case .failure(let error):
+                    self.completeIdentification(result: .failure(error), shouldClearData: true)
+                case .abort:
+                    self.completeIdentification(
+                        result: .failure(.authorizationFailed),
+                        shouldClearData: true
+                    )
+                }
+            case .failure(let error):
+                self.completeIdentification(result: .failure(error), shouldClearData: true)
+            }
+            return true
+        })?.push(on: presenter)
+    }
+    
+    // MARK: - QES
 
     private func presentConfirmApplication(step: IdentificationStep) {
         presentQES(step: .confirmAndSignDocuments, currentStep: step)
@@ -356,6 +376,8 @@ private extension BankIDCoordinator {
 
         self.completionHandler?(IdentificationSessionResult.success(identification: self.appDependencies.sessionInfoProvider.identificationUID ?? ""))
     }
+    
+    // MARK: - Fourthline
 
     private func presentFourthlineFlow() {
         fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)

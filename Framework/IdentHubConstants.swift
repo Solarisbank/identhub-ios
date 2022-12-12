@@ -56,6 +56,12 @@ enum StoredKeys: String {
 
     /// Status of the phone verification
     case phoneVerified = "PhoneVerificationStatusKey"
+    
+    /// Accepted state of the "Terms and Conditions" agreement
+    case performedTCAcceptance = "PerfomedTermsAndConditionsAcceptanceKey"
+
+    /// Status of the phone verification
+    case performedPhoneVerification = "PerformedPhoneVerificationKey"
 
     /// BankID identification session process step value key
     case bankIDStep = "BankIDIdentificationStepKey"
@@ -77,6 +83,9 @@ enum StoredKeys: String {
     
     /// Remote logging value
     case remoteLogging = "RemoteLogging"
+    
+    /// Stored Core step
+    case coreScreensStep = "CoreScreensStep"
     
     /// Style colors keys enumeration
     enum StyleColor: String {

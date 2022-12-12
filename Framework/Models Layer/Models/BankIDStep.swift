@@ -9,7 +9,6 @@ import IdentHubSDKCore
 /// The list of all available actions.
 enum BankIDStep: Codable, Equatable {
     case startIdentification // Welcome bank id screen
-    case phoneVerification // BankID phone verification
     case bankVerification(step: BankVerification) // Bank payment verification
     case signDocuments(step: SignDocuments) // Sign bank contracts
     case finishIdentification // Finish bank identification
@@ -41,9 +40,6 @@ enum BankIDStep: Codable, Equatable {
         if let _ = try? value.decode(Bool.self, forKey: .start) {
             self = .startIdentification
             return
-        } else if let _ = try? value.decode(Bool.self, forKey: .phone) {
-            self = .phoneVerification
-            return
         } else if let bank = try? value.decode(Int.self, forKey: .bank) {
             self = .bankVerification(step: BankVerification(rawValue: bank) ?? BankVerification.iban)
             return
@@ -65,8 +61,6 @@ enum BankIDStep: Codable, Equatable {
         switch self {
         case .startIdentification:
             try container.encode(true, forKey: .start)
-        case .phoneVerification:
-            try container.encode(true, forKey: .phone)
         case .bankVerification(let step):
             try container.encode(step.rawValue, forKey: .bank)
         case .signDocuments(let step):

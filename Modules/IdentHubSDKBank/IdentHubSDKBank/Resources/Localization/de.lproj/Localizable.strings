@@ -1,0 +1,20 @@
+// IBAN Verification
+"iban_verification_title" = "Geben Sie Ihre IBAN ein";
+"iban_verification_account_disclaimer" = "Bitte geben Sie die IBAN Ihres deutschen Bankkontos ein (kein Gemeinschaftskonto).";
+"iban_verification_iban_encryption" = "Ihre Daten werden verschlüsselt übertragen";
+"iban_verification_iban_input_place_holder" = "DEXX XXXX XXXX XXXX XXXX XX";
+"iban_verification_error_iban_format" = "IBAN-Format ungültig!";
+"iban_verification_failure_alert_title" = "IBAN-Verifizierung fehlgeschlagen";
+"iban_verification_error_invalid_iban" = "Leider ist die von Ihnen eingegebene IBAN ungültig oder wird nicht unterstützt.";
+"iban_verification_failure_alert_retry" = "Mit einer anderen IBAN versuchen";
+"iban_verification_failure_alert_fallback" = "Mit einer anderen Methode identifizieren";
+
+// Payment Verification
+"payment_verification_establishing_connection" = "Sichere Verbindung zu Ihrer Bank wird hergestellt……";
+"payment_verification_processing" = "Verifizierung wird verarbeitet…";
+"payment_verification_success_title" = "Zahlungsüberprüfung erfolgreich";
+"payment_verification_success_description" = "Unterschreiben Sie die Dokumente, um Ihren Identifikationsprozess abzuschließen.";
+"payment_verification_success_action" = "Weiter";
+"payment_verification_error_title" = "Fehler bei der Zahlungsüberprüfung";
+"payment_verification_error_description" = "Leider ist ein technischer Fehler aufgetreten. Bitte versuchen Sie es erneut.";
+"payment_verification_error_action" = "IBAN-Verifizierung wiederholen";

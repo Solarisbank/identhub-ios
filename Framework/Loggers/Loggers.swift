@@ -19,3 +19,5 @@ internal let fourthlineLog = SBLog.standard.withCategory(.other("FOURTHLINE"))
 internal let bankLog = SBLog.standard.withCategory(.other("BANK"))
 /// Logger related to backend API requests events
 internal let apiLog = SBLog.standard.withCategory(.api)
+/// Logger related to core screens
+internal let coreLog = SBLog.standard.withCategory(.other("CORE"))

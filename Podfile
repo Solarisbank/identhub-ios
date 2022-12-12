@@ -15,9 +15,7 @@ pod 'FourthlineSDK', '2.13.1'
 pod 'ZIPFoundation', '0.9.11'
 pod 'lottie-ios'
 
-# Comment the next line if you're not using BANK verification
 pod 'InputMask', '6.1.0'
-
 end
 
 target 'IdentHubSDKTests' do
@@ -37,6 +35,17 @@ end
 
 target 'IdentHubSDKQESSnapshotTests' do
   project 'Modules/QES/QES'
+end
+
+target 'IdentHubSDKBank' do
+  project 'Modules/IdentHubSDKBank/Bank'
+  
+  pod 'InputMask', '6.1.0'
+end
+
+target 'IdentHubSDKBankTests' do
+  project 'Modules/IdentHubSDKBank/Bank'
+
 end
 
 target 'Sample' do

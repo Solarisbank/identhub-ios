@@ -29,7 +29,7 @@ class VerificationServiceMock: VerificationService {
     
     var personAddress: TestPersonAddress?
     
-    var mockResoponse = [String:Any?]()
+    var mockResoponse = [String: Any?]()
     
     // MARK: - Protocol methods -
 
