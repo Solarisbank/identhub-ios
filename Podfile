@@ -9,11 +9,11 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'IdentHubSDK' do
-pod 'FourthlineSDK', '2.13.1'
+pod 'FourthlineSDK', '2.15.2'
 
 # Fourthline dependencies
 pod 'ZIPFoundation', '0.9.11'
-pod 'lottie-ios'
+pod 'lottie-ios', '3.2.3'
 
 pod 'InputMask', '6.1.0'
 end
