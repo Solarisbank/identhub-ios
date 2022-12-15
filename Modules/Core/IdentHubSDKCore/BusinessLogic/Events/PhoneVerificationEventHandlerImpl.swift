@@ -108,9 +108,8 @@ final internal class PhoneVerificationEventHandlerImpl<ViewController: Updateabl
                 } else {
                     self.fail()
                 }
-            case .failure(let error):
+            case .failure(_):
                 self.fail()
-                self.callback(.failure(error.apiError))
             }
         }
     }

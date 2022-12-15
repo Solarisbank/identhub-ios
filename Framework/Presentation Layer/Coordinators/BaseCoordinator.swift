@@ -39,11 +39,12 @@ internal class BaseCoordinator: Coordinator {
 
     internal func close() {
         UserDefaults.standard.synchronize()
+        DispatchQueue.main.async {
+            self.presenter.dismissModule(animated: false, completion: { [weak self] in
+                guard let `self` = self else { return }
 
-        presenter.dismissModule(animated: false, completion: { [weak self] in
-            guard let `self` = self else { return }
-
-            self.presenter.dismissModule(animated: true, completion: nil)
-        })
+                self.presenter.dismissModule(animated: true, completion: nil)
+            })
+        }
     }
 }
