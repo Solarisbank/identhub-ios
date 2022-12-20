@@ -122,10 +122,10 @@
 "camera_permission_not_granted" = "Accesso alla fotocamera non consentito.";
 
 // Document Scanner
-"doc_scanner_title" = "Il tuo documento d'identità";
+"doc_scanner_title" = "Il tuo documento d’identità";
 "doc_scanner_description" = "Seleziona il tuo documento di identità";
 "doc_scanner_passport" = "Passaporto";
-"doc_scanner_id_card" = "Carta d'identità";
+"doc_scanner_id_card" = "Carta d’identità elettronica";
 "doc_scanner_paper_id" = "C. d’identità cartacea";
 "doc_scanner_scan_successful" = "Scansione riuscita";
 "doc_scanner_scanning" = "Scannerizzare...";

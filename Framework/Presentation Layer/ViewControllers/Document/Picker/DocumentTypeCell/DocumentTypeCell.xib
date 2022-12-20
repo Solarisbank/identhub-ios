@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -38,9 +38,9 @@
                                     <constraint firstAttribute="width" constant="30" id="uzP-sY-Lka"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIC-js-vWc">
-                                <rect key="frame" x="65" y="36" width="96" height="28"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passport" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIC-js-vWc">
+                                <rect key="frame" x="65" y="37" width="173" height="26"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" name="base100"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -62,6 +62,7 @@
                             <constraint firstItem="uIC-js-vWc" firstAttribute="leading" secondItem="UUy-TH-OvI" secondAttribute="trailing" constant="20" id="Qlf-6s-bVv"/>
                             <constraint firstItem="UUy-TH-OvI" firstAttribute="leading" secondItem="7tB-oC-Ril" secondAttribute="leading" constant="15" id="ZEb-af-cfb"/>
                             <constraint firstItem="g5v-KW-FVe" firstAttribute="leading" secondItem="UUy-TH-OvI" secondAttribute="leading" constant="5" id="Zk4-si-BHR"/>
+                            <constraint firstItem="jpM-P3-zl1" firstAttribute="leading" secondItem="uIC-js-vWc" secondAttribute="trailing" constant="12" id="clR-xy-9r4"/>
                             <constraint firstItem="g5v-KW-FVe" firstAttribute="bottom" secondItem="UUy-TH-OvI" secondAttribute="bottom" constant="-5" id="d6v-7u-duN"/>
                             <constraint firstItem="UUy-TH-OvI" firstAttribute="centerY" secondItem="7tB-oC-Ril" secondAttribute="centerY" id="qBc-W0-kHU"/>
                         </constraints>
@@ -100,7 +101,7 @@
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="base100">
-            <color red="0.058823529411764705" green="0.098039215686274508" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.059000000357627869" green="0.097999997437000275" blue="0.14900000393390656" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
