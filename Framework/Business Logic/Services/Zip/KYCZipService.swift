@@ -5,6 +5,7 @@
 
 import Foundation
 import FourthlineKYC
+import FourthlineCore
 
 enum KYCZipErrorType {
     case invalidDocument
