@@ -72,6 +72,11 @@ class IdentificationCoordinator: BaseCoordinator {
             close()
         }
     }
+    
+    func configureColors() {
+        let colors = ColorsImpl(styleColors: StyleColors.obtainFromStorage())
+        appDependencies.serviceLocator.configuration = Configuration(colors: colors)
+    }
 }
 
 // MARK: - Manager Session Tracker methods -
@@ -175,6 +180,7 @@ private extension IdentificationCoordinator {
     }
     
     private func startCore() {
+        configureColors()
         coreScreensCoordinator = CoreScreensCoordinator(appDependencies: appDependencies, presenter: presenter)
         
         coreScreensCoordinator?.start(completionHandler!)
@@ -208,11 +214,6 @@ private extension IdentificationCoordinator {
 
             self.bankIDSessionCoordinator?.perform(step: nextStep, self.completionHandler!)
         }
-    }
-
-    private func configureColors() {
-        let colors = ColorsImpl(styleColors: StyleColors.obtainFromStorage())
-        appDependencies.serviceLocator.configuration = Configuration(colors: colors)
     }
 
     private func updateAction(action: Action) {

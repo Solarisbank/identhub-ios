@@ -183,10 +183,12 @@ extension PhoneVerificationViewController {
         
         submitCodeBtn.setTitle(Localizable.Common.confirm, for: .normal)
         submitCodeBtn.tintColor = colors[.primaryAccent]
+        submitCodeBtn.setAppearance(.inactive, colors: colors)
         
         codeEntryView.delegate = self
         codeEntryView.state = .disabled
         
+        successView.configure(with: colors)
         successView.setTitle(Localizable.PhoneVerification.Success.title)
         successView.setDescription(Localizable.PhoneVerification.Success.description)
         successView.setActionButtonTitle(Localizable.Common.next)

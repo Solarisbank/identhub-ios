@@ -30,7 +30,7 @@ public class SuccessView: NibView {
 
         addSubview(containerView)
         containerView.frame = bounds
-        configureUIColors()
+        configureUI()
     }
 
     // MARK: - Action methods -
@@ -64,12 +64,10 @@ public class SuccessView: NibView {
         self.action = action
     }
 
-    // MARK: - Private methods -
-    private func configureUIColors() {
+    public override func configureUI() {
         containerView.backgroundColor = colors[.background]
         titleLabel.textColor = colors[.base100]
         descriptionLabel.textColor = colors[.base75]
-        actionButton.currentAppearance = .primary
+        actionButton.setAppearance(.primary, colors: colors)
     }
-
 }

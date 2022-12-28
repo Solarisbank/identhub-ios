@@ -121,7 +121,7 @@ extension IBANVerificationViewController {
         ibanVerificationTextField.placeholder = placeholderText
 
         initiatePaymentVerificationButton.setTitle(Localizable.Common.next, for: .normal)
-        initiatePaymentVerificationButton.currentAppearance = .inactive
+        initiatePaymentVerificationButton.setAppearance(.inactive, colors: colors)
 
         ibanVerificationTextField.currentState = .normal
         ibanVerificationTextField.delegate = maskTextFieldDelegate

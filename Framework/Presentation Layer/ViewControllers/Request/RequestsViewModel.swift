@@ -54,7 +54,7 @@ final class RequestsViewModel: NSObject {
     private var willEnterForegroundObserver: AnyObject?
     private weak var fourthlineCoordinator: FourthlineIdentCoordinator?
     private weak var identCoordinator: IdentificationCoordinator?
-
+    private var identificationMethod: IdentificationMethod?
     // MARK: - Init methods -
 
     /// Initial setup request screen view model
@@ -307,6 +307,7 @@ private extension RequestsViewModel {
 
             switch result {
             case .success(let response):
+                self.identificationMethod = response
                 self.completeStep(number: InitStep.defineMethod.rawValue)
                 self.sessionStorage.identificationStep = response.firstStep
                 self.sessionStorage.fallbackIdentificationStep = response.fallbackStep
@@ -316,10 +317,6 @@ private extension RequestsViewModel {
                     KYCContainer.shared.update(provider: provider)
                 }
                 
-                DispatchQueue.main.async {
-                    self.identCoordinator?.validateModules(for: response)
-                }
-
                 self.obtainIdentificationInfo()
             case .failure(let error):
                 self.onDisplayError?(error)
@@ -345,7 +342,12 @@ private extension RequestsViewModel {
                 if let provider = response.fourthlineProvider {
                     KYCContainer.shared.update(provider: provider)
                 }
-
+                self.identCoordinator?.configureColors()
+                if let identificationMethod = self.identificationMethod {
+                    DispatchQueue.main.async {
+                        self.identCoordinator?.validateModules(for: identificationMethod)
+                    }
+                }
                 if self.isFourthlineFlow() {
                     if response.status == .rejected {
                         self.fourthlineCoordinator?.perform(action: .abort)

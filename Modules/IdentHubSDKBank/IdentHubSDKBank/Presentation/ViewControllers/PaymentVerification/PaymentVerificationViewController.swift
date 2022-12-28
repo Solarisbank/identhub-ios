@@ -108,6 +108,7 @@ extension PaymentVerificationViewController {
     }
     
     private func setupSuccessView() {
+        successContainerView.configure(with: colors)
         successContainerView.setTitle(Localizable.BankVerification.PaymentVerification.Success.title)
         successContainerView.setDescription(Localizable.BankVerification.PaymentVerification.Success.description)
         successContainerView.setActionButtonTitle(Localizable.BankVerification.PaymentVerification.Success.action)
