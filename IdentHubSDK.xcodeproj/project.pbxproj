@@ -2159,11 +2159,11 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.3.0;
+				_BUILD_VERSION = 1.4.0;
 				_BUNDLE_TESTABLE = YES;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
@@ -2188,10 +2188,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.3.0;
+				_BUILD_VERSION = 1.4.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Release;
@@ -2213,13 +2213,13 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.3.0;
+				_BUILD_VERSION = 1.4.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Debug;
@@ -2241,7 +2241,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
@@ -2310,10 +2310,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.3.0;
+				_BUILD_VERSION = 1.4.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Staging;
@@ -2335,7 +2335,7 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;

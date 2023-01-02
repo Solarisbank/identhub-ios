@@ -63,6 +63,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 1.2.7 | 13.3.1 - 13.4                                                       | iOS 12 |
 | 1.2.8 | 13.3.1 - 13.4                                                       | iOS 12 |
 | 1.3.0 | 13.4 - 14.0                                                         | iOS 12 |
+| 1.4.0 | 13.4 - 14.0                                                         | iOS 12 |
 
 ## Integration
 
@@ -83,11 +84,12 @@ inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
-  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.3.0'
-  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.3.0'
+  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.4.0'
+  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.4.0'
 
-  # Optional if your identification methods includes a Qualified Electronic Signature (QES).
-  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.3.0'
+  # Optional dependencies (See relevant section)
+  pod 'SolarisbankIdentHubBank', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.4.0'
+  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.4.0'
 end
 
 post_install do |installer|
@@ -125,6 +127,7 @@ The following modules are required dependencies for all identification methods a
 
 The following modules are required for specific identification methods only and may be skipped for other identification flows. Get in touch with your Integration Engineer to determine which modules should be included in your integration.
 
+ - SolarisbankIdentHubBank
  - SolarisbankIdentHubQES
 
 ## Example Usage

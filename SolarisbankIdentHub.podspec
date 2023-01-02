@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   spec.name    = "SolarisbankIdentHub"
-  spec.version = "1.3.0"
+  spec.version = "1.4.0"
   spec.summary = "Solaris IdentHub SDK for iOS"
 
   spec.description = <<-DESC
@@ -45,10 +45,10 @@ Pod::Spec.new do |spec|
   spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets,lproj,strings}","Shared/Colors.xcassets"
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.dependency 'FourthlineSDK', '2.13.1'
+  spec.dependency 'FourthlineSDK', '2.16.0'
   spec.dependency 'ZIPFoundation', '0.9.11'
   spec.dependency 'InputMask', '6.1.0'
-  spec.dependency 'lottie-ios'
+  spec.dependency 'lottie-ios', '3.2.3'
   spec.dependency 'SolarisbankIdentHubCore', "#{spec.version}"
 
   spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
