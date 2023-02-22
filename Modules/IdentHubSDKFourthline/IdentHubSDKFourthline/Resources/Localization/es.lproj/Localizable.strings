@@ -1,0 +1,112 @@
+
+// Welcome
+"welcome_page_title" = "Bienvenido";
+"welcome_start_button" = "Iniciar";
+"welcome_camera_title" = "Sonríe a la cámara";
+"welcome_camera_description" = "Tu selfie será comparado con el de tu documento de identidad. No te preocupes, nunca saldrá a la luz, ¡prometido!";
+"welcome_document_title" = "Escanea tu documento de identidad";
+"welcome_document_description" = "Con esto podemos asegurarnos de que eres realmente quien dices ser y evitar la suplantación de identidad.";
+"welcome_location_title" = "Enviar tu caso";
+"welcome_location_description" = "Lo último que tienes que hacer es habilitar tu ubicación\ny enviar tu caso.\nQué fácil, ¿verdad?";
+"welcome_page_acknowledgement" = "Reconozco la declaración de privacidad de SAFENED Fourthline.";
+"welcome_page_fourthline_privacy" = "declaración de privacidad de SAFENED Fourthline";
+
+// Selfie
+"selfie_title" = "Hazte un selfie";
+"selfie_scanning" = "escaneando...";
+"selfie_detected" = "cara detectada";
+"selfie_success" = "Escaneo realizado con éxito";
+"selfie_retake" = "Volver a hacer la foto";
+"selfie_confirm" = "Confirmar";
+"selfie_confirm_selfie" = "Confirmar Selfie";
+"selfie_warning_face_not_in_frame" = "Encaja la cara en el recuadro";
+"selfie_warning_face_not_detected" = "Cara no detectada";
+"selfie_warning_face_too_close" = "Aleja el teléfono";
+"selfie_warning_face_too_far" = "Acerca el teléfono";
+"selfie_warning_face_camera_directly" = "Mira directamente a la cámara";
+"selfie_warning_multiple_faces_detected" = "Varias caras detectadas";
+"selfie_warning_device_not_steady" = "El dispositivo no está estable";
+"selfie_warning_looking_for_face" = "Buscando una cara";
+"selfie_warning_unknown" = "Se ha producido un problema desconocido";
+"selfie_error_failed" = "Selfie fallido";
+"selfie_error_timeout" = "El tiempo para hacer la foto se ha agotado";
+"selfie_error_face_disappeared" = "La cara ha desaparecido";
+"selfie_error_camer_permission" = "Se requiere permiso de cámara";
+"selfie_error_recording_failed" = "Algo salió mal";
+"selfie_error_scanner_interrupted" = "El escáner se ha interrumpido";
+"selfie_error_unknown" = "Algo salió mal";
+"selfie_error_alert_title" = "El escáner de selfie falló";
+"selfie_error_alert_message" = "No fue posible hacer tu selfie.\n\nEste proceso es obligatorio para el proceso de registro.";
+"selfie_error_multiple_faces" = "La cámara detecta múltiples caras. Asegúrate de escanear la cara de una sola persona.";
+"selfie_error_reset_not_allowed" = "La sesión sigue activa. Continúa.";
+"selfie_liveness_title" = "Comprobación de viveza";
+"selfie_liveness_checking" = "Comprobación de viveza...";
+"selfie_liveness_confirm" = "Confirmación de viveza";
+"selfie_liveness_faild" = "Fallo en la comprobación de la viveza";
+"selfie_liveness_turn_head_left" = "Gira la cabeza a la izquierda";
+"selfie_liveness_turn_head_right" = "Gira la cabeza a la derecha";
+
+// Camera
+"camera_permission_error_title" = "Permiso de cámara denegado";
+"camera_permission_error_message" = "El escáner no puede iniciarse sin el permiso de cámara; permítelo";
+"camera_error_message" = "ERROR: Para poder utilizar los escáneres de visión es necesario conceder el permiso de cámara.";
+"camera_permission_not_granted" = "Se requiere permiso de cámara";
+
+// Document Scanner
+"doc_scanner_title" = "Tu documento de identidad";
+"doc_scanner_description" = "Elige el tipo de documento";
+"doc_scanner_passport" = "Pasaporte";
+"doc_scanner_id_card" = "Documento de identidad";
+"doc_scanner_paper_id" = "Identificación de papel";
+"doc_scanner_scan_successful" = "Escaneo realizado con éxito";
+"doc_scanner_scanning" = "Escaneando...";
+"doc_scanner_scan_failed" = "Escaneo fallido";
+"doc_scanner_retake" = "Intentar de nuevo";
+"doc_scanner_confirm_result" = "Confirme el resultado";
+"doc_scanner_warning_device_not_steady" = "El dispositivo no está estable";
+"doc_scanner_warning_too_dark" = "Demasiado oscuro";
+"doc_scanner_warning_unkown" = "Algo salió mal";
+"doc_scanner_error_interrupted" = "El escáner se ha interrumpido";
+"doc_scanner_error_timeout" = "Se ha agotado el tiempo para escanear";
+"doc_scanner_error_alert_title" = "Escáner del documento fallido";
+"doc_scanner_error_alert_message" = "No fue posible realizar escanear tu documento.\n\nEste proceso es obligatorio para el proceso de registro.";
+"doc_scanner_error_snapshot_not_allowed" = "El paso de tomar una instantánea del documento ya no está activo.";
+"doc_scanner_error_step_not_finished" = "El paso no ha finalizado correctamente.";
+"doc_scanner_error_reset_not_allowed" = "El paso sigue activo.";
+"doc_scanner_info_title" = "Información del documento";
+"doc_scanner_info_doc_number" = "número de documento";
+"doc_scanner_info_issue_date" = "fecha de emisión";
+"doc_scanner_info_expire_date" = "fecha de caducidad del documento";
+"doc_scanner_info_warning" = "Confirma si se han obtenido correctamente tus datos al escanear documento";
+"doc_scanner_info_enter_data" = "Favor de introducir";
+"doc_scanner_info_confirm_data" = "Por favor confirme";
+"doc_scanner_info_expire_date_message" = "La fecha de caducidad no puede estar en el pasado";
+
+// Document Scanner Side Titles
+"doc_scanner_side_front_name" = "anverso";
+"doc_scanner_side_back_name" = "reverso";
+"doc_scanner_side_inside_left_name" = "interior izquierda";
+"doc_scanner_side_inside_right_name" = "interior derecha";
+"doc_scanner_side_undefined_name" = "lateral del documento no definido";
+"doc_scanner_side_front_title" = "Escanee la parte frontal del documento";
+"doc_scanner_side_front_angled_title" = "Tome una foto del documento en ángulo";
+"doc_scanner_side_back_title" = "Escanee la parte trasera del documento";
+"doc_scanner_side_back_angled_title" = "Tome una foto del documento en ángulo";
+"doc_scanner_side_inside_left_title" = "Escanee el interior izquierdo del documento";
+"doc_scanner_side_inside_left_angled_title" = "Escanee de manera angular el interior izquierdo del documento";
+"doc_scanner_side_inside_right_title" = "Escanee el interior derecho del documento";
+"doc_scanner_side_inside_right_angled_title" = "Escanee de manera angular el interior derecho del documento";
+"doc_scanner_side_undefined_title" = "Por favor, tome una foto de su identificación oficial.";
+
+// Upload
+"upload_data_title" = "Carga de datos";
+"upload_data_description" = "Tus datos se están cargando...";
+"upload_data_uploading" = "Cargando...";
+"upload_data_preparation" = "Prepara la carga de datos...";
+
+
+// Result
+"result_success_title" = "Enhorabuena";
+"result_success_description" = "Tus datos se han confirmado.";
+"result_failed_title" = "Vuelve a intentarlo...";
+"result_failed_description" = "El proceso de identificación ha fallado.";

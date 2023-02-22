@@ -78,10 +78,6 @@ final public class IdentHubSession {
         #endif
     }
     
-    deinit {
-        KYCContainer.removeSharedContainer()
-    }
-    
     /// Method starts BandID identification process with updating status by delegate
     /// - Parameter type: identification process session type: bankid, fourhline
     /// - Parameter delegate: object conforms process status delegate methods

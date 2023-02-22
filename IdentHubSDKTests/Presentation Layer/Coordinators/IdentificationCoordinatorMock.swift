@@ -27,7 +27,7 @@ class IdentificationCoordinatorMock: IdentificationCoordinator {
         super.init(appDependencies: appDependencies, presenter: router)
     }
     
-    /// Mocked method for testing performed action in fourthline coordinator
+    /// Mocked method for testing performed action in Identification coordinator
     /// - Parameter action: simulated action
     override func perform(action: Action) {
         performAction = action

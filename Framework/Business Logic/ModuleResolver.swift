@@ -19,6 +19,7 @@ internal class ModuleResolver {
         switch name {
         case .core: return core
         case .qes: return qes
+        case .fourthline: return fourthline
         case .bank: return bank
         }
     }
@@ -46,6 +47,11 @@ internal class ModuleResolver {
     lazy var bank: BankCoordinatorFactory? = {
         return moduleFactory
             .makeBank(serviceLocator: moduleServiceLocator(module: .bank))
+    }()
+
+    lazy var fourthline: FourthlineCoordinatorFactory? = {
+        return moduleFactory
+            .makeFourthline(serviceLocator: moduleServiceLocator(module: .fourthline))
     }()
 
     init(moduleFactory: ModuleFactory, serviceLocator: ServiceLocator) {

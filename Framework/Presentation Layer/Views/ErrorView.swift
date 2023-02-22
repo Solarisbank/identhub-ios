@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 /// UIView which displays an error and its description and button to handle the current state.
 final internal class ErrorView: UIView {

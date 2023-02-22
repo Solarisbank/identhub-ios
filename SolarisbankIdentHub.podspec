@@ -45,10 +45,6 @@ Pod::Spec.new do |spec|
   spec.resources = "Framework/**/*.{png,xib,storyboard,xcassets,lproj,strings}","Shared/Colors.xcassets"
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  spec.dependency 'FourthlineSDK', '2.16.0'
-  spec.dependency 'ZIPFoundation', '0.9.11'
-  spec.dependency 'InputMask', '6.1.0'
-  spec.dependency 'lottie-ios', '3.2.3'
   spec.dependency 'SolarisbankIdentHubCore', "#{spec.version}"
 
   spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

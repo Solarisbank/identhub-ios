@@ -10,10 +10,11 @@ public class ModuleFactoryMock: ModuleFactory {
     public var coreMock: CoreCoordinatorFactoryMock?
     public var qesMock: QESCoordinatorFactoryMock?
     public var bankMock: BankCoordinatorFactoryMock?
+    public var fourthlineMock: FourthlineCoordinatorFactoryMock?
     
     public init() {}
     
-    public func makeCore(serviceLocator: IdentHubSDKCore.ModuleServiceLocator) -> IdentHubSDKCore.CoreCoordinatorFactory? {
+    public func makeCore(serviceLocator: ModuleServiceLocator) -> CoreCoordinatorFactory? {
         coreMock
     }
 
@@ -21,7 +22,11 @@ public class ModuleFactoryMock: ModuleFactory {
         qesMock
     }
 
-    public func makeBank(serviceLocator: IdentHubSDKCore.ModuleServiceLocator) -> IdentHubSDKCore.BankCoordinatorFactory? {
+    public func makeBank(serviceLocator: ModuleServiceLocator) -> BankCoordinatorFactory? {
         bankMock
+    }
+    
+    public func makeFourthline(serviceLocator: ModuleServiceLocator) -> FourthlineCoordinatorFactory? {
+        fourthlineMock
     }
 }

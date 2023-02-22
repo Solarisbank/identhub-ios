@@ -9,6 +9,8 @@ public protocol ModuleFactory {
     func makeCore(serviceLocator: ModuleServiceLocator) -> CoreCoordinatorFactory?
     /// Creates instance of QES module
     func makeQES(serviceLocator: ModuleServiceLocator) -> QESCoordinatorFactory?
+    /// Creates instance of Fourthline module
+    func makeFourthline(serviceLocator: ModuleServiceLocator) -> FourthlineCoordinatorFactory?
     /// Creates instance of BANK module
     func makeBank(serviceLocator: ModuleServiceLocator) -> BankCoordinatorFactory?
 }

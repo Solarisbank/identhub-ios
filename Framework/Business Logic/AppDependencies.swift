@@ -26,7 +26,7 @@ final class AppDependencies {
     // MARK: Storage
 
     /// Service providing session info.
-    let sessionInfoProvider: StorageSessionInfoProvider
+    var sessionInfoProvider: StorageSessionInfoProvider
 
     // MARK: Init
 
@@ -34,5 +34,9 @@ final class AppDependencies {
         self.sessionInfoProvider = StorageSessionInfoProvider(sessionToken: sessionToken)
         self.presenter = presenter
         self.moduleFactory = moduleFactory
+    }
+    
+    func updateModuleResolver() {
+        moduleResolver = ModuleResolver(moduleFactory: moduleFactory, serviceLocator: serviceLocator)
     }
 }

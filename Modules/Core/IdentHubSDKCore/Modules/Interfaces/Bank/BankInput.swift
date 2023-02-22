@@ -7,13 +7,15 @@ import Foundation
 
 public struct BankInput {
     public let step: BankStep
+    public var sessionToken: String?
     public let retriesCount: Int
     public let fallbackIdentStep: IdentificationStep?
     public let identificationUID: String
     public let identificationStep: IdentificationStep?
     
-    public init(step: BankStep, retriesCount:Int, fallbackIdentStep: IdentificationStep?, identificationUID: String, identificationStep: IdentificationStep?) {
+    public init(step: BankStep, sessionToken: String?, retriesCount:Int, fallbackIdentStep: IdentificationStep?, identificationUID: String, identificationStep: IdentificationStep?) {
         self.step = step
+        self.sessionToken = sessionToken
         self.retriesCount = retriesCount
         self.fallbackIdentStep = fallbackIdentStep
         self.identificationUID = identificationUID

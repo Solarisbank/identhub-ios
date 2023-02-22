@@ -25,4 +25,8 @@ public extension Showable {
     func present(on presenter: Presenter, animated: Bool = true) {
         presenter.present(self, animated: animated)
     }
+    
+    func pop(on presenter: Presenter, animated: Bool = true) {
+        presenter.pop(self, animated: animated)
+    }
 }

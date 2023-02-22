@@ -8,14 +8,19 @@ workspace 'IdentHubSDK'
 use_frameworks!
 inhibit_all_warnings!
 
+def fourthline_pods
+  pod 'FourthlineSDK', '2.16.0'
+
+  # Fourthline dependencies
+  pod 'ZIPFoundation', '0.9.11'
+  pod 'lottie-ios', '3.2.3'
+end
+
+def bank_pods
+  pod 'InputMask', '6.1.0'
+end
+
 target 'IdentHubSDK' do
-pod 'FourthlineSDK', '2.16.0'
-
-# Fourthline dependencies
-pod 'ZIPFoundation', '0.9.11'
-pod 'lottie-ios', '3.2.3'
-
-pod 'InputMask', '6.1.0'
 end
 
 target 'IdentHubSDKTests' do
@@ -37,18 +42,29 @@ target 'IdentHubSDKQESSnapshotTests' do
   project 'Modules/QES/QES'
 end
 
+target 'IdentHubSDKFourthline' do
+  project 'Modules/IdentHubSDKFourthline/Fourthline'
+  fourthline_pods
+end
+
+target 'IdentHubSDKFourthlineTests' do
+  project 'Modules/IdentHubSDKFourthline/Fourthline'
+  fourthline_pods
+end
+
 target 'IdentHubSDKBank' do
   project 'Modules/IdentHubSDKBank/Bank'
-  
-  pod 'InputMask', '6.1.0'
+  bank_pods
 end
 
 target 'IdentHubSDKBankTests' do
   project 'Modules/IdentHubSDKBank/Bank'
-
+  bank_pods
 end
 
 target 'Sample' do
+  bank_pods
+  fourthline_pods
 end
 
 post_install do |installer|

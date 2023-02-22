@@ -6,11 +6,11 @@
 import Foundation
 
 final internal class CoreModule: Module, CoreCoordinatorFactory {
-   
+
     private let serviceLocator: ModuleServiceLocator
     private let verificationService: VerificationService
     private let storage: Storage
-    private let configuration: Configuration
+    private var configuration: Configuration
 
     init(
         serviceLocator: ModuleServiceLocator,
@@ -53,4 +53,7 @@ final internal class CoreModule: Module, CoreCoordinatorFactory {
         ).asAnyFlowCoordinator()
     }
 
+    func updateColors(colors: Colors) {
+        self.configuration = Configuration(colors: colors)
+    }
 }

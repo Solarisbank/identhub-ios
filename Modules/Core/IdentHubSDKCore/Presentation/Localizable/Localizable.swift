@@ -56,6 +56,14 @@ public enum Localizable {
         static let stay = "quitting_stay_action".localized()
     }
     
+    enum TermsConditions {
+        static let description = "terms_description".localized()
+        static let privacyText = "terms_privacy_text".localized()
+        static let termsText = "terms_terms_text".localized()
+        static let agreementLinks = "terms_agreement_links".localized()
+        static let continueBtn = "terms_continue_button".localized()
+    }
+    
     enum PhoneVerification {
         static let title = "phone_verification_title".localized()
         static let enterCode = "phone_verification_enter_code".localized()
@@ -78,4 +86,50 @@ public enum Localizable {
             static let requestCodeError = "request_tan_failed".localized()
         }
     }
+    
+    enum Initial {
+        static let title = "initial_title".localized()
+        static let description = ""
+        static let define = "initial_define".localized()
+        static let info = "initial_info".localized()
+        static let register = "initial_register".localized()
+        static let prefetch = "initial_prefetch".localized()
+    }
+    
+    public enum FetchData {
+        public static let title = "fetch_data_title".localized()
+        public static let description = ""
+        public static let person = "fetch_data_person".localized()
+        public static let location = "fetch_data_location".localized()
+        public static let ipAddress = "fetch_data_ip_address".localized()
+    }
+     
+    public enum Location {
+        public static let title = "location_title".localized()
+        public static let description = "location_description".localized()
+
+        public enum Error {
+            public static let title = "location_error_title".localized()
+            public static let message = "location_error_message".localized()
+        }
+    }
+    
+    public enum Zipper {
+        public enum Error {
+            public static let kycIsNotValid = "zipper_error_kyc_invalid".localized()
+            public static let zipFoundationNotImported = "zipper_error_zip_foundation_not_imported".localized()
+            public static let zipExceedMaximumSize = "zipper_error_zip_exceed_max_size".localized()
+            public static let cannotCreateZip = "zipper_error_cannot_create_zip".localized()
+            public static let notEnoughSpace = "zipper_error_not_enough_space".localized()
+            public static let unknown = "zipper_error_unknown".localized()
+            public static let alertTitle = "zipper_error_alert_title".localized()
+        }
+    }
+    
+    public enum Verification {
+        public static let title = "verification_title".localized()
+        public static let description = "verification_description".localized()
+        public static let processTitle = "verification_process_title".localized()
+    }
+    
 }

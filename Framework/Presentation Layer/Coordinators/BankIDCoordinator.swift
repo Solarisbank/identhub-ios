@@ -12,7 +12,7 @@ class BankIDCoordinator: BaseCoordinator {
     private let appDependencies: AppDependencies
     private var currentIdentStep: BankIDStep = .startIdentification
     private var completionHandler: CompletionHandler?
-    private var fourthlineCoordinator: FourthlineIdentCoordinator?
+    private var fourthlineCoordinator: FourthlineCoordinator?
     private var coordinatorPerformer: FlowCoordinatorPerformer
 
     // MARK: - Init methods -
@@ -76,7 +76,6 @@ class BankIDCoordinator: BaseCoordinator {
         bankLog.info("Starting bank id coordinator")
         
         completionHandler = completion
-        
         checkIdentificationStatusIfNeededAndProceed()
     }
 
@@ -108,7 +107,6 @@ extension BankIDCoordinator {
         do {
             let step = try JSONDecoder().decode(BankIDStep.self, from: restoreData)
             currentIdentStep = step
-            KYCContainer.shared.restoreData(appDependencies.sessionInfoProvider)
         } catch {
             bankLog.warn("Stored bank id step data decoding failed: \(error.localizedDescription).\nIdentification process would be started from beginning")
         }
@@ -280,6 +278,7 @@ private extension BankIDCoordinator {
         }
         let bankInput = BankInput(
             step: step,
+            sessionToken: appDependencies.sessionInfoProvider.sessionToken,
             retriesCount: appDependencies.sessionInfoProvider.retries,
             fallbackIdentStep: appDependencies.sessionInfoProvider.fallbackIdentificationStep,
             identificationUID: appDependencies.sessionInfoProvider.identificationUID ?? "",
@@ -293,7 +292,6 @@ private extension BankIDCoordinator {
             
             switch result {
             case .success(let output):
-                print("BANK output: \(output)")
                 switch output {
                 case .performQES(identID: let identUID):
                     self.appDependencies.sessionInfoProvider.identificationUID = identUID
@@ -319,18 +317,22 @@ private extension BankIDCoordinator {
     // MARK: - QES
 
     private func presentConfirmApplication(step: IdentificationStep) {
-        presentQES(step: .confirmAndSignDocuments, currentStep: step)
-        updateBankIDStep(step: .signDocuments(step: .confirmApplication))
+        DispatchQueue.main.async {
+            self.presentQES(step: .confirmAndSignDocuments, currentStep: step)
+            self.updateBankIDStep(step: .signDocuments(step: .confirmApplication))
+        }
     }
 
     private func presentSignDocuments() {
-        presentQES(step: .signDocuments)
-        updateBankIDStep(step: .signDocuments(step: .sign))
+        DispatchQueue.main.async {
+            self.presentQES(step: .signDocuments)
+            self.updateBankIDStep(step: .signDocuments(step: .sign))
+        }
     }
 
     private func presentQES(step: QESStep, currentStep: IdentificationStep = .unspecified) {
         guard let identificationUID = appDependencies.sessionInfoProvider.identificationUID else {
-            print("Error: No identificationUID")
+            bankLog.error("Cannot handle QESStep step: No identificationUID")
             return
         }
         guard let qes = appDependencies.moduleResolver.qes?.makeQESCoordinator() else {
@@ -378,39 +380,25 @@ private extension BankIDCoordinator {
     }
     
     // MARK: - Fourthline
-
+    
     private func presentFourthlineFlow() {
-        fourthlineCoordinator = FourthlineIdentCoordinator(appDependencies: appDependencies, presenter: presenter)
-
-        fourthlineCoordinator?.start { [weak self] result in
-            guard let self = self else {
-                bankLog.error("Cannot handle fourthline coordinator start completion. `self` is not present")
-                
-                return
-            }
-            
-            switch result {
-            case .success( _ ):
-                self.presentSignDocuments()
-            case .failure( _ ):
-                self.completionHandler?(result)
-            case .onConfirm( _ ):
-                bankLog.debug("Fourthline signing confirmed")
-            }
+        guard let completionHandler = completionHandler else {
+            bankLog.error("Cannot handle presentFourthlineFlow. BankIDCoordinator completionHandler is nil.")
+            return
         }
-
+       
+        fourthlineCoordinator = FourthlineCoordinator(appDependencies: appDependencies, presenter: presenter)
+        fourthlineCoordinator?.identificationStep = .fetchData
+        fourthlineCoordinator?.start(completionHandler)
+        
         fourthlineCoordinator?.nextStepHandler = { [weak self] nextStep in
             guard let self = self else {
                 bankLog.error("Cannot handle fourthline coordinator nextStepHandler. `self` is not present")
-                
                 return
             }
-            
             bankLog.info("Fourthline flow nextStepHandler. Performing step \(nextStep)")
-
             self.performIdentStep(step: nextStep)
         }
-
         updateBankIDStep(step: .nextStep(step: .bankIDFourthline))
     }
     

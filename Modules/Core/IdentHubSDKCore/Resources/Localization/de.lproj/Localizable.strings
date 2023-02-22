@@ -59,3 +59,43 @@
 "phone_verification_error_action" = "TAN-Verifizierung wiederholen";
 
 "iban_verification_iban" = "IBAN";
+
+// Initial
+"initial_title" = "Beginnen";
+"initial_define" = "Identifikationsmethode definieren...";
+"initial_info" = "Identifikationsdetails abrufen...";
+"initial_register" = "Identifikationsmethode registrieren...";
+"initial_prefetch" = "Daten vorab abrufen...";
+
+// Terms
+"terms_description" = "Um fortzufahren, lesen Sie bitte die Datenschutzerklärung und die allgemeinen Geschäftsbedingungen und stimmen Sie denen zu.";
+"terms_privacy_text" = "Datenschutzerklärung";
+"terms_terms_text" = "AGBs";
+"terms_agreement_links" = "Ich stimme der %1$@ und den %2$@ zu";
+"terms_continue_button" = "Weiter";
+
+// Fetch data
+"fetch_data_title" = "Daten abrufen";
+"fetch_data_person" = "Personendaten abrufen...";
+"fetch_data_location" = "Standortdaten abrufen...";
+"fetch_data_ip_address" = "IP-Addressdaten abrufen...";
+
+// Location
+"location_title" = "Gerätestandort";
+"location_description" = "Wir benötigen Ihren Gerätestandort, um fortzufahren.";
+"location_error_title" = "Geräteortung fehlgeschlagen";
+"location_error_message" = "Geräteortung fehlgeschlagen";
+
+// Zipper
+"zipper_error_kyc_invalid" = "KYC-Objekt ist ungültig wegen:";
+"zipper_error_zip_foundation_not_imported" = "ZIPFoundation Framework wurde nicht in das Projekt importiert.";
+"zipper_error_zip_exceed_max_size" = "ZIP-Datei überschreitet die maximale Dateigröße, bitte überprüfen Sie die API-Dokumentation.";
+"zipper_error_cannot_create_zip" = "ZIP kann nicht erstellt werden.";
+"zipper_error_not_enough_space" = "Nicht genug Speicherplatz.";
+"zipper_error_unknown" = "Unerwarteter Fehler ist aufgetreten.";
+"zipper_error_alert_title" = "ZIP-Erstellung fehlgeschlagen.";
+
+// Verification +
+"verification_title" = "Verifizierung";
+"verification_description" = "Bitte warten Sie bis die Verifizierung Ihrer Daten abgeschlossen ist…";
+"verification_process_title" = "Datenverifizierung…";

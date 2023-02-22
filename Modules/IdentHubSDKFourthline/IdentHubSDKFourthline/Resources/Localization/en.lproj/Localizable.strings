@@ -1,0 +1,111 @@
+
+// Welcome
+"welcome_page_title" = "Welcome";
+"welcome_start_button" = "Start";
+"welcome_camera_title" = "Smile for the camera";
+"welcome_camera_description" = "Your selfie will be compared to the one in your ID document. Don’t worry, it’s never going to see the light of day, promise!";
+"welcome_document_title" = "Scan your ID document";
+"welcome_document_description" = "With this we can make sure that you’re really who\nyou say you are and avoid identity theft.";
+"welcome_location_title" = "Submit your case";
+"welcome_location_description" = "Last thing you need to do is enabling your location\nand submitting your case!\nHow easy it that?";
+"welcome_page_acknowledgement" = "I acknowledge SAFENED Fourthline's privacy statement.";
+"welcome_page_fourthline_privacy" = "SAFENED Fourthline's privacy statement";
+
+// Selife
+"selfie_title" = "Take a selfie";
+"selfie_scanning" = "scanning...";
+"selfie_detected" = "face detected";
+"selfie_success" = "Scan Successful";
+"selfie_retake" = "Retake";
+"selfie_confirm" = "Confirm";
+"selfie_confirm_selfie" = "Confirm Selfie";
+"selfie_warning_face_not_in_frame" = "Fit face in frame";
+"selfie_warning_face_not_detected" = "Face not detected";
+"selfie_warning_face_too_close" = "Move the phone farther";
+"selfie_warning_face_too_far" = "Move the phone closer";
+"selfie_warning_face_camera_directly" = "Face the camera directly";
+"selfie_warning_multiple_faces_detected" = "Multiple faces detected";
+"selfie_warning_device_not_steady" = "Device not steady";
+"selfie_warning_looking_for_face" = "Looking for a face";
+"selfie_warning_unknown" = "Occurs unknown issue";
+"selfie_error_failed" = "Selfie failed";
+"selfie_error_timeout" = "Photo timed out";
+"selfie_error_face_disappeared" = "Face disappeared";
+"selfie_error_camer_permission" = "Camera permission required";
+"selfie_error_recording_failed" = "Something went wrong";
+"selfie_error_scanner_interrupted" = "Scanner was interrupted";
+"selfie_error_unknown" = "Something went wrong";
+"selfie_error_alert_title" = "Selfie scan failed";
+"selfie_error_alert_message" = "It was not possible to take your selfie.\n\nThis process is mandatory for your onboarding process.";
+"selfie_error_multiple_faces" = "Camera detects multiple faces. Please make sure you're scan single person face.";
+"selfie_error_reset_not_allowed" = "Session still active. Please continue.";
+"selfie_liveness_title" = "Liveness check";
+"selfie_liveness_checking" = "liveness check...";
+"selfie_liveness_confirm" = "liveness confirm";
+"selfie_liveness_faild" =  "liveness check failed";
+"selfie_liveness_turn_head_left" = "Turn your head left";
+"selfie_liveness_turn_head_right" = "Turn your head right";
+
+// Camera
+"camera_permission_error_title" = "Camera permission denied";
+"camera_permission_error_message" = "Scanner can't be started without camera permission; please allow it";
+"camera_error_message" = "ERROR: In order to use vision scanners you need to grant camera permission.";
+"camera_permission_not_granted" = "Camera permission required";
+
+// Document Scanner
+"doc_scanner_title" = "Your ID-document";
+"doc_scanner_description" = "choose your document type";
+"doc_scanner_passport" = "Passport";
+"doc_scanner_id_card" = "ID Card";
+"doc_scanner_paper_id" = "Paper ID";
+"doc_scanner_scan_successful" = "Scan successful";
+"doc_scanner_scanning" = "Scanning...";
+"doc_scanner_scan_failed" = "Scan failed";
+"doc_scanner_retake" = "Retake";
+"doc_scanner_confirm_result" = "Confirm the result";
+"doc_scanner_warning_device_not_steady" = "Device not steady";
+"doc_scanner_warning_too_dark" = "Too dark";
+"doc_scanner_warning_unkown" = "Something went wrong";
+"doc_scanner_error_interrupted" = "Scanner was interrupted";
+"doc_scanner_error_timeout" = "Scan timed out";
+"doc_scanner_error_alert_title" = "Document scan failed";
+"doc_scanner_error_alert_message" = "It was not possible to scan your document.\n\nThis process is mandatory for your onboarding process.";
+"doc_scanner_error_snapshot_not_allowed" = "Step take document snapshot is not active anymore.";
+"doc_scanner_error_step_not_finished" = "Step is not successfully finished.";
+"doc_scanner_error_reset_not_allowed" = "Step still active.";
+"doc_scanner_info_title" = "Document information";
+"doc_scanner_info_doc_number" = "document number";
+"doc_scanner_info_issue_date" = "date of issue";
+"doc_scanner_info_expire_date" = "document expiry date";
+"doc_scanner_info_warning" = "Please confirm if your data derived properly from the document scan";
+"doc_scanner_info_enter_data" = "Please enter";
+"doc_scanner_info_confirm_data" = "Please confirm";
+"doc_scanner_info_expire_date_message" = "Expiry date can not be in the past";
+
+// Document Scanner Side
+"doc_scanner_side_front_name" = "front";
+"doc_scanner_side_back_name" = "back";
+"doc_scanner_side_inside_left_name" = "inside left";
+"doc_scanner_side_inside_right_name" = "inside right";
+"doc_scanner_side_undefined_name" = "Document side not defined";
+"doc_scanner_side_front_title" = "Scan the front of the document";
+"doc_scanner_side_front_angled_title" = "Make a front picture of the document at an angle";
+"doc_scanner_side_back_title" = "Scan the back of the document";
+"doc_scanner_side_back_angled_title" = "Make a back picture of the document at an angle";
+"doc_scanner_side_inside_left_title" = "Scan the inside left of the document";
+"doc_scanner_side_inside_left_angled_title" = "Scan the inside left of the document at an angle";
+"doc_scanner_side_inside_right_title" = "Scan the inside right of the document";
+"doc_scanner_side_inside_right_angled_title" = "Scan the inside right of the document at an angle";
+"doc_scanner_side_undefined_title" = "Please take a picture of the document";
+
+// Upload
+"upload_data_title" = "Data upload";
+"upload_data_description" = "Your data is being uploaded...";
+"upload_data_uploading" = "Uploading...";
+"upload_data_preparation" = "Prepare upload data...";
+
+// Result
+"result_success_title" = "Congratulations";
+"result_success_description" = "Your data was confirmed.";
+"result_failed_title" = "Please try again…";
+"result_failed_description" = "Identification process fails.";

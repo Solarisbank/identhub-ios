@@ -7,6 +7,14 @@ import Foundation
 
 internal protocol VerificationService: AnyObject {
     
+    /// Method defined what the identification method should execute
+    /// - Parameter completionHandler: Response with enabled identification methods
+    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void)
+    
+    /// Method obtains identification process info details
+    /// - Parameter completionHandler: Response with identification details
+    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void)
+    
     /// Authorize mobile number and send sms with a TAN.
     /// - Parameter completionHandler: Response back if the verification was successful.
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void)
@@ -31,6 +39,24 @@ final class VerificationServiceImpl: VerificationService {
 
     init(apiClient: APIClient) {
         self.apiClient = apiClient
+    }
+    
+    // MARK: Protocol methods
+
+    func defineIdentificationMethod(completionHandler: @escaping (Result<IdentificationMethod, ResponseError>) -> Void) {
+        let request = IdentificationMethodRequest()
+        
+        apiClient.execute(request: request, answerType: IdentificationMethod.self) { result in
+            completionHandler(result)
+        }
+    }
+
+    func obtainIdentificationInfo(completionHandler: @escaping (Result<IdentificationInfo, ResponseError>) -> Void) {
+        let request = IdentificationInfoRequest()
+        
+        apiClient.execute(request: request, answerType: IdentificationInfo.self) { result in
+            completionHandler(result)
+        }
     }
     
     func authorizeMobileNumber(completionHandler: @escaping (Result<MobileNumber, ResponseError>) -> Void) {

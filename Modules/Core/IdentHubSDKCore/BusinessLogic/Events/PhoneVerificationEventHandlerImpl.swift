@@ -19,7 +19,7 @@ internal struct PhoneVerificationInput {
 
 typealias PhoneVerificationCallback = (Result<PhoneVerificationOutput, APIError>) -> Void
 
-final internal class PhoneVerificationEventHandlerImpl<ViewController: UpdateableShowable>: EventHandler where ViewController.EventHandler == AnyEventHandler<PhoneVerificationEvent>, ViewController.ViewState == PhoneVerificationState {
+final class PhoneVerificationEventHandlerImpl<ViewController: UpdateableShowable>: EventHandler where ViewController.EventHandler == AnyEventHandler<PhoneVerificationEvent>, ViewController.ViewState == PhoneVerificationState {
     
     enum Constants {
         static var updateTimerInterval: TimeInterval { 1.0 }
@@ -29,24 +29,25 @@ final internal class PhoneVerificationEventHandlerImpl<ViewController: Updateabl
     
     private let verificationService: VerificationService
     private var state: PhoneVerificationState
-    private var input: PhoneVerificationInput
     private var storage: Storage
     private var callback: PhoneVerificationCallback
+    
+    let sessionInfoProvider: StorageSessionInfoProvider
     
     private var requestTimer: Timer?
     private var counts = 20
     
     init(
         verificationService: VerificationService,
-        input: PhoneVerificationInput,
         storage: Storage,
+        session: StorageSessionInfoProvider,
         callback: @escaping PhoneVerificationCallback
     ) {
         self.verificationService = verificationService
-        self.input = input
         self.storage = storage
         self.callback = callback
         self.state = PhoneVerificationState()
+        self.sessionInfoProvider = session
     }
     
     deinit {
@@ -100,8 +101,6 @@ final internal class PhoneVerificationEventHandlerImpl<ViewController: Updateabl
             switch result {
             case .success(let response):
                 if response.verified {
-                    // TO DO: Uncomment next line to proper storage
-                    // self.sessionStorage.phoneVerified = true
                     self.updateState { state in
                         state.state = .success
                     }

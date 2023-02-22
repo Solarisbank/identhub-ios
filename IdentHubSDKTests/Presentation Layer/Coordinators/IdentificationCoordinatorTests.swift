@@ -32,6 +32,7 @@ class IdentificationCoordinatorTests: BaseTestCase {
     
     func testPerformInitAction() throws {
         let sut = try makeSUT()
+        sut.start({ _ in })
         sut.perform(action: .initialization)
         
         executeAsyncTest {
@@ -42,6 +43,7 @@ class IdentificationCoordinatorTests: BaseTestCase {
 
     func testPerformTermsAndConditionsAction() throws {
         let sut = try makeSUT()
+        sut.start({ _ in })
         sut.perform(action: .termsAndConditions)
         
         executeAsyncTest {
@@ -52,6 +54,7 @@ class IdentificationCoordinatorTests: BaseTestCase {
 
     func testPerformIdentificationAction() throws {
         let sut = try makeSUT()
+        sut.start({ _ in })
         sut.perform(action: .identification)
         
         executeAsyncTest {
@@ -64,6 +67,7 @@ class IdentificationCoordinatorTests: BaseTestCase {
         let modularizableMock = ModularizableMock(requiredModules: .init(arrayLiteral: .qes))
         let sut = try makeSUT()
         
+        moduleFactory.coreMock = CoreCoordinatorFactoryMock()
         moduleFactory.qesMock = QESCoordinatorFactoryMock()
         
         assertAsync { expectation in
@@ -79,6 +83,8 @@ class IdentificationCoordinatorTests: BaseTestCase {
         let modularizableMock = ModularizableMock(requiredModules: .init(arrayLiteral: .qes))
         let sut = try makeSUT()
 
+        moduleFactory.coreMock = CoreCoordinatorFactoryMock()
+        
         assertAsync { expectation in
             sut.start({ result in
                 XCTAssertEqual(result, .failure(.modulesNotFound(["qes"])))
@@ -91,15 +97,17 @@ class IdentificationCoordinatorTests: BaseTestCase {
     func testValidateModulesFailedFallbackStepNotSupported() throws {
         let identificationMethod = IdentificationMethod(firstStep: .partnerFallback, fallbackStep: .fourthlineQES, retries: 1, fourthlineProvider: nil)
         let sut = try makeSUT()
+        moduleFactory.coreMock = CoreCoordinatorFactoryMock()
 
         XCTAssertEqual(identificationMethod.firstStep.requiredModules, [])
-        XCTAssertEqual(identificationMethod.fallbackStep?.requiredModules, [.qes])
+        XCTAssertEqual(identificationMethod.fallbackStep?.requiredModules, [.fourthline, .qes])
 
         assertAsync { expectation in
             sut.start({ result in
-                XCTAssertEqual(result, .failure(.modulesNotFound(["qes"])))
+                XCTAssertEqual(result, .failure(.modulesNotFound(["fourthline", "qes"])))
                 expectation.fulfill()
             })
+            
             sut.validateModules(for: identificationMethod)
         }
     }

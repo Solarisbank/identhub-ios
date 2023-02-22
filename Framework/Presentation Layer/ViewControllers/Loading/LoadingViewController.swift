@@ -63,6 +63,7 @@ final class LoadingViewController: UIViewController, Quitable {
     
     private func setUpProgressView() {
         view.addSubview(progressView)
+        progressView.animateProgress.color = colors[.primaryAccent]
              
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

@@ -10,6 +10,7 @@ private extension RuntimeModuleFactory {
     private enum Configuration {
         static let COREModuleClassName = "IdentHubSDKCore.CoreModule"
         static let QESModuleClassName = "IdentHubSDKQES.QESModule"
+        static let FourthlineClassName = "IdentHubSDKFourthline.FourthlineModule"
         static let BankModuleClassName = "IdentHubSDKBank.BankModule"
     }
 }
@@ -21,11 +22,15 @@ public final class RuntimeModuleFactory: ModuleFactory {
         makeModule(with: Configuration.QESModuleClassName, serviceLocator: serviceLocator)
     }
     
+    public func makeFourthline(serviceLocator: ModuleServiceLocator) -> FourthlineCoordinatorFactory? {
+        makeModule(with: Configuration.FourthlineClassName, serviceLocator: serviceLocator)
+    }
+    
     public func makeBank(serviceLocator: ModuleServiceLocator) -> BankCoordinatorFactory? {
         makeModule(with: Configuration.BankModuleClassName, serviceLocator: serviceLocator)
     }
     
-    public func makeCore(serviceLocator: IdentHubSDKCore.ModuleServiceLocator) -> CoreCoordinatorFactory? {
+    public func makeCore(serviceLocator: ModuleServiceLocator) -> CoreCoordinatorFactory? {
         makeModule(with: Configuration.COREModuleClassName, serviceLocator: serviceLocator)
     }
 

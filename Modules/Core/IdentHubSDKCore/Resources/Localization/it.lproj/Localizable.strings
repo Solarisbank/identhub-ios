@@ -59,3 +59,43 @@
 "phone_verification_error_action" = "Ripetere la verifica TAN";
 
 "iban_verification_iban" = "IBAN";
+
+// Initial
+"initial_title" = "Inizio";
+"initial_define" = "Definire il metodo di identificazione...";
+"initial_info" = "Ottieni i dettagli di identificazione ...";
+"initial_register" = "Metodo di identificazione del registro ...";
+"initial_prefetch" = "Ottieni i dati in anticipo ...";
+
+// Terms
+"terms_description" = "Per continuare, leggi e accetta l'informativa sulla privacy e i Termini & Condizioni.";
+"terms_privacy_text" = "Protezione dati";
+"terms_terms_text" = "Termini e Condizioni";
+"terms_agreement_links" = "Accetto %1$@ e %2$@";
+"terms_continue_button" = "Continua";
+
+// Fetch data
+"fetch_data_title" = "Richiama i dati";
+"fetch_data_person" = "Recupera i dati personali...";
+"fetch_data_location" = "Ottieni dati sulla posizione...";
+"fetch_data_ip_address" = "Ottieni i dati dell'indirizzo IP...";
+
+// Location
+"location_title" = "Posizione del dispositivo";
+"location_description" = "Abbiamo bisogno della posizione del tuo dispositivo per continuare.";
+"location_error_title" = "Localizzazione del dispositivo non riuscita";
+"location_error_message" = "Localizzazione del dispositivo non riuscita";
+
+// Zipper
+"zipper_error_kyc_invalid" = "L'oggetto KYC non è valido a causa di:";
+"zipper_error_zip_foundation_not_imported" = "ZIPFoundation Framework non è stato importato nel progetto.";
+"zipper_error_zip_exceed_max_size" = "Il file ZIP supera la dimensione massima del file, controlla la documentazione API.";
+"zipper_error_cannot_create_zip" = "ZIP non può essere creato.";
+"zipper_error_not_enough_space" = "Spazio non sufficiente.";
+"zipper_error_unknown" = "Si è verificato un errore imprevisto.";
+"zipper_error_alert_title" = "Creazione ZIP non riuscita.";
+
+// Verification
+"verification_title" = "Verifica";
+"verification_description" = "Attendi il completamento della verifica dei tuoi dati...";
+"verification_process_title" = "Verifica dei dati...";

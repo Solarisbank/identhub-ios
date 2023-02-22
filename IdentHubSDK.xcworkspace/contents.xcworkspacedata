@@ -16,4 +16,7 @@
    <FileRef
       location = "group:Modules/QES/QES.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Modules/IdentHubSDKFourthline/Fourthline.xcodeproj">
+   </FileRef>
 </Workspace>

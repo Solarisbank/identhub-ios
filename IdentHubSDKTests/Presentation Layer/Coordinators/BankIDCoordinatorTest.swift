@@ -88,4 +88,5 @@ class RouterMock: Router {
     func push(_ module: Showable, animated: Bool, completion: (() -> Void)?) {}
     func pop(animated: Bool) {}
     
+    func pop(_ showable: Showable, animated: Bool) { }
 }

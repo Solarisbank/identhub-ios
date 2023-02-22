@@ -8,6 +8,7 @@ import IdentHubSDKCore
 public enum ModuleName: String, CaseIterable {
     case core
     case qes
+    case fourthline
     case bank
 }
 

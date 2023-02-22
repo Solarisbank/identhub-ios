@@ -54,9 +54,21 @@ final internal class BankCoordinatorImpl: BankCoordinator {
         }
     }
     
-    func setStorageValue() {
+    private func setStorageValue() {
+        resetToken()
         storage[.retriesCount] = input.retriesCount
         storage[.fallbackIdentStep] = input.fallbackIdentStep
+    }
+    
+    private func resetToken() {
+        if let token = storage[.token] {
+            if input.sessionToken != token {
+                storage.clear()
+            }
+        } else {
+            storage.clear()
+        }
+        storage[.token] = input.sessionToken
     }
     
     private func presentIBANVerification() -> Showable? {

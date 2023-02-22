@@ -59,3 +59,43 @@
 "phone_verification_error_action" = "Retry TAN verification";
 
 "iban_verification_iban" = "IBAN";
+
+// Initial
+"initial_title" = "Initiate";
+"initial_define" = "Define identification method...";
+"initial_info" = "Obtain identification details...";
+"initial_register" = "Register identification method...";
+"initial_prefetch" = "Prefetch data...";
+
+// Terms
+"terms_description" = "In order to proceed, please carefully read and agree to the Privacy Statement and Terms & Conditions policies";
+"terms_privacy_text" = "Privacy Statement";
+"terms_terms_text" = "Terms & Conditions";
+"terms_agreement_links" = "I agree to the %1$@ and %2$@";
+"terms_continue_button" = "Continue";
+
+// Fetch data
+"fetch_data_title" = "Fetch data";
+"fetch_data_person" = "Fetch person data...";
+"fetch_data_location" = "Fetch location data...";
+"fetch_data_ip_address" = "Fetch IP-address data...";
+
+// Location
+"location_title" = "Device location";
+"location_description" = "We need your device location to continue.";
+"location_error_title" = "Device location failed";
+"location_error_message" = "Device location failed";
+
+// Zipper
+"zipper_error_kyc_invalid" = "KYC object is not valid because of:";
+"zipper_error_zip_foundation_not_imported" = "ZIPFoundation framework in not imported into project";
+"zipper_error_zip_exceed_max_size" = "ZIP file exceeding the maximum file size, please check the API documentation";
+"zipper_error_cannot_create_zip" = "Cannot create the Zip";
+"zipper_error_not_enough_space" = "Not enough space";
+"zipper_error_unknown" = "Unexpected error occurred";
+"zipper_error_alert_title" = "ZIP creation failed";
+
+// Verification
+"verification_title" = "Verification";
+"verification_description" = "Please wait for verification…";
+"verification_process_title" = "Data verification…";

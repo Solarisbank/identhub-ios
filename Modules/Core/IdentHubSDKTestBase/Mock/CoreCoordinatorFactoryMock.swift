@@ -12,4 +12,5 @@ public struct CoreCoordinatorFactoryMock: CoreCoordinatorFactory {
         return FlowCoordinatorMock<CoreInput, CoreOutput, APIError>().asAnyFlowCoordinator()
     }
     
+    public func updateColors(colors: IdentHubSDKCore.Colors) {}
 }

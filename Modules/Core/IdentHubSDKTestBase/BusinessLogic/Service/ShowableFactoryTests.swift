@@ -21,7 +21,7 @@ final class ShowableFactoryTests: XCTestCase {
     }
 
     func testActionsCreation() {
-        XCTAssertNotNil(sut.makePhoneVerificationShowable(input: .init(identificationStep: .mobileNumber), callback: { _ in }))
+        XCTAssertNotNil(sut.makePhoneVerificationShowable(session: .init(sessionToken: ""), callback: { _ in }))
     }
 
 }

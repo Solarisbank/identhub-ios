@@ -108,7 +108,7 @@ extension PhoneVerificationViewController {
             countDownTimeLabel.isHidden = false
             requestNewCodeBtn.isHidden = true
             errorMessageHeightConstraint.constant = 0
-            submitCodeBtn.currentAppearance = .inactive
+            submitCodeBtn.setAppearance(.inactive, colors: colors)
             codeEntryView.state = .normal
             codeEntryView.clearCodeEntries()
             errorLabel.isHidden = true

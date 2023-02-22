@@ -11,6 +11,7 @@ final class PhoneVerificationEventHandlerTests: XCTestCase {
     
     private var verificationService: VerificationServiceMock!
     private var storage: StorageMock!
+    private var session: StorageSessionInfoProvider!
     private let code = "012345"
     private let mobileNumber = "+0112345678"
     
@@ -18,6 +19,7 @@ final class PhoneVerificationEventHandlerTests: XCTestCase {
         super.setUp()
         verificationService = VerificationServiceMock()
         storage = StorageMock()
+        session = StorageSessionInfoProvider(sessionToken: "token")
     }
     
     override func tearDown() {
@@ -59,7 +61,6 @@ final class PhoneVerificationEventHandlerTests: XCTestCase {
         return showable
     }
     
-    
     private func makeSut(
         for showable: UpdateableShowableMock,
         input: PhoneVerificationInput,
@@ -67,8 +68,8 @@ final class PhoneVerificationEventHandlerTests: XCTestCase {
     ) {
         let sut = PhoneVerificationEventHandlerImpl<UpdateableShowableMock>(
             verificationService: verificationService,
-            input: input,
             storage: storage,
+            session: session,
             callback: callback
         )
         showable.eventHandler = sut.asAnyEventHandler()

@@ -59,3 +59,43 @@
 "phone_verification_error_action" = "Réessayer la vérification TAN";
 
 "iban_verification_iban" = "IBAN";
+
+// Initial
+"initial_title" = "Démarrer";
+"initial_define" = "Définir la méthode d’identification...";
+"initial_info" = "Obtenir les détails de l’identification";
+"initial_register" = "Enregistrer la méthode d’identification...";
+"initial_prefetch" = "Préchargement des données...";
+
+// Terms
+"terms_description" = "Afin de poursuivre, veuillez lire attentivement et accepter la déclaration de confidentialité et les conditions générales d’utilisation";
+"terms_privacy_text" = "Déclaration de confidentialité";
+"terms_terms_text" = "Conditions générales";
+"terms_agreement_links" = "J’accepte la %1$@ et les %2$@";
+"terms_continue_button" = "Continuer";
+
+// Fetch data
+"fetch_data_title" = "Récupérer les données";
+"fetch_data_person" = "Récupération des données de la personne...";
+"fetch_data_location" = "Récupération des données de localisation...";
+"fetch_data_ip_address" = "Récupération des données de l’adresse IP...";
+
+// Location
+"location_title" = "Localisation de l’appareil";
+"location_description" = "Nous avons besoin de la localisation de votre appareil pour continuer.";
+"location_error_title" = "Échec de la localisation de l’appareil";
+"location_error_message" = "Échec de la localisation de l’appareil";
+
+// Zipper
+"zipper_error_kyc_invalid" = "L’objet KYC n’est pas valide, en raison de :";
+"zipper_error_zip_foundation_not_imported" = "Le cadre ZIPFoundation n’est pas importé dans le projet";
+"zipper_error_zip_exceed_max_size" = "Fichier ZIP dépassant la taille maximale du fichier, veuillez consulter la documentation de l’API";
+"zipper_error_cannot_create_zip" = "Impossible de créer le Zip";
+"zipper_error_not_enough_space" = "Pas assez d’espace";
+"zipper_error_unknown" = "Une erreur inattendue s’est produite";
+"zipper_error_alert_title" = "La création du ZIP a échoué";
+
+// Verification
+"verification_title" = "Vérification";
+"verification_description" = "Veuillez attendre la vérification..";
+"verification_process_title" = "Date de vérification...";

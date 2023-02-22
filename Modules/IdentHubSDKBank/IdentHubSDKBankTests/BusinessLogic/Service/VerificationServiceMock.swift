@@ -23,7 +23,7 @@ final internal class VerificationServiceMock: VerificationService {
         self.recorder = recorder
     }
     
-    func verifyIBAN(_ iban: String, _ step: IdentHubSDKCore.IdentificationStep, completionHandler: @escaping (Result<IdentHubSDKCore.Identification, IdentHubSDKCore.ResponseError>) -> Void) {
+    func verifyIBAN(_ iban: String, _ step: IdentificationStep, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         
         verifyIBANCallsCount += 1
         verifyIBANArguments.append((iban, completionHandler))
@@ -34,7 +34,7 @@ final internal class VerificationServiceMock: VerificationService {
         }
     }
     
-    func getIdentification(for identificationUID: String, completionHandler: @escaping (Result<IdentHubSDKCore.Identification, IdentHubSDKCore.ResponseError>) -> Void) {
+    func getIdentification(for identificationUID: String, completionHandler: @escaping (Result<Identification, ResponseError>) -> Void) {
         recorder?.record(event: .service, caller: self, arguments: identificationUID)
         
         getIdentificationCallsCount += 1

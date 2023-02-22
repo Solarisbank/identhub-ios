@@ -120,7 +120,17 @@ class IdentHubSDKRouter: NSObject, Router {
             runCompletion(for: controller)
         }
     }
-
+    
+    func pop(_ showable: Showable, animated: Bool) {
+        navLog.info("Popping view controller...")
+        
+        if let controller = navigationController.popViewController(animated: animated) {
+            navLog.info("Popped view controller \(controller)")
+            
+            runCompletion(for: controller)
+        }
+    }
+    
     // MARK: - Internal methods -
 
     /// Method executes stored completion block of the controller in stack/view

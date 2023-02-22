@@ -10,7 +10,7 @@ let stepsAmount = 4
 
 /// Identificaiton progress step views
 /// Used for informing user how many steps was passed
-final class StepsProgressView: UIView {
+public final class StepsProgressView: UIView {
 
     // MARK: - Properties methods -
     var datasource: StepsProgressViewDataSource? {
@@ -24,7 +24,7 @@ final class StepsProgressView: UIView {
     private var stepViews: [UIView] = []
 
     // MARK: - Lifecycle methods -
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
 
         updateLayouts()

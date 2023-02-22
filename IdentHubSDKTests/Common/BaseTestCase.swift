@@ -5,6 +5,7 @@
 
 import XCTest
 @testable import IdentHubSDK
+import IdentHubSDKCore
 
 class BaseTestCase: XCTestCase {
 

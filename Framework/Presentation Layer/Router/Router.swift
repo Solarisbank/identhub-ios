@@ -18,3 +18,9 @@ protocol Router: Presenter {
     func push(_ module: Showable, animated: Bool, completion: (() -> Void)?)
     func pop(animated: Bool)
 }
+
+extension Router {
+    func isNavigationControllersEmpty() -> Bool {
+        return navigationController.viewControllers.isEmpty
+    }
+}

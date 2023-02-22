@@ -6,6 +6,7 @@
 import XCTest
 @testable import IdentHubSDK
 import IdentHubSDKTestBase
+import IdentHubSDKCore
 
 class VerificationServiceTests: XCTestCase {
 
@@ -87,24 +88,6 @@ class VerificationServiceTests: XCTestCase {
         XCTAssertTrue(apiClient.executeCommandCalled, "Get identification request wasn't executed")
         XCTAssertEqual(apiClient.inputRequest?.method, .get, "Get identification request HTTP method is not correct")
         XCTAssertEqual(apiClient.inputRequest?.path, request, "Get identification request path is not correct")
-    }
-
-    /// Method download document task
-    /// Method used fake doc identifier value for building custom request path
-    /// Method tests:
-    ///  - downloading method status
-    ///  - type of request
-    ///  - loading server path
-    func testGetDocument() {
-        let sut = makeSUT()
-        let docID = "9536e7a3da5a00f15670ef5f459984e4cper"
-        let request = String(describing: "/sign_documents/\(docID)/download")
-
-        sut.getDocument(documentId: docID, completionHandler: { _ in })
-
-        XCTAssertTrue(apiClient.downloadCommandCalled, "Get identification download command wasn't executed")
-        XCTAssertEqual(apiClient.inputRequest?.method, .get, "Get document request HTTP method is not correct")
-        XCTAssertEqual(apiClient.inputRequest?.path, request, "Get document request path is not correct")
     }
     
     /// Method tested fetching Fourthline simplified identification detail information request and modelf

@@ -8,7 +8,7 @@ import IdentHubSDKCore
 public struct BankCoordinatorFactoryMock: BankCoordinatorFactory {
     public init() {}
     
-    public func makeBankCoordinator() -> IdentHubSDKCore.AnyFlowCoordinator<IdentHubSDKCore.BankInput, IdentHubSDKCore.BankOutput, IdentHubSDKCore.APIError> {
+    public func makeBankCoordinator() -> AnyFlowCoordinator<BankInput, BankOutput, APIError> {
         FlowCoordinatorMock<BankInput, BankOutput, APIError>().asAnyFlowCoordinator()
     }
 

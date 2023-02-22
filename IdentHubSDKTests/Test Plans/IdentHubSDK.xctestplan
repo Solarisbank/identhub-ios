@@ -42,6 +42,13 @@
         "identifier" : "67CADD6028EEDCB6004BA73D",
         "name" : "IdentHubSDKBankTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/IdentHubSDKFourthline\/Fourthline.xcodeproj",
+        "identifier" : "674927FB291D2FE400B8D7BA",
+        "name" : "IdentHubSDKFourthlineTests"
+      }
     }
   ],
   "version" : 1

@@ -14,4 +14,10 @@ public protocol Presenter {
 
     /// Presents showable
     func present(_ showable: Showable, animated: Bool)
+    
+    /// Pop showable
+    func pop(_ showable: Showable, animated: Bool)
+    
+    /// - Returns: Navigation stack has only available controller?
+    func isNavigationControllersEmpty() -> Bool
 }
