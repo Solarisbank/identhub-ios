@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
 
 spec.name         = "SolarisbankIdentHubBank"
 spec.module_name  = "IdentHubSDKBank"
-spec.version      = "1.4.0"
+spec.version      = "1.5.0"
 spec.summary      = "Solaris IdentHub SDK for iOS - Bank Module"
 
 spec.description = <<-DESC

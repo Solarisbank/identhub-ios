@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
 
   spec.name    = "SolarisbankIdentHubQES"
   spec.module_name = "IdentHubSDKQES"
-  spec.version = "1.4.0"
+  spec.version = "1.5.0"
   spec.summary = "Solaris IdentHub SDK for iOS - QES Module"
 
   spec.description = <<-DESC

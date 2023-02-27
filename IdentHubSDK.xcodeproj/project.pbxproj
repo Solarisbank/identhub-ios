@@ -1590,7 +1590,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 2KN57PSNL5;
+				DEVELOPMENT_TEAM = "";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1598,11 +1598,11 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.5.0;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.4.0;
+				_BUILD_VERSION = 1.5.0;
 				_BUNDLE_TESTABLE = YES;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
@@ -1618,7 +1618,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 2KN57PSNL5;
+				DEVELOPMENT_TEAM = "";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1626,10 +1626,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.5.0;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.4.0;
+				_BUILD_VERSION = 1.5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Release;
@@ -1739,7 +1739,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 2KN57PSNL5;
+				DEVELOPMENT_TEAM = "";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1747,10 +1747,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.5.0;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.4.0;
+				_BUILD_VERSION = 1.5.0;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Staging;
