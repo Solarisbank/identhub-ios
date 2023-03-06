@@ -119,6 +119,7 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
             case .success(let response):
                 self.storage[.identificationUID] = response.identificationID
                 self.sessionInfoProvider.identificationUID = response.identificationID
+                FileManager.default.deleteFourthlineFiles()
                 self.fetchPersonalData()
             case .failure(let error):
                 self.updateState { state in

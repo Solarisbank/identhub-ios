@@ -141,6 +141,11 @@ internal enum Localizable {
             static let confirmData = "doc_scanner_info_confirm_data".localized()
             static let expireDateMessage = "doc_scanner_info_expire_date_message".localized()
         }
+        
+        enum Healthcard {
+            static let title = "doc_scanner_healthcard_title".localized()
+            static let description = "doc_scanner_healthcard_description".localized()
+        }
     }
     
     enum Initial {

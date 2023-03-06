@@ -30,6 +30,7 @@ public enum FourthlineStep: Codable, Equatable {
   //  case documentScanner(type: DocumentType) // Present document scanner for document with type: passport, idCard, etc.
     case documentScanner(type: FourthlineDocumentType) // Present document scanner for document with type: passport, idCard, etc.
     case documentInfo // Verify and confirm scanned document detail
+    case instruction // Secondary document Instruction
     case upload // Upload collected data to the server
     case confirmation // Confirm or fail user identification request
     case result(result: FourthlineIdentificationStatus) // Result screen with result status
@@ -47,6 +48,7 @@ public enum FourthlineStep: Codable, Equatable {
         case documentPicker
         case documentScannerType
         case documentInfo
+        case instruction
         case upload
         case confirmation
         case resultStatus
@@ -77,6 +79,9 @@ public enum FourthlineStep: Codable, Equatable {
             return
         } else if let _ = try? values.decode(Bool.self, forKey: .documentInfo) {
             self = .documentInfo
+            return
+        } else if let _ = try? values.decode(Bool.self, forKey: .instruction) {
+            self = .instruction
             return
         } else if let _ = try? values.decode(Bool.self, forKey: .upload) {
             self = .upload
@@ -115,6 +120,8 @@ public enum FourthlineStep: Codable, Equatable {
             try container.encode(type.rawValue, forKey: .documentScannerType)
         case .documentInfo:
             try container.encode(true, forKey: .documentInfo)
+        case .instruction:
+            try container.encode(true, forKey: .instruction)
         case .upload:
             try container.encode(true, forKey: .upload)
         case .confirmation:

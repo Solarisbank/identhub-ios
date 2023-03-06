@@ -56,6 +56,9 @@
 		67911AEA293644B90099BDD5 /* IPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67911AE9293644B90099BDD5 /* IPAddressRequest.swift */; };
 		67911AFA293720450099BDD5 /* FourthlineIdentificationStatusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67911AF9293720450099BDD5 /* FourthlineIdentificationStatusRequest.swift */; };
 		6793382E293F37290039E58A /* UploadKYCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793382D293F37290039E58A /* UploadKYCRequest.swift */; };
+		6796CDD4299F85B400AFBD5C /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796CDD2299F85B400AFBD5C /* InstructionViewController.swift */; };
+		6796CDD5299F85B400AFBD5C /* InstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6796CDD3299F85B400AFBD5C /* InstructionViewController.xib */; };
+		6796CDD7299FA8E200AFBD5C /* InstructionHandlerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796CDD6299FA8E200AFBD5C /* InstructionHandlerImpl.swift */; };
 		679C0EC3292BB21500C95256 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679C0EC2292BB21500C95256 /* LocationManager.swift */; };
 		67AD5BA5292C907C004106D2 /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD5BA4292C907C004106D2 /* DocumentScannerViewController.swift */; };
 		67AD5BAA292C9BE2004106D2 /* DocumentScannerAssetSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD5BA9292C9BE2004106D2 /* DocumentScannerAssetSizing.swift */; };
@@ -172,6 +175,9 @@
 		67911AE9293644B90099BDD5 /* IPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressRequest.swift; sourceTree = "<group>"; };
 		67911AF9293720450099BDD5 /* FourthlineIdentificationStatusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationStatusRequest.swift; sourceTree = "<group>"; };
 		6793382D293F37290039E58A /* UploadKYCRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadKYCRequest.swift; sourceTree = "<group>"; };
+		6796CDD2299F85B400AFBD5C /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		6796CDD3299F85B400AFBD5C /* InstructionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionViewController.xib; sourceTree = "<group>"; };
+		6796CDD6299FA8E200AFBD5C /* InstructionHandlerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionHandlerImpl.swift; sourceTree = "<group>"; };
 		679C0EC2292BB21500C95256 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		67AD5BA4292C907C004106D2 /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		67AD5BA9292C9BE2004106D2 /* DocumentScannerAssetSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerAssetSizing.swift; sourceTree = "<group>"; };
@@ -307,6 +313,7 @@
 		6732B8FB2922796500B3D037 /* Document */ = {
 			isa = PBXGroup;
 			children = (
+				6796CDCE299F853800AFBD5C /* Instruction */,
 				6729EEB429251A8000FF0E9F /* Info */,
 				6729EEA52925149E00FF0E9F /* Scanner */,
 				6732B8FC2922797200B3D037 /* Picker */,
@@ -499,6 +506,7 @@
 				67F114F2292E379B00319D93 /* SelfieEventHandlerImpl.swift */,
 				670F118929308EE5001FF15A /* RequestsEventHandlerImpl.swift */,
 				67FE719C2952CC54007C89EF /* ResultEventHandlerImpl.swift */,
+				6796CDD6299FA8E200AFBD5C /* InstructionHandlerImpl.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -523,6 +531,15 @@
 				6793382D293F37290039E58A /* UploadKYCRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		6796CDCE299F853800AFBD5C /* Instruction */ = {
+			isa = PBXGroup;
+			children = (
+				6796CDD2299F85B400AFBD5C /* InstructionViewController.swift */,
+				6796CDD3299F85B400AFBD5C /* InstructionViewController.xib */,
+			);
+			path = Instruction;
 			sourceTree = "<group>";
 		};
 		679C0EBE292BB20700C95256 /* Location */ = {
@@ -762,6 +779,7 @@
 				6732B9002922798F00B3D037 /* DocumentPickerViewController.xib in Resources */,
 				67E595D1291E257E00768DED /* WelcomePageCell.xib in Resources */,
 				672A7D582923AB000027932A /* DocumentTypeCell.xib in Resources */,
+				6796CDD5299F85B400AFBD5C /* InstructionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,8 +907,10 @@
 				6749284C291D34D200B8D7BA /* Logger.swift in Sources */,
 				67AD5BB1292CEE42004106D2 /* DocumentInfoEventHandlerImpl.swift in Sources */,
 				6732B90529227A5400B3D037 /* DocumentScanner+Extensions.swift in Sources */,
+				6796CDD4299F85B400AFBD5C /* InstructionViewController.swift in Sources */,
 				67492852291D34D200B8D7BA /* ShowableFactory.swift in Sources */,
 				67E595D4291E272100768DED /* WelcomePageContent.swift in Sources */,
+				6796CDD7299FA8E200AFBD5C /* InstructionHandlerImpl.swift in Sources */,
 				6732B91129227C9800B3D037 /* DocumentAttachmentData.swift in Sources */,
 				67E595D8291E2F6900768DED /* WelcomeScrollerDDMDelegate.swift in Sources */,
 				67492851291D34D200B8D7BA /* FourthlineCoordinatorImpl.swift in Sources */,

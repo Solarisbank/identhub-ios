@@ -132,6 +132,13 @@ public final class StorageSessionInfoProvider: SessionInfoProvider {
         }
     }
     
+    /// - SeeAlso: SessionInfoProvider.secondaryDocument
+    public var secondaryDocument: Bool = false {
+        didSet {
+            SessionStorage.updateValue(secondaryDocument, for: StoredKeys.secondaryDocument.rawValue)
+        }
+    }
+    
     /// - SeeAlso: SessionInfoProvider.acceptedTC
     public var performedTCAcceptance: Bool = false {
         didSet {
@@ -259,6 +266,10 @@ public final class StorageSessionInfoProvider: SessionInfoProvider {
 
         if let verified = SessionStorage.obtainValue(for: StoredKeys.phoneVerified.rawValue) as? Bool {
             phoneVerified = verified
+        }
+        
+        if let secondaryDoc = SessionStorage.obtainValue(for: StoredKeys.secondaryDocument.rawValue) as? Bool {
+            secondaryDocument = secondaryDoc
         }
         
         if let performedTC = SessionStorage.obtainValue(for: StoredKeys.performedTCAcceptance.rawValue) as? Bool {

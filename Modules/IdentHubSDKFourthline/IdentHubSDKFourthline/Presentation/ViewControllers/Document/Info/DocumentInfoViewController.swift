@@ -98,7 +98,6 @@ extension DocumentInfoViewController {
         quitBtn.setTitle(Localizable.Common.back, for: .normal)
         continueBtn.setAppearance(.inactive, colors: colors)
         continueBtn.setTitle(Localizable.Common.continueBtn, for: .disabled)
-        continueBtn.setAppearance(.inactive, colors: colors)
     }
     
 }

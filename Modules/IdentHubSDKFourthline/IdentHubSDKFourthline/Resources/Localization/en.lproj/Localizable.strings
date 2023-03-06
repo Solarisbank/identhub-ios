@@ -81,6 +81,8 @@
 "doc_scanner_info_enter_data" = "Please enter";
 "doc_scanner_info_confirm_data" = "Please confirm";
 "doc_scanner_info_expire_date_message" = "Expiry date can not be in the past";
+"doc_scanner_healthcard_title" = "Scan your health card";
+"doc_scanner_healthcard_description" = "Providing your social security number is mandatory for the purpose of opening a bank account. In order to continue the process, you will be asked to scan your national health insurance card.\n\nPlease have your national health insurance card ready for when you are asked to scan it.";
 
 // Document Scanner Side
 "doc_scanner_side_front_name" = "front";

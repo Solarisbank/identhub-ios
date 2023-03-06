@@ -30,6 +30,7 @@ final class KYCContainer {
     
     private var mrzInfo: MRZInfo?
     private var infoProvider: SessionInfoProvider?
+    public var isTaxIDAvailable: Bool = false
 
     private init() {}
     
@@ -80,10 +81,23 @@ final class KYCContainer {
                 taxInfo.taxationCountryCode = mrzInfo.issuingCountry
                 
                 kycInfo.taxInfo = taxInfo
+                isTaxIDAvailable = true
             }
         }
 
         kycInfo.document?.videoRecording = data.videoRecording
+    }
+    
+    // MARK: - Filling with Secondary Document Result Data
+    
+    func update(secondaryDocument data: DocumentScannerResult, for documentType: DocumentType) {
+        var secondDocument = SecondaryDocument()
+        if kycInfo.secondaryDocuments.isNotEmpty() {
+            secondDocument = kycInfo.secondaryDocuments.first ?? SecondaryDocument()
+        }
+        
+        secondDocument.type = documentType
+        kycInfo.secondaryDocuments = [secondDocument]
     }
 
     // MARK: - Filling with Document Step Result Data
@@ -105,10 +119,36 @@ final class KYCContainer {
 
         kycInfo.document?.images.append(attachment)
     }
+    
+    // MARK: - Filling with Document Step Result Data
+
+    /// Method filled kyc secondary document object attributes with info from scanned document
+    /// - Parameter data: scanned document info
+    func update(secondaryDocument data: DocumentScannerStepResult) {
+        var secondDocument = SecondaryDocument()
+        if kycInfo.secondaryDocuments.isNotEmpty() {
+            secondDocument = kycInfo.secondaryDocuments.first ?? SecondaryDocument()
+        }
+        
+        let attachment = DocumentAttachment()
+
+        attachment.fileSide = data.metadata.fileSide
+        attachment.isAngled = data.metadata.isAngled
+        attachment.image = data.image.full
+        attachment.timestamp = data.metadata.timestamp
+        attachment.location = data.metadata.location
+        
+        secondDocument.images.append(attachment)
+        kycInfo.secondaryDocuments = [secondDocument]
+    }
 
     /// Method removed scanned document information and zip file url
     func removeDocumentData() {
         kycInfo.document = nil
+    }
+    
+    func removeSecondaryDocumentData() {
+        kycInfo.secondaryDocuments = []
     }
 
     func update(with documentNumber: String) {
@@ -143,6 +183,10 @@ final class KYCContainer {
 
         setContacts(data: data)
         storePersonalData(data: data)
+        
+        //TO DO: Update tax info from API.
+        kycInfo.taxInfo = TaxInfo()
+        isTaxIDAvailable = false
     }
 
     /// Run previous session KYC data restoration
@@ -334,4 +378,3 @@ private extension KYCContainer {
         }
     }
 }
-

@@ -77,8 +77,9 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
         case .welcome: return welcome()
         case .fetchData: return fetchData()
         case .documentPicker: return documentPicker()
-        case .documentScanner(type: .undefined): return documentScanner(.undefined)
+        case .documentScanner(type: .undefined): return documentScanner(.undefined, false)
         case .documentInfo: return documentInfoConfirmation()
+        case .instruction: return instructionScreen()
         case .selfie: return selfieScreen()
         case .upload: return upload()
         case .confirmation: return presentDataVerification()
@@ -178,11 +179,7 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             }
             switch result {
             case .documentScanner(type: let type):
-                self.requestPermissions { [weak self] isPassed in
-                    guard isPassed, let self = self else { return }
-                    
-                    self.documentScanner(type)?.present(on: self.presenter)
-                }
+                self.documentScannerPresent(type: type, isSecondDocument: false)
             case .quit:
                 self.quit()
             }
@@ -195,8 +192,8 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
         }
     }
     
-    private func documentScanner(_ documentType: DocumentType) -> Showable? {
-        let input = DocumentScannerInput(documentScannerType: documentType)
+    private func documentScanner(_ documentType: DocumentType, _ isSecondDocument: Bool) -> Showable? {
+        let input = DocumentScannerInput(documentScannerType: documentType, isSecondDocument: isSecondDocument)
         
         return showableFactory.makeDocumentScannerShowable(input: input) { [weak self] result in
             guard let self = self else {
@@ -207,14 +204,27 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             case .documentInfo:
                 fourthlineLog.warn("open documentInfo")
                 self.documentInfoConfirmation()?.push(on: self.presenter)
+            case .selfieScreen:
+                self.selfieScreenDisplay()
             case .quit:
                 self.quit()
             }
         }
     }
     
+    private func documentScannerPresent(type: DocumentType, isSecondDocument: Bool) {
+        self.requestPermissions { [weak self] isPassed in
+            guard isPassed, let self = self else { return }
+            
+            self.documentScanner(type, isSecondDocument)?.present(on: self.presenter)
+        }
+    }
+    
     private func documentInfoConfirmation() -> Showable? {
-        return showableFactory.makeDocumentInfoShowable() { [weak self] result in
+        let isSecondaryDocumentRequired = (self.sessionInfoProvider.secondaryDocument && !KYCContainer.shared.isTaxIDAvailable) ? true : false
+                
+        let input = DocumentInfoInput(isSecondDocument: isSecondaryDocumentRequired)
+        return showableFactory.makeDocumentInfoShowable(input: input) { [weak self] result in
             guard let self = self else {
                 Assert.notNil(self)
                 return
@@ -223,9 +233,28 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             switch result {
             case .selfieScreen:
                 self.selfieScreenDisplay()
+            case .instructionScreen:
+                self.instructionScreen()?.push(on: self.presenter)
             case .fallBackStep:
                 fourthlineLog.warn("DocumentInfo to DocumentPicker fallback")
                 self.documentPickerDisplay()
+            case .quit:
+                self.quit()
+            }
+        }
+    }
+    
+    private func instructionScreen() -> Showable? {
+        return showableFactory.makeInstructionShowable() { [weak self] result in
+            guard let self = self else {
+                Assert.notNil(self)
+                return
+            }
+
+            switch result {
+            case .nextStep:
+                //TO DO: select proper Document type here for Open Document scan again
+                self.documentScannerPresent(type: .idCard, isSecondDocument: true)
             case .quit:
                 self.quit()
             }

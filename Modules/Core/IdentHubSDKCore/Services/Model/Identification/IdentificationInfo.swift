@@ -22,6 +22,10 @@ public struct IdentificationInfo: Decodable {
     /// Phone number verification status. Bool value defines true or false status.
     /// If phone was not verified (false) then verification screen should be the first one
     public let phoneVerificationStatus: Bool?
+    
+    /// Secondary Document scaning status. Bool value defines true or false status.
+    /// If Secondary document(Health card) is required then scan second document and update KYC Zip. 
+    public let isSecondaryDocScanRequired: Bool?
 
     /// Fourthline provider string value
     public let fourthlineProvider: String?
@@ -39,6 +43,7 @@ public struct IdentificationInfo: Decodable {
         case acceptedTC = "terms_and_conditions_pre_accepted"
         case fourthlineProvider = "fourthline_provider"
         case phoneVerificationStatus = "verified_mobile_number"
+        case isSecondaryDocScanRequired = "secondary_document_required"
         case style
         case remoteLogging = "sdk_logging"
     }

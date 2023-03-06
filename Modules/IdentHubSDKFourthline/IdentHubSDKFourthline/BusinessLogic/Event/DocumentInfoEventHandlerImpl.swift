@@ -12,9 +12,14 @@ import FourthlineKYC
 /// Identifier of the document info item table cells
 let documentInfoCellID = "documentInfoCellID"
 
+internal struct DocumentInfoInput {
+    let isSecondDocument: Bool
+}
+
 internal enum DocumentInfoOutput: Equatable {
     case fallBackStep
     case selfieScreen
+    case instructionScreen
     case quit
 }
 
@@ -37,17 +42,20 @@ final internal class DocumentInfoEventHandlerImpl<ViewController: UpdateableShow
     private let verificationService: VerificationService
     private let alertsService: AlertsService
     private var state: DocumentInfoState
+    private var input: DocumentInfoInput
     internal var colors: Colors
     private var callback: DocumentInfoCallback
     
     init(
         verificationService: VerificationService,
         alertsService: AlertsService,
+        input: DocumentInfoInput,
         colors: Colors,
         callback: @escaping DocumentInfoCallback
     ) {
         self.verificationService = verificationService
         self.alertsService = alertsService
+        self.input = input
         self.colors = colors
         self.callback = callback
         self.state = DocumentInfoState()
@@ -59,7 +67,11 @@ final internal class DocumentInfoEventHandlerImpl<ViewController: UpdateableShow
             self.configure(table)
         case .triggerContinue:
             updateKYC()
-            callback(.selfieScreen)
+            if input.isSecondDocument {
+                callback(.instructionScreen)
+            } else {
+                callback(.selfieScreen)
+            }
         case .triggerBack:
             callback(.fallBackStep)
         }

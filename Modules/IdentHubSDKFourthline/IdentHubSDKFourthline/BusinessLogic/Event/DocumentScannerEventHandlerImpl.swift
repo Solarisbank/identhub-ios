@@ -9,11 +9,13 @@ import FourthlineCore
 
 internal enum DocumentScannerOutput: Equatable {
     case documentInfo
+    case selfieScreen
     case quit
 }
 
 internal struct DocumentScannerInput {
     let documentScannerType: DocumentType
+    let isSecondDocument: Bool
 }
 
 // MARK: - Document Scanner event logic -
@@ -32,7 +34,7 @@ final internal class DocumentScannerEventHandlerImpl<ViewController: UpdateableS
     private var input: DocumentScannerInput
     internal var colors: Colors
     private var callback: DocumentScannerCallback
-    
+        
     init(
         verificationService: VerificationService,
         alertsService: AlertsService,
@@ -55,18 +57,30 @@ final internal class DocumentScannerEventHandlerImpl<ViewController: UpdateableS
         
         switch event {
         case .loadScreen:
-            KYCContainer.shared.removeDocumentData()
+            if !input.isSecondDocument {
+                KYCContainer.shared.removeDocumentData()
+                KYCContainer.shared.removeSecondaryDocumentData()
+            }
             updateState { state in
                 state.documentType = self.input.documentScannerType
                 state.isScreenLoad = true
             }
         case .cleanData:
-            KYCContainer.shared.removeDocumentData()
+            input.isSecondDocument ? KYCContainer.shared.removeSecondaryDocumentData() :          KYCContainer.shared.removeDocumentData()
         case .updateResult(let result): /// Update document scan result in KYC container
-            KYCContainer.shared.update(with: result, for: self.input.documentScannerType)
-            callback(.documentInfo)
+            if input.isSecondDocument {
+                KYCContainer.shared.update(secondaryDocument: result, for: self.input.documentScannerType)
+                callback(.selfieScreen)
+            } else {
+                KYCContainer.shared.update(with: result, for: self.input.documentScannerType)
+                callback(.documentInfo)
+            }
         case .saveResult(let stepResult): /// Save document result to the KYC container
-            KYCContainer.shared.update(with: stepResult)
+            if input.isSecondDocument {
+                KYCContainer.shared.update(secondaryDocument: stepResult)
+            } else {
+                KYCContainer.shared.update(with: stepResult)
+            }
         case .quit:
             quit()
         }

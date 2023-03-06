@@ -10,10 +10,11 @@ internal protocol ShowableFactory {
     func makeWelcomeShowable(input: WelcomeInput, callback: @escaping WelcomeCallback) -> Showable?
     func makeDocumentPickerShowable(input: DocumentPickerInput, callback: @escaping DocumentPickerCallback) -> Showable?
     func makeDocumentScannerShowable(input: DocumentScannerInput, callback: @escaping DocumentScannerCallback) -> Showable?
-    func makeDocumentInfoShowable(callback: @escaping DocumentInfoCallback) -> Showable?
+    func makeDocumentInfoShowable(input: DocumentInfoInput, callback: @escaping DocumentInfoCallback) -> Showable?
     func makeSelfieShowable(callback: @escaping SelfieCallback) -> Showable?
     func makeRequestsShowable(input: RequestsInput, session: StorageSessionInfoProvider, callback: @escaping RequestsCallback) -> Showable?
     func makeResultShowable(input: ResultInput, callback: @escaping ResultCallback) -> Showable?
+    func makeInstructionShowable(callback: @escaping InstructionCallback) -> Showable?
 }
 
 internal struct ShowableFactoryImpl: ShowableFactory {
@@ -99,11 +100,12 @@ internal struct ShowableFactoryImpl: ShowableFactory {
         return presenter
     }
     
-    func makeDocumentInfoShowable(callback: @escaping DocumentInfoCallback) -> Showable? {
+    func makeDocumentInfoShowable(input: DocumentInfoInput, callback: @escaping DocumentInfoCallback) -> Showable? {
         let alertsService = AlertsServiceImpl(presenter: presenter, colors: colors)
         let eventHandler = DocumentInfoEventHandlerImpl<DocumentInfoViewController>(
             verificationService: verificationService,
             alertsService: alertsService,
+            input: input,
             colors: colors,
             callback: callback
         )
@@ -141,4 +143,15 @@ internal struct ShowableFactoryImpl: ShowableFactory {
         return presenter
     }
     
+    func makeInstructionShowable(callback: @escaping InstructionCallback) -> IdentHubSDKCore.Showable? {
+        let eventHandler = InstructionHandlerImpl<InstructionViewController>(
+            colors: colors,
+            callback: callback
+        )
+        
+        let presenter = InstructionViewController(colors: colors, eventHandler: eventHandler.asAnyEventHandler())
+        eventHandler.updatableView = presenter
+        return presenter
+    }
+        
 }

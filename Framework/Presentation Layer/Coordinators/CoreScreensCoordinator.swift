@@ -138,6 +138,7 @@ private extension CoreScreensCoordinator {
                         session.phoneVerified = res.phoneVerificationStatus ?? false
                         session.setStyleColors(res.style?.colors)
                         session.remoteLogging = res.remoteLogging ?? false
+                        session.secondaryDocument = res.isSecondaryDocScanRequired ?? false
                     }
                     self.appDependencies.sessionInfoProvider = session
                 default:

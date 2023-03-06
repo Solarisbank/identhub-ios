@@ -41,6 +41,9 @@ public enum StoredKeys: String {
     /// Status of the phone verification
     case phoneVerified = "PhoneVerificationStatusKey"
     
+    /// Secondary document status key
+    case secondaryDocument = "SecondaryDocumentKey"
+    
     /// Accepted state of the "Terms and Conditions" agreement
     case performedTCAcceptance = "PerfomedTermsAndConditionsAcceptanceKey"
 

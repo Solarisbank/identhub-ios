@@ -63,6 +63,8 @@ class FourthlineCoordinator: BaseCoordinator {
             presentDocumentScanner(type)
         case .documentInfo:
             presentDocumentInfoConfirmation()
+        case .instruction:
+            presentInstruction()
         case .upload:
             presentDataUploader()
         case .confirmation:
@@ -106,6 +108,10 @@ class FourthlineCoordinator: BaseCoordinator {
 
     private func presentDocumentInfoConfirmation() {
         presentFourthline(step: .documentInfo)
+    }
+    
+    private func presentInstruction() {
+        presentFourthline(step: .instruction)
     }
     
     private func presentDataUploader() {
