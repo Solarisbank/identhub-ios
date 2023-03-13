@@ -153,6 +153,13 @@ public final class StorageSessionInfoProvider: SessionInfoProvider {
         }
     }
     
+    /// - SeeAlso: SessionInfoProvider.namirialTC
+    public var namirialTCAcceptance: Bool = false {
+        didSet {
+            SessionStorage.updateValue(namirialTCAcceptance, for: StoredKeys.namirialTC.rawValue)
+        }
+    }
+    
     /// - SeeAlso: SessionInfoProvider.fourthlineProvider
     public var fourthlineProvider: String? {
         didSet {
@@ -278,6 +285,10 @@ public final class StorageSessionInfoProvider: SessionInfoProvider {
 
         if let performedPhone = SessionStorage.obtainValue(for: StoredKeys.performedPhoneVerification.rawValue) as? Bool {
             performedPhoneVerification = performedPhone
+        }
+        
+        if let namirialTC = SessionStorage.obtainValue(for: StoredKeys.namirialTC.rawValue) as? Bool {
+            namirialTCAcceptance = namirialTC
         }
         
         if let remoteLogging = SessionStorage.obtainValue(for: StoredKeys.remoteLogging.rawValue) as? Bool {

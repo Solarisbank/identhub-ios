@@ -28,6 +28,8 @@ internal enum Localizable {
         
         static let acknowledgement = "welcome_page_acknowledgement".localized()
         static let fourthlinePrivacy = "welcome_page_fourthline_privacy".localized()
+        static let namirialTerms = "welcome_page_namirial_terms".localized()
+        static let termsConditions = "welcome_page_terms".localized()
     }
     
     enum Selfie {

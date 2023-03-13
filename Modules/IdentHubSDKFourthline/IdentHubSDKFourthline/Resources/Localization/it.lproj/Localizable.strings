@@ -9,6 +9,8 @@
 "welcome_location_title" = "Attiva e carica la posizione";
 "welcome_location_description" = "L'ultima cosa che devi fare è attivare la tua posizione e caricare i tuoi dati! Facile vero?";
 "welcome_page_acknowledgement" = "Ho preso atto delle informazioni sulla protezione dei dati di SAFENED Fourthline.";
+"welcome_page_namirial_terms" = "I agree to Namirial's Terms & Conditions";
+"welcome_page_terms" = "Terms & Conditions";
 
 // Selfie
 "selfie_title" = "Fatti un selfie";

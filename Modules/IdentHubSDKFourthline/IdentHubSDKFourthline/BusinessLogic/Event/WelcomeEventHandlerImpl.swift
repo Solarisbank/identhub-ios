@@ -12,6 +12,7 @@ internal enum WelcomeOutput: Equatable {
 
 internal struct WelcomeInput {
     var identificationStep: IdentificationStep?
+    let isDisplayNamirialTerms: Bool
 }
 
 // MARK: - Welcome events logic -
@@ -43,7 +44,7 @@ final internal class WelcomeEventHandlerImpl<ViewController: UpdateableShowable>
         self.alertsService = alertsService
         self.input = input
         self.callback = callback
-        self.state = WelcomeState()
+        self.state = WelcomeState(isDisplayNamirialTerms: input.isDisplayNamirialTerms)
         self.scrollerContent = WelcomeEventHandlerImpl.configureContent()
     }
     

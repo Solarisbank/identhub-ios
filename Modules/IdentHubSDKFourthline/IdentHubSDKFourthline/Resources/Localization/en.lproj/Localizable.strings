@@ -10,6 +10,8 @@
 "welcome_location_description" = "Last thing you need to do is enabling your location\nand submitting your case!\nHow easy it that?";
 "welcome_page_acknowledgement" = "I acknowledge SAFENED Fourthline's privacy statement.";
 "welcome_page_fourthline_privacy" = "SAFENED Fourthline's privacy statement";
+"welcome_page_namirial_terms" = "I agree to Namirial's Terms & Conditions";
+"welcome_page_terms" = "Terms & Conditions";
 
 // Selife
 "selfie_title" = "Take a selfie";

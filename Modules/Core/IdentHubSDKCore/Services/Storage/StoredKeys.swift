@@ -49,6 +49,9 @@ public enum StoredKeys: String {
 
     /// Status of the phone verification
     case performedPhoneVerification = "PerformedPhoneVerificationKey"
+    
+    /// Accepted state of the "Namirial Terms and Conditions" agreement
+    case namirialTC = "NamirialTermsAndConditions"
 
     /// Personal data value key
     case personData = "IndentificationPersonDataKey"

@@ -8,7 +8,6 @@ import SafariServices
 
 internal enum TermsViewEvent {
     case setupTermsText(_ textView: UITextView)
-//    case termsChecked
     case continueProcess
     case quit
 }

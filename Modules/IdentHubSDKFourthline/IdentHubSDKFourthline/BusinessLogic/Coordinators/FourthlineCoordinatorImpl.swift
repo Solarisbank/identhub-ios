@@ -146,7 +146,7 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
     }
     
     private func welcome() -> Showable? {
-        let input = WelcomeInput(identificationStep: self.sessionInfoProvider.identificationStep)
+        let input = WelcomeInput(identificationStep: self.sessionInfoProvider.identificationStep, isDisplayNamirialTerms: (self.sessionInfoProvider.identificationStep == .fourthlineSigning))
 
         return showableFactory.makeWelcomeShowable(input: input) { [weak self] result in
             guard let self = self else {
@@ -155,6 +155,8 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             }
             switch result {
             case .nextStep(let step):
+                ///Later on Backend will Save the date and timestamp of when the user accepted the T&Cs and the version of the accepted T&Cs
+                self.sessionInfoProvider.namirialTCAcceptance = true
                 switch step {
                 case .documentPicker:
                     self.documentPickerDisplay()

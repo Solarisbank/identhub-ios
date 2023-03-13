@@ -9,11 +9,14 @@ import SafariServices
 
 private let fourthlinePrivacyLink = "https://api.fourthline.com/v1/qualifiedElectronicSignature/legal/PrivacyStatement_SafeNedFourthline_1.0.pdf"
 
+private let namirialTermsLink = "https://api.fourthline.com/v1/qualifiedElectronicSignature/legal/Namirial_TAndC_CA01D_CA22D_1.0.pdf"
+
 internal struct WelcomeState: Equatable {
     enum State: Equatable {
         case loadScreen
     }
     var state: State = .loadScreen
+    var isDisplayNamirialTerms: Bool = false
 }
 
 internal enum WelcomeEvent {
@@ -43,6 +46,10 @@ final internal class WelcomeViewController: UIViewController, Updateable {
     @IBOutlet var logoFrame: UIImageView!
     @IBOutlet var startBtn: ActionRoundedButton!
     @IBOutlet var acknowledgementLabel: UITextView!
+    @IBOutlet var termsContainerView: UIView!
+    @IBOutlet var checkBoxBtn: Checkbox!
+    @IBOutlet var namirialTermsLabel: UITextView!
+    @IBOutlet private var termsHeightConstraint: NSLayoutConstraint!
     
     private lazy var logoAnimator: WelcomeLogoAnimator = {
         return WelcomeLogoAnimator(logoImage, logoFrameImage: logoFrame)
@@ -81,12 +88,28 @@ final internal class WelcomeViewController: UIViewController, Updateable {
         eventHandler?.handleEvent(.triggerStart)
     }
     
+    // MARK: - Action methods -
+    @IBAction func didClickCheckmark(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+            startBtn.currentAppearance = .inactive
+        } else {
+            sender.isSelected = true
+            startBtn.currentAppearance = .primary
+        }
+    }
+    
     // MARK: - Internal methods -
     
     func updateView(_ state: WelcomeState) {
         eventHandler?.handleEvent(.configurePageScroller(pageScroller))
         eventHandler?.handleEvent(.setPageController(pageController))
         eventHandler?.handleEvent(.setLogoAnimator(logoAnimator))
+        
+        if state.isDisplayNamirialTerms {
+            termsHeightConstraint.constant = 40
+            termsContainerView.isHidden = false
+        }
     }
 
 }
@@ -96,12 +119,12 @@ extension WelcomeViewController {
     private func configureUI() {
         
         pageController.subviews.forEach {
-            $0.transform = CGAffineTransform(scaleX: 2, y: 2)
+            $0.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         }
         
         welcomeLabel.text = Localizable.Welcome.pageTitle
         startBtn.setTitle(Localizable.Welcome.startBtn, for: .normal)
-        startBtn.setAppearance(.primary, colors: colors)
+        startBtn.setAppearance(.inactive, colors: colors)
         acknowledgementLabel.attributedText = buildAcknowledgementText()
         acknowledgementLabel.linkTextAttributes = [
             .foregroundColor: colors[.primaryAccent],
@@ -110,10 +133,20 @@ extension WelcomeViewController {
         acknowledgementLabel.textColor = colors[.base50]
         acknowledgementLabel.delegate = self
         configureCustomUI()
+        
+        termsContainerView.isHidden = true
+        checkBoxBtn.setAppearance(colors)
+        namirialTermsLabel.attributedText = buildNamirialTermsText()
+        namirialTermsLabel.linkTextAttributes = [
+            .foregroundColor: colors[.primaryAccent],
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        namirialTermsLabel.textColor = colors[.base50]
+        namirialTermsLabel.delegate = self
+        namirialTermsLabel.center = termsContainerView.center
     }
 
     private func configureCustomUI() {
-        startBtn.currentAppearance = .primary
         logoBackground.layer.masksToBounds = true
         logoBackground.backgroundColor = colors[.primaryAccent]
         pageController.pageIndicatorTintColor = colors[.black25]
@@ -122,7 +155,7 @@ extension WelcomeViewController {
     
     private func buildAcknowledgementText() -> NSAttributedString {
         let fullText = Localizable.Welcome.acknowledgement
-        let attributedString = NSMutableAttributedString(string: fullText)
+        let attributedString = NSMutableAttributedString(string: fullText, attributes: [NSAttributedString.Key.font: namirialTermsLabel.font!])
 
         let linkRange: NSRange
         if let privacyLinkRange = fullText.range(of: Localizable.Welcome.fourthlinePrivacy) {
@@ -131,6 +164,21 @@ extension WelcomeViewController {
             linkRange = NSRange(location: 0, length: fullText.count)
         }
         attributedString.addAttribute(.link, value: fourthlinePrivacyLink, range: linkRange)
+
+        return attributedString
+    }
+    
+    private func buildNamirialTermsText() -> NSAttributedString {
+        let fullText = Localizable.Welcome.namirialTerms
+        let attributedString = NSMutableAttributedString(string: fullText, attributes: [NSAttributedString.Key.font: acknowledgementLabel.font!])
+
+        let linkRange: NSRange
+        if let termsLinkRange = fullText.range(of: Localizable.Welcome.termsConditions) {
+            linkRange = NSRange(termsLinkRange, in: fullText)
+        } else {
+            linkRange = NSRange(location: 0, length: fullText.count)
+        }
+        attributedString.addAttribute(.link, value: namirialTermsLink, range: linkRange)
 
         return attributedString
     }

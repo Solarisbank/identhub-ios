@@ -5,11 +5,11 @@
 
 import UIKit
 
-class Checkbox: UIButton {
+public class Checkbox: UIButton {
 
     // MARK: - Properties -
 
-    override var isSelected: Bool {
+    public override var isSelected: Bool {
         didSet {
             updateApperance()
         }
@@ -54,7 +54,7 @@ class Checkbox: UIButton {
         backgroundColor = isSelected ? colors[.primaryAccent] : .clear
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateUI()
     }
