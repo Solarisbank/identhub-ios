@@ -109,6 +109,8 @@ final internal class WelcomeViewController: UIViewController, Updateable {
         if state.isDisplayNamirialTerms {
             termsHeightConstraint.constant = 40
             termsContainerView.isHidden = false
+        } else {
+            startBtn.setAppearance(.primary, colors: colors)
         }
     }
 
