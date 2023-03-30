@@ -5,8 +5,8 @@
 
 import Foundation
 
-public struct IdentificationInfo: Decodable {
-
+public struct IdentificationInfo: Decodable, Equatable {
+  
     /// Identification status
     public let status: Status
 
@@ -46,5 +46,9 @@ public struct IdentificationInfo: Decodable {
         case isSecondaryDocScanRequired = "secondary_document_required"
         case style
         case remoteLogging = "sdk_logging"
+    }
+    
+    public static func == (lhs: IdentificationInfo, rhs: IdentificationInfo) -> Bool {
+        return lhs.status == rhs.status
     }
 }

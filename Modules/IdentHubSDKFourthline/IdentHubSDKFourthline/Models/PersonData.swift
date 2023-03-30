@@ -8,7 +8,7 @@ import FourthlineCore
 import FourthlineKYC
 import IdentHubSDKCore
 
-struct PersonData: Codable {
+struct PersonData: Codable, Equatable {
 
     /// Identification person first name
     var firstName: String
@@ -55,6 +55,36 @@ struct PersonData: Codable {
         case mobileNumber = "mobile_number"
         case address
         case supportedDocuments = "supported_documents"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.firstName = try container.decode(String.self, forKey: .firstName)
+        self.lastName = try container.decode(String.self, forKey: .lastName)
+        self.nationality = try container.decode(String.self, forKey: .nationality)
+        
+        let dateString = try container.decode(String.self, forKey: .birthDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        let date = dateFormatter.date(from: dateString)
+        if let date = date {
+            self.birthDate = date
+        } else {
+            throw DecodingError.dataCorrupted(.init(codingPath: [CodingKeys.birthDate], debugDescription: "unable to convert date string to Date object. Format not recognised", underlyingError: nil))
+        }
+        
+        self.birthPlace = try container.decodeIfPresent(String.self, forKey: .birthPlace)
+        self.personUID = try container.decode(String.self, forKey: .personUID)
+        self.gender = try container.decode(Gender.self, forKey: .gender)
+        self.email = try container.decode(String.self, forKey: .email)
+        self.mobileNumber = try container.decode(String.self, forKey: .mobileNumber)
+        self.address = try container.decode(PersonAddress.self, forKey: .address)
+        self.supportedDocuments = try container.decode([SupportedDocument].self, forKey: .supportedDocuments)
+    }
+    
+    static func == (lhs: PersonData, rhs: PersonData) -> Bool {
+        return lhs.personUID == rhs.personUID
     }
 }
 

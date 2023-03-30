@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct IPAddress: Decodable {
+struct IPAddress: Decodable, Equatable {
 
     /// Device requested IP-address value
     let ip: String

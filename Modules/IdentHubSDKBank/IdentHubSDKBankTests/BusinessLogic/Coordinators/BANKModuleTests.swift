@@ -11,9 +11,9 @@ final class BANKModuleTests: XCTestCase {
     func testCoordinatorCreation() {
         let sut = makeSut()
 
-        let qesCoordinator = sut.makeBankCoordinator()
-        XCTAssertNotNil(qesCoordinator)
-        trackForMemoryLeaks(qesCoordinator)
+        let bankCoordinator = sut.makeBankCoordinator()
+        XCTAssertNotNil(bankCoordinator)
+        trackForMemoryLeaks(bankCoordinator)
     }
     
     private func makeSut() -> BankModule {

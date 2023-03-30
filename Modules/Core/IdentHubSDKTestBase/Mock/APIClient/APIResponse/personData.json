@@ -1,0 +1,23 @@
+{
+    "first_name":"firstName",
+    "last_name":"lastName",
+    "address":
+        {
+            "street":"Via Piccinni",
+            "street_number":"142",
+            "city":"Albano Sant'alessandro",
+            "country":"ITA",
+            "postal_code":"24061"
+        },
+    "email":"email@yahoo.com",
+    "mobile_number":"+48111222333",
+    "nationality":"ITA",
+    "birth_date":"1983-12-08",
+    "place_of_birth":"Albano Sant'alessandro",
+    "person_uid":"somePersonId",
+    "supported_documents":
+        [{"type":"Passport","issuing_countries":["AO","AD","AE","AR","AU","AT","BE","BG","BH","BO","BR","BN","CA","CH","CL","CN","CR","CY","CZ","DE","DK","DO","EC","EE","FI","FR","GB","GE","GR","GT","HK","HR","HU","ID","IN","IE","IS","IL","IT","JP","KE","KR","KW","LI","LK","LU","LV","MA","MC","MD","MX","MK","MT","MU","MY","NL","NO","NZ","PE","PH","PL","PT","PY","QA","RO","RU","SA","SG","SV","RS","SK","SI","SE","TH","TR","TW","TZ","UY","VN","ZA"]},
+         {"type":"National ID Card","issuing_countries":["AT","BE","BG","CZ","ES","FI","FR","GR","HR","HU","IE","IT","LI","LU","LV","MT","NL","PL","PT","RO","SI","SE"]},
+         {"type":"Residence Permit","issuing_countries":["ES","IT"]}],
+    "gender":"female"
+}

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct IdentificationMethod {
+public struct IdentificationMethod: Equatable {
 
     /// Identification first step type. String value will be converted to the enum
     public let firstStep: IdentificationStep

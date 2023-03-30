@@ -5,7 +5,7 @@
 
 import UIKit
 
-class UploadFourthlineZip: Decodable {
+class UploadFourthlineZip: Decodable, Equatable {
 
     /// Uploaded document identifier
     let identifier: String
@@ -36,5 +36,9 @@ class UploadFourthlineZip: Decodable {
         case documentSize = "size"
         case accessibility = "customer_accessible"
         case createDate = "created_at"
+    }
+    
+    static func == (lhs: UploadFourthlineZip, rhs: UploadFourthlineZip) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }

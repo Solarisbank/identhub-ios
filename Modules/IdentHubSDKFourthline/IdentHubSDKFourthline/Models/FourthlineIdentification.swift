@@ -4,7 +4,7 @@
 
 import UIKit
 
-class FourthlineIdentification: Decodable {
+class FourthlineIdentification: Decodable, Equatable {
 
     let identificationID: String
 
@@ -49,5 +49,9 @@ class FourthlineIdentification: Decodable {
         case confirmationDate = "confirmation_expires_at"
         case statusCode = "provider_status_code"
         case waitingTime = "estimated_waiting_time"
+    }
+    
+    static func == (lhs: FourthlineIdentification, rhs: FourthlineIdentification) -> Bool {
+        return lhs.identificationID == rhs.identificationID
     }
 }

@@ -1,0 +1,16 @@
+{
+    "id":"someIdentId",
+    "reference":"someIdentReference",
+    "url":null,
+    "status":"pending",
+    "completed_at":null,
+    "method":"fourthline_signing",
+    "proof_of_address_type":null,
+    "proof_of_address_issued_at":null,
+    "iban":null,
+    "terms_and_conditions_signed_at":null,
+    "authorization_expires_at":null,
+    "confirmation_expires_at":null,
+    "provider_status_code":null,
+    "estimated_waiting_time":null
+}

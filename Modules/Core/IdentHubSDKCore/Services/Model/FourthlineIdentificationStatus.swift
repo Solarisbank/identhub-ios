@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct FourthlineIdentificationStatus: Codable {
+public struct FourthlineIdentificationStatus: Codable, Equatable {
 
     /// Id of the identification
     public let identification: String

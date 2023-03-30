@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct PersonAddress: Codable {
+struct PersonAddress: Codable, Equatable {
 
     /// String value of the identification person address street
     let street: String

@@ -1,0 +1,15 @@
+{
+    "status":"created",
+    "callback_url":null,
+    "language":null,
+    "terms_and_conditions_pre_accepted":true,
+    "style":
+        {"colors":
+                {"primary":"#FF5762",
+                 "secondary":"#415DE8"}
+        },
+    "fourthline_provider":"FourthlineProvider",
+    "verified_mobile_number":true,
+    "sdk_logging":true,
+    "secondary_document_required":false
+}

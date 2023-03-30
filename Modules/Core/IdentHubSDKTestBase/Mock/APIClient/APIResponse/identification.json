@@ -1,0 +1,15 @@
+{
+    "id":"someIdentId",
+    "reference":null,
+    "url":"https://someRandomData.solaris-sandbox.de/someUrlData",
+    "status":"pending",
+    "completed_at":null,
+    "method":"bank",
+    "proof_of_address_type":null,
+    "proof_of_address_issued_at":null,
+    "iban":"DE11111111111111111111",
+    "terms_and_conditions_signed_at":"2022-06-09T13:33:28.000Z",
+    "authorization_expires_at":null,
+    "confirmation_expires_at":null,
+    "estimated_waiting_time":null
+}

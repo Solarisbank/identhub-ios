@@ -5,6 +5,14 @@
 
 /// Mock files for API requests
 public enum RequestFileMock: String {
+    case personData
+    case ipAddress
+    case uploadFourthlineZip
+    case fourthlineIdentificationStatus
+    case fourthlineIdentification
+    case identification
+    case identificationMethod
+    case identificationInfo
     case identificationNotConfirmed
     case identificationConfirmed
     case mobileNumber

@@ -49,6 +49,8 @@
 		67492854291D34D200B8D7BA /* Fourthline.docc in Sources */ = {isa = PBXBuildFile; fileRef = 67492848291D34D200B8D7BA /* Fourthline.docc */; };
 		67492855291D34D200B8D7BA /* Fourthline.h in Headers */ = {isa = PBXBuildFile; fileRef = 67492849291D34D200B8D7BA /* Fourthline.h */; };
 		67492870291D352E00B8D7BA /* IdentHubSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67492868291D351C00B8D7BA /* IdentHubSDKCore.framework */; };
+		6749EED529C482BF0064880C /* FourthlineModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749EED429C482BF0064880C /* FourthlineModuleTests.swift */; };
+		6749EED829C48A710064880C /* VerificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749EED729C48A700064880C /* VerificationServiceTests.swift */; };
 		67527A2F2938E64F00BC41BF /* FourthlineIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67527A2E2938E64F00BC41BF /* FourthlineIdentification.swift */; };
 		67527A342938E74600BC41BF /* FourthlineIdentificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67527A332938E74600BC41BF /* FourthlineIdentificationRequest.swift */; };
 		67911AE6293642830099BDD5 /* PersonDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67911AE5293642830099BDD5 /* PersonDataRequest.swift */; };
@@ -168,6 +170,8 @@
 		67492856291D350200B8D7BA /* IdentHubSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IdentHubSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6749285D291D350F00B8D7BA /* IdentHubSDKCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IdentHubSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67492861291D351C00B8D7BA /* Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Core.xcodeproj; path = ../Core/Core.xcodeproj; sourceTree = "<group>"; };
+		6749EED429C482BF0064880C /* FourthlineModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineModuleTests.swift; sourceTree = "<group>"; };
+		6749EED729C48A700064880C /* VerificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceTests.swift; sourceTree = "<group>"; };
 		67527A2E2938E64F00BC41BF /* FourthlineIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentification.swift; sourceTree = "<group>"; };
 		67527A332938E74600BC41BF /* FourthlineIdentificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationRequest.swift; sourceTree = "<group>"; };
 		67911AE5293642830099BDD5 /* PersonDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDataRequest.swift; sourceTree = "<group>"; };
@@ -392,6 +396,7 @@
 		67492800291D2FE400B8D7BA /* IdentHubSDKFourthlineTests */ = {
 			isa = PBXGroup;
 			children = (
+				6749EED329C482A00064880C /* BusinessLogic */,
 				67492801291D2FE400B8D7BA /* IdentHubSDKFourthlineTests.swift */,
 			);
 			path = IdentHubSDKFourthlineTests;
@@ -519,6 +524,31 @@
 				6749286C291D351C00B8D7BA /* IdentHubSDKCoreTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6749EECF29C4828E0064880C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6749EED429C482BF0064880C /* FourthlineModuleTests.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6749EED329C482A00064880C /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				6749EED629C48A5E0064880C /* Service */,
+				6749EECF29C4828E0064880C /* Coordinator */,
+			);
+			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		6749EED629C48A5E0064880C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6749EED729C48A700064880C /* VerificationServiceTests.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		67911AE1293642730099BDD5 /* Request */ = {
@@ -929,6 +959,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				67492802291D2FE400B8D7BA /* IdentHubSDKFourthlineTests.swift in Sources */,
+				6749EED529C482BF0064880C /* FourthlineModuleTests.swift in Sources */,
+				6749EED829C48A710064880C /* VerificationServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

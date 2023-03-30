@@ -17,6 +17,7 @@
 		67424C2E28FC394F009A8736 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C2D28FC394F009A8736 /* Localizable.swift */; };
 		67424C3128FC437C009A8736 /* BankIDIBANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C3028FC437C009A8736 /* BankIDIBANRequest.swift */; };
 		67424C3328FC4391009A8736 /* IBANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67424C3228FC4391009A8736 /* IBANRequest.swift */; };
+		6749EEC629C3527E0064880C /* VerificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749EEC529C3527E0064880C /* VerificationServiceTests.swift */; };
 		674D4AAA290177530006DA89 /* BANKModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674D4AA9290177530006DA89 /* BANKModuleTests.swift */; };
 		674D4AAD290178840006DA89 /* BankIDIBANRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674D4AAC290178840006DA89 /* BankIDIBANRequestTest.swift */; };
 		674D4AAF290178940006DA89 /* IBANRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674D4AAE290178940006DA89 /* IBANRequestTest.swift */; };
@@ -91,6 +92,7 @@
 		67424C2D28FC394F009A8736 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		67424C3028FC437C009A8736 /* BankIDIBANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDIBANRequest.swift; sourceTree = "<group>"; };
 		67424C3228FC4391009A8736 /* IBANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequest.swift; sourceTree = "<group>"; };
+		6749EEC529C3527E0064880C /* VerificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceTests.swift; sourceTree = "<group>"; };
 		674D4AA9290177530006DA89 /* BANKModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BANKModuleTests.swift; sourceTree = "<group>"; };
 		674D4AAC290178840006DA89 /* BankIDIBANRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDIBANRequestTest.swift; sourceTree = "<group>"; };
 		674D4AAE290178940006DA89 /* IBANRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequestTest.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				674D4AB12901803B0006DA89 /* ShowableFactoryTests.swift */,
 				674D4AB3290181250006DA89 /* VerificationServiceMock.swift */,
+				6749EEC529C3527E0064880C /* VerificationServiceTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 			files = (
 				674D4AAD290178840006DA89 /* BankIDIBANRequestTest.swift in Sources */,
 				674D4AB22901803B0006DA89 /* ShowableFactoryTests.swift in Sources */,
+				6749EEC629C3527E0064880C /* VerificationServiceTests.swift in Sources */,
 				674D4AB4290181250006DA89 /* VerificationServiceMock.swift in Sources */,
 				674D4AAA290177530006DA89 /* BANKModuleTests.swift in Sources */,
 				674D4AAF290178940006DA89 /* IBANRequestTest.swift in Sources */,
