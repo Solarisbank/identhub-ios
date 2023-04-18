@@ -10,8 +10,8 @@
 "welcome_location_description" = "La dernière chose que vous devez faire est d’activer votre localisation et\nde soumettre votre dossier!\nC’est facile, n’est-ce pas ?";
 "welcome_page_acknowledgement" = "Je reconnais la déclaration de confidentialité de SAFENED Fourthline.";
 "welcome_page_fourthline_privacy" = "déclaration de confidentialité de SAFENED Fourthline";
-"welcome_page_namirial_terms" = "I agree to Namirial's Terms & Conditions";
-"welcome_page_terms" = "Terms & Conditions";
+"welcome_page_namirial_terms" = "J'accepte les Conditions générales de Namirial";
+"welcome_page_terms" = "Conditions générales";
 
 // Selfie
 "selfie_title" = "Prendre un selfie";

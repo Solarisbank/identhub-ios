@@ -11,8 +11,8 @@
 "welcome_location_description" = "Als Letztes müssen Sie Ihren Standort aktivieren und Ihre Daten hochladen! Wie einfach ist das?";
 "welcome_page_acknowledgement" = "Ich habe die Hinweise zum Datenschutz von SAFENED Fourthline zur Kenntnis genommen.";
 "welcome_page_fourthline_privacy" = "Datenschutz von SAFENED Fourthline";
-"welcome_page_namirial_terms" = "I agree to Namirial's Terms & Conditions";
-"welcome_page_terms" = "Terms & Conditions";
+"welcome_page_namirial_terms" = "Ich stimme den Allgemeinen Geschäftsbedingungen von Namirial zu.";
+"welcome_page_terms" = "Geschäftsbedingungen";
 
 // Selife
 "selfie_title" = "Machen Sie ein Selfie-Foto";
