@@ -107,7 +107,7 @@ final internal class WelcomeViewController: UIViewController, Updateable {
         eventHandler?.handleEvent(.setLogoAnimator(logoAnimator))
         
         if state.isDisplayNamirialTerms {
-            termsHeightConstraint.constant = 40
+            termsHeightConstraint.constant = 45
             termsContainerView.isHidden = false
         } else {
             startBtn.setAppearance(.primary, colors: colors)
@@ -138,6 +138,8 @@ extension WelcomeViewController {
         
         termsContainerView.isHidden = true
         checkBoxBtn.setAppearance(colors)
+        namirialTermsLabel.translatesAutoresizingMaskIntoConstraints = true
+        namirialTermsLabel.isScrollEnabled = false
         namirialTermsLabel.attributedText = buildNamirialTermsText()
         namirialTermsLabel.linkTextAttributes = [
             .foregroundColor: colors[.primaryAccent],
@@ -145,7 +147,7 @@ extension WelcomeViewController {
         ]
         namirialTermsLabel.textColor = colors[.base50]
         namirialTermsLabel.delegate = self
-        namirialTermsLabel.center = termsContainerView.center
+        namirialTermsLabel.sizeToFit()
     }
 
     private func configureCustomUI() {

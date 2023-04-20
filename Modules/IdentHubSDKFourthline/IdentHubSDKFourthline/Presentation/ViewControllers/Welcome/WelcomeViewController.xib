@@ -104,11 +104,8 @@
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="I agree to the Terms &amp; Conditions" translatesAutoresizingMaskIntoConstraints="NO" id="eJV-Pp-17C">
-                            <rect key="frame" x="33" y="-15" width="341" height="30"/>
+                            <rect key="frame" x="33" y="0.0" width="331" height="0.0"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="orv-oo-miy"/>
-                            </constraints>
                             <color key="textColor" name="black50"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -117,12 +114,13 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="S7Q-jG-A7c" firstAttribute="centerY" secondItem="U9U-3q-FSW" secondAttribute="centerY" id="0X2-G0-2gt"/>
+                        <constraint firstItem="eJV-Pp-17C" firstAttribute="centerY" secondItem="U9U-3q-FSW" secondAttribute="centerY" id="2rp-Bp-Fyw"/>
                         <constraint firstAttribute="height" id="3dW-9f-0eZ"/>
                         <constraint firstItem="eJV-Pp-17C" firstAttribute="leading" secondItem="S7Q-jG-A7c" secondAttribute="trailing" constant="5" id="5sl-jt-Dyn"/>
                         <constraint firstItem="S7Q-jG-A7c" firstAttribute="leading" secondItem="U9U-3q-FSW" secondAttribute="leading" constant="3" id="BrR-g7-XCY"/>
                         <constraint firstItem="eJV-Pp-17C" firstAttribute="centerY" secondItem="S7Q-jG-A7c" secondAttribute="centerY" id="GWb-DW-igU"/>
-                        <constraint firstAttribute="trailing" secondItem="eJV-Pp-17C" secondAttribute="trailing" id="YTg-Rs-Q0B"/>
+                        <constraint firstAttribute="trailing" secondItem="eJV-Pp-17C" secondAttribute="trailing" constant="10" id="YTg-Rs-Q0B"/>
+                        <constraint firstItem="eJV-Pp-17C" firstAttribute="height" secondItem="U9U-3q-FSW" secondAttribute="height" id="rgG-GD-IRz"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYa-db-8tw" customClass="ActionRoundedButton" customModule="IdentHubSDKCore">
