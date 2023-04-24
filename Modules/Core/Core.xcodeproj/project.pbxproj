@@ -72,6 +72,8 @@
 		6769BC022959AF890009D4EB /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769BC002959AF890009D4EB /* TermsViewController.swift */; };
 		6769BC032959AF890009D4EB /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6769BC012959AF890009D4EB /* TermsViewController.xib */; };
 		6769BC052959AFCB0009D4EB /* TermsViewEventHandlerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6769BC042959AFCB0009D4EB /* TermsViewEventHandlerImpl.swift */; };
+		677B1D2629E82B1800D3FDDA /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677B1D2529E82B1800D3FDDA /* Font+Extensions.swift */; };
+		677B1D2829E82B2E00D3FDDA /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677B1D2729E82B2E00D3FDDA /* UILabel+Extensions.swift */; };
 		67B197FA2993BE6600C71FC5 /* MobileNumberTANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B197F82993BE6600C71FC5 /* MobileNumberTANRequest.swift */; };
 		67B197FB2993BE6600C71FC5 /* MobileNumberAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B197F92993BE6600C71FC5 /* MobileNumberAuthorizeRequest.swift */; };
 		67CC7F8629C98B9400287C31 /* uploadFourthlineZip.json in Resources */ = {isa = PBXBuildFile; fileRef = 67CC7F8529C98B9400287C31 /* uploadFourthlineZip.json */; };
@@ -293,6 +295,8 @@
 		6769BC002959AF890009D4EB /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		6769BC012959AF890009D4EB /* TermsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
 		6769BC042959AFCB0009D4EB /* TermsViewEventHandlerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewEventHandlerImpl.swift; sourceTree = "<group>"; };
+		677B1D2529E82B1800D3FDDA /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		677B1D2729E82B2E00D3FDDA /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		67B197F82993BE6600C71FC5 /* MobileNumberTANRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileNumberTANRequest.swift; sourceTree = "<group>"; };
 		67B197F92993BE6600C71FC5 /* MobileNumberAuthorizeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileNumberAuthorizeRequest.swift; sourceTree = "<group>"; };
 		67CC7F8529C98B9400287C31 /* uploadFourthlineZip.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = uploadFourthlineZip.json; sourceTree = "<group>"; };
@@ -733,6 +737,8 @@
 				88CDE6CC284E90C200FB659F /* String+Attributes.swift */,
 				88E9151F2844F9F700284CCE /* String+Localization.swift */,
 				8829143B284A18E600FB7F4D /* String+Regex.swift */,
+				677B1D2529E82B1800D3FDDA /* Font+Extensions.swift */,
+				677B1D2729E82B2E00D3FDDA /* UILabel+Extensions.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -1548,6 +1554,7 @@
 				88C35C13284DFAD200720C11 /* QESCoordinator.swift in Sources */,
 				6732B91F292370A200B3D037 /* SessionInfoProvider.swift in Sources */,
 				88C858A42849F6C1001EA045 /* ModuleServiceLocator.swift in Sources */,
+				677B1D2829E82B2E00D3FDDA /* UILabel+Extensions.swift in Sources */,
 				05A7B08928B7843E00319510 /* CoreVersion.m in Sources */,
 				8848D90C2844B920002CD781 /* Configuration.swift in Sources */,
 				88E9153F2845074F00284CCE /* UserDefaultsStorage.swift in Sources */,
@@ -1591,6 +1598,7 @@
 				88DD1804283E160F00A94ABC /* Showable.swift in Sources */,
 				6732B8F2292268B000B3D037 /* FourthlineIdentificationStatus.swift in Sources */,
 				88F7262C286F05D700D32702 /* Array+Extensions.swift in Sources */,
+				677B1D2629E82B1800D3FDDA /* Font+Extensions.swift in Sources */,
 				8893B98C283CDB7500F1C872 /* QESCoordinatorFactory.swift in Sources */,
 				88CDE6A2284E773200FB659F /* IdentificationRequest.swift in Sources */,
 				88CDE6CB284E8E2400FB659F /* NibView.swift in Sources */,

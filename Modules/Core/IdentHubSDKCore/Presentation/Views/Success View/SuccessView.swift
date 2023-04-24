@@ -66,8 +66,8 @@ public class SuccessView: NibView {
 
     public override func configureUI() {
         containerView.backgroundColor = colors[.background]
-        titleLabel.textColor = colors[.base100]
-        descriptionLabel.textColor = colors[.base75]
+        titleLabel.setLabelStyle(.title)
+        descriptionLabel.setLabelStyle(.subtitle)
         actionButton.setAppearance(.primary, colors: colors)
     }
 }

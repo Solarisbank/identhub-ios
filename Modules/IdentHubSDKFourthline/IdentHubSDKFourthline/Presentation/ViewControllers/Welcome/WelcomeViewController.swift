@@ -125,6 +125,7 @@ extension WelcomeViewController {
         }
         
         welcomeLabel.text = Localizable.Welcome.pageTitle
+        welcomeLabel.setLabelStyle(.title)
         startBtn.setTitle(Localizable.Welcome.startBtn, for: .normal)
         startBtn.setAppearance(.inactive, colors: colors)
         acknowledgementLabel.attributedText = buildAcknowledgementText()
@@ -132,7 +133,7 @@ extension WelcomeViewController {
             .foregroundColor: colors[.primaryAccent],
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
-        acknowledgementLabel.textColor = colors[.base50]
+        acknowledgementLabel.setTextViewStyle()
         acknowledgementLabel.delegate = self
         configureCustomUI()
         
@@ -145,7 +146,7 @@ extension WelcomeViewController {
             .foregroundColor: colors[.primaryAccent],
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
-        namirialTermsLabel.textColor = colors[.base50]
+        namirialTermsLabel.setTextViewStyle()
         namirialTermsLabel.delegate = self
         namirialTermsLabel.sizeToFit()
     }

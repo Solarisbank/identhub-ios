@@ -31,8 +31,8 @@ public final class StateView: NibView {
 
     public override func configureUI() {
         stateDescriptionLabel.isHidden = !hasDescriptionLabel
-        stateLabel.textColor = colors[.base100]
-        stateDescriptionLabel.textColor = colors[.base75]
+        stateLabel.setLabelStyle(.title)
+        stateDescriptionLabel.setLabelStyle(.subtitle)
     }
 
     public func setStateImage(_ image: UIImage?) {

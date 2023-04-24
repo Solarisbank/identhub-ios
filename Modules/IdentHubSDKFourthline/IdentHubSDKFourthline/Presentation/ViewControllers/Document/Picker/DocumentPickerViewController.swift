@@ -94,7 +94,9 @@ final internal class DocumentPickerViewController: UIViewController, Updateable 
         eventHandler?.handleEvent(.configureDocumentsTable(table: documentTypesTable))
         
         titleLbl.text = Localizable.DocumentScanner.title
+        titleLbl.setLabelStyle(.title)
         descriptionLbl.text = Localizable.DocumentScanner.description
+        descriptionLbl.setLabelStyle(.subtitle)
         continueBtn.setTitle(Localizable.Common.continueBtn, for: .normal)
         continueBtn.setAppearance(.inactive, colors: colors)
         quitBtn.setTitle(Localizable.Common.quit, for: .normal)

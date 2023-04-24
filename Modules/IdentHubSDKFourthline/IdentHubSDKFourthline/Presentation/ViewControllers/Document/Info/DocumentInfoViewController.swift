@@ -94,8 +94,11 @@ extension DocumentInfoViewController {
         typealias InfoText = Localizable.DocumentScanner.Information
 
         titleLbl.text = InfoText.title
+        titleLbl.setLabelStyle(.title)
         warningLbl.text = InfoText.warning
+        warningLbl.setLabelStyle(.caption)
         quitBtn.setTitle(Localizable.Common.back, for: .normal)
+        quitBtn.setBtnTitleStyle()
         continueBtn.setAppearance(.inactive, colors: colors)
         continueBtn.setTitle(Localizable.Common.continueBtn, for: .disabled)
     }

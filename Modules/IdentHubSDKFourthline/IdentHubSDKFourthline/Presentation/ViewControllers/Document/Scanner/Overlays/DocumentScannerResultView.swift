@@ -42,11 +42,14 @@ final class DocumentScannerResultView: UIView {
         self.stepResult = stepResult
 
         titleLbl.text = Localizable.DocumentScanner.confirmResult
+        titleLbl.setLabelStyle(.title)
         documentFrame.image = mask
         documentResult.image = stepResult.image.full
         changeMask(configuration: configuration)
         retakeBtnTitle.text = Localizable.DocumentScanner.retake
         confirmBtnTitle.text = Localizable.Selfie.confirm
+        retakeBtnTitle.setLabelStyle(.buttonTitle)
+        confirmBtnTitle.setLabelStyle(.buttonTitle)
         configureUI(colors: colors)
     }
 

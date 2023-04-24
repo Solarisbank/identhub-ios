@@ -23,10 +23,13 @@ class SelfieResultOverlayView: UIView {
     func configureUI(_ colors: Colors) {
 
         retakeBtnTitle.text = Localizable.Selfie.retake
+        retakeBtnTitle.setLabelStyle(.buttonTitle)
+        confirmBtnTitle.setLabelStyle(.buttonTitle)
         confirmBtnTitle.text = Localizable.Selfie.confirm
         confirmBtnTitle.textColor = .white
         confirmBtn.tintColor = colors[.primaryAccent]
         titleLbl.text = Localizable.Selfie.confirmSelfie
+        titleLbl.setLabelStyle(.title)
     }
 
     // MARK: - Action methods -

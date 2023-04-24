@@ -64,7 +64,7 @@ public class ActionRoundedButton: UIButton {
     }
 
     private func configureUI() {
-        titleLabel?.font = .systemFont(ofSize: Constants.FontSize.medium, weight: .bold)
+        titleLabel?.font = UIFont.getBoldFont(size: FontSize.buttonTitle)
         layer.cornerRadius = 4
 
         addConstraints { [
@@ -100,9 +100,6 @@ public class ActionRoundedButton: UIButton {
 
 private extension ActionRoundedButton {
     enum Constants {
-        enum FontSize {
-            static let medium: CGFloat = 14
-        }
 
         enum ConstraintsSize {
             static let height: CGFloat = 50

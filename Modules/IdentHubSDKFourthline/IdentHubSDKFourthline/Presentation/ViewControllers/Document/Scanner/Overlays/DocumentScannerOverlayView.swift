@@ -86,6 +86,7 @@ final class DocumentScannerOverlayView: UIView {
 
     /// Method configure custom colors in UI components
     func configureUI(colors: Colors) {
+        titleLbl.setLabelStyle(.title)
         takePictureBtnView.backgroundColor = colors[.primaryAccent]
     }
 }

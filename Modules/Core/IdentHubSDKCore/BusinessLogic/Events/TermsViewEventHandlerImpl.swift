@@ -67,7 +67,7 @@ final class TermsViewEventHandlerImpl<ViewController: UpdateableShowable>: Event
             .foregroundColor: colors[.primaryAccent],
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
-        textView.textColor = colors[.base50]
+        textView.setTextViewStyle()
     }
     
     private func buildTermsAttrText() -> NSAttributedString {

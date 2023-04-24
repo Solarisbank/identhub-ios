@@ -74,6 +74,7 @@ class DocumentViewCell: UITableViewCell {
 private extension DocumentViewCell {
     
     private func configureUI() {
+        documentTitle.font = UIFont.getFont(size: FontSize.caption)
         documentTitle.text = Localizable.SignDocuments.ConfirmApplication.docItemTitle
         state = .normal
     }

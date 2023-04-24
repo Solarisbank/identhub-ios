@@ -63,7 +63,9 @@ final internal class ResultViewController: UIViewController, Updateable {
     
     func updateView(_ state: ResultState) {
         titleLbl.text = state.title
+        titleLbl.setLabelStyle(.title)
         descriptionLbl.text = state.description
+        descriptionLbl.setLabelStyle(.subtitle)
         resultImage.image = state.image
         quitBtn.setAppearance(.primary, colors: colors)
         quitBtn.setTitle(Localizable.Common.quit, for: .normal)

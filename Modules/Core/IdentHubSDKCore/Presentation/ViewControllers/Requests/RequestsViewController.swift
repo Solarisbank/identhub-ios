@@ -37,6 +37,7 @@ public final class RequestsViewController: UIViewController, Updateable {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
         setUpProgressView()
         self.eventHandler?.handleEvent(.identifyEvent)
         
@@ -94,6 +95,11 @@ public final class RequestsViewController: UIViewController, Updateable {
         case .confirmation:
             self.eventHandler?.handleEvent(.verification)
         }
+    }
+    
+    private func configureUI() {
+        titleLbl.setLabelStyle(.title)
+        descriptionLbl.setLabelStyle(.subtitle)
     }
     
     private func setUpProgressView() {

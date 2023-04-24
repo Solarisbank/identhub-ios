@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 class DocumentTypeCell: UITableViewCell {
 
@@ -18,6 +19,7 @@ class DocumentTypeCell: UITableViewCell {
 
     func configureCell(with data: ScanDocumentType) {
         documentName.text = data.name
+        documentName.font = UIFont.getFont(size: FontSize.big)
         documentLogo.image = data.logo
 
         contentView.backgroundColor = .clear

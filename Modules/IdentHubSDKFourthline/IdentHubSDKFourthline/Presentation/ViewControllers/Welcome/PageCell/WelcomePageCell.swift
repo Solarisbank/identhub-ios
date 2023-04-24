@@ -16,6 +16,7 @@ class WelcomePageCell: UICollectionViewCell {
     /// - Parameter data: welcome page data with displayed content
     func configureScreen(_ data: WelcomePageContent) {
         titleLabel.text = data.title
+        titleLabel.setLabelStyle(.title)
         descriptionLabel.text = data.description
     }
 }

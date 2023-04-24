@@ -31,6 +31,7 @@ final internal class TermsViewController: UIViewController, Updateable, Quitable
     var colors: Colors
     
     // MARK: - Outlets -
+    @IBOutlet var titleLbl: UILabel!
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var termsText: UITextView!
     @IBOutlet var continueBtn: ActionRoundedButton!
@@ -70,8 +71,11 @@ final internal class TermsViewController: UIViewController, Updateable, Quitable
     // MARK: - Internal methods -
     
     private func configureUI() {
+        titleLbl.setLabelStyle(.title)
+        titleLbl.text = Localizable.TermsConditions.termsText
         termsText.delegate = self
         descLabel.text = Localizable.TermsConditions.description
+        descLabel.setLabelStyle(.caption)
         continueBtn.setAppearance(.inactive, colors: colors)
         checkBoxBtn.setAppearance(colors)
     }

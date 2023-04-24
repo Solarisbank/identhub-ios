@@ -28,7 +28,8 @@ class DocumentItemInfoCell: UITableViewCell {
     func configure(with data: DocumentItemInfo) {
         cellContent = data
         contentTitle.text = data.title
-
+        contentTitle.font = UIFont.getFont(size: FontSize.small)
+        infoLbl.font = UIFont.getFont(size: FontSize.small)
         configureContentField(with: data)
         contentDidChange()
     }
@@ -87,7 +88,8 @@ extension DocumentItemInfoCell {
             if let date = data.prefilledDate {
                 datePicker.date = date
             }
-
+            
+            contentTF.font = UIFont.getFont(size: FontSize.textField)
             contentTF.text = data.content
             contentTF.inputView = datePicker
             contentTF.inputAccessoryView = createToolbar()

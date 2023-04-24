@@ -138,6 +138,7 @@ extension PhoneVerificationViewController {
     
     private func updateMobileNumber(state: PhoneVerificationState) {
         let text = String(format: Localizable.PhoneVerification.enterCode, state.mobileNumber ?? "")
+        infoLabel.setLabelStyle(.subtitle)
         guard let number = state.mobileNumber else {
             infoLabel.attributedText = NSAttributedString(string: text)
             return
@@ -174,15 +175,18 @@ extension PhoneVerificationViewController {
         headerView.setStyle(.quit(target: self))
         
         titleLabel.text = Localizable.PhoneVerification.title
+        titleLabel.setLabelStyle(.title)
         countDownTimeLabel.text = Localizable.PhoneVerification.requestNewCodeTimer
+        countDownTimeLabel.font = UIFont.getFont(size: FontSize.caption)
         errorLabel.text = Localizable.PhoneVerification.wrongTan
         errorLabel.textColor = colors[.error]
+        errorLabel.setLabelStyle(.error)
         
         requestNewCodeBtn.setTitle(Localizable.PhoneVerification.requestNewCode, for: .normal)
         requestNewCodeBtn.setTitleColor(colors[.secondaryAccent], for: .normal)
+        requestNewCodeBtn.titleLabel?.font = UIFont.getBoldFont(size: FontSize.buttonTitle)
         
         submitCodeBtn.setTitle(Localizable.Common.confirm, for: .normal)
-        submitCodeBtn.tintColor = colors[.primaryAccent]
         submitCodeBtn.setAppearance(.inactive, colors: colors)
         
         codeEntryView.delegate = self

@@ -74,7 +74,9 @@ extension InstructionViewController {
         typealias InfoText = Localizable.DocumentScanner.Healthcard
 
         titleLbl.text = InfoText.title
+        titleLbl.setLabelStyle(.title)
         descriptionLbl.text = InfoText.description
+        descriptionLbl.setLabelStyle(.subtitle)
         continueBtn.setAppearance(.primary, colors: colors)
         continueBtn.setTitle(Localizable.Common.continueBtn, for: .disabled)
     }

@@ -109,16 +109,18 @@ extension SignDocumentsViewController {
         headerView.setStyle(.quit(target: self))
         
         titleLabel.text = Localizable.SignDocuments.Sign.title
+        titleLabel.setLabelStyle(.title)
         
         codeEntryView.delegate = self
         codeEntryView.state = .disabled
         
         requestCodeTimerLabel.text = Localizable.PhoneVerification.requestNewCodeTimer
         errorCodeLabel.text = Localizable.PhoneVerification.wrongTan
-        errorCodeLabel.textColor = colors[.error]
+        errorCodeLabel.setLabelStyle(.error)
         
         sendNewCodeBtn.setTitle(Localizable.PhoneVerification.sendNewCode, for: .normal)
-        sendNewCodeBtn.setTitleColor(colors[.secondaryAccentDarken], for: .normal)
+        sendNewCodeBtn.setTitleColor(colors[.secondaryAccent], for: .normal)
+        sendNewCodeBtn.titleLabel?.font = UIFont.getBoldFont(size: FontSize.buttonTitle)
         
         submitCodeBtn.setTitle(Localizable.Common.confirm, for: .normal)
         submitCodeBtn.setAppearance(.inactive, colors: colors)

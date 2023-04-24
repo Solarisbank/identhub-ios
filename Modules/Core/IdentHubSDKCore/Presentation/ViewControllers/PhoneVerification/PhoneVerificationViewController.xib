@@ -132,7 +132,7 @@
                         <constraint firstAttribute="trailing" secondItem="OZI-NZ-q90" secondAttribute="trailing" constant="24" id="tgt-pb-oi5"/>
                         <constraint firstItem="jKa-75-NrV" firstAttribute="top" secondItem="3iG-Hf-2s2" secondAttribute="top" constant="44" id="vWg-ye-DZX"/>
                         <constraint firstItem="E2v-dF-3V9" firstAttribute="top" secondItem="djc-s9-WhB" secondAttribute="bottom" constant="24" id="voC-rs-dSX"/>
-                        <constraint firstItem="djc-s9-WhB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Efw-hK-ZX9" secondAttribute="bottom" priority="750" constant="30" id="vp2-JO-Efl"/>
+                        <constraint firstItem="djc-s9-WhB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Efw-hK-ZX9" secondAttribute="bottom" priority="750" constant="20" id="vp2-JO-Efl"/>
                         <constraint firstItem="p9R-jL-xBr" firstAttribute="centerX" secondItem="3iG-Hf-2s2" secondAttribute="centerX" id="z2d-ga-wuz"/>
                     </constraints>
                 </view>

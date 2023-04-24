@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import IdentHubSDKCore
 
 final class InfoStatusView: UIView {
 
@@ -63,7 +64,9 @@ final class InfoStatusView: UIView {
         Bundle(for: Self.self).loadNibNamed("InfoStatusView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = bounds
-
+        
+        statusTitle.font = UIFont.getBoldFont(size: FontSize.caption)
+        statusDescription.font = UIFont.getFont(size: FontSize.small)
         status = .loading
     }
 

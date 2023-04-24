@@ -48,6 +48,7 @@ final class SelfieOverlayView: UIView {
 
         didSet {
             titleLabel.text = title
+            titleLabel.setLabelStyle(.title)
         }
     }
 

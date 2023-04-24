@@ -17,6 +17,7 @@
                 <outlet property="quitBtn" destination="BFf-Hd-yC5" id="YgW-Lw-taI"/>
                 <outlet property="termsContainerView" destination="iOq-zf-O7n" id="bNT-pY-SmS"/>
                 <outlet property="termsText" destination="Rre-Px-6Xq" id="dpf-df-Mga"/>
+                <outlet property="titleLbl" destination="ppO-yM-1Wv" id="OQj-Oj-sp1"/>
                 <outlet property="view" destination="Jyj-m7-GxN" id="Zim-fV-oM6"/>
             </connections>
         </placeholder>

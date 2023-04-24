@@ -77,7 +77,7 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
             termsAndConditionsLabel.linkTextAttributes = [
                 .foregroundColor: colors[.primaryAccent]
             ]
-            termsAndConditionsLabel.textColor = colors[.base75]
+            termsAndConditionsLabel.setTextViewStyle()
         }
     }
 
@@ -85,7 +85,9 @@ final internal class ConfirmApplicationViewController: UIViewController, Quitabl
         configureTableView()
 
         titleLabel.text = Localizable.SignDocuments.ConfirmApplication.confirmYourApplication
+        titleLabel.setLabelStyle(.title)
         descriptionLabel.text = Localizable.SignDocuments.ConfirmApplication.description
+        descriptionLabel.setLabelStyle(.subtitle)
                 
         actionButton.setTitle(Localizable.Common.next, for: .normal)
     }

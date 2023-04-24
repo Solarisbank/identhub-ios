@@ -111,10 +111,14 @@ extension IBANVerificationViewController {
         
         headerView.setStyle(.quit(target: self))
 
+        titleLabel.setLabelStyle(.title)
         titleLabel.text = Localizable.BankVerification.IBANVerification.title
         accountHintLabel.text = Localizable.BankVerification.IBANVerification.accountDisclaimer
+        accountHintLabel.setLabelStyle(.subtitle)
         ibanLabel.text = Localizable.BankVerification.IBANVerification.IBANEncryptionInfo
+        ibanLabel.font = UIFont.getBoldFont(size: FontSize.caption)
         errorLabel.text = Localizable.BankVerification.IBANVerification.wrongIBANFormat
+        errorLabel.setLabelStyle(.error)
 
         let placeholderText = Localizable.BankVerification.IBANVerification.IBANplaceholder
         ibanVerificationTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: colors[.base25]])
