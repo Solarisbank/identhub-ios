@@ -5,6 +5,11 @@
 
 import Foundation
 
+// On iOS 12, JsonEncoding types like String directly is not possible
+private struct CodableWrapper<T> : Codable where T : Codable {
+    let wrapped : T
+}
+
 /// Implementation of the Storage utilizing UserDefaults suite.
 public struct UserDefaultsStorage: Storage {
     private var userDefaults: UserDefaults
@@ -23,7 +28,13 @@ public struct UserDefaultsStorage: Storage {
             }
 
             do {
-                return try JSONDecoder().decode(Value.self, from: data)
+                if #available(iOS 13.0, *) {
+                    return try JSONDecoder().decode(Value.self, from: data)
+                } else {
+                    let wrapper = try JSONDecoder().decode(CodableWrapper<Value>.self, from: data)
+                    return wrapper.wrapped
+                }
+                    
             } catch {
                 print("Error decoding value with key \(key.name) of type \(Value.self)")
             }
@@ -32,7 +43,12 @@ public struct UserDefaultsStorage: Storage {
         }
         set {
             do {
-                let data = try JSONEncoder().encode(newValue)
+                let data: Data
+                if #available(iOS 13.0, *) {
+                    data = try JSONEncoder().encode(newValue)
+                } else {
+                    data = try JSONEncoder().encode(CodableWrapper(wrapped: newValue))
+                }
                 userDefaults.set(data, forKey: key.name)
             } catch {
                 print("Error encoding value with key \(key.name) of type \(Value.self)")
