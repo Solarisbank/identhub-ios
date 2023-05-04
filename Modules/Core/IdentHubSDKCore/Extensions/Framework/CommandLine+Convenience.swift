@@ -14,3 +14,17 @@ public extension CommandLine {
         return nil
     }
 }
+
+public extension Locale {
+    static var preferredLanguageCode: String {
+        guard let preferredLanguage = preferredLanguages.first,
+              let code = Locale(identifier: preferredLanguage).languageCode else {
+            return Locale.current.languageCode ?? "en"
+        }
+        return code
+    }
+    
+    static var preferredLanguageCodes: [String] {
+        return Locale.preferredLanguages.compactMap({Locale(identifier: $0).languageCode})
+    }
+}

@@ -6,7 +6,7 @@ import Foundation
 
 public extension String {
     func localized(fromBundle bundle: Bundle) -> String {
-        let languageCode = CommandLine.locale?.languageCode ?? Locale.current.languageCode ?? "en"
+        let languageCode = CommandLine.locale?.languageCode ?? Locale.preferredLanguageCode
         return localized(fromBundle: bundle, forLanguageCode: languageCode)
     }
 }
