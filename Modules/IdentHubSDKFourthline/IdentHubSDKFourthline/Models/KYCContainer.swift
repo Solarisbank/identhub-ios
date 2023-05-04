@@ -30,8 +30,8 @@ final class KYCContainer {
     
     private var mrzInfo: MRZInfo?
     private var infoProvider: SessionInfoProvider?
-    public var isTaxIDAvailable: Bool = false
-
+    public var isSecondDocRequire: Bool = false
+    
     private init() {}
     
     static func removeSharedContainer() {
@@ -72,17 +72,6 @@ final class KYCContainer {
         if let mrzInfo = data.mrzInfo as? MRTDMRZInfo {
             update(with: mrzInfo)
             updatePersonData(with: mrzInfo)
-            
-            // Extract tax information if available
-            if let optionalData = mrzInfo.optionalData {
-                let taxInfo = kycInfo.taxInfo ?? TaxInfo()
-                
-                taxInfo.taxpayerIdentificationNumber = optionalData
-                taxInfo.taxationCountryCode = mrzInfo.issuingCountry
-                
-                kycInfo.taxInfo = taxInfo
-                isTaxIDAvailable = true
-            }
         }
 
         kycInfo.document?.videoRecording = data.videoRecording
@@ -180,13 +169,10 @@ final class KYCContainer {
 
         fillPersonData(data)
         fillPersonAddressData(data)
+        fillTaxIDData(data)
 
         setContacts(data: data)
         storePersonalData(data: data)
-        
-        //TO DO: Update tax info from API.
-        kycInfo.taxInfo = TaxInfo()
-        isTaxIDAvailable = false
     }
 
     /// Run previous session KYC data restoration
@@ -260,6 +246,16 @@ private extension KYCContainer {
         let streetNumberData = personData.address.parseStreetNumber()
         kycInfo.address?.streetNumber = streetNumberData.number
         kycInfo.address?.streetNumberSuffix = streetNumberData.suffix
+    }
+    
+    private func fillTaxIDData(_ personData: PersonData) {
+        
+        if !(personData.taxIdentification?.number.isEmpty ?? true) {
+            let taxInfo = TaxInfo()
+            taxInfo.taxpayerIdentificationNumber = personData.taxIdentification?.number
+            taxInfo.taxationCountryCode = personData.taxIdentification?.country
+            kycInfo.taxInfo = taxInfo
+        }
     }
 }
 

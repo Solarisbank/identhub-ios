@@ -33,6 +33,7 @@ private extension DocumentScannerAssetsDataSource {
             return "passport_"
 
         case .idCard,
+             .tinReferenceDocument,
              .residencePermit:
             return "idcard_"
 

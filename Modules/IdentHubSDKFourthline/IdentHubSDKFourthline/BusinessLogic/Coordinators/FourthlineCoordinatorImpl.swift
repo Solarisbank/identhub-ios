@@ -181,6 +181,8 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             }
             switch result {
             case .documentScanner(type: let type):
+                
+                KYCContainer.shared.isSecondDocRequire = (type != .idCard)
                 self.documentScannerPresent(type: type, isSecondDocument: false)
             case .quit:
                 self.quit()
@@ -223,8 +225,8 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
     }
     
     private func documentInfoConfirmation() -> Showable? {
-        let isSecondaryDocumentRequired = (self.sessionInfoProvider.secondaryDocument && !KYCContainer.shared.isTaxIDAvailable) ? true : false
-                
+        let isSecondaryDocumentRequired = (self.sessionInfoProvider.secondaryDocument && KYCContainer.shared.isSecondDocRequire)
+
         let input = DocumentInfoInput(isSecondDocument: isSecondaryDocumentRequired)
         return showableFactory.makeDocumentInfoShowable(input: input) { [weak self] result in
             guard let self = self else {
@@ -255,8 +257,7 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
 
             switch result {
             case .nextStep:
-                //TO DO: select proper Document type here for Open Document scan again
-                self.documentScannerPresent(type: .idCard, isSecondDocument: true)
+                self.documentScannerPresent(type: .tinReferenceDocument, isSecondDocument: true)
             case .quit:
                 self.quit()
             }

@@ -42,6 +42,8 @@ struct PersonData: Codable, Equatable {
 
     /// Array of the supported documents for person nationality
     let supportedDocuments: [SupportedDocument]
+    
+    let taxIdentification: TaxIdentification?
 
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
@@ -55,6 +57,7 @@ struct PersonData: Codable, Equatable {
         case mobileNumber = "mobile_number"
         case address
         case supportedDocuments = "supported_documents"
+        case taxIdentification = "tax_identification"
     }
     
     init(from decoder: Decoder) throws {
@@ -81,6 +84,7 @@ struct PersonData: Codable, Equatable {
         self.mobileNumber = try container.decode(String.self, forKey: .mobileNumber)
         self.address = try container.decode(PersonAddress.self, forKey: .address)
         self.supportedDocuments = try container.decode([SupportedDocument].self, forKey: .supportedDocuments)
+        self.taxIdentification = try container.decodeIfPresent(TaxIdentification.self, forKey: .taxIdentification)
     }
     
     static func == (lhs: PersonData, rhs: PersonData) -> Bool {
@@ -109,4 +113,18 @@ enum Gender: String, Codable {
     case male = "male"
     case female = "female"
     case unknown = "unknown"
+}
+
+public struct TaxIdentification: Codable {
+
+    /// Person document number
+    public let number: String
+
+    /// Person country name
+    public let country: String
+
+    public enum CodingKeys: String, CodingKey {
+        case number
+        case country
+    }
 }
