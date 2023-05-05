@@ -25,7 +25,7 @@ private class LineProgressView: UIView {
     }
 
     private func setUp() {
-        backgroundColor = AppColor.base10.color
+        backgroundColor = AppColor.disableBtnBG.color
         layer.cornerRadius = 2
         addConstraints { [
             $0.equalConstant(.height, 2)
@@ -66,7 +66,7 @@ internal class IdentificationProgressView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(Constants.FontSize.tiny)
-        label.textColor = AppColor.base50.color
+        label.textColor = AppColor.labelText.color
         label.text = Localizable.IdentificationProgressView.identificationProgress.uppercased()
         return label
     }()
@@ -74,7 +74,7 @@ internal class IdentificationProgressView: UIView {
     private lazy var currentStepLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.FontSize.medium, weight: .bold)
-        label.textColor = AppColor.base100.color
+        label.textColor = AppColor.disableBtnText.color
         return label
     }()
 
@@ -82,7 +82,7 @@ internal class IdentificationProgressView: UIView {
         let label = UILabel()
         label.textAlignment = .right
         label.font = label.font.withSize(Constants.FontSize.small)
-        label.textColor = AppColor.base50.color
+        label.textColor = AppColor.labelText.color
         return label
     }()
 

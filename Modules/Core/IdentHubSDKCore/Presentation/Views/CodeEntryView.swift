@@ -51,7 +51,7 @@ private class SingleDigitTextField: UITextField {
     private func updateUI() {
         backgroundColor = colors[.background]
         textColor = colors[.base75]
-        layer.borderColor = colors[.base10].cgColor
+        layer.borderColor = colors[.disableBtnBG].cgColor
     }
 
     override func deleteBackward() {
@@ -218,13 +218,14 @@ public class CodeEntryView: UIView {
     private func updateTextFields(for state: State) {
         typealias Properties = (backgroundColor: UIColor, borderColor: CGColor, isUserInteractionEnabled: Bool, textColor: UIColor)
         let textFieldProperties: Properties
+        
         switch state {
         case .normal:
-            textFieldProperties = (colors[.background], colors[.base25].cgColor, true, colors[.base100])
+            textFieldProperties = (colors[.background], colors[.labelText].cgColor, true, colors[.paragraph])
         case .error:
-            textFieldProperties = (colors[.base05], colors[.error].cgColor, false, colors[.base25])
+            textFieldProperties = (colors[.documentInfoBackground], colors[.error].cgColor, false, colors[.labelText])
         case .disabled:
-            textFieldProperties = (colors[.base05], colors[.base25].cgColor, false, colors[.base25])
+            textFieldProperties = (colors[.documentInfoBackground], colors[.disableBtnBG].cgColor, false, colors[.disableBtnBG])
         }
         for view in self.entryFieldsStackView.arrangedSubviews {
             view.backgroundColor = textFieldProperties.backgroundColor

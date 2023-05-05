@@ -77,7 +77,7 @@ internal class VerificationTextField: UITextField {
         let borderColor: CGColor
         switch currentState {
         case .normal:
-            borderColor = colors[.base50].cgColor
+            borderColor = colors[.labelText].cgColor
         case .verified:
             borderColor = colors[.success].cgColor
         case .error:

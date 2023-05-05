@@ -207,7 +207,7 @@ extension SignDocumentsViewController {
     private func updateCodeEntryHint(withMobileNumber mobileNumber: String?) {
         let text = String(format: Localizable.PhoneVerification.enterCode, mobileNumber ?? "")
         if let mobileNumber = mobileNumber {
-            codeEntryHint.attributedText = text.withBoldTexts([mobileNumber], withColorForBoldText: colors[.base100])
+            codeEntryHint.attributedText = text.withBoldTexts([mobileNumber], withColorForBoldText: colors[.header])
         } else {
             codeEntryHint.attributedText = NSAttributedString(string: text)
         }
@@ -216,7 +216,7 @@ extension SignDocumentsViewController {
     private func updateTransactionInfo(withId id: String?, isHidden: Bool) {
         transactionDetailView.isHidden = id == nil || isHidden
         if let id = id {
-            transactionInfoLabel.attributedText = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(id) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)".withBoldTexts([id], withColorForBoldText: colors[.black100])
+            transactionInfoLabel.attributedText = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(id) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)".withBoldTexts([id], withColorForBoldText: colors[.header])
         }
     }
 

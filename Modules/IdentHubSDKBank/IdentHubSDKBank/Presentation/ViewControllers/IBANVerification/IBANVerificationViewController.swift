@@ -121,7 +121,7 @@ extension IBANVerificationViewController {
         errorLabel.setLabelStyle(.error)
 
         let placeholderText = Localizable.BankVerification.IBANVerification.IBANplaceholder
-        ibanVerificationTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: colors[.base25]])
+        ibanVerificationTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: colors[.disableBtnBG]])
         ibanVerificationTextField.placeholder = placeholderText
 
         initiatePaymentVerificationButton.setTitle(Localizable.Common.next, for: .normal)

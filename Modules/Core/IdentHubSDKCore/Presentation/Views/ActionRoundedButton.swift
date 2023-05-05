@@ -82,15 +82,15 @@ public class ActionRoundedButton: UIButton {
             colorsPair = (colors[.primaryAccent], .white)
         case .dimmed:
             isEnabled = true
-            colorsPair = (colors[.base05], colors[.base100])
+            colorsPair = (colors[.documentInfoBackground], colors[.paragraph])
         case .inactive:
             isEnabled = false
             setTitle(self.title(for: .normal), for: .disabled)
-            colorsPair = (colors[.base25], colors[.base100])
+            colorsPair = (colors[.disableBtnBG], colors[.disableBtnText])
         case .verifying:
             isEnabled = false
             setTitle(Localizable.Common.verifying, for: .disabled)
-            colorsPair = (colors[.base25], .white)
+            colorsPair = (colors[.disableBtnBG], .white)
         }
 
         actualBackgroundColor = colorsPair.background

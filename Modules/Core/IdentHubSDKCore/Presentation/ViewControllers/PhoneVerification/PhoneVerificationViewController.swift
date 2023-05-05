@@ -143,7 +143,7 @@ extension PhoneVerificationViewController {
             infoLabel.attributedText = NSAttributedString(string: text)
             return
         }
-        infoLabel.attributedText = text.withBoldTexts([number], withColorForBoldText: colors[.base100])
+        infoLabel.attributedText = text.withBoldTexts([number], withColorForBoldText: colors[.header])
     }
     
     private func updateRemainingTime(state: PhoneVerificationState) {

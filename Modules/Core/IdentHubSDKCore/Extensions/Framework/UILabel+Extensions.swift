@@ -22,14 +22,14 @@ public extension UILabel {
         
         switch style {
         case .title:
-            self.font = UIFont.getBoldFont(size: FontSize.big)
-            self.textColor = colors[.black75]
+            self.font = UIFont.getFont(size: FontSize.big)
+            self.textColor = colors[.header]
         case .subtitle:
             self.font = UIFont.getFont(size: FontSize.medium)
-            self.textColor = colors[.black50]
+            self.textColor = colors[.paragraph]
         case .caption:
             self.font = UIFont.getFont(size: FontSize.caption)
-            self.textColor = colors[.base50]
+            self.textColor = colors[.paragraph]
         case .error:
             self.font = UIFont.getFont(size: FontSize.caption)
             self.textColor = colors[.error]
@@ -49,7 +49,7 @@ public extension UITextView {
         let colors: Colors = ColorsImpl() //Only SDK colors
         
         self.font = UIFont.getFont(size: FontSize.caption)
-        self.textColor = colors[.base50]
+        self.textColor = colors[.paragraph]
         return self
     }
     
@@ -61,8 +61,8 @@ public extension UIButton {
     func setBtnTitleStyle() -> UIButton {
         let colors: Colors = ColorsImpl() //Only SDK colors
         
-        self.titleLabel?.font = UIFont.getFont(size: FontSize.buttonTitle)
-        self.titleLabel?.textColor = colors[.base100]
+        self.titleLabel?.font = UIFont.getBoldFont(size: FontSize.buttonTitle)
+        self.titleLabel?.textColor = colors[.disableBtnText]
         return self
     }
 }

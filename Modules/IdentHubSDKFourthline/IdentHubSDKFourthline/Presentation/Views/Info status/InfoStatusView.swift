@@ -65,8 +65,8 @@ final class InfoStatusView: UIView {
         addSubview(contentView)
         contentView.frame = bounds
         
-        statusTitle.font = UIFont.getBoldFont(size: FontSize.caption)
-        statusDescription.font = UIFont.getFont(size: FontSize.small)
+        statusTitle.font = UIFont.getFont(size: FontSize.small)
+        statusDescription.font = UIFont.getBoldFont(size: FontSize.caption)
         status = .loading
     }
 

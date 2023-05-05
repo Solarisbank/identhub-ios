@@ -100,6 +100,7 @@ final internal class DocumentPickerViewController: UIViewController, Updateable 
         continueBtn.setTitle(Localizable.Common.continueBtn, for: .normal)
         continueBtn.setAppearance(.inactive, colors: colors)
         quitBtn.setTitle(Localizable.Common.quit, for: .normal)
+        quitBtn.setBtnTitleStyle()
     }
     
 }

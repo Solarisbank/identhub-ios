@@ -33,7 +33,7 @@ public class PopUpWindowViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.FontSize.big)
-        label.textColor = colors[.base100]
+        label.textColor = colors[.header]
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -42,7 +42,7 @@ public class PopUpWindowViewController: UIViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.FontSize.normal)
-        label.textColor = colors[.base75]
+        label.textColor = colors[.paragraph]
         label.numberOfLines = 0
         return label
     }()
@@ -74,7 +74,7 @@ public class PopUpWindowViewController: UIViewController {
     
     private lazy var separatorLine: UIView = {
         let view = UIView()
-        view.backgroundColor = colors[.base50]
+        view.backgroundColor = colors[.labelText]
         return view
     }()
 

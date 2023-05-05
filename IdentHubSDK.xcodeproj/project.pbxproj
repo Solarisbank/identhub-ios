@@ -24,14 +24,11 @@
 		057C59572848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */; };
 		05AC64DD28927B6F0039D883 /* Loggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AC64DC28927B6F0039D883 /* Loggers.swift */; };
 		05ED6EE8288A918A00632718 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ED6EE7288A918A00632718 /* LoadingViewController.swift */; };
-		0C007F1725D56977003D42B3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C007F1625D56977003D42B3 /* ErrorView.swift */; };
 		0C12CAA825A783AF0032B520 /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C12CAA725A783AF0032B520 /* VerificationService.swift */; };
 		0C12CAAE25A784220032B520 /* MobileNumberTANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C12CAAD25A784220032B520 /* MobileNumberTANRequest.swift */; };
 		0C4B67E0259B24AB00190C4E /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4B67DF259B24AB00190C4E /* Localizable.swift */; };
-		0C527E5D25AC5F1500B6D5DB /* VerificationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C527E5C25AC5F1500B6D5DB /* VerificationTextField.swift */; };
 		0C527E6F25AC947700B6D5DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C527E6E25AC947700B6D5DB /* Assets.xcassets */; };
 		0C527E7525AC9C6D00B6D5DB /* BankIDIBANRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C527E7425AC9C6D00B6D5DB /* BankIDIBANRequest.swift */; };
-		0C7FD34325D29AF600A6CC28 /* DownloadDocumentsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FD34225D29AF600A6CC28 /* DownloadDocumentsButton.swift */; };
 		0C7FDF7F25C7F61D004B11F5 /* VerifiableViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FDF7E25C7F61D004B11F5 /* VerifiableViewModelDelegate.swift */; };
 		0CB1439E259A46760014B643 /* IdentHubSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1439D259A46760014B643 /* IdentHubSession.swift */; };
 		0CC8534825D1AAB400109FFC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8534725D1AAB400109FFC /* ViewModel.swift */; };
@@ -71,9 +68,6 @@
 		841C81C52603743600F4A079 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81C42603743600F4A079 /* Coordinator.swift */; };
 		841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C81CC2603748300F4A079 /* BankIDCoordinator.swift */; };
 		841F5C6D2762363700D68175 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841F5C6C2762363700D68175 /* BaseTestCase.swift */; };
-		84280D2426F3BBB40002D119 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84280D2326F3BBB40002D119 /* Checkbox.swift */; };
-		84281690261F02BD00A7BE37 /* InfoStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428168F261F02BD00A7BE37 /* InfoStatusView.swift */; };
-		84281695261F02E000A7BE37 /* InfoStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84281694261F02E000A7BE37 /* InfoStatusView.xib */; };
 		842A14B2260A6E6D005CD33B /* IdentHubConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */; };
 		842DA66A26373E740020E598 /* IdentificationMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842DA66926373E740020E598 /* IdentificationMethod.swift */; };
 		84446020274E711600EB7972 /* IdentificationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */; };
@@ -264,14 +258,11 @@
 		057C59562848F6740090A44C /* XCTestCase+TrackForMemoryLeaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TrackForMemoryLeaks.swift"; sourceTree = "<group>"; };
 		05AC64DC28927B6F0039D883 /* Loggers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggers.swift; sourceTree = "<group>"; };
 		05ED6EE7288A918A00632718 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		0C007F1625D56977003D42B3 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		0C12CAA725A783AF0032B520 /* VerificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		0C12CAAD25A784220032B520 /* MobileNumberTANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumberTANRequest.swift; sourceTree = "<group>"; };
 		0C4B67DF259B24AB00190C4E /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
-		0C527E5C25AC5F1500B6D5DB /* VerificationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationTextField.swift; sourceTree = "<group>"; };
 		0C527E6E25AC947700B6D5DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C527E7425AC9C6D00B6D5DB /* BankIDIBANRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDIBANRequest.swift; sourceTree = "<group>"; };
-		0C7FD34225D29AF600A6CC28 /* DownloadDocumentsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDocumentsButton.swift; sourceTree = "<group>"; };
 		0C7FDF7E25C7F61D004B11F5 /* VerifiableViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifiableViewModelDelegate.swift; sourceTree = "<group>"; };
 		0CB1439D259A46760014B643 /* IdentHubSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentHubSession.swift; sourceTree = "<group>"; };
 		0CC8534725D1AAB400109FFC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -334,9 +325,6 @@
 		841C81CC2603748300F4A079 /* BankIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIDCoordinator.swift; sourceTree = "<group>"; };
 		841F5C6C2762363700D68175 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		84269910290C4E8484500116 /* Pods-IdentHubSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.release.xcconfig"; sourceTree = "<group>"; };
-		84280D2326F3BBB40002D119 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
-		8428168F261F02BD00A7BE37 /* InfoStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStatusView.swift; sourceTree = "<group>"; };
-		84281694261F02E000A7BE37 /* InfoStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoStatusView.xib; sourceTree = "<group>"; };
 		842A14B1260A6E6D005CD33B /* IdentHubConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentHubConstants.swift; sourceTree = "<group>"; };
 		842DA66926373E740020E598 /* IdentificationMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationMethod.swift; sourceTree = "<group>"; };
 		8444601F274E711600EB7972 /* IdentificationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationCoordinatorTests.swift; sourceTree = "<group>"; };
@@ -460,18 +448,6 @@
 				0C12CAA725A783AF0032B520 /* VerificationService.swift */,
 			);
 			path = Verification;
-			sourceTree = "<group>";
-		};
-		0C4B67D8259B224F00190C4E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8431062D261F01BB00E24E8A /* Info status */,
-				84280D2326F3BBB40002D119 /* Checkbox.swift */,
-				0C527E5C25AC5F1500B6D5DB /* VerificationTextField.swift */,
-				0C7FD34225D29AF600A6CC28 /* DownloadDocumentsButton.swift */,
-				0C007F1625D56977003D42B3 /* ErrorView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		0C4B67DE259B249A00190C4E /* Localization */ = {
@@ -748,7 +724,6 @@
 			children = (
 				841C81B026036B3700F4A079 /* Coordinators */,
 				841C81AF26036B2200F4A079 /* Router */,
-				0C4B67D8259B224F00190C4E /* Views */,
 				0CE4A8E325A3688B00114CBD /* ViewControllers */,
 				0CB143A8259A47DE0014B643 /* Extensions */,
 			);
@@ -815,15 +790,6 @@
 				841F5C6C2762363700D68175 /* BaseTestCase.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		8431062D261F01BB00E24E8A /* Info status */ = {
-			isa = PBXGroup;
-			children = (
-				8428168F261F02BD00A7BE37 /* InfoStatusView.swift */,
-				84281694261F02E000A7BE37 /* InfoStatusView.xib */,
-			);
-			path = "Info status";
 			sourceTree = "<group>";
 		};
 		8444601B274E6E6100EB7972 /* Presentation Layer */ = {
@@ -1261,7 +1227,6 @@
 				0CD863A125DC5F5000AB3252 /* strip-frameworks.sh in Resources */,
 				88E232D528896D7900D24CEC /* Colors.xcassets in Resources */,
 				88E915032844EEB100284CCE /* Localizable.strings in Resources */,
-				84281695261F02E000A7BE37 /* InfoStatusView.xib in Resources */,
 				0C527E6F25AC947700B6D5DB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1415,10 +1380,8 @@
 				88C35C39284E22E300720C11 /* ModuleResolver.swift in Sources */,
 				84056F4B2655458F0072A10F /* BankIDStep.swift in Sources */,
 				841C81CD2603748300F4A079 /* BankIDCoordinator.swift in Sources */,
-				84281690261F02BD00A7BE37 /* InfoStatusView.swift in Sources */,
 				0CC8534825D1AAB400109FFC /* ViewModel.swift in Sources */,
 				0C7FDF7F25C7F61D004B11F5 /* VerifiableViewModelDelegate.swift in Sources */,
-				0C527E5D25AC5F1500B6D5DB /* VerificationTextField.swift in Sources */,
 				841C81C52603743600F4A079 /* Coordinator.swift in Sources */,
 				0C4B67E0259B24AB00190C4E /* Localizable.swift in Sources */,
 				88291452284A199B00FB7F4D /* UIColor+SDK.swift in Sources */,
@@ -1433,7 +1396,6 @@
 				88C858B22849FBE9001EA045 /* ModuleServiceLocatorImpl.swift in Sources */,
 				841C81B226036B5600F4A079 /* Router.swift in Sources */,
 				67FE48582935E53A00EA8172 /* FourthlineCoordinator.swift in Sources */,
-				0C7FD34325D29AF600A6CC28 /* DownloadDocumentsButton.swift in Sources */,
 				8451D0EB26A8612D00C3C613 /* IBANRequest.swift in Sources */,
 				841C81BF26036C0800F4A079 /* IdentHubSDKRouter.swift in Sources */,
 				05ED6EE8288A918A00632718 /* LoadingViewController.swift in Sources */,
@@ -1448,10 +1410,8 @@
 				88291450284A195E00FB7F4D /* String+Localization.swift in Sources */,
 				24B4836A2934A44B00E66CD9 /* CoreStep.swift in Sources */,
 				8464323F2617626B003C9A7B /* StartBankIdentViewController.swift in Sources */,
-				84280D2426F3BBB40002D119 /* Checkbox.swift in Sources */,
 				847D42AB260BD02E0067ED63 /* BaseCoordinator.swift in Sources */,
 				0CE4A8F125A368E700114CBD /* StartIdentificationViewModel.swift in Sources */,
-				0C007F1725D56977003D42B3 /* ErrorView.swift in Sources */,
 				24B483682934A39C00E66CD9 /* CoreScreensCoordinator.swift in Sources */,
 				0CE4A8E725A368CC00114CBD /* SolarisViewController.swift in Sources */,
 				88C1B3B6289AA0070003ED15 /* ModularizableMock.swift in Sources */,

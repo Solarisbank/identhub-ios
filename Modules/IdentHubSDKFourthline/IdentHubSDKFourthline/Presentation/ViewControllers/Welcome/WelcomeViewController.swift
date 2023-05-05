@@ -154,7 +154,7 @@ extension WelcomeViewController {
     private func configureCustomUI() {
         logoBackground.layer.masksToBounds = true
         logoBackground.backgroundColor = colors[.primaryAccent]
-        pageController.pageIndicatorTintColor = colors[.black25]
+        pageController.pageIndicatorTintColor = colors[.labelText]
         pageController.currentPageIndicatorTintColor = colors[.primaryAccent]
     }
     

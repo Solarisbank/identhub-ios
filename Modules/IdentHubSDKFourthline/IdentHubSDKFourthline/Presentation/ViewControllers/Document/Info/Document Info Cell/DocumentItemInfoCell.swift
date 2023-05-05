@@ -64,12 +64,12 @@ extension DocumentItemInfoCell: UITextFieldDelegate {
 extension DocumentItemInfoCell {
 
     private func updateUI() {
-        borderView.layer.borderColor = colors[.base100].cgColor
+        borderView.layer.borderColor = colors[.disableBtnText].cgColor
     }
     
     private func configureBorderView() {
         borderView.layer.borderWidth = 2
-        borderView.layer.borderColor = colors[.base100].cgColor
+        borderView.layer.borderColor = colors[.disableBtnText].cgColor
         borderView.layer.cornerRadius = 5
     }
 
@@ -131,7 +131,7 @@ extension DocumentItemInfoCell {
     }
 
     private func obtainInfoTextColor(_ status: DocumentItemInfoStatus) -> UIColor {
-        return (status == DocumentItemInfoStatus.valid) ? colors[.secondaryAccentLighten] : colors[.primaryAccentLighten]
+        return (status == DocumentItemInfoStatus.valid) ? colors[.secondaryAccent] : colors[.primaryAccent]
     }
 
     private func contentDidChange() {

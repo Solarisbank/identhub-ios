@@ -78,6 +78,8 @@ final internal class TermsViewController: UIViewController, Updateable, Quitable
         descLabel.setLabelStyle(.caption)
         continueBtn.setAppearance(.inactive, colors: colors)
         checkBoxBtn.setAppearance(colors)
+        quitBtn.setTitle(Localizable.Common.quit, for: .normal)
+        quitBtn.setBtnTitleStyle()
     }
     
     // MARK: - Action methods -

@@ -20,7 +20,7 @@ internal class SolarisViewController: UIViewController {
 
     private lazy var bottomSolarisView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.sdkColor(.black05)
+        view.backgroundColor = UIColor.sdkColor(.disableBtnBG)
         view.isHidden = true
         return view
     }()
