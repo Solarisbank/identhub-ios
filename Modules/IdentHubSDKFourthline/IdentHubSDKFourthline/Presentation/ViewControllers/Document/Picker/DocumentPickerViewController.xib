@@ -41,18 +41,18 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choose your document type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IQ-hp-ZFK">
-                    <rect key="frame" x="20" y="188" width="181.66666666666666" height="18"/>
+                    <rect key="frame" x="20" y="168" width="181.66666666666666" height="18"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" name="paragraph"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-gk-iZG">
-                    <rect key="frame" x="5" y="201" width="383" height="171"/>
+                    <rect key="frame" x="10" y="181" width="373" height="171"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0iQ-2W-qfd">
-                    <rect key="frame" x="15" y="231" width="363" height="111"/>
+                    <rect key="frame" x="20" y="211" width="353" height="111"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -106,10 +106,10 @@
                 <constraint firstItem="pLZ-zh-ET2" firstAttribute="leading" secondItem="KYk-Fi-40U" secondAttribute="leading" constant="20" id="72p-T4-ZlU"/>
                 <constraint firstItem="KLf-gk-iZG" firstAttribute="bottom" secondItem="0iQ-2W-qfd" secondAttribute="bottom" constant="30" id="7FB-xA-Poy"/>
                 <constraint firstItem="KNT-pY-jhG" firstAttribute="leading" secondItem="KYk-Fi-40U" secondAttribute="leading" constant="20" id="AgI-Yl-kRT"/>
-                <constraint firstItem="0iQ-2W-qfd" firstAttribute="leading" secondItem="KYk-Fi-40U" secondAttribute="leading" constant="15" id="Ddv-wG-mvI"/>
+                <constraint firstItem="0iQ-2W-qfd" firstAttribute="leading" secondItem="KYk-Fi-40U" secondAttribute="leading" constant="20" id="Ddv-wG-mvI"/>
                 <constraint firstItem="KNT-pY-jhG" firstAttribute="top" secondItem="KYk-Fi-40U" secondAttribute="top" constant="20" id="EuV-zj-WQ3"/>
                 <constraint firstItem="KLf-gk-iZG" firstAttribute="top" secondItem="0iQ-2W-qfd" secondAttribute="top" constant="-30" id="I3c-R4-VBh"/>
-                <constraint firstItem="KYk-Fi-40U" firstAttribute="trailing" secondItem="0iQ-2W-qfd" secondAttribute="trailing" constant="15" id="U3T-7p-h4b"/>
+                <constraint firstItem="KYk-Fi-40U" firstAttribute="trailing" secondItem="0iQ-2W-qfd" secondAttribute="trailing" constant="20" id="U3T-7p-h4b"/>
                 <constraint firstItem="Zx8-VR-4eM" firstAttribute="top" secondItem="KNT-pY-jhG" secondAttribute="bottom" constant="40" id="ViG-A4-dUw"/>
                 <constraint firstItem="1IQ-hp-ZFK" firstAttribute="leading" secondItem="Zx8-VR-4eM" secondAttribute="leading" id="X50-Cl-1LR"/>
                 <constraint firstItem="0iQ-2W-qfd" firstAttribute="top" secondItem="1IQ-hp-ZFK" secondAttribute="bottom" constant="25" id="cJr-oq-ari"/>
@@ -117,7 +117,7 @@
                 <constraint firstItem="KLf-gk-iZG" firstAttribute="leading" secondItem="0iQ-2W-qfd" secondAttribute="leading" constant="-10" id="gYE-fg-Y05"/>
                 <constraint firstItem="KLf-gk-iZG" firstAttribute="trailing" secondItem="0iQ-2W-qfd" secondAttribute="trailing" constant="10" id="pp8-Iu-BCM"/>
                 <constraint firstItem="Zx8-VR-4eM" firstAttribute="leading" secondItem="KYk-Fi-40U" secondAttribute="leading" constant="20" id="vTd-qX-czF"/>
-                <constraint firstItem="1IQ-hp-ZFK" firstAttribute="top" secondItem="Zx8-VR-4eM" secondAttribute="bottom" constant="40" id="vlM-ih-npj"/>
+                <constraint firstItem="1IQ-hp-ZFK" firstAttribute="top" secondItem="Zx8-VR-4eM" secondAttribute="bottom" constant="20" id="vlM-ih-npj"/>
                 <constraint firstItem="Wul-Kg-Uwg" firstAttribute="top" secondItem="pLZ-zh-ET2" secondAttribute="bottom" constant="5" id="yKw-3J-NCU"/>
                 <constraint firstItem="Wul-Kg-Uwg" firstAttribute="leading" secondItem="KYk-Fi-40U" secondAttribute="leading" constant="20" id="ySk-xg-cpm"/>
             </constraints>

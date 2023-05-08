@@ -43,7 +43,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan front" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NoU-pA-u69">
-                    <rect key="frame" x="35" y="99" width="323" height="21.666666666666671"/>
+                    <rect key="frame" x="20" y="99" width="353" height="21.666666666666671"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                     <color key="textColor" name="header"/>
                     <nil key="highlightedColor"/>
@@ -133,7 +133,7 @@
                 <constraint firstItem="DfC-qc-4gG" firstAttribute="leading" secondItem="SSG-6w-k4F" secondAttribute="leading" id="1at-fL-Shd"/>
                 <constraint firstItem="SSG-6w-k4F" firstAttribute="trailing" secondItem="49q-yX-NS9" secondAttribute="trailing" id="2rk-B5-0Tn"/>
                 <constraint firstItem="bMc-bg-RaN" firstAttribute="top" secondItem="DfC-qc-4gG" secondAttribute="bottom" id="2zj-lg-2TR"/>
-                <constraint firstItem="NoU-pA-u69" firstAttribute="leading" secondItem="SSG-6w-k4F" secondAttribute="leading" constant="35" id="3oM-Er-dns"/>
+                <constraint firstItem="NoU-pA-u69" firstAttribute="leading" secondItem="SSG-6w-k4F" secondAttribute="leading" constant="20" id="3oM-Er-dns"/>
                 <constraint firstItem="49q-yX-NS9" firstAttribute="leading" secondItem="v6n-dq-6NB" secondAttribute="trailing" id="9W3-rz-RXo"/>
                 <constraint firstItem="IrK-eD-y74" firstAttribute="leading" secondItem="SSG-6w-k4F" secondAttribute="leading" id="Adx-Ti-gcN"/>
                 <constraint firstItem="DfC-qc-4gG" firstAttribute="height" secondItem="v6n-dq-6NB" secondAttribute="height" multiplier="0.995025" id="BV1-Nh-0XL"/>
@@ -150,7 +150,7 @@
                 <constraint firstItem="v6n-dq-6NB" firstAttribute="top" secondItem="IrK-eD-y74" secondAttribute="bottom" id="a6t-R2-WaN"/>
                 <constraint firstAttribute="bottom" secondItem="bMc-bg-RaN" secondAttribute="bottom" id="b9r-ar-SzX"/>
                 <constraint firstItem="v6n-dq-6NB" firstAttribute="centerX" secondItem="UdO-DB-gHO" secondAttribute="centerX" id="bBv-eW-7yU"/>
-                <constraint firstItem="SSG-6w-k4F" firstAttribute="trailing" secondItem="NoU-pA-u69" secondAttribute="trailing" constant="35" id="cmd-oa-hp2"/>
+                <constraint firstItem="SSG-6w-k4F" firstAttribute="trailing" secondItem="NoU-pA-u69" secondAttribute="trailing" constant="20" id="cmd-oa-hp2"/>
                 <constraint firstItem="6Cw-T0-5mw" firstAttribute="leading" secondItem="v6n-dq-6NB" secondAttribute="leading" id="fkf-BI-O6R"/>
                 <constraint firstItem="6Cw-T0-5mw" firstAttribute="trailing" secondItem="v6n-dq-6NB" secondAttribute="trailing" id="gPO-Ud-H7d"/>
                 <constraint firstItem="49q-yX-NS9" firstAttribute="top" secondItem="IrK-eD-y74" secondAttribute="bottom" id="iPL-Es-kcJ"/>

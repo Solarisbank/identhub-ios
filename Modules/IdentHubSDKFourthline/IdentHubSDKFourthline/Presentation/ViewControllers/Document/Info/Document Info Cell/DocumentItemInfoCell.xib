@@ -33,7 +33,7 @@
                         </constraints>
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F5P-vT-u4M">
-                        <rect key="frame" x="17" y="25.666666666666664" width="257" height="22.666666666666664"/>
+                        <rect key="frame" x="20" y="25.666666666666664" width="254" height="22.666666666666664"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" name="base75"/>
                         <color key="textColor" name="paragraph"/>
@@ -61,7 +61,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pelase confirm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzo-WJ-32y">
-                        <rect key="frame" x="272" y="71" width="63" height="12"/>
+                        <rect key="frame" x="267" y="71" width="63" height="12"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="10"/>
                         <color key="textColor" name="secondary"/>
                         <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                     <constraint firstAttribute="trailing" secondItem="Mi4-S4-5f2" secondAttribute="trailing" id="5sf-fg-j9D"/>
                     <constraint firstAttribute="trailing" secondItem="i0q-xx-KY1" secondAttribute="trailing" constant="17" id="Az9-si-0li"/>
                     <constraint firstAttribute="bottom" secondItem="Qzo-WJ-32y" secondAttribute="bottom" id="Bpd-ts-dTg"/>
-                    <constraint firstAttribute="trailing" secondItem="Qzo-WJ-32y" secondAttribute="trailing" id="MQl-7L-C8e"/>
+                    <constraint firstAttribute="trailing" secondItem="Qzo-WJ-32y" secondAttribute="trailing" constant="5" id="MQl-7L-C8e"/>
                     <constraint firstItem="Mi4-S4-5f2" firstAttribute="top" secondItem="eOg-TF-4gT" secondAttribute="top" constant="7" id="TPe-mH-lud"/>
                     <constraint firstItem="i0q-xx-KY1" firstAttribute="leading" secondItem="F5P-vT-u4M" secondAttribute="trailing" constant="20" id="bRf-u3-2lK"/>
                     <constraint firstItem="Mi4-S4-5f2" firstAttribute="leading" secondItem="eOg-TF-4gT" secondAttribute="leading" id="hi0-Sc-ayh"/>
@@ -85,7 +85,7 @@
             <viewLayoutGuide key="safeArea" id="npX-Rc-d3k"/>
             <color key="backgroundColor" name="background"/>
             <constraints>
-                <constraint firstItem="F5P-vT-u4M" firstAttribute="leading" secondItem="npX-Rc-d3k" secondAttribute="leading" constant="17" id="slB-xx-uX1"/>
+                <constraint firstItem="F5P-vT-u4M" firstAttribute="leading" secondItem="npX-Rc-d3k" secondAttribute="leading" constant="20" id="slB-xx-uX1"/>
             </constraints>
             <connections>
                 <outlet property="borderView" destination="Mi4-S4-5f2" id="fqu-8d-Nga"/>

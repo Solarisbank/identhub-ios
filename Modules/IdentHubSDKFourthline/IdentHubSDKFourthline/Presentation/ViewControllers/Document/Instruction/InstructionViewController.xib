@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan your health card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRh-6P-euu">
-                    <rect key="frame" x="34.999999999999986" y="109" width="187.66666666666663" height="21.666666666666657"/>
+                    <rect key="frame" x="20" y="109" width="187.66666666666666" height="21.666666666666657"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                     <color key="textColor" name="header"/>
                     <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hI-Jt-Vuc">
-                    <rect key="frame" x="35" y="160.66666666666666" width="323" height="106.33333333333334"/>
+                    <rect key="frame" x="20" y="150.66666666666666" width="353" height="106.33333333333334"/>
                     <string key="text">Providing your social security number is mandatory for the purpose of opening a bank account. In order to continue the process, you will be asked to scan your national health insurance card. Please have your national health insurance card ready for when you are asked to scan it.</string>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" name="paragraph"/>
@@ -72,14 +72,14 @@
             <constraints>
                 <constraint firstItem="2d0-Sn-gYJ" firstAttribute="trailing" secondItem="X6z-kV-FFK" secondAttribute="trailing" constant="20" id="8fG-AJ-30h"/>
                 <constraint firstItem="2d0-Sn-gYJ" firstAttribute="trailing" secondItem="WOw-33-Jv7" secondAttribute="trailing" constant="20" id="AQx-UE-Ays"/>
-                <constraint firstItem="3hI-Jt-Vuc" firstAttribute="leading" secondItem="2d0-Sn-gYJ" secondAttribute="leading" constant="35" id="C7F-wI-MEr"/>
+                <constraint firstItem="3hI-Jt-Vuc" firstAttribute="leading" secondItem="2d0-Sn-gYJ" secondAttribute="leading" constant="20" id="C7F-wI-MEr"/>
                 <constraint firstItem="2d0-Sn-gYJ" firstAttribute="bottom" secondItem="X6z-kV-FFK" secondAttribute="bottom" constant="25" id="S19-Nk-C4X"/>
-                <constraint firstItem="mRh-6P-euu" firstAttribute="leading" secondItem="2d0-Sn-gYJ" secondAttribute="leading" constant="35" id="cO3-5B-oOX"/>
+                <constraint firstItem="mRh-6P-euu" firstAttribute="leading" secondItem="2d0-Sn-gYJ" secondAttribute="leading" constant="20" id="cO3-5B-oOX"/>
                 <constraint firstItem="WOw-33-Jv7" firstAttribute="top" secondItem="2d0-Sn-gYJ" secondAttribute="top" id="dwc-KS-a3F"/>
-                <constraint firstItem="2d0-Sn-gYJ" firstAttribute="trailing" secondItem="3hI-Jt-Vuc" secondAttribute="trailing" constant="35" id="g0Y-87-gTZ"/>
+                <constraint firstItem="2d0-Sn-gYJ" firstAttribute="trailing" secondItem="3hI-Jt-Vuc" secondAttribute="trailing" constant="20" id="g0Y-87-gTZ"/>
                 <constraint firstItem="X6z-kV-FFK" firstAttribute="leading" secondItem="2d0-Sn-gYJ" secondAttribute="leading" constant="20" id="qLC-ls-F1k"/>
                 <constraint firstItem="mRh-6P-euu" firstAttribute="top" secondItem="2d0-Sn-gYJ" secondAttribute="top" constant="50" id="rZL-3Q-MN9"/>
-                <constraint firstItem="3hI-Jt-Vuc" firstAttribute="top" secondItem="mRh-6P-euu" secondAttribute="bottom" constant="30" id="v9j-HZ-034"/>
+                <constraint firstItem="3hI-Jt-Vuc" firstAttribute="top" secondItem="mRh-6P-euu" secondAttribute="bottom" constant="20" id="v9j-HZ-034"/>
             </constraints>
             <point key="canvasLocation" x="110.68702290076335" y="103.52112676056339"/>
         </view>

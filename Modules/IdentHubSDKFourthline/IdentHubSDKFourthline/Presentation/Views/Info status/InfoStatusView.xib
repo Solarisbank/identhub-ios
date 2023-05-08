@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="scanning..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ug2-1b-9lp">
-                    <rect key="frame" x="23" y="23" width="47" height="12"/>
+                    <rect key="frame" x="20" y="23" width="47" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="FMU-NJ-Swt"/>
                     </constraints>
@@ -33,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device not steady" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxQ-Pg-Q3M">
-                    <rect key="frame" x="23" y="38" width="336" height="19.333333333333329"/>
+                    <rect key="frame" x="20" y="38" width="339" height="19.333333333333329"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                     <color key="textColor" name="header"/>
                     <color key="highlightedColor" name="black100"/>
@@ -58,7 +58,7 @@
             <color key="backgroundColor" name="background"/>
             <constraints>
                 <constraint firstItem="yxQ-Pg-Q3M" firstAttribute="top" secondItem="ug2-1b-9lp" secondAttribute="bottom" constant="3" id="0zE-5E-RtF"/>
-                <constraint firstItem="ug2-1b-9lp" firstAttribute="leading" secondItem="d6p-Uk-U2y" secondAttribute="leading" constant="23" id="BZs-7f-4pb"/>
+                <constraint firstItem="ug2-1b-9lp" firstAttribute="leading" secondItem="d6p-Uk-U2y" secondAttribute="leading" constant="20" id="BZs-7f-4pb"/>
                 <constraint firstItem="XiD-71-dZV" firstAttribute="trailing" secondItem="0Fr-He-oZd" secondAttribute="trailing" constant="15" id="Fe9-GQ-qbe"/>
                 <constraint firstItem="q6e-mT-ofC" firstAttribute="leading" secondItem="yxQ-Pg-Q3M" secondAttribute="trailing" constant="10" id="PYa-ka-QSH"/>
                 <constraint firstItem="ug2-1b-9lp" firstAttribute="top" secondItem="d6p-Uk-U2y" secondAttribute="top" constant="23" id="Wrb-1T-ckU"/>
@@ -66,7 +66,7 @@
                 <constraint firstItem="0Fr-He-oZd" firstAttribute="bottom" secondItem="q6e-mT-ofC" secondAttribute="bottom" id="fZr-h3-cIe"/>
                 <constraint firstItem="q6e-mT-ofC" firstAttribute="top" secondItem="d6p-Uk-U2y" secondAttribute="top" constant="25" id="ld3-Kv-luQ"/>
                 <constraint firstAttribute="trailing" secondItem="q6e-mT-ofC" secondAttribute="trailing" constant="15" id="lj2-Al-3Qi"/>
-                <constraint firstItem="yxQ-Pg-Q3M" firstAttribute="leading" secondItem="XiD-71-dZV" secondAttribute="leading" constant="23" id="val-lV-PrK"/>
+                <constraint firstItem="yxQ-Pg-Q3M" firstAttribute="leading" secondItem="XiD-71-dZV" secondAttribute="leading" constant="20" id="val-lV-PrK"/>
                 <constraint firstItem="0Fr-He-oZd" firstAttribute="top" secondItem="d6p-Uk-U2y" secondAttribute="top" constant="25" id="y5P-sj-73S"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

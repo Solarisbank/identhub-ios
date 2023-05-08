@@ -37,13 +37,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your data was confirmed." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Lj-gR-Ofj">
-                    <rect key="frame" x="20" y="188" width="165" height="18"/>
+                    <rect key="frame" x="20" y="168" width="165" height="18"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="textColor" name="paragraph"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_success" translatesAutoresizingMaskIntoConstraints="NO" id="PW1-FA-igB">
-                    <rect key="frame" x="78.666666666666671" y="246" width="235.66666666666663" height="235.66666666666663"/>
+                    <rect key="frame" x="78.666666666666671" y="226" width="235.66666666666663" height="235.66666666666663"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="PW1-FA-igB" secondAttribute="height" multiplier="1:1" id="KQV-Vf-ege"/>
                     </constraints>
@@ -82,7 +82,7 @@
                 <constraint firstItem="6Lj-gR-Ofj" firstAttribute="leading" secondItem="gWB-oV-frN" secondAttribute="leading" constant="20" id="kaT-xa-F8S"/>
                 <constraint firstItem="ygC-Lt-Jq9" firstAttribute="leading" secondItem="gWB-oV-frN" secondAttribute="leading" constant="20" id="vQZ-lm-aEA"/>
                 <constraint firstItem="PW1-FA-igB" firstAttribute="top" secondItem="6Lj-gR-Ofj" secondAttribute="bottom" constant="40" id="w0q-EB-Mby"/>
-                <constraint firstItem="6Lj-gR-Ofj" firstAttribute="top" secondItem="ygC-Lt-Jq9" secondAttribute="bottom" constant="40" id="xBS-c5-YL3"/>
+                <constraint firstItem="6Lj-gR-Ofj" firstAttribute="top" secondItem="ygC-Lt-Jq9" secondAttribute="bottom" constant="20" id="xBS-c5-YL3"/>
             </constraints>
             <point key="canvasLocation" x="946" y="104"/>
         </view>

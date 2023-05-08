@@ -43,13 +43,13 @@
                     <rect key="frame" x="0.0" y="136" width="390" height="674"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Confirm phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKa-75-NrV">
-                            <rect key="frame" x="20" y="44" width="350" height="24"/>
+                            <rect key="frame" x="20" y="40" width="350" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" name="header"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efw-hK-ZX9">
-                            <rect key="frame" x="20" y="100" width="350" height="0.0"/>
+                            <rect key="frame" x="20" y="96" width="350" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" name="paragraph"/>
                             <nil key="highlightedColor"/>
@@ -93,7 +93,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZI-NZ-q90" customClass="ActionRoundedButton" customModule="IdentHubSDKCore" customModuleProvider="target">
-                            <rect key="frame" x="24" y="594" width="342" height="50"/>
+                            <rect key="frame" x="20" y="594" width="350" height="50"/>
                             <color key="backgroundColor" name="primary_lighten"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="iyY-dX-BOQ"/>
@@ -120,7 +120,7 @@
                         <constraint firstItem="Efw-hK-ZX9" firstAttribute="leading" secondItem="3iG-Hf-2s2" secondAttribute="leading" constant="20" id="KJL-RE-kUW"/>
                         <constraint firstItem="Efw-hK-ZX9" firstAttribute="trailing" secondItem="jKa-75-NrV" secondAttribute="trailing" id="Qk4-8M-RUU"/>
                         <constraint firstItem="I2u-wb-uhv" firstAttribute="centerX" secondItem="3iG-Hf-2s2" secondAttribute="centerX" id="RAp-lF-37x"/>
-                        <constraint firstItem="OZI-NZ-q90" firstAttribute="leading" secondItem="3iG-Hf-2s2" secondAttribute="leading" constant="24" id="Wiy-Ur-6U3"/>
+                        <constraint firstItem="OZI-NZ-q90" firstAttribute="leading" secondItem="3iG-Hf-2s2" secondAttribute="leading" constant="20" id="Wiy-Ur-6U3"/>
                         <constraint firstItem="djc-s9-WhB" firstAttribute="centerX" secondItem="3iG-Hf-2s2" secondAttribute="centerX" id="cWR-Bm-Zdz"/>
                         <constraint firstItem="p9R-jL-xBr" firstAttribute="leading" secondItem="3iG-Hf-2s2" secondAttribute="leading" constant="20" id="f99-06-vcM"/>
                         <constraint firstItem="I2u-wb-uhv" firstAttribute="top" secondItem="p9R-jL-xBr" secondAttribute="bottom" id="jdj-gF-ceA"/>
@@ -129,8 +129,8 @@
                         <constraint firstItem="p9R-jL-xBr" firstAttribute="top" secondItem="djc-s9-WhB" secondAttribute="bottom" constant="12" id="mTJ-Aw-Fne"/>
                         <constraint firstAttribute="trailing" secondItem="Efw-hK-ZX9" secondAttribute="trailing" constant="20" id="pHa-ez-Tid"/>
                         <constraint firstItem="Efw-hK-ZX9" firstAttribute="top" secondItem="jKa-75-NrV" secondAttribute="bottom" constant="32" id="qCJ-Xg-3aW"/>
-                        <constraint firstAttribute="trailing" secondItem="OZI-NZ-q90" secondAttribute="trailing" constant="24" id="tgt-pb-oi5"/>
-                        <constraint firstItem="jKa-75-NrV" firstAttribute="top" secondItem="3iG-Hf-2s2" secondAttribute="top" constant="44" id="vWg-ye-DZX"/>
+                        <constraint firstAttribute="trailing" secondItem="OZI-NZ-q90" secondAttribute="trailing" constant="20" id="tgt-pb-oi5"/>
+                        <constraint firstItem="jKa-75-NrV" firstAttribute="top" secondItem="3iG-Hf-2s2" secondAttribute="top" constant="40" id="vWg-ye-DZX"/>
                         <constraint firstItem="E2v-dF-3V9" firstAttribute="top" secondItem="djc-s9-WhB" secondAttribute="bottom" constant="24" id="voC-rs-dSX"/>
                         <constraint firstItem="djc-s9-WhB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Efw-hK-ZX9" secondAttribute="bottom" priority="750" constant="20" id="vp2-JO-Efl"/>
                         <constraint firstItem="p9R-jL-xBr" firstAttribute="centerX" secondItem="3iG-Hf-2s2" secondAttribute="centerX" id="z2d-ga-wuz"/>

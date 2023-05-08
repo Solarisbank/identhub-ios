@@ -43,7 +43,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="92.666666666666671"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm selfie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7w-an-M41">
-                    <rect key="frame" x="15" y="149" width="133.66666666666666" height="24"/>
+                    <rect key="frame" x="20" y="149" width="133.66666666666666" height="24"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                     <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -113,7 +113,7 @@
                 <constraint firstItem="C1w-Gx-6c9" firstAttribute="leading" secondItem="pS4-sK-VOF" secondAttribute="leading" id="usc-bO-YPL"/>
                 <constraint firstItem="jeB-aN-wLF" firstAttribute="leading" secondItem="9u1-qL-BBp" secondAttribute="leading" id="wX5-Vf-MQh"/>
                 <constraint firstItem="jeB-aN-wLF" firstAttribute="height" secondItem="D3l-5f-fyA" secondAttribute="height" multiplier="0.122249" id="wXY-bc-x42"/>
-                <constraint firstItem="j7w-an-M41" firstAttribute="leading" secondItem="D3l-5f-fyA" secondAttribute="leading" constant="15" id="xcu-h7-Mw2"/>
+                <constraint firstItem="j7w-an-M41" firstAttribute="leading" secondItem="D3l-5f-fyA" secondAttribute="leading" constant="20" id="xcu-h7-Mw2"/>
             </constraints>
             <connections>
                 <outlet property="confirmBtn" destination="qw9-Dw-NpJ" id="f8U-7a-aND"/>

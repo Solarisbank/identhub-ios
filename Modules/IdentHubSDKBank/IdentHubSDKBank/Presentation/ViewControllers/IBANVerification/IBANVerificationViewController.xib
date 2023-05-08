@@ -47,19 +47,19 @@
                     <color key="backgroundColor" name="background"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lT-P3-ouZ">
-                    <rect key="frame" x="24" y="172" width="342" height="24"/>
+                    <rect key="frame" x="20" y="176" width="350" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" name="header"/>
                     <color key="highlightedColor" name="base75"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkR-RI-IRS">
-                    <rect key="frame" x="24" y="226" width="342" height="17"/>
+                    <rect key="frame" x="20" y="230" width="350" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" name="paragraph"/>
                     <color key="highlightedColor" name="base75"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="unD-Ti-617" customClass="VerificationTextField" customModule="IdentHubSDKBank" customModuleProvider="target">
-                    <rect key="frame" x="24" y="311.66666666666669" width="342" height="48"/>
+                    <rect key="frame" x="20" y="315.66666666666669" width="350" height="48"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="Nx3-ak-a03"/>
                     </constraints>
@@ -71,13 +71,13 @@
                     </connections>
                 </textField>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="684-tU-VFl">
-                    <rect key="frame" x="24" y="364.66666666666669" width="342" height="13.333333333333314"/>
+                    <rect key="frame" x="20" y="368.66666666666669" width="350" height="13.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" name="error"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxt-DA-EBE" customClass="ActionRoundedButton" customModule="IdentHubSDKCore">
-                    <rect key="frame" x="16" y="720" width="358" height="50"/>
+                    <rect key="frame" x="20" y="720" width="350" height="50"/>
                     <color key="backgroundColor" name="primary_lighten"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="qu5-hU-Nol"/>
@@ -95,14 +95,14 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="agC-O3-A2f">
-                    <rect key="frame" x="24" y="285" width="11" height="15"/>
+                    <rect key="frame" x="20" y="289" width="11" height="15"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="11" id="6p3-Kq-G29"/>
                         <constraint firstAttribute="height" constant="15" id="ecE-Ug-egS"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your data is encrypted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYg-LX-l11">
-                    <rect key="frame" x="43" y="284.66666666666669" width="323" height="16"/>
+                    <rect key="frame" x="39" y="288.66666666666669" width="331" height="16"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <color key="textColor" name="success"/>
                     <color key="highlightedColor" name="base75"/>
@@ -120,19 +120,19 @@
                 <constraint firstItem="unD-Ti-617" firstAttribute="leading" secondItem="agC-O3-A2f" secondAttribute="leading" id="Fha-6o-B1x"/>
                 <constraint firstItem="684-tU-VFl" firstAttribute="trailing" secondItem="unD-Ti-617" secondAttribute="trailing" id="GPb-Ge-YET"/>
                 <constraint firstItem="fYg-LX-l11" firstAttribute="centerY" secondItem="agC-O3-A2f" secondAttribute="centerY" id="GVT-9L-uFE"/>
-                <constraint firstItem="75g-Od-O4d" firstAttribute="trailing" secondItem="qxt-DA-EBE" secondAttribute="trailing" constant="16" id="SPe-dJ-DKW"/>
+                <constraint firstItem="75g-Od-O4d" firstAttribute="trailing" secondItem="qxt-DA-EBE" secondAttribute="trailing" constant="20" id="SPe-dJ-DKW"/>
                 <constraint firstItem="dkR-RI-IRS" firstAttribute="leading" secondItem="1lT-P3-ouZ" secondAttribute="leading" id="T7X-tX-IqV"/>
                 <constraint firstItem="dkR-RI-IRS" firstAttribute="trailing" secondItem="1lT-P3-ouZ" secondAttribute="trailing" id="UNL-eP-13v"/>
                 <constraint firstItem="lzZ-FX-bS6" firstAttribute="leading" secondItem="75g-Od-O4d" secondAttribute="leading" id="XCB-el-h1C"/>
                 <constraint firstItem="agC-O3-A2f" firstAttribute="top" secondItem="dkR-RI-IRS" secondAttribute="bottom" constant="42" id="a8b-ze-fdF"/>
                 <constraint firstItem="agC-O3-A2f" firstAttribute="leading" secondItem="dkR-RI-IRS" secondAttribute="leading" id="bRT-kI-Leu"/>
-                <constraint firstItem="1lT-P3-ouZ" firstAttribute="leading" secondItem="75g-Od-O4d" secondAttribute="leading" constant="24" id="d29-Fb-Kmi"/>
+                <constraint firstItem="1lT-P3-ouZ" firstAttribute="leading" secondItem="75g-Od-O4d" secondAttribute="leading" constant="20" id="d29-Fb-Kmi"/>
                 <constraint firstItem="fYg-LX-l11" firstAttribute="trailing" secondItem="dkR-RI-IRS" secondAttribute="trailing" id="gI0-tE-ujl"/>
                 <constraint firstItem="684-tU-VFl" firstAttribute="top" secondItem="unD-Ti-617" secondAttribute="bottom" constant="5" id="iJ7-4D-JVJ"/>
-                <constraint firstItem="1lT-P3-ouZ" firstAttribute="top" secondItem="lzZ-FX-bS6" secondAttribute="bottom" constant="36" id="isK-UE-cYW"/>
-                <constraint firstItem="75g-Od-O4d" firstAttribute="trailing" secondItem="1lT-P3-ouZ" secondAttribute="trailing" constant="24" id="lju-tM-cjg"/>
+                <constraint firstItem="1lT-P3-ouZ" firstAttribute="top" secondItem="lzZ-FX-bS6" secondAttribute="bottom" constant="40" id="isK-UE-cYW"/>
+                <constraint firstItem="75g-Od-O4d" firstAttribute="trailing" secondItem="1lT-P3-ouZ" secondAttribute="trailing" constant="20" id="lju-tM-cjg"/>
                 <constraint firstItem="75g-Od-O4d" firstAttribute="bottom" secondItem="qxt-DA-EBE" secondAttribute="bottom" constant="40" id="nRp-OM-u6G"/>
-                <constraint firstItem="qxt-DA-EBE" firstAttribute="leading" secondItem="75g-Od-O4d" secondAttribute="leading" constant="16" id="opb-LV-gni"/>
+                <constraint firstItem="qxt-DA-EBE" firstAttribute="leading" secondItem="75g-Od-O4d" secondAttribute="leading" constant="20" id="opb-LV-gni"/>
                 <constraint firstItem="fYg-LX-l11" firstAttribute="leading" secondItem="agC-O3-A2f" secondAttribute="trailing" constant="8" id="sX2-99-0oR"/>
                 <constraint firstItem="lzZ-FX-bS6" firstAttribute="top" secondItem="75g-Od-O4d" secondAttribute="top" id="yCm-jC-m7L"/>
             </constraints>

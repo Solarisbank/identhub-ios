@@ -35,7 +35,7 @@
                     <color key="backgroundColor" name="background"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan front" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gw5-jE-3i5">
-                    <rect key="frame" x="35" y="99" width="89" height="21.666666666666671"/>
+                    <rect key="frame" x="20" y="99" width="89" height="21.666666666666671"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                     <color key="textColor" name="header"/>
                     <nil key="highlightedColor"/>
@@ -144,7 +144,7 @@
                 <constraint firstItem="Hau-G2-wHN" firstAttribute="top" secondItem="oM3-zO-AdW" secondAttribute="bottom" id="RY0-bh-TsX"/>
                 <constraint firstItem="Hau-G2-wHN" firstAttribute="centerX" secondItem="DL3-Rk-U6f" secondAttribute="centerX" id="SdF-0u-KRe"/>
                 <constraint firstItem="Hau-G2-wHN" firstAttribute="width" secondItem="FRD-Rn-5s9" secondAttribute="width" multiplier="0.933333" id="Tzk-uH-Twt"/>
-                <constraint firstItem="gw5-jE-3i5" firstAttribute="leading" secondItem="FRD-Rn-5s9" secondAttribute="leading" constant="35" id="XdE-Dp-woj"/>
+                <constraint firstItem="gw5-jE-3i5" firstAttribute="leading" secondItem="FRD-Rn-5s9" secondAttribute="leading" constant="20" id="XdE-Dp-woj"/>
                 <constraint firstItem="9BW-uw-Cbt" firstAttribute="top" secondItem="oM3-zO-AdW" secondAttribute="bottom" id="ZTr-DN-enp"/>
                 <constraint firstItem="9BW-uw-Cbt" firstAttribute="leading" secondItem="FRD-Rn-5s9" secondAttribute="leading" id="Zal-NP-omo"/>
                 <constraint firstItem="8N3-ZT-mU7" firstAttribute="leading" secondItem="FRD-Rn-5s9" secondAttribute="leading" id="ghD-bk-C8E"/>

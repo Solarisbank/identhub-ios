@@ -88,7 +88,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a selfie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b8-Qt-taz">
-                    <rect key="frame" x="15" y="149" width="119" height="24"/>
+                    <rect key="frame" x="20" y="149" width="119" height="24"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                     <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -121,7 +121,7 @@
                 <constraint firstItem="fJa-z5-gBq" firstAttribute="top" secondItem="vVb-Ha-yQY" secondAttribute="top" id="5A3-4E-cf1"/>
                 <constraint firstItem="1b8-Qt-taz" firstAttribute="top" secondItem="Bdy-Pm-RH8" secondAttribute="bottom" constant="20" id="9er-Ul-94s"/>
                 <constraint firstAttribute="bottom" secondItem="fJa-z5-gBq" secondAttribute="bottom" id="BFg-bD-WiH"/>
-                <constraint firstItem="1b8-Qt-taz" firstAttribute="leading" secondItem="rtY-CI-gdL" secondAttribute="leading" constant="15" id="HLo-vL-BVw"/>
+                <constraint firstItem="1b8-Qt-taz" firstAttribute="leading" secondItem="rtY-CI-gdL" secondAttribute="leading" constant="20" id="HLo-vL-BVw"/>
                 <constraint firstItem="bc0-tL-UVo" firstAttribute="trailing" secondItem="Bdy-Pm-RH8" secondAttribute="trailing" id="NlN-bc-jz8"/>
                 <constraint firstItem="Bdy-Pm-RH8" firstAttribute="trailing" secondItem="rtY-CI-gdL" secondAttribute="trailing" id="R9C-5V-K21"/>
                 <constraint firstItem="fJa-z5-gBq" firstAttribute="trailing" secondItem="rtY-CI-gdL" secondAttribute="trailing" id="VVI-ha-UUi"/>

@@ -22,7 +22,7 @@ public extension UILabel {
         
         switch style {
         case .title:
-            self.font = UIFont.getFont(size: FontSize.big)
+            self.font = UIFont.getBoldFont(size: FontSize.big)
             self.textColor = colors[.header]
         case .subtitle:
             self.font = UIFont.getFont(size: FontSize.medium)

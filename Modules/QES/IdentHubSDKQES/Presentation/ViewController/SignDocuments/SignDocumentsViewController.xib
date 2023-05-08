@@ -54,7 +54,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTC-vr-S5o">
-                            <rect key="frame" x="20" y="97" width="374" height="0.0"/>
+                            <rect key="frame" x="20" y="86" width="374" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" name="paragraph"/>
                             <nil key="highlightedColor"/>
@@ -131,7 +131,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DP5-sO-Ltc" customClass="ActionRoundedButton" customModule="IdentHubSDKCore">
-                            <rect key="frame" x="24" y="635" width="374" height="50"/>
+                            <rect key="frame" x="20" y="635" width="374" height="50"/>
                             <color key="backgroundColor" name="primary_lighten"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="vNm-VH-gtl"/>
@@ -153,7 +153,7 @@
                     <constraints>
                         <constraint firstItem="ryl-ip-u0t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xTC-vr-S5o" secondAttribute="bottom" priority="750" constant="30" id="0pF-7j-bDe"/>
                         <constraint firstAttribute="trailing" secondItem="Oa1-Oo-69p" secondAttribute="trailing" constant="20" id="2Pf-Gq-yEi"/>
-                        <constraint firstItem="xTC-vr-S5o" firstAttribute="top" secondItem="Oa1-Oo-69p" secondAttribute="bottom" constant="31" id="4SX-Fn-Bny"/>
+                        <constraint firstItem="xTC-vr-S5o" firstAttribute="top" secondItem="Oa1-Oo-69p" secondAttribute="bottom" constant="20" id="4SX-Fn-Bny"/>
                         <constraint firstItem="au0-Ap-gZx" firstAttribute="centerX" secondItem="V2e-jJ-j2g" secondAttribute="centerX" id="6Wc-K9-M8f"/>
                         <constraint firstAttribute="trailing" secondItem="rVB-rW-XQ4" secondAttribute="trailing" constant="20" id="9fe-dX-6QN"/>
                         <constraint firstAttribute="trailing" secondItem="4dp-i3-Lg4" secondAttribute="trailing" constant="20" id="CDn-eV-1gv"/>
@@ -167,13 +167,13 @@
                         <constraint firstItem="ryl-ip-u0t" firstAttribute="centerX" secondItem="V2e-jJ-j2g" secondAttribute="centerX" id="fSZ-8p-boW"/>
                         <constraint firstAttribute="trailing" secondItem="xTC-vr-S5o" secondAttribute="trailing" constant="20" id="nro-ts-4XR"/>
                         <constraint firstItem="rVB-rW-XQ4" firstAttribute="leading" secondItem="V2e-jJ-j2g" secondAttribute="leading" constant="20" id="o4k-ef-HFf"/>
-                        <constraint firstAttribute="trailing" secondItem="DP5-sO-Ltc" secondAttribute="trailing" constant="16" id="qjK-61-1Fe"/>
+                        <constraint firstAttribute="trailing" secondItem="DP5-sO-Ltc" secondAttribute="trailing" constant="20" id="qjK-61-1Fe"/>
                         <constraint firstItem="4dp-i3-Lg4" firstAttribute="leading" secondItem="V2e-jJ-j2g" secondAttribute="leading" constant="20" id="r1Q-OH-EWJ"/>
                         <constraint firstItem="xTC-vr-S5o" firstAttribute="leading" secondItem="V2e-jJ-j2g" secondAttribute="leading" constant="20" id="sAP-Ho-kcd"/>
                         <constraint firstItem="rVB-rW-XQ4" firstAttribute="centerX" secondItem="V2e-jJ-j2g" secondAttribute="centerX" id="sFF-KX-mdP"/>
                         <constraint firstItem="ryl-ip-u0t" firstAttribute="top" secondItem="Oa1-Oo-69p" secondAttribute="bottom" constant="104" id="u19-hw-fDH"/>
                         <constraint firstItem="4dp-i3-Lg4" firstAttribute="top" secondItem="au0-Ap-gZx" secondAttribute="bottom" priority="750" constant="30" id="vgA-m6-vOR"/>
-                        <constraint firstItem="DP5-sO-Ltc" firstAttribute="leading" secondItem="V2e-jJ-j2g" secondAttribute="leading" constant="24" id="wdu-DT-yQH"/>
+                        <constraint firstItem="DP5-sO-Ltc" firstAttribute="leading" secondItem="V2e-jJ-j2g" secondAttribute="leading" constant="20" id="wdu-DT-yQH"/>
                         <constraint firstItem="f79-EY-4qh" firstAttribute="leading" secondItem="V2e-jJ-j2g" secondAttribute="leading" constant="20" id="yIQ-5h-a7U"/>
                         <constraint firstAttribute="trailing" secondItem="f79-EY-4qh" secondAttribute="trailing" constant="20" id="ziA-0f-vwi"/>
                     </constraints>

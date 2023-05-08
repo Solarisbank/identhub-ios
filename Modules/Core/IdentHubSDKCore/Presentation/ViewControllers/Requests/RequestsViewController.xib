@@ -29,7 +29,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yz-OC-ghZ">
-                    <rect key="frame" x="20" y="119" width="0.0" height="0.0"/>
+                    <rect key="frame" x="20" y="119" width="353" height="0.0"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                     <color key="textColor" name="header"/>
                     <nil key="highlightedColor"/>
@@ -50,6 +50,7 @@
                 <constraint firstItem="yn5-Rd-bDc" firstAttribute="trailing" secondItem="1xn-mS-Iv0" secondAttribute="trailing" constant="20" id="QLg-qh-PVc"/>
                 <constraint firstItem="1xn-mS-Iv0" firstAttribute="leading" secondItem="yn5-Rd-bDc" secondAttribute="leading" constant="20" id="aWI-j1-24P"/>
                 <constraint firstItem="3Yz-OC-ghZ" firstAttribute="top" secondItem="1xn-mS-Iv0" secondAttribute="bottom" constant="40" id="fxl-2b-Kqx"/>
+                <constraint firstAttribute="trailing" secondItem="3Yz-OC-ghZ" secondAttribute="trailing" constant="20" id="gX8-Ut-Ky5"/>
                 <constraint firstItem="1xn-mS-Iv0" firstAttribute="top" secondItem="yn5-Rd-bDc" secondAttribute="top" constant="20" id="sx0-fg-fxV"/>
                 <constraint firstItem="YWG-9a-2jQ" firstAttribute="top" secondItem="3Yz-OC-ghZ" secondAttribute="bottom" constant="20" id="wrf-pn-ueD"/>
             </constraints>
