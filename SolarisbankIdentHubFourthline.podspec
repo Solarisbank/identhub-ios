@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "SolarisbankIdentHubFourthline"
   spec.module_name  = "IdentHubSDKFourthline"
-  spec.version      = "1.5.1"
+  spec.version      = "1.5.2"
   spec.summary      = "Solaris IdentHub SDK for iOS - Fourthline Module."
 
   spec.description  = <<-DESC
@@ -41,9 +41,9 @@ Pod::Spec.new do |spec|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
     spec.dependency 'SolarisbankIdentHubCore', "#{spec.version}"
-    spec.dependency 'FourthlineSDK', '2.16.0'
+    spec.dependency 'FourthlineSDK', '2.20.0'
     spec.dependency 'ZIPFoundation', '0.9.11'
-    spec.dependency 'lottie-ios', '3.2.3'
+    spec.dependency 'lottie-ios', '4.1.3'
 
     spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
