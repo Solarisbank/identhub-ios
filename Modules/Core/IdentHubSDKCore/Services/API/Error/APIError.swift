@@ -62,7 +62,7 @@ public struct ResponseError: Error, Equatable, CustomStringConvertible {
     
     public var statusCode: String {
         guard let code = response?.statusCode else { return "" }
-        return "[\(String(describing: code))]"
+        return "\(String(describing: code))"
     }
     
     public var failureReason: String {

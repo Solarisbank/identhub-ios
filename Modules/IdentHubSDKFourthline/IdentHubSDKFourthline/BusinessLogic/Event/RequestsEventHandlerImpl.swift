@@ -372,10 +372,15 @@ private extension RequestsEventHandlerImpl {
                 self.verification()
                 self.deleteFile(at: fileURL)
             case .failure(let error):
-                kycLog.error("Error uploading zip file \(error.localizedDescription)")
-                self.updateState { state in
-                    state.onDisplayError = error
-                    state.loading = false
+                kycLog.error("Error uploading zip file \(error.statusCode) - \(error.localizedDescription)")
+                if Int(error.statusCode) == 409 {
+                    self.verification()
+                    self.deleteFile(at: fileURL)
+                } else {
+                    self.updateState { state in
+                        state.onDisplayError = error
+                        state.loading = false
+                    }
                 }
             }
         }
