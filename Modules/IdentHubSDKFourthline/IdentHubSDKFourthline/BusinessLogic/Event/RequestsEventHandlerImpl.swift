@@ -232,6 +232,35 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
             switch result {
             case .success(let response):
                 KYCContainer.shared.update(ipAddress: response.ip)
+                if(self.sessionInfoProvider.identificationStep == .fourthlineSigning) {
+                    self.fetchNamirialTermsConditions()
+                } else {
+                    self.callback(.finishInitialFetch())
+                }
+            case .failure(let error):
+                self.updateState { state in
+                    state.onDisplayError = error
+                    state.loading = false
+                }
+            }
+        }
+    }
+    
+    func fetchNamirialTermsConditions() {
+        input.initStep = .fetchNamirialTermsConditions
+        self.updateState { state in
+            state.onDisplayError = nil
+            state.loading = true
+        }
+        verificationService.getNamirialTermsConditions { [weak self] result in
+            guard let self = self else { return }
+            self.updateState { state in
+                state.loading = false
+            }
+
+            switch result {
+            case .success(let response):
+                KYCContainer.shared.update(namirialTermsConditions: response)
                 self.callback(.finishInitialFetch())
             case .failure(let error):
                 self.updateState { state in
@@ -536,6 +565,8 @@ private extension RequestsEventHandlerImpl {
                 fetchLocationData()
             case .fetchIPAddress:
                 fetchIPAddress()
+            case .fetchNamirialTermsConditions:
+                fetchNamirialTermsConditions()
             default:
                 break
             }
@@ -547,6 +578,8 @@ private extension RequestsEventHandlerImpl {
                 fetchLocationData()
             case .fetchIPAddress:
                 fetchIPAddress()
+            case .fetchNamirialTermsConditions:
+                fetchNamirialTermsConditions()
             }
         case .uploadData:
             switch uploadStep {

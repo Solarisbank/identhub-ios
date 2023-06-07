@@ -161,6 +161,10 @@ final class KYCContainer {
 
         storeIPAddress(ipAddress: ipAddress)
     }
+    
+    func update(namirialTermsConditions: TermsAndConditions) {
+        storeTermsConditions(data: namirialTermsConditions)
+    }
 
     /// Method filled identificated person data loaded from server
     /// - Parameter data: person detail
@@ -336,6 +340,34 @@ private extension KYCContainer {
         guard let ipAddress = SessionStorage.obtainValue(for: StoredKeys.ipAddressData.rawValue) as? String else { return }
 
         update(ipAddress: ipAddress)
+    }
+}
+
+// MARK: - Namirial Terms and Conditions data store/load -
+
+extension KYCContainer {
+
+    private func storeTermsConditions(data: TermsAndConditions) {
+
+        do {
+            let termsconditionsData = try JSONEncoder().encode(data)
+            SessionStorage.updateValue(termsconditionsData, for: StoredKeys.namirialTermsConditionsData.rawValue)
+        } catch {
+            print("Error with encoding terms and conditions data: \(error.localizedDescription)")
+        }
+    }
+
+    func getNamirialTermsConditions() -> TermsAndConditions? {
+        guard let termsconditionsData = SessionStorage.obtainValue(for: StoredKeys.namirialTermsConditionsData.rawValue) as? Data else { return nil }
+
+        do {
+            let termsconditionsData = try JSONDecoder().decode(TermsAndConditions.self, from: termsconditionsData)
+            return termsconditionsData
+        } catch {
+            print("Error with decoding namirial terms and conditions data: \(error.localizedDescription)")
+        }
+
+        return nil
     }
 }
 

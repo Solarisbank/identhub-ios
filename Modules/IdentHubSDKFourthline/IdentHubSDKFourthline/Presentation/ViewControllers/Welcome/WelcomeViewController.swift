@@ -9,12 +9,18 @@ import SafariServices
 
 private let fourthlinePrivacyLink = "https://api.fourthline.com/v1/qualifiedElectronicSignature/legal/PrivacyStatement_SafeNedFourthline_1.0.pdf"
 
-private let namirialTermsLink = "https://api.fourthline.com/v1/qualifiedElectronicSignature/legal/Namirial_TAndC_CA01D_CA22D_1.0.pdf"
-
 internal struct WelcomeState: Equatable {
-    enum State: Equatable {
-        case loadScreen
+    static func == (lhs: WelcomeState, rhs: WelcomeState) -> Bool {
+        return true
     }
+    
+    enum State: Equatable {
+        case none
+        case loadScreen
+        case namirialTCAccepted
+        case error
+    }
+    var onDisplayError: Error? = .none
     var state: State = .loadScreen
     var isDisplayNamirialTerms: Bool = false
 }
@@ -25,6 +31,7 @@ internal enum WelcomeEvent {
     case configurePageScroller(_ pageScroller: UICollectionView)
     case setPageController(_ pageController: UIPageControl)
     case setLogoAnimator(_ animator: WelcomeLogoAnimator)
+    case close(error: APIError)
 }
 
 /// UIViewController for managing welcome screen UI components for Fourthline flow.
@@ -85,6 +92,7 @@ final internal class WelcomeViewController: UIViewController, Updateable {
     // MARK: - Actions methods -
 
     @IBAction func didClickStartBtn(_ sender: UIButton) {
+        
         eventHandler?.handleEvent(.triggerStart)
     }
     
@@ -102,18 +110,58 @@ final internal class WelcomeViewController: UIViewController, Updateable {
     // MARK: - Internal methods -
     
     func updateView(_ state: WelcomeState) {
-        eventHandler?.handleEvent(.configurePageScroller(pageScroller))
-        eventHandler?.handleEvent(.setPageController(pageController))
-        eventHandler?.handleEvent(.setLogoAnimator(logoAnimator))
+        switch state.state {
+        case .loadScreen:
+            eventHandler?.handleEvent(.configurePageScroller(pageScroller))
+            eventHandler?.handleEvent(.setPageController(pageController))
+            eventHandler?.handleEvent(.setLogoAnimator(logoAnimator))
+            
+            if state.isDisplayNamirialTerms {
+                termsHeightConstraint.constant = 45
+                termsContainerView.isHidden = false
+            } else {
+                startBtn.setAppearance(.primary, colors: colors)
+            }
+        case .namirialTCAccepted:
+            startBtn.currentAppearance = .verifying
+        case .error:
+            startBtn.setTitle(Localizable.Welcome.startBtn, for: .normal)
+            startBtn.currentAppearance = .primary
+            if let error = state.onDisplayError as? ResponseError {
+                requestFailed(with: error)
+            }
+        default:
+            startBtn.setTitle(Localizable.Welcome.startBtn, for: .normal)
+            startBtn.currentAppearance = .primary
+        }
         
-        if state.isDisplayNamirialTerms {
-            termsHeightConstraint.constant = 45
-            termsContainerView.isHidden = false
-        } else {
-            startBtn.setAppearance(.primary, colors: colors)
+    }
+    private func requestFailed(with error: ResponseError) {
+        var message = error.apiError.text()
+        
+        #if ENV_DEBUG
+        message += "\n\(error.detailDescription)"
+        #endif
+        
+        presentAlert(with: Localizable.APIErrorDesc.requestError, message: message, action: Localizable.Common.tryAgain, error: error.apiError) {
         }
     }
-
+    
+    private func presentAlert(with title: String, message: String, action: String, error: APIError, callback: @escaping () -> Void) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let reactionAction = UIAlertAction(title: action, style: .default, handler: {_ in
+            callback()
+        })
+        let cancelAction = UIAlertAction(title: Localizable.Common.dismiss, style: .cancel, handler: { [weak self] _ in
+            self?.eventHandler?.handleEvent(.close(error: error))
+        })
+        
+        alert.addAction(reactionAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
 }
 
 extension WelcomeViewController {
@@ -183,7 +231,8 @@ extension WelcomeViewController {
         } else {
             linkRange = NSRange(location: 0, length: fullText.count)
         }
-        attributedString.addAttribute(.link, value: namirialTermsLink, range: linkRange)
+        let namirialTCurl = KYCContainer.shared.getNamirialTermsConditions()?.url ?? ""
+        attributedString.addAttribute(.link, value: namirialTCurl, range: linkRange)
 
         return attributedString
     }

@@ -49,9 +49,6 @@ public enum StoredKeys: String {
 
     /// Status of the phone verification
     case performedPhoneVerification = "PerformedPhoneVerificationKey"
-    
-    /// Accepted state of the "Namirial Terms and Conditions" agreement
-    case namirialTC = "NamirialTermsAndConditions"
 
     /// Personal data value key
     case personData = "IndentificationPersonDataKey"
@@ -79,6 +76,9 @@ public enum StoredKeys: String {
     
     /// Stored FourthlineStep step
     case fourthlineStep = "FourthlineScreensStep"
+    
+    /// Stored namirial terms and conditions data
+    case namirialTermsConditionsData = "FourthlineNamirialTermsConditionsDataKey"
     
     /// Style colors keys enumeration
     public enum StyleColor: String {

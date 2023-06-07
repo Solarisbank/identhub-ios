@@ -155,8 +155,6 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             }
             switch result {
             case .nextStep(let step):
-                ///Later on Backend will Save the date and timestamp of when the user accepted the T&Cs and the version of the accepted T&Cs
-                self.sessionInfoProvider.namirialTCAcceptance = true
                 switch step {
                 case .documentPicker:
                     self.documentPickerDisplay()
@@ -164,6 +162,8 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
                     DispatchQueue.main.async {
                         self.fetchData()?.push(on: self.presenter)
                     }
+                case .close(let error):
+                    self.callback(.failure(error))
                 default:
                     return
                 }

@@ -53,6 +53,10 @@
 		6749EED829C48A710064880C /* VerificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749EED729C48A700064880C /* VerificationServiceTests.swift */; };
 		67527A2F2938E64F00BC41BF /* FourthlineIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67527A2E2938E64F00BC41BF /* FourthlineIdentification.swift */; };
 		67527A342938E74600BC41BF /* FourthlineIdentificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67527A332938E74600BC41BF /* FourthlineIdentificationRequest.swift */; };
+		6760CE4E2A29C0DA0090EEA5 /* TermsAndConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6760CE4A2A29C0DA0090EEA5 /* TermsAndConditions.swift */; };
+		6760CE572A2A18F40090EEA5 /* AcceptedTermsConditionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6760CE562A2A18F40090EEA5 /* AcceptedTermsConditionsData.swift */; };
+		6780F21D2A28743E00A1359D /* GetTermsConditionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6780F21C2A28743E00A1359D /* GetTermsConditionsRequest.swift */; };
+		6780F2222A28744F00A1359D /* AcceptTermsConditionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6780F2212A28744E00A1359D /* AcceptTermsConditionsRequest.swift */; };
 		67911AE6293642830099BDD5 /* PersonDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67911AE5293642830099BDD5 /* PersonDataRequest.swift */; };
 		67911AE8293644690099BDD5 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67911AE7293644690099BDD5 /* IPAddress.swift */; };
 		67911AEA293644B90099BDD5 /* IPAddressRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67911AE9293644B90099BDD5 /* IPAddressRequest.swift */; };
@@ -174,6 +178,10 @@
 		6749EED729C48A700064880C /* VerificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceTests.swift; sourceTree = "<group>"; };
 		67527A2E2938E64F00BC41BF /* FourthlineIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentification.swift; sourceTree = "<group>"; };
 		67527A332938E74600BC41BF /* FourthlineIdentificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineIdentificationRequest.swift; sourceTree = "<group>"; };
+		6760CE4A2A29C0DA0090EEA5 /* TermsAndConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditions.swift; sourceTree = "<group>"; };
+		6760CE562A2A18F40090EEA5 /* AcceptedTermsConditionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedTermsConditionsData.swift; sourceTree = "<group>"; };
+		6780F21C2A28743E00A1359D /* GetTermsConditionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTermsConditionsRequest.swift; sourceTree = "<group>"; };
+		6780F2212A28744E00A1359D /* AcceptTermsConditionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTermsConditionsRequest.swift; sourceTree = "<group>"; };
 		67911AE5293642830099BDD5 /* PersonDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDataRequest.swift; sourceTree = "<group>"; };
 		67911AE7293644690099BDD5 /* IPAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
 		67911AE9293644B90099BDD5 /* IPAddressRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressRequest.swift; sourceTree = "<group>"; };
@@ -559,6 +567,8 @@
 				67911AF9293720450099BDD5 /* FourthlineIdentificationStatusRequest.swift */,
 				67527A332938E74600BC41BF /* FourthlineIdentificationRequest.swift */,
 				6793382D293F37290039E58A /* UploadKYCRequest.swift */,
+				6780F21C2A28743E00A1359D /* GetTermsConditionsRequest.swift */,
+				6780F2212A28744E00A1359D /* AcceptTermsConditionsRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -611,6 +621,8 @@
 				67F114E1292E2CB300319D93 /* SelfieScanner+Extensions.swift */,
 				67911AE7293644690099BDD5 /* IPAddress.swift */,
 				67527A2E2938E64F00BC41BF /* FourthlineIdentification.swift */,
+				6760CE4A2A29C0DA0090EEA5 /* TermsAndConditions.swift */,
+				6760CE562A2A18F40090EEA5 /* AcceptedTermsConditionsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -900,6 +912,7 @@
 				67F114EC292E2FC600319D93 /* SelfieOverlayView.swift in Sources */,
 				67AD5BAC292CA27E004106D2 /* DocumentScannerEventHandlerImpl.swift in Sources */,
 				6732B91329227D1400B3D037 /* KYCContainer.swift in Sources */,
+				6780F2222A28744F00A1359D /* AcceptTermsConditionsRequest.swift in Sources */,
 				67E595C8291E17DA00768DED /* WelcomeEventHandlerImpl.swift in Sources */,
 				67E595D6291E2F2D00768DED /* WelcomeLogoAnimator.swift in Sources */,
 				6732B90729227B7400B3D037 /* DocumentScannerAssetsDataSource.swift in Sources */,
@@ -914,9 +927,11 @@
 				67F114E2292E2CB300319D93 /* SelfieScanner+Extensions.swift in Sources */,
 				67F114F3292E379B00319D93 /* SelfieEventHandlerImpl.swift in Sources */,
 				6732B8FF2922798F00B3D037 /* DocumentPickerViewController.swift in Sources */,
+				6760CE4E2A29C0DA0090EEA5 /* TermsAndConditions.swift in Sources */,
 				67492854291D34D200B8D7BA /* Fourthline.docc in Sources */,
 				67911AFA293720450099BDD5 /* FourthlineIdentificationStatusRequest.swift in Sources */,
 				67911AE6293642830099BDD5 /* PersonDataRequest.swift in Sources */,
+				6760CE572A2A18F40090EEA5 /* AcceptedTermsConditionsData.swift in Sources */,
 				67FE71AA2952CDE1007C89EF /* ResultViewController.swift in Sources */,
 				67492853291D34D200B8D7BA /* VerificationService.swift in Sources */,
 				67F114E8292E2D0E00319D93 /* SelfieViewController.swift in Sources */,
@@ -926,6 +941,7 @@
 				6729EEB2292516E600FF0E9F /* InfoStatusView.swift in Sources */,
 				6749284A291D34D200B8D7BA /* WelcomeViewController.swift in Sources */,
 				672A7D5C2923AC670027932A /* DocumentPickerEventHandlerImpl.swift in Sources */,
+				6780F21D2A28743E00A1359D /* GetTermsConditionsRequest.swift in Sources */,
 				6732B90329227A3900B3D037 /* ScanDocumentType.swift in Sources */,
 				67AD5BAA292C9BE2004106D2 /* DocumentScannerAssetSizing.swift in Sources */,
 				670F118A29308EE5001FF15A /* RequestsEventHandlerImpl.swift in Sources */,

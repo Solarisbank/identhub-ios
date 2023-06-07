@@ -55,14 +55,43 @@ final internal class WelcomeEventHandlerImpl<ViewController: UpdateableShowable>
                 state.state = .loadScreen
             }
         case .triggerStart:
-            didTriggerStart()
+            if state.isDisplayNamirialTerms {
+                updateState { state in
+                    state.state = .namirialTCAccepted
+                }
+                acceptNamirialTermsConditions()
+            } else {
+                didTriggerStart()
+            }
         case .configurePageScroller(let pageScroller):
             configurePageScroller(pageScroller)
         case .setPageController(let pageController):
             setPageController(pageController)
         case .setLogoAnimator(let animator):
             setLogoAnimator(animator)
+        case .close(let error):
+            self.callback(.nextStep(nextStep: .close(error: error)))
         }
+    }
+    
+    private func acceptNamirialTermsConditions() {
+        let documentid = KYCContainer.shared.getNamirialTermsConditions()?.documentid ?? ""
+        verificationService.acceptNamirialTermsConditions(documentid: documentid, completionHandler: { [weak self] result in
+            guard let self = self else { return }
+            self.updateState { state in
+                state.state = .none
+            }
+            switch result {
+            case .success(_):
+                self.didTriggerStart()
+            case .failure(let error):
+                self.updateState { state in
+                    state.state = .error
+                    state.onDisplayError = error
+                }
+                fourthlineLog.warn("Accept Namirial Terms and Conditions failure")
+            }
+        })
     }
     
     private func updateState(_ update: @escaping (inout WelcomeState) -> Void) {

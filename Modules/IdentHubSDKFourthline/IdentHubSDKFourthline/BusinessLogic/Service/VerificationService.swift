@@ -8,6 +8,16 @@ import IdentHubSDKCore
 
 internal protocol VerificationService {
     
+    /// Get Namirial Terms and conditions url.
+    ///
+    /// - Parameter completionHandler: Response back with required terms and conditions data..
+    func getNamirialTermsConditions(completionHandler: @escaping (Result<TermsAndConditions, ResponseError>) -> Void)
+    
+    /// Post Acceptance of Namirial Terms and conditions.
+    ///
+    /// - Parameter completionHandler: Response back with required terms and conditions data..
+    func acceptNamirialTermsConditions(documentid:String, completionHandler: @escaping (Result<AcceptedTermsConditionsData, ResponseError>) -> Void)
+    
     /// Get Fourthline indentification data.
     ///
     /// - Parameter completionHandler: Response back if the fourthline detail.
@@ -117,7 +127,22 @@ internal class VerificationServiceImpl: VerificationService {
             completion(result)
         }
     }
-
+    
+    func getNamirialTermsConditions(completionHandler: @escaping (Result<TermsAndConditions, ResponseError>) -> Void) {
+        let request = GetTermsConditionsRequest()
+        
+        apiClient.execute(request: request, answerType: TermsAndConditions.self) { result in
+            completionHandler(result)
+        }
+    }
+    
+    func acceptNamirialTermsConditions(documentid:String, completionHandler: @escaping (Result<AcceptedTermsConditionsData, ResponseError>) -> Void) {
+        let request = AcceptTermsConditionsRequest(documentid: documentid)
+        apiClient.execute(request: request, answerType: AcceptedTermsConditionsData.self) { result in
+            completionHandler(result)
+        }
+    }
+    
     func obtainFourthlineIdentificationStatus(completion: @escaping (Result<FourthlineIdentificationStatus, ResponseError>) -> Void) {
         do {
             let request = try FourthlineIdentificationStatusRequest(uid: storage[.identificationUID] ?? "")
