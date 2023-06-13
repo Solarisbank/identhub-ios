@@ -120,7 +120,8 @@ public final class DefaultAPIClient: APIClient {
         var result: Result<DataType, ResponseError>?
         
         switch response.statusCode {
-        case 200:
+        case 200,
+            201:
             decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMdd)
             do {
                 let decodedData = try decoder.decode(DataType.self, from: data)
