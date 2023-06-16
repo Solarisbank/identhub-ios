@@ -20,7 +20,7 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
     
     private let verificationService: VerificationService
     private let alertsService: AlertsService
-    private var input: RequestsInput
+    public var input: RequestsInput
     private var storage: Storage
     internal var colors: Colors
     public var state: RequestsState
@@ -363,7 +363,7 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
 
 // MARK: - Upload methods -
 
-private extension RequestsEventHandlerImpl {
+extension RequestsEventHandlerImpl {
 
     private func startUploadProcess() {
         zipUserData()
@@ -385,7 +385,7 @@ private extension RequestsEventHandlerImpl {
         }
     }
 
-    private func uploadZip(_ fileURL: URL) {
+    func uploadZip(_ fileURL: URL) {
         uploadStep = .uploadData
         uploadFileURL = fileURL
         kycLog.info("Uploading zip file...")
@@ -416,10 +416,12 @@ private extension RequestsEventHandlerImpl {
     }
 
     private func deleteFile(at url: URL) {
-        do {
-            try FileManager.default.removeItem(at: url)
-        } catch let error as NSError {
-            kycLog.warn("Error occurs during removing uploaded zip file: \(error.localizedDescription)")
+        if(FileManager.default.fileExists(atPath: url.relativePath)) {
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch let error as NSError {
+                kycLog.warn("Error occurs during removing uploaded zip file: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -594,3 +596,4 @@ private extension RequestsEventHandlerImpl {
     }
     
 }
+

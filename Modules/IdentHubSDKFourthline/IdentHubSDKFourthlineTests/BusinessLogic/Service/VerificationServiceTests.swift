@@ -15,13 +15,14 @@ final class VerificationServiceTests: XCTestCase {
     private var storage: StorageMock!
     
     private let identUID: String = "someIdentId"
+    private let sessionToken: String = "sessionToken"
     
     override func setUp() {
         super.setUp()
         
         apiClient = APIClientMock()
         storage = StorageMock()
-        
+        APIToken.sessionToken = sessionToken
         storage[.identificationUID] = identUID
     }
     
@@ -164,6 +165,35 @@ final class VerificationServiceTests: XCTestCase {
         }
     }
     
+    func test_uploadKYCZip_apiCompletesWith409Failure() throws {
+        let alertsService = AlertsServiceMock()
+        let input = RequestsInput(requestsType: .uploadData, initStep: .defineMethod)
+        let session = StorageSessionInfoProvider(sessionToken: sessionToken)
+        session.identificationUID = storage[.identificationUID] ?? identUID
+        let eventHandler = RequestsEventHandlerImpl<RequestsViewController>(
+            verificationService: makeSut(),
+            alertsService: alertsService,
+            input: input,
+            storage: storage,
+            colors: ColorsImpl(),
+            session: session,
+            callback: { _ in }
+        )
+        
+        let fileURL = URL(string: "file://path")!
+        let expectedRequest = try UploadKYCRequest(sessionID: storage[.identificationUID] ?? identUID, fileURL: fileURL)
+
+        let expectedError = ResponseError(.expectationMismatch, HTTPURLResponse.mock(url: try expectedRequest.asURLRequest().url!, statuscode: 409))
+        
+        apiClient.expectError(expectedError, for: expectedRequest)
+        
+        assertAsync { expectation in
+            eventHandler.uploadZip(fileURL)
+            XCTAssertEqual(eventHandler.input.requestsType, .confirmation)
+            expectation.fulfill()
+        }
+    }
+    
     func test_obtainFourthlineIdentificationStatus_apiCompletesWithSuccess() throws {
         let expectedRequest = try FourthlineIdentificationStatusRequest(uid: storage[.identificationUID] ?? identUID)
         let expectedValue = FourthlineIdentificationStatus.mock()
@@ -203,7 +233,11 @@ final class VerificationServiceTests: XCTestCase {
         )
     }
 }
-
+internal extension HTTPURLResponse {
+    static func mock(url:URL, statuscode:Int) -> HTTPURLResponse? {
+        return HTTPURLResponse(url: url, statusCode: statuscode, httpVersion: "1.1", headerFields: nil)
+    }
+}
 internal extension FourthlineIdentification {
     static func mock() -> FourthlineIdentification {
         return RequestFileMock.fourthlineIdentification.decode(type: FourthlineIdentification.self)
