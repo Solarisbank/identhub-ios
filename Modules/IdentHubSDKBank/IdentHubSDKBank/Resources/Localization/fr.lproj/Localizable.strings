@@ -7,7 +7,6 @@
 "iban_verification_failure_alert_title" = "Échec de la vérification de l’IBAN";
 "iban_verification_error_invalid_iban" = "Malheureusement, l’IBAN que vous avez saisi n’est pas valide ou n’est pas pris en chargge.";
 "iban_verification_failure_alert_retry" = "Réessayer avec un IBAN différent";
-"iban_verification_failure_alert_fallback" = "S’identifier avec une autre méthode";
 
 // IBAN Verification
 "iban_verification_title" = "Entrez votre IBAN";

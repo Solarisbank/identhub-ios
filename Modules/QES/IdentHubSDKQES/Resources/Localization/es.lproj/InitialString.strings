@@ -1,0 +1,2 @@
+"sign_document_document_fetch_error_title" = "No fue possible descargar el documento";
+"sign_document_document_fetch_error_message" = "%1$@ Hubo un error de descarga.\nPor favor, inténtelo de nuevo.";

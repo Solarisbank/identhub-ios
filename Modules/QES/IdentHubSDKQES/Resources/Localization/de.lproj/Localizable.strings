@@ -11,8 +11,6 @@
 "sign_documents_request_code" = "Neuen Code erfragen";
 "sign_documents_application_being_processed" = "Ihr Antrag wird bearbeitet...";
 "sign_documents_download_documents" = "Sie können in Kürze alle unterzeichneten Dokumente herunterladen.";
-"sign_document_document_fetch_error_title" = "Fehler beim Download";
-"sign_document_document_fetch_error_message" = "%1$@ konnte nicht heruntergeladen werden.\nBitte versuchen Sie es erneut.";
 
 // Phone verification
 "phone_verification_title" = "Rufnummer bestätigen";

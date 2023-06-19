@@ -79,6 +79,7 @@
 		67CC7F8629C98B9400287C31 /* uploadFourthlineZip.json in Resources */ = {isa = PBXBuildFile; fileRef = 67CC7F8529C98B9400287C31 /* uploadFourthlineZip.json */; };
 		67CE13AE2959C77600A33510 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CE13AD2959C77600A33510 /* Checkbox.swift */; };
 		67D52BB5294AF79300BAE5B7 /* RequestsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D52BB4294AF79300BAE5B7 /* RequestsEvent.swift */; };
+		67DE2EB12A3C8551006F7578 /* InitialString.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67DE2EB32A3C8551006F7578 /* InitialString.strings */; };
 		67DF56D92930EF430078868F /* RequestsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DF56D82930EF430078868F /* RequestsType.swift */; };
 		67DF56DB2930F0140078868F /* RequestsEventHandlerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DF56DA2930F0140078868F /* RequestsEventHandlerImpl.swift */; };
 		67ECBC6529630C4000125599 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 67ECBC6429630C4000125599 /* SnapshotTesting */; };
@@ -302,6 +303,11 @@
 		67CC7F8529C98B9400287C31 /* uploadFourthlineZip.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = uploadFourthlineZip.json; sourceTree = "<group>"; };
 		67CE13AD2959C77600A33510 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		67D52BB4294AF79300BAE5B7 /* RequestsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsEvent.swift; sourceTree = "<group>"; };
+		67DE2EB22A3C8551006F7578 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EB42A3C8554006F7578 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EB52A3C8555006F7578 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EB62A3C8556006F7578 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EB72A3C8557006F7578 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InitialString.strings; sourceTree = "<group>"; };
 		67DF56D82930EF430078868F /* RequestsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsType.swift; sourceTree = "<group>"; };
 		67DF56DA2930F0140078868F /* RequestsEventHandlerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsEventHandlerImpl.swift; sourceTree = "<group>"; };
 		67FE483829347DBB00EA8172 /* IdentificationMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationMethod.swift; sourceTree = "<group>"; };
@@ -1180,6 +1186,7 @@
 			isa = PBXGroup;
 			children = (
 				88E914FC2844EE9100284CCE /* Localizable.strings */,
+				67DE2EB32A3C8551006F7578 /* InitialString.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1428,6 +1435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67DE2EB12A3C8551006F7578 /* InitialString.strings in Resources */,
 				670CF47E28F44A4200B909CE /* PhoneVerificationViewController.xib in Resources */,
 				88CDE6C9284E8E1400FB659F /* StateView.xib in Resources */,
 				6769BC032959AF890009D4EB /* TermsViewController.xib in Resources */,
@@ -1706,6 +1714,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		67DE2EB32A3C8551006F7578 /* InitialString.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67DE2EB22A3C8551006F7578 /* en */,
+				67DE2EB42A3C8554006F7578 /* fr */,
+				67DE2EB52A3C8555006F7578 /* de */,
+				67DE2EB62A3C8556006F7578 /* it */,
+				67DE2EB72A3C8557006F7578 /* es */,
+			);
+			name = InitialString.strings;
+			sourceTree = "<group>";
+		};
 		88E914FC2844EE9100284CCE /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

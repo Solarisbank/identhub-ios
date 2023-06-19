@@ -73,6 +73,7 @@
 		67AD5BB6292CEEE9004106D2 /* DocumentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD5BB4292CEEE9004106D2 /* DocumentInfoViewController.swift */; };
 		67AD5BB7292CEEE9004106D2 /* DocumentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67AD5BB5292CEEE9004106D2 /* DocumentInfoViewController.xib */; };
 		67AD5BB9292CF40E004106D2 /* DocumentInfoDDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD5BB8292CF40E004106D2 /* DocumentInfoDDM.swift */; };
+		67DE2EC82A3C86EF006F7578 /* InitialString.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67DE2ECA2A3C86EF006F7578 /* InitialString.strings */; };
 		67E595C8291E17DA00768DED /* WelcomeEventHandlerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E595C7291E17DA00768DED /* WelcomeEventHandlerImpl.swift */; };
 		67E595D0291E257E00768DED /* WelcomePageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E595CE291E257E00768DED /* WelcomePageCell.swift */; };
 		67E595D1291E257E00768DED /* WelcomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67E595CF291E257E00768DED /* WelcomePageCell.xib */; };
@@ -198,6 +199,11 @@
 		67AD5BB4292CEEE9004106D2 /* DocumentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoViewController.swift; sourceTree = "<group>"; };
 		67AD5BB5292CEEE9004106D2 /* DocumentInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentInfoViewController.xib; sourceTree = "<group>"; };
 		67AD5BB8292CF40E004106D2 /* DocumentInfoDDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentInfoDDM.swift; sourceTree = "<group>"; };
+		67DE2EC92A3C86EF006F7578 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2ECB2A3C86F7006F7578 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2ECC2A3C86F8006F7578 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2ECD2A3C86F9006F7578 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2ECE2A3C86F9006F7578 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InitialString.strings; sourceTree = "<group>"; };
 		67E595C7291E17DA00768DED /* WelcomeEventHandlerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeEventHandlerImpl.swift; sourceTree = "<group>"; };
 		67E595CE291E257E00768DED /* WelcomePageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageCell.swift; sourceTree = "<group>"; };
 		67E595CF291E257E00768DED /* WelcomePageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomePageCell.xib; sourceTree = "<group>"; };
@@ -631,6 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				67E595ED291E746400768DED /* Localizable.strings */,
+				67DE2ECA2A3C86EF006F7578 /* InitialString.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -822,6 +829,7 @@
 				67E595D1291E257E00768DED /* WelcomePageCell.xib in Resources */,
 				672A7D582923AB000027932A /* DocumentTypeCell.xib in Resources */,
 				6796CDD5299F85B400AFBD5C /* InstructionViewController.xib in Resources */,
+				67DE2EC82A3C86EF006F7578 /* InitialString.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,6 +999,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		67DE2ECA2A3C86EF006F7578 /* InitialString.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67DE2EC92A3C86EF006F7578 /* en */,
+				67DE2ECB2A3C86F7006F7578 /* fr */,
+				67DE2ECC2A3C86F8006F7578 /* de */,
+				67DE2ECD2A3C86F9006F7578 /* it */,
+				67DE2ECE2A3C86F9006F7578 /* es */,
+			);
+			name = InitialString.strings;
+			sourceTree = "<group>";
+		};
 		67E595ED291E746400768DED /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

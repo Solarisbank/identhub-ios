@@ -7,7 +7,6 @@
 "iban_verification_failure_alert_title" = "Verifica IBAN fallita";
 "iban_verification_error_invalid_iban" = "Purtroppo l'IBAN che hai inserito non è valido o non è supportato.";
 "iban_verification_failure_alert_retry" = "Prova un IBAN diverso";
-"iban_verification_failure_alert_fallback" = "Identificare usando un altro metodo";
 
 // Payment Verification
 "payment_verification_establishing_connection" = "Viene stabilita una connessione sicura con la tua banca ......";

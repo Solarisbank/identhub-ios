@@ -38,6 +38,7 @@
 		67CADDB728EF006E004BA73D /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CADDB628EF006E004BA73D /* Bundle+Extensions.swift */; };
 		67CADDB928EF008A004BA73D /* StorageKey+Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CADDB828EF008A004BA73D /* StorageKey+Bank.swift */; };
 		67CADDBB28EF009B004BA73D /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CADDBA28EF009B004BA73D /* String+Localization.swift */; };
+		67DE2EBC2A3C863E006F7578 /* InitialString.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67DE2EBE2A3C863E006F7578 /* InitialString.strings */; };
 		6D8B684487B0612541ED2232 /* Pods_IdentHubSDKBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC84572EE5A9435078F4B797 /* Pods_IdentHubSDKBank.framework */; };
 		CAA7DC6406A11ADCCB13692C /* Pods_IdentHubSDKBankTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A163DF83F6FB48A88014474A /* Pods_IdentHubSDKBankTests.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,11 @@
 		67CADDB628EF006E004BA73D /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		67CADDB828EF008A004BA73D /* StorageKey+Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageKey+Bank.swift"; sourceTree = "<group>"; };
 		67CADDBA28EF009B004BA73D /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		67DE2EBD2A3C863E006F7578 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EBF2A3C8641006F7578 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EC02A3C8642006F7578 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EC12A3C8642006F7578 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InitialString.strings; sourceTree = "<group>"; };
+		67DE2EC22A3C8643006F7578 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InitialString.strings; sourceTree = "<group>"; };
 		8BA3C40C5836E3C89F1EE810 /* Pods-IdentHubSDKBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKBank.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKBank/Pods-IdentHubSDKBank.release.xcconfig"; sourceTree = "<group>"; };
 		A163DF83F6FB48A88014474A /* Pods_IdentHubSDKBankTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDKBankTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA864E322326293E2C38A816 /* Pods-IdentHubSDKBankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKBankTests.debug.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKBankTests/Pods-IdentHubSDKBankTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				67C1369128FD61F500AA9499 /* Localizable.strings */,
+				67DE2EBE2A3C863E006F7578 /* InitialString.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -528,6 +535,7 @@
 				67C1368F28FD61F500AA9499 /* Localizable.strings in Resources */,
 				67C1368828FD5EE700AA9499 /* Colors.xcassets in Resources */,
 				67C1368A28FD5F0F00AA9499 /* Assets.xcassets in Resources */,
+				67DE2EBC2A3C863E006F7578 /* InitialString.strings in Resources */,
 				6706EAF728FD7B69000A9941 /* IBANVerificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -669,6 +677,18 @@
 				67C1369528FD620E00AA9499 /* es */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		67DE2EBE2A3C863E006F7578 /* InitialString.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67DE2EBD2A3C863E006F7578 /* en */,
+				67DE2EBF2A3C8641006F7578 /* fr */,
+				67DE2EC02A3C8642006F7578 /* it */,
+				67DE2EC12A3C8642006F7578 /* de */,
+				67DE2EC22A3C8643006F7578 /* es */,
+			);
+			name = InitialString.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

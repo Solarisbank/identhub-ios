@@ -14,7 +14,6 @@
 "api_error_location_error" = "L’appareil ne peut pas définir les données de localisation.";
 "api_error_iban_verification" = "Échec de la vérification de l’IBAN.";
 "api_error_payment_failure" = "Échec de vérification du paiement.";
-"api_error_modules_not_found" = "Certains modules ne sont pas disponibles (%1$@).";
 
 // Common
 "common_next" = "Suite";

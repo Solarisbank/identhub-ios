@@ -14,7 +14,6 @@
 "api_error_location_error" = "Il dispositivo non riesce a trovare i dati sulla posizione.";
 "api_error_iban_verification" = "Verifica IBAN non riuscita.";
 "api_error_payment_failure" = "Verifica del pagamento non riuscita.";
-"api_error_modules_not_found" = "Alcuni moduli non sono disponibili (%1$@).";
 
 // Common
 "common_next" = "Avanti";

@@ -11,8 +11,6 @@
 "sign_documents_request_code" = "Request new code";
 "sign_documents_application_being_processed" = "Your application is being processed...";
 "sign_documents_download_documents" = "You will be able to download all of the signed documents soon.";
-"sign_document_document_fetch_error_title" = "Unable to download document";
-"sign_document_document_fetch_error_message" = "%1$@ failed to download.\nPlease try again.";
 
 // Phone verification
 "phone_verification_title" = "Confirm phone";

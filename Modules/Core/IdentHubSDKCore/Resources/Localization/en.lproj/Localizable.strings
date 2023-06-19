@@ -14,7 +14,6 @@
 "api_error_location_error" = "Device can't define location data.";
 "api_error_iban_verification" = "IBAN verification failed.";
 "api_error_payment_failure" = "Payment verification failed.";
-"api_error_modules_not_found" = "Some modules are not available (%1$@).";
 
 // Common
 "common_next" = "Next";

@@ -11,8 +11,6 @@
 "sign_documents_request_code" = "Richiedi nuovo codice";
 "sign_documents_application_being_processed" = "La tua richiesta è in fase di elaborazione...";
 "sign_documents_download_documents" = "Presto potrai scaricare tutti i documenti firmati.";
-"sign_document_document_fetch_error_title" = "Impossibile scaricare il documento";
-"sign_document_document_fetch_error_message" = "Il download del %1$@ non é andato a buon fine.\nLa preghiamo di riprovare.";
 
 // Phone Verification
 "phone_verification_title" = "Confermare il telefono";
