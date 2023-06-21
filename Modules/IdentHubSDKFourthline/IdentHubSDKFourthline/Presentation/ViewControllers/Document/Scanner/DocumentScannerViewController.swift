@@ -19,6 +19,7 @@ internal enum DocumentScannerViewEvent {
     case updateResult(_ result: DocumentScannerResult)
     case saveResult(_ stepResult: DocumentScannerStepResult)
     case cleanData
+    case automationTest
     case quit
 }
     
@@ -280,7 +281,14 @@ extension DocumentScannerViewController: DocumentScannerAssetsDataSource {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
 
         eventHandler?.handleEvent(.cleanData)
-        displayScannerError()
+        #if AUTOMATION
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.dismissScanner()
+                self.eventHandler?.handleEvent(.automationTest)
+            }
+        #else
+            displayScannerError()
+        #endif
     }
 
     private func displayScannerError() {

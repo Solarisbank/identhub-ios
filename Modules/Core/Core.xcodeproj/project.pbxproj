@@ -242,6 +242,7 @@
 		05AC64C928927A8B0039D883 /* SBLogBackendDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogBackendDestination.swift; sourceTree = "<group>"; };
 		05AC64DF28927C3A0039D883 /* SBLogDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBLogDestinationTests.swift; sourceTree = "<group>"; };
 		05AC64E128927C5A0039D883 /* SBLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBLogTests.swift; sourceTree = "<group>"; };
+		5AE0D7D518427135C4CF52E4 /* Pods-IdentHubSDKTestBase.automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTestBase.automation.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTestBase/Pods-IdentHubSDKTestBase.automation.xcconfig"; sourceTree = "<group>"; };
 		6701F4D42962B6C1008A00F1 /* Pods_IdentHubSDKQESSnapshotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_IdentHubSDKQESSnapshotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6701F4DA2962B9EC008A00F1 /* FourthlineCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthlineCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
 		6706EAFF28FE838D000A9941 /* StorageKey+Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageKey+Core.swift"; sourceTree = "<group>"; };
@@ -436,6 +437,7 @@
 		88F3A563283CD72000DB273A /* IdentHubSDKCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdentHubSDKCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F72622286F043700D32702 /* MobileNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileNumber.swift; sourceTree = "<group>"; };
 		88F7262B286F05D700D32702 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		AA07D997339DCA6352DD0559 /* Pods-IdentHubSDKCoreTests.automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKCoreTests.automation.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKCoreTests/Pods-IdentHubSDKCoreTests.automation.xcconfig"; sourceTree = "<group>"; };
 		D4E70E1446713B3FA086DDC6 /* Pods_IdentHubSDKTestBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDKTestBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E62C46C6446A921130FEF8 /* Pods-IdentHubSDKTestBase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTestBase.debug.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTestBase/Pods-IdentHubSDKTestBase.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A752CDDC399B7431E44655 /* Pods_IdentHubSDKCoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDKCoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1272,6 +1274,8 @@
 				E7C2BEF559BFEC333E2FF5F9 /* Pods-IdentHubSDKTestBase.release.xcconfig */,
 				88F111A7D447DC188503B54C /* Pods-IdentHubSDKCoreTests.debug.xcconfig */,
 				DCF9029EFF2D511FA031EEE2 /* Pods-IdentHubSDKCoreTests.release.xcconfig */,
+				AA07D997339DCA6352DD0559 /* Pods-IdentHubSDKCoreTests.automation.xcconfig */,
+				5AE0D7D518427135C4CF52E4 /* Pods-IdentHubSDKTestBase.automation.xcconfig */,
 			);
 			name = Pods;
 			path = ../../Pods;
@@ -1336,8 +1340,6 @@
 			dependencies = (
 			);
 			name = IdentHubSDKCore;
-			packageProductDependencies = (
-			);
 			productName = Core;
 			productReference = 88F3A559283CD72000DB273A /* IdentHubSDKCore.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1741,6 +1743,157 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		67E3C4992A30477B00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG AUTOMATION";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Automation;
+		};
+		67E3C49A2A30477B00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05A7B08A28B78D1F00319510 /* Core.xcconfig */;
+			buildSettings = {
+				BITCODE_GENERATION_MODE = bitcode;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"MARKETING_VERSION=$(_BUILD_VERSION)",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sdk.framework.core;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Automation;
+		};
+		67E3C49B2A30477B00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AE0D7D518427135C4CF52E4 /* Pods-IdentHubSDKTestBase.automation.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sdk.framework.test.base;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Automation;
+		};
+		67E3C49C2A30477B00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA07D997339DCA6352DD0559 /* Pods-IdentHubSDKCoreTests.automation.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.CoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Automation;
+		};
 		88A9FB77284A14790074557B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6E62C46C6446A921130FEF8 /* Pods-IdentHubSDKTestBase.debug.xcconfig */;
@@ -2043,6 +2196,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88A9FB77284A14790074557B /* Debug */,
+				67E3C49B2A30477B00F5B608 /* Automation */,
 				88A9FB78284A14790074557B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2052,6 +2206,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88F3A56B283CD72000DB273A /* Debug */,
+				67E3C4992A30477B00F5B608 /* Automation */,
 				88F3A56C283CD72000DB273A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2061,6 +2216,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88F3A56E283CD72000DB273A /* Debug */,
+				67E3C49A2A30477B00F5B608 /* Automation */,
 				88F3A56F283CD72000DB273A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2070,6 +2226,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				88F3A571283CD72000DB273A /* Debug */,
+				67E3C49C2A30477B00F5B608 /* Automation */,
 				88F3A572283CD72000DB273A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -66,7 +66,10 @@ final internal class DocumentInfoEventHandlerImpl<ViewController: UpdateableShow
         case .configureDocumentsInfoTable(let table):
             self.configure(table)
         case .triggerContinue:
-            updateKYC()
+            #if !AUTOMATION
+                updateKYC()
+            #endif
+            
             if input.isSecondDocument {
                 callback(.instructionScreen)
             } else {
@@ -142,6 +145,11 @@ extension DocumentInfoEventHandlerImpl: DocumentInfoDDMDelegate {
                 infoContent[DocumentItemInfoType.expireDate.rawValue].content = ""
             }
         }
+        
+        #if AUTOMATION
+            infoContent[DocumentItemInfoType.issueDate.rawValue].content = ""
+            infoContent[DocumentItemInfoType.expireDate.rawValue].content = ""
+        #endif
         
         tableDDM?.updateContent(infoContent)
         updateState { state in

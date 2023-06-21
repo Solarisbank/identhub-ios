@@ -81,6 +81,13 @@ final internal class DocumentScannerEventHandlerImpl<ViewController: UpdateableS
             } else {
                 KYCContainer.shared.update(with: stepResult)
             }
+        case .automationTest:
+            if input.isSecondDocument {
+                callback(.selfieScreen)
+            } else {
+                callback(.documentInfo)
+            }
+            break
         case .quit:
             quit()
         }

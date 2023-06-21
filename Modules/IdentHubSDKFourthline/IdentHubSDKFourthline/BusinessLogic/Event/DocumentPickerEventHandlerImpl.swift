@@ -6,6 +6,7 @@
 import UIKit
 import IdentHubSDKCore
 import FourthlineCore
+import FourthlineKYC
 
 /// Identifier of the document type table cells
 let documentTypeCellID = "documentTypeCellID"

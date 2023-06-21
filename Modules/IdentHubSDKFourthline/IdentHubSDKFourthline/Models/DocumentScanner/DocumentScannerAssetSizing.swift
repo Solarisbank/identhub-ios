@@ -27,6 +27,7 @@ extension DocumentScannerAssetPlacement {
         case .passport:
             return Builder.passport()
         case .idCard,
+             .tinReferenceDocument,
              .residencePermit:
             return Builder.idCard()
         case .driversLicense:

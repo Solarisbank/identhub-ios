@@ -219,7 +219,6 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
     private func documentScannerPresent(type: DocumentType, isSecondDocument: Bool) {
         self.requestPermissions { [weak self] isPassed in
             guard isPassed, let self = self else { return }
-            
             self.documentScanner(type, isSecondDocument)?.present(on: self.presenter)
         }
     }
@@ -347,6 +346,9 @@ private extension FourthlineCoordinatorImpl {
     private func requestPermissions(completionHandler: @escaping ((_ isPassed: Bool) -> Void)) {
         fourthlineLog.info("Requesting permissions for camera...")
         
+        #if AUTOMATION
+            completionHandler(true)
+        #else
         AVCaptureDevice.requestAccess(for: .video) { granted in
             guard granted else {
                 fourthlineLog.warn("Permissions for camera not granted")
@@ -378,6 +380,7 @@ private extension FourthlineCoordinatorImpl {
                 }
             }
         }
+        #endif
     }
     
     private func showPermissionAlert(with title: String, message: String) {

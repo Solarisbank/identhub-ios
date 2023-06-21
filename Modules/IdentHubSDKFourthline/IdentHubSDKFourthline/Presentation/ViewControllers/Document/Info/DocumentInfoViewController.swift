@@ -89,8 +89,14 @@ final internal class DocumentInfoViewController: UIViewController, Updateable {
 extension DocumentInfoViewController {
 
     private func configureUI() {
+        #if AUTOMATION
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.eventHandler?.handleEvent(.triggerContinue)
+            }
+        #endif
+        
         eventHandler?.handleEvent(.configureDocumentsInfoTable(table: docInfoTable))
-
+        
         typealias InfoText = Localizable.DocumentScanner.Information
 
         titleLbl.text = InfoText.title

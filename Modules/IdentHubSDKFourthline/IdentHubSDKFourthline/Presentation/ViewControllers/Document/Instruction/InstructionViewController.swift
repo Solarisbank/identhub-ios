@@ -70,7 +70,12 @@ class InstructionViewController: UIViewController, Updateable {
 extension InstructionViewController {
 
     private func configureUI() {
-
+        #if AUTOMATION
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.eventHandler?.handleEvent(.triggerContinue)
+            }
+        #endif
+        
         typealias InfoText = Localizable.DocumentScanner.Healthcard
 
         titleLbl.text = InfoText.title

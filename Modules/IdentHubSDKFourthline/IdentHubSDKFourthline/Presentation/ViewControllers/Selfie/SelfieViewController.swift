@@ -114,7 +114,11 @@ extension SelfieViewController {
     
     private func configureUI() {
         view.backgroundColor = .black
-
+        #if AUTOMATION
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.eventHandler?.handleEvent(.confirmStep)
+            }
+        #endif
         add(child: selfieScanner)
         selfieOverlay.status = .warning(withMessage: Localizable.Selfie.Warnings.noFace)
         selfieOverlay.title  = Localizable.Selfie.selfieTitle
@@ -159,6 +163,7 @@ extension SelfieViewController {
     }
 
     private func displayScannerError() {
+        #if !AUTOMATION
         let alert = UIAlertController(title: Localizable.Selfie.Errors.alertTitle, message: Localizable.Selfie.Errors.alertMessage, preferredStyle: .alert)
 
         let tryAgainAction = UIAlertAction(title: Localizable.Common.tryAgain, style: .default, handler: { [self] _ in
@@ -171,6 +176,7 @@ extension SelfieViewController {
         alert.addAction(tryAgainAction)
         alert.addAction(cancelAction)
         present(alert, animated: true)
+        #endif
     }
 
     private func resetScannerFlow() {

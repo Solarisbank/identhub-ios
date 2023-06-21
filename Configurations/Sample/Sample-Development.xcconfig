@@ -5,6 +5,7 @@
 
 #include "Sample-Base.xcconfig"
 #include "../../Pods/Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"
+#include "../../Pods/Target Support Files/Pods-Sample/Pods-Sample.automation.xcconfig"
 
 __PRODUCT_BUNDLE_IDENTIFIER_SUFFIX = .development
 

@@ -5,6 +5,7 @@
 
 #include "Framework-Base.xcconfig"
 #include "../../Pods/Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.debug.xcconfig"
+#include "../../Pods/Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.automation.xcconfig"
 
 __PRODUCT_BUNDLE_IDENTIFIER_SUFFIX = .development
 

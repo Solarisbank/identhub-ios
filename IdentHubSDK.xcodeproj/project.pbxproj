@@ -290,6 +290,7 @@
 		0CD863A025DC5F5000AB3252 /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
 		0CE4A8E625A368CC00114CBD /* SolarisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolarisViewController.swift; sourceTree = "<group>"; };
 		0CE4A8F025A368E700114CBD /* StartIdentificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartIdentificationViewModel.swift; sourceTree = "<group>"; };
+		15F8CA2D200DC81241BCD0EF /* Pods-IdentHubSDK.automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDK.automation.xcconfig"; path = "Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.automation.xcconfig"; sourceTree = "<group>"; };
 		24659B0226D62D7300F56089 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24659B0626D9192700F56089 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		24B483672934A39C00E66CD9 /* CoreScreensCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreScreensCoordinator.swift; sourceTree = "<group>"; };
@@ -309,6 +310,7 @@
 		67CADDD828EF08F6004BA73D /* IdentHubSDKBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IdentHubSDKBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67CADDDB28EF095B004BA73D /* IdentHubSDKBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IdentHubSDKBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FE48572935E53A00EA8172 /* FourthlineCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthlineCoordinator.swift; sourceTree = "<group>"; };
+		696B448E6AF2F3F3D6637720 /* Pods-Sample.automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.automation.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.automation.xcconfig"; sourceTree = "<group>"; };
 		6EF003FA1784239E0FFA3D45 /* Pods-IdentHubSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.debug.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75CF43BE2817B290D1573E94 /* Pods-IdentHubSDK.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDK.staging.xcconfig"; path = "Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.staging.xcconfig"; sourceTree = "<group>"; };
 		779FF75FDE80CFB1C9825278 /* Pods-IdentHubSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDK.release.xcconfig"; path = "Target Support Files/Pods-IdentHubSDK/Pods-IdentHubSDK.release.xcconfig"; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 		C0D98CB1578F38AD8A595A0A /* Pods_IdentHubSDKTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentHubSDKTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFE8EAA34B795FF83F8F5D4 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		CB2A95DD348AE92C2747E5FB /* Pods-Sample.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.staging.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.staging.xcconfig"; sourceTree = "<group>"; };
+		EBC38E0C753BE58146D3CD77 /* Pods-IdentHubSDKTests.automation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentHubSDKTests.automation.xcconfig"; path = "Target Support Files/Pods-IdentHubSDKTests/Pods-IdentHubSDKTests.automation.xcconfig"; sourceTree = "<group>"; };
 		EE9F1AA2A14447076C36043A /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -972,6 +975,9 @@
 				011E00B1CA5F63B285842124 /* Pods-Sample.debug.xcconfig */,
 				CB2A95DD348AE92C2747E5FB /* Pods-Sample.staging.xcconfig */,
 				CAFE8EAA34B795FF83F8F5D4 /* Pods-Sample.release.xcconfig */,
+				15F8CA2D200DC81241BCD0EF /* Pods-IdentHubSDK.automation.xcconfig */,
+				EBC38E0C753BE58146D3CD77 /* Pods-IdentHubSDKTests.automation.xcconfig */,
+				696B448E6AF2F3F3D6637720 /* Pods-Sample.automation.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1755,6 +1761,166 @@
 			};
 			name = Staging;
 		};
+		67E3C4942A30476A00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CD5CC962590FE8600FF378F /* Common-Development.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_NOTICES = NO;
+				ASSETCATALOG_WARNINGS = NO;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(_ENVIRONMENTS) $(inherited) AUTOMATION";
+			};
+			name = Automation;
+		};
+		67E3C4952A30476A00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 393502832878AA1100923779 /* Framework-Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+					"$(inherited)",
+				);
+				MARKETING_VERSION = 1.5.2;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
+				SWIFT_VERSION = 5.0;
+				_BUILD_VERSION = 1.5.2;
+				_BUNDLE_TESTABLE = YES;
+				_COMPILER_SWIFT_VERSION = 5.4;
+			};
+			name = Automation;
+		};
+		67E3C4962A30476A00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CD5CC902590FE2300FF378F /* Sample-Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+					"$(inherited)",
+				);
+				MARKETING_VERSION = 1.4.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.solarisbank.identhub.sample.development;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
+				SWIFT_VERSION = 5.0;
+				_BUILD_VERSION = 1.4.0;
+				_COMPILER_SWIFT_VERSION = 5.4;
+			};
+			name = Automation;
+		};
+		67E3C4972A30476A00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SWIFT_OBJC_BRIDGING_HEADER = "Framework/ViewControllers/Release-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Automation;
+		};
+		67E3C4982A30476A00F5B608 /* Automation */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CD5CC932590FE5700FF378F /* Tests-Base.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 27A5X8DE8E;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = IdentHubSDKTests/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.solarisbank.IdentHubSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Automation;
+		};
 		84A7581E25F22D7F004D8F88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0CD5CC932590FE5700FF378F /* Tests-Base.xcconfig */;
@@ -1976,6 +2142,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CD5CC402590F58800FF378F /* Debug */,
+				67E3C4942A30476A00F5B608 /* Automation */,
 				0CD5CCAF2591038C00FF378F /* Staging */,
 				0CD5CC412590F58800FF378F /* Release */,
 			);
@@ -1986,6 +2153,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CD5CC432590F58800FF378F /* Debug */,
+				67E3C4952A30476A00F5B608 /* Automation */,
 				0CD5CCB02591038C00FF378F /* Staging */,
 				0CD5CC442590F58800FF378F /* Release */,
 			);
@@ -1996,6 +2164,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CD5CC5C2590F61300FF378F /* Debug */,
+				67E3C4962A30476A00F5B608 /* Automation */,
 				0CD5CCB12591038C00FF378F /* Staging */,
 				0CD5CC5D2590F61300FF378F /* Release */,
 			);
@@ -2006,6 +2175,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CD5CC762590FC1F00FF378F /* Debug */,
+				67E3C4972A30476A00F5B608 /* Automation */,
 				0CD5CCB32591038C00FF378F /* Staging */,
 				0CD5CC772590FC1F00FF378F /* Release */,
 			);
@@ -2016,6 +2186,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84A7581E25F22D7F004D8F88 /* Debug */,
+				67E3C4982A30476A00F5B608 /* Automation */,
 				84A7581F25F22D7F004D8F88 /* Staging */,
 				84A7582025F22D7F004D8F88 /* Release */,
 			);

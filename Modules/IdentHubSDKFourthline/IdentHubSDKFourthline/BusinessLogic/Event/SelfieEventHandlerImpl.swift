@@ -94,11 +94,15 @@ final internal class SelfieEventHandlerImpl<ViewController: UpdateableShowable>:
     }
     
     private func confirmStep() {
+        #if AUTOMATION
+            self.callback(.dataUpload)
+        #else
         updateState { state in
             if state.saveResult {
                 self.callback(.dataUpload)
             }
         }
+        #endif
     }
     
     func quit() {

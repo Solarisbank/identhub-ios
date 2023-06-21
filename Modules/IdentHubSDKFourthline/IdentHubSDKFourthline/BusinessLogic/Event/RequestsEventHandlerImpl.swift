@@ -277,7 +277,11 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
         
         switch uploadStep {
         case .prepareData:
-            zipUserData()
+            #if AUTOMATION
+                zipMockUserData()
+            #else
+                zipUserData()
+            #endif
         case .uploadData:
             uploadZip(uploadFileURL)
         }
@@ -382,6 +386,24 @@ extension RequestsEventHandlerImpl {
                 return
             }
             self?.uploadZip(url)
+        }
+    }
+    
+    private func zipMockUserData() {
+        uploadStep = .prepareData
+        updateStateDetails()
+        
+        let filePath = Bundle.current.path(forResource: "kyc", ofType: "zip")
+        let fileManager : FileManager   = FileManager.default
+        
+        if fileManager.fileExists(atPath: filePath ?? ""){
+            let zipURL = URL(fileURLWithPath: filePath ?? "")
+            
+            if zipURL.isFileURL {
+                self.uploadZip(zipURL)
+            }
+        } else {
+            print("kyc.zip(mock) file not found")
         }
     }
 
@@ -596,4 +618,3 @@ private extension RequestsEventHandlerImpl {
     }
     
 }
-
