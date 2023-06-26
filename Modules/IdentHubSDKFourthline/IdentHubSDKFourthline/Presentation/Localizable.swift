@@ -164,6 +164,7 @@ internal enum Localizable {
         static let description = "upload_data_description".localized()
         static let uploading = "upload_data_uploading".localized()
         static let preparation = "upload_data_preparation".localized()
+        static let bottomInstruction = "identhub_fourthline_kyc_upload_bottom_notice".localized()
     }
 
     enum Result {

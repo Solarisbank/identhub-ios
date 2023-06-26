@@ -48,6 +48,7 @@ public enum Localizable {
         static let phoneVerification = "progress_view_phone_verification".localized()
         static let bankVerification = "progress_view_bank_verification".localized()
         static let documents = "progress_view_sign_documents".localized()
+        static let waiting = "identhub_fourthline_generic_loading_title".localized()
     }
 
     enum Quiting {

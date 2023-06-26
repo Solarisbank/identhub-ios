@@ -103,9 +103,10 @@
 
 // Upload
 "upload_data_title" = "Caricamento dati";
-"upload_data_description" = "I tuoi dati sono in fase di caricamento...";
+"upload_data_description" = "I vostri dati vengono trattati...";
 "upload_data_uploading" = "Caricamento in corso...";
 "upload_data_preparation" = "Prepara i dati di caricamento...";
+"identhub_fourthline_kyc_upload_bottom_notice" = "L’operazione potrebbe richiedere un paio di minuti. Non chiudere questa schermata fino al completamento della verifica.";
 
 // Result
 "result_success_title" = "Congratulazioni";

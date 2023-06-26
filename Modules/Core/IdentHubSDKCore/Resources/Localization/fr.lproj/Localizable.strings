@@ -35,6 +35,7 @@
 "progress_view_phone_verification" = "Vérification du téléphone";
 "progress_view_bank_verification" = "Vérification bancaire";
 "progress_view_sign_documents" = "Signer documents";
+"identhub_fourthline_generic_loading_title" = "Veuillez attendre...";
 
 // Quitting
 "quitting_title" = "Êtes-vous sûr de vouloir quitter le processus d’intégration ?";
@@ -62,7 +63,7 @@
 // Initial
 "initial_title" = "Démarrer";
 "initial_define" = "Définir la méthode d’identification...";
-"initial_info" = "Obtenir les détails de l’identification";
+"initial_info" = "Recherche des données d’identification...";
 "initial_register" = "Enregistrer la méthode d’identification...";
 "initial_prefetch" = "Préchargement des données...";
 
@@ -75,7 +76,7 @@
 
 // Fetch data
 "fetch_data_title" = "Récupérer les données";
-"fetch_data_person" = "Récupération des données de la personne...";
+"fetch_data_person" = "Recherche de données sur les personnes...";
 "fetch_data_location" = "Récupération des données de localisation...";
 "fetch_data_ip_address" = "Récupération des données de l’adresse IP...";
 

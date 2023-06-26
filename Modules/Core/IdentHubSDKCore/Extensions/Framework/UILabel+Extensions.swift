@@ -11,6 +11,7 @@ public enum UILabelStyle {
     case caption
     case error
     case buttonTitle
+    case custom(font: UIFont, color:UIColor)
 }
 
 public extension UILabel {
@@ -35,6 +36,9 @@ public extension UILabel {
             self.textColor = colors[.error]
         case .buttonTitle:
             self.font = UIFont.getBoldFont(size: FontSize.buttonTitle)
+        case .custom(font: let font, color: let color):
+            self.font = font
+            self.textColor = color
         }
         
         return self

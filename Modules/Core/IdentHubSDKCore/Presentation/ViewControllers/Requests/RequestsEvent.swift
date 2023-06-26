@@ -63,6 +63,7 @@ public struct RequestsState: Equatable {
     public var stateType: RequestsType = .initateFlow
     public var title: String? = ""
     public var description: String? = ""
+    public var waitingInstruction: String? = ""
     public var loading: Bool = false
     public var identifyEvent: Bool = false
     public var onDisplayError: Error? = .none

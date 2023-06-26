@@ -101,9 +101,10 @@
 
 // Upload
 "upload_data_title" = "Téléchargement des données";
-"upload_data_description" = "Vos données sont en train d’être téléchargées...";
+"upload_data_description" = "Vos données sont traitées...";
 "upload_data_uploading" = "Téléchargement en cours...";
 "upload_data_preparation" = "Préparer les données de téléchargement...";
+"identhub_fourthline_kyc_upload_bottom_notice" = "Cela peut prendre quelques minutes. Ne fermez pas cet écran tant que la vérification n’est pas terminée.";
 
 // Result
 "result_success_title" = "Félicitations";

@@ -131,7 +131,9 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
                 if let provider = response.fourthlineProvider {
                     self.sessionInfoProvider.fourthlineProvider = provider
                 }
-                self.callback(.finishInitialFetch(response))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.callback(.finishInitialFetch(response))
+                }
             case .failure(let error):
                 self.updateState { state in
                     state.onDisplayError = error
@@ -166,7 +168,12 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
             return ""
         }
     }
-    
+    func obtainScreenWaitingDescription() -> String {
+        switch self.input.requestsType {
+        default:
+            return ""
+        }
+    }
 }
 
 // MARK: - Restart Process -

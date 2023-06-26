@@ -101,10 +101,10 @@
 
 // Upload
 "upload_data_title" = "Carga de datos";
-"upload_data_description" = "Tus datos se están cargando...";
+"upload_data_description" = "Sus datos están siendo procesados...";
 "upload_data_uploading" = "Cargando...";
 "upload_data_preparation" = "Prepara la carga de datos...";
-
+"identhub_fourthline_kyc_upload_bottom_notice" = "Esto puede tardar un par de minutos, por favor no cierre esta pantalla hasta que la verificación se haya completado.";
 
 // Result
 "result_success_title" = "Enhorabuena";

@@ -35,6 +35,7 @@
 "progress_view_phone_verification" = "Phone verification";
 "progress_view_bank_verification" = "Bank verification";
 "progress_view_sign_documents" = "Sign documents";
+"identhub_fourthline_generic_loading_title" = "Please wait...";
 
 // Quitting
 "quitting_title" = "Are you sure you want to quit onboarding process?";
@@ -62,7 +63,7 @@
 // Initial
 "initial_title" = "Initiate";
 "initial_define" = "Define identification method...";
-"initial_info" = "Obtain identification details...";
+"initial_info" = "Fetching identification details…";
 "initial_register" = "Register identification method...";
 "initial_prefetch" = "Prefetch data...";
 
@@ -75,7 +76,7 @@
 
 // Fetch data
 "fetch_data_title" = "Fetch data";
-"fetch_data_person" = "Fetch person data...";
+"fetch_data_person" = "Fetching person data...";
 "fetch_data_location" = "Fetch location data...";
 "fetch_data_ip_address" = "Fetch IP-address data...";
 

@@ -235,7 +235,9 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
                 if(self.sessionInfoProvider.identificationStep == .fourthlineSigning) {
                     self.fetchNamirialTermsConditions()
                 } else {
-                    self.callback(.finishInitialFetch())
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.callback(.finishInitialFetch())
+                    }
                 }
             case .failure(let error):
                 self.updateState { state in
@@ -245,7 +247,6 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
             }
         }
     }
-    
     func fetchNamirialTermsConditions() {
         input.initStep = .fetchNamirialTermsConditions
         self.updateState { state in
@@ -261,7 +262,9 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
             switch result {
             case .success(let response):
                 KYCContainer.shared.update(namirialTermsConditions: response)
-                self.callback(.finishInitialFetch())
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.callback(.finishInitialFetch())
+                }
             case .failure(let error):
                 self.updateState { state in
                     state.onDisplayError = error
@@ -270,7 +273,6 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
             }
         }
     }
-    
     private func uploadData() {
         input.requestsType = .uploadData
         updateStateDetails()
@@ -308,6 +310,7 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
         updateState { state in
             state.title = self.obtainScreenTitle()
             state.description = self.obtainScreenDescription()
+            state.waitingInstruction = self.obtainScreenWaitingDescription()
             state.loading = true
             state.identifyEvent = false
         }
@@ -350,6 +353,16 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
         }
     }
     
+    func obtainScreenWaitingDescription() -> String {
+        switch self.input.requestsType {
+        case .uploadData:
+            return Localizable.Upload.bottomInstruction
+        case .confirmation:
+            return Localizable.Upload.bottomInstruction
+        default:
+            return ""
+        }
+    }
     /// Method trigger retry logic of the Fourthline or Fourthline signing flow
     /// - Parameter status: response of the failed ident result
     func didTriggerRetry(status: FourthlineIdentificationStatus) {
@@ -420,7 +433,12 @@ extension RequestsEventHandlerImpl {
             switch result {
             case .success:
                 kycLog.info("Zip file sucessfully uploaded")
-                self.verification()
+                self.updateState { state in
+                    state.loading = false
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.verification()
+                }
                 self.deleteFile(at: fileURL)
             case .failure(let error):
                 kycLog.error("Error uploading zip file \(error.statusCode) - \(error.localizedDescription)")

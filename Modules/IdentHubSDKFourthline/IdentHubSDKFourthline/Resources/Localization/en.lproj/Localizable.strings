@@ -103,9 +103,10 @@
 
 // Upload
 "upload_data_title" = "Data upload";
-"upload_data_description" = "Your data is being uploaded...";
+"upload_data_description" = "Your data is being processed...";
 "upload_data_uploading" = "Uploading...";
 "upload_data_preparation" = "Prepare upload data...";
+"identhub_fourthline_kyc_upload_bottom_notice" = "This may take a couple of minutes, Please do not close this screen until the verification is complete.";
 
 // Result
 "result_success_title" = "Congratulations";

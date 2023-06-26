@@ -11,6 +11,7 @@ public final class StateView: NibView {
 
     // MARK: - Inspectable -
 
+    @IBOutlet weak var processingBgView: UIView!
     @IBInspectable public var hasDescriptionLabel: Bool = true
 
     // MARK: - Outlets -
@@ -31,13 +32,14 @@ public final class StateView: NibView {
 
     public override func configureUI() {
         stateDescriptionLabel.isHidden = !hasDescriptionLabel
-        stateLabel.setLabelStyle(.title)
+        stateLabel.setLabelStyle(.custom(font: UIFont.getFont(size: FontSize.big), color: colors[.header]))
         stateDescriptionLabel.setLabelStyle(.subtitle)
+        processingBgView.backgroundColor = colors[.primaryAccent].withAlphaComponent(0.08)
     }
 
     public func setStateImage(_ image: UIImage?) {
         stateImageView.image = image
-        stateImageView.tintColor = colors[.secondaryAccent]
+        stateImageView.tintColor = colors[.primaryAccent]
     }
 
     public func setStateTitle(_ title: String) {

@@ -35,7 +35,7 @@
 "progress_view_phone_verification" = "Verifizierung der Telefonnummer";
 "progress_view_bank_verification" = "Verifizierung der Bankverbindung";
 "progress_view_sign_documents" = "Dokumente unterschreiben";
-
+"identhub_fourthline_generic_loading_title" = "Bitte warten...";
 // Quitting
 "quitting_title" = "Sind Sie sich sicher, dass Sie den Anmeldeprozess verlassen wollen?";
 "quitting_description" = "Ihr Fortschritt wird nicht gespeichert. Beim nächsten Versuch werden Sie wieder von vorne beginnen.";
@@ -62,7 +62,7 @@
 // Initial
 "initial_title" = "Beginnen";
 "initial_define" = "Identifikationsmethode definieren...";
-"initial_info" = "Identifikationsdetails abrufen...";
+"initial_info" = "Abrufen von Identifikationsdaten...";
 "initial_register" = "Identifikationsmethode registrieren...";
 "initial_prefetch" = "Daten vorab abrufen...";
 
@@ -75,7 +75,7 @@
 
 // Fetch data
 "fetch_data_title" = "Daten abrufen";
-"fetch_data_person" = "Personendaten abrufen...";
+"fetch_data_person" = "Abrufen von Personendaten...";
 "fetch_data_location" = "Standortdaten abrufen...";
 "fetch_data_ip_address" = "IP-Addressdaten abrufen...";
 

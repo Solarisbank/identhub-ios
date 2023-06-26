@@ -102,9 +102,10 @@
 
 // Upload
 "upload_data_title" = "Daten-Upload";
-"upload_data_description" = "Ihre Daten werden hochgeladen...";
+"upload_data_description" = "Ihre Daten werden verarbeitet...";
 "upload_data_uploading" = "Wird hochgeladen...";
 "upload_data_preparation" = "Upload-Daten vorbereiten...";
+"identhub_fourthline_kyc_upload_bottom_notice" = "Dieser Vorgang kann einige Minuten dauern. Bitte schließen Sie dieses Fenster nicht, bevor die Überprüfung abgeschlossen ist.";
 
 // Result +
 "result_success_title" = "Herzlichen Glückwunsch";

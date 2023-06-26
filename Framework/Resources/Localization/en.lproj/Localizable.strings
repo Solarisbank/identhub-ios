@@ -51,13 +51,13 @@
 // Initial
 "initial_title" = "Initiate";
 "initial_define" = "Define identification method...";
-"initial_info" = "Obtain identification details...";
+"initial_info" = "Fetching identification details…";
 "initial_register" = "Register identification method...";
 "initial_prefetch" = "Prefetch data...";
 
 // Fetch data
 "fetch_data_title" = "Fetch data";
-"fetch_data_person" = "Fetch person data...";
+"fetch_data_person" = "Fetching person data...";
 "fetch_data_location" = "Fetch location data...";
 "fetch_data_ip_address" = "Fetch IP-address data...";
 
@@ -175,7 +175,7 @@
 
 // Upload
 "upload_data_title" = "Data upload";
-"upload_data_description" = "Your data is being uploaded...";
+"upload_data_description" = "Your data is being processed...";
 "upload_data_uploading" = "Uploading...";
 "upload_data_preparation" = "Prepare upload data...";
 

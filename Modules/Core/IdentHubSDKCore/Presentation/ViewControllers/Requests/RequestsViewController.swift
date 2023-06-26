@@ -18,8 +18,13 @@ public final class RequestsViewController: UIViewController, Updateable {
     public var eventHandler: AnyEventHandler<RequestsEvent>?
     var colors: Colors
     
+    @IBOutlet weak var uploadStatusImg: UIImageView!
+    @IBOutlet weak var stateView: StateView!
+    @IBOutlet weak var informativeLbl: UILabel!
+    @IBOutlet weak var informativeView: UIView!
+    @IBOutlet weak var checkmarkView: UIView!
     @IBOutlet var titleLbl: UILabel!
-    @IBOutlet var descriptionLbl: UILabel!
+    @IBOutlet weak var instructionLbl: UILabel!
     let progressView = CircleProgressView()
     
     /// Initialized with view model object
@@ -50,9 +55,12 @@ public final class RequestsViewController: UIViewController, Updateable {
             self.identifyEvent(state.stateType)
         }
         
+        self.instructionLbl.text = state.waitingInstruction
         self.titleLbl.text = state.title
-        self.descriptionLbl.text = state.description
-        
+        self.informativeLbl.text = state.description
+        self.checkmarkView.isHidden = state.loading
+        self.stateView.setStateImage(Bundle.core.image(named: "processing_verification"))
+        self.uploadStatusImg.image = Bundle.core.image(named: "checkmark")
         if state.loading {
             self.showProgressView(isHidden: false)
         } else {
@@ -61,6 +69,7 @@ public final class RequestsViewController: UIViewController, Updateable {
         
         if let retryStatus = state.onRetry {
             DispatchQueue.main.async {
+                self.showFailedStatus()
                 self.presentAlert(with: Localizable.Verification.title, message: Localizable.APIErrorDesc.unprocessableEntity, action: Localizable.Common.tryAgain, error: .unprocessableEntity) { [weak self] in
                     self?.eventHandler?.handleEvent(.reTry(status: retryStatus))
                 }
@@ -75,6 +84,7 @@ public final class RequestsViewController: UIViewController, Updateable {
         guard let error = state.onDisplayError else { return }
         
         DispatchQueue.main.async {
+            self.showFailedStatus()
             if let err = error as? ResponseError {
                 self.displayError(err)
             } else if let err = error as? APIError {
@@ -99,16 +109,21 @@ public final class RequestsViewController: UIViewController, Updateable {
     
     private func configureUI() {
         titleLbl.setLabelStyle(.title)
-        descriptionLbl.setLabelStyle(.subtitle)
+        informativeLbl.setLabelStyle(.subtitle)
+        stateView.setStateImage(Bundle.core.image(named: "processing_verification"))
+        stateView.setStateTitle(Localizable.IdentificationProgressView.waiting)
+        
     }
     
     private func setUpProgressView() {
-        view.addSubview(progressView)
+        informativeView.addSubview(progressView)
         progressView.animateProgress.color = colors[.primaryAccent]
              
         progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        progressView.topAnchor.constraint(equalTo: descriptionLbl.bottomAnchor, constant:130).isActive = true
+        progressView.centerYAnchor.constraint(equalTo: informativeView.centerYAnchor).isActive = true
+        progressView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        progressView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        progressView.trailingAnchor.constraint(equalTo: informativeView.trailingAnchor, constant:-25).isActive = true
 
         progressView.defaultProgress = Constants.defaultProgress
     }
@@ -117,6 +132,10 @@ public final class RequestsViewController: UIViewController, Updateable {
         progressView.isHidden = isHidden
     }
     
+    private func showFailedStatus() {
+        self.stateView.setStateImage(Bundle.core.image(named: "warning"))
+        self.uploadStatusImg.image = Bundle.core.image(named: "close_btn").withRenderingMode(.alwaysTemplate)
+    }
 }
 
 extension RequestsViewController {
