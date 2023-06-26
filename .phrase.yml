@@ -1,0 +1,25 @@
+phrase:
+  project_id: 30dcea6240582b0c565cf0ed958f779f
+  file_format: strings
+  pull:
+    targets:
+
+    # Core 
+    - file: ./Core/IdentHubSDKCore/Resources/Localization/<locale_code>.lproj/Localizable.strings
+      params:
+        tags: startup
+
+    # Qes
+    - file: ./QES/IdentHubSDKQES/Resources/Localization/<locale_code>.lproj/Localizable.strings
+      params:
+        tags: qes
+
+    # Bank
+    - file: ./IdentHubSDKBank/IdentHubSDKBank/Resources/Localization/<locale_code>.lproj/Localizable.strings
+      params:
+        tags: bank
+
+    # Fourthline
+    - file: ./IdentHubSDKFourthline/IdentHubSDKFourthline/Resources/Localization/<locale_code>.lproj/Localizable.strings
+      params:
+        tags: fourthline
