@@ -6,7 +6,7 @@
 import UIKit
 
 enum DocumentItemInfoType: Int {
-    case number = 0, issueDate, expireDate
+    case number = 0, expireDate
 }
 
 enum DocumentItemInfoStatus {
@@ -46,8 +46,7 @@ struct DocumentItemInfo {
             if !(content.isEmpty) {
                 return .valid
             }
-        case .issueDate,
-             .expireDate:
+        case .expireDate:
             if let date = content.dateFromString() {
                 if type == .expireDate {
                     return date.isLaterThanOrEqualTo(Date()) ? .valid : .pastDate

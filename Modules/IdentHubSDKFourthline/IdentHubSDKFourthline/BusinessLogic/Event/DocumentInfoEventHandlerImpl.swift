@@ -124,30 +124,11 @@ extension DocumentInfoEventHandlerImpl: DocumentInfoDDMDelegate {
         switch content.type {
         case .number:
             infoContent[DocumentItemInfoType.number.rawValue] = content
-        case .issueDate:
-            if let date = content.content.dateFromString() {
-                infoContent[DocumentItemInfoType.issueDate.rawValue] = content
-                
-                if infoContent[DocumentItemInfoType.expireDate.rawValue].prefilledDate == nil {
-                    infoContent[DocumentItemInfoType.expireDate.rawValue].prefilledDate = date.addYears(10)
-                }
-            } else {
-                infoContent[DocumentItemInfoType.issueDate.rawValue].content = ""
-            }
         case .expireDate:
-            if let date = content.content.dateFromString() {
-                infoContent[DocumentItemInfoType.expireDate.rawValue] = content
-                
-                if infoContent[DocumentItemInfoType.issueDate.rawValue].prefilledDate == nil {
-                    infoContent[DocumentItemInfoType.issueDate.rawValue].prefilledDate = date.addYears(-10)
-                }
-            } else {
-                infoContent[DocumentItemInfoType.expireDate.rawValue].content = ""
-            }
+            infoContent[DocumentItemInfoType.expireDate.rawValue].content = ""
         }
         
         #if AUTOMATION
-            infoContent[DocumentItemInfoType.issueDate.rawValue].content = ""
             infoContent[DocumentItemInfoType.expireDate.rawValue].content = ""
         #endif
         
@@ -169,25 +150,12 @@ private extension DocumentInfoEventHandlerImpl {
         let document =  KYCContainer.shared.kycInfo.document
                 
         fourthlineLog.assertWarn(document?.number != nil, "Document number is not available")
-        fourthlineLog.assertWarn(document?.issueDate != nil, "Issue date is not available")
         fourthlineLog.assertWarn(document?.expirationDate != nil, "Expiration date is not available")
         
         let docNumber = DocumentItemInfo(title: InfoText.docNumber, content: document?.number ?? "", type: .number)
-        // Note: issueDate is optional and we dont have to send it anymore
-        let issueDate = DocumentItemInfo(title: InfoText.issue, content: document?.issueDate?.defaultDateString() ?? "", type: .issueDate, prefilledDate: obtainDateOfIssue(document))
         let expireDate = DocumentItemInfo(title: InfoText.expire, content: document?.expirationDate?.defaultDateString() ?? "", type: .expireDate, prefilledDate: obtainExpirationDate(document))
         
-        return [docNumber, issueDate, expireDate]
-    }
-    
-    private func obtainDateOfIssue(_ document: Document?) -> Date? {
-        if let issueDate = document?.issueDate {
-            return issueDate
-        } else if let expireDate = document?.expirationDate {
-            return expireDate.addYears(-10)
-        }
-        
-        return nil
+        return [docNumber, expireDate]
     }
     
     private func obtainExpirationDate(_ document: Document?) -> Date? {
@@ -205,12 +173,6 @@ private extension DocumentInfoEventHandlerImpl {
             switch $0.type {
             case .number:
                 return $0.content.isEmpty
-            case .issueDate:
-                if let _ = $0.content.dateFromString() {
-                    return false
-                } else {
-                    return true
-                }
             case .expireDate:
                 if let date = $0.content.dateFromString() {
                     return !date.isLaterThanOrEqualTo(Date())
@@ -231,8 +193,6 @@ private extension DocumentInfoEventHandlerImpl {
             switch info.type {
             case .number:
                 KYCContainer.shared.update(with: info.content)
-            case .issueDate:
-                KYCContainer.shared.update(with: info.content.dateFromString())
             case .expireDate:
                 KYCContainer.shared.update(of: info.content.dateFromString())
             }
