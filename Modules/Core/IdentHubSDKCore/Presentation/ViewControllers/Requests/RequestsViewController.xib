@@ -52,8 +52,8 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lc-as-hFd">
                     <rect key="frame" x="20" y="426" width="353" height="60"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQg-Bq-FfN">
-                            <rect key="frame" x="15" y="0.0" width="0.0" height="60"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iQg-Bq-FfN">
+                            <rect key="frame" x="15" y="0.0" width="268" height="60"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                             <color key="textColor" name="paragraph"/>
                             <nil key="highlightedColor"/>
@@ -91,6 +91,7 @@
                         <constraint firstAttribute="bottom" secondItem="iQg-Bq-FfN" secondAttribute="bottom" id="ayy-hG-tTR"/>
                         <constraint firstAttribute="trailing" secondItem="tw6-OZ-Gqi" secondAttribute="trailing" constant="25" id="brr-Gq-qoI"/>
                         <constraint firstItem="iQg-Bq-FfN" firstAttribute="top" secondItem="4Lc-as-hFd" secondAttribute="top" id="eOh-7j-zTZ"/>
+                        <constraint firstItem="tw6-OZ-Gqi" firstAttribute="leading" secondItem="iQg-Bq-FfN" secondAttribute="trailing" constant="15" id="gNV-fU-0UE"/>
                         <constraint firstItem="tw6-OZ-Gqi" firstAttribute="centerY" secondItem="4Lc-as-hFd" secondAttribute="centerY" id="quP-9V-siD"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
