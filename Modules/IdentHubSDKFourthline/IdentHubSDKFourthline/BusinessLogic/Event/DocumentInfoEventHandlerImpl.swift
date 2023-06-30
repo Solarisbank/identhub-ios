@@ -125,7 +125,7 @@ extension DocumentInfoEventHandlerImpl: DocumentInfoDDMDelegate {
         case .number:
             infoContent[DocumentItemInfoType.number.rawValue] = content
         case .expireDate:
-            infoContent[DocumentItemInfoType.expireDate.rawValue].content = ""
+            infoContent[DocumentItemInfoType.expireDate.rawValue] = content
         }
         
         #if AUTOMATION
