@@ -41,9 +41,7 @@ Pod::Spec.new do |spec|
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
     spec.dependency 'SolarisbankIdentHubCore', "#{spec.version}"
-    spec.dependency 'FourthlineSDK', '2.20.0'
-    spec.dependency 'ZIPFoundation', '0.9.11'
-    spec.dependency 'lottie-ios', '4.1.3'
+    spec.dependency 'FourthlineSDK', '2.24.0'
 
     spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

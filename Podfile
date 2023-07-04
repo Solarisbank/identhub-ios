@@ -9,11 +9,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 def fourthline_pods
-  pod 'FourthlineSDK', '2.20.0'
-
-  # Fourthline dependencies
-  pod 'ZIPFoundation', '0.9.11'
-  pod 'lottie-ios', '4.1.3'
+  pod 'FourthlineSDK', '2.24.0'
 end
 
 def bank_pods
@@ -67,25 +63,10 @@ target 'Sample' do
   fourthline_pods
 end
 
-#target 'Sample' do
-#  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.2.8'
-#
-#  pod 'FourthlineSDK', '2.11.4'
-#
-#  # Fourthline dependencies
-#  pod 'ZIPFoundation', '0.9.11'
-#  pod 'lottie-ios', '3.2.3'
-#end
-
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
-    end
-    if target.name == 'lottie-ios'
-      target.build_configurations.each do |config|
-        config.build_settings["BUILD_LIBRARY_FOR_DISTRIBUTION"] = "YES"
-      end
     end
   end
 end

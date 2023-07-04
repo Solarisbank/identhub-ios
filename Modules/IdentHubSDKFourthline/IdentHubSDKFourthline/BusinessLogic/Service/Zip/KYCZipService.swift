@@ -47,8 +47,6 @@ enum KYCZipService {
         switch zipperError {
         case .kycIsNotValid:
             return Localizable.Zipper.Error.kycIsNotValid + getValidationErrors()
-        case .zipFoundationNotImported:
-            return Localizable.Zipper.Error.zipFoundationNotImported
         case .zipExceedMaximumSize:
             return Localizable.Zipper.Error.zipExceedMaximumSize
         case .cannotCreateZip:
