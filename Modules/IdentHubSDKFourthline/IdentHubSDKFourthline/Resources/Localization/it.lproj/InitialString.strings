@@ -1,1 +1,84 @@
+// Welcome
 "welcome_page_title" = "Benvenuto";
+"welcome_start_button" = "Iniziare";
+"welcome_camera_title" = "Si prega di guardare la fotocamera";
+"welcome_camera_description" = "Il tuo selfie verrà confrontato con la foto sul tuo documento d'identità. Non preoccuparti, non vedrà mai la luce del giorno, promesso!";
+"welcome_document_title" = "Scansiona il tuo documento di identità";
+"welcome_document_description" = "Questo è il modo in cui ci assicuriamo che sia davvero tu e preveniamo il furto di identità.";
+"welcome_location_title" = "Attiva e carica la posizione";
+"welcome_location_description" = "L'ultima cosa che devi fare è attivare la tua posizione e caricare i tuoi dati! Facile vero?";
+"welcome_page_acknowledgement" = "Ho preso atto delle informazioni sulla protezione dei dati di SAFENED Fourthline.";
+"welcome_page_fourthline_privacy" = "protezione dei dati di SAFENED Fourthline";
+"welcome_page_namirial_terms" = "Accetto i Termini e Condizioni di Namirial";
+
+// Selfie
+"selfie_scanning" = "Riconoscimento…";
+"selfie_detected" = "Volto riconosciuto con successo";
+"selfie_retake" = "Ripetere";
+"selfie_confirm" = "Confermare";
+"selfie_confirm_selfie" = "Conferma selfie";
+"selfie_warning_face_camera_directly" = "Guarda dritto nella fotocamera";
+"selfie_warning_multiple_faces_detected" = "Più volti riconosciuti";
+"selfie_warning_looking_for_face" = "Riconoscimento facciale";
+"selfie_warning_unknown" = "Errore sconosciuto";
+"selfie_error_failed" = "Selfie fallito";
+"selfie_error_timeout" = "Limite di tempo raggiunto";
+"selfie_error_face_disappeared" = "Il viso è scomparso";
+"selfie_error_camer_permission" = "Accesso alla fotocamera richiesto";
+"selfie_error_recording_failed" = "Qualcosa è andato storto";
+"selfie_error_scanner_interrupted" = "Scanner interrotto";
+"selfie_error_unknown" = "Qualcosa è andato storto";
+"selfie_error_alert_title" = "Scansione selfie non riuscita";
+"selfie_error_alert_message" = "Scansione selfie non riuscita.\n\nQuesto passaggio è necessario per la tua identificazione, riprova.";
+"selfie_error_multiple_faces" = "Riconosciuto più di un volto. Assicurati che solo il tuo viso sia visibile durante il processo di scansione.";
+"selfie_error_reset_not_allowed" = "Sessione ancora attiva. Perfavore continua.";
+"selfie_liveness_title" = "Verifica del movimento";
+"selfie_liveness_confirm" = "Confirmación de viveza";
+"selfie_liveness_faild" = "Fallo en la comprobación de la viveza";
+
+// Camera
+"camera_permission_error_title" = "Accesso alla fotocamera negato";
+"camera_permission_error_message" = "Lo scanner non può essere avviato senza l'accesso alla fotocamera. Si prega di consentire l'accesso.";
+"camera_error_message" = "ERRORE: per utilizzare lo scanner devi consentire l'accesso alla fotocamera.";
+"camera_permission_not_granted" = "Accesso alla fotocamera non consentito.";
+
+// Document Scanner
+"doc_scanner_id_card" = "Carta d'identità";
+"doc_scanner_scanning" = "Scannerizzare...";
+"doc_scanner_scan_failed" = "Scansione non riuscita";
+"doc_scanner_retake" = "Rifare";
+"doc_scanner_confirm_result" = "Confermi il risultato";
+"doc_scanner_warning_too_dark" = "Il documento è troppo scuro";
+"doc_scanner_warning_unkown" = "Qualcosa è andato storto";
+"doc_scanner_error_interrupted" = "Scanner interrotto";
+"doc_scanner_error_timeout" = "Scanner scaduto";
+"doc_scanner_error_alert_title" = "Registrazione scansione non riuscita";
+"doc_scanner_error_alert_message" = "Si è verificato un errore di scansione.\n\n. Questo passaggio è necessario per la tua identificazione, riprova.";
+"doc_scanner_error_snapshot_not_allowed" = "Istantanea del documento non più attiva.";
+"doc_scanner_error_step_not_finished" = "La fase del processo non è stata completata correttamente.";
+"doc_scanner_error_reset_not_allowed" = "La fase del processo è ancora attiva, il ripristino non è consentito.";
+"doc_scanner_info_expire_date_message" = "La data di scadenza non può essere nel passato";
+
+
+// Document Scanner Side Titles
+"doc_scanner_side_front_name" = "davanti";
+"doc_scanner_side_back_name" = "retro";
+"doc_scanner_side_inside_left_name" = "dentro a sinistra";
+"doc_scanner_side_inside_right_name" = "dentro a destra";
+"doc_scanner_side_undefined_name" = "Pagina del documento non definita";
+"doc_scanner_side_inside_left_title" = "Scansiona la parte interna sinistra del documento";
+"doc_scanner_side_inside_left_angled_title" = "Scansiona la parte interna sinistra del documento inclinato";
+"doc_scanner_side_inside_right_title" = "Scansiona la parte interna destra del documento";
+"doc_scanner_side_inside_right_angled_title" = "Scansiona la parte interna destra del documento inclinato";
+"doc_scanner_side_undefined_title" = "Faccia una foto al documento, per favore";
+
+// Upload
+"upload_data_title" = "Caricamento dati";
+"upload_data_description" = "I vostri dati vengono trattati...";
+"upload_data_uploading" = "Caricamento in corso...";
+"upload_data_preparation" = "Prepara i dati di caricamento...";
+"identhub_fourthline_kyc_upload_bottom_notice" = "L’operazione potrebbe richiedere un paio di minuti. Non chiudere questa schermata fino al completamento della verifica.";
+
+// Result
+"result_failed_title" = "Per favore riprova…";
+"result_failed_description" = "Identificazione non riuscita.";

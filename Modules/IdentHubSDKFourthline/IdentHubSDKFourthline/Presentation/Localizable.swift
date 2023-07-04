@@ -29,26 +29,26 @@ internal enum Localizable {
         static let acknowledgement = "welcome_page_acknowledgement".localized()
         static let fourthlinePrivacy = "welcome_page_fourthline_privacy".localized()
         static let namirialTerms = "welcome_page_namirial_terms".localized()
-        static let termsConditions = "welcome_page_terms".localized()
+        static let termsConditions = "identhub_terms_and_conditions_title".localized()
     }
     
     enum Selfie {
-        static let selfieTitle = "selfie_title".localized()
+        static let selfieTitle = "identhub_fourthline_selfie_instructions_title".localized()
         static let scanning = "selfie_scanning".localized()
         static let detected = "selfie_detected".localized()
-        static let success = "selfie_success".localized()
+        static let success = "identhub_fourthline_successful_scan_title".localized()
         static let retake = "selfie_retake".localized()
         static let confirm = "selfie_confirm".localized()
         static let confirmSelfie = "selfie_confirm_selfie".localized()
 
         enum Warnings {
-            static let faceNotInFrame = "selfie_warning_face_not_in_frame".localized()
-            static let faceNotDetected = "selfie_warning_face_not_detected".localized()
-            static let faceTooClose = "selfie_warning_face_too_close".localized()
-            static let faceTooFar = "selfie_warning_face_too_far".localized()
+            static let faceNotInFrame = "identhub_fourthline_selfie_warning_face_in_frame".localized()
+            static let faceNotDetected = "identhub_fourthline_selfie_warning_not_detected".localized()
+            static let faceTooClose = "identhub_fourthline_selfie_warning_phone_too_close".localized()
+            static let faceTooFar = "identhub_fourthline_selfie_warning_phone_too_far".localized()
             static let faceYawTooBig = "selfie_warning_face_camera_directly".localized()
             static let multipleFacesDetected = "selfie_warning_multiple_faces_detected".localized()
-            static let deviceNotSteady = "selfie_warning_device_not_steady".localized()
+            static let deviceNotSteady = "identhub_fourthline_selfie_warning_device_steadiness".localized()
             static let noFace = "selfie_warning_looking_for_face".localized()
             static let unknown = "selfie_warning_unknown".localized()
         }
@@ -69,11 +69,11 @@ internal enum Localizable {
 
         enum Liveness {
             static let title = "selfie_liveness_title".localized()
-            static let checking = "selfie_liveness_checking".localized()
+            static let checking = "identhub_fourthline_selfie_step_liveness_detection".localized()
             static let confirm = "selfie_liveness_confirm".localized()
             static let failed = "selfie_liveness_faild".localized()
-            static let turnHeadLeft = "selfie_liveness_turn_head_left".localized()
-            static let turnHeadRight = "selfie_liveness_turn_head_right".localized()
+            static let turnHeadLeft = "identhub_fourthline_selfie_scan_step_left".localized()
+            static let turnHeadRight = "identhub_fourthline_selfie_scan_step_right".localized()
         }
     }
 
@@ -86,12 +86,12 @@ internal enum Localizable {
     
     enum DocumentScanner {
 
-        static let title = "doc_scanner_title".localized()
-        static let description = "doc_scanner_description".localized()
-        static let passport = "doc_scanner_passport".localized()
+        static let title = "identhub_fourthline_doctype_description".localized()
+        static let description = "identhub_fourthline_doctype_title".localized()
+        static let passport = "identhub_fourthline_doctype_passport".localized()
         static let idCard = "doc_scanner_id_card".localized()
-        static let paperID = "doc_scanner_paper_id".localized()
-        static let successScan = "doc_scanner_scan_successful".localized()
+        static let paperID = "identhub_fourthline_doctype_paper_id".localized()
+        static let successScan = "identhub_fourthline_successful_scan_title".localized()
         static let scanning = "doc_scanner_scanning".localized()
         static let scanFailed = "doc_scanner_scan_failed".localized()
         static let retake = "doc_scanner_retake".localized()
@@ -106,10 +106,10 @@ internal enum Localizable {
         }
 
         enum DocSideTitle {
-            static let front = "doc_scanner_side_front_title".localized()
-            static let frontAngled = "doc_scanner_side_front_angled_title".localized()
-            static let back = "doc_scanner_side_back_title".localized()
-            static let backAngled = "doc_scanner_side_back_angled_title".localized()
+            static let front = "identhub_fourthline_doc_scan_front".localized()
+            static let frontAngled = "identhub_fourthline_doc_scan_angled".localized()
+            static let back = "identhub_fourthline_doc_scan_back".localized()
+            static let backAngled = "identhub_fourthline_doc_scan_back_angled".localized()
             static let insideLeft = "doc_scanner_side_inside_left_title".localized()
             static let insideLeftAngled = "doc_scanner_side_inside_left_angled_title".localized()
             static let insideRight = "doc_scanner_side_inside_right_title".localized()
@@ -118,7 +118,7 @@ internal enum Localizable {
         }
 
         enum Warning {
-            static let deviceNotSteady = "doc_scanner_warning_device_not_steady".localized()
+            static let deviceNotSteady = "identhub_fourthline_selfie_warning_device_steadiness".localized()
             static let tooDark = "doc_scanner_warning_too_dark".localized()
             static let unknown = "doc_scanner_warning_unkown".localized()
         }
@@ -134,19 +134,19 @@ internal enum Localizable {
         }
 
         enum Information {
-            static let title = "doc_scanner_info_title".localized()
-            static let docNumber = "doc_scanner_info_doc_number".localized()
-            static let issue = "doc_scanner_info_issue_date".localized()
-            static let expire = "doc_scanner_info_expire_date".localized()
-            static let warning = "doc_scanner_info_warning".localized()
-            static let enterData = "doc_scanner_info_enter_data".localized()
-            static let confirmData = "doc_scanner_info_confirm_data".localized()
+            static let title = "identhub_fourthline_doc_result_title".localized()
+            static let docNumber = "identhub_fourthline_doc_result_number_input".localized()
+            static let issue = "identhub_fourthline_doc_result_issue_date_input".localized()
+            static let expire = "identhub_fourthline_doc_result_expiry_date_input".localized()
+            static let warning = "identhub_fourthline_doc_result_description".localized()
+            static let enterData = "identhub_fourthline_doc_result_empty_warning_label".localized()
+            static let confirmData = "identhub_fourthline_doc_result_confirmation_warning_label".localized()
             static let expireDateMessage = "doc_scanner_info_expire_date_message".localized()
         }
         
         enum Healthcard {
-            static let title = "doc_scanner_healthcard_title".localized()
-            static let description = "doc_scanner_healthcard_description".localized()
+            static let title = "identhub_fourthline_health_card_instructions_title".localized()
+            static let description = "identhub_fourthline_health_card_instructions_description".localized()
         }
     }
     
@@ -168,8 +168,8 @@ internal enum Localizable {
     }
 
     enum Result {
-        static let successTitle = "result_success_title".localized()
-        static let successDescription = "result_success_description".localized()
+        static let successTitle = "identhub_fourthline_kyc_result_title".localized()
+        static let successDescription = "identhub_fourthline_kyc_result_label".localized()
         static let failedTitle = "result_failed_title".localized()
         static let failedDescription = "result_failed_description".localized()
     }

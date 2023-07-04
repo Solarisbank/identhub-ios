@@ -26,6 +26,7 @@ import Foundation
 /// - identificationNotPossible: SDK could not identify the user. Try your fallback identification method
 /// - modulesNotFound: SDK could not found required modules. Check if your application has embedded the module's library.
 /// - unknownError: indicates that api client encountered an error not listed above.
+/// - kycZipNotFound: SDK could not found KYC.ZIP file for automation target.
 public enum APIError: Error, Equatable {
     case malformedResponseJson
     case clientError(error: ErrorDetail?)
@@ -47,6 +48,7 @@ public enum APIError: Error, Equatable {
     case identificationNotPossible
     case modulesNotFound([String])
     case unknownError
+    case kycZipNotFound
 }
 
 /// Server enum

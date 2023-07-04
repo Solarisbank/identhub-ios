@@ -45,6 +45,8 @@ public extension APIError {
             return Localizable.APIErrorDesc.identificationNotPossible
         case .modulesNotFound(let modules):
             return String(format: Localizable.APIErrorDesc.modulesNotFound, modules.joined(separator: ", "))
+        case .kycZipNotFound:
+            return Localizable.APIErrorDesc.kycZipMissing
         case .fraudData:
             return Localizable.APIErrorDesc.unprocessableEntity
         }

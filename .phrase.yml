@@ -5,21 +5,25 @@ phrase:
     targets:
 
     # Core 
-    - file: ./Core/IdentHubSDKCore/Resources/Localization/<locale_code>.lproj/Localizable.strings
+    - file: ./Modules/Core/IdentHubSDKCore/Resources/Localization/<locale_code>.lproj/Localizable.strings
       params:
+        format_options: { convert_placeholder: true }
         tags: startup
 
     # Qes
-    - file: ./QES/IdentHubSDKQES/Resources/Localization/<locale_code>.lproj/Localizable.strings
+    - file: ./Modules/QES/IdentHubSDKQES/Resources/Localization/<locale_code>.lproj/Localizable.strings
       params:
+        format_options: { convert_placeholder: true }
         tags: qes
 
     # Bank
-    - file: ./IdentHubSDKBank/IdentHubSDKBank/Resources/Localization/<locale_code>.lproj/Localizable.strings
+    - file: ./Modules/IdentHubSDKBank/IdentHubSDKBank/Resources/Localization/<locale_code>.lproj/Localizable.strings
       params:
+        format_options: { convert_placeholder: true }
         tags: bank
 
     # Fourthline
-    - file: ./IdentHubSDKFourthline/IdentHubSDKFourthline/Resources/Localization/<locale_code>.lproj/Localizable.strings
+    - file: ./Modules/IdentHubSDKFourthline/IdentHubSDKFourthline/Resources/Localization/<locale_code>.lproj/Localizable.strings
       params:
+        format_options: { convert_placeholder: true }
         tags: fourthline

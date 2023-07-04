@@ -23,6 +23,7 @@ public enum Localizable {
         public static let modulesNotFound = "api_error_modules_not_found".localized()
         public static let unsupportedResponse = "SDK encountered a response that is not supported in this version"
         public static let identificationNotPossible = "SDK could not identify the user. Try your fallback identification method."
+        public static let kycZipMissing = "Kyc.zip file is missing"
     }
 
     public enum Common {
@@ -48,7 +49,7 @@ public enum Localizable {
         static let phoneVerification = "progress_view_phone_verification".localized()
         static let bankVerification = "progress_view_bank_verification".localized()
         static let documents = "progress_view_sign_documents".localized()
-        static let waiting = "identhub_fourthline_generic_loading_title".localized()
+        static let waiting = "identhub_generic_please_wait_title".localized()
     }
 
     enum Quiting {
@@ -58,33 +59,33 @@ public enum Localizable {
     }
     
     enum TermsConditions {
-        static let description = "terms_description".localized()
+        static let description = "identhub_terms_and_conditions_info".localized()
         static let privacyText = "terms_privacy_text".localized()
-        static let termsText = "terms_terms_text".localized()
-        static let agreementLinks = "terms_agreement_links".localized()
+        static let termsText = "identhub_terms_and_conditions_title".localized()
+        static let agreementLinks = "identhub_terms_and_conditions_checkbox_text".localized()
         static let continueBtn = "terms_continue_button".localized()
     }
     
-    enum PhoneVerification {
-        static let title = "phone_verification_title".localized()
-        static let enterCode = "phone_verification_enter_code".localized()
-        static let requestNewCodeTimer = "phone_verification_request_code_timer".localized()
-        static let sendNewCode = "phone_verification_send_new_code".localized()
-        static let wrongTan = "phone_verification_wrong_tan".localized()
-        static let submitCode = "phone_verification_submit_code".localized()
-        static let requestNewCode = "phone_verification_request_new_code".localized()
+    public enum PhoneVerification {
+        public static let title = "identhub_phone_verification_title".localized()
+        public static let enterCode = "identhub_phone_verification_description".localized()
+        public static let requestNewCodeTimer = "identhub_phone_verification_request_code".localized()
+        public static let sendNewCode = "identhub_phone_verification_send_new_code".localized()
+        public static let wrongTan = "phone_verification_wrong_tan".localized()
+        public static let submitCode = "phone_verification_submit_code".localized()
+        public static let requestNewCode = "phone_verification_request_new_code".localized()
 
-        enum Success {
-            static let title = "phone_verification_success_title".localized()
-            static let description = "phone_verification_success_description".localized()
-            static let loginCredentials = "phone_verification_login_credentials".localized()
+        public enum Success {
+            public static let title = "identhub_phone_verification_success_title".localized()
+            public static let description = "identhub_phone_verification_success_description".localized()
+            public static let loginCredentials = "phone_verification_login_credentials".localized()
         }
         
-        enum Error {
-            static let title = "phone_verification_error_title".localized()
-            static let description = "phone_verification_error_description".localized()
-            static let action = "phone_verification_error_action".localized()
-            static let requestCodeError = "request_tan_failed".localized()
+        public enum Error {
+            public static let title = "phone_verification_error_title".localized()
+            public static let description = "phone_verification_error_description".localized()
+            public static let action = "phone_verification_error_action".localized()
+            public static let requestCodeError = "request_tan_failed".localized()
         }
     }
     
@@ -128,7 +129,7 @@ public enum Localizable {
     }
     
     public enum Verification {
-        public static let title = "verification_title".localized()
+        public static let title = "identhub_fourthline_kyc_upload_title".localized()
         public static let description = "verification_description".localized()
         public static let processTitle = "verification_process_title".localized()
     }

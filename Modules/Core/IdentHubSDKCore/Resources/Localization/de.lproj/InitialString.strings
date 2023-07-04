@@ -1,1 +1,91 @@
+// API Errors
+"api_error_malformed_json" = "Der in der Antwort empfangene String kann nicht geparst werden.";
+"api_error_client_error" = "Ein clientseitiger Fehler ist aufgetreten.";
+"api_error_authorization_failed" = "Autorisierung fehlgeschlagen.";
+"api_error_unauthorized" = "Aktion nicht autorisiert.";
+"api_error_data_mismatch" = "Datenkonflikt.";
+"api_error_incorrect_ident_status" = "Der Identifikationsstatus darf die Aktion nicht fortsetzen.";
+"api_error_unprocessable_entity" = "Daten ungültig oder abgelaufen.";
+"api_error_internal_server_error" = "Interner Serverfehler ist aufgetreten.";
+"api_error_request_build_error" = "Build-Request-Fehler ist aufgetreten.";
+"api_error_unknown" = "Ein oben nicht aufgeführter Fehler ist aufgetreten.";
+"api_error_resource_not_found" = "Ressource nicht gefunden.";
+"api_error_location_permission" = "Standortzugriff abgelehnt.";
+"api_error_location_error" = "Gerät kann Standortdaten nicht finden.";
+"api_error_iban_verification" = "IBAN-Überprüfung fehlgeschlagen.";
+"api_error_payment_failure" = "Zahlungsüberprüfung fehlgeschlagen.";
 "api_error_modules_not_found" = "Einige Module sind nicht verfügbar (%1$@).";
+
+// Common
+"common_next" = "Weiter";
+"common_quit" = "Verlassen";
+"common_continue_button" = "Weiter";
+"common_back" = "Zurück";
+"common_powered_by_solarisbank" = "Powered by Solarisbank";
+"common_verifying" = "Verifizieren...";
+"common_download_all_documents" = "Alle Dokumente herunterladen";
+"common_dismiss" = "Verwerfen";
+"common_try_again" = "Erneut versuchen";
+"common_cancel" = "Abbrechen";
+"common_settings" = "Einstellungen";
+"common_generic_error" = "Etwas ist schiefgelaufen";
+"common_confirm" = "Bestätigen";
+
+// ProgressView
+"progress_view_progress" = "Identifikation in Bearbeitung";
+"progress_view_phone_verification" = "Verifizierung der Telefonnummer";
+"progress_view_bank_verification" = "Verifizierung der Bankverbindung";
+"progress_view_sign_documents" = "Dokumente unterschreiben";
+
+// Quitting
+"quitting_title" = "Sind Sie sich sicher, dass Sie den Anmeldeprozess verlassen wollen?";
+"quitting_description" = "Ihr Fortschritt wird nicht gespeichert. Beim nächsten Versuch werden Sie wieder von vorne beginnen.";
+"quitting_stay_action" = "Bleiben";
+
+// Phone verification
+"phone_verification_wrong_tan" = "Falsche TAN. Sie müssen eine neue TAN anfordern und es erneut versuchen.";
+"request_tan_failed" = "Neue TAN konnte nicht angefordert werden.";
+"phone_verification_submit_code" = "Code senden";
+"phone_verification_request_new_code" = "Neuen Code anfordern";
+"phone_verification_login_credentials" = "Online-Banking-Zugangsdaten";
+"phone_verification_error_title" = "Fehler bei der Verifizierung der Telefonnummer";
+"phone_verification_error_description" = "Angegebene TAN ist nicht gültig.";
+"phone_verification_error_action" = "TAN-Verifizierung wiederholen";
+
+"iban_verification_iban" = "IBAN";
+
+// Initial
+"initial_title" = "Beginnen";
+"initial_define" = "Identifikationsmethode definieren...";
+"initial_info" = "Abrufen von Identifikationsdaten...";
+"initial_register" = "Identifikationsmethode registrieren...";
+"initial_prefetch" = "Daten vorab abrufen...";
+
+// Terms
+"terms_privacy_text" = "Datenschutzerklärung";
+"terms_continue_button" = "Weiter";
+
+// Fetch data
+"fetch_data_title" = "Daten abrufen";
+"fetch_data_person" = "Abrufen von Personendaten...";
+"fetch_data_location" = "Standortdaten abrufen...";
+"fetch_data_ip_address" = "IP-Addressdaten abrufen...";
+
+// Location
+"location_title" = "Gerätestandort";
+"location_description" = "Wir benötigen Ihren Gerätestandort, um fortzufahren.";
+"location_error_title" = "Geräteortung fehlgeschlagen";
+"location_error_message" = "Geräteortung fehlgeschlagen";
+
+// Zipper
+"zipper_error_kyc_invalid" = "KYC-Objekt ist ungültig wegen:";
+"zipper_error_zip_foundation_not_imported" = "ZIPFoundation Framework wurde nicht in das Projekt importiert.";
+"zipper_error_zip_exceed_max_size" = "ZIP-Datei überschreitet die maximale Dateigröße, bitte überprüfen Sie die API-Dokumentation.";
+"zipper_error_cannot_create_zip" = "ZIP kann nicht erstellt werden.";
+"zipper_error_not_enough_space" = "Nicht genug Speicherplatz.";
+"zipper_error_unknown" = "Unerwarteter Fehler ist aufgetreten.";
+"zipper_error_alert_title" = "ZIP-Erstellung fehlgeschlagen.";
+
+// Verification +
+"verification_description" = "Bitte warten Sie bis die Verifizierung Ihrer Daten abgeschlossen ist…";
+"verification_process_title" = "Datenverifizierung…";

@@ -1,2 +1,19 @@
+// Sign documents
+"sign_documents_application_view_doc" = "View document";
+"sign_documents_application_send_code" = "Send code to sign";
+"sign_documents_submit_and_sign" = "Submit and sign";
+"sign_documents_request_code" = "Request new code";
+"sign_documents_application_being_processed" = "Your application is being processed...";
+"sign_documents_download_documents" = "You will be able to download all of the signed documents soon.";
 "sign_document_document_fetch_error_title" = "Unable to download document";
 "sign_document_document_fetch_error_message" = "%1$@ failed to download.\nPlease try again.";
+
+// Phone verification
+"phone_verification_wrong_tan" = "Wrong TAN. You need to request a new TAN and try again.";
+"request_tan_failed" = "Failed to request new TAN.";
+"phone_verification_submit_code" = "Submit code";
+"phone_verification_login_credentials" = "login credentials";
+"phone_verification_error_title" = "Phone verification error";
+"phone_verification_error_description" = "Provided TAN is not valid.";
+"phone_verification_error_action" = "Retry TAN verification";
+

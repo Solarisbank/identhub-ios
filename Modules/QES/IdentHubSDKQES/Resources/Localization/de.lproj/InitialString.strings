@@ -1,2 +1,18 @@
+// Sign documents
+"sign_documents_application_view_doc" = "Dokument ansehen";
+"sign_documents_application_send_code" = "Code empfangen und unterzeichnen";
+"sign_documents_submit_and_sign" = "Unterzeichnen und Abschicken";
+"sign_documents_request_code" = "Neuen Code erfragen";
+"sign_documents_application_being_processed" = "Ihr Antrag wird bearbeitet...";
+"sign_documents_download_documents" = "Sie können in Kürze alle unterzeichneten Dokumente herunterladen.";
 "sign_document_document_fetch_error_title" = "Fehler beim Download";
 "sign_document_document_fetch_error_message" = "%1$@ konnte nicht heruntergeladen werden.\nBitte versuchen Sie es erneut.";
+
+// Phone verification
+"phone_verification_wrong_tan" = "Falsche TAN. Sie müssen eine neue TAN anfordern und es erneut versuchen.";
+"request_tan_failed" = "Neue TAN konnte nicht angefordert werden.";
+"phone_verification_submit_code" = "Code senden";
+"phone_verification_login_credentials" = "Online-Banking-Zugangsdaten";
+"phone_verification_error_title" = "Fehler bei der Verifizierung der Telefonnummer";
+"phone_verification_error_description" = "Angegebene TAN ist nicht gültig.";
+"phone_verification_error_action" = "TAN-Verifizierung wiederholen";

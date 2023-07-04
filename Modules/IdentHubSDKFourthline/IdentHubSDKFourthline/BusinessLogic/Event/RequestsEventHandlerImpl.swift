@@ -416,7 +416,10 @@ extension RequestsEventHandlerImpl {
                 self.uploadZip(zipURL)
             }
         } else {
-            print("kyc.zip(mock) file not found")
+            updateState { state in
+                state.onDisplayError = ResponseError(.kycZipNotFound)
+                state.loading = false
+            }
         }
     }
 

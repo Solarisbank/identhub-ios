@@ -1,2 +1,18 @@
+// Sign Documents
+"sign_documents_application_view_doc" = "Afficher le document";
+"sign_documents_application_send_code" = "Envoyer un code pour signer";
+"sign_documents_submit_and_sign" = "Soumettre et signer";
+"sign_documents_request_code" = "Demander un nouveau code";
+"sign_documents_application_being_processed" = "Votre demande est en cours de traitement...";
+"sign_documents_download_documents" = "Vous allez pouvoir télécharger tous les documents signés bientôt.";
 "sign_document_document_fetch_error_title" = "Impossible de charger le document";
 "sign_document_document_fetch_error_message" = "Le téléchargement du %1$@ a échoué.\nVeuillez réessayer.";
+
+// Phone Verification
+"phone_verification_wrong_tan" = "TAN incorrect. Vous devez demander un nouveau TAN et réessayer.";
+"request_tan_failed" = "Échec de la demande d'un nouveau TAN.";
+"phone_verification_submit_code" = "Soumettre le code";
+"phone_verification_login_credentials" = "identifiants de connexion";
+"phone_verification_error_title" = "Erreur de vérification du téléphone";
+"phone_verification_error_description" = "Le TAN fourni n’est pas valide";
+"phone_verification_error_action" = "Réessayer la vérification TAN";

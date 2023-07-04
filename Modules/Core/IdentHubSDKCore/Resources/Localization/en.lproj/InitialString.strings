@@ -1,1 +1,91 @@
+// API Errors
 "api_error_modules_not_found" = "Some modules are not available (%1$@).";
+"api_error_malformed_json" = "Indicates that string received in the response couldn't been parsed.";
+"api_error_client_error" = "Indicates the error on the client's side.";
+"api_error_authorization_failed" = "Indicates that authorization failed.";
+"api_error_unauthorized" = "Action has not been authorized.";
+"api_error_data_mismatch" = "Data mismatch.";
+"api_error_incorrect_ident_status" = "The identification status was not allowed to proceed with the action.";
+"api_error_unprocessable_entity" = "Data invalid or expired.";
+"api_error_internal_server_error" = "Indicates the internal server error.";
+"api_error_request_build_error" = "Indicates build request error.";
+"api_error_unknown" = "Indicates that api client encountered an error not listed above.";
+"api_error_resource_not_found" = "Resource has not been found.";
+"api_error_location_permission" = "Location permission denied.";
+"api_error_location_error" = "Device can't define location data.";
+"api_error_iban_verification" = "IBAN verification failed.";
+"api_error_payment_failure" = "Payment verification failed.";
+
+// Common
+"common_next" = "Next";
+"common_quit" = "Quit";
+"common_continue_button" = "Continue";
+"common_back" = "Back";
+"common_powered_by_solarisbank" = "Powered by Solarisbank";
+"common_verifying" = "Verifying...";
+"common_download_all_documents" = "Download all documents";
+"common_dismiss" = "Dismiss";
+"common_try_again" = "Try again";
+"common_cancel" = "Cancel";
+"common_settings" = "Settings";
+"common_generic_error" = "Something went wrong";
+"common_confirm" = "Confirm";
+
+// ProgressView
+"progress_view_progress" = "Identification progress";
+"progress_view_phone_verification" = "Phone verification";
+"progress_view_bank_verification" = "Bank verification";
+"progress_view_sign_documents" = "Sign documents";
+
+// Quitting
+"quitting_title" = "Are you sure you want to quit onboarding process?";
+"quitting_description" = "Your progress will be lost. You will be required to repeat the steps next time.";
+"quitting_stay_action" = "Stay";
+
+// Phone verification
+"phone_verification_wrong_tan" = "Wrong TAN. You need to request a new TAN and try again.";
+"request_tan_failed" = "Failed to request new TAN.";
+"phone_verification_submit_code" = "Submit code";
+"phone_verification_request_new_code" = "Request new code";
+"phone_verification_login_credentials" = "login credentials";
+"phone_verification_error_title" = "Phone verification error";
+"phone_verification_error_description" = "Provided TAN is not valid.";
+"phone_verification_error_action" = "Retry TAN verification";
+
+"iban_verification_iban" = "IBAN";
+
+// Initial
+"initial_title" = "Initiate";
+"initial_define" = "Define identification method...";
+"initial_info" = "Fetching identification details…";
+"initial_register" = "Register identification method...";
+"initial_prefetch" = "Prefetch data...";
+
+// Terms
+"terms_privacy_text" = "Privacy Statement";
+"terms_continue_button" = "Continue";
+
+// Fetch data
+"fetch_data_title" = "Fetch data";
+"fetch_data_person" = "Fetching person data...";
+"fetch_data_location" = "Fetch location data...";
+"fetch_data_ip_address" = "Fetch IP-address data...";
+
+// Location
+"location_title" = "Device location";
+"location_description" = "We need your device location to continue.";
+"location_error_title" = "Device location failed";
+"location_error_message" = "Device location failed";
+
+// Zipper
+"zipper_error_kyc_invalid" = "KYC object is not valid because of:";
+"zipper_error_zip_foundation_not_imported" = "ZIPFoundation framework in not imported into project";
+"zipper_error_zip_exceed_max_size" = "ZIP file exceeding the maximum file size, please check the API documentation";
+"zipper_error_cannot_create_zip" = "Cannot create the Zip";
+"zipper_error_not_enough_space" = "Not enough space";
+"zipper_error_unknown" = "Unexpected error occurred";
+"zipper_error_alert_title" = "ZIP creation failed";
+
+// Verification
+"verification_description" = "Please wait for verification…";
+"verification_process_title" = "Data verification…";

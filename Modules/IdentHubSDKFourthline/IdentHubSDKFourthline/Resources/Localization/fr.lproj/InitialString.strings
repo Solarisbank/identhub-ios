@@ -1,1 +1,83 @@
+// Welcome
 "welcome_page_title" = "Bienvenue";
+"welcome_start_button" = "Commencer";
+"welcome_camera_title" = "Sourire pour la caméra";
+"welcome_camera_description" = "Votre selfie va être comparé avec la photo de votre document d’identité. Ne vous inquiétez pas, il ne verra jamais la lumière du jour, promis !";
+"welcome_document_title" = "Scanner votre document d’identité";
+"welcome_document_description" = "Nous pouvons ainsi nous assurer que vous êtes bien celui que vous prétendez être et éviter l’usurpation d’identité.";
+"welcome_location_title" = "Soumettez votre dossier";
+"welcome_location_description" = "La dernière chose que vous devez faire est d’activer votre localisation et\nde soumettre votre dossier!\nC’est facile, n’est-ce pas ?";
+"welcome_page_acknowledgement" = "Je reconnais la déclaration de confidentialité de SAFENED Fourthline.";
+"welcome_page_fourthline_privacy" = "déclaration de confidentialité de SAFENED Fourthline";
+"welcome_page_namirial_terms" = "J'accepte les Conditions générales de Namirial";
+
+// Selfie
+"selfie_scanning" = "scan en cours...";
+"selfie_detected" = "visage détecté";
+"selfie_retake" = "Répéter";
+"selfie_confirm" = "Confirmer";
+"selfie_confirm_selfie" = "Confirmer le selfie";
+"selfie_warning_face_camera_directly" = "Faire directement face à la caméra";
+"selfie_warning_multiple_faces_detected" = "Visages multiples détectés";
+"selfie_warning_looking_for_face" = "À la recherche d’un visage";
+"selfie_warning_unknown" = "Un problème inconnu est survenu";
+"selfie_error_failed" = "Échec du selfie";
+"selfie_error_timeout" = "Délai pour la photo expiré";
+"selfie_error_face_disappeared" = "Le visage a disparu";
+"selfie_error_camer_permission" = "Autorisation de caméra requise";
+"selfie_error_recording_failed" = "Une erreur s’est produite";
+"selfie_error_scanner_interrupted" = "Le scanner a été interrompu";
+"selfie_error_unknown" = "Une erreur s’est produite";
+"selfie_error_alert_title" = "Échec du scan du selfie";
+"selfie_error_alert_message" = "Il n’a pas été possible de prendre votre selfie.\n\nCe processus est obligatoire pour votre processus d’intégration.";
+"selfie_error_multiple_faces" = "La caméra détecte des visages multiples. Assurez-vous de scanner le visage d’une seule personne.";
+"selfie_error_reset_not_allowed" = "La session est toujours active. Veuillez continuer.";
+"selfie_liveness_title" = "Preuve de vie";
+"selfie_liveness_confirm" = "Confirmation de la preuve de vie";
+"selfie_liveness_faild" = "Has completado el proceso de identificación. Descarga los documentos y guárdalos en un lugar seguro, para futuras consultas.";
+
+// Camera
+"camera_permission_error_title" = "Autorisation de caméra refusée";
+"camera_permission_error_message" = "Le scanner ne peut pas être lancé sans l’autorisation de la caméra, veuillez l’autoriser";
+"camera_error_message" = "ERREUR : Pour pouvoir utiliser les scanners de vision, vous devez accorder l’autorisation à la caméra.";
+"camera_permission_not_granted" = "Autorisation de caméra requise";
+
+// Document Scanner
+"doc_scanner_id_card" = "Carte d’identité";
+"doc_scanner_scanning" = "Scan en cours...";
+"doc_scanner_scan_failed" = "Échec du scan";
+"doc_scanner_retake" = "Nouvel essai";
+"doc_scanner_confirm_result" = "Veuillez confirmer le résultat";
+"doc_scanner_warning_too_dark" = "Trop sombre";
+"doc_scanner_warning_unkown" = "Une erreur s’est produite";
+"doc_scanner_error_interrupted" = "Le scanner a été interrompu";
+"doc_scanner_error_timeout" = "Délai du scan expiré";
+"doc_scanner_error_alert_title" = "Échec du scan du document";
+"doc_scanner_error_alert_message" = "Il n’a pas été possible de scanner votre document.\n\nCe processus est obligatoire pour votre processus d’intégration.";
+"doc_scanner_error_snapshot_not_allowed" = "L’étape prendre un instantané du document n’est plus active.";
+"doc_scanner_error_step_not_finished" = "L’étape n’est pas terminée avec succès.";
+"doc_scanner_error_reset_not_allowed" = "Étape toujours active.";
+"doc_scanner_info_expire_date_message" = "La date d'expiration ne peut pas être dans le passé";
+
+// Document Scanner Side Titles
+"doc_scanner_side_front_name" = "recto";
+"doc_scanner_side_back_name" = "verso";
+"doc_scanner_side_inside_left_name" = "intérieur gauche";
+"doc_scanner_side_inside_right_name" = "intérieur droite";
+"doc_scanner_side_undefined_name" = "côté du document non défini";
+"doc_scanner_side_inside_left_title" = "Veuillez scanner l'intérieur gauche du document";
+"doc_scanner_side_inside_left_angled_title" = "Veuillez scanner l'intérieur gauche du document sous un autre angle";
+"doc_scanner_side_inside_right_title" = "Veuillez scanner l'intérieur droit du document";
+"doc_scanner_side_inside_right_angled_title" = "Veuillez scanner l'intérieur droit du document sous un autre angle";
+"doc_scanner_side_undefined_title" = "Prenez une photo du document, s'il-vous-plaît";
+
+// Upload
+"upload_data_title" = "Téléchargement des données";
+"upload_data_description" = "Vos données sont traitées...";
+"upload_data_uploading" = "Téléchargement en cours...";
+"upload_data_preparation" = "Préparer les données de téléchargement...";
+"identhub_fourthline_kyc_upload_bottom_notice" = "Cela peut prendre quelques minutes. Ne fermez pas cet écran tant que la vérification n’est pas terminée.";
+
+// Result
+"result_failed_title" = "Veuillez réessayer....";
+"result_failed_description" = "Le processus d’identification a échoué.";

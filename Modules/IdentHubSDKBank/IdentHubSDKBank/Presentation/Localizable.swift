@@ -11,9 +11,9 @@ internal enum Localizable {
     
     enum BankVerification {
         enum IBANVerification {
-            static let title = "iban_verification_title".localized()
-            static let accountDisclaimer = "iban_verification_account_disclaimer".localized()
-            static let IBANEncryptionInfo = "iban_verification_iban_encryption".localized()
+            static let title = "identhub_bank_iban_title".localized()
+            static let accountDisclaimer = "identhub_bank_iban_description".localized()
+            static let IBANEncryptionInfo = "identhub_bank_iban_secured_text".localized()
             static let IBANplaceholder = "iban_verification_iban_input_place_holder".localized()
             static let wrongIBANFormat = "iban_verification_error_iban_format".localized()
             static let failureAlertTitle = "iban_verification_failure_alert_title".localized()
@@ -23,12 +23,12 @@ internal enum Localizable {
         }
         
         enum PaymentVerification {
-            static let establishingSecureConnection = "payment_verification_establishing_connection".localized()
+            static let establishingSecureConnection = "identhub_bank_establishing_connection_text".localized()
             static let processingVerification = "payment_verification_processing".localized()
 
             enum Success {
-                static let title = "payment_verification_success_title".localized()
-                static let description = "payment_verification_success_description".localized()
+                static let title = "identhub_bank_payment_verification_title".localized()
+                static let description = "identhub_bank_payment_verification_description".localized()
                 static let action = "payment_verification_success_action".localized()
             }
 

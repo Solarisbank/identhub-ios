@@ -216,7 +216,8 @@ extension SignDocumentsViewController {
     private func updateTransactionInfo(withId id: String?, isHidden: Bool) {
         transactionDetailView.isHidden = id == nil || isHidden
         if let id = id {
-            transactionInfoLabel.attributedText = "\(Localizable.SignDocuments.Sign.transactionInfoPartOne) \(id) \(Localizable.SignDocuments.Sign.transactionInfoPartTwo)".withBoldTexts([id], withColorForBoldText: colors[.header])
+            let fullText = String(format: Localizable.SignDocuments.Sign.transactionDetailText, id)
+            transactionInfoLabel.attributedText = fullText.withBoldTexts([id], withColorForBoldText: colors[.header])
         }
     }
 

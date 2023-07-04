@@ -1,1 +1,91 @@
+// API Errors
+"api_error_malformed_json" = "Indique que la chaîne reçue dans la réponse n’a pas pu être analysée.";
+"api_error_client_error" = "Indique que l’erreur est du côté du client.";
+"api_error_authorization_failed" = "Indique que l’autorisation a échoué.";
+"api_error_unauthorized" = "L’action n’a pas été autorisée.";
+"api_error_data_mismatch" = "Données non concordantes.";
+"api_error_incorrect_ident_status" = "Le statut d’identification n’a pas permis de poursuivre l’action.";
+"api_error_unprocessable_entity" = "Données non valides ou expirées.";
+"api_error_internal_server_error" = "Indique l’erreur de serveur interne.";
+"api_error_request_build_error" = "Indique une erreur de demande de construction.";
+"api_error_unknown" = "Indique que l’api client a rencontré une erreur non répertoriée ci-dessus.";
+"api_error_resource_not_found" = "La ressource n’a pas été trouvée.";
+"api_error_location_permission" = "Autorisation de localisation refusée.";
+"api_error_location_error" = "L’appareil ne peut pas définir les données de localisation.";
+"api_error_iban_verification" = "Échec de la vérification de l’IBAN.";
+"api_error_payment_failure" = "Échec de vérification du paiement.";
 "api_error_modules_not_found" = "Certains modules ne sont pas disponibles (%1$@).";
+
+// Common
+"common_next" = "Suite";
+"common_quit" = "Quitter";
+"common_continue_button" = "Continuer";
+"common_back" = "Retour";
+"common_powered_by_solarisbank" = "Fourni par Solarisbank";
+"common_verifying" = "Vérification en cours...";
+"common_download_all_documents" = "Télécharger tous les documents";
+"common_dismiss" = "Rejeter";
+"common_try_again" = "Réessayer";
+"common_cancel" = "Annuler";
+"common_settings" = "Paramètres";
+"common_generic_error" = "Une erreur s’est produite";
+"common_confirm" = "Confirmer";
+
+// ProgressView
+"progress_view_progress" = "Progression de l’identification";
+"progress_view_phone_verification" = "Vérification du téléphone";
+"progress_view_bank_verification" = "Vérification bancaire";
+"progress_view_sign_documents" = "Signer documents";
+
+// Quitting
+"quitting_title" = "Êtes-vous sûr de vouloir quitter le processus d’intégration ?";
+"quitting_description" = "Votre progression sera perdue. Vous devrez répéter les étapes la prochaine fois.";
+"quitting_stay_action" = "Rester";
+
+// Phone Verification
+"phone_verification_wrong_tan" = "TAN incorrect. Vous devez demander un nouveau TAN et réessayer.";
+"request_tan_failed" = "Échec de la demande d'un nouveau TAN.";
+"phone_verification_submit_code" = "Soumettre le code";
+"phone_verification_request_new_code" = "Demander un nouveau code";
+"phone_verification_login_credentials" = "identifiants de connexion";
+"phone_verification_error_title" = "Erreur de vérification du téléphone";
+"phone_verification_error_description" = "Le TAN fourni n’est pas valide";
+"phone_verification_error_action" = "Réessayer la vérification TAN";
+
+"iban_verification_iban" = "IBAN";
+
+// Initial
+"initial_title" = "Démarrer";
+"initial_define" = "Définir la méthode d’identification...";
+"initial_info" = "Recherche des données d’identification...";
+"initial_register" = "Enregistrer la méthode d’identification...";
+"initial_prefetch" = "Préchargement des données...";
+
+// Terms
+"terms_privacy_text" = "Déclaration de confidentialité";
+"terms_continue_button" = "Continuer";
+
+// Fetch data
+"fetch_data_title" = "Récupérer les données";
+"fetch_data_person" = "Recherche de données sur les personnes...";
+"fetch_data_location" = "Récupération des données de localisation...";
+"fetch_data_ip_address" = "Récupération des données de l’adresse IP...";
+
+// Location
+"location_title" = "Localisation de l’appareil";
+"location_description" = "Nous avons besoin de la localisation de votre appareil pour continuer.";
+"location_error_title" = "Échec de la localisation de l’appareil";
+"location_error_message" = "Échec de la localisation de l’appareil";
+
+// Zipper
+"zipper_error_kyc_invalid" = "L’objet KYC n’est pas valide, en raison de :";
+"zipper_error_zip_foundation_not_imported" = "Le cadre ZIPFoundation n’est pas importé dans le projet";
+"zipper_error_zip_exceed_max_size" = "Fichier ZIP dépassant la taille maximale du fichier, veuillez consulter la documentation de l’API";
+"zipper_error_cannot_create_zip" = "Impossible de créer le Zip";
+"zipper_error_not_enough_space" = "Pas assez d’espace";
+"zipper_error_unknown" = "Une erreur inattendue s’est produite";
+"zipper_error_alert_title" = "La création du ZIP a échoué";
+
+// Verification
+"verification_description" = "Veuillez attendre la vérification..";
+"verification_process_title" = "Date de vérification...";
