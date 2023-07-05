@@ -8,7 +8,7 @@ phrase:
     - file: ./Modules/Core/IdentHubSDKCore/Resources/Localization/<locale_code>.lproj/Localizable.strings
       params:
         format_options: { convert_placeholder: true }
-        tags: startup
+        tags: startup,core
 
     # Qes
     - file: ./Modules/QES/IdentHubSDKQES/Resources/Localization/<locale_code>.lproj/Localizable.strings

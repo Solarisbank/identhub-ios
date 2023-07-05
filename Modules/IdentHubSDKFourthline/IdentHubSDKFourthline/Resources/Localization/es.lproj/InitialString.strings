@@ -43,7 +43,6 @@
 "camera_permission_not_granted" = "Se requiere permiso de cámara";
 
 // Document Scanner
-"doc_scanner_id_card" = "Documento de identidad";
 "doc_scanner_scanning" = "Escaneando...";
 "doc_scanner_scan_failed" = "Escaneo fallido";
 "doc_scanner_retake" = "Intentar de nuevo";

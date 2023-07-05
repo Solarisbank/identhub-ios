@@ -59,10 +59,10 @@ public enum Localizable {
     }
     
     enum TermsConditions {
-        static let description = "identhub_terms_and_conditions_info".localized()
+        static let description = "identhub_startup_terms_and_conditions_info".localized()
         static let privacyText = "terms_privacy_text".localized()
-        static let termsText = "identhub_terms_and_conditions_title".localized()
-        static let agreementLinks = "identhub_terms_and_conditions_checkbox_text".localized()
+        static let termsText = "identhub_startup_terms_and_conditions_title".localized()
+        static let agreementLinks = "identhub_startup_terms_and_conditions_checkbox_text".localized()
         static let continueBtn = "terms_continue_button".localized()
     }
     

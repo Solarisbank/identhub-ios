@@ -89,7 +89,7 @@ internal enum Localizable {
         static let title = "identhub_fourthline_doctype_description".localized()
         static let description = "identhub_fourthline_doctype_title".localized()
         static let passport = "identhub_fourthline_doctype_passport".localized()
-        static let idCard = "doc_scanner_id_card".localized()
+        static let idCard = "identhub_fourthline_doctype_id_card".localized()
         static let paperID = "identhub_fourthline_doctype_paper_id".localized()
         static let successScan = "identhub_fourthline_successful_scan_title".localized()
         static let scanning = "doc_scanner_scanning".localized()

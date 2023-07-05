@@ -43,7 +43,6 @@
 "camera_permission_not_granted" = "Kamerazugriff nicht erlaubt.";
 
 // Document Scanner
-"doc_scanner_id_card" = "Personalausweis";
 "doc_scanner_scanning" = "Scannen...";
 "doc_scanner_scan_failed" = "Scan fehlgeschlagen";
 "doc_scanner_retake" = "Wiederholen";
