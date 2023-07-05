@@ -23,6 +23,31 @@
 		674D4AAF290178940006DA89 /* IBANRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674D4AAE290178940006DA89 /* IBANRequestTest.swift */; };
 		674D4AB22901803B0006DA89 /* ShowableFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674D4AB12901803B0006DA89 /* ShowableFactoryTests.swift */; };
 		674D4AB4290181250006DA89 /* VerificationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674D4AB3290181250006DA89 /* VerificationServiceMock.swift */; };
+		67A404182A544FC1008F3594 /* MaskedTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A403FD2A544FC1008F3594 /* MaskedTextViewDelegate.swift */; };
+		67A404192A544FC1008F3594 /* Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A403FE2A544FC1008F3594 /* Next.swift */; };
+		67A4041A2A544FC1008F3594 /* MaskedTextInputListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A403FF2A544FC1008F3594 /* MaskedTextInputListener.swift */; };
+		67A4041B2A544FC1008F3594 /* CharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404002A544FC1008F3594 /* CharacterSet.swift */; };
+		67A4041C2A544FC1008F3594 /* CaretStringIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404012A544FC1008F3594 /* CaretStringIterator.swift */; };
+		67A4041D2A544FC1008F3594 /* AffinityCalculationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404022A544FC1008F3594 /* AffinityCalculationStrategy.swift */; };
+		67A4041E2A544FC1008F3594 /* ValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404032A544FC1008F3594 /* ValueState.swift */; };
+		67A4041F2A544FC1008F3594 /* RTLCaretStringIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404042A544FC1008F3594 /* RTLCaretStringIterator.swift */; };
+		67A404202A544FC1008F3594 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404052A544FC1008F3594 /* State.swift */; };
+		67A404212A544FC1008F3594 /* Notation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404062A544FC1008F3594 /* Notation.swift */; };
+		67A404222A544FC1008F3594 /* UITextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404072A544FC1008F3594 /* UITextInput.swift */; };
+		67A404232A544FC1008F3594 /* EOLState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404082A544FC1008F3594 /* EOLState.swift */; };
+		67A404242A544FC1008F3594 /* FixedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404092A544FC1008F3594 /* FixedState.swift */; };
+		67A404252A544FC1008F3594 /* Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4040A2A544FC1008F3594 /* Mask.swift */; };
+		67A404262A544FC1008F3594 /* Compiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4040B2A544FC1008F3594 /* Compiler.swift */; };
+		67A404272A544FC1008F3594 /* OptionalValueState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4040C2A544FC1008F3594 /* OptionalValueState.swift */; };
+		67A404282A544FC1008F3594 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4040D2A544FC1008F3594 /* UITextField.swift */; };
+		67A404292A544FC1008F3594 /* CaretString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4040E2A544FC1008F3594 /* CaretString.swift */; };
+		67A4042A2A544FC2008F3594 /* RTLMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4040F2A544FC1008F3594 /* RTLMask.swift */; };
+		67A4042B2A544FC2008F3594 /* FormatSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404102A544FC1008F3594 /* FormatSanitizer.swift */; };
+		67A4042C2A544FC2008F3594 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404112A544FC1008F3594 /* String.swift */; };
+		67A4042D2A544FC2008F3594 /* MaskedTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404122A544FC1008F3594 /* MaskedTextFieldDelegate.swift */; };
+		67A4042E2A544FC2008F3594 /* FreeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404132A544FC1008F3594 /* FreeState.swift */; };
+		67A4042F2A544FC2008F3594 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A404142A544FC1008F3594 /* UITextView.swift */; };
+		67A404302A544FC2008F3594 /* InputMask.h in Headers */ = {isa = PBXBuildFile; fileRef = 67A404152A544FC1008F3594 /* InputMask.h */; };
 		67C1368828FD5EE700AA9499 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67C1368528FD5EE600AA9499 /* Colors.xcassets */; };
 		67C1368A28FD5F0F00AA9499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67C1368928FD5F0F00AA9499 /* Assets.xcassets */; };
 		67C1368F28FD61F500AA9499 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67C1369128FD61F500AA9499 /* Localizable.strings */; };
@@ -101,6 +126,31 @@
 		674D4AAE290178940006DA89 /* IBANRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBANRequestTest.swift; sourceTree = "<group>"; };
 		674D4AB12901803B0006DA89 /* ShowableFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowableFactoryTests.swift; sourceTree = "<group>"; };
 		674D4AB3290181250006DA89 /* VerificationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationServiceMock.swift; sourceTree = "<group>"; };
+		67A403FD2A544FC1008F3594 /* MaskedTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedTextViewDelegate.swift; sourceTree = "<group>"; };
+		67A403FE2A544FC1008F3594 /* Next.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Next.swift; sourceTree = "<group>"; };
+		67A403FF2A544FC1008F3594 /* MaskedTextInputListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedTextInputListener.swift; sourceTree = "<group>"; };
+		67A404002A544FC1008F3594 /* CharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSet.swift; sourceTree = "<group>"; };
+		67A404012A544FC1008F3594 /* CaretStringIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaretStringIterator.swift; sourceTree = "<group>"; };
+		67A404022A544FC1008F3594 /* AffinityCalculationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AffinityCalculationStrategy.swift; sourceTree = "<group>"; };
+		67A404032A544FC1008F3594 /* ValueState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueState.swift; sourceTree = "<group>"; };
+		67A404042A544FC1008F3594 /* RTLCaretStringIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLCaretStringIterator.swift; sourceTree = "<group>"; };
+		67A404052A544FC1008F3594 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		67A404062A544FC1008F3594 /* Notation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notation.swift; sourceTree = "<group>"; };
+		67A404072A544FC1008F3594 /* UITextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextInput.swift; sourceTree = "<group>"; };
+		67A404082A544FC1008F3594 /* EOLState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EOLState.swift; sourceTree = "<group>"; };
+		67A404092A544FC1008F3594 /* FixedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedState.swift; sourceTree = "<group>"; };
+		67A4040A2A544FC1008F3594 /* Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mask.swift; sourceTree = "<group>"; };
+		67A4040B2A544FC1008F3594 /* Compiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compiler.swift; sourceTree = "<group>"; };
+		67A4040C2A544FC1008F3594 /* OptionalValueState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalValueState.swift; sourceTree = "<group>"; };
+		67A4040D2A544FC1008F3594 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		67A4040E2A544FC1008F3594 /* CaretString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaretString.swift; sourceTree = "<group>"; };
+		67A4040F2A544FC1008F3594 /* RTLMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLMask.swift; sourceTree = "<group>"; };
+		67A404102A544FC1008F3594 /* FormatSanitizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatSanitizer.swift; sourceTree = "<group>"; };
+		67A404112A544FC1008F3594 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		67A404122A544FC1008F3594 /* MaskedTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedTextFieldDelegate.swift; sourceTree = "<group>"; };
+		67A404132A544FC1008F3594 /* FreeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeState.swift; sourceTree = "<group>"; };
+		67A404142A544FC1008F3594 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		67A404152A544FC1008F3594 /* InputMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputMask.h; sourceTree = "<group>"; };
 		67C1368528FD5EE600AA9499 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = ../../../../Shared/Colors.xcassets; sourceTree = "<group>"; };
 		67C1368928FD5F0F00AA9499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67C1369028FD61F500AA9499 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -259,6 +309,38 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		67A403FC2A544FC1008F3594 /* InputMask */ = {
+			isa = PBXGroup;
+			children = (
+				67A403FD2A544FC1008F3594 /* MaskedTextViewDelegate.swift */,
+				67A403FE2A544FC1008F3594 /* Next.swift */,
+				67A403FF2A544FC1008F3594 /* MaskedTextInputListener.swift */,
+				67A404002A544FC1008F3594 /* CharacterSet.swift */,
+				67A404012A544FC1008F3594 /* CaretStringIterator.swift */,
+				67A404022A544FC1008F3594 /* AffinityCalculationStrategy.swift */,
+				67A404032A544FC1008F3594 /* ValueState.swift */,
+				67A404042A544FC1008F3594 /* RTLCaretStringIterator.swift */,
+				67A404052A544FC1008F3594 /* State.swift */,
+				67A404062A544FC1008F3594 /* Notation.swift */,
+				67A404072A544FC1008F3594 /* UITextInput.swift */,
+				67A404082A544FC1008F3594 /* EOLState.swift */,
+				67A404092A544FC1008F3594 /* FixedState.swift */,
+				67A4040A2A544FC1008F3594 /* Mask.swift */,
+				67A4040B2A544FC1008F3594 /* Compiler.swift */,
+				67A4040C2A544FC1008F3594 /* OptionalValueState.swift */,
+				67A4040D2A544FC1008F3594 /* UITextField.swift */,
+				67A4040E2A544FC1008F3594 /* CaretString.swift */,
+				67A4040F2A544FC1008F3594 /* RTLMask.swift */,
+				67A404102A544FC1008F3594 /* FormatSanitizer.swift */,
+				67A404112A544FC1008F3594 /* String.swift */,
+				67A404122A544FC1008F3594 /* MaskedTextFieldDelegate.swift */,
+				67A404132A544FC1008F3594 /* FreeState.swift */,
+				67A404142A544FC1008F3594 /* UITextView.swift */,
+				67A404152A544FC1008F3594 /* InputMask.h */,
+			);
+			path = InputMask;
+			sourceTree = "<group>";
+		};
 		67CADD4D28EEDCB6004BA73D = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +365,7 @@
 		67CADD5928EEDCB6004BA73D /* IdentHubSDKBank */ = {
 			isa = PBXGroup;
 			children = (
+				67A403FC2A544FC1008F3594 /* InputMask */,
 				6706EAFC28FE6B36000A9941 /* Logger */,
 				67CADD7B28EEDF42004BA73D /* BankModule.swift */,
 				67CADD5A28EEDCB6004BA73D /* Bank.h */,
@@ -413,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67CADD6828EEDCB6004BA73D /* Bank.h in Headers */,
+				67A404302A544FC2008F3594 /* InputMask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +531,6 @@
 				67CADD5D28EEDCB6004BA73D /* Sources */,
 				67CADD5E28EEDCB6004BA73D /* Frameworks */,
 				67CADD5F28EEDCB6004BA73D /* Resources */,
-				F0236A849F0DB2E24E8611E1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -598,23 +681,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F0236A849F0DB2E24E8611E1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IdentHubSDKBankTests/Pods-IdentHubSDKBankTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IdentHubSDKBankTests/Pods-IdentHubSDKBankTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IdentHubSDKBankTests/Pods-IdentHubSDKBankTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -622,22 +688,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A4042D2A544FC2008F3594 /* MaskedTextFieldDelegate.swift in Sources */,
+				67A4042C2A544FC2008F3594 /* String.swift in Sources */,
 				67424C3128FC437C009A8736 /* BankIDIBANRequest.swift in Sources */,
 				67CADD8B28EEDF4E004BA73D /* BankCoordinatorImpl.swift in Sources */,
 				6706EB0628FEE39B000A9941 /* PaymentVerificationViewController.swift in Sources */,
 				67424C2428FC35C8009A8736 /* VerificationTextField.swift in Sources */,
+				67A404262A544FC1008F3594 /* Compiler.swift in Sources */,
+				67A4041A2A544FC1008F3594 /* MaskedTextInputListener.swift in Sources */,
+				67A4042A2A544FC2008F3594 /* RTLMask.swift in Sources */,
 				6706EAF628FD7B69000A9941 /* IBANVerificationViewController.swift in Sources */,
 				67CADD8E28EEDF4E004BA73D /* IBANVerificationEventHandlerImpl.swift in Sources */,
+				67A404222A544FC1008F3594 /* UITextInput.swift in Sources */,
+				67A404192A544FC1008F3594 /* Next.swift in Sources */,
 				67CADD8D28EEDF4E004BA73D /* VerificationService.swift in Sources */,
+				67A404202A544FC1008F3594 /* State.swift in Sources */,
+				67A404272A544FC1008F3594 /* OptionalValueState.swift in Sources */,
+				67A404292A544FC1008F3594 /* CaretString.swift in Sources */,
+				67A404252A544FC1008F3594 /* Mask.swift in Sources */,
+				67A4041E2A544FC1008F3594 /* ValueState.swift in Sources */,
+				67A404282A544FC1008F3594 /* UITextField.swift in Sources */,
 				6706EB0928FEE3DA000A9941 /* PaymentVerificationEventHandlerImpl.swift in Sources */,
+				67A404232A544FC1008F3594 /* EOLState.swift in Sources */,
+				67A4041D2A544FC1008F3594 /* AffinityCalculationStrategy.swift in Sources */,
 				67CADD8C28EEDF4E004BA73D /* ShowableFactory.swift in Sources */,
+				67A4041B2A544FC1008F3594 /* CharacterSet.swift in Sources */,
+				67A4042B2A544FC2008F3594 /* FormatSanitizer.swift in Sources */,
 				67CADDB928EF008A004BA73D /* StorageKey+Bank.swift in Sources */,
 				67CADD5C28EEDCB6004BA73D /* Bank.docc in Sources */,
 				67CADD7C28EEDF42004BA73D /* BankModule.swift in Sources */,
+				67A4042E2A544FC2008F3594 /* FreeState.swift in Sources */,
+				67A404212A544FC1008F3594 /* Notation.swift in Sources */,
 				6706EAFE28FE6B6D000A9941 /* Logger.swift in Sources */,
+				67A404242A544FC1008F3594 /* FixedState.swift in Sources */,
+				67A4041C2A544FC1008F3594 /* CaretStringIterator.swift in Sources */,
+				67A404182A544FC1008F3594 /* MaskedTextViewDelegate.swift in Sources */,
+				67A4042F2A544FC2008F3594 /* UITextView.swift in Sources */,
 				67CADDB728EF006E004BA73D /* Bundle+Extensions.swift in Sources */,
 				67424C2E28FC394F009A8736 /* Localizable.swift in Sources */,
 				67CADDBB28EF009B004BA73D /* String+Localization.swift in Sources */,
+				67A4041F2A544FC1008F3594 /* RTLCaretStringIterator.swift in Sources */,
 				67424C3328FC4391009A8736 /* IBANRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

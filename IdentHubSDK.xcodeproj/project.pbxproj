@@ -132,6 +132,20 @@
 			remoteGlobalIDString = 67CADD6128EEDCB6004BA73D;
 			remoteInfo = IdentHubSDKBankTests;
 		};
+		6727F0522A4DB68100C229B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6749280C291D2FE400B8D7BA /* Fourthline.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 674927F1291D2FE400B8D7BA;
+			remoteInfo = IdentHubSDKFourthline;
+		};
+		6727F0542A4DB68800C229B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67CADD7128EEDCB6004BA73D /* Bank.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 67CADD5628EEDCB6004BA73D;
+			remoteInfo = IdentHubSDKBank;
+		};
 		67315526299385FB008CAED4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0CD5CC312590F58800FF378F /* Project object */;
@@ -1027,6 +1041,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				6727F0552A4DB68800C229B2 /* PBXTargetDependency */,
+				6727F0532A4DB68100C229B2 /* PBXTargetDependency */,
 				88DD17E0283D3F3000A94ABC /* PBXTargetDependency */,
 				88DD17DE283D3F2B00A94ABC /* PBXTargetDependency */,
 			);
@@ -1466,6 +1482,16 @@
 			isa = PBXTargetDependency;
 			target = 0CD5CC392590F58800FF378F /* IdentHubSDK */;
 			targetProxy = 0CD5CCCD259104EE00FF378F /* PBXContainerItemProxy */;
+		};
+		6727F0532A4DB68100C229B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IdentHubSDKFourthline;
+			targetProxy = 6727F0522A4DB68100C229B2 /* PBXContainerItemProxy */;
+		};
+		6727F0552A4DB68800C229B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IdentHubSDKBank;
+			targetProxy = 6727F0542A4DB68800C229B2 /* PBXContainerItemProxy */;
 		};
 		67315527299385FB008CAED4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

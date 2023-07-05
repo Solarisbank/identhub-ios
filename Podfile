@@ -12,10 +12,6 @@ def fourthline_pods
   pod 'FourthlineSDK', '2.24.0'
 end
 
-def bank_pods
-  pod 'InputMask', '6.1.0'
-end
-
 target 'IdentHubSDK' do
 end
 
@@ -50,16 +46,13 @@ end
 
 target 'IdentHubSDKBank' do
   project 'Modules/IdentHubSDKBank/Bank'
-  bank_pods
 end
 
 target 'IdentHubSDKBankTests' do
   project 'Modules/IdentHubSDKBank/Bank'
-  bank_pods
 end
 
 target 'Sample' do
-  bank_pods
   fourthline_pods
 end
 

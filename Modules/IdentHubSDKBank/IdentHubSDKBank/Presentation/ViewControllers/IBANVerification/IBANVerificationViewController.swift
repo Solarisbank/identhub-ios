@@ -4,7 +4,6 @@
 //
 
 import UIKit
-import InputMask
 import IdentHubSDKCore
 
 internal struct IBANVerificationState: Equatable {

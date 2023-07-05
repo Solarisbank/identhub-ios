@@ -16,22 +16,17 @@ PODS:
     - FourthlineSDK/Vision
   - FourthlineSDK/Vision (2.24.0):
     - FourthlineSDK/Core
-  - InputMask (6.1.0)
 
 DEPENDENCIES:
   - FourthlineSDK (= 2.24.0)
-  - InputMask (= 6.1.0)
 
 SPEC REPOS:
   https://github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git:
     - FourthlineSDK
-  trunk:
-    - InputMask
 
 SPEC CHECKSUMS:
   FourthlineSDK: 04a9dbc9d8ef62084041e1e40fe699a6df00161a
-  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
 
-PODFILE CHECKSUM: 86842cbe97b1cf564dcb4b6363391238f15cfb2e
+PODFILE CHECKSUM: ac145528a9714f2257a7c3ee269172f6122eacaf
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

@@ -39,7 +39,6 @@ spec.resources = "Modules/IdentHubSDKBank/IdentHubSDKBank/**/*.{png,xib,storyboa
 
 # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-    spec.dependency 'InputMask', '6.1.0'
     spec.dependency 'SolarisbankIdentHubCore', "#{spec.version}"
 
     spec.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
