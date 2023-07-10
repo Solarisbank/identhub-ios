@@ -167,7 +167,7 @@ extension RequestsViewController {
         message += "\n\(error.detailDescription)"
         #endif
         
-        let alert = UIAlertController(title: Localizable.Verification.processTitle, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: Localizable.Verification.title, message: message, preferredStyle: .alert)
         
         let retryAction = UIAlertAction(title: Localizable.Common.tryAgain, style: .default) { [weak self] _ in
             self?.eventHandler?.handleEvent(.zipFailedReTry(type: .invalidData))

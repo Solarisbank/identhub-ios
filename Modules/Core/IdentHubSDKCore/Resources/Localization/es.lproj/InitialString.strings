@@ -51,7 +51,7 @@
 "phone_verification_error_title" = "Error de verificación telefónica";
 "phone_verification_error_description" = "El TAN proporcionado no es válido.";
 "phone_verification_error_action" = "Vuelve a intentar la verificación del TAN";
-
+"phone_verification_success_description" = "Tenga a mano su %1$@ y los datos de acceso as su banco online para el siguiente paso";
 "iban_verification_iban" = "IBAN";
 
 // Initial

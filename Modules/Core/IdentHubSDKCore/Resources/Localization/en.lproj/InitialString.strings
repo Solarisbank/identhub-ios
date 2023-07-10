@@ -51,7 +51,7 @@
 "phone_verification_error_title" = "Phone verification error";
 "phone_verification_error_description" = "Provided TAN is not valid.";
 "phone_verification_error_action" = "Retry TAN verification";
-
+"phone_verification_success_description" = "For the next step please have your %1$@ and \n%2$@ for your online banking at hand.";
 "iban_verification_iban" = "IBAN";
 
 // Initial

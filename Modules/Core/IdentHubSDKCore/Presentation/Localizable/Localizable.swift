@@ -77,7 +77,7 @@ public enum Localizable {
 
         public enum Success {
             public static let title = "identhub_phone_verification_success_title".localized()
-            public static let description = "identhub_phone_verification_success_description".localized()
+            public static let description = "phone_verification_success_description".localized()
             public static let loginCredentials = "phone_verification_login_credentials".localized()
         }
         
@@ -131,7 +131,6 @@ public enum Localizable {
     public enum Verification {
         public static let title = "identhub_fourthline_kyc_upload_title".localized()
         public static let description = "verification_description".localized()
-        public static let processTitle = "verification_process_title".localized()
     }
     
 }
