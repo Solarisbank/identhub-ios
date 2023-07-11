@@ -88,4 +88,4 @@
 
 // Verification
 "verification_description" = "Veuillez attendre la vérification..";
-"verification_process_title" = "Date de vérification...";
+"identhub_fourthline_kyc_upload_title" = "Date de vérification";

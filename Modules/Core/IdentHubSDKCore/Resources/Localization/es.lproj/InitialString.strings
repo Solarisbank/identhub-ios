@@ -47,11 +47,11 @@
 "request_tan_failed" = "Error al solicitar un nuevo TAN.";
 "phone_verification_submit_code" = "Enviar código";
 "phone_verification_request_new_code" = "Solicitar un nuevo código";
-"phone_verification_login_credentials" = "login credentials";
+"phone_verification_login_credentials" = "credenciales de acceso";
 "phone_verification_error_title" = "Error de verificación telefónica";
 "phone_verification_error_description" = "El TAN proporcionado no es válido.";
 "phone_verification_error_action" = "Vuelve a intentar la verificación del TAN";
-"phone_verification_success_description" = "Tenga a mano su %1$@ y los datos de acceso as su banco online para el siguiente paso";
+"phone_verification_success_description" = "A continuación, le solicitaremos su %1$@ y sus %2$@ a su banca en línea. Por favor, téngalos a mano.";
 "iban_verification_iban" = "IBAN";
 
 // Initial
@@ -88,4 +88,4 @@
 
 // Verification
 "verification_description" = "Espera la verificación...";
-"verification_process_title" = "Verificación de datos...";
+"identhub_fourthline_kyc_upload_title" = "Verificación de datos";

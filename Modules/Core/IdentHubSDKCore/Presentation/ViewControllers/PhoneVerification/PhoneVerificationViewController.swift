@@ -121,6 +121,7 @@ extension PhoneVerificationViewController {
         case .success:
             mainContainer.removeFromSuperview()
             successView.isHidden = false
+            successView.setDescription(Localizable.PhoneVerification.Success.description)
         case .error:
             codeEntryView.state = .error
             errorMessageHeightConstraint.constant = 40
@@ -194,7 +195,6 @@ extension PhoneVerificationViewController {
         
         successView.configure(with: colors)
         successView.setTitle(Localizable.PhoneVerification.Success.title)
-        successView.setDescription(Localizable.PhoneVerification.Success.description)
         successView.setActionButtonTitle(Localizable.Common.next)
         
         successView.setAction { [weak self] in

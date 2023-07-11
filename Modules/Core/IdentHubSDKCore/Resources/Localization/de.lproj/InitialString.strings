@@ -88,4 +88,4 @@
 
 // Verification +
 "verification_description" = "Bitte warten Sie bis die Verifizierung Ihrer Daten abgeschlossen ist…";
-"verification_process_title" = "Datenverifizierung…";
+"identhub_fourthline_kyc_upload_title" = "Datenverifizierung";
