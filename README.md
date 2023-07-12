@@ -10,6 +10,7 @@
   - [Overview](#overview)
   - [Compatibility Table](#compatibility-table)
   - [Integration](#integration)
+    - [Manual](#manual)
     - [CocoaPods](#cocoapods)
       - [Dependency to Fourthline SDK](#dependency-to-fourthline-sdk)
   - [Example Usage](#example-usage)
@@ -67,10 +68,19 @@ IdentHub SDK requires minimum iOS version 12.
 | 1.5.0 | 13.4 - 14.0                                                         | iOS 12 |
 | 1.5.1 | 13.4 - 14.0                                                         | iOS 12 |
 | 1.5.2 | 13.4 - 14.0                                                         | iOS 12 |
+| 1.5.3 | 13.4 - 14.3                                                         | iOS 12 |
 
 ## Integration
 
 You can add the desired IdentHub SDK modules to your project by using CocoaPods dependency manager.
+
+### Manual
+
+   - git clone this repository. 
+   - Run `make` command in the root directory and wait to get it finished.
+   - `dist` folder has been created in project which contains all required .xcframework files.
+    IdentHubSDK.xcframework and IdentHubSDKCore.xcframework are required frameworks. Others are required for specific identification methods only. 
+    For example, if you are integrating Bank Identification then include dist/bank/IdentHubSDKBank.xcframework in you project.
 
 ### CocoaPods
 
@@ -87,13 +97,13 @@ inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
-  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.2'
-  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.2'
+  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.3'
+  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.3'
 
   # Optional dependencies (See relevant section)
-  pod 'SolarisbankIdentHubBank', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.2'
-  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.2'
-  pod 'SolarisbankIdentHubFourthline', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.2'
+  pod 'SolarisbankIdentHubBank', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.3'
+  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.3'
+  pod 'SolarisbankIdentHubFourthline', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.3'
 end
 
 post_install do |installer|

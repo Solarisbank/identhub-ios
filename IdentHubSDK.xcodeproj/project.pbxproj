@@ -1590,11 +1590,11 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.2;
+				_BUILD_VERSION = 1.5.3;
 				_BUNDLE_TESTABLE = YES;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
@@ -1618,10 +1618,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.2;
+				_BUILD_VERSION = 1.5.3;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Release;
@@ -1739,10 +1739,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.2;
+				_BUILD_VERSION = 1.5.3;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Staging;
@@ -1816,11 +1816,11 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.5.3;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.2;
+				_BUILD_VERSION = 1.5.3;
 				_BUNDLE_TESTABLE = YES;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
