@@ -1,32 +1,32 @@
 PODS:
-  - FourthlineSDK (2.24.0):
-    - FourthlineSDK/Core (= 2.24.0)
-    - FourthlineSDK/KYC (= 2.24.0)
-    - FourthlineSDK/NFC (= 2.24.0)
-    - FourthlineSDK/SDK (= 2.24.0)
-    - FourthlineSDK/Vision (= 2.24.0)
-  - FourthlineSDK/Core (2.24.0)
-  - FourthlineSDK/KYC (2.24.0):
+  - FourthlineSDK (2.26.0):
+    - FourthlineSDK/Core (= 2.26.0)
+    - FourthlineSDK/KYC (= 2.26.0)
+    - FourthlineSDK/NFC (= 2.26.0)
+    - FourthlineSDK/SDK (= 2.26.0)
+    - FourthlineSDK/Vision (= 2.26.0)
+  - FourthlineSDK/Core (2.26.0)
+  - FourthlineSDK/KYC (2.26.0):
     - FourthlineSDK/Core
-  - FourthlineSDK/NFC (2.24.0):
+  - FourthlineSDK/NFC (2.26.0):
     - FourthlineSDK/Core
-  - FourthlineSDK/SDK (2.24.0):
+  - FourthlineSDK/SDK (2.26.0):
     - FourthlineSDK/KYC
     - FourthlineSDK/NFC
     - FourthlineSDK/Vision
-  - FourthlineSDK/Vision (2.24.0):
+  - FourthlineSDK/Vision (2.26.0):
     - FourthlineSDK/Core
 
 DEPENDENCIES:
-  - FourthlineSDK (= 2.24.0)
+  - FourthlineSDK (= 2.26.0)
 
 SPEC REPOS:
   https://github.com/Fourthline-com/FourthlineSDK-iOS-Specs.git:
     - FourthlineSDK
 
 SPEC CHECKSUMS:
-  FourthlineSDK: 04a9dbc9d8ef62084041e1e40fe699a6df00161a
+  FourthlineSDK: e7691bf6d731bf55b47404170d2b0cf7d766d647
 
-PODFILE CHECKSUM: ac145528a9714f2257a7c3ee269172f6122eacaf
+PODFILE CHECKSUM: b68a9090e1155b5a6fb1168ee351c53d0f784eae
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.11.3

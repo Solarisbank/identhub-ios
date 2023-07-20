@@ -13,6 +13,7 @@ internal enum WelcomeOutput: Equatable {
 internal struct WelcomeInput {
     var identificationStep: IdentificationStep?
     let isDisplayNamirialTerms: Bool
+    let isOrca: Bool
 }
 
 // MARK: - Welcome events logic -
@@ -44,7 +45,7 @@ final internal class WelcomeEventHandlerImpl<ViewController: UpdateableShowable>
         self.alertsService = alertsService
         self.input = input
         self.callback = callback
-        self.state = WelcomeState(isDisplayNamirialTerms: input.isDisplayNamirialTerms)
+        self.state = WelcomeState(isDisplayNamirialTerms: input.isDisplayNamirialTerms, isORCA: input.isOrca)
         self.scrollerContent = WelcomeEventHandlerImpl.configureContent()
     }
     
@@ -104,7 +105,11 @@ final internal class WelcomeEventHandlerImpl<ViewController: UpdateableShowable>
     // MARK: - Internal methods -
     
     private func didTriggerStart() {
-        if input.identificationStep == .fourthline || input.identificationStep == .fourthlineSigning {
+        guard let step = input.identificationStep else {
+            fourthlineLog.warn("Identification Step not available")
+            return
+        }
+        if step == .fourthline || step == .fourthlineSigning {
             callback(.nextStep(nextStep: .documentPicker))
         } else { /// In BankIdent+ first fetch user data -> Document Picker
             callback(.nextStep(nextStep: .fetchData))

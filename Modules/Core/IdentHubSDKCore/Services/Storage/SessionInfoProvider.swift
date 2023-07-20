@@ -51,6 +51,9 @@ public protocol SessionInfoProvider: AnyObject {
     /// Is remote logging enabled
     var remoteLogging: Bool { get set }
     
+    /// Partner setting value for display ORCA flow
+    var orcaEnabled: Bool { get set }
+    
     /// Method stored style colors to the user defaults
     /// - Parameter color: colors model
     func setStyleColors(_ color: StyleColors?)
@@ -157,6 +160,13 @@ public final class StorageSessionInfoProvider: SessionInfoProvider {
     public var fourthlineProvider: String? {
         didSet {
             SessionStorage.updateValue(fourthlineProvider!, for: StoredKeys.providerData.rawValue)
+        }
+    }
+    
+    //  - SeeAlso: SessionInfoProvider.orcaEnabled
+    public var orcaEnabled: Bool = false {
+        didSet {
+            SessionStorage.updateValue(orcaEnabled, for: StoredKeys.orcaEnabled.rawValue)
         }
     }
     
@@ -286,6 +296,10 @@ public final class StorageSessionInfoProvider: SessionInfoProvider {
         
         if let provider = SessionStorage.obtainValue(for: StoredKeys.providerData.rawValue) as? String {
             fourthlineProvider = provider
+        }
+        
+        if let isOrca = SessionStorage.obtainValue(for: StoredKeys.orcaEnabled.rawValue) as? Bool {
+            orcaEnabled = isOrca
         }
         
     }

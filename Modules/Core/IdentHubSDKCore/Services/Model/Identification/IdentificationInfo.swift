@@ -35,6 +35,9 @@ public struct IdentificationInfo: Decodable, Equatable {
     
     /// If `true` remote logging should be enabled with `.warn` level
     public let remoteLogging: Bool?
+    
+    /// If `true' open ORCA flow for document scanning `
+    public let orcaEnabled: Bool?
 
     public enum CodingKeys: String, CodingKey {
         case status
@@ -46,6 +49,7 @@ public struct IdentificationInfo: Decodable, Equatable {
         case isSecondaryDocScanRequired = "secondary_document_required"
         case style
         case remoteLogging = "sdk_logging"
+        case orcaEnabled = "orca_enabled"
     }
     
     public static func == (lhs: IdentificationInfo, rhs: IdentificationInfo) -> Bool {

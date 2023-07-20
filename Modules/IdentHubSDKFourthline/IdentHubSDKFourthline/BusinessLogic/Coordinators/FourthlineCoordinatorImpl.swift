@@ -7,6 +7,8 @@ import UIKit
 import IdentHubSDKCore
 import FourthlineCore
 import AVFoundation
+import FourthlineKYC
+import FourthlineSDK
 
 final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
     
@@ -146,7 +148,8 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
     }
     
     private func welcome() -> Showable? {
-        let input = WelcomeInput(identificationStep: self.sessionInfoProvider.identificationStep, isDisplayNamirialTerms: (self.sessionInfoProvider.identificationStep == .fourthlineSigning))
+        let input = WelcomeInput(identificationStep: self.sessionInfoProvider.identificationStep, isDisplayNamirialTerms: (self.sessionInfoProvider.identificationStep == .fourthlineSigning),
+            isOrca: self.sessionInfoProvider.orcaEnabled)
 
         return showableFactory.makeWelcomeShowable(input: input) { [weak self] result in
             guard let self = self else {
@@ -157,7 +160,13 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             case .nextStep(let step):
                 switch step {
                 case .documentPicker:
-                    self.documentPickerDisplay()
+                    if self.sessionInfoProvider.orcaEnabled {
+                        DispatchQueue.main.async {
+                            self.presentOrca()
+                        }
+                    } else {
+                        self.documentPickerDisplay()
+                    }
                 case .fetchData:
                     DispatchQueue.main.async {
                         self.fetchData()?.push(on: self.presenter)
@@ -272,7 +281,7 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             }
             switch result {
             case .dataUpload:
-                self.upload()?.push(on: self.presenter)
+                self.dataUpload()
             case .quit:
                 self.quit()
             }
@@ -310,6 +319,60 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
             case .complete(let data):
                 self.callback(.success(.complete(result: data)))
             }
+        }
+    }
+    
+    private func presentOrca() {
+        
+        var supportedCountries: [CountryNetworkModel] = []
+        if let rawCountry = self.storage[.orcaCountryList] {
+            let data = rawCountry.data(using: .utf8)!
+            do {
+                let countryData = try JSONDecoder().decode([CountryNetworkModel].self,
+                                                            from: data)
+                supportedCountries = countryData.isEmpty ? [] : countryData
+            } catch _ as NSError {
+                supportedCountries = []
+            }
+        }
+                
+        var flavor = OrcaFlavor()
+        var colorPalette = OrcaPalette()
+        colorPalette.primary = self.colors[.primaryAccent]
+        flavor.colors = OrcaColors(colorPalette: colorPalette)
+                
+        let documentConfig = KycDocumentFlowConfig(
+          includeNfcFlow: false,
+          supportedCountries: supportedCountries
+        )
+        let tinConfig = KycTinFlowConfig(taxationCountry: .it)
+        let kycConfig = KycConfig(
+            flows: [
+            .location,
+            .document(documentConfig),
+            .tin(tinConfig),
+            .selfie
+          ])
+        
+        let kycCustomization = KycCustomizationConfig(flavor: flavor, kycInfo: KYCContainer.shared.kycInfo)
+        
+        Orca.kyc
+        .configure(with: kycConfig)
+        .customize(with: kycCustomization)
+        .present { [weak self] result in
+            switch result {
+            case let .success(kycInfo):
+                KYCContainer.shared.kycInfo = kycInfo
+                self?.dataUpload()
+            case let .failure(kycError):
+                print(kycError)
+            }
+        }
+    }
+    
+    private func dataUpload() {
+        DispatchQueue.main.async {
+            self.upload()?.push(on: self.presenter)
         }
     }
     

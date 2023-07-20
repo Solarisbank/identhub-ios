@@ -31,7 +31,7 @@ internal protocol VerificationService {
     
     /// Method fetched identified person data from the server
     /// - Parameter completion: Response back with required person data
-    func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void)
+    func fetchPersonData(isOrca: Bool, completion: @escaping (Result<PersonData, ResponseError>) -> Void)
     
     /// Method fetched IP address used by device published request
     /// - Parameter completion: Resopnse back with device ip-address data
@@ -107,9 +107,9 @@ internal class VerificationServiceImpl: VerificationService {
         backgroundTaskId = .invalid
     }
 
-    func fetchPersonData(completion: @escaping (Result<PersonData, ResponseError>) -> Void) {
+    func fetchPersonData(isOrca: Bool, completion: @escaping (Result<PersonData, ResponseError>) -> Void) {
         do {
-            let request = try PersonDataRequest(uid: storage[.identificationUID] ?? "")
+            let request = try PersonDataRequest(uid: storage[.identificationUID] ?? "", isOrca: isOrca)
 
             apiClient.execute(request: request, answerType: PersonData.self) { result in
                 completion(result)

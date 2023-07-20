@@ -80,6 +80,9 @@ public enum StoredKeys: String {
     /// Stored namirial terms and conditions data
     case namirialTermsConditionsData = "FourthlineNamirialTermsConditionsDataKey"
     
+    /// Stored value for display Orca flow
+    case orcaEnabled = "FourthlinrOrcaEnabled"
+    
     /// Style colors keys enumeration
     public enum StyleColor: String {
 

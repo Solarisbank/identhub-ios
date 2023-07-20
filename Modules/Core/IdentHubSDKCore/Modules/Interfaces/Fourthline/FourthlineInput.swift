@@ -27,7 +27,6 @@ public enum FourthlineStep: Codable, Equatable {
     case selfie // Make a selfie step
     case fetchData // Fetch person data from server and device
     case documentPicker // Present document picker step
-  //  case documentScanner(type: DocumentType) // Present document scanner for document with type: passport, idCard, etc.
     case documentScanner(type: FourthlineDocumentType) // Present document scanner for document with type: passport, idCard, etc.
     case documentInfo // Verify and confirm scanned document detail
     case instruction // Secondary document Instruction

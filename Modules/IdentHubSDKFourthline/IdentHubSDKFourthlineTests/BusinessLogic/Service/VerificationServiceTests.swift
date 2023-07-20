@@ -68,14 +68,32 @@ final class VerificationServiceTests: XCTestCase {
     }
     
     func test_fetchPersonData_apiCompletesWithSuccess() throws {
-        let expectedRequest = try PersonDataRequest(uid: identUID)
+        let isOrca = false
+        let expectedRequest = try PersonDataRequest(uid: identUID, isOrca: isOrca)
         let expectedValue = PersonData.mock()
         
         let sut = makeSut()
         apiClient.expectSuccess(.personData, for: expectedRequest)
         
         assertAsync { expectation in
-            sut.fetchPersonData() { result in
+            sut.fetchPersonData(isOrca: isOrca) { result in
+                XCTAssertResultIsSuccess(result, expectedValue: expectedValue)
+                
+                expectation.fulfill()
+            }
+        }
+    }
+    
+    func test_fetchPersonData_ORCACountryList_apiCompletesWithSuccess() throws {
+        let isOrca = true
+        let expectedRequest = try PersonDataRequest(uid: identUID, isOrca: isOrca)
+        let expectedValue = PersonData.mock()
+        
+        let sut = makeSut()
+        apiClient.expectSuccess(.personData, for: expectedRequest)
+        
+        assertAsync { expectation in
+            sut.fetchPersonData(isOrca: isOrca) { result in
                 XCTAssertResultIsSuccess(result, expectedValue: expectedValue)
                 
                 expectation.fulfill()
@@ -84,14 +102,15 @@ final class VerificationServiceTests: XCTestCase {
     }
     
     func test_fetchPersonData_apiCompletesWithFailure() throws {
-        let expectedRequest = try PersonDataRequest(uid: storage[.identificationUID] ?? identUID)
+        let isOrca = false
+        let expectedRequest = try PersonDataRequest(uid: storage[.identificationUID] ?? identUID, isOrca: isOrca)
         let expectedError = ResponseError(.unknownError)
         
         let sut = makeSut()
         apiClient.expectError(expectedError, for: expectedRequest)
         
         assertAsync { expectation in
-            sut.fetchPersonData() { result in
+            sut.fetchPersonData(isOrca: isOrca) { result in
                 XCTAssertResultIsFailure(result, expectedError: expectedError)
                 
                 expectation.fulfill()

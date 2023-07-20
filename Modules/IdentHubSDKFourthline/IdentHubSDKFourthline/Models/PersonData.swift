@@ -44,6 +44,9 @@ struct PersonData: Codable, Equatable {
     let supportedDocuments: [SupportedDocument]
     
     let taxIdentification: TaxIdentification?
+    
+    /// Array of the supported country for Founrthline Orca flow
+    let supportedDocumentsRaw: String?
 
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
@@ -58,6 +61,7 @@ struct PersonData: Codable, Equatable {
         case address
         case supportedDocuments = "supported_documents"
         case taxIdentification = "tax_identification"
+        case supportedDocumentsRaw = "supported_documents_raw"
     }
     
     init(from decoder: Decoder) throws {
@@ -85,6 +89,12 @@ struct PersonData: Codable, Equatable {
         self.address = try container.decode(PersonAddress.self, forKey: .address)
         self.supportedDocuments = try container.decode([SupportedDocument].self, forKey: .supportedDocuments)
         self.taxIdentification = try container.decodeIfPresent(TaxIdentification.self, forKey: .taxIdentification)
+        
+        if let rawString = try container.decodeIfPresent(String.self, forKey: .supportedDocumentsRaw) {
+            self.supportedDocumentsRaw = rawString
+        } else {
+            self.supportedDocumentsRaw = ""
+        }
     }
     
     static func == (lhs: PersonData, rhs: PersonData) -> Bool {

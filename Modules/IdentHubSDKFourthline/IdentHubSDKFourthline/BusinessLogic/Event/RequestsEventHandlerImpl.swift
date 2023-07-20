@@ -147,12 +147,13 @@ final internal class RequestsEventHandlerImpl<ViewController: UpdateableShowable
             self.stateFailed()
             return
         }
-        verificationService.fetchPersonData { [weak self] result in
+        verificationService.fetchPersonData(isOrca: self.sessionInfoProvider.orcaEnabled) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
             case .success(let response):
                 self.storage[.documentsList] = response.supportedDocuments
+                self.storage[.orcaCountryList] = response.supportedDocumentsRaw
                 KYCContainer.shared.update(person: response)
 
                 DispatchQueue.main.async {
@@ -577,6 +578,7 @@ private extension RequestsEventHandlerImpl {
                 self.updateState { state in
                     state.onRetry = status
                 }
+                return /// Don't remove SessionStorage data in case of retry.
             case 4000...5000:
                 self.callback(.fourthline(.abort))
             default:

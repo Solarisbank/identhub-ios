@@ -23,6 +23,7 @@ internal struct WelcomeState: Equatable {
     var onDisplayError: Error? = .none
     var state: State = .loadScreen
     var isDisplayNamirialTerms: Bool = false
+    var isORCA: Bool = false
 }
 
 internal enum WelcomeEvent {
@@ -57,6 +58,10 @@ final internal class WelcomeViewController: UIViewController, Updateable {
     @IBOutlet var checkBoxBtn: Checkbox!
     @IBOutlet var namirialTermsLabel: UITextView!
     @IBOutlet private var termsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var orcaView: UIView!
+    @IBOutlet var orcaDescriptionLabel: UILabel!
+    @IBOutlet var cameraInfoLabel: UILabel!
+    @IBOutlet var locationInfoLabel: UILabel!
     
     private lazy var logoAnimator: WelcomeLogoAnimator = {
         return WelcomeLogoAnimator(logoImage, logoFrameImage: logoFrame)
@@ -112,9 +117,15 @@ final internal class WelcomeViewController: UIViewController, Updateable {
     func updateView(_ state: WelcomeState) {
         switch state.state {
         case .loadScreen:
-            eventHandler?.handleEvent(.configurePageScroller(pageScroller))
-            eventHandler?.handleEvent(.setPageController(pageController))
-            eventHandler?.handleEvent(.setLogoAnimator(logoAnimator))
+            
+            if state.isORCA {
+                self.setOrcaUI()
+            } else {
+                orcaView.isHidden = true
+                eventHandler?.handleEvent(.configurePageScroller(pageScroller))
+                eventHandler?.handleEvent(.setPageController(pageController))
+                eventHandler?.handleEvent(.setLogoAnimator(logoAnimator))
+            }
             
             if state.isDisplayNamirialTerms {
                 termsHeightConstraint.constant = 45
@@ -136,6 +147,24 @@ final internal class WelcomeViewController: UIViewController, Updateable {
         }
         
     }
+    
+    private func setOrcaUI() {
+        pageController.isHidden = true
+        pageScroller.isHidden = true
+        logoBackground.isHidden = true
+        logoImage.isHidden = true
+        logoFrame.isHidden = true
+        orcaView.isHidden = false
+        
+        welcomeLabel.text = Localizable.OrcaWelcome.pageTitle
+        orcaDescriptionLabel.text = Localizable.OrcaWelcome.description
+        orcaDescriptionLabel.setLabelStyle(.subtitle)
+        cameraInfoLabel.text = Localizable.OrcaWelcome.cameraInfo
+        cameraInfoLabel.setLabelStyle(.subtitle)
+        locationInfoLabel.text = Localizable.OrcaWelcome.locationInfo
+        locationInfoLabel.setLabelStyle(.subtitle)
+    }
+    
     private func requestFailed(with error: ResponseError) {
         var message = error.apiError.text()
         

@@ -139,6 +139,7 @@ private extension CoreScreensCoordinator {
                         session.setStyleColors(res.style?.colors)
                         session.remoteLogging = res.remoteLogging ?? false
                         session.secondaryDocument = res.isSecondaryDocScanRequired ?? false
+                        session.orcaEnabled = res.orcaEnabled ?? false
                     }
                     self.appDependencies.sessionInfoProvider = session
                 default:

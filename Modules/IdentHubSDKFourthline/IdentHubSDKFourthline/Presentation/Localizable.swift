@@ -32,6 +32,13 @@ internal enum Localizable {
         static let termsConditions = "identhub_terms_and_conditions_title".localized()
     }
     
+    enum OrcaWelcome {
+        static let pageTitle = "identhub_fourthline_orca_welcome_title".localized()
+        static let description = "identhub_fourthline_orca_welcome_description".localized()
+        static let cameraInfo = "identhub_fourthline_orca_welcome_camera_info".localized()
+        static let locationInfo = "identhub_fourthline_orca_welcome_location_info".localized()
+    }
+    
     enum Selfie {
         static let selfieTitle = "identhub_fourthline_selfie_instructions_title".localized()
         static let scanning = "selfie_scanning".localized()

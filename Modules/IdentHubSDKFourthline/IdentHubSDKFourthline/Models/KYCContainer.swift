@@ -26,7 +26,7 @@ final class KYCContainer {
     
     private static var container: KYCContainer?
     
-    let kycInfo: KYCInfo = KYCInfo()
+    var kycInfo: KYCInfo = KYCInfo()
     
     private var mrzInfo: MRZInfo?
     private var infoProvider: SessionInfoProvider?
