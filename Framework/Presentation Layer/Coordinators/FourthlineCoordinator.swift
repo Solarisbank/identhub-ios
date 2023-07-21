@@ -180,10 +180,10 @@ class FourthlineCoordinator: BaseCoordinator {
         
         switch result.identificationStatus {
         case .success:
-            completeIdentification(result: .success(identification: result.identification), shouldClearData: true)
+            completeIdentification(result: .onConfirm(identification: result.identification), shouldClearData: true)
             close()
         case .identificationRequired:
-            completeIdentification(result: .success(identification: result.identification), shouldClearData: true)
+            completeIdentification(result: .onConfirm(identification: result.identification), shouldClearData: true)
         case .failed:
             completeIdentification(result: .failure(.authorizationFailed), shouldClearData: true)
             close()

@@ -59,10 +59,6 @@ class ViewController: UIViewController {
             // Start IdentHubSession using callbacks (comment out if using delegate pattern)
             identHubSession.start { result in
                 switch result {
-                case .success(let identification):
-                    DispatchQueue.main.async {
-                        self.updateStatus(true, desc: identification)
-                    }
                 case .failure(let failureReason):
                     DispatchQueue.main.async {
                         self.updateStatus(false, desc: "Session failed (\"\(failureReason.text())\"). Try again or create new session URL.")
@@ -119,13 +115,6 @@ class ViewController: UIViewController {
 // IdentHubSession delegate implementation (not needed when using callbacks)
 
 extension ViewController: IdentHubSDKManagerDelegate {
-
-    func didFinishWithSuccess(_ identification: String) {
-        // - display success message on screen with identification -
-        DispatchQueue.main.async {
-            self.updateStatus(true, desc: identification)
-        }
-    }
 
     func didFailureSession(_ failureReason: APIError) {
 

@@ -8,10 +8,7 @@ import IdentHubSDKCore
 
 /// Ident hub session result
 public enum IdentificationSessionResult: Equatable {
-    /// success - successful result with identification string in parameter
-    /// - identification: identification user session identifier
-    case success(identification: String)
-
+    
     /// failure - the session has failed for some reason.
     /// - error: indicating the reason of the failure. Kept for backwards compatibility, integrators should not rely on the specifics of the error.
     case failure(APIError)

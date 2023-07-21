@@ -376,7 +376,7 @@ private extension BankIDCoordinator {
     private func notifyHandlers() {
         guard let successStatus = self.appDependencies.sessionInfoProvider.isSuccessful, successStatus == true else { return }
 
-        self.completionHandler?(IdentificationSessionResult.success(identification: self.appDependencies.sessionInfoProvider.identificationUID ?? ""))
+        self.completionHandler?(IdentificationSessionResult.onConfirm(identification: self.appDependencies.sessionInfoProvider.identificationUID ?? ""))
     }
     
     // MARK: - Fourthline

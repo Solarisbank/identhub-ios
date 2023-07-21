@@ -322,54 +322,6 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
         }
     }
     
-    private func presentOrca() {
-        
-        var supportedCountries: [CountryNetworkModel] = []
-        if let rawCountry = self.storage[.orcaCountryList] {
-            let data = rawCountry.data(using: .utf8)!
-            do {
-                let countryData = try JSONDecoder().decode([CountryNetworkModel].self,
-                                                            from: data)
-                supportedCountries = countryData.isEmpty ? [] : countryData
-            } catch _ as NSError {
-                supportedCountries = []
-            }
-        }
-                
-        var flavor = OrcaFlavor()
-        var colorPalette = OrcaPalette()
-        colorPalette.primary = self.colors[.primaryAccent]
-        flavor.colors = OrcaColors(colorPalette: colorPalette)
-                
-        let documentConfig = KycDocumentFlowConfig(
-          includeNfcFlow: false,
-          supportedCountries: supportedCountries
-        )
-        let tinConfig = KycTinFlowConfig(taxationCountry: .it)
-        let kycConfig = KycConfig(
-            flows: [
-            .location,
-            .document(documentConfig),
-            .tin(tinConfig),
-            .selfie
-          ])
-        
-        let kycCustomization = KycCustomizationConfig(flavor: flavor, kycInfo: KYCContainer.shared.kycInfo)
-        
-        Orca.kyc
-        .configure(with: kycConfig)
-        .customize(with: kycCustomization)
-        .present { [weak self] result in
-            switch result {
-            case let .success(kycInfo):
-                KYCContainer.shared.kycInfo = kycInfo
-                self?.dataUpload()
-            case let .failure(kycError):
-                print(kycError)
-            }
-        }
-    }
-    
     private func dataUpload() {
         DispatchQueue.main.async {
             self.upload()?.push(on: self.presenter)
@@ -400,6 +352,89 @@ final internal class FourthlineCoordinatorImpl: FourthlineCoordinator {
                 self.sessionInfoProvider.identificationStep == .fourthlineSigning)
     }
     
+}
+
+// MARK: - ORCA methods -
+
+private extension FourthlineCoordinatorImpl {
+    
+    private func presentOrca() {
+        var supportedCountries: [CountryNetworkModel] = []
+        if let rawCountry = self.storage[.orcaCountryList] {
+            let data = rawCountry.data(using: .utf8)!
+            do {
+                let countryData = try JSONDecoder().decode([CountryNetworkModel].self,
+                                                           from: data)
+                supportedCountries = countryData.isEmpty ? [] : countryData
+            } catch _ as NSError {
+                supportedCountries = []
+            }
+        }
+        
+        var flavor = OrcaFlavor()
+        var colorPalette = OrcaPalette()
+        colorPalette.primary = self.colors[.primaryAccent]
+        flavor.colors = OrcaColors(colorPalette: colorPalette)
+        
+        /// Passing language for ORCA SDK
+        let languageCode: FourthlineSDK.OrcaLocalization.LanguageType = OrcaLocalization.LanguageType(rawValue: CommandLine.locale?.languageCode ?? Locale.preferredLanguageCode) ?? .en
+        flavor.localization.fixedLanguage = languageCode
+        
+        let documentConfig = KycDocumentFlowConfig(
+            includeNfcFlow: false,
+            supportedCountries: supportedCountries
+        )
+        let tinConfig = KycTinFlowConfig(taxationCountry: .it)
+        let kycConfig = KycConfig(
+            flows: [
+                .location,
+                .document(documentConfig),
+                .tin(tinConfig),
+                .selfie
+            ])
+        
+        let kycCustomization = KycCustomizationConfig(flavor: flavor, kycInfo: KYCContainer.shared.kycInfo)
+        
+        Orca.kyc
+            .configure(with: kycConfig)
+            .customize(with: kycCustomization)
+            .present { [weak self] result in
+                switch result {
+                case let .success(kycInfo):
+                    KYCContainer.shared.kycInfo = kycInfo
+                    self?.dataUpload()
+                case let .failure(kycError):
+                    self?.handleKycError(kycError)
+                }
+            }
+    }
+    
+    private func handleKycError(_ error: KycError) {
+                
+        switch error {
+        case .nationalityNotSupported:
+            print("Handle nationality not supported.")
+        case .documentExpired:
+            print("Handle document expired. Example: Redirect to document type screen.")
+        case .documentTypeInvalid:
+            print("Invalid document type. Can occur if user scanned a document type that is disabled.")
+        case .documentTypeNotSupported:
+            print("Handle document type not supported. Example: Redirect to Document type screen.")
+        case .issuingCountryNotSupported:
+            print("Handle issuing country not supported. Example: Redirect to Issuing country screen.")
+        case .personNotAdult:
+            print("Handle person not adult. Example: Stop flow.")
+        case .canceled:
+            print("User canceled Orca")
+        case let .unexpected(erroMessage):
+            print("Unexpected error: \(erroMessage)")
+        @unknown default:
+            fatalError("KycError: Unhandled case")
+        }
+        
+        fourthlineLog.log("ORCA failure: (\(error))", level: .error)
+        self.callback(.failure(.authorizationFailed))
+    }
 }
 
 // MARK: - Permission methods -

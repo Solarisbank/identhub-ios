@@ -9,10 +9,6 @@ import IdentHubSDKCore
 /// Identification session results delegate
 public protocol IdentHubSDKManagerDelegate: AnyObject {
 
-    /// Session finished with successful result and returns identification string
-    /// - Parameter identification: string value of the user identificaiton
-    func didFinishWithSuccess(_ identification: String)
-
     /// Identification session finished or interrupted with error
     /// - Parameter failureReason: session error object
     func didFailureSession(_ failureReason: APIError)
@@ -217,9 +213,6 @@ private extension IdentHubSession {
         }
 
         switch result {
-        case .success(let identification):
-            SBLog.info("Invoking IdentHubSession delegate's didFinishWithSuccess method: \(identification)")
-            self.sessionDelegate?.didFinishWithSuccess(identification)
         case .failure(let error):
             SBLog.warn("Invoking IdentHubSession delegate's didFailureSession method: \(error.logDescription)")
             self.sessionDelegate?.didFailureSession(error)
