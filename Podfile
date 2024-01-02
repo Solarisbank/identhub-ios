@@ -9,7 +9,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 def fourthline_pods
-  pod 'FourthlineSDK', '2.26.0'
+  pod 'FourthlineSDK', '2.34.2'
 end
 
 target 'IdentHubSDK' do

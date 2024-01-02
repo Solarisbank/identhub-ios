@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -1559,6 +1559,7 @@
 				ASSETCATALOG_NOTICES = NO;
 				ASSETCATALOG_WARNINGS = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				_BUILD_VERSION = 1.5.4;
 			};
 			name = Debug;
 		};
@@ -1569,6 +1570,7 @@
 				ASSETCATALOG_NOTICES = NO;
 				ASSETCATALOG_WARNINGS = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				_BUILD_VERSION = 1.5.4;
 			};
 			name = Release;
 		};
@@ -1590,11 +1592,11 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.3;
+				MARKETING_VERSION = 1.5.4;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.3;
+				_BUILD_VERSION = 1.5.4;
 				_BUNDLE_TESTABLE = YES;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
@@ -1618,10 +1620,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.3;
+				MARKETING_VERSION = 1.5.4;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.3;
+				_BUILD_VERSION = 1.5.4;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Release;
@@ -1718,6 +1720,7 @@
 				ASSETCATALOG_NOTICES = NO;
 				ASSETCATALOG_WARNINGS = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				_BUILD_VERSION = 1.5.4;
 			};
 			name = Staging;
 		};
@@ -1739,10 +1742,10 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.3;
+				MARKETING_VERSION = 1.5.4;
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.3;
+				_BUILD_VERSION = 1.5.4;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
 			name = Staging;
@@ -1795,6 +1798,7 @@
 				ASSETCATALOG_WARNINGS = NO;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(_ENVIRONMENTS) $(inherited) AUTOMATION";
+				_BUILD_VERSION = 1.5.4;
 			};
 			name = Automation;
 		};
@@ -1816,11 +1820,11 @@
 					"@loader_path/Frameworks",
 					"$(inherited)",
 				);
-				MARKETING_VERSION = 1.5.3;
+				MARKETING_VERSION = 1.5.4;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_TREAT_WARNINGS_AS_ERRORS = NO;
 				SWIFT_VERSION = 5.0;
-				_BUILD_VERSION = 1.5.3;
+				_BUILD_VERSION = 1.5.4;
 				_BUNDLE_TESTABLE = YES;
 				_COMPILER_SWIFT_VERSION = 5.4;
 			};
