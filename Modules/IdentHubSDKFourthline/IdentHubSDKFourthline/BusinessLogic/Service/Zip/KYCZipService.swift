@@ -105,12 +105,37 @@ extension KYCZipService {
             errorMessage.append("\n Contacts: \(errors.map { $0 })")
         }
 
+        if result.contains(.invalidSecondaryDocument) {
+
+            let secondaryDocuments = KYCContainer.shared.kycInfo.secondaryDocuments
+            for doc in secondaryDocuments {
+                let errors = Set<SecondaryDocument.SecondaryDocumentValidationError>(doc.validate())
+                errorMessage.append("\n Secondary Document: \(errors.map { $0 })")
+            }
+        }
+
+        if result.contains(.invalidDocumentsToSign) {
+
+            let documents = KYCContainer.shared.kycInfo.documentsToSign
+            for doc in documents {
+                let errors = Set<FourthlineKYC.QESAttachment.QESAttachmentValidationError>(doc.validate())
+                errorMessage.append("\n Document To Sign: \(errors.map { $0 })")
+            }
+        }
+
+        if result.contains(.invalidTaxInfo),
+           let taxInfo = KYCContainer.shared.kycInfo.taxInfo {
+
+            let errors = Set<FourthlineKYC.TaxInfo.TaxInfoValidationError>(taxInfo.validate())
+            errorMessage.append("\n Tax Info: \(errors.map { $0 })")
+        }
+
         if result.contains(.invalidMetadata) {
             let metadata = KYCContainer.shared.kycInfo.metadata
             let errors = Set<DeviceMetadata.DeviceMetadataValidationError>(metadata.validate())
             errorMessage.append("\n DeviceMetadata: \(errors.map { $0 })")
         }
-        return errorMessage
+        return errorMessage.isEmpty ? Localizable.Zipper.Error.unknown : errorMessage
     }
 
     static func zipErrorType(for zipperError: ZipperError) -> KYCZipErrorType {

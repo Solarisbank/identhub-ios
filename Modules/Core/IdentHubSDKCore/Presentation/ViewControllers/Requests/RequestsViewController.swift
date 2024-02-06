@@ -211,8 +211,7 @@ extension RequestsViewController {
     }
     
     private func zipFailed(error: ZipFailedError) {
-        let alert = UIAlertController(title: Localizable.Zipper.Error.alertTitle, message: error.title, preferredStyle: .alert)
-        
+        let alert = UIAlertController(title: Localizable.Zipper.Error.alertTitle, message: error.description, preferredStyle: .alert)
         if error.isRetry {
             let retryAction = UIAlertAction(title: Localizable.Common.tryAgain, style: .default) { [weak self] _ in
                 self?.eventHandler?.handleEvent(.zipFailedReTry(type: error.type))

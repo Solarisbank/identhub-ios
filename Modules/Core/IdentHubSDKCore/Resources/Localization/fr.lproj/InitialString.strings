@@ -78,7 +78,7 @@
 "location_error_message" = "Échec de la localisation de l’appareil";
 
 // Zipper
-"zipper_error_kyc_invalid" = "L’objet KYC n’est pas valide, en raison de :";
+"zipper_error_kyc_invalid" = "L’objet KYC n’est pas valide, en raison de : ";
 "zipper_error_zip_foundation_not_imported" = "Le cadre ZIPFoundation n’est pas importé dans le projet";
 "zipper_error_zip_exceed_max_size" = "Fichier ZIP dépassant la taille maximale du fichier, veuillez consulter la documentation de l’API";
 "zipper_error_cannot_create_zip" = "Impossible de créer le Zip";

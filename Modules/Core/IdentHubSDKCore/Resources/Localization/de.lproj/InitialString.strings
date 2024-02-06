@@ -78,7 +78,7 @@
 "location_error_message" = "Geräteortung fehlgeschlagen";
 
 // Zipper
-"zipper_error_kyc_invalid" = "KYC-Objekt ist ungültig wegen:";
+"zipper_error_kyc_invalid" = "KYC-Objekt ist ungültig wegen : ";
 "zipper_error_zip_foundation_not_imported" = "ZIPFoundation Framework wurde nicht in das Projekt importiert.";
 "zipper_error_zip_exceed_max_size" = "ZIP-Datei überschreitet die maximale Dateigröße, bitte überprüfen Sie die API-Dokumentation.";
 "zipper_error_cannot_create_zip" = "ZIP kann nicht erstellt werden.";

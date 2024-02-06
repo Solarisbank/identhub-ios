@@ -78,7 +78,7 @@
 "location_error_message" = "Device location failed";
 
 // Zipper
-"zipper_error_kyc_invalid" = "KYC object is not valid because of:";
+"zipper_error_kyc_invalid" = "KYC object is not valid because of : ";
 "zipper_error_zip_foundation_not_imported" = "ZIPFoundation framework in not imported into project";
 "zipper_error_zip_exceed_max_size" = "ZIP file exceeding the maximum file size, please check the API documentation";
 "zipper_error_cannot_create_zip" = "Cannot create the Zip";
