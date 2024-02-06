@@ -70,6 +70,7 @@ IdentHub SDK requires minimum iOS version 12.
 | 1.5.2 | 13.4 - 14.0                                                         | iOS 12 |
 | 1.5.3 | 13.4 - 14.3                                                         | iOS 12 |
 | 1.5.4 | 14.3 - 15.1                                                         | iOS 12 |
+| 1.5.5 | 14.3 - 15.1                                                         | iOS 12 |
 
 ## Integration
 
@@ -98,13 +99,13 @@ inhibit_all_warnings!
 platform :ios, '12.0'
 
 target 'YourTargetName' do
-  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.4'
-  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.4'
+  pod 'SolarisbankIdentHub', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.5'
+  pod 'SolarisbankIdentHubCore', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.5'
 
   # Optional dependencies (See relevant section)
-  pod 'SolarisbankIdentHubBank', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.4'
-  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.4'
-  pod 'SolarisbankIdentHubFourthline', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.4'
+  pod 'SolarisbankIdentHubBank', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.5'
+  pod 'SolarisbankIdentHubQES', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.5'
+  pod 'SolarisbankIdentHubFourthline', :git => "https://github.com/Solarisbank/identhub-ios.git", :tag => '1.5.5'
 end
 
 post_install do |installer|
